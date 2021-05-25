@@ -1,0 +1,512 @@
+import VegaTest from '../../components/VegaTest'
+
+
+<VegaTest 
+  filename="sorties_navires_vers_colonies.csv" 
+  spec={{
+    "description": "Les bateaux",
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "ship_flag_standardized_fr",
+          "type": "nominal"
+      },
+      "y": {
+        "field": "tonnage",
+        "aggregate": "mean", 
+        "type": "quantitative"
+      }
+    }
+  }}
+/>
+
+2ème vis: 
+
+<VegaTest 
+  filename="sorties_navires_vers_colonies.csv" 
+  spec={{
+    "description": "Les bateaux",
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "ship_flag_standardized_fr",
+          "type": "nominal"
+      },
+      "y": {
+        "field": "tonnage",
+        "aggregate": "mean", 
+        "type": "quantitative"
+      }
+    }
+  }}
+/>
+
+Document de synthèse
+
+-------------------------------
+
+Ligne d'enquête  °1
+
+1 Le déclin / marginalisation : document tel qu'il devrait être de la région d'Aunis-Poitou-Saintonge au sein de l'ensemble français
+====================================================================================================================================
+
+1.1 Contexte et présentation
+----------------------------
+
+Présenter les enjeux de cette ligne d'enquête par rapport à l'histoire de la région et la période historique ? En quoi contribue-t-elle à étudier les questions d'échelle via l'étude de cas effectuée ? 
+
+Un court paragraphe pourrait suffire à "poser le décor" de la piste sur les plans historique, économique et historiographique.
+
+NB: toutes les visus omettent la direction des Fermes de Lyon en 1789
+
+1.2 Questions de recherche initiales et hypothèses
+--------------------------------------------------
+
+Présenter ici à la fois les questions de description historique et les questions/enjeux économiques sous-tendus par l'enquête.
+
+Les hypothèses initiales qui ont motivé la ligne d'enquête (confirmées ou infirmées par la suite du texte) trouvent également leur place ici.
+
+Hypothèse : le déclin de la marine marchande de la région a engendré une baisse des exports des produits locaux par la direction des fermes de La Rochelle au profit d'autres ports d'exportation proches et plus dynamiques comme Bordeaux et Nantes ?
+
+Hypothèse : déclin relatif de l'activité économique de cette région depuis la perte du Canada, tel que lu dans les données de commerce et de navigation
+
+Question: poursuite de la question des conséquences de la perte du canada
+
+Pour ce qui est des produits, est-ce que cette région se caractérise par l'importation/ l'exportation de quelques produits spécifiques, et si oui, en est-elle le destinataire ultime/ le producteur, ou arrive-t-elle à capter des trafics de réexportations, ou de trafics importation-finition-exportation du produit fini ? Quels sont les produits qui passent par la direction des Fermes de La Rochelle venant d'ailleurs en France avant d'aller à l'étranger ? Est-ce que la région exporte directement ses propres produits, ou est-ce qu'elle a recours à d'autres ports de commandement ? Quel est l'hinterland de la Rochelle ? Juste Aunis ? Aunis+Saintonge+Poitou ? Aussi l'Angoumois ?
+
+1.3 Résultats mis en récit
+--------------------------
+
+Intégrer ici les résultats obtenus sous une forme structurée en prose alternant les images produites et leur interprétation.
+
+Accompagner chaque visualisation d'un court texte d'interprétation explicitant ce qui est appris et comment cette visualisation contribue-t-elle à répondre aux questions initiales.
+
+Identifier dans le texte les résultats confirmatoires et les surprises/découvertes survenues pendant le datasprint.
+
+### 1.3.1 Position de la région
+
+#### 1.3.1.1 Evolution dans le temps
+
+Les données de la Ferme sur la longue période [1721 - 1789] nous permettent d'étudier le dynamisme de la région: elle apparaît assez nettement en perte de vitesse dans la seconde moitié du XVIIIe siècle. 
+
+Robin pesée globale de La Rochelle :
+
+![](https://lh5.googleusercontent.com/5ekec4FJj9mCsrRtmXY91sqaaeugYMXrI9YpdXP_p345fxDW4pnJiBnv4DNeiaLkYx5Xd9NB90e5ZlrKdPu6pMEaoVaYXdB8RrkGN8KpLHqB8AjzJv0lQdEhPi72W8YO9ZeU_lEE)
+
+Nous avons essayé ensuite de comparer l'évolution du commerce extérieur de la direction de La Rochelle au XVIIIe siècle à la dynamique des directions de la Ferme proches: celles de Nantes et de Bordeaux. 
+
+La perte de vitesse par rapport aux deux directions limitrophes est nette, dans une façade atlantique dominée par la croissance bordelaise. Le graphique montre aussi que la valeur du commerce est inférieure à celle des directions voisines. Le déclin de la région étudiée dans la seconde moitié du XVIIIe siècle est constaté aussi bien pour le total des valeurs commercialisées que pour ses composantes 
+
+imporT <https://drive.google.com/drive/u/0/folders/1_TyzR__lYt7OCHwjNKsUcPxWmzLSykhj>; 
+
+ou export, <https://drive.google.com/drive/u/0/folders/1_TyzR__lYt7OCHwjNKsUcPxWmzLSykhj>.
+
+ (<https://drive.google.com/drive/u/0/folders/1_TyzR__lYt7OCHwjNKsUcPxWmzLSykhj>)
+
+![](https://lh5.googleusercontent.com/m_V3IyWAehtQc7N59dN9j2vgy6YeQtfODn3eF6DaI4UM2zqN3_weNrSsrTKNouH6TjbGgGkFkaHE3JsGsQJvxxjPAeMlIdb9WqzAURwP-VI9laIThH-nuGT9h36oZCC2Tc_48ot0)
+
+(<https://drive.google.com/drive/u/0/folders/1_TyzR__lYt7OCHwjNKsUcPxWmzLSykhj>)
+
+#### 1.3.1.2 Les partenaires
+
+Export des données sous forme de tableau (avec noeuds et liens)
+
+valeurs régions en 1789 (???)
+
+Si on regarde l'ensemble des directions de Ferme pour comprendre si elles ont une position privilégiées avec un partenaire étranger donné, comme peut l'être la relation entre Marseille et le Levant, force est de constater que la direction de La Rochelle n'a pas de caractéristique marquée forte:
+
+code: <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/etude_transversale/1789_echanges_toflit_transversal.ipynb>
+
+images: 
+
+dénominateur colonne <https://github.com/medialab/portic-datasprint-2021/raw/main/productions/equipe_1/etude_transversale/assets/1789_echanges_toflit_transversal-0.png>
+
+dénominateur ligne
+
+<https://github.com/medialab/portic-datasprint-2021/raw/main/productions/equipe_1/etude_transversale/assets/1789_echanges_toflit_transversal-1.png>
+
+![](https://lh3.googleusercontent.com/XcG33RAvTmtNwzYAbqipYWVEw4DQqHVSnj7-fYOUA7rGJ3R8DgKmudzgWWLW2EvPI6O_F0JIqogPO8tTstJYvbaLp3ysFcN-z70OupSWrBti3Nru-tb-MzkqVIDxFFqGwgHGs3OS)
+
+Au niveau de la direction toutefois, l'enquête montre la position forte de la région étudiée avec la Grande-Bretagne, liée pour l'essentiel à l'exportation de l'eau-de-vie (est-ce conjoncturel ?? la crise céréalière qui empêche de distiller les céréales en Angleterre joue-t-elle la-dedans ? -> voir valeur export eau-de-vie de la direction de La Rochelle dans le temps), et avec les Provinces-Unies (liée au commerce de sel de Marennes).
+
+Aux importations, en revanche, le lien principal qui démarque la région étudiée des autres est celui avec les colonies.
+
+![](https://lh6.googleusercontent.com/VMEvmWICiOgHvzS4E04QfvqIq0vE2Dz-bYHR1f6psAkCF-ZgThLyqI2lB3S8wvmos2cEZxAVmVt51Gvmz23zTYAYaLxlnjFQ0fBEqM_1GlIo79pMgv60CO8E_zOk6MSDN1S9_epz)
+
+<https://drive.google.com/file/d/1Kl74rSkLlZWD-4alhbpl43ODHP8_A0Q2/view?usp=sharing>
+
+### 1.3.2 Nature des biens échangés
+
+En comparaison avec les autres directions des Fermes prises dans leur ensemble (reste de la France), en 1789 La Rochelle demeure un port ouvert au commerce colonial, mais sa spécificité vient aussi de l'absence de concurrence au niveau national pour l'exportation de l'eau-de-vie et, bien que d'une valeur moindre, de sel.
+
+https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21
+
+![](https://lh4.googleusercontent.com/vPZCnYbAG0J1prbPFPCHmUi7-JmLzLIuek5U8VJhtvz90aaVL8Jl7UmLJoy0vwEa7uFDEJlXn8HkLDXxjBUoi-o3coF5Uap-9e83BTUNXVKKZh93jAaHshwbXLk4AcfORnaDyGZv)
+
+L'étude des importations conforte cette lecture, et en particulier, l'importance particulière du commerce du café.  La part que la direction de la Rochelle joue dans l'importation de céréales (farine, blé) peut-être liée à la conjoncture particulière de 1789, la façade maritime permet d'importer de céréales d'ailleurs. 
+
+<https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21>
+
+![](https://lh4.googleusercontent.com/Ijxrrf_je57q7gUAPyDuJ6WXTjVtV_ncAsxa9h-jPlElcyOhaEBOSiP28QJ-Ba06Fq1H-sj4qMS0HgR5zrqhJgTgm-HEGB9F2KCa6P6pWL4S2uagL2VP5_ohX23SAzEGfk0oKfWj)
+
+Au-delà de ces études par catégorie agrégée, on peut aussi regarder la diversité des exportations de la Rochelle dans le prolongement de ce qui avait été fait pour le papier pour Historical Methods. 
+
+GD : aller plus loin dans l'analyse de graphes
+
+Réseaux Toflit sur le commerce avant / après la chute de la France
+
+![](https://lh6.googleusercontent.com/dVGRYzlhC370RuUe1p-M_AI7OcA85ROek6OIGyXdAgzUzIu440subJtmGm5-cvAgdkRFfWV8-c0MHRX4fKY5slAK9UZtooBX0zSrY9eezCoDYZ9K1lmTvgDCDDWVGMOA3lTFvjkk)![](https://lh6.googleusercontent.com/WCin5JmTTrs2bbtl0pTCp0JFPCG_1bPJpBBwKwNV_ZzzPrbQ62NfSImIpGxc0ULBg-aL_gc6GHY1IYwYGqGSq7aygrURtDgoC30EoapZxSi2qQey7zGZBwvv1jCx86HfXew5JhG3)
+
+Figure 20: Step 12 - La Rochelle's product terms networks,\
+imports and exports, 1750-1755 and 1765-1770 
+
+"Step 12 provides a more detailed view of the evolution in La Rochelle's trade due to the loss of Canada. We compare La Rochelle's product terms networks of imports and exports before (1750-1755) and after (1765-1770) the war. If the main commodity terms that composed the network remained present throughout the two periods, their relative places changed but, more importantly, we can observe an important decrease in the diversity of commodity terms in both imports and exports (networks are less dense) after the war. By removing one important trading partner, the loss of Canada diminished the quantity and the variety of La Rochelle trade. Before the Seven Years War, La Rochelle was a mid-size international trading hub with a genuine specialization due both to its specific local productions (salt and cognac) and to its quasi-monopole on trade with Canada. La Rochelle was shipping in hides (peaux) from Canada, which it re-exported to several destinations, sometime after having transformed them, especially into hats (chapeaux). It was exporting to Canada first necessity products like iron-made objects and tools, as well as a variety of textile products including predominantly cloth products (toile). But besides these main categories, a wide range of other products, mostly linked to the West Indies trade, were exported or re-exported via La Rochelle. After 1765, the imports network was dominated by products destined for shipbuilding (commodities made of wood, iron and to a lesser extent copper) - and goods from the West Indies (sugar). The trade in hides almost disappeared and exports were dominated by a handful of colonial products. Even the international trade of La Rochelle's traditional exports, salt and brandy, was badly hit. One hypothesis is that instead of going directly to a foreign destination, these products were now directed to other French Atlantic ports (Nantes and Bordeaux) from which they were exported. After 1765, La Rochelle was no longer a significant international port and even if it regained a decent volume of trade in the 1780s, it relied almost entirely by then on the slave trade, and was financed entirely by Bordeaux and Nantes merchants [(J. G. Clark 1981)](https://www.zotero.org/google-docs/?Pb3PaN).
+
+"
+
+Résultat : en 1750, La Rochelle commerce 21% des types de biens (516/2446 au niveau product_simplification) de la France. En 1789, c'est tombé à 10% (404/3973).
+
+Alors que La Rochelle passe de 4,8% du commerce à 2,7%.
+
+Ce sont les seules années pour lesquelles on puisse faire l'analyse.  Mais on pourrait le faire pour les années où on a à la fois La Rochelle, Marseille, Nantes, Bordeaux, Bayonne, et Rennes (en gros 1750-1780, avec des trous + 1789))
+
+Voir <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/diversit%C3%A9%20des%20produits/comparaison%20diversit%C3%A9%20des%20produits.do>
+
+### 1.3.3 D'où vient ce qui passe par La Rochelle ? Par où passent les biens de la région PASA ?
+
+Quelle est la part de la région dans les trafics nationaux et internationaux de la France en 1789 (import/export/colonies) ? Peut-on dégager une spécificité, s'il y en a une, des partenaires et dans la diversification de cette aire ?
+
+Matrice (carte de Chaleur faites par Béatrice) : spécialités régionales par régions ? Mais déjà fait par Robin (?).
+
+dénominateur = total de la ligne (voir colonne «total»)?
+
+ ![](https://lh3.googleusercontent.com/1I05-FgErs0g3zufIJLqZY_KtyhCbqXpdv4MJ0cp1qih59AbNbFt44N_DfnCNnSTACdPXmgVZv_yk3ZwEq4qBmFF5daWEdYeIIY5ly4LoU_m5jJhsHCeAxx1mjIDvjH5ZqWNwzqi)
+
+La région étudiée ne semble pas contribuer de manière décisive à l'approvisionnement d'un partenaire étranger en particulier pour son commerce extérieur.
+
+Matrice régions/partenaires : part 
+
+dénominateur: total de la colonne)
+
+#### 1.3.3.1 Quelles directions de fermes exportent des produits d'Aunis, Saintonge, Angoumois ?
+
+En 1789 les sources des directions des fermes (disponible dans TOFLIT18) contiennent une variable décrivant l'origine des produits exportés.  Nous avons créé une classification indiquant à quelle province d'ancien régime se rapporte chaque valeur de cette variable ([variable origin_province dans bdd_origin.csv  dans le dépôt TOFLIT18_data](https://github.com/medialab/toflit18_data/blob/master/base/bdd_origin.csv)).
+
+Une fois chaque origine agrégée par province on calcule pour l'année 1789 la part des exportations de produits d'origine des provinces de Aunis, Poitou, Angoumois, et Saintonge dans les différentes directions de fermes. L'ensemble Aunis, Poitou, Angoumois, et Saintonge correspond à la zone contrôlée par la direction des fermes de La Rochelle. Nous utiliserons l'acronyme PASA pour dénommer cette ensemble de quatre provinces dans la suite de ce texte.
+
+![](https://lh6.googleusercontent.com/V6AFLeNuYhUWqZH1dJMwLyK2GA4mGZSiojpsGeNZ2rZJTbqsgLjpWhabLZ5uaHSDGy5RDY2pScOaAxvLy9p-qBdU1gGYTwlJ7O8Ry8c-znGRX_5Im8nZfZa3bhouA4BYdZEqsPPx)
+
+Lien vers l'image: https://drive.google.com/drive/folders/174lIWV3MSVtzXPGUFFUr0e8VSv3ekZ3D
+
+Code: <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/origines/origines.ipynb>
+
+Si pour une majeure partie des produits d'origine APAS sont exportés par la direction de La Rochelle des exceptions existent. La première (en valeur) direction exportatrice des produits APAS après La Rochelle est Bordeaux. 
+
+![](https://lh6.googleusercontent.com/kQOGsKjXLpv8gdYZC6pZrJQ5FXrU9fY2rTM5uV_0xj1wiUtJszcnyvDryD9rcw2ChvjqW10opbag1bXJj77nF8i3Pq5pXJVniDO9Nl_Jns6dJykUMlEP0QxLDiHLLL2pyxtJ7qmW)
+
+lien vers l'image: https://drive.google.com/drive/folders/174lIWV3MSVtzXPGUFFUr0e8VSv3ekZ3D
+
+La direction des fermes de Bordeaux exporte en 1789, 12% des valeurs des produits d'origine APAS. Autrement dit, la direction de La Rochelle garde la main sur 80% des valeurs d'exportation des produits de son arrière-pays. Le papier, produit en Angoumois, est exporté par Bordeaux vers des marchés coloniaux et européen: l'explication est probablement liée au fait que le papier voyage par voie de terre, et que le port exportateur le plus proche est Bordeaux.
+
+A propos des exports de Papier en 1789 (ça donne à voir les connections de Bordeaux et Marseille):
+
+![](https://lh6.googleusercontent.com/M66ETAAV87-0IH6Iyx-SPJnEdDhiNM6I_AGB3GWWhozjCWO7TY93IIPQG9JdfAD5t6iHYLQ3M7wr-MPzyzqhnszQjkOIGWeM-BI3DvJ7TZvBMaDYi4VlM9_TXyjMSRogod0CUM5n)
+
+[http://toflit18.medialab.sciences-po.fr/#/exploration/network?classification=partner_grouping&sourceType=Best%20Guess%20customs%20region%20product%20x%20partner&productClassification=product_revolutionempire&product=%5B%22Papier%7Eproduct_revolutionempire%22%5D&kind=export&dateMin=1789&dateMax=1789&nodeSize=flows&edgeSize=flows&labelThreshold=5&labelSizeRatio=2 ](http://toflit18.medialab.sciences-po.fr/#/exploration/network?classification=partner_grouping&sourceType=Best%20Guess%20customs%20region%20product%20x%20partner&productClassification=product_revolutionempire&product=%5B%22Papier%7Eproduct_revolutionempire%22%5D&kind=export&dateMin=1789&dateMax=1789&nodeSize=flows&edgeSize=flows&labelThreshold=5&labelSizeRatio=2)
+
+#### 1.3.3.2 Ré-exportations de produits coloniaux
+
+Pour éclairer la situation économique de la direction des fermes de la Rochelle il convient de situer cette analyse des exports d'origine APAS. Premièrement, il nous faut évaluer le rapport de ces exports à l'activité de réexport des produits importés des colonies qui sont masquées dans les deux précédentes figures. Pour cela, nous pouvons recréer une valeur "Colonies françaises" pour la variable "origine" en utilisant [une classification de marchandises "réexportations"](https://github.com/medialab/toflit18_data/blob/master/base/classification_product_reexportations.csv) qui isole les marchandises qui ne peuvent être produites en France métropolitaine mais par des possessions françaises outre-mer.  Un produit exporté qui n'a pas d'origine renseignée mais qui figure dans la catégorie réexportation se voit attribuer l'origine "Colonies Françaises".
+
+Question des ré-exportations ou des origines (en cours)
+
+Premiers résultats (analyse transversale avec flag best_guess_national_region - part des valeurs des flux via la propriété "value" rapportés au commerce total pour chaque année).
+
+Ici, on identifie les ré-exportations par les produits coloniaux.
+
+En 1750, La Rochelle est dans le groupe de tête en matière de commerce d'entrepôt (enfin, du  moins, dans le groupe de têtes des ports qui dépendent de l'entrepôt) : Bordeaux et Nantes; elle dépasse Rouen  et Marseille.
+
+![](https://lh4.googleusercontent.com/OFj31bFedNuK8aQPeq1msdB8jOJ6HeMs6wnS7cFoRqHoEKpQnpyPK6aQTJr5Dp0HQlpzz2w7D0F_k5_e7OCMObS6sbcppEPo00mjLzaXLlJyo2Z7ztL5qImaaDFu7qWz4XycrPhb)
+
+A la fin du siècle le positionnement de la direction de La Rochelle en tant que port colonial est 
+
+Ce graphique permet de voir que certaines directions sont dépendantes des ré-exportations : Bordeaux ; Nantes ;  Rouen. La Rochelle est moins impliquée (dans un deuxième groupe avec Marseille et Flandre). On peut négliger "France" (probablement les passeports du roi ?). 
+
+En comparant avec la situation de 1789, la perte du Canada n'est pas immédiatement visible, mais il faut rappeler que la valeur des fourrures canadiennes importées en France avant la guerre de Sept Ans est de trente fois inférieure à celle des produits coloniaux: c'est probablement dans sa capacité d'approvisionner la colonie que les pertes ont été les plus sensibles pour la région avec la cession du Canada à la Grande-Bretagne en 1763.
+
+Dans la seconde moitié du siècle, la direction de La Rochelle continue à réexporter des denrées extra-européennes, mais ne réussit pas à garder sa position face à la montée en puissance de Bordeaux, Rouen et Nantes (comparaison 1750 et 1789: <https://drive.google.com/drive/folders/1F8NnnEtoUxZSyvgMx-q3O4PQ16SFmHXY> et <https://drive.google.com/drive/folders/1F8NnnEtoUxZSyvgMx-q3O4PQ16SFmHXY>
+
+ ![](https://lh6.googleusercontent.com/jdrRIfZ2CsCzEU0CeLOwP4zEf-_nGyvTlEJuhtCKQa8LdrcAJ5jdl1jNciuSjrKQ_bzRArR9AgMScuY6rQUbVvzSaAZ4TR75aLQ6V_dKoXSjyQGcOYwNUy1hFEjckjsPzrlZSqpT)
+
+Il faudrait aussi quelque chose avec le dénominateur comme somme de la colonne ?
+
+Ce graphique est illisible, mais on peut le voir dans le drive [enquête-exportations-3.png](https://drive.google.com/file/d/1-JTTPX21bf_7nSmklg71H2lrSEhTgZ4n/view?usp=sharing) // voir aussi [enquête-exportations-2.png).](https://drive.google.com/file/d/1efM6HWhWekBrSRFE2KwIKGFtHj0Ti4DZ/view?usp=sharing)  Je ne sais pas très bien quel est le dénominateur ? Ligne ou colonne ? Les deux bleus sont trop proches.  Mais bon... Je n'arrive pas à l'interpréter. En tous les cas, il semble que les ré-exportations de Rouen ne soient pas principalement du textile, et donc que l'inquiètude mentionnée avant ne soit pas justifiée. Il faudrait changer l'ordre des secteurs (peut-être réeports / REagrégé / alphabétique sur les secteurs ?)
+
+![](https://lh6.googleusercontent.com/oJi4VBpwrmmjtjIhXn1rIzG4dzas4TrEAOBbRtcvtDCi6qFcwbzsDa33zQqikUza9BP9acsEhoYKjHEAROEIvtHgmISmbaijvob5BVVMAg3Yufy8yrc9NGTXenA3dRZPP1vmDj3Z)
+
+La direction de La Rochelle semble réussir dans la seconde moitié du siècle à se positionner avantageusement dans le 'nouveau' commerce du café, alors qu'elle perd la première place dans la réexportation de l'indigo qu'elle avait en 1750. <https://drive.google.com/drive/folders/1F8NnnEtoUxZSyvgMx-q3O4PQ16SFmHXY> et <https://drive.google.com/drive/folders/1F8NnnEtoUxZSyvgMx-q3O4PQ16SFmHXY>
+
+Parts des directions des Fermes en 1750 et 1789 par rapport aux exportations des produits coloniaux
+
+![](https://lh6.googleusercontent.com/U_TeIZEG0tL7wT1-sYARNBih3MQNbpUvDyX2ywB_dks3LwrhifpntjhffNYshWTZstMjhTk0Z7_iffwu0F6chn_jAehGIfgPXwotuaaEGPVX-Y70xzAi_CuyOHTgqD0y6ydJTLMP)
+
+![](https://lh4.googleusercontent.com/3g9XcRDF0_oWNdfAg2csrjCbTIhpWmaGZUpOoYSBKAX0rMYHn5t_JFHpI5DMw9ngCcOpS4FxsvgvNV0yfBeF-mRtv-1-vxFx3Tj9p5yPQLWTB9STEbpDjo1flCCst74MzahEGebD)
+
+Là aussi, c'est compliqué à lire. Voir [enquete-reexportations-4.png](https://drive.google.com/file/d/1gUmfRTcpdD4Gm0I9cm8S5QUXDzAbRCel/view?usp=sharing) Ne garder que certains ports ? Enlever les colonies ?  Classer par la taille du commerce en moyenne sur 1789 et 1750 ?  S'assurer de la continuité des séries (Qu'était Rennes en 1750) ? Bref, l'effet de la guerre de sept ans est très net, mais cela ne m'inspire pas beaucoup plus.
+
+![](https://lh6.googleusercontent.com/uCSREt_zgRDH3OWebLWXaIkNbkKOBpE5Pc3Im9AHwjaSTZ2uZZrygLUtu_GBOFCRiJEayYQFQ5eG-5T0Vc8zlIeCVTDvoKTyj4ORkng5tU-GcEOeAm1fLMbiV8shmBUN72rYJOkf)![](https://lh4.googleusercontent.com/P529weDYzSpH9PTZZPurs4LCC4pNKfm0RXZ0a5hB8HMj57IqwCNYmu1NkIbeXI9c50FJGSfv_dj3uEr4bv1-M2QKVvkBrm_TLx9TYgG1E5D4CHG85LR8bUV_I9pghebhp7uYF7fa)
+
+Extrait du graph qui précède: La comparaison de la part du commerce de réexportation à La Rochelle avec les directions de Bordeaux ou de Nantes montre que les marchés de réexportation des produits coloniaux n'ont jamais été majoritaires, alors qu'ils le sont ou le deviennent à Bordeaux et Nantes. Comparé à Bayonne, toutefois, La Rochelle résiste mieux à la concurrence de ses voisins. (<https://drive.google.com/drive/folders/1F8NnnEtoUxZSyvgMx-q3O4PQ16SFmHXY>)
+
+La Rochelle 
+
+![](https://lh3.googleusercontent.com/YgrgQ9NTbf_RahR8VXQ6dC2tWQMLiYQzZt9jceo_X4XXbT6I0Fvu6HbJpVVSWaIGFin2f5vLrhtpWJ0PPfbjxyEYNg2NpKhP_x3Mqg7rh2fOnYUqvUGM7Rk9YiQQcmT4wjgv1gx6)
+
+Bordeaux
+
+![](https://lh4.googleusercontent.com/YHRda7Ri7mS1RLolJD6i3ifhneDlDQfmabMm6s64-WkaZd_XeBaoMBOWvWth_lDhPgKCXXObijnUGSDYMfOHWbV2RSDfrhjjf_mq_tuAciyYDtoZ2cvOv6F5sWIX5jqRXZfuK_sS)
+
+Nantes 
+
+![](https://lh5.googleusercontent.com/h3PbvKLEm0GbRT7HPJSzE63fWMNYmW4DA8ZELW6IyuXoOLXZ4U9d9kDYwPtyRBZ2_DqLYtK-c5qfjIE5EAMeAKLhlQJx0EPT_ZYJZ5zpjLrbyGNDj8RbTLzBxdCXwIGHRZI_ewSa)
+
+Bayonne
+
+![](https://lh4.googleusercontent.com/-npkfMKwbZNetdT3p3Tz7up1WrWYkX57oIbr6BGTT6M3mLjn4owRhDH_284TqCTQokyNDetrRnZ0ifVGy9l2g9pATbNy0Q5p5L-JEQlyElz-MvPmyvN9ggKznxY1yXU7afnpv0Jd)
+
+#### 1.3.3.3 Comparaison des origines d'exportation par direction : De quelle origine sont issues les marchandises exportées par les directions des fermes ? La direction de la Rochelle a-t-elle un profil d'exportateur particulier ?
+
+Nous proposons d'étendre l'analyse des origines des exportations sur d'autres directions de ferme afin de situer La Rochelle dans son contexte national.
+
+Voir province : <https://docs.google.com/spreadsheets/d/1wtgGQ3sHlQWs0shdJRsyWxd2VR48DX5Eu-3lsckviaI/edit#gid=285840128>
+
+L'analyse plus systématique des origines des produits commercialisés par la direction des Fermes de La Rochelle conforte le choix de l'étude conjointe des quatre provinces (Poitou, Aunis, Saintonge et Angoumois) dont les productions sont exportées essentiellement par la direction de Fermes de la Rochelle:.
+
+![](https://lh4.googleusercontent.com/gfyDYd2An8Qe6eeHeLxu_FRhW_Ww7txauQXdgqSSfvlRdDciFjM4YvfD425louAZhZaw8YH23gX4vRsfF40rviTJr13MuGdAO0VHxYATSKKENv6fxaJkGYYffWJFJ5MlMhabMHIG)
+
+![](https://lh3.googleusercontent.com/MyZDuqfSR1XmvPkzDXXG4XSfIq2OzY69vpHpcg1uYx7H24fNoX1lHiwtlUHVveCmMFvA7uPpt41uniw4WtW-XYchl6WiNOCj_gwd2EiKHqWIsxAdm41YA-BxvGOylgQF47cDTrcp)
+
+Code: <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/origines/origines.ipynb>
+
+En centrant l'analyse par direction on peut s'intéresser à la destination des exports par provinces d'origine. Ces matrices permettent d'identifier des profils de direction en terme de spécialisation d'approvisionnement et de débouchés.
+
+La direction du Havre est un exemple extrême de la spécialisation d'un port colonial dont les destinations se concentrent presque uniquement vers l'outre-mer (Afrique et Amériques) à l'exception de la Flandre (États de l'empereur d'Autriche). Les approvisionnements sont en revanche moins concentrés (30% réexport de produit étranger, 30% de Bretagne et  30% reste de la france).
+
+![](https://lh6.googleusercontent.com/icb4EYWR5BW77flrwz5ar_y7XI0cY_HVGm7RHRHNzIRqLBcqC2-v4dLAIH4jKTv_nPEuZdwq3DkB3e2q-zsCFZ2GVvONW8SGelJG2wB0fYvWNOhL9PWJPqa6PGcCVHooZL_glJVb)
+
+Toujours en Normandie, la direction de Rouen montre un tout autre visage. 
+
+En résumé, Nantes, Rouen et Bordeaux : large spectre tant en terme d'approvisionnement que de destinations + importance du réexport colonial.
+
+![](https://lh3.googleusercontent.com/zmBdLmb8b64iR9cSgqIpXeWm8TX7GGWiW8H6udtrtYKLlA54-gw12dj_Dp2EXoeJh30imZOdhC8DFQu18AAFFnBC2HEputfxqXRLXT8jsq6B5eS-7JheOHUPdYP5qtKYHfwWi6I4)![](https://lh6.googleusercontent.com/Tzwz7DXFYAzsCE1j678dpfjCJFVE01KKjcvz_AFVtsQGfnia5Z0Q7VZ2vQ5qreELFo3IzxrCcyb70H0lg7hcoY_s6qduH4wcOkLoV0ou9Y7b8DMXqQ2kcWZKoK_pJxaO2mZIo7q6)![](https://lh6.googleusercontent.com/cVqX4AW09cmc_wpNnE4bCqpiSnBhgnfJg4dYnHTua0cqPIbbG0pdlcQlHh3ZFuKjbW5c5Q7Mfp7DJIRZ123P6mTShpzdSedzggO7LmBzlpoJ0W-V5exWBmwV4QFiPPY6JYA-aO1Z)
+
+La Rochelle comme Bayonne, montrent des profils plus nuancés.  Arrière pays plus prépondérant (l'Angoumois dépasse les réexports coloniaux en valeur pour La Rochelle), moins de destinations couvrant un large spectre d'origine, destinations plus spécialisées.
+
+![](https://lh3.googleusercontent.com/1TKtA2vRPEdB7KSuHhbHcgt1njwfyJaxPTgdnLlCOKUlbfpY-U5wGP1PbaCZT-zxHSPSUPYeqk4xCAV16N2KTr_CA6j8oN2JK6AR5pStYwlIRQB4kA9STQdlXf-kjf4gPoPKBsQT)
+
+![](https://lh5.googleusercontent.com/0mCzQ2XibZBsHWQlmdSiMM5Y7V1KgAsozXAKUuCpUF04HNoktcEG_Wfj94874dirQwurZQ5vkKRqR69Fc4RwfKMKNjHrDMmxceBvvL7KGM9qOQgzmsxgCqE221Y_SEDjoFP-BE12)
+
+#### 1.3.3.4 Confirmation avec les destinations internationales des bateaux
+
+En comparant les destinations étrangères des navires sortis de la région étudiée avec ceux qui sortent de deux directions de Fermes limitrophes, on ne note pas de divergences frappantes inconnues. Le commerce de réexportation des produits coloniaux à destination des villes hanséatiques est dominé par Bordeaux, et la région étudiée a des positions de force relative avec la Grande-Bretagne et les Provinces-Unies.
+
+tonnage cumulé:
+
+<https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/productions/equipe_1/port_attache/assets/GB_tonnage_par_port_dattache.svg>
+
+nb de navires:
+
+<https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/productions/equipe_1/port_attache/assets/GB_nb_par_port_dattache.svg>
+
+![](https://lh6.googleusercontent.com/efOFaOF1SWqZ8Dv-FFY5Hpgb-oWfUMcjmtymOZleAGXpV844Tb46lWlnHMyC7WFqVovgcuXN2FVIFbVDsei3v1DMZIX4uUNmQHGNaocQqE0VmgT9AUoyXAaRvpz741ae1q0gsKp9)
+
+Le focus sur les amirautés qui comprennent le port principal de ces provinces montre toutefois que la relation privilégiée avec les Provinces-Unies n'est pas liée au port de La Rochelle. La matrice qui suit montre qu'il s'agit du commerce de sel de Marennes.
+
+![](https://lh3.googleusercontent.com/jRUvhmNvAjL-kS2lYERERnl7w8f7c_f0CeWJCfxwmNa_wXZ2H11VW0FXjs2-W0Hdh9mT0Drmjl64g0TfYzJBoxeXpseiPSX1JpNtDTkW51ICGthqJX_KOvoHjmb49cTrxA0JNjug)
+
+![](https://lh6.googleusercontent.com/_qMI3FYGuenSlV37c8FifLqXapB2M6k7WjRtnuCBrGRLKPbwreSAqpvJ2s5yrx9b_qE8y_KGIVagkLOkEaj24Mp2EZkR7sCkm_lYb_QUaZbb9KxnXHrV_kZ6m1jV3yNf7JAEd9IK)
+
+![](https://lh6.googleusercontent.com/0ibe2fVZYL_eEYbKZA0VEmgziLqqAuwVmHkDvvqHyKqmDDvU9eXtXbSAPNCGJLmSQPJJyMg9CGVQXDwxsoWVlHlvmnWEqhHFm7TA55UeChFqSzTbL4Nt2AoQO-UhLKX7LqGBA2Lq)
+
+Visualisation cartographique "Hiérarchie des provinces exportatrices" :
+
+-   carte où on visualise les provinces qui exportent (coloration des provinces selon intensité exports, avec données 87), avec points sur ports exportateurs  ; 
+
+-   ronds par port
+
+-   besoin faire figurer Angoumois
+
+-   carte choroplèthe : exportation par km carré (on s'abstrait de cette composante avec les matrices) => question d'apparence de l'Aunis / cartogramme pourrait être alternative / grille (donner à chaque province une surface égale)
+
+-   choix de l'outil ? => agréger les données avant dans un notebook / avec Vega
+
+<https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/carto-commerce-exterieur/export_khartis.svg>
+
+### 1.3.4 Les acteurs du commerce PASA
+
+Est-ce que ce sont des acteurs locaux qui dominent les trafics et le transport ? 
+
+Il s'agit d'aborder ici la question de la capacité de cette région à assurer ses propres trafics, voire à offrir ses services à l'extérieur. Y a-t-il une spécialisation régionale ? qui fait quoi ? Y a-t-il des dynamiques de spécialisation nationales ? La relation de dépendance versus le caractère « actif » de cette région peut s'étudier par le biais de la navigation. Pour ce qui est du transport maritime, est-ce que les navires des armateurs de cette région sont capables de se projeter à l'extérieur ? Où le retrouve-t-on est quel est leur poids hors région ?.
+
+ Pour le commerce avec les colonies / la pêche / le commerce avec les autres ports français, qui sont les « Français » qui assurent la navigation de cette région ? sont-ils issus de la région même (-> homeport) ou est-ce que la région dépend pour ses trafics extérieurs à la région (voire pour les trafics à son intérieur ?) des flottes extérieures ? 
+
+Pour ce qui est du transport maritime, il s'agit d'aborder la question de la concurrence/complémentarité internationale: pour la navigation avec l'étranger, quelle est la part des étrangers (pavillon des navires) versus la part des "Français"? est-ce que cette région est plus ouverte que d'autres à la navigation des étrangers ? (que La France en général ou d'autres provinces - données pour 1787) ? les Français sont-ils les adjuvants des marins du Nord ? a-t-on un système capitaliste dans lequel les Français font les petites mains ? ou sont-ils relégués à des trafics autres, interstitiels, ou dominent-ils la navigation vers certains secteurs à l'étranger ?  Y a-t-il certains segments de son commerce (destinations) / le transport de certains produits qui sont assurés par une nationalité particulière ? Quelle est la valeur moyenne par tonneau et par partenaire étranger, et est-ce qu'il y a une corrélation entre les trafics de plus haute valeur et le pavillon ? Derrière ces enquêtes, se pose la question du déclin de la France en tant que transporteur maritime, qui serait perceptible déjà à la veille de la Révolution, ou de savoir si la dynamique n'est cassée que par la guerre après 1793. 
+
+#### 1.3.4.1 Des navires étrangers pour le commerce extérieur à la région
+
+Les données sont relativement sans appel: en 1789, le commerce extérieur de la région est géré à 90% par des navires extérieurs à la région (ici, analyse en nombre de départs)
+
+![](https://lh3.googleusercontent.com/0EFwKHE5_rBUUAg4RjYZzVlQaeMJctyO8tOCZHr5BYLk5j2IfwSFk3i0AQf08CU7EFSzBNenwvPwr8jmeZ9nA56PoxvkmRmQFaW91b4-mwjqQtO6qXxo_DOrhyEWcEE9HnI4Oxln)
+
+![](https://lh6.googleusercontent.com/VOuXxjDEACpENTdLy8nUEwLOrWowEgdcRv8Gd66fK4ULaCNT93-t0qFH0b8eQa9aXY20sY0UgGa9NEHIzc76v81JBb8q_AZxQtQ62yyy5zoLMBdOuxKf444HTVjYgWqXo1bHzcb3)
+
+Pour l'essentiel, il s'agit de navires étrangers (ici, nombre et tonnage), et pour l'essentiel, de navires britanniques:
+
+![](https://lh6.googleusercontent.com/mr_zKbTg_-dVWI5PUTirrxr-Afo9YsF0uc_SXDoiKkFTjUkFOOZ5TyOS2zcK8lzMmIhkIFlWj8iehF3dKBHz8tTHYNgEOPIpWdRHYQfcfX9D-49HlLfwSZFxRFIQTYPs46DfWJTf)
+
+![](https://lh4.googleusercontent.com/AUgQLOzVCajBLqPzplGosYTcI9yOXE9Fz8Hn8wfFIHQoUo0tS9l0KfADoAg9vAs1UWcEtxI4_i_ywitzoMR-c20I0pdKrdeEewLeqMSP_RuetOb2aLxudJCrv204RlDiUl3itxWo)
+
+(analyse possible en affinant par tonnage moyen).
+
+Les "Français" non locaux qui assurent la navigation externe à la région sont pour l'essentiel des morutiers, qui se dirigent vers les bancs de Terre-Neuve (ici: zone maritime"). 
+
+![](https://lh4.googleusercontent.com/q1jTWA1DKaVH1mdsSu1inszvWSsPIzlL-s3UsjCLklOIzHbAvFlYGtH6Pe5Rfgy5z7ggxbreDSZOvum0P-RYuoAm_B945lWNDG2fosSIER3P5ojjYNxpiD45V_B5JAIzKjaScoor)
+
+![](https://lh5.googleusercontent.com/tmGC9WIEjHjgprQnj5twtr9wwi1dzIa0VUn6UNqYdm8cprkRMNrqlC6wMoVCOt9swcfMB6W5IuT3JsO8uNZsoMmUj9q9NoJ6dAnEM9tuNIlP-VLldMWPqT8DqspgDZG79ZtaO03Q)
+
+Vu l'importance de la présence de navires britanniques, nous avons approfondi leur origine à partir de leur port d'attache. Il s'agit pour l'essentiel de navires anglais, les acteurs de la région étudiée ne jouant qu'un rôle que pour les ventes dans les îles anglo-normandes.
+
+![](https://lh6.googleusercontent.com/lF7KUxgNXQ1w1dcB0TJUPrsOu9izMS9Q9Junuw04ch43R3D9PF82wwOzRxMR_wezU429ezV6_DpRF_M_QGvxqAOrlpP9K1CJU9AAk8WmyLefSQfObW7vhboo8diRZpBSOuH7XQXb)
+
+code: <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/port_attache/sorties_vers_etranger_et_colonies.ipynb> voir la partie "## Focus sur la Grande-Bretagne"
+
+images:  
+
+tonnage cumulé:
+
+<https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/productions/equipe_1/port_attache/assets/sorties_vers_etranger_et_colonies-19.png>
+
+nb de navires:
+
+<https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/productions/equipe_1/port_attache/assets/GB_nb_par_port_dattache.svg>
+
+#### 1.3.4.2 Des acteurs locaux pour le commerce colonial et négrier
+
+Pour le commerce colonial, on constate que La Rochelle arme plus à la traite négrière qu'au commerce colonial. A notre connaissance, c'est le seul port négrier d'une certaine importance ayant cette spécificité. A titre d'exemple, la ratio est plutôt de 1 négrier pour deux départs en droiture à Nantes et moins à Bordeaux. Il y a donc, en matière de trafics transatlantiques, une spécialisation négrière. Sur 755 armements négriers français entre 1784 et 1790, 109 sont armés à La Rochelle ou à Rochefort (14.4%). En 1789, ce sont ainsi 13 négriers qui sortent de la région étudiée, contre 6 navires seulement armés en droiture pour les colonies, parmi lesquels un se rend aux Mascareignes (il n'est pas un négrier  - vérifié chez Toussaint). Tous les négriers armés à La Rochelle (10) ou à Rochefort (3) vont ensuite à Saint-Domingue (1 cas, destination inconnue). Au total, la région peut donc compter sur une 20aine de retours depuis les colonies à plantation.
+
+Analyse faite (slavevoyages.org), ces navires négriers sont tous armés par des armateurs de la région (1 armateur est inconnu, 2 ne font que cet armement négrier là, les autres armement entre 3 et 13 négriers toujours depuis La Rochelle )
+
+1.4 Points de continuation
+--------------------------
+
+Rapatrier le 2.1. 
+
+Vérifications à effectuer pour corroborer les résultats:
+
+-   données de la cartographie des imports/exports fait le vendredi (mapping directions/provinces + chiffres des IE dans les données)
+
+-   Approfondir le calcul sur le nombre de produits / la diversité du commerce de La Rochelle par rapport au reste de la France
+
+-   Toutes les visus qu'on a faites sur équipe1/port_attache sont à revoir, par rapport au fait que les critères d'extraction se sont améliorés au fil des jours. 
+
+-   Analyse des cahiers de doléances à réintégrer
+
+Amendements des données à effectuer :
+
+-   ajout de la direction de Lyon dans les données Toflit18
+
+Visualisations et autres représentations graphiques supplémentaires souhaitables/nécessaires :
+
+-   représentations cartographiques : refaire les limites de provinces de l'ancien régimes (Vidal-Lablache). Ex : Gascogne appartient à Guyenne ? Le Boulonnais ? Quelle référence pour les cartes ?
+
+-   Frontière des généralités (36) ?
+
+-   Niveau de province ? Pas d'alignement parfait entre Fermes et provinces.
+
+Sous-pistes d'enquêtes non traitées :
+
+-   L'analyse des export des directions des fermes ne prend pas en compte les transactions entre province en France. Or les données navigo de 1787 pourrait donner une vision sur ces relations. Cela pourrait éclairer les relations intraportuaires françaises que l'on rate en se concentrant sur les exports vers l'étranger. Pour récupérer cette vision on pourrait aussi analyser les exports vers les ports francs avec TOFLIT18
+
+1.5 Documentation
+-----------------
+
+Notebooks et scripts :
+
+-   Evolution part des échanges dans le temps (pesée globale) : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/pesee_globale/pesee-globale.ipynb>
+
+-   Evolution part des échanges dans le temps (comparaison avec Nantes et Bordeaux) : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/La_Rochelle_longitudinal/TOFLIT18_La_Rochelle_longitudinal.ipynb>
+
+-   partenaires privilégiés de la région en 1789 ? : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/etude_transversale/1789_echanges_toflit_transversal.ipynb>
+
+-   comparaison diversité des produits (1750 / 1789, avec données toflit): <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/diversit%C3%A9%20des%20produits/comparaison%20diversit%C3%A9%20des%20produits.do>
+
+-   origines produits : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/origines/origines.ipynb>
+
+-   enquête sur les réexports : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/reexportations/enquete-reexportations.ipynb>
+
+-   exports_toflit_18_par_valeur : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/exports_toflit18_par_valeur/exports_toflit18_par_valeur.ipynb>
+
+-   enquête confirmatoire : observation des destinations des navires partant vers l'étranger : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/port_attache/Destinations_etrangeres.ipynb>
+
+-   cartographie hiérarchie des provinces exportatrices : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/carto-commerce-exterieur/carto-ligne-denquete-1.ipynb>
+
+-   acteurs du commerce extérieur : <https://github.com/medialab/portic-datasprint-2021/blob/main/productions/equipe_1/port_attache/sorties_vers_etranger_et_colonies.ipynb>
+
+Images :
+
+-   Pointer ici les dossiers google drive liés à la piste (épars ou centralisés)
+
+2 Le déclin / marginalisation : document tel qu'il est
+======================================================
+
+Objectif : Quelle est la situation de La Rochelle par rapport aux autres directions / provinces française ? Est-elle en déclin, dominée ?
+
+2.1 Importance de la région dans l'économie maritime française à la fin de l'AR 
+--------------------------------------------------------------------------------
+
+Qu'est-ce que la navigation de cette région représente par rapport à l'ensemble de la France, pour ce qui est des volumes (tonnages), notamment dans ses trafics avec l'étranger et avec les mondes extra-européens? 
+
+En 1787, nous disposons du détail assez exhaustif (préciser lacunes) des sorties des ports de la façade atlantique. En additionnant le total des tonnages sortis (un même navire pouvant être comptabilisé plusieurs fois, à chaque fois en fait qu'il sort d'un port français), les ports de la région étudiée assurent 18.4% du total du tonnage connu (script Christine dans le drive. Il s'agit donc d'une région active (comparaison longueur des côtes façade atlantique ? ), mais plus orientés vers le commerce national: sa part dans la navigation avec des ports étrangers (hors pêche à Terre-Neuve; aussi hors colonies, Afrique?) n'est que de 10.5%.
+
+-   part de la navigation assurée par les ports de la direction de la Ferme de La Rochelle sur le tout de la navigation sortante des ports de la France atlantique (tonnage) [virer entrées de Marseille, et congés de Saint-Tropez, ports corses et ports du Roussillon ou y aller par provinces : exclure Provence, Languedoc, Roussillon et Corse]
+
+-   part de la navigation assurée par la région étudiée dans :
+
+-   la navigation vers des ports étrangers
+
+-   la navigation vers des ports coloniaux + Africains
+
+-   la navigation hors amirauté d'appartenance comparée à celle des autres amirautés
+
+-   étude de la flotte de la région étudiée: part des tonnages par ship_id différent des homeport appartenant à la région étudiée par rapport aux homeport des autres ports de France (éliminer les étranger
+
+-   (plus ambitieux, éventuellement pour plus tard après étude complétude des données de la distance): total des miles couvert par les navires de la région étudiée (par homeport) versus total des miles couverts par navires des autres ports français
+
+A faire: rapporter tonnage globale région étudiée et valeur total commerce à la démographie
+
+Les produits de la région étudiée sont exportés à l'étranger [NB: étranger et/ou colonies et/ou ports francs dans cette visu ??] aussi via une douzaine d'autres directions de Fermes (est-ce que j'interprète bien le sens du graph ???) Resterait à voir si cela est radicalement différent pour la direction de Bordeaux et de Nantes par ex. 
+
+(<https://drive.google.com/drive/folders/174lIWV3MSVtzXPGUFFUr0e8VSv3ekZ3D> )
+
+![](https://lh5.googleusercontent.com/1yQJy34-jhVOlbNHXVdnb2PdXb2q_4OR8oP5XeDhElDvBRinahjeB-s3d7K-yucF40ke_ZmoYwo86t4HNktH2BWdgni-WowIsIKZIvWAqWPBb_iHZY_ui_YGhholnSA0PkNdX1wr)
+
+![](https://lh5.googleusercontent.com/H_uBeAn4vFW0BinPL68wRUuisHJ5M5JSMDdcgz6ewZrkMXJNVtDGoVHs_-SAg0iarVQfDQWrGecEVutd36fH8M1F118-jcmXIqAIgZ5CVJCdbrU5sMmRTrCMbr6RoLnH0n8V8bo5)
+
+![](https://lh5.googleusercontent.com/JOQHyNrFIzTNkuUUzE3YvqWoIHz8Pma8LBmuzo9w86ibwrmFbfbczmgy_2fHxWoShHBKIbXOkXKVM-s4H4ITFLMM44_ZcIfEFpFHFbdFGZFoXRhDF5E-niAbXewcC__mA8nCPCGm)
+
+![](https://lh6.googleusercontent.com/gmIjAUFNIV_tWuQA4mHriapcHPAH4luJcXQUQ_3fxCI2dYFCWznGjwVk3vrXxCpjHU4Fob3wT1WRlxv17I6ESOAHizL5LX_7awI_-JqOgfmrqexsPNEP7YpJTux9yCXnriNCQIqW)
+
+![](https://lh4.googleusercontent.com/XxRbNsS-vCzn8_B77Zhf5iVoR4PAhEwyqVYyyZUiclC_S6MIm7cslHL5hKuZrYqe2RiZTEoUjNmEgs-xCU4uJ49FHFe59dgxn593RbH-8aR4HS59-QwIukGBBQzKXIvB7Nb9tFBC)
+
+![](https://lh4.googleusercontent.com/zEfUKjKzQFDSsDREYdzmTnhS4Bm-Db_R90D9OJccdkbPnjRha_mwG9SzPNdLDrn3Io-T5MX1GiRfThJqr7yUtwVta6qFVkQSmG0Hpq423BwIVdr_p8psA87CHgh1MDWpawx9AmQG)
+
+![](https://lh6.googleusercontent.com/XvOLWrFszeUlWnt7yPc7Hwjrsd5-BgejRRbMl9Azkxi_7ZsA9GN-BhhxVALmcMC2JiWyAoSXWSTmLfESBox52-5b58GpwNSIM5IXdRfMKDg4UPfJXaVkrNAszbCUwC68g07fcvXz)
+
+![](https://lh5.googleusercontent.com/JsNO2brwhgxb0C7QgUzFsCwUcGJmm3ud3_FzBGybhme8rDO7aVcE4Y5ao47wJdwjamHrYOWQlbWPdFedOYzjDz-f3rLEY7ByDrDvT4buppiy_Gt39DBVOn9k25IxokilJ7CP7vex)
+
+![](https://lh4.googleusercontent.com/V8eQwAcxq08Cq9n2sdHKmXhj8bzaNUhODe4BVCElCPRNLLnT5ixFD__9uEq2viJ8uJTIEbteyZAn7gJrlS4D7B6Ks5bRixDzJCLhcmJMjnFbo3T-G8CUXDkBY3iU6WL5Ds8louu5)
+
+![](https://lh6.googleusercontent.com/KdeSHbsKSx5Hj2vxgPOCymaqT7ufYzMbMnT_zcDvAM2OtO-NihnXN0Fx2jtUxARzpgTIE1JbeQW_c2jQaHNJnnNz5io2eba6J1pMAlVhVklZhY9bcH_-Gy6huvMiBEj_gvrtgqJS)
+
+![](https://lh5.googleusercontent.com/MjBRX08TgNhtYAt7SfDccZepx99d9sL5-1snuBjELdWkrCvEK5Ql9ZVVfReOfC6IdqzoEtj0196aAgB8IQv-cAnJiHEFLagIjAfSguUeOJetYN24g9dPKRd4PTeIiPwk-kdpOIfQ)
+

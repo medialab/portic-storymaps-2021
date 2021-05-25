@@ -1,0 +1,17 @@
+import SvgComponent from '../../components/SvgComponent'
+import test from './ports-region-1789.svg'
+// import { Carte } from './Ports de la région Poitou, Aunis, Saintonge en 1789.svg'
+
+// <Carte />
+
+Test SVG 1 : importer fichier svg stocké dans src => webpack gère l'optimisation
+
+<img src={test} />
+
+Test SVG 2 : importer fichier svg stocké dans public => option préférable ? (fichier exporté depuis public vers le site, sans optimisation, mais public rassemble tous les fichiers code au même endroit)
+
+<SvgComponent pathToSvg = "/svg/ports-region-1789.svg" />
+
+Test SVG 3 : importer fichier svg en ligne
+
+![](https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/preliminary_inquiry/dumps/visualisations/croisement%20ports%20Portic%20bureaux%20des%20Fermes%20Navigo%20-%20datasprint%20PORTIC%202021/Ports%20de%20la%20r%C3%A9gion%20Poitou%2C%20Aunis%2C%20Saintonge%20en%201789.svg)

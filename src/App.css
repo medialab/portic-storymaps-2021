@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+body {
+    font-family: 'Karla', sans-serif;
+  }
+
+header {
+    position: fixed; /* pour fixer le header pendant le scroll */
+    width: 100%;
+    background-color: rgb(58, 118, 135);
+    color: whitesmoke;
+}
+
+header > nav > ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content : space-between;
+    padding : 0 2rem 0 2rem;
+    background-color: rgb(58, 118, 135);
+    color: whitesmoke;
+}
+
+footer {
+    /* position: fixed; */
+    background-color: thistle;
+}
+
+#wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: stretch;
+    /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+}
+
+.HeaderNav {
+    display: flex; 
+    justify-content: space-around;
+    flex-direction: row;
+  }
+
+#wrapper > main {
+    display: flex;
+    padding: 1rem;
+    padding-top: 6rem;
+    justify-content: stretch;
+    align-content: stretch;
+    /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+}

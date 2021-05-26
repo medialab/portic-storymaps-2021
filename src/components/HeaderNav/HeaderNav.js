@@ -1,20 +1,42 @@
 import React from 'react';
 import {NavLink as Link} from 'react-router-dom'; 
 
-const HeaderNav = () => {
+const HeaderNav = ({
+  routes,
+  lang,
+  onLangChange,
+}) => {
   return (
     <nav>
       <ul>
-        <li>
-          <Link to="/">Retour à bon port</Link>
-        </li>
-        <li>
-          <Link to="/about">À propos de ce document de synthèse</Link>
-        </li>
-        <li>
-          <Link to="/topics">Document de synthèse</Link>
-        </li>
-      </ul>
+          <li className="navitem-container">
+                  <Link to={'/'}>
+                    {lang === 'fr' ? 'Accueil': 'Home'}
+                  </Link>
+          </li>
+          {
+            routes.map(({titles, routes: inputRoute}, index) => {
+              const route = `/page/${lang}/${inputRoute[lang]}`
+              return (
+                <li key={index} className="navitem-container">
+                  <Link to={route}>
+                    {titles[lang]}
+                  </Link>
+                </li>
+              )
+              })
+          }
+          <li className="lang-toggle">
+            <button 
+              className={lang === 'fr' ? 'is-active': ''}
+              onClick={() => onLangChange('fr')}
+            >fr</button>
+            <button
+              className={lang === 'en' ? 'is-active': ''}
+              onClick={() => onLangChange('en')}
+            >en</button>
+          </li>
+        </ul>
     </nav>
   )
 }

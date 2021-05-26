@@ -2,6 +2,7 @@
   "name": "react-gh-pages",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/medialab/portic-storymaps-2021",
   "homepage": "http://medialab.github.io/portic-storymaps-2021",
   "contributors": [
     "Cécile Asselin",
@@ -21,8 +22,10 @@
     "axios": "^0.21.1",
     "d3-dsv": "^2.0.0",
     "kepler.gl": "^2.5.1",
+    "mdx-loader": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
     "react-palm": "^3.3.7",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

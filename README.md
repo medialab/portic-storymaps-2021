@@ -7,7 +7,10 @@ More to see here soon ...
 
 ```bash
 yarn install
+cp .env.example .env
 ```
+
+Then add your mapbox token to the env file.
 
 # Development
 

@@ -7,19 +7,72 @@ body {
 header {
     position: fixed; /* pour fixer le header pendant le scroll */
     width: 100%;
-    background-color: rgb(58, 118, 135);
-    color: whitesmoke;
+    /* background-color: rgb(58, 118, 135); */
+    /* color: whitesmoke; */
 }
 
-header > nav > ul {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    justify-content : space-between;
-    padding : 0 2rem 0 2rem;
-    background-color: rgb(58, 118, 135);
-    color: whitesmoke;
+
+/**
+ * NAV
+ */
+nav{
+  padding: 1rem;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100%;
+  overflow: auto;
+  background: white;
+  z-index: 2;
+  /* background: rgba(240,240,240,1); */
 }
+nav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  width: calc(100% - 2rem);
+}
+
+nav li:not(:last-of-type){
+  margin-right: .5rem;
+}
+
+nav a{
+  color: inherit;
+  text-decoration: none;
+}
+
+nav .navitem-container a {
+  display: block;
+}
+
+nav .navitem-container a.active {
+  font-weight: 800;
+}
+
+
+.lang-toggle {
+  display: flex;
+  flex-flow: column nowrap;
+  border-left: 1px solid black;
+  padding-left: .5rem;
+}
+
+.lang-toggle button:not(.is-active) {
+  cursor: pointer;
+}
+
+.lang-toggle button.is-active {
+  font-weight: 800;
+}
+
+
+/**
+ * FOOTER 
+ */
 
 footer {
     /* position: fixed; */
@@ -50,4 +103,23 @@ footer {
     justify-content: stretch;
     align-content: stretch;
     /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+}
+
+
+/**
+ * MISC
+ */
+
+ button {
+  border: none;
+  background: rgba(220,220,220,1);
+  padding: .5rem;
+  font-family: 'Karla', sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+
+button.is-active {
+  background: rgba(50,50,50,1);
+  color: white;
 }

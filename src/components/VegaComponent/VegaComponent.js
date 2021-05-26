@@ -4,14 +4,12 @@ import {csvParse} from 'd3-dsv';
 import get from 'axios';
 
 const VegaTest = ({
-  filename,
+  data: filename,
   spec
 }) => {
     // useState renvoie un state et un seter qui permet de le modifier
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const test = 'michel' ?? 'foo bar';
 
   const URL = `${process.env.PUBLIC_URL}/data/${filename}`;
 
@@ -30,6 +28,9 @@ const VegaTest = ({
     })
   }, [filename])
   
+  if (!spec) {
+    return <div>Vous devez spécifier une spec pour le composant vega.</div>
+  }
 
   if (loading) {
     return (
@@ -51,11 +52,6 @@ const VegaTest = ({
             }
           }}
         />
-        {/* <pre>
-          <code>
-            {JSON.stringify(data, null, 2)}
-          </code>
-        </pre> */}
       </div>
   )
 }

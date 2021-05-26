@@ -1,17 +1,56 @@
-import SvgComponent from '../../components/SvgComponent'
+import SvgComponent from '../../components/SvgComponent';
+import VegaComponent from '../../components/VegaComponent';
 import test from './ports-region-1789.svg'
-// import { Carte } from './Ports de la région Poitou, Aunis, Saintonge en 1789.svg'
 
-// <Carte />
 
-Test SVG 1 : importer fichier svg stocké dans src => webpack gère l'optimisation
+# Commerce multi-échelle dans la région de La Rochelle
+
+
+Ce site a vocation à monter progressivement les "storymaps" issues du datasprint PORTIC 2021.
+
+Voici un tour d'horizon des modules react préparés pour faciliter le développement :
+
+## Image SVG (avec webpack)
+
+On intègre une image  SVG depuis le local (elle sera donc packée par webpack) :
 
 <img src={test} />
 
-Test SVG 2 : importer fichier svg stocké dans public => option préférable ? (fichier exporté depuis public vers le site, sans optimisation, mais public rassemble tous les fichiers code au même endroit)
+## Image SVG (sans webpack)
 
-<SvgComponent pathToSvg = "/svg/ports-region-1789.svg" />
+On intègre ici directement une image à partir de son URL en ligne (depuis le dossier `public`)
 
-Test SVG 3 : importer fichier svg en ligne
+<SvgComponent pathToSvg ="/svg/ports-region-1789.svg" />
 
-![](https://raw.githubusercontent.com/medialab/portic-datasprint-2021/main/preliminary_inquiry/dumps/visualisations/croisement%20ports%20Portic%20bureaux%20des%20Fermes%20Navigo%20-%20datasprint%20PORTIC%202021/Ports%20de%20la%20r%C3%A9gion%20Poitou%2C%20Aunis%2C%20Saintonge%20en%201789.svg)
+## Visualisation vega
+
+Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `public/data` et d'une spec vega.
+
+<VegaComponent 
+  data="sorties_navires_vers_colonies.csv" 
+  spec={{
+    "mark": "rect",
+    "encoding": {
+      "x": {
+        "field": "port_depart",
+        "type": "nominal"
+      },
+      "y": {
+        "field": "port_destination",
+        "type": "nominal"
+      },
+      "color": {
+        "type": "quantitative",
+        "field": "tonnage",
+        "aggregate": "sum"
+      }
+      
+    }
+  }}
+/>
+
+## Réseau avec sigma
+
+## Carto avec kepler
+
+## Carto sans kepler

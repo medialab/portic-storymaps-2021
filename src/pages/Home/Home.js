@@ -1,14 +1,15 @@
 
 import React from 'react';
+import {Helmet} from 'react-helmet';
 /* eslint-disable import/no-webpack-loader-syntax */
 import Content from '!babel-loader!@mdx-js/loader!./content.mdx';
 
-function Home() {
-  console.log(process.env)
+function Home({lang}) {
   return (
     <div>
-      <h2>Retour à bon port</h2>
-      { process.env.REACT_APP_MAPBOX_TOKEN }
+      <Helmet>
+        <title>{lang === 'fr' ? 'Commerce multi-échelle dans la région de La Rochelle' : 'Multi-scale trade in La Rochelle region'}</title>
+      </Helmet>
       <Content />
     </div>
   )

@@ -93,7 +93,7 @@ function App() {
             })
           }
           <Route path="/">
-            <Home />
+            <Home lang={lang} />
           </Route>
           <Redirect to={`/`} />
 

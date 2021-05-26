@@ -27,7 +27,6 @@ import routes from './summary'
 
 const LANGUAGES = ['fr', 'en'];
 
-
 function App() {
 
   const history = useHistory();
@@ -95,18 +94,6 @@ function App() {
             <Home lang={lang} />
           </Route>
           <Redirect to={`/`} />
-
-            {/*
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/topics/:axe?">
-              <Topics />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-            */}
           </Switch>
         </main>
         <footer></footer>

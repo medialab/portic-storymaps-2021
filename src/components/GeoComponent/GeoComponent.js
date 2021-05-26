@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useMemo} from 'react';
-import {csvParse} from 'd3-dsv';
+import React, { useState, useEffect, useMemo } from 'react';
+import { csvParse } from 'd3-dsv';
 import get from 'axios';
 import { geoEqualEarth, geoPath } from "d3-geo";
-import {uniq} from 'lodash';
-import {scaleLinear} from 'd3-scale';
-import {extent} from 'd3-array';
+import { uniq } from 'lodash';
+import { scaleLinear } from 'd3-scale';
+import { extent } from 'd3-array';
 
-import {generatePalette} from '../../helpers/misc';
+import { generatePalette } from '../../helpers/misc';
 
 
 const GeoComponent = ({
@@ -17,30 +17,38 @@ const GeoComponent = ({
   markerSize,
   markerColor
 }) => {
-    // useState renvoie un state et un seter qui permet de le modifier
+  // raw marker data
   const [data, setData] = useState(null);
+  // map background data
   const [backgroundData, setBackgroundData] = useState(null);
+
   const [loadingData, setLoadingData] = useState(true);
   const [loadingBackground, setLoadingBackground] = useState(true);
 
 
+  /**
+   * Marker data loading
+   */
   useEffect(() => {
     if (dataFilename) {
       const dataURL = `${process.env.PUBLIC_URL}/data/${dataFilename}`;
       get(dataURL)
-      .then(({data: csvString}) => {
-        const newData = csvParse(csvString);
-        
-        setData(newData);
-        setLoadingData(false);
-      })
-      .catch((err) => {
-        setLoadingData(false);
-      })
+        .then(({ data: csvString }) => {
+          const newData = csvParse(csvString);
+
+          setData(newData);
+          setLoadingData(false);
+        })
+        .catch((err) => {
+          setLoadingData(false);
+        })
     }
-    
+
   }, [dataFilename])
 
+  /**
+   * Data aggregation for viz (note : could be personalized if we visualize other things than points)
+   */
   const markerData = useMemo(() => {
     if (data) {
       // regroup data by coordinates
@@ -77,30 +85,36 @@ const GeoComponent = ({
     }
   }, [data, markerColor, markerSize, width])
 
+  /**
+   * Map background data loading
+   */
   useEffect(() => {
     if (backgroundFilename) {
       const backgroundURL = `${process.env.PUBLIC_URL}/data/${backgroundFilename}`;
       get(backgroundURL)
-      .then(({data: bgData}) => {
-        setBackgroundData(bgData);
-        setLoadingBackground(false);
-      })
-      .catch((err) => {
-        setLoadingBackground(false);
-      })
+        .then(({ data: bgData }) => {
+          setBackgroundData(bgData);
+          setLoadingBackground(false);
+        })
+        .catch((err) => {
+          setLoadingBackground(false);
+        })
     }
-    
+
   }, [backgroundFilename])
 
+  /**
+   * d3 projection making
+   */
   const projection = useMemo(() => {
     if (backgroundData) {
-      // if bg data fit on whole geometry
+      // if bg data is available fit on whole geometry
       return geoEqualEarth()
-      .fitSize([width, height], backgroundData)
+        .fitSize([width, height], backgroundData)
     }
     return geoEqualEarth()
       .scale(200)
-      .translate([ width / 2, height / 2 ])
+      .translate([width / 2, height / 2])
   }, [backgroundData, width, height])
 
 
@@ -111,48 +125,48 @@ const GeoComponent = ({
     )
   } else if (!backgroundData || !data) {
     return (
-    <div>Erreur ...</div>
+      <div>Erreur ...</div>
     )
   }
   return (
-      <div>
-        <svg width={ width } height={ height } viewBox={`"0 0 ${width} ${height}`} style={{border: '1px solid lightgrey'}}>
-            <g className="background">
-              {
-                backgroundData.features.map((d,i) => (
-                  <path
-                    key={ `path-${ i }` }
-                    d={ geoPath().projection(projection)(d) }
-                    className="geopart"
-                    fill={ `rgba(38,50,56,${ 1 / backgroundData.features.length * i})` }
-                    stroke="#FFFFFF"
-                    strokeWidth={ 0.5 }
+    <div>
+      <svg width={width} height={height} viewBox={`"0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
+        <g className="background">
+          {
+            backgroundData.features.map((d, i) => (
+              <path
+                key={`path-${i}`}
+                d={geoPath().projection(projection)(d)}
+                className="geopart"
+                fill={`rgba(38,50,56,${1 / backgroundData.features.length * i})`}
+                stroke="#FFFFFF"
+                strokeWidth={0.5}
+              />
+            ))
+          }
+        </g>
+        <g className="markers">
+          {
+            markerData
+              .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
+              .map((datum, index) => {
+                const { latitude, longitude, size, color } = datum;
+                const [x, y] = projection([+longitude, +latitude]);
+                return (
+                  <circle
+                    key={index}
+                    cx={x}
+                    cy={y}
+                    r={size}
+                    fill={color}
+                    className="marker"
                   />
-                ))
-              }
-            </g>
-            <g className="markers">
-              {
-                markerData
-                .filter(({latitude, longitude}) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
-                .map((datum, index) => {
-                  const {latitude, longitude, size, color} = datum;
-                  const [x, y] = projection([+longitude, +latitude]);
-                  return (
-                    <circle
-                      key={index}
-                      cx={ x }
-                      cy={ y }
-                      r={ size }
-                      fill={color}
-                      className="marker"
-                    />
-                  );
-                })
-              }
-            </g>
-          </svg>
-      </div>
+                );
+              })
+          }
+        </g>
+      </svg>
+    </div>
   )
 }
 

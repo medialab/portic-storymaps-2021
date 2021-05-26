@@ -8,7 +8,7 @@ import KeplerGl from 'kepler.gl';
 import {addDataToMap} from 'kepler.gl/actions';
 
 
-const WIDTH = 500;
+const WIDTH = 800;
 const HEIGHT = 500;
 
 const sampleData = [
@@ -53,18 +53,19 @@ function KeplerViz (props) {
     
   }, []);
 
-
   return (
-    <KeplerGl
-      id="foo"
-      width={WIDTH}
-      mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-      height={HEIGHT}
-    />
+    <div>
+      <KeplerGl
+        id="map"
+        width={WIDTH}
+        height={HEIGHT}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      />
+    </div>
   );
 }
 
-function KeplerWrapper (props) {
+function KeplerComponent (props) {
     return (
       <Provider store={store}>
         <KeplerViz {...{props}} />
@@ -72,4 +73,4 @@ function KeplerWrapper (props) {
     )
 } 
 
-export default KeplerWrapper;
+export default KeplerComponent;

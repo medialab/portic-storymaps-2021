@@ -2,6 +2,7 @@ import SvgComponent from '../../components/SvgComponent';
 import VegaComponent from '../../components/VegaComponent';
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent';
+import KeplerComponent from '../../components/KeplerComponent';
 
 import test from './ports-region-1789.svg'
 
@@ -70,9 +71,7 @@ Paramètres :
   labelDensity={0.5}
 />
 
-## Carto avec kepler
-
-## Carto sans kepler
+## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
 
@@ -84,3 +83,8 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   markerColor="pointcall_admiralty"
   markerSize="tonnage"
 />
+
+
+## Carto avec kepler (ne fonctionne pas - apparemment problème de version de react)
+
+<KeplerComponent />

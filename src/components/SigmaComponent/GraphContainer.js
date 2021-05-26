@@ -1,22 +1,16 @@
 import React, {useCallback, useRef, useState, useEffect, useMemo} from 'react';
-// import Graph from 'graphology';
-import {WebGLRenderer} from 'sigma';
-import {scaleLinear} from 'd3-scale';
-// import colorParse from 'parse-color';
-import {min, max, extent} from 'd3-array';
-import {uniq} from 'lodash';
-
-
-import {createNodeReducer, createEdgeReducer} from './reducers';
-
 import gexf from 'graphology-gexf';
 import Graph from 'graphology';
-
+import {WebGLRenderer} from 'sigma';
+import {scaleLinear} from 'd3-scale';
+import {min, max, extent} from 'd3-array';
+import {uniq} from 'lodash';
 import get from 'axios';
 
-import GraphControls from './GraphControls';
-// import {createNodeReducer, createEdgeReducer} from './reducers';
+import {createNodeReducer, createEdgeReducer} from './reducers';
 import {generatePalette, usePrevious} from '../../helpers/misc';
+
+import GraphControls from './GraphControls';
 
 import './GraphContainer.css';
 
@@ -49,29 +43,9 @@ function GraphContainer({
   nodeSize: nodeSizeVariable,
   labelDensity,
   nodeLabel,
-  // extents,
-
-  // searchString = '',
-  // onSearchStringChange,
-
-  // filtersModeAnd,
-  // onToggleFiltersModeAnd,
-
-  // filtersOptions = {},
-  // filters = [],
-  // onFiltersChange,
-  // dontColorEdges,
-
   onCameraUpdate,
   cameraPosition,
-
   updateTimestamp,
-
-  // nodeSizeVariable,
-  // nodeColorVariable,
-  // onNodeSizeVariableChange,
-  // onNodeColorVariableChange,
-  // onEdgesColorChange,
 }) {
   let sizes = useMemo(() => {
     const res = [];
@@ -91,14 +65,14 @@ function GraphContainer({
 
   const nodeSize = useMemo(() => {
     if (nodeSizeVariable) {
-      
+
       return {
         min: min(sizeExtent),
         max: max(sizeExtent),
         name: nodeSizeVariable
       }
     } else return undefined;
-  }, [nodeSizeVariable, sizeExtent])
+  }, [nodeSizeVariable, graph])
 
   const nodeColor = useMemo(() => {
     if (nodeColorVariable) {
@@ -156,8 +130,6 @@ function GraphContainer({
 
   const container = useRef(null);
   const [renderer, setRenderer] = useState(null);
-
-
 
   useEffect(() => {
     if (cameraPosition && renderer) {
@@ -226,7 +198,6 @@ function GraphContainer({
     [graph]
   );
 
-
   return (
     <div className="VisContainer GraphContainer" >
 
@@ -257,7 +228,9 @@ export default function SigmaComponent({
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-      setCameraPosition(inputCameraPosition);
+      if (['x', 'y', 'angle', 'ratio'].find(prop => inputCameraPosition[prop] !== cameraPosition[prop])) {
+        setCameraPosition(inputCameraPosition);
+      }
     }, [inputCameraPosition])
 
     const onCameraUpdate = cam => {
@@ -297,6 +270,7 @@ export default function SigmaComponent({
       <div>Erreur ...</div>
       )
     }
+    console.log('rerender upstream');
     return (
         <div className="SigmaComponent">
           <GraphContainer

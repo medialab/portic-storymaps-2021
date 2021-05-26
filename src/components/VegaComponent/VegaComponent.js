@@ -26,7 +26,7 @@ const VegaTest = ({
     .catch((err) => {
       setLoading(false);
     })
-  }, [filename])
+  }, [URL])
   
   if (!spec) {
     return <div>Vous devez spécifier une spec pour le composant vega.</div>

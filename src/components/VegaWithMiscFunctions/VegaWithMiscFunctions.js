@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {VegaLite} from 'react-vega';
-import {csvParse} from 'd3-dsv';
 // import get from 'axios';
 
 const VegaWithMiscFunctions = ({

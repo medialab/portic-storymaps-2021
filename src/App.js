@@ -5,7 +5,6 @@ import {
   HashRouter as Router,
   Switch,
   Route,
-  NavLink as Link,
   Redirect,
   useHistory,
 } from "react-router-dom";

@@ -21,6 +21,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "d3-dsv": "^2.0.0",
+    "d3-geo": "^2.0.1",
     "graphology": "^0.19.3",
     "graphology-gexf": "^0.7.5",
     "iwanthue": "^1.5.0",
@@ -36,6 +37,7 @@
     "redux": "^4.1.0",
     "sigma": "2.0.0-alpha40",
     "styled-components": "^5.3.0",
+    "topojson-client": "^3.1.0",
     "vega": "^5.20.2",
     "vega-lite": "=5.0.0",
     "web-vitals": "^1.1.1"

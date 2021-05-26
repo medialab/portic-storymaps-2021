@@ -3,7 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://medialab.github.io/portic-storymaps-2021",
-  "author": "Cécile Asselin et Robin de Mourat",
+  "contributors": [
+    "Cécile Asselin",
+    "Loïc Charles",
+    "Guillaume Daudin",
+    "Paul Girard",
+    "Silvia Marzagalli",
+    "Robin de Mourat",
+    "Christine Plumejeaud",
+    "Thierry Sauzeau",
+    "Maxime Zoffoli"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",

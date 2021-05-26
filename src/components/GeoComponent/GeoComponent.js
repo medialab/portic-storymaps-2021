@@ -130,7 +130,7 @@ const GeoComponent = ({
   }
   return (
     <div>
-      <svg width={width} height={height} viewBox={`"0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
+      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
         <g className="background">
           {
             backgroundData.features.map((d, i) => (

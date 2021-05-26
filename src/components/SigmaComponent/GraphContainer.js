@@ -270,7 +270,6 @@ export default function SigmaComponent({
       <div>Erreur ...</div>
       )
     }
-    console.log('rerender upstream');
     return (
         <div className="SigmaComponent">
           <GraphContainer

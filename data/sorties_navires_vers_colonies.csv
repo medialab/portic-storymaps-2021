@@ -1,0 +1,29 @@
+"record_id","ship_id","ship_name","captain_name","port_depart","outdate_fixed","port_destination","substate_destination","state_destination","homeport_state_1789_fr","homeport_toponyme_fr","homeport_province","commodity_standardized_fr","commodity_standardized2_fr","commodity_standardized3_fr","commodity_standardized4_fr","taxe_amount01","taxe_amount02","taxe_amount03","tonnage","tonnage_unit","tonnage_class","ship_flag_standardized_fr"
+"00342065","0021420N",Bon Père,"Levasseur, Charle Philippe",La Rochelle,1789-04-06,Côte d'Angole,colonies portugaises d'Afrique,Portugal,France,La Rochelle,Aunis,,,,,1 800,0,0,"584",tx,[501 et plus],français
+"00340973",,Huranien,"Hardouin, Etienne",La Rochelle,1789-02-13,Martinique,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"400",tx,[201-500],français
+"00341638",,Méridien,"Lemic, Denis",La Rochelle,1789-06-27,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"92",tx,[51-100],français
+"00336804",,Espérance,"Bertrand, Jacques",Rochefort,1789-01-01,Côte d'Angole,colonies portugaises d'Afrique,Portugal,France,Rochefort,Aunis,Marchandises permises,,,,1 800,0,0,"614",tx,[501 et plus],français
+"00341461",,Henri Quatre,"Gouin, Honoré Alexandre",La Rochelle,1789-05-09,île de France / île Maurice,colonies françaises en Asie,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"500",tx,[201-500],français
+"00341461",,Henri Quatre,"Gouin, Honoré Alexandre",La Rochelle,1789-05-09,île Bourbon / île de la Réunion,colonies françaises en Asie,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"500",tx,[201-500],français
+"00341642",,Deux Amis,"Villeneau, Pierre",La Rochelle,1789-11-20,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,14 400,0,0,"402",tx,[201-500],français
+"00341645",,Angelique,"Pariés, Dominique",Ars-en-Ré,1789-08-06,colonies anglaises [en Amérique],colonies britanniques d'Amérique,Grande-Bretagne,France,Saint-Jean-de-Luz ,Guyenne,,,,,1 800,0,0,"210",tx,[201-500],français
+"00341419",,Jeune Armand,"Noel, Nicolas",La Rochelle,1789-07-11,Saint-Pierre-et-Miquelon,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"210",tx,[201-500],français
+"00341480",,Duc de Saint Aignan,"La Brière, Sébastien Giot",La Rochelle,1789-07-06,Calabar,,,France,La Rochelle,Aunis,,,,,1 800,0,0,"369",tx,[201-500],français
+"00341634",,Ville de Balle,"Bourgine, Antoine",La Rochelle,1789-01-23,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"440",tx,[201-500],français
+"00341635",,Ciguogne,"Carry, Aléxandre",La Rochelle,1789-06-23,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"809",tx,[501 et plus],français
+"00341640",,Sartine,"Papin, Jacques",La Rochelle,1789-09-02,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"125",tx,[101-200],français
+"00341641",,Victoire,"Fayeaux, Pierre",La Rochelle,1789-09-29,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"827",tx,[501 et plus],français
+"00340969",,Heureuse Marie,"Noel, Jean Baptiste",La Rochelle,1789-04-10,Saint-Pierre-et-Miquelon,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"150",tx,[101-200],français
+"00341637",,Nouvelle Betzy,"Quénet, Pierre Jacques",La Rochelle,1789-06-27,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,12 000,0,0,"129",tx,[101-200],français
+"00341636",,Nouvelle Betzy,"Quénet, Pierre Jacques",La Rochelle,1789-06-27,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,0,0,0,"529",tx,[501 et plus],français
+"00341486",,Gonaivien,"Vallet, Pierre",La Rochelle,1789-12-02,Gonaïves,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"240",tx,[201-500],français
+"00341639",,Duc de Normandie,"Chouteau, Charles Michel",La Rochelle,1789-06-30,Côte d'Or,,multi-Etat,France,La Rochelle,Aunis,,,,,1 800,0,0,"517",tx,[501 et plus],français
+"00341135",,Stadthouder,"Raynaud, Francois",La Rochelle,1789-08-06,Cap-Français,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,,,,,1 800,0,0,"250",tx,[201-500],français
+"00336937",,Insulaire,"Heroux, Germain",La Rochelle,1789-04-06,Saint-Pierre-et-Miquelon,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,Pêche à la morue,,,,1 800,0,0,"50",tx,[21-50],français
+"00336808",,Aimable victoire,"Amiaud, Paul",Rochefort,1789-10-31,Côte d'Afrique [de l'Ouest],,multi-Etat,France,Rochefort,Aunis,Marchandises pour la traite négrière,,,,1 800,0,0,"315",tx,[201-500],français
+"00336809",,Allexandrine,"Jacques, Baptiste",Rochefort,1789-11-28,Côte d'Or,,multi-Etat,France,Rochefort,Aunis,Marchandises pour la traite négrière,,,,1 800,0,0,"230",tx,[201-500],français
+"00337256",,Marie,"Christian, John",Saint-Martin-de-Ré,1789-03-19,"Terre-Neuve, île de",colonies britanniques d'Amérique,Grande-Bretagne,,,,Sel,,,,1 800,0,0,"158",tx,[101-200],britannique
+"00336938",,Marie Suzanne,"Desroches, Louis",La Rochelle,1789-03-16,Saint-Pierre-et-Miquelon,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,Pêche à la morue,,,,1 800,0,0,"90",tx,[51-100],français
+"00336975",,Deux Amis,"Des Roches, Pierre Jean",La Rochelle,1789-04-22,Saint-Pierre-et-Miquelon,colonies françaises d'Amérique,France,France,La Rochelle,Aunis,Pêche à la morue,,,,1 800,0,0,"200",tx,[101-200],français
+"00337183",,Aimable Créolle,"Le Griffon, Alléxandre",Rochefort,1789-03-07,Cap-Français,colonies françaises d'Amérique,France,France,Rochefort,Aunis,Poudre à canon,,,,1 800,0,0,"160",tx,[101-200],français
+"00338420",,Hirondelle,"Le Borec, Samson",Ars-en-Ré,1789-04-21,Colonies françaises en Amérique,colonies françaises d'Amérique,France,France,Le Conquet,Bretagne,Sel,,,,1 800,0,0,"70",tx,[51-100],français

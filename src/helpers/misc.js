@@ -1,5 +1,38 @@
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
+import iwanthue from 'iwanthue';
+import {useRef, useEffect} from 'react';
+// import Graph from 'graphology-types';
+
+const DEFAULT_COLOR_SPACE = {
+  cmin: 25.59,
+  cmax: 55.59,
+  lmin: 60.94,
+  lmax: 90.94
+};
+
+const SINGLE_COLOR_PALETTE = ['#999'];
+
+export function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+export function generatePalette(name, count) {
+  if (count === 1 || !count) return SINGLE_COLOR_PALETTE;
+  else if (count === 2) {
+    return ['#D77186', '#61A2DA']
+  }
+
+  return iwanthue(count, {
+    colorSpace: DEFAULT_COLOR_SPACE,
+    seed: name,
+    clustering: 'force-vector'
+  });
+}
 
 
 const _filterData = (data, { startYear, endYear, year, params, ...rest }) => {
@@ -59,6 +92,7 @@ const _filterData = (data, { startYear, endYear, year, params, ...rest }) => {
           isValid = false;
           return true;
         }
+        return false;
       })
 
     return isValid;

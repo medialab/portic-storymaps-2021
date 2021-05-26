@@ -1,5 +1,7 @@
 import SvgComponent from '../../components/SvgComponent';
 import VegaComponent from '../../components/VegaComponent';
+import SigmaComponent from '../../components/SigmaComponent';
+
 import test from './ports-region-1789.svg'
 
 
@@ -50,6 +52,22 @@ Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `pub
 />
 
 ## Réseau avec sigma
+
+Les visualisations sigma ont besoin d'un fichier gexf stocké dans le dossier `public/data`.
+
+Paramètres :
+
+* `nodeColor` : attribut pour couleur
+* `nodeSize` : attribut pour taille
+* `labelDensity` : densité des labels (float dans [0, 1])
+
+
+<SigmaComponent 
+  data="toflit_aggregate_1789_only_out.gexf" 
+  nodeColor={`admiralty`}
+  nodeSize={`inside_degree`}
+  labelDensity={0.5}
+/>
 
 ## Carto avec kepler
 

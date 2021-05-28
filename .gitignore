@@ -26,5 +26,6 @@ yarn-error.log*
 .env
 
 # too large files
+/data/*
 /big_data
 /public/data/toflit18_all_flows.csv

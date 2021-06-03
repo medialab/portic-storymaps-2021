@@ -12,15 +12,19 @@ import { generatePalette } from '../../helpers/misc';
 const GeoComponent = ({
   dataFilename,
   backgroundFilename,
-  width = 800,
-  height = 450,
+  width = 1800,
+  height = 1500,
+  label,
   markerSize,
-  markerColor
+  markerColor,
+  showLabels,
+  centerOnRegion
 }) => {
   // raw marker data
   const [data, setData] = useState(null);
   // map background data
   const [backgroundData, setBackgroundData] = useState(null);
+  const [colorsMap, setColorsMap] = useState(null);
 
   const [loadingData, setLoadingData] = useState(true);
   const [loadingBackground, setLoadingBackground] = useState(true);
@@ -57,6 +61,7 @@ const GeoComponent = ({
         const mark = datum.latitude + ',' + datum.longitude;
         if (!coordsMap[mark]) {
           coordsMap[mark] = {
+            label: showLabels && label ? datum[label] : undefined,
             latitude: datum.latitude,
             longitude: datum.longitude,
             color: datum[markerColor],
@@ -69,16 +74,17 @@ const GeoComponent = ({
       let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
       const colorValues = uniq(grouped.map(g => g.color));
       const palette = generatePalette('map', colorValues.length);
-      const colorsMap = colorValues.reduce((res, key, index) => ({
+      const thatColorsMap = colorValues.reduce((res, key, index) => ({
         ...res,
         [key]: palette[index]
       }), {});
+      setColorsMap(thatColorsMap);
 
       const sizeExtent = extent(grouped.map(g => g.size));
       const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 100])
       grouped = grouped.map(datum => ({
         ...datum,
-        color: colorsMap[datum.color],
+        color: thatColorsMap[datum.color],
         size: sizeScale(datum.size)
       }))
       return grouped;
@@ -108,9 +114,14 @@ const GeoComponent = ({
    */
   const projection = useMemo(() => {
     if (backgroundData) {
+      if (centerOnRegion) {
+        return geoEqualEarth()
+        .scale(50000)
+        .center([-1.7475027, 46.573642])
+      }
       // if bg data is available fit on whole geometry
       return geoEqualEarth()
-        .fitSize([width, height], backgroundData)
+      .fitSize([width, height], backgroundData)
     }
     return geoEqualEarth()
       .scale(200)
@@ -128,6 +139,7 @@ const GeoComponent = ({
       <div>Erreur ...</div>
     )
   }
+
   return (
     <div>
       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
@@ -150,21 +162,63 @@ const GeoComponent = ({
             markerData
               .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
               .map((datum, index) => {
-                const { latitude, longitude, size, color } = datum;
+                const { latitude, longitude, size, color, label } = datum;
                 const [x, y] = projection([+longitude, +latitude]);
                 return (
-                  <circle
-                    key={index}
-                    cx={x}
-                    cy={y}
-                    r={size}
-                    fill={color}
-                    className="marker"
-                  />
+                  <g transform={`translate(${x},${y})`}>
+                    <circle
+                      key={index}
+                      cx={0}
+                      cy={0}
+                      r={size}
+                      fill={color}
+                      className="marker"
+                    />
+                    {
+                      label ? 
+                      <text
+                        x={size + 5}
+                        y= {size/2}
+                      >
+                        {label}
+                      </text>
+                      : null
+                    }
+                  </g>
                 );
               })
           }
         </g>
+        {
+          colorsMap ?
+          <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20})`}>
+            <g>
+              <text style={{fontWeight: 800}}>
+                {markerColor}
+              </text>
+            </g>
+            {
+              Object.entries(colorsMap)
+              .map(([label, color], index) => {
+                return (
+                  <g transform={`translate(0, ${(index + 1) * 20})`}>
+                    <rect
+                      x={0}
+                      y={-8}
+                      width={10}
+                      height={10}
+                      fill={color}
+                    />
+                    <text x={15} y={0}>
+                      {label || 'Indéterminé'}
+                    </text>
+                  </g>
+                )
+              })
+            }
+          </g>
+          : null
+        }
       </svg>
     </div>
   )

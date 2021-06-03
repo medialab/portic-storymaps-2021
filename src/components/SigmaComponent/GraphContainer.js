@@ -1,7 +1,7 @@
 import React, {useCallback, useRef, useState, useEffect, useMemo} from 'react';
 import gexf from 'graphology-gexf';
 import Graph from 'graphology';
-import {WebGLRenderer} from 'sigma';
+import {WebGLRenderer as Renderer} from 'sigma';
 import {scaleLinear} from 'd3-scale';
 import {min, max, extent} from 'd3-array';
 import {uniq} from 'lodash';
@@ -13,7 +13,6 @@ import {generatePalette, usePrevious} from '../../helpers/misc';
 import GraphControls from './GraphControls';
 
 import './GraphContainer.css';
-
 
 // Defaults
 const CELL_HEIGHT_RANGE = [200, 10];
@@ -184,7 +183,7 @@ function GraphContainer({
       }
 
       if (node && graph) {
-        const newRenderer = new WebGLRenderer(graph, node, {nodeReducer, edgeReducer});
+        const newRenderer = new Renderer(graph, node, {nodeReducer, edgeReducer});
         setRenderer(newRenderer);
         const camera = newRenderer.getCamera();
         onCameraUpdate(camera.getState())

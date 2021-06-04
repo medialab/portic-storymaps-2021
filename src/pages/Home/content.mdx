@@ -1,7 +1,14 @@
 import SvgComponent from '../../components/SvgComponent';
 import VegaComponent from '../../components/VegaComponent';
+import SigmaComponent from '../../components/SigmaComponent';
+import GeoComponent from '../../components/GeoComponent';
+import TriangleComponent from '../../components/TriangleComponent';
+
 import test from './ports-region-1789.svg'
 
+# Test triangle
+
+<TriangleComponent dataFilename="part_3-tonnages_per_ports.csv" />
 
 # Commerce multi-échelle dans la région de La Rochelle
 
@@ -51,6 +58,50 @@ Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `pub
 
 ## Réseau avec sigma
 
-## Carto avec kepler
+Les visualisations sigma ont besoin d'un fichier gexf stocké dans le dossier `public/data`.
 
-## Carto sans kepler
+Paramètres :
+
+* `nodeColor` : attribut pour couleur
+* `nodeSize` : attribut pour taille
+* `labelDensity` : densité des labels (float dans [0, 1])
+
+
+<SigmaComponent 
+  data="toflit_aggregate_1789_only_out.gexf" 
+  nodeColor={`admiralty`}
+  nodeSize={`inside_degree`}
+  labelDensity={0.5}
+/>
+
+## Carto en react+d3+SVG
+
+Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+/>

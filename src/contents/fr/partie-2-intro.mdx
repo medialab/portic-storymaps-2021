@@ -1,5 +1,62 @@
+import CircularAlluvial from '../../components/CircularAlluvialComponent';
+
 Partie 2 - Une forte spécialisation portuaire: le cas de la traite négrière, du commerce du sel et de l'eau-de-vie
 ==================================================================================================================
+
+<CircularAlluvial
+  data="part_2_toflit_viz_data.csv"
+  sumBy="value"
+  steps={[
+    {
+      field: "customs_office",
+      labels: {
+        fr: 'bureau des fermes',
+        en: 'customs office'
+      },
+      filters: [{key: 'flow_type', value: 'export'}]
+    },
+    {
+      field: "product",
+      labels: {
+        fr: 'type de produit',
+        en: 'product type'
+      },
+      filters: [{key: 'flow_type', value: 'export'}]
+    },
+    {
+      field: "partner",
+      labels: {
+        fr: 'partenaire du commerce extérieur',
+        en: 'external trade partner'
+      },
+      filters: [{key: 'flow_type', value: 'export'}]
+    },
+    {
+      field: "partner",
+      labels: {
+        fr: 'partenaire du commerce extérieur',
+        en: 'external trade partner'
+      },
+      filters: [{key: 'flow_type', value: 'import'}]
+    },
+    {
+      field: "product",
+      labels: {
+        fr: 'type de produit',
+        en: 'product type'
+      },
+      filters: [{key: 'flow_type', value: 'import'}]
+    },
+    {
+      field: "customs_office",
+      labels: {
+        fr: 'bureau des fermes',
+        en: 'customs office'
+      },
+      filters: [{key: 'flow_type', value: 'import'}]
+    },
+  ]}
+/>
 
 ### Orientations sur la visualisation principale commune aux trois sous-parties
 

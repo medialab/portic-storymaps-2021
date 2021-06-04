@@ -7,6 +7,7 @@ body {
 header {
     position: fixed; /* pour fixer le header pendant le scroll */
     width: 100%;
+    z-index: 2;
     /* background-color: rgb(58, 118, 135); */
     /* color: whitesmoke; */
 }
@@ -23,7 +24,6 @@ nav{
   width: 100%;
   overflow: auto;
   background: white;
-  z-index: 2;
   /* background: rgba(240,240,240,1); */
 }
 nav ul{
@@ -122,4 +122,8 @@ footer {
 button.is-active {
   background: rgba(50,50,50,1);
   color: white;
+}
+
+.SigmaComponent {
+  border: 1px solid lightgrey;
 }

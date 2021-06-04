@@ -3,7 +3,7 @@ import {VegaLite} from 'react-vega';
 import {csvParse} from 'd3-dsv';
 import get from 'axios';
 
-const VegaTest = ({
+const VegaComponent = ({
   data: filename,
   spec
 }) => {
@@ -56,4 +56,4 @@ const VegaTest = ({
   )
 }
 
-export default VegaTest;
+export default VegaComponent;

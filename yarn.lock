@@ -7739,6 +7739,11 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
+intersection-observer@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.12.0.tgz#6c84628f67ce8698e5f9ccf857d97718745837aa"
+  integrity sha512-2Vkz8z46Dv401zTWudDGwO7KiGHNDkMv417T5ItcNYfmvHR/1qCTVBO9vwH8zZmQ0WkA/1ARwpysR9bsnop4NQ==
+
 intl-format-cache@^4.2.21:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-4.3.1.tgz#484d31a9872161e6c02139349b259a6229ade377"
@@ -12163,6 +12168,11 @@ react-scripts@^4.0.3:
   optionalDependencies:
     fsevents "^2.1.3"
 
+react-scrollama@^2.2.16:
+  version "2.2.16"
+  resolved "https://registry.yarnpkg.com/react-scrollama/-/react-scrollama-2.2.16.tgz#21e0c0ce9c7fc57ccac07e119819bf2f641b1233"
+  integrity sha512-rkd05GPuzqFPypRyxI5wUnNilzqybDTODGCoY7UKQ7sl4mpjzREeQ6BT2Hvq4r4DSQPB7aix8r4ibWaZAXVG4g==
+
 react-side-effect@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
@@ -13082,6 +13092,11 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scrollama@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/scrollama/-/scrollama-2.2.2.tgz#7a05382702e65884a7e584a0d88f7bb6fe300860"
+  integrity sha512-ZU5uuiHRhtomdgdSwwv0ThSPnjeO5WAmBrlNEc/DowdPN/wewro4zvpOpEFr0FakhvvujxA1IskJCn9rFbEz1g==
 
 section-matter@^1.0.0:
   version "1.0.0"

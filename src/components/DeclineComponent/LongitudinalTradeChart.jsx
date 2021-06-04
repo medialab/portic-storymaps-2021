@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { range } from "lodash";
 import { useEffect, useRef } from "react";
 
 // props
@@ -19,18 +20,18 @@ const LongitudinalTradeChart = ({data, absoluteField, shareField, herfindhalFiel
       svgPath.selectAll("*").remove();
     const margin = ({top: 20, right: 50, bottom: 30, left: 50})
     // X AXIS 
-    const yearsDomain = d3.extent(data, d => +d.year);
-    const x = d3.scaleLinear()
-        .domain(yearsDomain)
-        .range([margin.left, width - margin.right])
     const xBand = d3.scaleBand()
-        .domain(data.map(d => d.year))
+        .domain(range(...d3.extent(data.map(d => +d.year))))
         .range([margin.left, width - margin.right])
         .padding(0.1)
-    
+    const yearDomain = xBand.domain().map(y => +y)
+    console.log(yearDomain)
+    const yearTicks = yearDomain.filter(y => y%5 === 0 && y !== 1790).concat([1789])
     const xAxis = g => g
         .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(xBand).ticks(xBand.bandwidth() / 80).tickSizeOuter(0))
+        .call(d3.axisBottom(xBand).tickValues(yearTicks).tickSizeOuter(0))
+
+    
     svgPath.append("g")
       .call(xAxis);
 
@@ -52,18 +53,7 @@ const LongitudinalTradeChart = ({data, absoluteField, shareField, herfindhalFiel
             .text(absoluteLabel))
         svgPath.append("g")
             .call(absoluteYAxis);
-        // LINE
-        const line = d3.line()
-            .x(d => xBand(+d.year)+xBand.bandwidth()/2)
-            .y(d => yAbsolute(+d[absoluteField]))
-
-        svgPath.append("path")
-            .datum(data)
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", line);
-    
-        // RECT for share series
+         // RECT for share series
         // Y AXIS 
         const yShare = d3.scaleLinear()
             .domain([0, d3.max(data, d => +d[shareField])]).nice()
@@ -80,16 +70,29 @@ const LongitudinalTradeChart = ({data, absoluteField, shareField, herfindhalFiel
         svgPath.append("g")
             .call(shareYAxis);
         // BARS
-        const herfindhalScale =  d3.scaleLinear().domain(d3.extent(data, d => +d[herfindhalField])).range([0.1,0.7])
+        const herfindhalScale =  d3.scaleLinear().domain(d3.extent(data, d => +d[herfindhalField])).range([0,0.8])
         svgPath.append("g")
             .selectAll("rect")
             .data(data)
             .join("rect")
-            .attr("fill", (d) => herfindhalField ? d3.rgb(0,0,0, herfindhalScale(+d[herfindhalField])) : "pink")
+            .attr("fill", (d) => herfindhalField ? d3.rgb(200,50,0, herfindhalScale(+d[herfindhalField])) : "lightgrey")
             .attr("x", (d) => xBand(+d.year))
             .attr("y", d => yShare(d[shareField]))
             .attr("height", d => yShare(0) - yShare(d[shareField]))
             .attr("width", xBand.bandwidth());
+        // LINE
+        const line = d3.line()
+            .defined(d => d[absoluteField]!=='')
+            .x(d => xBand(+d.year)+xBand.bandwidth()/2)
+            .y(d => yAbsolute(+d[absoluteField]))
+
+        svgPath.append("path")
+            .datum(data)
+            .attr("stroke", "steelblue")
+            .attr("stroke-width", 1.5)
+            .attr("d", line);
+    
+       
     }
 
     }, [data, svgNode])

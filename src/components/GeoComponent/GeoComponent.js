@@ -145,16 +145,18 @@ const GeoComponent = ({
       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
         <g className="background">
           {
-            backgroundData.features.map((d, i) => (
-              <path
-                key={`path-${i}`}
-                d={geoPath().projection(projection)(d)}
-                className="geopart"
-                fill={`rgba(38,50,56,${1 / backgroundData.features.length * i})`}
-                stroke="#FFFFFF"
-                strokeWidth={0.5}
-              />
-            ))
+            backgroundData.features.map((d, i) => {
+              return (
+                <path
+                  key={`path-${i}`}
+                  d={geoPath().projection(projection)(d)}
+                  className="geopart"
+                  fill={`rgba(38,50,56,${1 / backgroundData.features.length * i})`}
+                  stroke="#FFFFFF"
+                  strokeWidth={0.5}
+                />
+              )
+            })
           }
         </g>
         <g className="markers">

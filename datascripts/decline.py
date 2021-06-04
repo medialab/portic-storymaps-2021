@@ -86,8 +86,10 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
                 'Exports_share': 100
             })
     with open("../public/data/decline_LR_products.csv", "w") as of:
-        output_csv = csv.DictWriter(of, ['product', 'year', 'value'])
-        output_csv.writerows({'product': product, 'year': year, 'value': value} for year, products in LaRochelle_products.items(
+        output_csv = csv.DictWriter(
+            of, ['product', 'year', 'Exports', 'Imports'])
+        output_csv.writeheader()
+        output_csv.writerows({'product': product, 'year': year, 'Exports': value.get("Exports"), 'Imports': value.get("Imports")} for year, products in LaRochelle_products.items(
         ) if year in ['1750', '1789'] for product, value in products.items())
 
     with open("../public/data/decline_LR_partners.csv", "w") as of:

@@ -1,28 +1,50 @@
 from collections import defaultdict
 import csv
-from typing import DefaultDict
+from typing import Counter, DefaultDict
+
+
+def output_row(region, year, region_trade, region_products, total_trade):
+    sum_imports = sum(value.get(
+        'Imports') for value in region_products[year].values() if value.get('Imports'))
+    sum_exports = sum(value.get(
+        'Exports') for value in region_products[year].values() if value.get('Exports'))
+    return {
+        'region': region,
+        'year': year,
+        'Exports': region_trade[year].get('Exports'),
+        'Imports': region_trade[year].get('Imports'),
+        'Imports_share': region_trade[year]['Imports']/total_trade['Imports'] if region_trade[year].get('Imports') else None,
+        'Exports_share': region_trade[year]['Exports']/total_trade['Exports'] if region_trade[year].get('Exports') else None,
+        'product_revolutionempire_imports_herfindahl': sum(pow(value['Imports']/sum_imports, 2) for value in region_products[year].values()) if sum_imports != 0 else None,
+        'product_revolutionempire_exports_herfindahl': sum(pow(value['Exports']/sum_exports, 2) for value in region_products[year].values()) if sum_exports != 0 else None,
+        'product_revolutionempire_total_herfindahl': sum(pow((value['Imports']+value['Exports'])/(sum_imports + sum_exports), 2) for value in region_products[year].values()) if sum_imports != 0 or sum_exports != 0 else None
+    }
+
 
 with open('../data/toflit18_all_flows.csv', 'r') as f:
     toflit18_flows = csv.DictReader(f)
     flows_fieldnames = toflit18_flows.fieldnames
 
-    france_trade = DefaultDict(lambda: {"Imports": 0, "Exports": 0})
-    LaRochelle_trade = DefaultDict(lambda: {"Imports": 0, "Exports": 0})
-    Bordeaux_trade = DefaultDict(lambda: {"Imports": 0, "Exports": 0})
+    france_trade = DefaultDict(Counter)
+    LaRochelle_trade = DefaultDict(Counter)
+    Bordeaux_trade = DefaultDict(Counter)
 
     Bordeaux_products = DefaultDict(
-        lambda: DefaultDict(lambda: {"Imports": 0, "Exports": 0}))
+        lambda: DefaultDict(Counter))
     LaRochelle_products = DefaultDict(
-        lambda: DefaultDict(lambda: {"Imports": 0, "Exports": 0}))
+        lambda: DefaultDict(Counter))
     LaRochelle_partners = DefaultDict(
-        lambda: DefaultDict(lambda: {"Imports": 0, "Exports": 0}))
+        lambda: DefaultDict(Counter))
     for flow in toflit18_flows:
         # longitudinal absolute and share trade
-        year = '1787' if flow['year'] == '1787.2' else flow['year']
-        if flow['best_guess_national_region'] == "1" and flow['value'] != "":
+        year = flow['year'].split(
+            '.')[0] if "." in flow['year'] else flow['year']
+        if flow['best_guess_national_partner'] == "1" and flow['value'] != "":
+            france_trade[year][flow['export_import']
+                               ] += float(flow['value'])
+        if flow['best_guess_region_prodxpart'] == "1" and flow['value'] != "":
             try:
-                france_trade[year][flow['export_import']
-                                   ] += float(flow['value'])
+
                 if flow['customs_region'] == "La Rochelle":
                     LaRochelle_trade[year
                                      ][flow['export_import']] += float(flow['value'])
@@ -49,30 +71,12 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
         output_csv = csv.DictWriter(
             of, ['region', 'year', 'Exports', 'Imports', 'Exports_share', 'Imports_share', 'product_revolutionempire_imports_herfindahl', 'product_revolutionempire_exports_herfindahl', 'product_revolutionempire_total_herfindahl'])
         output_csv.writeheader()
-        for year, value in france_trade.items():
+        for year, value in sorted(france_trade.items(), key=lambda yv: yv[0]):
 
-            output_csv.writerow({
-                'region': 'La Rochelle',
-                'year': year,
-                'Exports': LaRochelle_trade[year]['Exports'],
-                'Imports': LaRochelle_trade[year]['Imports'],
-                'Imports_share': LaRochelle_trade[year]['Imports']/value['Imports'],
-                'Exports_share': LaRochelle_trade[year]['Exports']/value['Exports'],
-                'product_revolutionempire_imports_herfindahl': sum(pow(value['Imports']/LaRochelle_trade[year]['Imports'], 2) for value in LaRochelle_products[year].values()),
-                'product_revolutionempire_exports_herfindahl': sum(pow(value['Exports']/LaRochelle_trade[year]['Exports'], 2) for value in LaRochelle_products[year].values()),
-                'product_revolutionempire_total_herfindahl': sum(pow((value['Imports']+value['Exports'])/(LaRochelle_trade[year]['Imports']+LaRochelle_trade[year]['Exports']), 2) for value in LaRochelle_products[year].values())
-            })
-            output_csv.writerow({
-                'region': 'Bordeaux',
-                'year': year,
-                'Exports': Bordeaux_trade[year]['Exports'],
-                'Imports': Bordeaux_trade[year]['Imports'],
-                'Imports_share': Bordeaux_trade[year]['Imports']/value['Imports'],
-                'Exports_share': Bordeaux_trade[year]['Exports']/value['Exports'],
-                'product_revolutionempire_imports_herfindahl': sum(pow(value['Imports']/Bordeaux_trade[year]['Imports'], 2) for value in Bordeaux_products[year].values()),
-                'product_revolutionempire_exports_herfindahl': sum(pow(value['Exports']/Bordeaux_trade[year]['Exports'], 2) for value in Bordeaux_products[year].values()),
-                'product_revolutionempire_total_herfindahl': sum(pow((value['Imports']+value['Exports'])/(Bordeaux_trade[year]['Imports']+Bordeaux_trade[year]['Exports']), 2) for value in Bordeaux_products[year].values())
-            })
+            output_csv.writerow(output_row(
+                "La Rochelle", year, LaRochelle_trade, LaRochelle_products, value))
+            output_csv.writerow(output_row(
+                "Bordeaux", year, Bordeaux_trade, Bordeaux_products, value))
             output_csv.writerow({
                 'region': 'France',
                 'year': year,

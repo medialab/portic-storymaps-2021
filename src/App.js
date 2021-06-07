@@ -49,6 +49,7 @@ function App() {
   const renderRoute = ({
     Content, 
     ThatComponent = PlainPage,
+    ContentComponent,
     title,
   }) => (
     <>
@@ -56,7 +57,8 @@ function App() {
         {
           ...{
             Content,
-            title
+            title,
+            ContentComponent
           }
         }
       />
@@ -77,14 +79,20 @@ function App() {
                 titles,
                 routes: inputRoute, 
                 contents,
-                Component: ThatComponent
+                Component: ThatComponent,
+                contentsProcessed
               }, index) => {
                 const route = `/page/${lang}/${inputRoute[lang]}`
                 const title = titles[lang];
                 const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`))
                 return (
                   <Route key={index} path={route}>
-                    {renderRoute({Content, ThatComponent, title})}
+                    {renderRoute({
+                      Content, 
+                      ThatComponent, 
+                      ContentComponent: contentsProcessed && contentsProcessed[lang],
+                      title
+                    })}
                   </Route>
                 )
               } )

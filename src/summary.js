@@ -1,3 +1,9 @@
+/* eslint import/no-webpack-loader-syntax : 0 */
+
+import ScrollPocFr from '!babel-loader!mdx-loader!./contents/fr/scroll-poc.mdx'; // obtention d'un composant react (grâce à webpack)
+import ScrollamaDemo from './components/ScrollamaDemo';
+
+
 const summary = [
   {
     routes: {
@@ -109,7 +115,11 @@ const summary = [
     contents: {
       fr: 'fr/scroll-poc.mdx',
       // en: 'en/about.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: () => <ScrollPocFr />
+    },
+    Component: ScrollamaDemo
   }
 ]
 

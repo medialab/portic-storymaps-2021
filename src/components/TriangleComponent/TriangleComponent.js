@@ -109,12 +109,9 @@ const TriangleComponent = ({
                   y={0}
                   width={columnWidth}
                   height={rowHeight}
-                  fill="grey"
-                  stroke="white"
                 />
 
                 <path
-                  stroke='red'
                   d={`M ${(columnWidth - rectWidth) / 2} ${0} 
                         H ${(columnWidth - rectWidth) / 2 + rectWidth}
                         L ${columnWidth / 2} ${rectHeight}

@@ -97,6 +97,20 @@ const summary = [
       en: 'en/about.mdx'
     }
   },
+  {
+    routes: {
+      fr: 'preuves-de-concept-scroll',
+      // en: 'proofs-of-concept-scroll'
+    },
+    titles: {
+      fr: 'Scroll : preuves de concept',
+      // en: 'Scroll : proofs of concept'
+    },
+    contents: {
+      fr: 'fr/scroll-poc.mdx',
+      // en: 'en/about.mdx'
+    }
+  }
 ]
 
 

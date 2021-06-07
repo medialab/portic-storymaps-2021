@@ -12,8 +12,11 @@ import './TriangleComponent.css'
 
 const TriangleComponent = ({
   dataFilename,
-  width = 1200,
-  height = 600
+  totalWidth = 1200,
+  rowHeight = 200, 
+  numberOfColumns = 5,
+  marginUnderText = 0.1, // je ne sais pas si c'est le mieux comme unité pour une marge ...
+  marginBetweenTriangleAndText = 0.1
 }) => {
 
   // raw marker data
@@ -53,10 +56,9 @@ const TriangleComponent = ({
     )
   }
 
-  const NUMBER_OF_COLUMNS = 5
-  // const columnWidth = width/data.length
-  const columnWidth = width / NUMBER_OF_COLUMNS
-  const rowHeight = height / 5
+  const columnWidth = totalWidth / numberOfColumns
+  const numberOfRows = data.length / numberOfColumns
+  const totalHeight = numberOfRows * rowHeight
 
   // scaleLinear<Range = number, Output = Range, Unknown = never>(range?: Iterable<Range>): ScaleLinear<Range, Output, Unknown> (+1 overload)
   const scaleX = scaleLinear().domain([
@@ -76,22 +78,23 @@ const TriangleComponent = ({
         return +port.mean_tonnage; // parseFloat(port.mean_tonnage);
       })
     )
-  ]).range([0, rowHeight]);
+  ]).range([0,(1 - marginUnderText - marginBetweenTriangleAndText) *rowHeight]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
+  // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
 
 
   return (
     <div>
 
-      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
+      <svg width={totalWidth} height={totalHeight} viewBox={`0 0 ${totalWidth} ${totalHeight}`} style={{ border: '1px solid lightgrey' }}>
         {
           data.map((port, index) => {
 
             const rectWidth = scaleX(+port.nb_pointcalls_out)
             const rectHeight = scaleY(+port.mean_tonnage)
 
-            const xIndex = index % NUMBER_OF_COLUMNS;
-            const yIndex = (index - index % NUMBER_OF_COLUMNS) / NUMBER_OF_COLUMNS;
+            const xIndex = index % numberOfColumns;
+            const yIndex = (index - index % numberOfColumns) / numberOfColumns;
             const xTransform = xIndex * columnWidth;
             const yTransform = yIndex * rowHeight;
             return (
@@ -116,20 +119,10 @@ const TriangleComponent = ({
                         H ${(columnWidth - rectWidth) / 2 + rectWidth}
                         L ${columnWidth / 2} ${rectHeight}
                         Z
-                        `} // accents chelous : je commence à faire des interpolations 
+                        `} // accents chelous : "je commence à faire des interpolations" 
 
 
                 />
-                <rect
-                  x={(columnWidth - rectWidth) / 2}
-                  y={0}
-                  width={rectWidth}
-                  height={rectHeight}
-                  fill='transparent'
-                  stroke='black'
-                />
-
-
 
                 {/* <path
                   key={`path-${i}`}
@@ -140,7 +133,11 @@ const TriangleComponent = ({
                   strokeWidth={0.5}
                 /> */}
                 <text
-                  y={parseInt(rowHeight / 2)} // attention on veut un entier en coord
+                  x={parseInt(columnWidth / 2)}
+                  y={parseInt(rowHeight * (1 - marginUnderText))}
+                  // centrer le texte horizontalement
+                  dominant-baseline="middle"
+                  text-anchor="middle"
                 > {port.port} </text>
 
               </g>

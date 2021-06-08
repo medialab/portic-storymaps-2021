@@ -4,7 +4,7 @@ import json
 
 LIST_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR65herfDXGXCgMTJt020TqjIVnAyLiDB-IkcpShhd9rZysqAt0sMGvXOAHgItSkTKqvB1TWXMuDQZR/pub?output=csv'
 
-TARGET = '../src/visualizations.json'
+TARGET = '../src/visualizationsList.json'
 
 def get_online_csv(url):
   """

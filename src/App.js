@@ -10,12 +10,8 @@ import {
   useLocation,
 } from "react-router-dom";
 
-import { LanguageContext } from './helpers/contexts';
-
 /* import pages */
 import Home from './pages/Home';
-// import About from './pages/About';
-// import Topics from './pages/Topics';
 
 /* import components */
 import HeaderNav from './components/HeaderNav';
@@ -70,7 +66,6 @@ function App() {
 
   );
   return (
-    <LanguageContext.Provider value={{ lang: undefined }}>
       <div id="wrapper">
         <header>
           <HeaderNav {...{ onLangChange, routes }} />
@@ -97,13 +92,12 @@ function App() {
               })
             }
             <Route path="/:lang/atlas/:visualizationId?" component={Atlas} />
-            <Route path="/:lang" exact component={props => <Home {...props} />} />
+            <Route path="/:lang" exact component={Home} />} />
             <Redirect to={`/fr/`} />
           </Switch>
         </main>
         <footer></footer>
       </div>
-    </LanguageContext.Provider>
   );
 }
 

@@ -1,6 +1,6 @@
 import {useState, useReducer, useEffect} from 'react';
 import {Helmet} from "react-helmet";
-import debounce from 'lodash/debounce';
+import {useScrollYPosition } from 'react-use-scroll-position';
 
 import VisualizationController from '../../components/VisualizationController';
 import {VisualizationControlContext} from '../../helpers/contexts';
@@ -19,15 +19,16 @@ const ScrollyPage = ({
     (state, newState) => ({ ...state, ...newState }),
     {}
   )
+  const scrollY = useScrollYPosition();
+  // console.log('y', scrollY);
 
   /**
    * Scrollytelling managmeent
    */
   useEffect(() => {
-    let listener = e => {
-      const bodyPos = document.body.getBoundingClientRect();
+    // const bodyPos = document.body.getBoundingClientRect();
       const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
-      const y = Math.abs(bodyPos.top) + DISPLACE_Y;
+      const y = scrollY + DISPLACE_Y;
       const visualizationEntries = Object.entries(visualizations);
       let found;
       // on parcourt la liste à l'envers pour récupérer
@@ -53,15 +54,7 @@ const ScrollyPage = ({
       if (!found && activeVisualization) {
         setActiveVisualization(undefined);
       }
-    };
-
-    listener = debounce(listener, 50);
-    window.addEventListener("scroll", listener);
-    return () => {
-      window.removeEventListener("scroll", listener);
-    };
-
-  }, [visualizations, lang])
+  }, [scrollY])
 
   const onRegisterVisualization = (params) => {
     const finalParams = {

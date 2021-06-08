@@ -1,12 +1,13 @@
 
 /* import external libraries */
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   HashRouter as Router,
   Switch,
   Route,
   Redirect,
   useHistory,
+  useLocation,
 } from "react-router-dom";
 
 import { LanguageContext } from './helpers/contexts';
@@ -31,69 +32,73 @@ const LANGUAGES = ['fr', 'en'];
 function App() {
 
   const history = useHistory();
-  const [lang, setLang] = useState('fr');
+  const location = useLocation();
   const onLangChange = (ln) => {
-    if (ln !== lang) {
-      const otherLang = lang;
+    const otherLang = ln === 'fr' ? 'en' : 'fr';
+
+    const { pathname } = location;
+    if (pathname.includes('atlas')) {
+      const visualizationId = pathname.split('/atlas/').pop();
+      history.push(`/${ln}/atlas/${visualizationId || ''}`);
+    } else {
       const pathOtherLang = history.location.pathname.split('/').pop();
       const routeItem = routes.find(route => {
         return route.routes[otherLang] === pathOtherLang;
       });
-      setLang(ln);
       if (routeItem) {
-        history.push(`/page/${ln}/${routeItem.routes[ln]}`);
-
+        history.push(`/${ln}/page/${routeItem.routes[ln]}`);
+      } else {
+        history.push(`/${ln}/`);
       }
     }
-    
   }
   const renderRoute = ({
-    Content, 
+    Content,
     ThatComponent = PlainPage,
     title,
   }) => (
     <>
       <ThatComponent
         {
-          ...{
-            Content,
-            title
-          }
+        ...{
+          Content,
+          title
+        }
         }
       />
     </>
 
   );
   return (
-    <LanguageContext.Provider value={{lang}}>
+    <LanguageContext.Provider value={{ lang: undefined }}>
       <div id="wrapper">
         <header>
-          <HeaderNav {...{lang, onLangChange, routes}} />
+          <HeaderNav {...{ onLangChange, routes }} />
         </header>
         <main>
           <Switch>
-          {
-            LANGUAGES.map(lang => {
-              return routes.map(({
-                titles,
-                routes: inputRoute, 
-                contents,
-                Component: ThatComponent
-              }, index) => {
-                const route = `/page/${lang}/${inputRoute[lang]}`
-                const title = titles[lang];
-                const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`))
-                return (
-                  <Route key={index} path={route}>
-                    {renderRoute({Content, ThatComponent, title})}
-                  </Route>
-                )
-              } )
-            })
-          }
-          <Route path="/atlas/:visualizationId?" component={Atlas} />
-          <Route path="/" component={props => <Home {...props} lang={lang} />} />
-          <Redirect to={`/`} />
+            {
+              LANGUAGES.map(lang => {
+                return routes.map(({
+                  titles,
+                  routes: inputRoute,
+                  contents,
+                  Component: ThatComponent
+                }, index) => {
+                  const route = `/${lang}/page/${inputRoute[lang]}`
+                  const title = titles[lang];
+                  const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`))
+                  return (
+                    <Route key={index} path={route} exact>
+                      {renderRoute({ Content, ThatComponent, title })}
+                    </Route>
+                  )
+                })
+              })
+            }
+            <Route path="/:lang/atlas/:visualizationId?" component={Atlas} />
+            <Route path="/:lang" exact component={props => <Home {...props} />} />
+            <Redirect to={`/fr/`} />
           </Switch>
         </main>
         <footer></footer>

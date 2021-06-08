@@ -12,7 +12,8 @@ const visualizationsMap = visualizations.reduce((res, visualization) => ({
 function Atlas({
   match: {
     params: {
-      visualizationId
+      visualizationId,
+      lang
     }
   }
 }) {
@@ -26,7 +27,7 @@ function Atlas({
         visualizations.map((visualization, visualizationIndex) => {
           const handleClick = () => {
             history.push({
-              pathname: `/atlas/${visualization.id}`
+              pathname: `/${lang}/atlas/${visualization.id}`
             })
           }
           return (
@@ -35,7 +36,7 @@ function Atlas({
               onClick={handleClick} 
               key={visualizationIndex}
             >
-              {visualization.titre}
+              {visualization[`titre_${lang}`]}
             </li>
           )
         })
@@ -44,7 +45,7 @@ function Atlas({
     {
       shownVisualization ?
       <div>
-        <h2>Visualisation en lightbox : {shownVisualization.titre}</h2>
+        <h2>Visualisation en lightbox : {shownVisualization[`titre_${lang}`]}</h2>
       </div>
       : null
     }

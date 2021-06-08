@@ -60,9 +60,8 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
             if flow['customs_region'] == "La Rochelle":
                 LaRochelle_products[year][flow['product_revolutionempire']
                                           ][flow['export_import']] += float(flow['value'])
-                if year in ['1750, 1789']:
-                    LaRochelle_partners[year
-                                        ][flow['partner_grouping']][flow['export_import']] += float(flow['value'])
+                LaRochelle_partners[year
+                                    ][flow['partner_simplification']][flow['export_import']] += float(flow['value'])
             if flow['customs_region'] == "Bordeaux":
                 Bordeaux_products[year][flow['product_revolutionempire']
                                         ][flow['export_import']] += float(flow['value'])
@@ -93,6 +92,8 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
         ) if year in ['1750', '1789'] for product, value in products.items())
 
     with open("../public/data/decline_LR_partners.csv", "w") as of:
-        output_csv = csv.DictWriter(of, ['partner', 'year', 'value'])
-        output_csv.writerows({'partner': partner, 'year': year, 'value': value} for year, partners in LaRochelle_partners.items(
+        output_csv = csv.DictWriter(
+            of, ['partner', 'year', 'Exports', 'Imports'])
+        output_csv.writeheader()
+        output_csv.writerows({'partner': partner, 'year': year, 'Imports': value.get('Imports'), 'Exports': value.get('Exports')} for year, partners in LaRochelle_partners.items(
         ) if year in ['1750', '1789'] for partner, value in partners.items())

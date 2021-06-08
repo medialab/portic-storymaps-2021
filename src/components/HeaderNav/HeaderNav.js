@@ -26,6 +26,11 @@ const HeaderNav = ({
               )
               })
           }
+          <li className="navitem-container">
+            <Link to={'/atlas'}>
+              Atlas
+            </Link>
+          </li>
           <li className="lang-toggle">
             <button 
               className={lang === 'fr' ? 'is-active': ''}

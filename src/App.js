@@ -24,6 +24,7 @@ import PlainPage from './pages/PlainPage';
 import './App.css';
 
 import routes from './summary'
+import Atlas from "./pages/Atlas";
 
 const LANGUAGES = ['fr', 'en'];
 
@@ -90,9 +91,8 @@ function App() {
               } )
             })
           }
-          <Route path="/">
-            <Home lang={lang} />
-          </Route>
+          <Route path="/atlas/:visualizationId?" component={Atlas} />
+          <Route path="/" component={props => <Home {...props} lang={lang} />} />
           <Redirect to={`/`} />
           </Switch>
         </main>

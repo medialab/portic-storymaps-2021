@@ -4,7 +4,9 @@ import {Helmet} from 'react-helmet';
 /* eslint-disable import/no-webpack-loader-syntax */
 import Content from '!babel-loader!@mdx-js/loader!./content.mdx';
 
-function Home({lang}) {
+function Home({match: {
+  params: {lang}
+}}) {
   return (
     <div>
       <Helmet>

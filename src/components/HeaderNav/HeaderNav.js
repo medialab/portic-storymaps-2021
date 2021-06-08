@@ -1,11 +1,19 @@
 import React from 'react';
+import {useLocation} from 'react-router-dom';
 import {NavLink as Link} from 'react-router-dom'; 
 
 const HeaderNav = ({
   routes,
-  lang,
   onLangChange,
 }) => {
+  const location = useLocation();
+  const paramsLang = location && location.match && location.match.params && location.match.params.lang;
+  let lang = 'fr';
+  if (paramsLang) {
+    lang = paramsLang;
+  } else if (location.pathname.includes('/en/')) {
+    lang = 'en';
+  }
   return (
     <nav>
       <ul>
@@ -16,7 +24,7 @@ const HeaderNav = ({
           </li>
           {
             routes.map(({titles, routes: inputRoute}, index) => {
-              const route = `/page/${lang}/${inputRoute[lang]}`
+              const route = `/${lang}/page/${inputRoute[lang]}`
               return (
                 <li key={index} className="navitem-container">
                   <Link to={route}>
@@ -27,7 +35,7 @@ const HeaderNav = ({
               })
           }
           <li className="navitem-container">
-            <Link to={'/atlas'}>
+            <Link to={`/${lang}/atlas`}>
               Atlas
             </Link>
           </li>

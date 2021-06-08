@@ -2,7 +2,7 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 import cx from 'classnames';
 // charger le json de la liste des visualisations de l'atlas
-import visualizations from '../../visualizations';
+import visualizations from '../../visualizationsList';
 
 const visualizationsMap = visualizations.reduce((res, visualization) => ({
   ...res,

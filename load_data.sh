@@ -19,4 +19,4 @@ curl -o data/portic_pointcalls_descriptions.json "http://data.portic.fr/api/fiel
 echo "fetching latest navigo flows schema"
 curl -o data/portic_flows_descriptions.json "http://data.portic.fr/api/fieldnames/?API=travels"
 echo "preparing derivated datasets"
-python prepare_data.py
+# python prepare_data.py

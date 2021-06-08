@@ -1,4 +1,51 @@
+/* eslint import/no-webpack-loader-syntax : 0 */
+import ScrollyPage from './pages/ScrollyPage';
+
+import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
+import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
+
+import Part1Fr from '!babel-loader!mdx-loader!./contents/fr/partie-1.mdx';
+import Part1En from '!babel-loader!mdx-loader!./contents/en/part-1.mdx';
+
+import Part2IntroFr from '!babel-loader!mdx-loader!./contents/fr/partie-2-intro.mdx';
+import Part2IntroEn from '!babel-loader!mdx-loader!./contents/en/part-2-intro.mdx';
+
+import Part21Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-1.mdx';
+import Part21En from '!babel-loader!mdx-loader!./contents/en/part-2-1.mdx';
+
+import Part22Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-2.mdx';
+import Part22En from '!babel-loader!mdx-loader!./contents/en/part-2-2.mdx';
+
+import Part23Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-3.mdx';
+import Part23En from '!babel-loader!mdx-loader!./contents/en/part-2-3.mdx';
+
+import Part3Fr from '!babel-loader!mdx-loader!./contents/fr/partie-3.mdx';
+import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';
+
+import AboutFr from '!babel-loader!mdx-loader!./contents/fr/a-propos.mdx';
+import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
+
+
 const summary = [
+  {
+    routes: {
+      fr: 'scrolly',
+      en: 'scrolly'
+    },
+    titles: {
+      fr: 'Tests scrollytelling',
+      en: 'Scrollytelling test'
+    },
+    contents: {
+      fr: 'fr/test-scrolly.mdx',
+      en: 'en/test-scrolly.mdx'
+    },
+    contentsProcessed: {
+      fr: TestScrollyFr,
+      en: testScrollyEn,
+    },
+    Component: ScrollyPage
+  },
   {
     routes: {
       fr: 'partie-1',
@@ -11,7 +58,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-1.mdx',
       en: 'en/part-1.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part1Fr,
+      en: Part1En,
+    },
   },
   {
     routes: {
@@ -25,7 +76,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-2-intro.mdx',
       en: 'en/part-2-intro.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part2IntroFr,
+      en: Part2IntroEn,
+    },
   },
   {
     routes: {
@@ -39,7 +94,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-2-1.mdx',
       en: 'en/part-2-1.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part21Fr,
+      en: Part21En,
+    },
   },
   {
     routes: {
@@ -53,7 +112,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-2-2.mdx',
       en: 'en/part-2-2.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part22Fr,
+      en: Part22En,
+    },
   },
   {
     routes: {
@@ -67,7 +130,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-2-3.mdx',
       en: 'en/part-2-3.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part23Fr,
+      en: Part23En,
+    },
   },
   {
     routes: {
@@ -81,7 +148,11 @@ const summary = [
     contents: {
       fr: 'fr/partie-3.mdx',
       en: 'en/part-3.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: Part3Fr,
+      en: Part3En,
+    },
   },
   {
     routes: {
@@ -95,7 +166,11 @@ const summary = [
     contents: {
       fr: 'fr/a-propos.mdx',
       en: 'en/about.mdx'
-    }
+    },
+    contentsProcessed: {
+      fr: AboutFr,
+      en: AboutEn,
+    },
   },
 ]
 

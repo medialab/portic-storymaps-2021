@@ -18,7 +18,7 @@ import HeaderNav from './components/HeaderNav';
 import PlainPage from './pages/PlainPage';
 
 /* import other assets */
-import './App.css';
+import './App.scss';
 
 import routes from './summary'
 import Atlas from "./pages/Atlas";
@@ -50,6 +50,7 @@ function App() {
   }
   const renderRoute = ({
     Content,
+    ContentSync,
     ThatComponent = PlainPage,
     title,
   }) => (
@@ -58,6 +59,7 @@ function App() {
         {
         ...{
           Content,
+          ContentSync,
           title
         }
         }
@@ -78,14 +80,16 @@ function App() {
                   titles,
                   routes: inputRoute,
                   contents,
-                  Component: ThatComponent
+                  Component: ThatComponent,
+                  contentsProcessed
                 }, index) => {
                   const route = `/${lang}/page/${inputRoute[lang]}`
                   const title = titles[lang];
-                  const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`))
+                  const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`));
+                  const ContentSync = contentsProcessed[lang]
                   return (
                     <Route key={index} path={route} exact>
-                      {renderRoute({ Content, ThatComponent, title })}
+                      {renderRoute({ Content, ThatComponent, title, ContentSync })}
                     </Route>
                   )
                 })

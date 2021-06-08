@@ -105,7 +105,31 @@ footer {
     /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
 }
 
+/**
+ * SCROLLYTELLING LAYOUT
+**/
+.ScrollyPage {
+  position: relative;
+  section {
+    width: 50%;
+  }
+  aside {
+    position: fixed;
+    background: red;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    height: calc(100vh - 7rem);
+  }
+}
 
+.Caller {
+  background: lightgreen;
+  &.is-active {
+    background: red;
+    color: white;
+  }
+}
 /**
  * MISC
  */

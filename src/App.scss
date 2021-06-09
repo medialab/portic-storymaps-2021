@@ -111,14 +111,15 @@ footer {
 .ScrollyPage {
   position: relative;
   section {
-    width: 50%;
+    width: 30%;
+    margin-left: 70%;        
   }
   aside {
     position: fixed;
     background: red;
-    right: 0;
+    left: 0;
     bottom: 0;
-    width: 50%;
+    width: calc(70% - 3rem);
     height: calc(100vh - 7rem);
   }
 }

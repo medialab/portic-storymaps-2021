@@ -104,7 +104,6 @@ function App() {
       }
     }
   }
-  console.log({loadingFraction})
   const renderRoute = ({
     Content,
     ContentSync,

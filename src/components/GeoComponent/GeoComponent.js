@@ -7,6 +7,7 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
+import { resetIdCounter } from 'vega-lite';
 
 
 const GeoComponent = ({
@@ -18,7 +19,9 @@ const GeoComponent = ({
   markerSize,
   markerColor,
   showLabels,
-  centerOnRegion
+  centerOnRegion,
+  rotationDegree_deprecated = 0,
+  rotationDegree = 0
 }) => {
   // raw marker data
   const [data, setData] = useState(null);
@@ -118,6 +121,9 @@ const GeoComponent = ({
         return geoEqualEarth()
         .scale(50000)
         .center([-1.7475027, 46.573642])
+        //.rotate([92.35, .5, -4])
+        .rotate([rotationDegree, 0, 0])
+        //.translate([width / 2, height / 2])
       }
       // if bg data is available fit on whole geometry
       return geoEqualEarth()
@@ -143,7 +149,7 @@ const GeoComponent = ({
   return (
     <div>
       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
-        <g className="background">
+        <g className="background" transform={`rotate(${rotationDegree_deprecated})`}>
           {
             backgroundData.features.map((d, i) => {
               return (
@@ -159,7 +165,7 @@ const GeoComponent = ({
             })
           }
         </g>
-        <g className="markers">
+        <g className="markers" transform={`rotate(${rotationDegree_deprecated})`}>
           {
             markerData
               .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
@@ -193,7 +199,7 @@ const GeoComponent = ({
         </g>
         {
           colorsMap ?
-          <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20})`}>
+          <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20}) rotate(${rotationDegree_deprecated})`}>
             <g>
               <text style={{fontWeight: 800}}>
                 {markerColor}

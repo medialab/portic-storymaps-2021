@@ -8,8 +8,8 @@ Combustibles dont charbons et bois,1789,194173.0,73370.0
 Chanvre,1789,12476.0,115471.74799
 Blé et autres grains comestibles,1789,475849.00181999995,632887.3273
 Légumes,1789,23384.00011,25304.599990000002
-Subsistances diverses et mélangées,1789,5363.0,14332.1499
 Coton non transformé,1789,5984.0,766442.0
+Subsistances diverses et mélangées,1789,5363.0,14332.1499
 Divers mélangés,1789,5236.0,10535.0
 "Porcelaine, poterie, faïence et ouvrages de terre",1789,27440.0,77352.0
 Pêche et fruits de mer,1789,3906.8,25118.0002
@@ -54,7 +54,7 @@ Chapeaux hors paille et écorce,1789,11505.0,
 Matières brutes et transformées pour teinture,1789,8000.0,51715.00002
 Drogues diverses,1789,442.20001,1293.0
 Toiles de coton,1789,379900.5,27726.75
-Étoffes de soie,1789,33641.5,
+Étoffes de soie,1789,33281.5,
 Fer,1789,1248.0,1158.35006
 Textiles manufacturés divers et mélangés,1789,1050.0,
 Riz,1789,3798.0,18981.70076
@@ -78,6 +78,7 @@ Manne et médicaments,1789,896.0,23523.0
 Quinquina,1789,900.0,2748.0
 Salsepareille,1789,204.0,
 Céruse et blanc de plomb,1789,191.0,15090.2002
+Dorure,1789,360.0,
 Fer-blanc,1789,1604.0,51116.7021
 Métaux divers et mélangés,1789,255.0,8246.40001
 Fils divers,1789,260.0,21486.0
@@ -116,7 +117,7 @@ Café,1750,212967.40402,207144.0
 Indigo,1750,2301235.0,3372500.0
 Divers mélangés,1750,105.0,
 Papier,1750,65284.0,2491.5
-"Cuirs, peaux et pelleterie",1750,313180.5,1229057.0
+"Cuirs, peaux et pelleterie",1750,313180.5,1230307.0
 Rocou,1750,43714.8999,167040.0
 Sirop et mélasse,1750,18845.700001,
 Étoffes diverses,1750,38534.50001,
@@ -230,6 +231,5 @@ Quinquina,1750,,72.0
 Salsepareille,1750,,92.5
 Séné,1750,,15.0
 Cuivre,1750,,1000.0
-,1750,,1250.0
 Plumes brutes,1750,,15.0
 Riz,1750,,98.0

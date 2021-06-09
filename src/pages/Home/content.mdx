@@ -10,6 +10,18 @@ import test from './ports-region-1789.svg'
 
 <TriangleComponent dataFilename="part_3-tonnages_per_ports.csv" />
 
+# Fond de carte centré sur région, avec 1 pt discret par port, tourné à 90° ou 270°
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="null"
+  markerSize="null"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+  rotationDegree = "0"
+/>
+
 # Commerce multi-échelle dans la région de La Rochelle
 
 

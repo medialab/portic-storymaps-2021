@@ -1,6 +1,6 @@
 
 /* import external libraries */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   HashRouter as Router,
   Switch,
@@ -10,18 +10,29 @@ import {
   useLocation,
 } from "react-router-dom";
 
+import uniq from 'lodash/uniq';
+import {csvParse, tsvParse} from 'd3-dsv';
+
+
+import axios from 'axios';
+import visualizationsList from './visualizationsList';
+
 /* import pages */
 import Home from './pages/Home';
+import Atlas from "./pages/Atlas";
 
 /* import components */
 import HeaderNav from './components/HeaderNav';
+import Loader from './components/Loader/Loader';
+
 import PlainPage from './pages/PlainPage';
+
+import {DatasetsContext} from './helpers/contexts';
 
 /* import other assets */
 import './App.scss';
 
 import routes from './summary'
-import Atlas from "./pages/Atlas";
 
 const LANGUAGES = ['fr', 'en'];
 
@@ -29,6 +40,51 @@ function App() {
 
   const history = useHistory();
   const location = useLocation();
+  const [datasets, setDatasets] = useState({})
+  const [loadingFraction, setLoadingFraction] = useState(0);
+
+  /**
+   * loading all datasets
+   */
+   useEffect(() => {
+    // loading all datasets from the atlas
+    // @todo do this on a page-to-page basis if datasets happens to be to big/numerous
+    const datasetsNames = uniq(visualizationsList.filter(d => d.datasets).reduce((res, d) => [...res, ...d.datasets.split(',').map(d => d.trim())], []));
+    datasetsNames.reduce((cur, datasetName, datasetIndex) => {
+      return cur.then((res) => new Promise((resolve, reject) => {
+
+        const url = datasetName ? `${process.env.PUBLIC_URL}/data/${datasetName}` : undefined;
+        if (url) {
+          axios.get(url, {
+            onDownloadProgress: progressEvent => {
+              const status = progressEvent.loaded / progressEvent.total;
+              const globalFraction = datasetIndex / datasetsNames.length;
+              setLoadingFraction(globalFraction + status / routes.length);
+            }
+          })
+            .then(({ data: inputData }) => {
+              setTimeout(() => {
+                let loadedData = inputData;
+                if (url.split('.').pop() === 'csv') {
+                  loadedData = csvParse(inputData);
+                } else if (url.split('.').pop() === 'tsv') {
+                  loadedData = tsvParse(inputData);
+                }
+                resolve({...res, [datasetName]: loadedData})
+              })
+            })
+            .catch(reject)
+        } else return resolve(res);
+
+      }))
+    }, Promise.resolve({}))
+    .then(newDatasets => {
+      setLoadingFraction(1);
+      setDatasets(newDatasets)
+    })
+    .catch(console.log)
+  }, [])
+
   const onLangChange = (ln) => {
     const otherLang = ln === 'fr' ? 'en' : 'fr';
 
@@ -48,6 +104,7 @@ function App() {
       }
     }
   }
+  console.log({loadingFraction})
   const renderRoute = ({
     Content,
     ContentSync,
@@ -68,6 +125,7 @@ function App() {
 
   );
   return (
+    <DatasetsContext.Provider value={datasets}>
       <div id="wrapper">
         <header>
           <HeaderNav {...{ onLangChange, routes }} />
@@ -96,12 +154,20 @@ function App() {
               })
             }
             <Route path="/:lang/atlas/:visualizationId?" component={Atlas} />
-            <Route path="/:lang" exact component={Home} />} />
+            <Route path="/:lang" exact component={Home} />
             <Redirect to={`/fr/`} />
           </Switch>
+          {
+            datasets ?
+            null :
+            <Loader percentsLoaded={loadingFraction * 100} />
+          }
         </main>
         <footer></footer>
+        
+        
       </div>
+    </DatasetsContext.Provider>
   );
 }
 

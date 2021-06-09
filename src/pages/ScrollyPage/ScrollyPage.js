@@ -5,6 +5,7 @@ import {useScrollYPosition } from 'react-use-scroll-position';
 import VisualizationController from '../../components/VisualizationController';
 import {VisualizationControlContext} from '../../helpers/contexts';
 
+
 const CENTER_FRACTION = .6;
 
 const ScrollyPage = ({
@@ -20,10 +21,10 @@ const ScrollyPage = ({
     {}
   )
   const scrollY = useScrollYPosition();
-  // console.log('y', scrollY);
+
 
   /**
-   * Scrollytelling managmeent
+   * Scrollytelling management
    */
   useEffect(() => {
     // const bodyPos = document.body.getBoundingClientRect();

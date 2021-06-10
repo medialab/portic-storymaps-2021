@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useMemo} from 'react';
 import {csvParse} from 'd3-dsv';
 import {scaleLinear} from 'd3-scale';
 import get from 'axios';
@@ -6,43 +6,18 @@ import get from 'axios';
 import {prepareAlluvialData} from './utils';
 
 const CircularAlluvialComponent = ({
-  data: filename,
+  data : inputData = [],
   sumBy,
   steps,
   width=1200,
   height=800
 }) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const URL = `${process.env.PUBLIC_URL}/data/${filename}`;
-
-  useEffect(() => {
-    // aller chercher les données (get : lancement de la promesse se lance de suite : synchrone, then et catch plus tard)
-    get(URL)
-    .then(({data: csvString}) => {
-      // les convertir en js (avec d3-dsv)
-      const newData = csvParse(csvString);
-      const vizData = prepareAlluvialData(newData, {sumBy, steps});
-      console.log(vizData);
-      setData(vizData);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.log(err);
-      setLoading(false);
-    })
-  }, [URL, steps, sumBy])
-
-  if (loading) {
-    return (
-      <div>Chargement des données ({URL}) ...</div>
-    )
-  } else if (!data) {
-    return (
-    <div>Erreur ...</div>
-    )
-  }
+  // const [data, setData] = useState(null);
+  const data = useMemo(() => {
+    const vizData = prepareAlluvialData(inputData, {sumBy, steps});
+    console.log(vizData);
+    return vizData;
+  }, [inputData]);
 
   const BAR_WIDTH = width / 100;
   const stepXScale = scaleLinear().range([0, width]).domain([0, data.length - 1])

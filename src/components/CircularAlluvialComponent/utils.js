@@ -1,9 +1,11 @@
 import groupBy from 'lodash/groupBy';
 
-export const prepareAlluvialData = (data, spec) => {
+export const prepareAlluvialData = (inputData, spec) => {
   const {sumBy, steps: stepsSpec} = spec;
+  // attribute an id to each flow
+  const data = inputData.map((d, index) => ({...d, _id: index}))
   // compute nodes for each step
-  let steps = stepsSpec.map(step => {
+  let steps = stepsSpec.map((step, stepIndex) => {
     const {filters} = step;
     let stepData = data;
     if (filters && filters.length) {
@@ -97,86 +99,52 @@ export const prepareAlluvialData = (data, spec) => {
   })
 
   // compute links
-  steps = steps.map((step, index) => {
+  const stepsWithLinks = steps.map((step, index) => {
+    // for each step except last one
     if (index < steps.length - 1) {
       const nextStep = steps[index + 1];
       const nextKey = nextStep.field;
       const {nodes} = step;
-      const newNodes = nodes.map(node => {
+      // iterate over step's to add links
+      const newNodes = nodes.map((node, nodeIndex) => {
+        
         const {flows} = node;
-        // build groups of flows for next step
-        let nextGroups = groupBy(flows, f => f[nextKey]);
-        nextGroups = Object.entries(nextGroups).map(([id, initialFlows]) => {
-          const flows = initialFlows.map(flow => {
-            let valueAbs;
-            // if a sumBy is define with sum with its value
-            if (sumBy) {
-              let actualValue = flow[sumBy];
-              actualValue = actualValue === '' ? 0 : actualValue;
-              valueAbs = +actualValue
-            } else valueAbs = 1;
-            return {
-              ...flow,
-              valueAbs
+        
+        const newFlows = flows.map((flow, flowIndex) => {
+          const nextVal = flow[nextKey];
+          const nextStepGroup = nextStep.nodes.find(({id}) => id === nextVal);
+          if (nextStepGroup) {
+            
+            const nextFlow = nextStepGroup.flows.find(flow2 => {
+              return (flow._id === flow2._id)
+            })
+            if (nextFlow) {
+              const {
+                displaceAbs,
+                displacePart,
+                relativeDisplaceAbs,
+                relativeDisplacePart
+              } = nextFlow;
+              const nextPosition = {
+                displaceAbs,
+                displacePart,
+                relativeDisplaceAbs,
+                relativeDisplacePart
+              }
+              return {
+                ...flow,
+                nextPosition
+              }
             }
-          });
-          const valueAbs = flows.reduce((sum, flow) => {
-            return sum + flow.valueAbs
-          }, 0);
-          return {
-            id,
-            valueAbs,
-            flows
+          } else {
           }
-        });
-        // compute relative part of each modality
-        // const totalValue = nextGroups.reduce((sum, g) => sum + g.valueAbs, 0);
-        nextGroups = nextGroups.map(g => ({
-          ...g,
-          // valuePart: g.valueAbs / totalValue,
-          valuePart: g.valueAbs / step.totalValue,
-          flows: g.flows.map(f => ({
-            ...f, 
-            // valuePart: f.valueAbs / totalValue,
-            valuePart: f.valueAbs / step.totalValue,
-          }))
-        }));
-        return {
-          ...node,
-          links: nextGroups
-        }
-      })
-      return {
-        ...step,
-        nodes: newNodes
-      }
-    }
-    return step;
-  })
-  // @todo compute links displacement for start and end of each
-  steps = steps.map((step, stepIndex) => {
-    if (stepIndex < steps.length - 1) {
-      const nextStep = steps[stepIndex + 1];
-      
-      const newNodes = step.nodes.map(node => {
-        let displace1Abs = node.displaceAbs;
-        let displace1Rel = node.displacePart;
-        const newLinks = node.links.map(link => {
-          const newLink = {
-            ...link,
-            startAbs: displace1Abs,
-            startRel: displace1Rel,
-            // @todo compute flow-level displacement
-          }
-          displace1Abs += link.valueAbs;
-          displace1Rel += link.valueRel;
-          return newLink;
+          return flow;
         })
         return {
           ...node,
-          links: newLinks
+          flows: newFlows
         }
-      })
+      });
       return {
         ...step,
         nodes: newNodes
@@ -185,5 +153,5 @@ export const prepareAlluvialData = (data, spec) => {
     return step;
   })
 
-  return steps;
+  return stepsWithLinks;
 }

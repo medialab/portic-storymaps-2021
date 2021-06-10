@@ -2,7 +2,7 @@ import {useContext, useMemo} from 'react';
 
 import Test from './Test';
 import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
-import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2/';
+import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
 import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
 
 

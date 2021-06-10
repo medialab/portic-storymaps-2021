@@ -1,0 +1,57 @@
+
+
+
+.CircularAlluvialComponent {
+
+  .node-level-node {
+    fill: grey;
+    stroke: white;
+  }
+
+  .flow-level-node {
+    stroke: none;
+    stroke-width: 0;
+    fill: transparent;
+    &.is-highlighted {
+      fill: red;
+    }
+  }
+
+  .flow-link {
+    polygon {
+      fill: lightgrey;
+      stroke: none;
+      opacity: .5;
+    }
+    &.is-highlighted {
+      polygon {
+        fill: red;
+      }
+    }
+  }
+
+  &.has-filters {
+    .node-level-label:not(:hover),
+    .flow-link:not(:hover) {
+      opacity: .1;
+    }
+    .flow-link.is-filtered-in {
+      opacity: 1;
+      fill: green;
+      &.is-highlighted {
+        polygon {
+          fill: red;
+        }
+      }
+    }
+    .flow-level-node.is-filtered-in {
+      fill: green;
+      &.is-highlighted {
+          fill: red;
+      }
+    }
+    .node-level-label.is-filtered-in {
+      opacity: 1;
+    }
+  }
+}

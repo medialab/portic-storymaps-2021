@@ -3,6 +3,43 @@ import CircularAlluvialComponent from "../../components/CircularAlluvialComponen
 import './PrincipalVisualizationPart2.scss';
 
 const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
+  const {step} = props;
+  let alluvialFilters = [];
+  switch(step) {
+    case 2:
+      alluvialFilters = [
+        {
+          key: 'product',
+          value: `produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')`
+        },
+        {
+          key: 'partner',
+          value: `Afrique`
+        },
+        {
+          key: 'partner',
+          value: `Colonies`
+        }
+      ];
+      break;
+    case 3:
+      alluvialFilters = [
+        {
+          key: 'product',
+          value: `eau-de-vie et vins divers`
+        }
+      
+      ];
+      break;
+    case 4:
+      alluvialFilters = [{
+        key: 'product',
+        value: `sel`
+      }];
+      break;
+    default:
+      break;
+  }
   return (
     <div className="PrincipalVisualizationPart2">
      <div>
@@ -11,6 +48,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
           width={width}
           height={height}
           sumBy="value"
+          filters={alluvialFilters}
           steps={[
             {
               field: "customs_office",

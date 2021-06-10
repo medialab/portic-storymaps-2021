@@ -4,8 +4,8 @@ export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,19944
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1800
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,6000
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,38880
-export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,6500
 export,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')",Indéterminé (supposé réexportations vers Europe),2622875
+export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,6500
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,477.00003
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,800
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1603
@@ -47,15 +47,15 @@ export,Aligre,autres produits,Ports francs et petites îles,10983.5
 export,Aligre,autres produits,Ports francs et petites îles,402
 export,Aligre,autres produits,Ports francs et petites îles,102.5
 export,Aligre,autres produits,Ports francs et petites îles,12226
-export,Aligre,autres produits,Ports francs et petites îles,242
 export,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')",Indéterminé (supposé réexportations vers Europe),1273150
+export,Aligre,autres produits,Ports francs et petites îles,242
 export,Aligre,autres produits,Ports francs et petites îles,595
 export,Aligre,autres produits,Ports francs et petites îles,396
 export,Aligre,autres produits,Ports francs et petites îles,586
 export,Aligre,autres produits,Ports francs et petites îles,150
 export,Aligre,autres produits,Ports francs et petites îles,330
-export,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')",Indéterminé (supposé réexportations vers Europe),730943
 export,Aligre,autres produits,Ports francs et petites îles,469
+export,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')",Indéterminé (supposé réexportations vers Europe),730943
 export,Aligre,autres produits,Ports francs et petites îles,227277.5
 export,Aligre,autres produits,Ports francs et petites îles,135
 export,Aligre,autres produits,Ports francs et petites îles,110
@@ -575,8 +575,8 @@ export,La Rochelle,eau-de-vie et vins divers,Afrique,7370
 export,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",38060
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,20
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,108
-import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",3522
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,8398
+import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",3522
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,181
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,358
 import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1193
@@ -587,8 +587,8 @@ import,Les Sables d'Olonne,autres produits,Ports francs et petites îles,588
 import,Aligre,autres produits,Ports francs et petites îles,37887.898
 import,Aligre,autres produits,Grande Bretagne,5950
 import,Aligre,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')",Ports francs et petites îles,810
-import,Aligre,autres produits,Ports francs et petites îles,732
 import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",3588719
+import,Aligre,autres produits,Ports francs et petites îles,732
 import,Aligre,eau-de-vie et vins divers,Ports francs et petites îles,1233.75
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",139482
 import,Aligre,autres produits,Ports francs et petites îles,435.60001
@@ -615,8 +615,8 @@ import,Aligre,autres produits,Ports francs et petites îles,13680
 import,Aligre,autres produits,Ports francs et petites îles,1800
 import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",679373
 import,Aligre,autres produits,Ports francs et petites îles,95143.203
-import,Aligre,sel,Ports francs et petites îles,75306
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",45523
+import,Aligre,sel,Ports francs et petites îles,75306
 import,Aligre,autres produits,Ports francs et petites îles,725
 import,Aligre,eau-de-vie et vins divers,Ports francs et petites îles,400
 import,Aligre,eau-de-vie et vins divers,Ports francs et petites îles,1995
@@ -637,8 +637,8 @@ import,Rochefort,autres produits,Ports francs et petites îles,2252.5
 import,Rochefort,autres produits,Ports francs et petites îles,23718
 import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",766982
 import,Rochefort,autres produits,Europe,3786
-import,Rochefort,autres produits,Europe,8305
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",1567
+import,Rochefort,autres produits,Europe,8305
 import,Rochefort,autres produits,Europe,7066
 import,Rochefort,autres produits,Europe,65352
 import,Rochefort,autres produits,Ports francs et petites îles,27775
@@ -646,8 +646,8 @@ import,Rochefort,autres produits,Ports francs et petites îles,32142
 import,Rochefort,autres produits,Europe,360
 import,Rochefort,autres produits,Europe,1212
 import,Rochefort,autres produits,Grande Bretagne,34550
-import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",22588
 import,Rochefort,autres produits,Europe,337.5
+import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",22588
 import,Rochefort,autres produits,Grande Bretagne,180
 import,Rochefort,autres produits,Europe,180
 import,Rochefort,autres produits,Ports francs et petites îles,600
@@ -656,8 +656,8 @@ import,Rochefort,autres produits,Ports francs et petites îles,1855
 import,Rochefort,autres produits,Grande Bretagne,2260
 import,Rochefort,autres produits,Ports francs et petites îles,1462
 import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",1038452
-import,Rochefort,autres produits,Ports francs et petites îles,400
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",33052
+import,Rochefort,autres produits,Ports francs et petites îles,400
 import,Rochefort,autres produits,Europe,1653
 import,Rochefort,autres produits,Ports francs et petites îles,3138
 import,Rochefort,autres produits,Europe,626
@@ -669,15 +669,15 @@ import,Rochefort,autres produits,Europe,470
 import,Rochefort,autres produits,Europe,1172
 import,Rochefort,autres produits,Europe,1260
 import,Rochefort,autres produits,Grande Bretagne,3031
-import,Rochefort,autres produits,Europe,6126.3999
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",1055
+import,Rochefort,autres produits,Europe,6126.3999
 import,Rochefort,autres produits,Grande Bretagne,9349
 import,Rochefort,autres produits,Europe,282
 import,Rochefort,autres produits,Europe,6820
 import,Rochefort,autres produits,Grande Bretagne,3202.5002
 import,Rochefort,autres produits,Ports francs et petites îles,120
-import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",894917
 import,Rochefort,autres produits,Grande Bretagne,300
+import,La Rochelle,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",894917
 import,Rochefort,"produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')","Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",137863
 import,Rochefort,autres produits,Grande Bretagne,3860
 import,Rochefort,autres produits,Grande Bretagne,1550
@@ -727,8 +727,8 @@ import,Rochefort,autres produits,Grande Bretagne,68544.672
 import,Rochefort,autres produits,Europe,372
 import,Rochefort,autres produits,Europe,21323
 import,Rochefort,autres produits,Ports francs et petites îles,9959.25
-import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",810
 import,Rochefort,autres produits,Europe,178.5
+import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",810
 import,Rochefort,autres produits,Europe,1182
 import,Rochefort,autres produits,Ports francs et petites îles,147964
 import,Rochefort,autres produits,Ports francs et petites îles,691.25
@@ -745,10 +745,10 @@ import,Saint-Martin-de-Ré,autres produits,Grande Bretagne,5183.75
 import,Saint-Martin-de-Ré,autres produits,Europe,1800
 import,Saint-Martin-de-Ré,autres produits,Europe,1188
 import,Saint-Martin-de-Ré,autres produits,Europe,12400
-import,Saint-Martin-de-Ré,autres produits,Europe,1540
 import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",3330
-import,Saint-Martin-de-Ré,autres produits,Europe,25.200001
+import,Saint-Martin-de-Ré,autres produits,Europe,1540
 import,Rochefort,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",1431
+import,Saint-Martin-de-Ré,autres produits,Europe,25.200001
 import,Saint-Martin-de-Ré,autres produits,Europe,69103.203
 import,Saint-Martin-de-Ré,autres produits,Europe,5200
 import,Saint-Martin-de-Ré,autres produits,Europe,216
@@ -773,8 +773,8 @@ import,Saint-Martin-de-Ré,eau-de-vie et vins divers,Ports francs et petites îl
 import,Saint-Martin-de-Ré,autres produits,Reste du monde (USA),2680
 import,Saint-Martin-de-Ré,autres produits,Europe,15750.001
 import,Saint-Martin-de-Ré,autres produits,Europe,4950
-import,Saint-Martin-de-Ré,autres produits,Ports francs et petites îles,2443.5
 import,La Rochelle,eau-de-vie et vins divers,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",328
+import,Saint-Martin-de-Ré,autres produits,Ports francs et petites îles,2443.5
 import,Rochefort,eau-de-vie et vins divers,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",7170
 import,Saint-Martin-de-Ré,autres produits,Europe,5928.75
 import,Saint-Martin-de-Ré,autres produits,Ports francs et petites îles,680
@@ -831,10 +831,10 @@ import,Charente,autres produits,Grande Bretagne,813.20001
 import,Charente,autres produits,Europe,912
 import,Charente,autres produits,Europe,1338
 import,Charente,autres produits,Ports francs et petites îles,1296
-import,Charente,autres produits,Europe,71271.25
 import,La Rochelle,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",4080
-import,Rochefort,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",72
+import,Charente,autres produits,Europe,71271.25
 import,Charente,autres produits,Europe,19926.27
+import,Rochefort,autres produits,"Colonies (Saint-Domingue, Indes, îles fr de l'Amérique)",72
 import,Charente,autres produits,Europe,56218.785
 import,Charente,autres produits,Europe,4705.9204
 import,Charente,autres produits,Europe,1585.8
@@ -845,8 +845,8 @@ import,Charente,autres produits,Ports francs et petites îles,391
 import,Charente,autres produits,Grande Bretagne,142
 import,Charente,autres produits,Europe,112
 import,Charente,autres produits,Europe,165
-import,La Rochelle,autres produits,Afrique,47556
 import,Charente,autres produits,Grande Bretagne,348
+import,La Rochelle,autres produits,Afrique,47556
 import,Charente,autres produits,Ports francs et petites îles,810
 import,Charente,autres produits,Grande Bretagne,9645
 import,Charente,autres produits,Ports francs et petites îles,167

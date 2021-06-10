@@ -1,6 +1,10 @@
 import {useContext, useMemo} from 'react';
 
 import Test from './Test';
+import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
+import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
+import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
+
 
 import {DatasetsContext} from '../helpers/contexts';
 
@@ -21,9 +25,15 @@ const VisualizationContainer = ({id, ...props}) => {
     }
   }, [id, datasets]);
   switch(id) {
+    case 'viz-principale-partie-1':
+      return <PrincipalVisualizationPart1 {...props} datasets={relevantDatasets || {}} />;
+    case 'viz-principale-partie-2':
+      return <PrincipalVisualizationPart2 {...props} datasets={relevantDatasets || {}} />;
+    case 'viz-principale-partie-3':
+      return <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} />;
     case 'test':
     default:
-      return <Test {...props} datasets={relevantDatasets || {}} />
+      return <Test {...props} datasets={relevantDatasets || {}} />;
   }
 }
 

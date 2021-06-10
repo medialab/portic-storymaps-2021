@@ -74,68 +74,86 @@ const summary = [
       en: 'Partie 2 - A strong portual specialization'
     },
     contents: {
-      fr: 'fr/partie-2-intro.mdx',
-      en: 'en/part-2-intro.mdx'
+      fr: 'fr/partie-2.mdx',
+      en: 'en/part-2.mdx'
     },
     contentsProcessed: {
       fr: Part2IntroFr,
       en: Part2IntroEn,
     },
   },
-  {
-    routes: {
-      fr: 'partie-2-1',
-      en: 'part-2-1'
-    },
-    titles: {
-      fr: 'Partie 2.1 - La Rochelle et le commerce triangulaire',
-      en: 'Partie 2.1 - La Rochelle and triangular trade'
-    },
-    contents: {
-      fr: 'fr/partie-2-1.mdx',
-      en: 'en/part-2-1.mdx'
-    },
-    contentsProcessed: {
-      fr: Part21Fr,
-      en: Part21En,
-    },
-  },
-  {
-    routes: {
-      fr: 'partie-2-2',
-      en: 'part-2-2'
-    },
-    titles: {
-      fr: 'Partie 2.2 - Le commerce de l’eau-de-vie',
-      en: 'Partie 2.2 - Eau-de-vie trade'
-    },
-    contents: {
-      fr: 'fr/partie-2-2.mdx',
-      en: 'en/part-2-2.mdx'
-    },
-    contentsProcessed: {
-      fr: Part22Fr,
-      en: Part22En,
-    },
-  },
-  {
-    routes: {
-      fr: 'partie-2-3',
-      en: 'part-2-3'
-    },
-    titles: {
-      fr: 'Partie 2.3 - Marennes et le commerce du sel',
-      en: 'Partie 2.3 - Marennes and salt trade'
-    },
-    contents: {
-      fr: 'fr/partie-2-3.mdx',
-      en: 'en/part-2-3.mdx'
-    },
-    contentsProcessed: {
-      fr: Part23Fr,
-      en: Part23En,
-    },
-  },
+  // {
+  //   routes: {
+  //     fr: 'partie-2',
+  //     en: 'part-2'
+  //   },
+  //   titles: {
+  //     fr: 'Partie 2 - Une forte spécialisation portuaire: le cas de la traite négrière, du commerce du sel et de l\'eau-de-vie',
+  //     en: 'Partie 2 - A strong portual specialization'
+  //   },
+  //   contents: {
+  //     fr: 'fr/partie-2-intro.mdx',
+  //     en: 'en/part-2-intro.mdx'
+  //   },
+  //   contentsProcessed: {
+  //     fr: Part2IntroFr,
+  //     en: Part2IntroEn,
+  //   },
+  // },
+  // {
+  //   routes: {
+  //     fr: 'partie-2-1',
+  //     en: 'part-2-1'
+  //   },
+  //   titles: {
+  //     fr: 'Partie 2.1 - La Rochelle et le commerce triangulaire',
+  //     en: 'Partie 2.1 - La Rochelle and triangular trade'
+  //   },
+  //   contents: {
+  //     fr: 'fr/partie-2-1.mdx',
+  //     en: 'en/part-2-1.mdx'
+  //   },
+  //   contentsProcessed: {
+  //     fr: Part21Fr,
+  //     en: Part21En,
+  //   },
+  // },
+  // {
+  //   routes: {
+  //     fr: 'partie-2-2',
+  //     en: 'part-2-2'
+  //   },
+  //   titles: {
+  //     fr: 'Partie 2.2 - Le commerce de l’eau-de-vie',
+  //     en: 'Partie 2.2 - Eau-de-vie trade'
+  //   },
+  //   contents: {
+  //     fr: 'fr/partie-2-2.mdx',
+  //     en: 'en/part-2-2.mdx'
+  //   },
+  //   contentsProcessed: {
+  //     fr: Part22Fr,
+  //     en: Part22En,
+  //   },
+  // },
+  // {
+  //   routes: {
+  //     fr: 'partie-2-3',
+  //     en: 'part-2-3'
+  //   },
+  //   titles: {
+  //     fr: 'Partie 2.3 - Marennes et le commerce du sel',
+  //     en: 'Partie 2.3 - Marennes and salt trade'
+  //   },
+  //   contents: {
+  //     fr: 'fr/partie-2-3.mdx',
+  //     en: 'en/part-2-3.mdx'
+  //   },
+  //   contentsProcessed: {
+  //     fr: Part23Fr,
+  //     en: Part23En,
+  //   },
+  // },
   {
     routes: {
       fr: 'partie-3',

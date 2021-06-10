@@ -112,14 +112,13 @@ footer {
   position: relative;
   section {
     width: 30%;
-    margin-left: 70%;        
   }
   aside {
     position: fixed;
     background: red;
-    left: 0;
+    left: 30%;
     bottom: 0;
-    width: calc(70% - 3rem);
+    width: calc(70%);
     height: calc(100vh - 7rem);
   }
 }

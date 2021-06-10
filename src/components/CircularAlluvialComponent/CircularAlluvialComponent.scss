@@ -11,20 +11,20 @@
     font-size: .5rem;
   }
 
-  .step-container.is-oriented-horizontal {
-    .node-level-label {
-      // text-anchor: middle;
-    }
-  }
-
   .node-level-node {
-    fill: lightgrey;
-    // fill: orange;
+    // fill: lightgrey;
+    fill: orange;
     stroke: white;
   }
-  // .step-node-container:nth-child(odd) .node-level-node {
-  //   fill: green;
-  // }
+  .step-node-container:nth-child(odd) .node-level-node {
+    fill: green;
+  }
+
+  .node-level-label {
+    &.is-highlighted {
+      font-weight: 900;
+    }
+  }
 
   .flow-level-node {
     stroke: none;
@@ -37,13 +37,15 @@
   }
 
   .flow-link {
-    polygon {
+    polygon,
+    path {
       fill: lightgrey;
       stroke: none;
       opacity: .5;
     }
     &.is-highlighted {
-      polygon {
+      polygon,
+      path {
         fill: red;
       }
     }
@@ -51,14 +53,16 @@
 
   &.has-filters {
     .node-level-label:not(:hover),
+    .node-level-node,
     .flow-link:not(:hover) {
-      opacity: .1;
+      opacity: .3;
     }
     .flow-link.is-filtered-in {
       opacity: 1;
       fill: green;
       &.is-highlighted {
-        polygon {
+        polygon,
+        path {
           fill: red;
         }
       }

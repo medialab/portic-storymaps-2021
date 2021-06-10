@@ -41,7 +41,7 @@ const CircularAlluvialComponent = ({
         direction: 'top',
         displaceX: 0,
         displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
-        displaceText: HORIZONTAL_MARGIN * .15
+        displaceText: HORIZONTAL_MARGIN * .2
     },
     1: {
       orientation: 'vertical',
@@ -52,7 +52,7 @@ const CircularAlluvialComponent = ({
       orientation: 'horizontal',
       displaceX: smallestDimension - BAR_SIZE,
       displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
-      displaceText: HORIZONTAL_MARGIN * .15,
+      displaceText: HORIZONTAL_MARGIN * .2,
       direction: 'top'
     },
     3: {
@@ -139,7 +139,25 @@ const CircularAlluvialComponent = ({
                                 y2 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
                                 y3 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
                                 x2 = nextStepScales.displaceX +  nodesSizeScale(flow.nextPosition.displacePart) +  nodesSizeScale(flow.valuePart)
-
+                              }
+                              // @todo do this cleaner
+                              if (stepIndex === 3) {
+                                x2 += BAR_WIDTH;
+                                x3 += BAR_WIDTH;
+                              }
+                              if (stepIndex === 4) {
+                                x1 -= BAR_WIDTH;
+                                x4 -= BAR_WIDTH;
+                              }
+                              let controlPoint1X = x1,
+                                controlPoint1Y = y2,
+                                controlPoint2X = x4,
+                                controlPoint2Y = y3;
+                              if (stepIndex === 1 || stepIndex === 4) {
+                                controlPoint1X = x2;
+                                controlPoint1Y = y1;
+                                controlPoint2X = x3;
+                                controlPoint2Y = y4;
                               }
                               return (
                                 <g 
@@ -151,7 +169,7 @@ const CircularAlluvialComponent = ({
                                   })} 
                                   key={linkIndex}
                                 >
-                                  <polygon 
+                                  {/* <polygon 
                                     points={`
                                     ${x1},${y1} 
                                     ${x2}, ${y2} 
@@ -159,6 +177,18 @@ const CircularAlluvialComponent = ({
                                     ${x4},${y4} 
                                     `}
                                     title={'Valeur : ' + flow.valueAbs}
+                                  /> */}
+                                  <path 
+                                    d={`
+                                    M ${x1} ${y1} 
+                                    Q ${controlPoint1X} ${controlPoint1Y}, ${x2} ${y2} 
+                                    L ${x3} ${y3}
+                                    Q ${controlPoint2X} ${controlPoint2Y}, ${x4} ${y4} 
+                                    Z
+                                    `.trim().replace(/\n/g, ' ')}
+                                    title={'Valeur : ' + flow.valueAbs}
+                                    stroke="black"
+                                    strokeWidth="2"
                                   />
                                 </g>
                               )
@@ -213,6 +243,7 @@ const CircularAlluvialComponent = ({
                             className={
                               cx("node-level-label", {
                                 'is-filtered-in': filters && filters.find(({key, value}) => node.flows.find(flow => flow[key] === value)),
+                                'is-highlighted':  (highlightedFilter && node.id === highlightedFilter.value)
                               })
                             }
                           >

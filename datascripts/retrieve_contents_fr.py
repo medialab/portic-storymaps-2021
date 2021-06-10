@@ -22,7 +22,9 @@ with requests.Session() as s:
       parts.append(current_part)
       current_part = []
     elif line.startswith('&lt;Caller') and line.endswith('/&gt;'):
-      line = re.sub(r"^&lt;Caller (.*)/&gt;$", r"<Caller \1/>", line)
+      line = re.sub(r"^&lt;Caller (.*)/&gt;$", r"<Caller \1/>", line).replace('”', '"')
+    elif line.startswith('import'):
+      line = '| ' + line
     current_part.append(line)
   parts.append(current_part)
   parts = parts[1:]

@@ -121,8 +121,12 @@ const GeoComponent = ({
         return geoEqualEarth()
         .scale(50000)
         .center([-1.7475027, 46.573642])
+        .angle(180)
+        // .fitSize([width, height])
+        // .center([width/2, height/2])
+        // .rotate([-x,0])
         //.rotate([92.35, .5, -4])
-        .rotate([rotationDegree, 0, 0])
+        // .translate([rotationDegree, 0, 0])
         //.translate([width / 2, height / 2])
       }
       // if bg data is available fit on whole geometry

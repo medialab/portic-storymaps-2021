@@ -3,15 +3,34 @@
 
 .CircularAlluvialComponent {
 
+  .step-bar-background {
+    fill: lightgrey;
+  }
+
+  .node-level-label {
+    font-size: .5rem;
+  }
+
+  .step-container.is-oriented-horizontal {
+    .node-level-label {
+      // text-anchor: middle;
+    }
+  }
+
   .node-level-node {
-    fill: grey;
+    fill: lightgrey;
+    // fill: orange;
     stroke: white;
   }
+  // .step-node-container:nth-child(odd) .node-level-node {
+  //   fill: green;
+  // }
 
   .flow-level-node {
     stroke: none;
     stroke-width: 0;
     fill: transparent;
+    stroke: black;
     &.is-highlighted {
       fill: red;
     }

@@ -10,7 +10,7 @@ import {DatasetsContext} from '../helpers/contexts';
 
 import visualizationsList from '../visualizationsList';
 
-const VisualizationContainer = ({id, ...props}) => {
+const VisualizationContainer = ({id, dimensions, ...props}) => {
   const datasets = useContext(DatasetsContext);
   const relevantDatasets = useMemo(() => {
     const viz = visualizationsList.find(v => v.id === id);
@@ -26,11 +26,11 @@ const VisualizationContainer = ({id, ...props}) => {
   }, [id, datasets]);
   switch(id) {
     case 'viz-principale-partie-1':
-      return <PrincipalVisualizationPart1 {...props} datasets={relevantDatasets || {}} />;
+      return <PrincipalVisualizationPart1 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
     case 'viz-principale-partie-2':
-      return <PrincipalVisualizationPart2 {...props} datasets={relevantDatasets || {}} />;
+      return <PrincipalVisualizationPart2 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
     case 'viz-principale-partie-3':
-      return <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} />;
+      return <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
     case 'test':
     default:
       return <Test {...props} datasets={relevantDatasets || {}} />;

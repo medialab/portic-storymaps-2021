@@ -18,9 +18,12 @@ const LongitudinalTradeChart = ({
   // for axes
   absoluteLabel,
   shareLabel,
-  // TODO: update on resize in parent ?
+
   width,
   height,
+  productsHeight,
+
+  showProducts,
 }) => {
   const margin = { top: 20, right: 50, bottom: 30, left: 50 };
   const xBand = d3
@@ -134,7 +137,7 @@ const LongitudinalTradeChart = ({
   }, [data, svgNode]);
 
   //TODO: make that a prop or a config
-  const productVizHeight = 600;
+  const productVizHeight = productsHeight || height;
 
   // pass herfindhal for products chart color
   const her1750 = (data.filter((d) => d.year === "1750")[0] || {})[
@@ -144,11 +147,12 @@ const LongitudinalTradeChart = ({
     herfindhalField
   ];
 
+
   return (
     <>
       <svg ref={svgNode} width={width} height={height}></svg>
       {/* TODO: make year display generic peeking what's in the data ? */}
-      {productsData && (
+      {productsData && showProducts && (
         <div
           style={{
             position: "relative",

@@ -1,0 +1,13 @@
+
+
+
+.DeclineComponent {
+  .viz-1-step {
+    overflow: hidden;
+    max-height: 0;
+    transition : .5s ease max-height;
+    &.is-visible {
+      max-height: 100vh;
+    }
+  }
+}

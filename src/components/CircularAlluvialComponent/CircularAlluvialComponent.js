@@ -1,11 +1,20 @@
 import {useMemo, useState} from 'react';
 import {scaleLinear} from 'd3-scale';
+import {
+  schemeAccent as colorScheme1,
+  schemeDark2 as colorScheme2,
+  schemePaired as colorScheme3
+} from 'd3-scale-chromatic';
 import cx from 'classnames';
 
 import {prepareAlluvialData} from './utils';
 
 import './CircularAlluvialComponent.scss';
 import { min } from 'd3-array';
+import { uniq } from 'lodash-es';
+
+const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
+
 
 const CircularAlluvialComponent = ({
   data : inputData = [],
@@ -21,6 +30,28 @@ const CircularAlluvialComponent = ({
     const vizData = prepareAlluvialData(inputData, {sumBy, steps});
     return vizData;
   }, [inputData]);
+
+  const colorScales = useMemo(() => {
+    const modalitiesMap = data.reduce((cur, datum) => {
+      const ids = uniq(datum.nodes.map(node => node.id));
+      return {
+        ...cur, 
+        [datum.field]: cur[datum.field] ? uniq([...cur[datum.field], ...ids]) : ids
+      }
+    }, {});
+    return Object.entries(modalitiesMap).reduce((cur, [field, values], fieldIndex) => {
+      let counter = 0;
+      return {
+        ...cur,
+        [field]: values.reduce((m, value) => {
+          /*if (counter > colorScheme.length - 2) {
+            counter = 0;
+          } else*/ counter ++;
+          return {...m, [value]: colorSchemes[fieldIndex][counter - 1]}
+        }, {})
+      }
+    }, {})
+  }, data);
 
   const smallestDimension = useMemo(() => {
     return min([width, height])
@@ -76,11 +107,31 @@ const CircularAlluvialComponent = ({
     }
   }
   return (
-      <svg width={width} height={height} className={cx("CircularAlluvialComponent", {'has-filters': filters.length})}>
+    <>
+      <svg width={width} height={height} className={cx("CircularAlluvialComponent", {'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter})}>
+        <g className="background-marks">
+          <line x1={0} x2={width} y1={height/2} y2={height/2} />
+          <circle
+            cx={width /2}
+            cy={ height / 2}
+            r={smallestDimension * .5}
+          />
+          <text
+            x={HORIZONTAL_MARGIN}
+            y={height/2 - HORIZONTAL_MARGIN /2 + BAR_WIDTH}
+          >
+            EXPORTS
+          </text>
+          <text
+            x={HORIZONTAL_MARGIN}
+            y={height/2 + HORIZONTAL_MARGIN /2 + BAR_WIDTH}
+          >
+            IMPORTS
+          </text>
+        </g>
         <g transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} onMouseOut={handleMouseOut}>
           {
             data
-            // .filter((step, stepIndex) => stepScales[stepIndex].orientation === 'vertical')
             .map((step, stepIndex) => {
               let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, BAR_SIZE]);
               const {orientation, direction, displaceX, displaceY, displaceText} = stepScales[stepIndex];
@@ -103,7 +154,10 @@ const CircularAlluvialComponent = ({
                     step.nodes
                     .map((node, nodeIndex) => {
                       return (
-                        <g className="links-group" key={nodeIndex}>
+                        <g 
+                          className={cx("links-group")} 
+                          key={nodeIndex}
+                        >
                           {
                             node.flows
                             .filter(f => f.nextPosition)
@@ -187,8 +241,7 @@ const CircularAlluvialComponent = ({
                                     Z
                                     `.trim().replace(/\n/g, ' ')}
                                     title={'Valeur : ' + flow.valueAbs}
-                                    stroke="black"
-                                    strokeWidth="2"
+                                    style={{fill: colorScales[step.field][node.id]}}
                                   />
                                 </g>
                               )
@@ -223,7 +276,11 @@ const CircularAlluvialComponent = ({
                       }
                       return (
                         <g 
-                          className="step-node-container" 
+                          className={cx("step-node-container", {
+                            'has-highlights': (highlightedFlow && node.flows.find(flow => flow._id === highlightedFlow._id)) || 
+                            (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value),
+                            'is-highlighted':  (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value),
+                        })} 
                           key={node.id}
                           onMouseOver={handleMouseOver}
                         >
@@ -279,9 +336,10 @@ const CircularAlluvialComponent = ({
                                       'is-filtered-in': filters && filters.find(({key, value}) => flow[key] === value),
 
                                       'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id)
-                                      || (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
+                                      // || (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
                                     })
                                   }
+                                  style={{fill: colorScales[step.field][node.id]}}
                                   title={node.id}
                                 />
                               )
@@ -297,7 +355,22 @@ const CircularAlluvialComponent = ({
             })
           }
         </g>
+        
       </svg>
+      {
+        highlightedFlow ?
+        <div style={{
+          position:'absolute',
+          left: smallestDimension/10,
+          top: 0,
+          maxWidth: smallestDimension / 4,
+          fontSize: '.8rem'
+        }}>
+            Flux affiché : {highlightedFlow.flow_type} de {highlightedFlow.product} {highlightedFlow.flow_type === 'export' ? 'vers' : 'depuis'} {highlightedFlow.partner} (valeur : {highlightedFlow[sumBy]})
+        </div>
+        : null
+      }
+      </>
   )
 }
 

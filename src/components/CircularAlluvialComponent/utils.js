@@ -55,7 +55,8 @@ export const prepareAlluvialData = (inputData, spec) => {
       ...step,
       totalValue,
       nodes: groups.sort((a, b) => {
-        if (a.id > b.id) {
+        // if (a.id > b.id) {
+        if (a.valuePart < b.valuePart) {
           return 1;
         }
         return -1;

@@ -23,6 +23,7 @@
     "d3": "^6.7.0",
     "d3-dsv": "^2.0.0",
     "d3-geo": "^2.0.1",
+    "d3-scale-chromatic": "^3.0.0",
     "graphology": "^0.19.3",
     "graphology-gexf": "^0.7.5",
     "intersection-observer": "^0.12.0",

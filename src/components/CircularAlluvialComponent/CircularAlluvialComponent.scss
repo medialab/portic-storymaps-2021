@@ -3,8 +3,23 @@
 
 .CircularAlluvialComponent {
 
+  .background-marks {
+    line,
+    circle {
+      stroke: grey;
+      stroke-dasharray: 2, 3;
+    }
+    circle {
+      fill: grey;
+      fill-opacity: .05;
+    }
+    text {
+      fill: grey;
+    }
+  }
+
   .step-bar-background {
-    fill: lightgrey;
+    fill: transparent;
   }
 
   .node-level-label {
@@ -12,13 +27,13 @@
   }
 
   .node-level-node {
-    // fill: lightgrey;
-    fill: orange;
+    fill: lightgrey;
+    // fill: orange;
     stroke: white;
   }
-  .step-node-container:nth-child(odd) .node-level-node {
-    fill: green;
-  }
+  // .step-node-container:nth-child(odd) .node-level-node {
+  //   fill: green;
+  // }
 
   .node-level-label {
     &.is-highlighted {
@@ -51,26 +66,64 @@
     }
   }
 
-  &.has-filters {
-    .node-level-label:not(:hover),
+  &.has-filters,
+  &.has-highlight {
     .node-level-node,
-    .flow-link:not(:hover) {
-      opacity: .3;
+    .flow-link:not(:hover),
+    .flow-level-node
+     {
+      opacity: .1;
     }
-    .flow-link.is-filtered-in {
-      opacity: 1;
-      fill: green;
-      &.is-highlighted {
-        polygon,
-        path {
-          fill: red;
+    .node-level-label {
+      opacity: .6;
+    }
+
+    .step-node-container {
+      &.has-highlights {
+        .node-level-label {
+          opacity: 1;
+        }
+        .flow-level-node {
+          opacity: .5;
         }
       }
-    }
-    .flow-level-node.is-filtered-in {
-      fill: green;
+
       &.is-highlighted {
-          fill: red;
+        .flow-level-node {
+          opacity: 1;
+        }
+      }
+      
+    }
+    .flow-link,
+    .flow-level-node,
+    .node-level-label {
+      &.is-highlighted,
+      &.is-filtered-in {
+        opacity: 1;
+      }
+    }
+    .flow-level-node {
+      &.is-highlighted {
+        stroke: white;
+        stroke-width: .5;
+      }
+    }
+    // .flow-link.is-filtered-in {
+    //   opacity: 1;
+    //   fill: green;
+    //   &.is-highlighted {
+    //     polygon,
+    //     path {
+    //       fill: red;
+    //     }
+    //   }
+    // }
+    .flow-level-node {
+      
+      &.is-filtered-in,
+      &.is-highlighted {
+        opacity: 1;
       }
     }
     .node-level-label.is-filtered-in {

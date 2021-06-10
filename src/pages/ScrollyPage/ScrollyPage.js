@@ -22,11 +22,7 @@ const ScrollyPage = ({
   )
   const scrollY = useScrollYPosition();
 
-
-  /**
-   * Scrollytelling management
-   */
-  useEffect(() => {
+  const updateCurrentVisualization = () => {
     // const bodyPos = document.body.getBoundingClientRect();
       const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
       const y = scrollY + DISPLACE_Y;
@@ -55,7 +51,12 @@ const ScrollyPage = ({
       if (!found && activeVisualization) {
         setActiveVisualization(undefined);
       }
-  }, [scrollY])
+  }
+
+  /**
+   * Scrollytelling management
+   */
+  useEffect(updateCurrentVisualization, [scrollY, visualizations])
 
   const onRegisterVisualization = (params) => {
     const finalParams = {

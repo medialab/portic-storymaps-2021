@@ -48,7 +48,10 @@ const ScrollyPage = ({
           }
         }
       }
-      if (!found && activeVisualization) {
+      if (!found && scrollY < DISPLACE_Y && visualizationEntries.length) {
+        setActiveVisualization(visualizationEntries[0][1])
+      }
+      else if (!found && activeVisualization) {
         setActiveVisualization(undefined);
       }
   }

@@ -5,6 +5,7 @@ import './PrincipalVisualizationPart2.scss';
 const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
   const {step} = props;
   let alluvialFilters = [];
+  let sumToflitBy = 'value';
   switch(step) {
     case 2:
       alluvialFilters = [
@@ -36,10 +37,12 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
         key: 'product',
         value: `sel`
       }];
+      sumToflitBy = 'product_weight_kg'
       break;
     default:
       break;
   }
+  console.log('sumToflitBy', sumToflitBy)
   return (
     <div className="PrincipalVisualizationPart2">
      <div>
@@ -47,7 +50,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
           data={datasets['part_2_toflit_viz_data.csv']}
           width={width}
           height={height}
-          sumBy="value"
+          sumBy={sumToflitBy}
           filters={alluvialFilters}
           steps={[
             {

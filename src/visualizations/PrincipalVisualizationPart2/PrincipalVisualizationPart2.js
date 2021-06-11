@@ -2,7 +2,7 @@ import CircularAlluvialComponent from "../../components/CircularAlluvialComponen
 
 import './PrincipalVisualizationPart2.scss';
 
-const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
+const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, ...props}) => {
   const {step} = props;
   let alluvialFilters = [];
   let sumToflitBy = 'value';
@@ -48,7 +48,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
      <div>
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={width}
+          width={showOnlyToflit ? width : width / 2}
           height={height}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
@@ -104,8 +104,8 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, ...props}) => {
           ]}
         />
      </div>
-     <div>
-       Radar à venir ici
+     <div className="radar-container">
+       <img src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
      </div>
     </div>
   )

@@ -3,4 +3,21 @@
 .PrincipalVisualizationPart2 {
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-flow: row nowrap;
+  > div {
+    flex: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .radar-container {
+    padding-left: 1rem;
+    img {
+      max-width: 100%;
+    }
+  }
 }

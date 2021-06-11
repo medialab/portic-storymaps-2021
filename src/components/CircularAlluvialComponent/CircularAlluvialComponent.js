@@ -106,24 +106,24 @@ const CircularAlluvialComponent = ({
   }
   return (
     <>
-      <div style={{fontSize: '.6rem'}}>Aggrégation par le champ : {sumBy}</div>
+      <div style={{fontSize: '.6rem', alignSelf: 'flex-start'}}>Aggrégation par le champ : {sumBy}</div>
       <svg width={width} height={height} className={cx("CircularAlluvialComponent", {'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter})}>
         <g className="background-marks">
-          <line x1={0} x2={width} y1={height/2} y2={height/2} />
+          <line x1={0} x2={smallestDimension} y1={smallestDimension/2} y2={smallestDimension/2} />
           <circle
-            cx={width /2}
-            cy={ height / 2}
+            cx={smallestDimension /2}
+            cy={ smallestDimension / 2}
             r={smallestDimension * .5}
           />
           <text
-            x={HORIZONTAL_MARGIN}
-            y={height/2 - HORIZONTAL_MARGIN /2 + BAR_WIDTH}
+            x={smallestDimension / 2}
+            y={smallestDimension/2 - HORIZONTAL_MARGIN /2 + BAR_WIDTH}
           >
             EXPORTS
           </text>
           <text
-            x={HORIZONTAL_MARGIN}
-            y={height/2 + HORIZONTAL_MARGIN /2 + BAR_WIDTH}
+            x={smallestDimension / 2}
+            y={smallestDimension/2 + HORIZONTAL_MARGIN /2 + BAR_WIDTH}
           >
             IMPORTS
           </text>
@@ -273,6 +273,8 @@ const CircularAlluvialComponent = ({
                         }
                         setHighlightedFilter({key: step.field, value: node.id})
                       }
+                      const isHighlighted = (highlightedFilter && node.id === highlightedFilter.value);
+                      const isFilteredIn = filters && filters.find(({key, value}) => node.flows.find(flow => flow[key] === value))
                       return (
                         <g 
                           className={cx("step-node-container", {
@@ -298,14 +300,14 @@ const CircularAlluvialComponent = ({
 
                             className={
                               cx("node-level-label", {
-                                'is-filtered-in': filters && filters.find(({key, value}) => node.flows.find(flow => flow[key] === value)),
-                                'is-highlighted':  (highlightedFilter && node.id === highlightedFilter.value)
+                                'is-filtered-in': isFilteredIn,
+                                'is-highlighted':  isHighlighted
                               })
                             }
                           >
                             <text
                               style={{
-                                fontSize: textScale(node.valuePart)
+                                fontSize: textScale(node.valuePart) * (isHighlighted ? 1.5 : 1)
                               }}
                             >
                               {node.id.split('(')[0]}
@@ -332,7 +334,7 @@ const CircularAlluvialComponent = ({
                                   height={flowHeight}
                                   className={
                                     cx("flow-level-node", {
-                                      'is-filtered-in': filters && filters.find(({key, value}) => flow[key] === value),
+                                      'is-filtered-in': isFilteredIn,
 
                                       'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id) ||
                                       (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
@@ -362,8 +364,8 @@ const CircularAlluvialComponent = ({
         <div style={{
           position:'absolute',
           left: 0,
-          top: '1rem',
-          maxWidth: smallestDimension / 4,
+          bottom: '1rem',
+          maxWidth: smallestDimension / 2,
           fontSize: '.8rem'
         }}>
             Flux affiché : {highlightedFlow.flow_type} de {highlightedFlow.product} {highlightedFlow.flow_type === 'export' ? 'vers' : 'depuis'} {highlightedFlow.partner} (valeur : {highlightedFlow[sumBy]})

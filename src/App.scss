@@ -110,7 +110,9 @@ footer {
 **/
 .ScrollyPage {
   position: relative;
-  width: 100vw;
+  width: calc(100vw - 2rem);
+  max-width: calc(100vw - 2rem);
+  overflow-x: hidden;
   section {
     width: 30%;
     padding-right: 1rem;

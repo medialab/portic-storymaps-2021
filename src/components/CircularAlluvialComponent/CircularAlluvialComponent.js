@@ -82,7 +82,7 @@ const CircularAlluvialComponent = ({
       displaceX: smallestDimension - BAR_SIZE,
       displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
       displaceText: HORIZONTAL_MARGIN * .2,
-      direction: 'top'
+      direction: 'top',
     },
     3: {
       orientation: 'horizontal',
@@ -188,10 +188,11 @@ const CircularAlluvialComponent = ({
                                 x4 = displaceX + nodesSizeScale(flow.displacePart) + nodesSizeScale(flow.valuePart);
                               }
                               if (nextStepScales.orientation === 'horizontal') {
-                                x3 = nextStepScales.displaceX + nodesSizeScale(flow.nextPosition.displacePart);
+                                x2 = nextStepScales.displaceX + nodesSizeScale(flow.nextPosition.displacePart) +  nodesSizeScale(flow.valuePart)
                                 y2 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
+
+                                x3 = nextStepScales.displaceX + nodesSizeScale(flow.nextPosition.displacePart);
                                 y3 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
-                                x2 = nextStepScales.displaceX +  nodesSizeScale(flow.nextPosition.displacePart) +  nodesSizeScale(flow.valuePart)
                               }
                               // @todo do this cleaner
                               if (stepIndex === 3) {

@@ -52,10 +52,11 @@ export const prepareAlluvialData = (inputData, spec) => {
       }))
       .sort((a, b) => {
         // if (a.id > b.id) {
+        const sortAscending = stepIndex >= 2 && stepIndex <= 4 ? -1 : 1;
         if (a.valuePart < b.valuePart) {
-          return 1;
+          return sortAscending;
         }
-        return -1;
+        return -sortAscending;
       })
     }));
     return {
@@ -63,10 +64,11 @@ export const prepareAlluvialData = (inputData, spec) => {
       totalValue,
       nodes: groups.sort((a, b) => {
         // if (a.id > b.id) {
+        const sortAscending = stepIndex >= 2 && stepIndex <= 4 ? -1 : 1;
         if (a.valuePart < b.valuePart) {
-          return 1;
+          return sortAscending;
         }
-        return -1;
+        return -sortAscending;
       })
     }
   })

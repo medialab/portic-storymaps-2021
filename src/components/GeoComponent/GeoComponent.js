@@ -121,7 +121,12 @@ const GeoComponent = ({
         return geoEqualEarth()
         .scale(50000)
         .center([-1.7475027, 46.573642])
-        .angle(180)
+
+        // tests non fructueux : j'ai besoin de chnger le sens dans lequel je fais les choses
+        // voir https://github.com/d3/d3-geo#paths
+
+        // récapitulatif de toutes les méthodes testées : 
+        // .angle(180)
         // .fitSize([width, height])
         // .center([width/2, height/2])
         // .rotate([-x,0])

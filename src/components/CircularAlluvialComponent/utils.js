@@ -50,6 +50,13 @@ export const prepareAlluvialData = (inputData, spec) => {
         ...flow,
         valuePart: flow.valueAbs / totalValue
       }))
+      .sort((a, b) => {
+        // if (a.id > b.id) {
+        if (a.valuePart < b.valuePart) {
+          return 1;
+        }
+        return -1;
+      })
     }));
     return {
       ...step,

@@ -3,6 +3,7 @@
 
 .CircularAlluvialComponent {
 
+
   .background-marks {
     line,
     circle {
@@ -29,7 +30,7 @@
   .node-level-node {
     fill: lightgrey;
     // fill: orange;
-    stroke: white;
+    // stroke: white;
   }
   // .step-node-container:nth-child(odd) .node-level-node {
   //   fill: green;
@@ -98,30 +99,23 @@
     .flow-link,
     .flow-level-node,
     .node-level-label {
-      &.is-highlighted,
       &.is-filtered-in {
+        opacity: .7;
+      }
+      &.is-highlighted {
         opacity: 1;
       }
     }
     .flow-level-node {
       &.is-highlighted {
-        stroke: white;
-        stroke-width: .5;
+        // stroke: white;
+        // stroke-width: .2;
       }
     }
-    // .flow-link.is-filtered-in {
-    //   opacity: 1;
-    //   fill: green;
-    //   &.is-highlighted {
-    //     polygon,
-    //     path {
-    //       fill: red;
-    //     }
-    //   }
-    // }
     .flow-level-node {
-      
-      &.is-filtered-in,
+      &.is-filtered-in {
+        opacity: .7;
+      }
       &.is-highlighted {
         opacity: 1;
       }

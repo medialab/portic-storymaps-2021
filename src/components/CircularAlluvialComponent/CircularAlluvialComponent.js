@@ -29,7 +29,7 @@ const CircularAlluvialComponent = ({
   const data = useMemo(() => {
     const vizData = prepareAlluvialData(inputData, {sumBy, steps});
     return vizData;
-  }, [inputData]);
+  }, [inputData, sumBy, steps]);
 
   const colorScales = useMemo(() => {
     const modalitiesMap = data.reduce((cur, datum) => {
@@ -44,20 +44,18 @@ const CircularAlluvialComponent = ({
       return {
         ...cur,
         [field]: values.reduce((m, value) => {
-          /*if (counter > colorScheme.length - 2) {
-            counter = 0;
-          } else*/ counter ++;
+          counter ++;
           return {...m, [value]: colorSchemes[fieldIndex][counter - 1]}
         }, {})
       }
     }, {})
-  }, data);
+  }, [data]);
 
   const smallestDimension = useMemo(() => {
     return min([width, height])
   }, [width, height])
 
-  const BAR_SIZE = smallestDimension / 3;
+  const BAR_SIZE = smallestDimension * .33;
   const BAR_WIDTH = smallestDimension / 50;
   // margin for double bars
   const HORIZONTAL_MARGIN = smallestDimension * .15;
@@ -108,6 +106,7 @@ const CircularAlluvialComponent = ({
   }
   return (
     <>
+      <div style={{fontSize: '.6rem'}}>Aggrégation par le champ : {sumBy}</div>
       <svg width={width} height={height} className={cx("CircularAlluvialComponent", {'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter})}>
         <g className="background-marks">
           <line x1={0} x2={width} y1={height/2} y2={height/2} />
@@ -133,8 +132,8 @@ const CircularAlluvialComponent = ({
           {
             data
             .map((step, stepIndex) => {
-              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, BAR_SIZE]);
               const {orientation, direction, displaceX, displaceY, displaceText} = stepScales[stepIndex];
+              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0,  BAR_SIZE]);
               return (
                 <g 
                   className={cx("step-container", 'is-oriented-' + orientation)}
@@ -335,7 +334,8 @@ const CircularAlluvialComponent = ({
                                     cx("flow-level-node", {
                                       'is-filtered-in': filters && filters.find(({key, value}) => flow[key] === value),
 
-                                      'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id)
+                                      'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id) ||
+                                      (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
                                       // || (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
                                     })
                                   }
@@ -361,8 +361,8 @@ const CircularAlluvialComponent = ({
         highlightedFlow ?
         <div style={{
           position:'absolute',
-          left: smallestDimension/10,
-          top: 0,
+          left: 0,
+          top: '1rem',
           maxWidth: smallestDimension / 4,
           fontSize: '.8rem'
         }}>

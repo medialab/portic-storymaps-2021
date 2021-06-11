@@ -32,7 +32,7 @@ nav ul{
   margin: 0;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: stretch;
+  justify-content: space-between;
   width: calc(100% - 2rem);
 }
 

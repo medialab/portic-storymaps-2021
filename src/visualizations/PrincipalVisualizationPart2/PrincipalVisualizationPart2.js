@@ -42,7 +42,6 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, .
     default:
       break;
   }
-  console.log('sumToflitBy', sumToflitBy)
   return (
     <div className="PrincipalVisualizationPart2">
      <div>

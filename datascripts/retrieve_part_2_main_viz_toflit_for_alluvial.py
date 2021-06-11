@@ -21,7 +21,12 @@ colonies_products = {
     "Imports": {}
 }
 for f in relevant_flows :
-    
+    product_weight_kg = 0
+    # @todo a lot of products are flushed out when doing thing
+    # print(f['quantities_metric'], f['quantity_unit_metric'])
+    if f['quantity_unit_metric'] and f['quantity_unit_metric'] == 'kg':
+      product_weight_kg = float(f['quantities_metric'] if f['quantities_metric'] else 0)
+    f['product_weight_kg'] = product_weight_kg
     product_viz = ''
     product = f['product_revolutionempire']
     value = f['value'].split('.')[0] if f['value'].split('.')[0] != '' else 0
@@ -70,7 +75,8 @@ def format_for_viz(f):
         "customs_office": f['customs_office'],
         "product": f["product_viz"],
         "partner": f["partner_viz"],
-        "value": f["value"]
+        "value": f["value"],
+        "product_weight_kg": f['product_weight_kg']
     }
 
 # write dataset

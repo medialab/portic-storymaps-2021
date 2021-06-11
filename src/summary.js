@@ -28,6 +28,9 @@ import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';
 import AboutFr from '!babel-loader!mdx-loader!./contents/fr/a-propos.mdx';
 import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
 
+import TestsFr from '!babel-loader!mdx-loader!./contents/fr/tests.mdx';
+import TestsEn from '!babel-loader!mdx-loader!./contents/en/tests.mdx';
+
 
 const summary = [
   // {
@@ -196,6 +199,24 @@ const summary = [
       en: AboutEn,
     },
   },
+  {
+    routes: {
+      fr: 'tests',
+      en: 'tests'
+    },
+    titles: {
+      fr: 'Tests',
+      en: 'Tests'
+    },
+    contents: {
+      fr: 'fr/tests.mdx',
+      en: 'en/Tests.mdx'
+    },
+    contentsProcessed: {
+      fr: TestsFr,
+      en: TestsEn,
+    },
+  }
 ]
 
 

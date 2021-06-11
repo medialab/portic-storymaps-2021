@@ -1,84 +1,14 @@
-import SvgComponent from '../../components/SvgComponent';
-import VegaComponent from '../../components/VegaComponent';
-import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent';
-import TriangleComponent from '../../components/TriangleComponent';
 
-import test from './ports-region-1789.svg'
 
-# Test triangle
+import test from './ports-region-1789.svg';
 
-<TriangleComponent dataFilename="part_3-tonnages_per_ports.csv" />
 
 # Commerce multi-échelle dans la région de La Rochelle
 
-
 Ce site a vocation à monter progressivement les "storymaps" issues du datasprint PORTIC 2021.
 
-Voici un tour d'horizon des modules react préparés pour faciliter le développement :
-
-## Image SVG (avec webpack)
-
-On intègre une image  SVG depuis le local (elle sera donc packée par webpack) :
-
-<img src={test} />
-
-## Image SVG (sans webpack)
-
-On intègre ici directement une image à partir de son URL en ligne (depuis le dossier `public`)
-
-<SvgComponent path ="/svg/ports-region-1789.svg" />
-
-## Visualisation vega
-
-Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `public/data` et d'une spec vega.
-
-<VegaComponent 
-  data="sorties_navires_vers_colonies.csv" 
-  spec={{
-    "mark": "rect",
-    "encoding": {
-      "x": {
-        "field": "port_depart",
-        "type": "nominal"
-      },
-      "y": {
-        "field": "port_destination",
-        "type": "nominal"
-      },
-      "color": {
-        "type": "quantitative",
-        "field": "tonnage",
-        "aggregate": "sum"
-      }
-      
-    }
-  }}
-/>
-
-## Réseau avec sigma
-
-Les visualisations sigma ont besoin d'un fichier gexf stocké dans le dossier `public/data`.
-
-Paramètres :
-
-* `nodeColor` : attribut pour couleur
-* `nodeSize` : attribut pour taille
-* `labelDensity` : densité des labels (float dans [0, 1])
-
-
-<SigmaComponent 
-  data="toflit_aggregate_1789_only_out.gexf" 
-  nodeColor={`admiralty`}
-  nodeSize={`inside_degree`}
-  labelDensity={0.5}
-/>
-
-## Carto en react+d3+SVG
-
-Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
-
-Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
+## Ci-dessous une carte des ports de la région étudiée 
 
 <GeoComponent 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
@@ -90,18 +20,3 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   centerOnRegion
 />
 
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-/>
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  label="pointcall"
-  showLabels
-/>

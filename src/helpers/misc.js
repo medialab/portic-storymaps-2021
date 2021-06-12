@@ -13,6 +13,13 @@ const DEFAULT_COLOR_SPACE = {
 
 const SINGLE_COLOR_PALETTE = ['#999'];
 
+export function cartesian2Polar(x, y){
+  const distance = Math.sqrt(x*x + y*y)
+  const radians = Math.atan2(y,x) //This takes y first
+  return { distance:distance, radians:radians }
+}
+
+
 export function usePrevious(value) {
   const ref = useRef();
   useEffect(() => {

@@ -12,6 +12,7 @@ import {prepareAlluvialData} from './utils';
 import './CircularAlluvialComponent.scss';
 import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
+import { cartesian2Polar } from '../../helpers/misc';
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
 
@@ -55,7 +56,7 @@ const CircularAlluvialComponent = ({
     return min([width, height])
   }, [width, height])
 
-  const BAR_SIZE = smallestDimension * .33;
+  let BAR_SIZE = smallestDimension * .33;
   const BAR_WIDTH = smallestDimension / 50;
   // margin for double bars
   const HORIZONTAL_MARGIN = smallestDimension * .15;
@@ -104,6 +105,8 @@ const CircularAlluvialComponent = ({
       direction: 'bottom'
     }
   }
+  const secondCircleRadius = cartesian2Polar(-smallestDimension/2 + BAR_SIZE, -HORIZONTAL_MARGIN / 2 ).distance;
+  const VERTICAL_BAR_SIZE = smallestDimension / 2 - secondCircleRadius;
   return (
     <>
       <div style={{fontSize: '.6rem', alignSelf: 'flex-start'}}>Aggrégation par le champ : {sumBy}</div>
@@ -115,6 +118,11 @@ const CircularAlluvialComponent = ({
             cy={ smallestDimension / 2}
             r={smallestDimension * .5}
           />
+          {/* <circle
+            cx={smallestDimension /2}
+            cy={ smallestDimension / 2}
+            r={secondCircleRadius}
+          /> */}
           <text
             x={smallestDimension / 2}
             y={smallestDimension/2 - HORIZONTAL_MARGIN /2 + BAR_WIDTH}
@@ -132,8 +140,9 @@ const CircularAlluvialComponent = ({
           {
             data
             .map((step, stepIndex) => {
-              const {orientation, direction, displaceX, displaceY, displaceText} = stepScales[stepIndex];
-              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0,  BAR_SIZE]);
+              const {orientation, direction, displaceX, displaceY: initialDisplaceY, displaceText} = stepScales[stepIndex];
+              let displaceY = initialDisplaceY;
+              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE]);
               return (
                 <g 
                   className={cx("step-container", 'is-oriented-' + orientation)}
@@ -168,15 +177,16 @@ const CircularAlluvialComponent = ({
                                 setHighlightedFlow(flow);
                               }
                               const nextStepScales  = stepScales[stepIndex + 1];
+                              let nextNodesSizeScale = scaleLinear().domain([0, 1]).range([0, nextStepScales.orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE]);
 
                               let x1 = displaceX + BAR_WIDTH;
                               let y1 = displaceY + nodesSizeScale(flow.displacePart);
                               
                               let x2 = nextStepScales.displaceX //+ stepXScale(stepIndex + 1);
-                              let y2 = nextStepScales.displaceY + nodesSizeScale(flow.nextPosition.displacePart);
+                              let y2 = nextStepScales.displaceY + nextNodesSizeScale(flow.nextPosition.displacePart);
                               
                               let x3 = nextStepScales.displaceX // + stepXScale(stepIndex + 1);
-                              let y3 = nextStepScales.displaceY + nodesSizeScale(flow.nextPosition.displacePart) + nodesSizeScale(flow.valuePart);
+                              let y3 = nextStepScales.displaceY + nextNodesSizeScale(flow.nextPosition.displacePart) + nodesSizeScale(flow.valuePart);
                               
                               let y4 = displaceY + nodesSizeScale(flow.displacePart) + nodesSizeScale(flow.valuePart);
                               let x4 = displaceX + BAR_WIDTH;
@@ -188,20 +198,24 @@ const CircularAlluvialComponent = ({
                                 x4 = displaceX + nodesSizeScale(flow.displacePart) + nodesSizeScale(flow.valuePart);
                               }
                               if (nextStepScales.orientation === 'horizontal') {
-                                x2 = nextStepScales.displaceX + nodesSizeScale(flow.nextPosition.displacePart) +  nodesSizeScale(flow.valuePart)
+                                x2 = nextStepScales.displaceX + nextNodesSizeScale(flow.nextPosition.displacePart) +  nodesSizeScale(flow.valuePart)
                                 y2 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
 
-                                x3 = nextStepScales.displaceX + nodesSizeScale(flow.nextPosition.displacePart);
+                                x3 = nextStepScales.displaceX + nextNodesSizeScale(flow.nextPosition.displacePart);
                                 y3 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
                               }
                               // @todo do this cleaner
                               if (stepIndex === 3) {
                                 x2 += BAR_WIDTH;
                                 x3 += BAR_WIDTH;
+                                y2 += BAR_WIDTH;
+                                y3 += BAR_WIDTH;
                               }
                               if (stepIndex === 4) {
                                 x1 -= BAR_WIDTH;
                                 x4 -= BAR_WIDTH;
+                                y1 += BAR_WIDTH;
+                                y4 += BAR_WIDTH;
                               }
                               let controlPoint1X = x1,
                                 controlPoint1Y = y2,
@@ -268,6 +282,9 @@ const CircularAlluvialComponent = ({
                         x = displaceX + initialY;
                         y = displaceY;
                       }
+                      if (stepIndex === 4) {
+                        y += BAR_WIDTH;
+                      }
                       const handleMouseOver = () => {
                         if (highlightedFlow) {
                           setHighlightedFlow(undefined);
@@ -318,6 +335,9 @@ const CircularAlluvialComponent = ({
                             node.flows.map((flow, flowIndex) => {
                               let flowX = x;
                               let flowY = displaceY + nodesSizeScale(flow.displacePart);
+                              if (stepIndex === 4) {
+                                flowY += BAR_WIDTH;
+                              }
                               let flowWidth = BAR_WIDTH;
                               let flowHeight = nodesSizeScale(flow.valuePart);
                               if (orientation === 'horizontal') {

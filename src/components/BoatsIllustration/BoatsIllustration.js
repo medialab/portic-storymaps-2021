@@ -6,7 +6,8 @@ import {useInterval} from '../../helpers/hooks';
 
 import './BoatsIllustration.scss';
 
-const PASS_DURATION = 60000;
+const PASS_DURATION = 100000;
+const UPDATE_RATE = 4000;
 
 const Hull = ({
   width,
@@ -274,7 +275,7 @@ const MovingBoat = ({
 
 const BoatsIllustration = ({
   width = 1200,
-  height = 200,
+  height = 100,
 }) => {
   const createBoat = (payload = {}) => {
     const {startAt = 0} = payload;
@@ -336,7 +337,7 @@ const BoatsIllustration = ({
         return res;
       }
     }, {})
-  }, 1000)
+  }, UPDATE_RATE)
 
   useEffect(() => {
     for (let i = 0 ; i < 5 ; i++) {

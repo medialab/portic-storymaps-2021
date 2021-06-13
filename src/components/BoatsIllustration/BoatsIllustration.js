@@ -176,8 +176,9 @@ const Bird = ({
     for (let i = 0 ; i < 30 ; i++) {
       const y = Math.random() * boatHeight * 1.3 + containerHeight - boatHeight * 1.5;
       const x = Math.random() * boatHeight * 2 - boatHeight;
+      const scale = Math.random() + .5
       steps.push({
-        transform: `translate(${x}, ${y})`
+        transform: `translate(${x}, ${y})scale(${scale})`
       })
     }
     return steps;

@@ -23,15 +23,19 @@ const CircularAlluvialComponent = ({
   steps,
   width=1200,
   height=800,
-  filters = []
+  filters = [],
+  debug = false
 }) => {
+  // state is used for managing interactions through svg elements' classes
   const [highlightedFlow, setHighlightedFlow] = useState(undefined);
   const [highlightedFilter, setHighlightedFilter] = useState(undefined);
+  // rebuild data each time data or viz params are changed
   const data = useMemo(() => {
     const vizData = prepareAlluvialData(inputData, {sumBy, steps});
     return vizData;
   }, [inputData, sumBy, steps]);
 
+  // build categorical color scales
   const colorScales = useMemo(() => {
     const modalitiesMap = data.reduce((cur, datum) => {
       const ids = uniq(datum.nodes.map(node => node.id));
@@ -52,10 +56,12 @@ const CircularAlluvialComponent = ({
     }, {})
   }, [data]);
 
+  // dimensions are aligned with the smallest dimension of the container (width or height)
   const smallestDimension = useMemo(() => {
     return min([width, height])
   }, [width, height])
 
+  // bar size and height is relative to dimensions
   let BAR_SIZE = smallestDimension * .33;
   const BAR_WIDTH = smallestDimension / 50;
   // margin for double bars
@@ -65,11 +71,21 @@ const CircularAlluvialComponent = ({
     setHighlightedFlow(undefined);
     setHighlightedFilter(undefined);
   }
+  // these radiuses are used to align bars extremities on the three implicit circles they form
+  // (circle 1 : inner intersection of the 4 bars)
+  // (circle 2 : outer intersection of the external point of 4 bars)
+  // (circle 3 : outer intersection of the internal point of 4 bars)
+  const secondCircleRadius = cartesian2Polar(-smallestDimension/2 + BAR_SIZE, -HORIZONTAL_MARGIN / 2 ).distance;
+  const thirdCircleRadius = cartesian2Polar(-smallestDimension/2, -HORIZONTAL_MARGIN / 2 + BAR_WIDTH ).distance;
+  const HORIZONTAL_DISPLACE = Math.abs(smallestDimension / 2 - thirdCircleRadius);
+  console.log('horizontal displace', HORIZONTAL_DISPLACE)
+  const VERTICAL_BAR_SIZE = smallestDimension / 2 - secondCircleRadius;
+
   const stepScales = {
     0: {
         orientation: 'horizontal',
         direction: 'top',
-        displaceX: 0,
+        displaceX: HORIZONTAL_DISPLACE,
         displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
         displaceText: HORIZONTAL_MARGIN * .2
     },
@@ -80,14 +96,14 @@ const CircularAlluvialComponent = ({
     },
     2: {
       orientation: 'horizontal',
-      displaceX: smallestDimension - BAR_SIZE,
+      displaceX: smallestDimension - BAR_SIZE - HORIZONTAL_DISPLACE,
       displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
       displaceText: HORIZONTAL_MARGIN * .2,
       direction: 'top',
     },
     3: {
       orientation: 'horizontal',
-      displaceX: smallestDimension - BAR_SIZE,
+      displaceX: smallestDimension - BAR_SIZE - HORIZONTAL_DISPLACE,
       displaceY: smallestDimension / 2 + HORIZONTAL_MARGIN / 2,
       displaceText: 0,
       direction: 'bottom',
@@ -100,29 +116,40 @@ const CircularAlluvialComponent = ({
     5: {
       orientation: 'horizontal',
       displaceY: smallestDimension / 2 + HORIZONTAL_MARGIN / 2,
-      displaceX: 0,
+      displaceX: HORIZONTAL_DISPLACE,
       displaceText: 0,
       direction: 'bottom'
     }
   }
-  const secondCircleRadius = cartesian2Polar(-smallestDimension/2 + BAR_SIZE, -HORIZONTAL_MARGIN / 2 ).distance;
-  const VERTICAL_BAR_SIZE = smallestDimension / 2 - secondCircleRadius;
+  
   return (
     <>
       <div style={{fontSize: '.6rem', alignSelf: 'flex-start'}}>Aggrégation par le champ : {sumBy}</div>
       <svg width={width} height={height} className={cx("CircularAlluvialComponent", {'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter})}>
-        <g className="background-marks">
+        <g className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
           <line x1={0} x2={smallestDimension} y1={smallestDimension/2} y2={smallestDimension/2} />
-          <circle
-            cx={smallestDimension /2}
-            cy={ smallestDimension / 2}
-            r={smallestDimension * .5}
-          />
-          {/* <circle
-            cx={smallestDimension /2}
-            cy={ smallestDimension / 2}
-            r={secondCircleRadius}
-          /> */}
+         {
+           debug ?
+           <>
+              <circle
+              cx={smallestDimension /2}
+              cy={ smallestDimension / 2}
+              r={smallestDimension * .5}
+            />
+            <circle
+              cx={smallestDimension /2}
+              cy={ smallestDimension / 2}
+              r={thirdCircleRadius}
+            />
+            <circle
+              cx={smallestDimension /2}
+              cy={ smallestDimension / 2}
+              r={secondCircleRadius}
+            />
+            
+           </>
+          : null
+         }
           <text
             x={smallestDimension / 2}
             y={smallestDimension/2 - HORIZONTAL_MARGIN /2 + BAR_WIDTH}
@@ -142,7 +169,7 @@ const CircularAlluvialComponent = ({
             .map((step, stepIndex) => {
               const {orientation, direction, displaceX, displaceY: initialDisplaceY, displaceText} = stepScales[stepIndex];
               let displaceY = initialDisplaceY;
-              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE]);
+              let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE - HORIZONTAL_DISPLACE]);
               return (
                 <g 
                   className={cx("step-container", 'is-oriented-' + orientation)}
@@ -208,8 +235,8 @@ const CircularAlluvialComponent = ({
                               if (stepIndex === 3) {
                                 x2 += BAR_WIDTH;
                                 x3 += BAR_WIDTH;
-                                y2 += BAR_WIDTH;
-                                y3 += BAR_WIDTH;
+                                y2 += BAR_WIDTH - 2;
+                                y3 += BAR_WIDTH - 2;
                               }
                               if (stepIndex === 4) {
                                 x1 -= BAR_WIDTH;
@@ -217,15 +244,57 @@ const CircularAlluvialComponent = ({
                                 y1 += BAR_WIDTH;
                                 y4 += BAR_WIDTH;
                               }
-                              let controlPoint1X = x1,
-                                controlPoint1Y = y2,
-                                controlPoint2X = x4,
-                                controlPoint2Y = y3;
+                              // large arc control point 1
+                              let controlPoint1AX = x1,
+                                controlPoint1AY = y2,
+                                // large arc control point 2
+                                controlPoint1BX = x1,
+                                controlPoint1BY = y2,
+                                // little arc control point 1
+                                controlPoint2AX = x4,
+                                controlPoint2AY = y3,
+                                // little arc control point 2
+                                controlPoint2BX = x4,
+                                controlPoint2BY = y3;
                               if (stepIndex === 1 || stepIndex === 4) {
-                                controlPoint1X = x2;
-                                controlPoint1Y = y1;
-                                controlPoint2X = x3;
-                                controlPoint2Y = y4;
+                                // large arc control point 1
+                                controlPoint1AX = x2;
+                                controlPoint1AY = y1;
+                                // large arc control point 2
+                                controlPoint1BX = x2;
+                                controlPoint1BY = y1;
+                                // little arc control point 1
+                                controlPoint2AX = x3;
+                                controlPoint2AY = y4;
+                                // little arc control point 2
+                                controlPoint2BX = x3;
+                                controlPoint2BY = y4;
+                              }
+                              if (stepIndex === 0) {
+                                controlPoint1AY = y1 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y2 - y1);
+                                controlPoint1BX = x2 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x2 - x1);
+
+                                controlPoint2BY = y4 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y4 - y3);
+                                controlPoint2AX = x3 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x3 - x4);
+
+                              } else if (stepIndex === 1) {
+                                controlPoint1AX = x1 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x2 - x1);
+                                controlPoint1BY = y2 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y2 - y1);
+                                
+                                controlPoint2AY = y3 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y3 - y4);
+                                controlPoint2BX = x4 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x4 - x3);
+                              } else if (stepIndex === 3) {
+                                controlPoint1AY = y1 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y2 - y1);
+                                controlPoint1BX = x2 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x2 - x1);
+                                
+                                controlPoint2AX = x3 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x4 - x3);
+                                controlPoint2BY = y4 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y3 - y4);
+                              } else if (stepIndex === 4) {
+                                controlPoint1AX = x1 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x2 - x1);
+                                controlPoint1BY = y2 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y2 - y1);
+                                
+                                controlPoint2BX = x4 - (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(x4 - x3);
+                                controlPoint2AY = y3 + (4 / 3) * (1 - Math.cos(45)/Math.sin(45)) * Math.abs(y3 - y4);
                               }
                               return (
                                 <g 
@@ -237,26 +306,89 @@ const CircularAlluvialComponent = ({
                                   })} 
                                   key={linkIndex}
                                 >
-                                  {/* <polygon 
-                                    points={`
-                                    ${x1},${y1} 
-                                    ${x2}, ${y2} 
-                                    ${x3} ${y3}
-                                    ${x4},${y4} 
-                                    `}
-                                    title={'Valeur : ' + flow.valueAbs}
-                                  /> */}
-                                  <path 
+                                  {/* <path 
                                     d={`
                                     M ${x1} ${y1} 
-                                    Q ${controlPoint1X} ${controlPoint1Y}, ${x2} ${y2} 
+                                    Q ${controlPoint1AX} ${controlPoint1AY}, ${x2} ${y2} 
                                     L ${x3} ${y3}
-                                    Q ${controlPoint2X} ${controlPoint2Y}, ${x4} ${y4} 
+                                    Q ${controlPoint2AX} ${controlPoint2AY}, ${x4} ${y4} 
                                     Z
                                     `.trim().replace(/\n/g, ' ')}
                                     title={'Valeur : ' + flow.valueAbs}
                                     style={{fill: colorScales[step.field][node.id]}}
+                                  /> */}
+                                  <path 
+                                    d={`
+                                    M ${x1} ${y1} 
+                                    C ${controlPoint1AX},${controlPoint1AY} ${controlPoint1BX},${controlPoint1BY} ${x2} ${y2} 
+                                    L ${x3} ${y3}
+                                    C ${controlPoint2AX},${controlPoint2AY} ${controlPoint2BX},${controlPoint2BY} ${x4} ${y4} 
+                                    Z
+                                    `.trim().replace(/\n/g, ' ')}
+                                    style={{fill: colorScales[step.field][node.id]}}
                                   />
+                                  {
+                                    debug ?
+                                    <>
+                                          {/* control line for control point 1 for large arc */}
+                                          <line
+                                        stroke={'red'}
+                                        x1={x1}
+                                        y1={y1}
+                                        x2={controlPoint1AX}
+                                        y2={controlPoint1AY}
+                                      />
+                                      <circle
+                                        cx={controlPoint1AX}
+                                        cy={controlPoint1AY}
+                                        r={2}
+                                        fill="red"
+                                      />
+                                      {/* control line for control point 2 for large arc */}
+                                      <line
+                                        stroke={'blue'}
+                                        x1={x2}
+                                        y1={y2}
+                                        x2={controlPoint1BX}
+                                        y2={controlPoint1BY}
+                                      />
+                                      <circle
+                                        cx={controlPoint1BX}
+                                        cy={controlPoint1BY}
+                                        r={2}
+                                        fill="blue"
+                                      />
+                                      {/* control line for control point 1 for small arc */}
+                                      <line
+                                        stroke={'green'}
+                                        x1={x3}
+                                        y1={y3}
+                                        x2={controlPoint2AX}
+                                        y2={controlPoint2AY}
+                                      />
+                                      <circle
+                                        cx={controlPoint2AX}
+                                        cy={controlPoint2AY}
+                                        r={2}
+                                        fill="green"
+                                      />
+                                      {/* control line for control point 2 for small arc */}
+                                      <line
+                                        stroke={'lightblue'}
+                                        x1={x4}
+                                        y1={y4}
+                                        x2={controlPoint2BX}
+                                        y2={controlPoint2BY}
+                                      />
+                                      <circle
+                                        cx={controlPoint2BX}
+                                        cy={controlPoint2BY}
+                                        r={2}
+                                        fill="lightblue"
+                                      />
+                                    </>
+                                    : null
+                                  }
                                 </g>
                               )
                             })

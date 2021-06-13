@@ -13,6 +13,21 @@ const DEFAULT_COLOR_SPACE = {
 
 const SINGLE_COLOR_PALETTE = ['#999'];
 
+export function trimText(str, limit = 30) {
+  if (str.length > limit) {
+    const words = str.split(' ');
+    let output = [words[0]];
+    let i = 1;
+    while (output.join(' ') < limit - 3 && i < words.length) {
+      output.push(words[i]);
+      i++;
+    }
+    output = output.join(' ');
+    return [output, words.slice(i).join(' ')];
+  }
+  return [str, undefined];
+}
+
 export function cartesian2Polar(x, y){
   const distance = Math.sqrt(x*x + y*y)
   const radians = Math.atan2(y,x) //This takes y first

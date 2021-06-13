@@ -5,7 +5,7 @@ const colorsPalettes = {
     'sel': '#E0CB0E',
     'eau-de-vie et vins divers': '#A07BEE',
     'autres produits': '#72808D',
-    'produit colonial (\'Café\', \'Sucre\', \'Indigo\', \'Coton non transformé\')': '#FEA43B',
+    'produit colonial': '#FEA43B',
       },
   'partner': {
     'Afrique': '#875E2E',
@@ -13,8 +13,8 @@ const colorsPalettes = {
     'Grande Bretagne': '#542AAD',
     'Europe': '#A07BEE',
     'Ports francs et petites îles': '#5439F9',
-    'Colonies (Saint-Domingue, Indes, îles fr de l\'Amérique)': '#E5881A',
-    'Indéterminé (supposé réexportations vers Europe)': '#A07BEE'
+    'Colonies': '#E5881A',
+    'Indéterminé supposé Europe': '#A07BEE'
   },
   'customs_office': {
     'La Rochelle': '#41BEA3',

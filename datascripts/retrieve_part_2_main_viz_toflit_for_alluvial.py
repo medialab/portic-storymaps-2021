@@ -31,17 +31,15 @@ for f in relevant_flows :
     product = f['product_revolutionempire']
     value = f['value'].split('.')[0] if f['value'].split('.')[0] != '' else 0
     flow_type = f['export_import']
-    """
-    if (f['product_simplification'] == 'guinée'):
-        print(f['product_revolutionempire'], f['value'])
-    """
+
     if (f['partner_grouping'] == 'Afrique'):
         africa_products[flow_type][product] = int(africa_products[flow_type][product]) + int(value) if f['product_simplification'] in africa_products[flow_type] else int(value)
     elif (f['partner_grouping'] == 'Amériques' or f['partner_grouping'] == 'Asie'):
         colonies_products[flow_type][product] = int(colonies_products[flow_type][product]) + int(value) if product in colonies_products[flow_type] else int(value)
     
     if product in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']:
-        product_viz = "produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')"
+        # product_viz = "produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')"
+        product_viz = "produit colonial"
     elif (product == 'Sel'):
         product_viz = 'sel'
     elif (product == 'Eaux-de-vie et liqueurs' or product == 'Vins divers'):
@@ -52,7 +50,8 @@ for f in relevant_flows :
     
     partner_viz = ''
     if (f['partner_simplification'] == 'Monde hors colonies'):
-        partner_viz = 'Indéterminé (supposé réexportations vers Europe)'
+        # partner_viz = 'Indéterminé (supposé réexportations vers Europe)'
+        partner_viz = 'Indéterminé supposé Europe'
     elif (f['partner_grouping'] == 'France'):
         partner_viz = 'Ports francs et petites îles'
     elif (f['partner_grouping'] in ['Flandre et autres états de l\'Empereur', 'Nord', 'Flandres', 'Hollande', 'Espagne', 'Portugal', 'Allemagne']):
@@ -62,7 +61,8 @@ for f in relevant_flows :
     elif (f['partner_grouping'] == 'Afrique'):
         partner_viz = 'Afrique'
     elif (f['partner_grouping'] == 'Amériques' or f['partner_grouping'] == 'Asie'):
-        partner_viz = 'Colonies (Saint-Domingue, Indes, îles fr de l\'Amérique)'
+        # partner_viz = 'Colonies (Saint-Domingue, Indes, îles fr de l\'Amérique)'
+        partner_viz = 'Colonies'
     else:
         partner_viz = 'Reste du monde (USA)'
         

@@ -4,7 +4,7 @@ import colorsPalettes from '../../colorPalettes';
 
 import './PrincipalVisualizationPart2.scss';
 
-const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, ...props}) => {
+const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit = false, ...props}) => {
   const {step} = props;
   let alluvialFilters = [];
   let sumToflitBy = 'value';

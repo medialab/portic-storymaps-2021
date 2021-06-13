@@ -12,7 +12,7 @@ import { prepareAlluvialData } from './utils';
 import './CircularAlluvialComponent.scss';
 import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
-import { cartesian2Polar } from '../../helpers/misc';
+import { cartesian2Polar, trimText } from '../../helpers/misc';
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
 
@@ -24,7 +24,9 @@ const CircularAlluvialComponent = ({
   height = 800,
   filters = [],
   debug = false,
-  colorsPalettes
+  colorsPalettes,
+  centerHorizontalLabels = true,
+  displaceHorizontalLabels = true
 }) => {
   // state is used for managing interactions through svg elements' classes
   const [highlightedFlow, setHighlightedFlow] = useState(undefined);
@@ -34,12 +36,19 @@ const CircularAlluvialComponent = ({
     const vizData = prepareAlluvialData(inputData, { sumBy, steps });
     return vizData;
   }, [inputData, sumBy, steps]);
+  const filtersTotal = useMemo(() => {
+    if (filters && filters.length) {
+      return inputData
+      .filter(flow => filters.find(({key, value}) => flow[key] === value))
+      .reduce((sum, flow) => sum + (+flow[sumBy]), 0)
+    }
+    return inputData.reduce((sum, flow) => sum + (+flow[sumBy]), 0)
+  }, [inputData, steps, sumBy, filters])
 
   // build categorical color scales
   const colorScales = useMemo(() => {
     const modalitiesMap = data.reduce((cur, datum) => {
       const ids = uniq(datum.nodes.map(node => node.id));
-      console.log(ids.map(id => `'${id}': '',`).join('\n'));
       return {
         ...cur,
         [datum.field]: cur[datum.field] ? uniq([...cur[datum.field], ...ids]) : ids
@@ -63,11 +72,11 @@ const CircularAlluvialComponent = ({
   }, [width, height])
 
   // bar size and height is relative to dimensions
-  let BAR_SIZE = smallestDimension * .33;
+  let BAR_SIZE = smallestDimension * .3;
   const BAR_WIDTH = smallestDimension / 50;
   // margin for double bars
-  const HORIZONTAL_MARGIN = smallestDimension * .15;
-  const textScale = scaleLinear().range([smallestDimension / 100, smallestDimension / 50]).domain([0, 1])
+  const HORIZONTAL_MARGIN = smallestDimension * .2;
+  const textScale = scaleLinear().range([smallestDimension / 120, smallestDimension / 70]).domain([0, 1])
   const handleMouseOut = () => {
     setHighlightedFlow(undefined);
     setHighlightedFilter(undefined);
@@ -79,7 +88,6 @@ const CircularAlluvialComponent = ({
   const secondCircleRadius = cartesian2Polar(-smallestDimension / 2 + BAR_SIZE, -HORIZONTAL_MARGIN / 2).distance;
   const thirdCircleRadius = cartesian2Polar(-smallestDimension / 2, -HORIZONTAL_MARGIN / 2 + BAR_WIDTH).distance;
   const HORIZONTAL_DISPLACE = Math.abs(smallestDimension / 2 - thirdCircleRadius);
-  console.log('horizontal displace', HORIZONTAL_DISPLACE)
   const VERTICAL_BAR_SIZE = smallestDimension / 2 - secondCircleRadius;
 
   const stepScales = {
@@ -88,7 +96,7 @@ const CircularAlluvialComponent = ({
       direction: 'top',
       displaceX: HORIZONTAL_DISPLACE,
       displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
-      displaceText: HORIZONTAL_MARGIN * .2
+      displaceText: HORIZONTAL_MARGIN * .2 + 5
     },
     1: {
       orientation: 'vertical',
@@ -99,14 +107,14 @@ const CircularAlluvialComponent = ({
       orientation: 'horizontal',
       displaceX: smallestDimension - BAR_SIZE - HORIZONTAL_DISPLACE,
       displaceY: smallestDimension / 2 - HORIZONTAL_MARGIN / 2,
-      displaceText: HORIZONTAL_MARGIN * .2,
+      displaceText: HORIZONTAL_MARGIN * .2 + 5,
       direction: 'top',
     },
     3: {
       orientation: 'horizontal',
       displaceX: smallestDimension - BAR_SIZE - HORIZONTAL_DISPLACE,
       displaceY: smallestDimension / 2 + HORIZONTAL_MARGIN / 2,
-      displaceText: 0,
+      displaceText: -5,
       direction: 'bottom',
     },
     4: {
@@ -118,15 +126,18 @@ const CircularAlluvialComponent = ({
       orientation: 'horizontal',
       displaceY: smallestDimension / 2 + HORIZONTAL_MARGIN / 2,
       displaceX: HORIZONTAL_DISPLACE,
-      displaceText: 0,
+      displaceText: -5,
       direction: 'bottom'
     }
   }
-
+  // const highlightedNode = highlightedFilter ? steps.find(s => s.field === highlightedFilter.key).find(node => node.id === highlightedFilter.value) : undefined;
+  const highlightedNode = highlightedFilter ? data.find(s => s.field === highlightedFilter.key).nodes.find(node => node.id === highlightedFilter.value) : undefined;
+  const highlightedNodeTotal = highlightedNode ? highlightedNode.flows.reduce((sum, f) => sum + (+f[sumBy]), 0) : 0;
   return (
     <>
-      <div style={{ fontSize: '.6rem', alignSelf: 'flex-start' }}>Aggrégation par le champ : {sumBy}</div>
+      <div style={{ fontSize: '.6rem', alignSelf: 'flex-start' }}>Agrégation par le champ : {sumBy}</div>
       <svg width={width} height={height} className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}>
+        <g  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
         <g className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
           <line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />
           {
@@ -153,13 +164,19 @@ const CircularAlluvialComponent = ({
           }
           <text
             x={smallestDimension / 2}
-            y={smallestDimension / 2 - HORIZONTAL_MARGIN / 2 + BAR_WIDTH}
+            y={smallestDimension / 2 - HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
+            style={{
+              fontWeight: (highlightedFilter && highlightedFilter.index <= 2) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 800 : undefined
+            }}
           >
             EXPORTS
           </text>
           <text
             x={smallestDimension / 2}
-            y={smallestDimension / 2 + HORIZONTAL_MARGIN / 2 + BAR_WIDTH}
+            y={smallestDimension / 2 + HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
+            style={{
+              fontWeight: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 800 : undefined
+            }}
           >
             IMPORTS
           </text>
@@ -171,6 +188,7 @@ const CircularAlluvialComponent = ({
                 const { orientation, direction, displaceX, displaceY: initialDisplaceY, displaceText } = stepScales[stepIndex];
                 let displaceY = initialDisplaceY;
                 let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE - HORIZONTAL_DISPLACE]);
+                let displaceLabels = 0;
                 return (
                   <g
                     className={cx("step-container", 'is-oriented-' + orientation)}
@@ -202,10 +220,10 @@ const CircularAlluvialComponent = ({
                                       if (highlightedFilter) {
                                         setHighlightedFilter(undefined);
                                       }
-                                      setHighlightedFlow(flow);
+                                      setHighlightedFlow({...flow, stepIndex});
                                     }
                                     const nextStepScales = stepScales[stepIndex + 1];
-                                    let nextNodesSizeScale = scaleLinear().domain([0, 1]).range([0, nextStepScales.orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE]);
+                                    let nextNodesSizeScale = scaleLinear().domain([0, 1]).range([0, nextStepScales.orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE - BAR_WIDTH / 3]);
 
                                     let x1 = displaceX + BAR_WIDTH;
                                     let y1 = displaceY + nodesSizeScale(flow.displacePart);
@@ -214,7 +232,7 @@ const CircularAlluvialComponent = ({
                                     let y2 = nextStepScales.displaceY + nextNodesSizeScale(flow.nextPosition.displacePart);
 
                                     let x3 = nextStepScales.displaceX // + stepXScale(stepIndex + 1);
-                                    let y3 = nextStepScales.displaceY + nextNodesSizeScale(flow.nextPosition.displacePart) + nodesSizeScale(flow.valuePart);
+                                    let y3 = nextStepScales.displaceY + nextNodesSizeScale(flow.nextPosition.displacePart) + nextNodesSizeScale(flow.valuePart);
 
                                     let y4 = displaceY + nodesSizeScale(flow.displacePart) + nodesSizeScale(flow.valuePart);
                                     let x4 = displaceX + BAR_WIDTH;
@@ -226,7 +244,7 @@ const CircularAlluvialComponent = ({
                                       x4 = displaceX + nodesSizeScale(flow.displacePart) + nodesSizeScale(flow.valuePart);
                                     }
                                     if (nextStepScales.orientation === 'horizontal') {
-                                      x2 = nextStepScales.displaceX + nextNodesSizeScale(flow.nextPosition.displacePart) + nodesSizeScale(flow.valuePart)
+                                      x2 = nextStepScales.displaceX + nextNodesSizeScale(flow.nextPosition.displacePart) + nextNodesSizeScale(flow.valuePart)
                                       y2 = nextStepScales.displaceY + (nextStepScales.direction === 'bottom' ? BAR_WIDTH : 0);
 
                                       x3 = nextStepScales.displaceX + nextNodesSizeScale(flow.nextPosition.displacePart);
@@ -236,8 +254,8 @@ const CircularAlluvialComponent = ({
                                     if (stepIndex === 3) {
                                       x2 += BAR_WIDTH;
                                       x3 += BAR_WIDTH;
-                                      y2 += BAR_WIDTH - 2;
-                                      y3 += BAR_WIDTH - 2;
+                                      y2 += BAR_WIDTH;
+                                      y3 += BAR_WIDTH;
                                     }
                                     if (stepIndex === 4) {
                                       x1 -= BAR_WIDTH;
@@ -422,16 +440,51 @@ const CircularAlluvialComponent = ({
                           if (highlightedFlow) {
                             setHighlightedFlow(undefined);
                           }
-                          setHighlightedFilter({ key: step.field, value: node.id })
+                          setHighlightedFilter({ key: step.field, value: node.id, index: stepIndex })
                         }
-                        const isHighlighted = (highlightedFilter && node.id === highlightedFilter.value);
+                        const isHighlighted = highlightedFilter && node.id === highlightedFilter.value && stepIndex === highlightedFilter.index;
+                        let labelHighlightPart = 0;
+                        if (highlightedFilter) {
+                          labelHighlightPart = node.flows.filter(f => f[highlightedFilter.key] === highlightedFilter.value).reduce((sum, f) => sum + (+f[sumBy]), 0) / highlightedNodeTotal;
+                        } else if (filters && filters.length) {
+                          labelHighlightPart = node.flows
+                          .filter(flow => filters.find(({ key, value }) => flow[key] === value))
+                          .reduce((sum, f) => sum + (+f[sumBy]), 0) 
+                          / filtersTotal;
+                        }
+                        if (labelHighlightPart > 1) {
+                          labelHighlightPart = 1;
+                        }
                         const isFilteredIn = filters && filters.find(({ key, value }) => node.flows.find(flow => flow[key] === value))
+                        let textRotate = 0;
+                        if (stepIndex === 0 || stepIndex === 2) {
+                          textRotate = 30;
+                        } else if (stepIndex === 3 || stepIndex === 5) {
+                          textRotate = -30;
+                        }
+                        const initialLabelX = orientation === 'vertical' ? x + BAR_WIDTH * 2 : x + (centerHorizontalLabels ? nodeWidth / 2 : 0);
+                        let labelX = initialLabelX;
+                        if (orientation === 'horizontal') {
+                      
+                          const minTextWidth = 20;
+                          if (displaceHorizontalLabels && displaceLabels && labelX < displaceLabels + minTextWidth) {
+                            labelX = displaceLabels + minTextWidth;
+                          }
+                          displaceLabels = labelX;
+                          // console.groupEnd('test');
+                        }
+                        const labelY = orientation === 'vertical' ? y + actualHeight / 2 : y + displaceText;
+                        const [labelMain, labelSecondary] = trimText(node.id, 20);
+                        const nodeHasHighlights = (highlightedFlow && node.flows.find(flow => flow._id === highlightedFlow._id)) ||
+                        (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value);
+                        const nodeIsHighlighted = (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value);
+                        const labelFontSize = (highlightedFilter || highlightedNode) ? labelHighlightPart > 0 ? textScale(labelHighlightPart) : textScale(node.valuePart) : textScale(1)
                         return (
                           <g
                             className={cx("step-node-container", {
-                              'has-highlights': (highlightedFlow && node.flows.find(flow => flow._id === highlightedFlow._id)) ||
-                                (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value),
-                              'is-highlighted': (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value),
+                              'has-highlights': nodeHasHighlights,
+                              'is-filtered-in': isFilteredIn,
+                              'is-highlighted': nodeIsHighlighted,
                             })}
                             key={node.id}
                             onMouseOver={handleMouseOver}
@@ -445,25 +498,45 @@ const CircularAlluvialComponent = ({
                             />
                             <g
                               transform={`
-                            translate(${orientation === 'vertical' ? x + BAR_WIDTH * 2 : x + nodeWidth / 2}, ${orientation === 'vertical' ? y + actualHeight / 2 : y + displaceText})
-                            rotate(${orientation === 'vertical' ? 0 : direction === 'bottom' ? -45 : 45})
+                            translate(${labelX}, ${labelY})
+                            rotate(${textRotate})
                           `}
 
                               className={
                                 cx("node-level-label", {
                                   'is-filtered-in': isFilteredIn,
-                                  'is-highlighted': isHighlighted
+                                  'is-highlighted': isHighlighted,
+                                  'is-secondary-highlighted': !isHighlighted && labelHighlightPart > 0
                                 })
                               }
                             >
                               <text
                                 style={{
-                                  fontSize: textScale(node.valuePart) * (isHighlighted ? 1.5 : 1)
+                                  fontSize: labelFontSize,
+                                  
                                 }}
                               >
-                                {node.id.split('(')[0]}
+                                {isFilteredIn || isHighlighted ? labelMain + ' ' + (labelSecondary ? labelSecondary : '') : `${labelSecondary ? labelMain + '...' : labelMain}`}
                               </text>
                             </g>
+                            {
+                                displaceHorizontalLabels && initialLabelX !== labelX ?
+                                <line
+                                  x1={x + nodeHeight / 2}
+                                  y1={stepIndex === 0 || stepIndex === 2 ? y + BAR_WIDTH : y}
+                                  x2={labelX}
+                                  y2={labelY}
+                                  className={
+                                    cx("label-line", {
+                                      'is-filtered-in': isFilteredIn,
+                                      'is-highlighted': isHighlighted,
+                                      'is-secondary-highlighted': !isHighlighted && labelHighlightPart > 0
+                                    })
+                                  }
+
+                                />
+                                : null
+                            }
                             {
                               node.flows.map((flow, flowIndex) => {
                                 let flowX = x;
@@ -488,7 +561,7 @@ const CircularAlluvialComponent = ({
                                     height={flowHeight}
                                     className={
                                       cx("flow-level-node", {
-                                        'is-filtered-in': isFilteredIn,
+                                        'is-filtered-in': filters && filters.find(({ key, value }) => flow[key] === value),
 
                                         'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id) ||
                                           (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
@@ -511,7 +584,7 @@ const CircularAlluvialComponent = ({
               })
           }
         </g>
-
+        </g>
       </svg>
       {
         highlightedFlow ?

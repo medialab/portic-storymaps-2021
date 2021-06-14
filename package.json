@@ -61,8 +61,7 @@
     "deploy": "gh-pages -d build",
     "data:load": "./load_data.sh",
     "data:build": "cd datascripts;ls *.py|xargs -n 1 -P 3 python",
-    "data:update": "yarn run data:load;yarn run data:build",
-    "postinstall": "pip install -r requirements.txt;yarn run data:update"
+    "data:update": "yarn run data:load;yarn run data:build;rm -rf data"
   },
   "eslintConfig": {
     "extends": [

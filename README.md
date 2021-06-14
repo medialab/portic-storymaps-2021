@@ -7,10 +7,8 @@ More to see here soon ...
 
 ```bash
 yarn install
-cp .env.example .env
+yarn data:update
 ```
-
-Then add your mapbox token to the env file.
 
 # Development
 

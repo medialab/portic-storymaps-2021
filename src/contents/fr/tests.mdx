@@ -7,6 +7,53 @@ import BoatsIllustration from '../../components/BoatsIllustration';
 
 Test en prod
 
+
+## Carto en react+d3+SVG
+
+Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+
+# Fond de carte centré sur région, avec 1 pt discret par port, tourné à 90° ou 270°
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="null"
+  markerSize="null"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+  rotationDegree={58}
+/>
+
+Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+/>
+
+
 # Test bateaux
 
 <BoatsIllustration />
@@ -77,34 +124,3 @@ Paramètres :
   labelDensity={0.5}
 />
 
-## Carto en react+d3+SVG
-
-Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
-
-Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  label="pointcall"
-  showLabels
-  centerOnRegion
-/>
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-/>
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  label="pointcall"
-  showLabels
-/>

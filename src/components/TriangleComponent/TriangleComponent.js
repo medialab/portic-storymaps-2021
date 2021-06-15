@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
+import { scaleLinear } from 'd3-scale';
+import { max } from 'd3-array';
 
 import './TriangleComponent.css'
 

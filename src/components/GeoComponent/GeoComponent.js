@@ -116,11 +116,17 @@ const GeoComponent = ({
    * d3 projection making
    */
   const projection = useMemo(() => {
+    let projection = geoEqualEarth()
+      .scale(200)
+      .angle(rotationDegree)
+      .translate([width / 2, height / 2])// ce qui vaut dans tous les cas ...
+
     if (backgroundData) {
       if (centerOnRegion) {
-        return geoEqualEarth()
-        .scale(50000)
-        .center([-1.7475027, 46.573642])
+        projection
+          .scale(50000)
+          .center([-1.7475027, 46.573642])
+
 
         // tests non fructueux : j'ai besoin de chnger le sens dans lequel je fais les choses
         // voir https://github.com/d3/d3-geo#paths
@@ -133,14 +139,14 @@ const GeoComponent = ({
         //.rotate([92.35, .5, -4])
         // .translate([rotationDegree, 0, 0])
         //.translate([width / 2, height / 2])
+      } else {
+        // if bg data is available fit on whole geometry
+        projection
+          .fitSize([width, height], backgroundData)
       }
-      // if bg data is available fit on whole geometry
-      return geoEqualEarth()
-      .fitSize([width, height], backgroundData)
+
     }
-    return geoEqualEarth()
-      .scale(200)
-      .translate([width / 2, height / 2])
+    return projection;
   }, [backgroundData, width, height, centerOnRegion])
 
 
@@ -154,6 +160,8 @@ const GeoComponent = ({
       <div>Erreur ...</div>
     )
   }
+
+  const [centerX, centerY] = projection([-1.7475027, 46.573642]);
 
   return (
     <div>
@@ -192,14 +200,14 @@ const GeoComponent = ({
                       className="marker"
                     />
                     {
-                      label ? 
-                      <text
-                        x={size + 5}
-                        y= {size/2}
-                      >
-                        {label}
-                      </text>
-                      : null
+                      label ?
+                        <text
+                          x={size + 5}
+                          y={size / 2}
+                        >
+                          {label}
+                        </text>
+                        : null
                     }
                   </g>
                 );
@@ -208,34 +216,35 @@ const GeoComponent = ({
         </g>
         {
           colorsMap ?
-          <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20}) rotate(${rotationDegree_deprecated})`}>
-            <g>
-              <text style={{fontWeight: 800}}>
-                {markerColor}
-              </text>
+            <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20}) rotate(${rotationDegree_deprecated})`}>
+              <g>
+                <text style={{ fontWeight: 800 }}>
+                  {markerColor}
+                </text>
+              </g>
+              {
+                Object.entries(colorsMap)
+                  .map(([label, color], index) => {
+                    return (
+                      <g transform={`translate(0, ${(index + 1) * 20})`}>
+                        <rect
+                          x={0}
+                          y={-8}
+                          width={10}
+                          height={10}
+                          fill={color}
+                        />
+                        <text x={15} y={0}>
+                          {label || 'Indéterminé'}
+                        </text>
+                      </g>
+                    )
+                  })
+              }
             </g>
-            {
-              Object.entries(colorsMap)
-              .map(([label, color], index) => {
-                return (
-                  <g transform={`translate(0, ${(index + 1) * 20})`}>
-                    <rect
-                      x={0}
-                      y={-8}
-                      width={10}
-                      height={10}
-                      fill={color}
-                    />
-                    <text x={15} y={0}>
-                      {label || 'Indéterminé'}
-                    </text>
-                  </g>
-                )
-              })
-            }
-          </g>
-          : null
+            : null
         }
+      <circle cx={centerX} cy={centerY} r={5} fill={'red'}/>
       </svg>
     </div>
   )

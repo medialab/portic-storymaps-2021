@@ -2,7 +2,7 @@ name: Build and Deploy
 on: 
   push: 
     branches:
-      - main
+      - prod
   schedule:
     - cron: "0 0 * * *"
 jobs:
@@ -16,6 +16,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
+          git checkout prod
           yarn
           yarn run data:update
           yarn run build

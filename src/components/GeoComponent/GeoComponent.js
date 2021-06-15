@@ -89,7 +89,7 @@ const GeoComponent = ({
       }))
       return grouped;
     }
-  }, [data, markerColor, markerSize, width])
+  }, [data, markerColor, markerSize, width, label, showLabels])
 
   /**
    * Map background data loading
@@ -126,7 +126,7 @@ const GeoComponent = ({
     return geoEqualEarth()
       .scale(200)
       .translate([width / 2, height / 2])
-  }, [backgroundData, width, height])
+  }, [backgroundData, width, height, centerOnRegion])
 
 
 

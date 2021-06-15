@@ -32,7 +32,7 @@ const ScrollyPage = ({
       // la visualisation la plus haute de la page qui est
       // au-dessus du milieu de l'écran
       for (let index = visualizationEntries.length - 1; index >= 0; index--) {
-        const [_id, visualization] = visualizationEntries[index];
+        const [_id, visualization] = visualizationEntries[index];/* eslint no-unused-vars : 0 */
         const { ref } = visualization;
         if (ref.current) {
           const { y: initialVisY } = ref.current.getBoundingClientRect();
@@ -59,7 +59,7 @@ const ScrollyPage = ({
   /**
    * Scrollytelling management
    */
-  useEffect(updateCurrentVisualization, [scrollY, visualizations])
+  useEffect(updateCurrentVisualization, [scrollY, visualizations]) /* eslint react-hooks/exhaustive-deps : 0 */
 
   const onRegisterVisualization = (params) => {
     const finalParams = {

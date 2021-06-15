@@ -9,7 +9,7 @@ const PrincipalVisualizationPart3 = ({step}) => {
   return (
     <div className="PrincipalVisualizationPart3">
       <div className={cx('step', {'is-visible': step === 1})}>
-        <img src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.1.svg`} />
+        <img alt="step-3.1" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.1.svg`} />
       </div>
       <div className={cx('step', {'is-visible': step === 2})}>
         <SigmaComponent 
@@ -18,8 +18,8 @@ const PrincipalVisualizationPart3 = ({step}) => {
           nodeSize={`inside_degree`}
           labelDensity={0.5}
         />
-        <img src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-0.png`} />
-        <img src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
+        <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-0.png`} />
+        <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
 
       </div>
       <div className={cx('step', {'is-visible': step === 3})}>
@@ -30,7 +30,7 @@ const PrincipalVisualizationPart3 = ({step}) => {
          <li>gros objets : bureaux de ferme + somme des ports</li>
          <li>petits objets : ports individuels, en 3 classes</li>
        </ul>
-        <img src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.3.svg`} />
+        <img alt="step-3.3" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.3.svg`} />
       </div>
     </div>
   )

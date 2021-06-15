@@ -107,7 +107,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit = 
         />
      </div>
      <div className="radar-container">
-       <img src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
+       <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
      </div>
     </div>
   )

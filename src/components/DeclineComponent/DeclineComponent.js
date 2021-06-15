@@ -6,7 +6,7 @@ import Loader from "../Loader/Loader";
 import LongitudinalTradeChart from "./LongitudinalTradeChart";
 
 import './DeclineComponent.scss';
-import { ProductsDistributionChart } from "./ProductsDistributionChart";
+// import { ProductsDistributionChart } from "./ProductsDistributionChart";
 
 const DeclineComponent = (props) => {
   const {width, height, step = 1} = props;

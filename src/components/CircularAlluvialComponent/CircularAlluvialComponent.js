@@ -43,7 +43,7 @@ const CircularAlluvialComponent = ({
       .reduce((sum, flow) => sum + (+flow[sumBy]), 0)
     }
     return inputData.reduce((sum, flow) => sum + (+flow[sumBy]), 0)
-  }, [inputData, steps, sumBy, filters])
+  }, [inputData, sumBy, filters])
 
   // build categorical color scales
   const colorScales = useMemo(() => {

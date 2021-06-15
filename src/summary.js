@@ -1,8 +1,8 @@
 /* eslint import/no-webpack-loader-syntax : 0 */
 import ScrollyPage from './pages/ScrollyPage';
 
-import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
-import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
+// import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
+// import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
 
 import Part1Fr from '!babel-loader!mdx-loader!./contents/fr/partie-1.mdx';
 import Part1En from '!babel-loader!mdx-loader!./contents/en/part-1.mdx';

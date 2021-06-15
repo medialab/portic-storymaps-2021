@@ -31,7 +31,7 @@ const Sail = ({
   distance = 1
 }) => {
 
-  const randomFactor = useMemo(() => Math.random() * .4 + 1, [sailSpeed])
+  const randomFactor = useMemo(() => Math.random() * .4 + 1, [])
   
   const minRightX = width;
   const minLeftX = 0;
@@ -183,7 +183,7 @@ const Bird = ({
       })
     }
     return steps;
-  }, [])
+  }, [boatHeight, containerHeight])
 
   const {points} = useSpring({
     loop: true,
@@ -343,7 +343,7 @@ const BoatsIllustration = ({
     for (let i = 0 ; i < 5 ; i++) {
       updateBoats({type: 'createBoat', payload: {startAt: width * Math.random()}})
     }
-  }, [])
+  }, []);/* eslint react-hooks/exhaustive-deps : 0 */
 
   return (
     <svg className="BoatsIllustration" width={width} height={height}>

@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 import { range } from "lodash";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ProductsDistributionChart } from "./ProductsDistributionChart";
 
 // TODO: refacto fields props to ease exports/Imports switch
@@ -134,7 +134,7 @@ const LongitudinalTradeChart = ({
         .attr("stroke-width", 1.5)
         .attr("d", line);
     }
-  }, [data, svgNode]);
+  }, [data, svgNode]);/* eslint react-hooks/exhaustive-deps : 0 */
 
   //TODO: make that a prop or a config
   const productVizHeight = productsHeight || height;

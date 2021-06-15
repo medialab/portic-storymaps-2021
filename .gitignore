@@ -29,3 +29,7 @@ yarn-error.log*
 /data/*
 /big_data
 /public/data/toflit18_all_flows.csv
+
+
+# unwanted tests for now
+/src/components/LinearGraphBlock/

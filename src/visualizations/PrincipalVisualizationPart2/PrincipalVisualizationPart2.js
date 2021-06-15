@@ -1,8 +1,10 @@
 import CircularAlluvialComponent from "../../components/CircularAlluvialComponent/CircularAlluvialComponent";
 
+import colorsPalettes from '../../colorPalettes';
+
 import './PrincipalVisualizationPart2.scss';
 
-const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, ...props}) => {
+const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit = false, ...props}) => {
   const {step} = props;
   let alluvialFilters = [];
   let sumToflitBy = 'value';
@@ -42,7 +44,6 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, .
     default:
       break;
   }
-  console.log('sumToflitBy', sumToflitBy)
   return (
     <div className="PrincipalVisualizationPart2">
      <div>
@@ -52,6 +53,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, .
           height={height}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
+          colorsPalettes={colorsPalettes}
           steps={[
             {
               field: "customs_office",
@@ -105,7 +107,7 @@ const PrincipalVisualizationPart2 = ({width, height, datasets, showOnlyToflit, .
         />
      </div>
      <div className="radar-container">
-       <img src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
+       <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
      </div>
     </div>
   )

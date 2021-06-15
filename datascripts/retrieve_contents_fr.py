@@ -4,7 +4,7 @@ import re
 from html_sanitizer import Sanitizer
 sanitizer = Sanitizer()
 
-GDOC_HTML_URL = 'https://docs.google.com/document/d/e/2PACX-1vRkE9EwQ1VBGOSLVzXAWJmJqTFBCIG1aFRTHISnxQavXC99JeC_AgaVusdBDm3GEekqSAi-iWUJXGR4/pub'
+GDOC_HTML_URL = 'https://docs.google.com/document/d/e/2PACX-1vSTWlb6zHzD-2HgjpF5hpr2dCgEFRLlaBYg3bTugs5nUXSOR8ViCmCHyYFSIbY2TVejtV39UEpPyn10/pub'
 
 TARGET_BASE = '../src/contents/fr/'
 

@@ -40,6 +40,7 @@
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
     "react-scrollama": "^2.2.16",
+    "react-spring": "^9.2.3",
     "react-use-scroll-position": "^2.0.0",
     "react-vega": "^7.4.2",
     "redux": "^4.1.0",
@@ -57,12 +58,9 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "data:load": "./load_data.sh",
     "data:build": "cd datascripts;ls *.py|xargs -n 1 -P 3 python",
-    "data:update": "yarn run data:load;yarn run data:build",
-    "postinstall": "pip install -r requirements.txt;yarn run data:update"
+    "data:update": "yarn run data:load;yarn run data:build;rm -rf data"
   },
   "eslintConfig": {
     "extends": [
@@ -87,7 +85,6 @@
     "@mdx-js/loader": "^1.6.22",
     "babel-loader": "8.1.0",
     "customize-cra": "^1.0.0",
-    "gh-pages": "^3.1.0",
     "node-sass": "^6.0.0",
     "react-app-rewired": "^2.1.8",
     "react-scripts": "^4.0.3",

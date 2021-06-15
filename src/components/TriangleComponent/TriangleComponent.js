@@ -1,12 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
-import { geoEqualEarth, geoPath } from "d3-geo";
-import { uniq } from 'lodash';
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
-
-import { generatePalette } from '../../helpers/misc';
 
 import './TriangleComponent.css'
 

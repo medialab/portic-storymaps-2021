@@ -1,8 +1,8 @@
 /* eslint import/no-webpack-loader-syntax : 0 */
 import ScrollyPage from './pages/ScrollyPage';
 
-import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
-import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
+// import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
+// import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
 
 import Part1Fr from '!babel-loader!mdx-loader!./contents/fr/partie-1.mdx';
 import Part1En from '!babel-loader!mdx-loader!./contents/en/part-1.mdx';
@@ -27,6 +27,9 @@ import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';
 
 import AboutFr from '!babel-loader!mdx-loader!./contents/fr/a-propos.mdx';
 import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
+
+import TestsFr from '!babel-loader!mdx-loader!./contents/fr/tests.mdx';
+import TestsEn from '!babel-loader!mdx-loader!./contents/en/tests.mdx';
 
 
 const summary = [
@@ -196,6 +199,24 @@ const summary = [
       en: AboutEn,
     },
   },
+  {
+    routes: {
+      fr: 'tests',
+      en: 'tests'
+    },
+    titles: {
+      fr: 'Tests',
+      en: 'Tests'
+    },
+    contents: {
+      fr: 'fr/tests.mdx',
+      en: 'en/Tests.mdx'
+    },
+    contentsProcessed: {
+      fr: TestsFr,
+      en: TestsEn,
+    },
+  }
 ]
 
 

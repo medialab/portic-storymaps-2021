@@ -33,9 +33,10 @@
     // fill: orange;
     // stroke: white;
   }
-  // .step-node-container:nth-child(odd) .node-level-node {
-  //   fill: green;
-  // }
+  .label-line {
+    stroke: grey;
+    stroke-dasharray: 4, 1;
+  }
 
   .node-level-label {
     &.is-highlighted {
@@ -72,17 +73,20 @@
   &.has-highlight {
     .node-level-node,
     .flow-link:not(:hover),
-    .flow-level-node
+    .flow-level-node,
+    .label-line
      {
       opacity: .1;
     }
-    .node-level-label {
-      opacity: .6;
+    .node-level-label,
+    .label-line {
+      opacity: .4;
     }
 
     .step-node-container {
       &.has-highlights {
-        .node-level-label {
+        .node-level-label,
+        .label-line {
           opacity: 1;
         }
         .flow-level-node {
@@ -94,16 +98,26 @@
         .flow-level-node {
           opacity: 1;
         }
+        .label-line {
+          opacity: 1;
+        }
+      }
+      &.is-filtered-in {
+        .label-line {
+          opacity: 1;
+        }
       }
       
     }
     .flow-link,
     .flow-level-node,
-    .node-level-label {
+    .node-level-label,
+    .label-line {
       &.is-filtered-in {
         opacity: .7;
       }
-      &.is-highlighted {
+      &.is-highlighted,
+      &.is-secondary-highlighted {
         opacity: 1;
       }
     }
@@ -121,7 +135,9 @@
         opacity: 1;
       }
     }
-    .node-level-label.is-filtered-in {
+    .node-level-label.is-filtered-in,
+    .label-line.is-filtered-in
+     {
       opacity: 1;
     }
   }

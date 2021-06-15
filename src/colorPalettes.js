@@ -1,6 +1,23 @@
 
 
 const colorsPalettes = {
+  'generic':{
+    'dark': '#336D7C',// marine sombre
+    'light': '#E0E3E6',// gris clair
+    'accent1': '#00FFC8',// vert d'eau
+    'accent2': '#FEA43B'// orange
+  },
+  'admiralties': {
+    'La Rochelle': '#41BEA3',
+    'Marennes': '#A7E6F9',
+    "Sables d'Olonne": '#668EDB'
+  },
+  'provinces':{
+    'Aunis': '#41BEA3',
+    'Saintonge': '#A7E6F9',
+    'Poitou': '#668EDB',
+    'Angoumois': '#514EEE'
+  },
   'product': {
     'sel': '#E0CB0E',
     'eau-de-vie et vins divers': '#A07BEE',

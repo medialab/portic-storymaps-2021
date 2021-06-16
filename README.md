@@ -18,7 +18,7 @@ yarn start
 
 # Contributing
 
-## Suggested guidelines for commiting the repo
+## Suggested guidelines for commiting the repository
 
 - the `main` branch is the principal branch for the website version under development. Suggested workflow for contributing to the code is to develop new features in a separated branch, then to merge it in `main` branch when it is ready.
 
@@ -33,7 +33,7 @@ yarn start
 - datascripts # contains python scripts that fetch and build web-oriented datasets and contents, putting them in public/data and src/contents folder
 - datascripts_work_in_progress # WIP python scripts
 - public # contains website's html, icons, datasets and other static assets
-- src # the source code of the file
+- src # the source code of the website
   - components # reusable components
   - contents # mdx files for website's content in 2 languages
   - helpers # various functions and utils

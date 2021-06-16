@@ -185,6 +185,10 @@ const summary = [
       fr: 'À propos',
       en: 'About'
     },
+    shortTitles: {
+      fr: 'à propos',
+      en: 'about'
+    },
     contents: {
       fr: 'fr/a-propos.mdx',
       en: 'en/about.mdx'
@@ -203,6 +207,10 @@ const summary = [
     titles: {
       fr: 'Tests',
       en: 'Tests'
+    },
+    shortTitles: {
+      fr: 'tests',
+      en: 'tests'
     },
     contents: {
       fr: 'fr/tests.mdx',

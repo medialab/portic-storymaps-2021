@@ -45,48 +45,54 @@ nav{
   overflow: auto;
   background: $color-background;
   /* background: rgba(240,240,240,1); */
-}
-nav ul{
-  list-style: none;
-  padding: 0;
-  margin: 0;
+
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
-  width: calc(100% - 2rem);
-}
+  align-items: space-between;
+  box-sizing: border-box;
+  justify-content: center;
 
-nav li:not(:last-of-type){
-  margin-right: .5rem;
-}
+  ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    width: calc(100% - 2rem);
+    align-items: center;
 
-nav a{
-  color: inherit;
-  text-decoration: none;
-}
+    &.primary-nav-container {
+      justify-content: start;
+    }
+    &.secondary-nav-container {
+      justify-content: end;
+    }
+  }
 
-nav .navitem-container a {
-  display: block;
-}
+  li:not(:last-of-type):not(.lang-toggle){
+    margin-right: 1rem;
+  }
 
-nav .navitem-container a.active {
-  font-weight: 800;
-}
+  a{
+    color: inherit;
+    text-decoration: none;
+  }
 
+  .navitem-container a,
+  button {
+    display: block;
+    background: inherit;
+    color: inherit;
+    font-size: 1rem;
+    font-family: $font-family-1;
+  }
 
-.lang-toggle {
-  display: flex;
-  flex-flow: column nowrap;
-  border-left: 1px solid black;
-  padding-left: .5rem;
-}
-
-.lang-toggle button:not(.is-active) {
-  cursor: pointer;
-}
-
-.lang-toggle button.is-active {
-  font-weight: 800;
+  .navitem-container a.active,
+  button.is-active {
+    font-weight: 800;
+    background: inherit;
+    color: inherit;
+  }
 }
 
 

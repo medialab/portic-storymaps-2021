@@ -1,4 +1,5 @@
 import csv
+from collections import defaultdict
 
 OUTPUT = "../public/data/part_2_toflit_viz_data.csv"
 
@@ -79,9 +80,28 @@ def format_for_viz(f):
         "product_weight_kg": f['product_weight_kg']
     }
 
+initial_flows_viz = [format_for_viz(f) for f in relevant_flows]
+uniques = defaultdict(lambda: ({"value": 0, "product_weight_kg": 0}))
+for flow in initial_flows_viz:
+  identity = (flow["flow_type"], flow["customs_office"], flow["product"], flow["partner"])
+  # if identity in uniques:
+  uniques[identity]["value"] += (float(flow["value"]) if flow["value"] else 0)
+  uniques[identity]["product_weight_kg"] += (float(flow["product_weight_kg"]) if flow["product_weight_kg"] else 0)
+  uniques[identity]["flow_type"] = flow["flow_type"]
+  uniques[identity]["customs_office"] = flow["customs_office"]
+  uniques[identity]["product"] = flow["product"]
+  uniques[identity]["partner"] = flow["partner"]
+  """
+  else:
+    uniques[identity] = {
+      "value": flow["value"],
+      "product_weight_kg": flow["product_weight_kg"]
+    }
+    """
+flows_viz = list(uniques.values())
+
 # write dataset
 with open(OUTPUT, "w") as csvfile:
-  flows_viz = [format_for_viz(f) for f in relevant_flows]
   fieldnames = flows_viz[0].keys()
   writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 

@@ -16,8 +16,8 @@ export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,210.000
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,384,0
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,554,0
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,5700,25845.6
-export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1673,0
 export,La Rochelle,produit colonial,Indéterminé supposé Europe,5984,1889.9595
+export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1673,0
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,1010,0
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,223,0
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,128,0
@@ -26,16 +26,16 @@ export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,838.799
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,848.70001,0
 export,Les Sables d'Olonne,sel,Ports francs et petites îles,3379.375,330840.81
 export,Les Sables d'Olonne,sel,Ports francs et petites îles,350.125,34277.238
-export,La Rochelle,produit colonial,Indéterminé supposé Europe,262275,13514.115
 export,Les Sables d'Olonne,autres produits,Ports francs et petites îles,187,0
+export,La Rochelle,produit colonial,Indéterminé supposé Europe,262275,13514.115
 export,Aligre,autres produits,Ports francs et petites îles,120,0
 export,Aligre,autres produits,Ports francs et petites îles,420,0
 export,Aligre,autres produits,Ports francs et petites îles,480,0
 export,Aligre,autres produits,Ports francs et petites îles,180,0
 export,Aligre,autres produits,Ports francs et petites îles,600,2.4475
 export,Aligre,autres produits,Ports francs et petites îles,553.5,361.25098
-export,La Rochelle,autres produits,Indéterminé supposé Europe,3714,2020.1665
 export,Aligre,autres produits,Ports francs et petites îles,126817,0
+export,La Rochelle,autres produits,Indéterminé supposé Europe,3714,2020.1665
 export,Aligre,autres produits,Ports francs et petites îles,2747,0
 export,Aligre,autres produits,Ports francs et petites îles,164,0
 export,Aligre,autres produits,Ports francs et petites îles,138,0
@@ -47,15 +47,15 @@ export,Aligre,autres produits,Ports francs et petites îles,10983.5,0
 export,Aligre,autres produits,Ports francs et petites îles,402,0
 export,Aligre,autres produits,Ports francs et petites îles,102.5,501.73749
 export,Aligre,autres produits,Ports francs et petites îles,12226,14961.567
-export,La Rochelle,produit colonial,Indéterminé supposé Europe,1273150,623206.94
 export,Aligre,autres produits,Ports francs et petites îles,242,28268.625
+export,La Rochelle,produit colonial,Indéterminé supposé Europe,1273150,623206.94
 export,Aligre,autres produits,Ports francs et petites îles,595,116.501
 export,Aligre,autres produits,Ports francs et petites îles,396,387.68399
 export,Aligre,autres produits,Ports francs et petites îles,586,0
 export,Aligre,autres produits,Ports francs et petites îles,150,244.75
 export,Aligre,autres produits,Ports francs et petites îles,330,0
-export,Aligre,autres produits,Ports francs et petites îles,469,1147.8774
 export,La Rochelle,produit colonial,Indéterminé supposé Europe,730943,577092.06
+export,Aligre,autres produits,Ports francs et petites îles,469,1147.8774
 export,Aligre,autres produits,Ports francs et petites îles,227277.5,445009.34
 export,Aligre,autres produits,Ports francs et petites îles,135,0
 export,Aligre,autres produits,Ports francs et petites îles,110,0
@@ -589,8 +589,8 @@ import,Aligre,autres produits,Grande Bretagne,5950,0
 import,Aligre,produit colonial,Ports francs et petites îles,810,0
 import,La Rochelle,produit colonial,Colonies,3588719,1673026.8
 import,Aligre,autres produits,Ports francs et petites îles,732,0
-import,Aligre,eau-de-vie et vins divers,Ports francs et petites îles,1233.75,0
 import,Rochefort,produit colonial,Colonies,139482,65025.668
+import,Aligre,eau-de-vie et vins divers,Ports francs et petites îles,1233.75,0
 import,Aligre,autres produits,Ports francs et petites îles,435.60001,96.920998
 import,Aligre,autres produits,Ports francs et petites îles,306,0
 import,Aligre,autres produits,Europe,612.60004,499.77948
@@ -613,8 +613,8 @@ import,Aligre,autres produits,Ports francs et petites îles,2787.5,0
 import,Aligre,autres produits,Ports francs et petites îles,125,4895.0
 import,Aligre,autres produits,Ports francs et petites îles,13680,0
 import,Aligre,autres produits,Ports francs et petites îles,1800,3426.5
-import,La Rochelle,produit colonial,Colonies,679373,214550.78
 import,Aligre,autres produits,Ports francs et petites îles,95143.203,77620.992
+import,La Rochelle,produit colonial,Colonies,679373,214550.78
 import,Rochefort,produit colonial,Colonies,45523,14376.614
 import,Aligre,sel,Ports francs et petites îles,75306,2347189.3
 import,Aligre,autres produits,Ports francs et petites îles,725,709.77496
@@ -635,10 +635,10 @@ import,Rochefort,autres produits,Europe,2880,0
 import,Rochefort,autres produits,Europe,13200,0
 import,Rochefort,autres produits,Ports francs et petites îles,2252.5,0
 import,Rochefort,autres produits,Ports francs et petites îles,23718,0
-import,La Rochelle,produit colonial,Colonies,766982,39519.781
 import,Rochefort,autres produits,Europe,3786,0
-import,Rochefort,produit colonial,Colonies,1567,80.767494
+import,La Rochelle,produit colonial,Colonies,766982,39519.781
 import,Rochefort,autres produits,Europe,8305,0
+import,Rochefort,produit colonial,Colonies,1567,80.767494
 import,Rochefort,autres produits,Europe,7066,0
 import,Rochefort,autres produits,Europe,65352,0
 import,Rochefort,autres produits,Ports francs et petites îles,27775,135958.63
@@ -646,8 +646,8 @@ import,Rochefort,autres produits,Ports francs et petites îles,32142,157337.05
 import,Rochefort,autres produits,Europe,360,105.2425
 import,Rochefort,autres produits,Europe,1212,1977.58
 import,Rochefort,autres produits,Grande Bretagne,34550,1775783.6
-import,Rochefort,autres produits,Europe,337.5,330.41248
 import,La Rochelle,autres produits,Colonies,22588,12285.471
+import,Rochefort,autres produits,Europe,337.5,330.41248
 import,Rochefort,autres produits,Grande Bretagne,180,0
 import,Rochefort,autres produits,Europe,180,0
 import,Rochefort,autres produits,Ports francs et petites îles,600,0
@@ -669,8 +669,8 @@ import,Rochefort,autres produits,Europe,470,0
 import,Rochefort,autres produits,Europe,1172,0
 import,Rochefort,autres produits,Europe,1260,616.76996
 import,Rochefort,autres produits,Grande Bretagne,3031,4239.0698
-import,Rochefort,produit colonial,Colonies,1055,516.42249
 import,Rochefort,autres produits,Europe,6126.3999,8568.208
+import,Rochefort,produit colonial,Colonies,1055,516.42249
 import,Rochefort,autres produits,Grande Bretagne,9349,22881.678
 import,Rochefort,autres produits,Europe,282,690.19501
 import,Rochefort,autres produits,Europe,6820,834.59747
@@ -678,8 +678,8 @@ import,Rochefort,autres produits,Grande Bretagne,3202.5002,5225.4121
 import,Rochefort,autres produits,Ports francs et petites îles,120,39.16
 import,Rochefort,autres produits,Grande Bretagne,300,293.69998
 import,La Rochelle,produit colonial,Colonies,894917,706551.63
-import,Rochefort,produit colonial,Colonies,137863,108845.22
 import,Rochefort,autres produits,Grande Bretagne,3860,1889.47
+import,Rochefort,produit colonial,Colonies,137863,108845.22
 import,Rochefort,autres produits,Grande Bretagne,1550,3034.8999
 import,Rochefort,autres produits,Grande Bretagne,21303,0.0
 import,Rochefort,autres produits,Ports francs et petites îles,4395,3585.5874
@@ -695,8 +695,8 @@ import,Rochefort,autres produits,Europe,2093,7881.9287
 import,Rochefort,autres produits,Europe,427.5,418.52249
 import,Rochefort,autres produits,Ports francs et petites îles,132,2153.8
 import,Rochefort,autres produits,Europe,99744.75,139500.16
-import,Rochefort,autres produits,Grande Bretagne,3479,24328.148
 import,La Rochelle,produit colonial,Colonies,39008,40626.051
+import,Rochefort,autres produits,Grande Bretagne,3479,24328.148
 import,Rochefort,autres produits,Grande Bretagne,20013.6,81638.805
 import,Rochefort,autres produits,Grande Bretagne,9226,56451.586
 import,Rochefort,autres produits,Europe,11312,69215.297
@@ -727,8 +727,8 @@ import,Rochefort,autres produits,Grande Bretagne,68544.672,149122.75
 import,Rochefort,autres produits,Europe,372,303.48999
 import,Rochefort,autres produits,Europe,21323,0
 import,Rochefort,autres produits,Ports francs et petites îles,9959.25,13928.722
-import,Rochefort,autres produits,Europe,178.5,249.64499
 import,La Rochelle,autres produits,Colonies,810,0
+import,Rochefort,autres produits,Europe,178.5,249.64499
 import,Rochefort,autres produits,Europe,1182,964.315
 import,Rochefort,autres produits,Ports francs et petites îles,147964,144856.75
 import,Rochefort,autres produits,Ports francs et petites îles,691.25,966.76245
@@ -745,10 +745,10 @@ import,Saint-Martin-de-Ré,autres produits,Grande Bretagne,5183.75,4613.5376
 import,Saint-Martin-de-Ré,autres produits,Europe,1800,0
 import,Saint-Martin-de-Ré,autres produits,Europe,1188,0
 import,Saint-Martin-de-Ré,autres produits,Europe,12400,0
-import,La Rochelle,autres produits,Colonies,3330,543.34497
 import,Saint-Martin-de-Ré,autres produits,Europe,1540,0.0
-import,Rochefort,autres produits,Colonies,1431,466.983
+import,La Rochelle,autres produits,Colonies,3330,543.34497
 import,Saint-Martin-de-Ré,autres produits,Europe,25.200001,0
+import,Rochefort,autres produits,Colonies,1431,466.983
 import,Saint-Martin-de-Ré,autres produits,Europe,69103.203,0
 import,Saint-Martin-de-Ré,autres produits,Europe,5200,0
 import,Saint-Martin-de-Ré,autres produits,Europe,216,0
@@ -773,8 +773,8 @@ import,Saint-Martin-de-Ré,eau-de-vie et vins divers,Ports francs et petites îl
 import,Saint-Martin-de-Ré,autres produits,Reste du monde (USA),2680,6559.2998
 import,Saint-Martin-de-Ré,autres produits,Europe,15750.001,51397.5
 import,Saint-Martin-de-Ré,autres produits,Europe,4950,16153.5
-import,La Rochelle,eau-de-vie et vins divers,Colonies,328,0
 import,Saint-Martin-de-Ré,autres produits,Ports francs et petites îles,2443.5,3986.9773
+import,La Rochelle,eau-de-vie et vins divers,Colonies,328,0
 import,Rochefort,eau-de-vie et vins divers,Colonies,7170,0
 import,Saint-Martin-de-Ré,autres produits,Europe,5928.75,6449.1621
 import,Saint-Martin-de-Ré,autres produits,Ports francs et petites îles,680,0

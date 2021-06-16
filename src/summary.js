@@ -31,27 +31,7 @@ import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
 import TestsFr from '!babel-loader!mdx-loader!./contents/fr/tests.mdx';
 import TestsEn from '!babel-loader!mdx-loader!./contents/en/tests.mdx';
 
-
 const summary = [
-  // {
-  //   routes: {
-  //     fr: 'scrolly',
-  //     en: 'scrolly'
-  //   },
-  //   titles: {
-  //     fr: 'Tests scrollytelling',
-  //     en: 'Scrollytelling test'
-  //   },
-  //   contents: {
-  //     fr: 'fr/test-scrolly.mdx',
-  //     en: 'en/test-scrolly.mdx'
-  //   },
-  //   contentsProcessed: {
-  //     fr: TestScrollyFr,
-  //     en: testScrollyEn,
-  //   },
-  //   Component: ScrollyPage
-  // },
   {
     routes: {
       fr: 'partie-1',
@@ -61,6 +41,10 @@ const summary = [
       fr: 'Partie 1 - Le déclin de la région de La Rochelle suite à la perte du Canada',
       en: 'Partie 1 - The decline of La Rochelle region after Canada\'s loss'
     },
+    shortTitles: {
+      fr: 'le déclin de la région de La Rochelle',
+      en: 'the decline of La Rochelle region'
+    },
     contents: {
       fr: 'fr/partie-1.mdx',
       en: 'en/part-1.mdx'
@@ -69,7 +53,8 @@ const summary = [
       fr: Part1Fr,
       en: Part1En,
     },
-    Component: ScrollyPage
+    Component: ScrollyPage,
+    routeGroup: 'primary'
   },
   {
     routes: {
@@ -80,6 +65,10 @@ const summary = [
       fr: 'Partie 2 - Une forte spécialisation portuaire: le cas de la traite négrière, du commerce du sel et de l\'eau-de-vie',
       en: 'Partie 2 - A strong portual specialization'
     },
+    shortTitles: {
+      fr: 'une forte spécialisation portuaire',
+      en: 'a strong portual specialization'
+    },
     contents: {
       fr: 'fr/partie-2.mdx',
       en: 'en/part-2.mdx'
@@ -88,7 +77,8 @@ const summary = [
       fr: Part2IntroFr,
       en: Part2IntroEn,
     },
-    Component: ScrollyPage
+    Component: ScrollyPage,
+    routeGroup: 'primary'
   },
   // {
   //   routes: {
@@ -171,6 +161,10 @@ const summary = [
       fr: 'Partie 3 - La Rochelle, port dominant mais pas structurant',
       en: 'Part 3 - La Rochelle port, dominating but not structuring'
     },
+    shortTitles: {
+      fr: 'un port dominant mais pas structurant',
+      en: 'a dominating but not structuring port'
+    },
     contents: {
       fr: 'fr/partie-3.mdx',
       en: 'en/part-3.mdx'
@@ -179,7 +173,8 @@ const summary = [
       fr: Part3Fr,
       en: Part3En,
     },
-    Component: ScrollyPage
+    Component: ScrollyPage,
+    routeGroup: 'primary'
   },
   {
     routes: {
@@ -198,6 +193,7 @@ const summary = [
       fr: AboutFr,
       en: AboutEn,
     },
+    routeGroup: 'secondary',
   },
   {
     routes: {
@@ -216,6 +212,7 @@ const summary = [
       fr: TestsFr,
       en: TestsEn,
     },
+    routeGroup: 'secondary',
   }
 ]
 

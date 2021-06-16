@@ -16,7 +16,6 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          git checkout prod
           yarn
           yarn run data:update
           yarn run build

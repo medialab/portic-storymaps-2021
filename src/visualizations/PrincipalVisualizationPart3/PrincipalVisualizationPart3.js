@@ -2,6 +2,8 @@
 import cx from 'classnames';
 
 import SigmaComponent from '../../components/SigmaComponent';
+import GeoComponent from '../../components/GeoComponent/GeoComponent';
+import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
 
 import './PrincipalVisualizationPart3.scss';
 
@@ -9,7 +11,21 @@ const PrincipalVisualizationPart3 = ({step}) => {
   return (
     <div className="PrincipalVisualizationPart3">
       <div className={cx('step', {'is-visible': step === 1})}>
-        <img alt="step-3.1" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.1.svg`} />
+        <GeoComponent 
+          backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+          dataFilename="part_3_step1_viz_data.csv"
+          markerColor="null"
+          markerSize="null"
+          label="port"
+          showLabels
+          centerOnRegion
+          rotationDegree={58}
+          // debug="true"
+        /> 
+        <TriangleComponent 
+          dataFilename="part_3_step1_viz_data.csv"
+          numberOfColumns={15}
+        />
       </div>
       <div className={cx('step', {'is-visible': step === 2})}>
         <SigmaComponent 
@@ -22,16 +38,16 @@ const PrincipalVisualizationPart3 = ({step}) => {
         <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
 
       </div>
-      <div className={cx('step', {'is-visible': step === 3})}>
-      <div>Proto-légende</div>
-       <ul>
-         <li>cercles : part des produits exportés originaires de la région vs non-originaires (toflit18)</li>
-         <li>triangle : part des voyages vers la région vs hors de la région (navigo)</li>
-         <li>gros objets : bureaux de ferme + somme des ports</li>
-         <li>petits objets : ports individuels, en 3 classes</li>
-       </ul>
-        <img alt="step-3.3" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.3.svg`} />
-      </div>
+        <GeoComponent 
+            backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+            dataFilename="part_3_step3_viz_data.csv"
+            markerColor="null"
+            markerSize="null"
+            label="name"
+            showLabels
+            centerOnRegion
+            // debug="true"
+          /> 
     </div>
   )
 }

@@ -9,6 +9,8 @@ import { extent } from 'd3-array';
 import { generatePalette } from '../../helpers/misc';
 import { resetIdCounter } from 'vega-lite';
 
+import './GeoComponent.css'
+
 const Input = ({
   value: inputValue,
   onBlur,
@@ -70,18 +72,20 @@ const GeoComponent = ({
   width = 1800,
   height = 1500,
   label,
-  markerSize,
+  markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
-  centerOnRegion,
-  rotationDegree = 0,
+  centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant
+  rotationDegree = 0, 
   debug = false
-}) => {
+}) => {  
   // viz params variables
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
   const [translationX, setTranslationX] = useState(width / 2)
   const [translationY, setTranslationY] = useState(height / 2)
+  const [centerX, setCenterX] = useState(-1.7475027) // -1.7475027 pour centrer sur région
+  const [centerY, setCenterY] = useState(46.573642) // 46.573642
 
   // raw marker data
   const [data, setData] = useState(null);
@@ -181,24 +185,29 @@ const GeoComponent = ({
       .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
     if (backgroundData) { // que si center on region
-      if (rotationDegree != 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
-        projection
-          .angle(rotation)
-          .translate([translationX, translationY]) // besoin de décaler la carte vers la droite 
-      }
       if (centerOnRegion) {
+        setScale(50000);
+        setCenterX(-1.7475027);
+        setCenterY(46.573642);
         projection
           .scale(scale) // 50000 for a centered map
-          .center([-1.7475027, 46.573642])
+          .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
+          .translate([translationX*0.8, translationY*0.68])
       } else {
         // if bg data is available fit on whole geometry
         projection
           .fitSize([width, height], backgroundData)
       }
+      if (rotationDegree != 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+        setRotation(rotationDegree);
+        projection
+          .angle(rotation)
+          .translate([translationX*0.65, translationY*0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut
+      }
 
     }
     return projection;
-  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY])
+  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY])
 
 
 
@@ -212,7 +221,7 @@ const GeoComponent = ({
     )
   }
 
-  const [centerX, centerY] = projection([-1.7475027, 46.573642]);
+  const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
 
   return (
     <div>
@@ -220,9 +229,9 @@ const GeoComponent = ({
       {
         debug ?
           <>
-            scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}
-            <div>
-              <ul>
+            <h2>scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}, centerX: {centerX}, centerY: {centerY}</h2>          
+            <div class="table">
+              <ul id="horizontal-list">
                 <li>
                   <ul>
                     <li>
@@ -242,26 +251,54 @@ const GeoComponent = ({
                 <li>
                   <ul>
                     <li>
-                      <button onMouseDown={() => { console.log("DOWN !!"); setRotation(rotation + 2) }}>rotation+</button>
+                      <Button onMouseDown={() => { console.log("DOWN !!"); setRotation(rotation + 2) }}>rotation+</Button>
                     </li>
                     <li>
-                      <button onMouseDown={() => setRotation(rotation - 2)}>rotation-</button>
+                      <Button onMouseDown={() => setRotation(rotation - 2)}>rotation-</Button>
                     </li>
                   </ul>
                 </li>
                 <li>
                   <ul>
                     <li>
-                      <button onClick={() => setTranslationX(translationX * 1.2)}>translationX+</button>
+                      <Button onMouseDown={() => setTranslationX(translationX * 1.2)}>translationX+</Button>
                     </li>
                     <li>
-                      <button onClick={() => setTranslationX(translationX * 0.8)}>translationX-</button>
+                      <Button onMouseDown={() => setTranslationX(translationX * 0.8)}>translationX-</Button>
+                    </li>
+                    <li>b
+                      <Button onMouseDown={() => setTranslationY(translationY * 1.2)}>translationY+</Button>
                     </li>
                     <li>
-                      <button onClick={() => setTranslationY(translationY * 1.2)}>translationY+</button>
+                      <Button onMouseDown={() => setTranslationY(translationY * 0.8)}>translationY-</Button>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <Button onMouseDown={() => setCenterX(centerX + 0.3)}>centerX+</Button>
                     </li>
                     <li>
-                      <button onClick={() => setTranslationY(translationY * 0.8)}>translationY-</button>
+                      <Button onMouseDown={() => setCenterX(centerX - 0.3)}>centerX-</Button>
+                    </li>
+                    <li>b
+                      <Button onMouseDown={() => setCenterY(centerY + 0.3)}>centerY+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setCenterY(centerY - 0.3)}>centerY-</Button>
+                    </li>
+                    <li>
+                      <Input value={centerX} placeHolder={"entrez une valeur pour la latitude"} onBlur={(str) => {
+                        const val = isNaN(+str) ? centerX : +str
+                        setCenterX(val)
+                      }} />
+                    </li>
+                    <li>
+                      <Input value={centerY} placeHolder={"entrez une valeur pour la longitude"} onBlur={(str) => {
+                        const val = isNaN(+str) ? centerY : +str
+                        setCenterY(val)
+                      }} />
                     </li>
                   </ul>
                 </li>

@@ -335,23 +335,16 @@ const GeoComponent = ({
             markerData
               .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
               .map((datum, index) => {
+                // console.log("datum : ",datum)
                 const { latitude, longitude, size, color, label } = datum;
                 const [x, y] = projection([+longitude, +latitude]);
                 return (
-                  // {
-                    // renderObject ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
-                    // <g transform={`translate(${x},${y})`}>
-                    //     <circle
-                    //       key={index}
-                    //       cx={0}
-                    //       cy={0}
-                    //       r={size}
-                    //       fill={color}
-                    //       className="marker"
-                    //     />
-                    //   </g>
-                    //     :
-                    // }
+                  <>
+                  {
+                    typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
+                    // je veux un élément html
+                    renderObject(datum)
+                        :
                   <g transform={`translate(${x},${y})`}>
                           <circle
                             key={index}
@@ -372,8 +365,9 @@ const GeoComponent = ({
                               : null
                           }
                         </g>
-                );
-              })
+                      }
+                </>);
+                 })
           }
         </g>
         {

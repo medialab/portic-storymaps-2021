@@ -7,6 +7,12 @@ import TriangleComponent from '../../components/TriangleComponent/TriangleCompon
 
 import './PrincipalVisualizationPart3.scss';
 
+const renderObject = (datum) => {
+  console.log("datu : ",datum)
+  return <text>{datum.port}</text>
+} 
+
+
 const PrincipalVisualizationPart3 = ({step, width, height}) => {
   return (
     <div className="PrincipalVisualizationPart3" height={height}> 
@@ -15,14 +21,15 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
           backgroundFilename="cartoweb_france_1789_geojson.geojson" 
           dataFilename="part_3_step1_viz_data.csv"
           height = {height*0.75}
-          markerColor="null"
-          markerSize="null"
+          // markerColor="null"
+          // markerSize="null"
           label="port"
           width={width} // j'aurais besoin de responsive
           // height={height}
           showLabels
           centerOnRegion
           rotationDegree={58}
+          renderObject = {renderObject} 
           // debug
         /> 
         <TriangleComponent 

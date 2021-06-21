@@ -6,10 +6,18 @@ import Loader from "../Loader/Loader";
 import LongitudinalTradeChart from "./LongitudinalTradeChart";
 
 import './DeclineComponent.scss';
+
 // import { ProductsDistributionChart } from "./ProductsDistributionChart";
 
 const DeclineComponent = (props) => {
-  const {width, height, step = 1} = props;
+  const {
+    width, 
+    height, 
+    step = 1,
+    lang = 'fr',
+    startYear = 1720,
+    endYear = 1789,
+  } = props;
   const [longitudinalData, setLongitudinalData] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [loadingLR, setLoadingLR] = useState(true);
@@ -44,6 +52,42 @@ const DeclineComponent = (props) => {
 
   const thirdHeight = height/3 - 20;
   const halfHeight = height/2 - 20;
+
+  const messages = {
+    franceOverviewTitle: {
+      fr: () => `Évolution de la valeur absolue cumulée des exports du royaume de France`,
+      en: () => `Evolution of the absolute cumulated value of exports from the kingdom of France`
+    },
+    tradeEvolutionTitle: {
+      fr: (cityName, start, end) => `Évolution du commerce de ${cityName} de ${start} à ${end}`,
+      en: (cityName, start, end) => `Evolution of ${cityName} trade from ${start} to ${end}`
+    },
+    top90PctTitle: {
+      fr: (cityName, start, end) => `Comparaison des produits exportés par ${cityName} totalisant plus de 90% du commerce en ${start} et en ${end}`,
+      en: (cityName, start, end) => `Comparison of the top 90% of exported products by ${cityName} in ${start} and in ${end}`,
+    },
+    partInPct: {
+      fr: () => 'Part en %',
+      en: () => 'Part in %'
+    },
+    absoluteValue: {
+      fr: () => 'Valeur absolue',
+      en: () => 'Absolute value'
+    },
+    herfindalLegendTitle: {
+      fr: () => `Degré de diversité du commerce (inverse de l’indice de Herfindahl)`,
+      en: () => `Degree of trade diversity (inverse of the Herfindahl index)`,
+    },
+    herfindal0: {
+      fr: () => `0 (commerce peu diversifié)`,
+      en: () => `0 (fewly diverse trade)`,
+    },
+    herfindal1: {
+      fr: () => `1 (commerce très diversifié)`,
+      en: () => `1 (very diverse trade)`,
+    },
+
+  }
   return (
     <>
       {error ? (
@@ -56,7 +100,9 @@ const DeclineComponent = (props) => {
             )}
           </div>
           <div className={cx("viz-1-step", {'is-visible': step === 1})}>
-            <div>France</div>
+            <h2>
+              {messages.franceOverviewTitle[lang]()}
+            </h2>
             <LongitudinalTradeChart
               width={width}
               height={step < 3 ? thirdHeight : halfHeight}
@@ -66,7 +112,7 @@ const DeclineComponent = (props) => {
           </div>
 
           <div className={cx("viz-1-step", {'is-visible': step < 3})}>
-            <div>Bordeaux</div>
+            <h2>{messages.tradeEvolutionTitle[lang]('Bordeaux', startYear, endYear)}</h2>
             <LongitudinalTradeChart
               width={width}
               height={step < 2 ? thirdHeight : halfHeight}
@@ -77,7 +123,7 @@ const DeclineComponent = (props) => {
             />
           </div>
           <div className={cx("viz-1-step", {'is-visible': true})}>
-            <div>La Rochelle</div>
+          <h2>{messages.tradeEvolutionTitle[lang]('La Rochelle', startYear, endYear)}</h2>
             <LongitudinalTradeChart
               width={width}
               height={step < 2 ? thirdHeight : halfHeight}
@@ -88,6 +134,7 @@ const DeclineComponent = (props) => {
               shareField="Exports_share"
               herfindhalField="product_revolutionempire_exports_herfindahl"
               showProducts={step >= 3}
+              messages={messages}
             />
           </div>
         </div>

@@ -7,9 +7,9 @@ import TriangleComponent from '../../components/TriangleComponent/TriangleCompon
 
 import './PrincipalVisualizationPart3.scss';
 
-const PrincipalVisualizationPart3 = ({step}) => {
+const PrincipalVisualizationPart3 = ({step, width, height}) => {
   return (
-    <div className="PrincipalVisualizationPart3">
+    <div className="PrincipalVisualizationPart3" height={height}> 
       <div className={cx('step', {'is-visible': step === 1})}>
         <GeoComponent 
           backgroundFilename="cartoweb_france_1789_geojson.geojson" 
@@ -17,6 +17,8 @@ const PrincipalVisualizationPart3 = ({step}) => {
           markerColor="null"
           markerSize="null"
           label="port"
+          width={width} // j'aurais besoin de responsive
+          // height={height}
           showLabels
           centerOnRegion
           rotationDegree={58}
@@ -24,7 +26,8 @@ const PrincipalVisualizationPart3 = ({step}) => {
         /> 
         <TriangleComponent 
           dataFilename="part_3_step1_viz_data.csv"
-          numberOfColumns={15}
+          totalWidth={width}
+          numberOfColumns={25}
         />
       </div>
       <div className={cx('step', {'is-visible': step === 2})}>
@@ -38,6 +41,7 @@ const PrincipalVisualizationPart3 = ({step}) => {
         <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
 
       </div>
+      <div className={cx('step', {'is-visible': step === 3})}>
         <GeoComponent 
             backgroundFilename="cartoweb_france_1789_geojson.geojson" 
             dataFilename="part_3_step3_viz_data.csv"
@@ -48,6 +52,7 @@ const PrincipalVisualizationPart3 = ({step}) => {
             centerOnRegion
             // debug="true"
           /> 
+      </div>
     </div>
   )
 }

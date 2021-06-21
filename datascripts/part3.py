@@ -27,6 +27,7 @@ step 3 : vérifier si la comparaison avec les ports de Nantes, Bordeaux, Le Havr
 
 
 import csv
+from operator import itemgetter
 
 PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
 PORTS_FOR_COMPARISON = {'Bordeaux', 'Nantes', 'Le Havre'}
@@ -75,6 +76,8 @@ for p in relevant_pointcalls :
 # calculate mean tonnage by port
 for port, values in ports.items():
     values['mean_tonnage'] = values['cumulated_tonnage'] / values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
+# sort data geographically
+ports = sorted(ports.values(), key=itemgetter('longitude')) 
 
 # write dataset
 with open(OUTPUT1, "w", newline='') as csvfile:
@@ -82,8 +85,8 @@ with open(OUTPUT1, "w", newline='') as csvfile:
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
-    for port, values in ports.items(): # port est une key, values est un dictionnaire python
-        writer.writerow(values)
+    for port in ports:
+        writer.writerow(port) 
 
 
 # 3. write csv file to feed step 3 of the viz

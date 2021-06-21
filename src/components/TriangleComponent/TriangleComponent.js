@@ -8,7 +8,7 @@ import { max } from 'd3-array';
 
 // import { generatePalette } from '../../helpers/misc';
 
-import './TriangleComponent.css'
+import './TriangleComponent.scss'
 
 const TriangleComponent = ({
   dataFilename,
@@ -84,7 +84,7 @@ const TriangleComponent = ({
 
 
   return (
-    <div>
+    <div className="TriangleComponent">
 
       <svg width={totalWidth} height={totalHeight} viewBox={`0 0 ${totalWidth} ${totalHeight}`} style={{ border: '1px solid lightgrey' }}>
         {

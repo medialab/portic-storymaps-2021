@@ -17,6 +17,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
+          pip install -r requirements.txt
           yarn
           yarn run data:update
           yarn run build

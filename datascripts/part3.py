@@ -77,7 +77,7 @@ for p in relevant_pointcalls :
 for port, values in ports.items():
     values['mean_tonnage'] = values['cumulated_tonnage'] / values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
 # sort data geographically
-ports = sorted(ports.values(), key=itemgetter('longitude')) 
+ports = sorted(ports.values(), key=itemgetter('longitude'), reverse=True) 
 
 # write dataset
 with open(OUTPUT1, "w", newline='') as csvfile:

@@ -3,6 +3,8 @@ import { range } from "lodash";
 import { useEffect, useRef } from "react";
 import { ProductsDistributionChart } from "./ProductsDistributionChart";
 
+import colorsPalettes from "../../colorPalettes";
+
 // TODO: refacto fields props to ease exports/Imports switch
 
 const PRODUCT_TRADE_PART_TRESHOLD = 0.9;
@@ -24,6 +26,7 @@ const LongitudinalTradeChart = ({
   productsHeight,
 
   showProducts,
+  messages,
 }) => {
   const margin = { top: 20, right: 50, bottom: 30, left: 50 };
   const xBand = d3
@@ -34,7 +37,7 @@ const LongitudinalTradeChart = ({
   const herfindhalScale = d3
     .scaleLinear()
     .domain(d3.extent(data, (d) => +d[herfindhalField]))
-    .range([0, 0.8]);
+    .range([0, 1]);
   const svgNode = useRef();
   useEffect(() => {
     const svgPath = d3
@@ -111,11 +114,10 @@ const LongitudinalTradeChart = ({
         .selectAll("rect")
         .data(data)
         .join("rect")
-        .attr("fill", (d) =>
-          herfindhalField && d[herfindhalField]
-            ? d3.rgb(200, 50, 0, herfindhalScale(+d[herfindhalField]))
-            : "lightgrey"
-        )
+        .attr("fill", colorsPalettes.generic.dark)
+        .attr('opacity', d => herfindhalField && d[herfindhalField]
+        ? herfindhalScale(+d[herfindhalField])
+        : 1)
         .attr("x", (d) => xBand(+d.year))
         .attr("y", (d) => yShare(d[shareField]))
         .attr("height", (d) => yShare(0) - yShare(d[shareField]))
@@ -130,7 +132,7 @@ const LongitudinalTradeChart = ({
       svgPath
         .append("path")
         .datum(data)
-        .attr("stroke", "steelblue")
+        .attr("stroke", colorsPalettes.generic.accent2)
         .attr("stroke-width", 1.5)
         .attr("d", line);
     }

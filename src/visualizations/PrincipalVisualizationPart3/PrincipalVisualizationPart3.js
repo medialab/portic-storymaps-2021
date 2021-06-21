@@ -14,6 +14,7 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
         <GeoComponent 
           backgroundFilename="cartoweb_france_1789_geojson.geojson" 
           dataFilename="part_3_step1_viz_data.csv"
+          height = {height*0.75}
           markerColor="null"
           markerSize="null"
           label="port"
@@ -22,7 +23,7 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
           showLabels
           centerOnRegion
           rotationDegree={58}
-          // debug="true"
+          // debug
         /> 
         <TriangleComponent 
           dataFilename="part_3_step1_viz_data.csv"

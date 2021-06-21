@@ -181,29 +181,33 @@ const GeoComponent = ({
    * d3 projection making
    */
   const projection = useMemo(() => {
+     setTranslationX(width/2)
+     setTranslationY(height/2) 
+
     let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
       .scale(scale)
       .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
     if (backgroundData) { // que si center on region
       if (centerOnRegion) {
-        setScale(50000);
+        setScale(height*20); // 500000
         setCenterX(-1.7475027);
         setCenterY(46.573642);
         projection
           .scale(scale) // 50000 for a centered map
           .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
-          .translate([translationX * 0.8, translationY * 0.68])
+          .translate([translationX * 0.8, translationY * 0.4]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
       } else {
         // if bg data is available fit on whole geometry
         projection
           .fitSize([width, height], backgroundData)
       }
       if (rotationDegree != 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+        setScale(width*28)
         setRotation(rotationDegree);
         projection
           .angle(rotation)
-          .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut
+          .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut :  @TODO stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
       }
 
     }
@@ -402,7 +406,7 @@ const GeoComponent = ({
             </g>
             : null
         }
-        <circle cx={centerX} cy={centerY} r={5} fill={'red'} />
+        <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
       </svg>
     </div>
   )

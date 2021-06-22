@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/portic-storymaps-2021/static/css/main.23a55e17.chunk.css",
-    "main.js": "/portic-storymaps-2021/static/js/main.20f8c7c1.chunk.js",
-    "main.js.map": "/portic-storymaps-2021/static/js/main.20f8c7c1.chunk.js.map",
+    "main.js": "/portic-storymaps-2021/static/js/main.a98bc8cb.chunk.js",
+    "main.js.map": "/portic-storymaps-2021/static/js/main.a98bc8cb.chunk.js.map",
     "runtime-main.js": "/portic-storymaps-2021/static/js/runtime-main.5bcbbdf0.js",
     "runtime-main.js.map": "/portic-storymaps-2021/static/js/runtime-main.5bcbbdf0.js.map",
     "static/js/2.365820af.chunk.js": "/portic-storymaps-2021/static/js/2.365820af.chunk.js",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.5bcbbdf0.js",
     "static/js/2.365820af.chunk.js",
     "static/css/main.23a55e17.chunk.css",
-    "static/js/main.20f8c7c1.chunk.js"
+    "static/js/main.a98bc8cb.chunk.js"
   ]
 }

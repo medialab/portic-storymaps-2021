@@ -57,6 +57,12 @@ const ScrollyPage = ({
   }
 
   /**
+   * Reset scroll when changing page
+   */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [ContentSync])
+  /**
    * Scrollytelling management
    */
   useEffect(updateCurrentVisualization, [scrollY, visualizations]) /* eslint react-hooks/exhaustive-deps : 0 */

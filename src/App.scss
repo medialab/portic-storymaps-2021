@@ -4,6 +4,10 @@
 $font-family-1 : 'IBM Plex Sans', sans-serif;
 $font-family-2 : 'Lora', serif;
 
+$fontsize_part_title: 2rem;
+$fontsize_title2 : 1.3rem;
+$fontsize_nav: 1rem;
+
 $color-text : #403D3D;
 $color-accent : #34495E;
 $color-accent-background: #336D7C;
@@ -16,7 +20,7 @@ $medium-gutter: $small-gutter * 2;
 body {
     font-family: $font-family-2;
     color: $color-text;
-    background: $color-background;
+    // background: $color-background;
 }
 
 header {
@@ -43,14 +47,15 @@ nav{
   position: fixed;
   width: 100%;
   overflow: auto;
-  background: $color-background;
+  // background: $color-background;
+  background: white;
   /* background: rgba(240,240,240,1); */
 
   display: flex;
   flex-flow: row nowrap;
-  align-items: space-between;
+  align-items: center;
   box-sizing: border-box;
-  justify-content: center;
+  justify-content: space-between;
 
   ul{
     list-style: none;
@@ -58,7 +63,6 @@ nav{
     margin: 0;
     display: flex;
     flex-flow: row nowrap;
-    width: calc(100% - 2rem);
     align-items: center;
 
     &.primary-nav-container {
@@ -78,20 +82,42 @@ nav{
     text-decoration: none;
   }
 
+  button {
+    margin-bottom: $small-gutter;
+  }
+
   .navitem-container a,
   button {
     display: block;
     background: inherit;
     color: inherit;
-    font-size: 1rem;
     font-family: $font-family-1;
+    font-size: $fontsize_nav;
+    padding-bottom: $small-gutter;
+
+    img {
+      max-height: 2rem;
+    }
   }
 
-  .navitem-container a.active,
-  button.is-active {
-    font-weight: 800;
+  .navitem-container a.active {
+    // font-weight: 800;
     background: inherit;
     color: inherit;
+    border-bottom: 1px solid $color-text;
+  }
+  button.is-active {
+    background: inherit;
+    color: inherit;
+    font-weight: 800;
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-flow: column nowrap;
+    align-items: start;
+    > ul:last-of-type {
+      padding-left: 3rem;
+    }
   }
 }
 

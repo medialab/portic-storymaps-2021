@@ -343,7 +343,7 @@ const GeoComponent = ({
                   {
                     typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
                     // je veux un élément html
-                    renderObject(datum)
+                    renderObject(datum, x, y)
                         :
                   <g transform={`translate(${x},${y})`}>
                           <circle

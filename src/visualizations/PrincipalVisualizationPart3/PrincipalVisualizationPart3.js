@@ -7,9 +7,13 @@ import TriangleComponent from '../../components/TriangleComponent/TriangleCompon
 
 import './PrincipalVisualizationPart3.scss';
 
-const renderObject = (datum) => {
-  console.log("datu : ",datum)
-  return <text>{datum.port}</text>
+
+const renderObject = (datum, x, y) => { // fonction à adapter pour donner le double triangle + cercle qui va bien de la partie 3
+  console.log("datum : ",datum)
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text>{datum.label}</text>
+    </g>);
 } 
 
 
@@ -20,12 +24,11 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
         <GeoComponent 
           backgroundFilename="cartoweb_france_1789_geojson.geojson" 
           dataFilename="part_3_step1_viz_data.csv"
-          height = {height*0.75}
+          height = {height*0.7} // @TODO à changer quand je combin erais en un seul SVG ou component custom
           // markerColor="null"
           // markerSize="null"
           label="port"
           width={width} // j'aurais besoin de responsive
-          // height={height}
           showLabels
           centerOnRegion
           rotationDegree={58}
@@ -34,7 +37,7 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
         /> 
         <TriangleComponent 
           dataFilename="part_3_step1_viz_data.csv"
-          totalWidth={width}
+          totalWidth={width} // @TODO adapter la height
           numberOfColumns={25}
         />
       </div>

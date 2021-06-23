@@ -18,9 +18,9 @@ const HeaderNav = ({
     <nav>
       <ul className="primary-nav-container">
         <li className="navitem-container">
-                  <Link to={'/'}>
-                    {lang === 'fr' ? 'accueil': 'home'}
-                  </Link>
+          <Link exact to={'/'}>
+            <img src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
+          </Link>
         </li>
         {
             routes

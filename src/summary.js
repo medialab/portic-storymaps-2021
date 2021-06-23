@@ -214,7 +214,7 @@ const summary = [
     },
     contents: {
       fr: 'fr/tests.mdx',
-      en: 'en/Tests.mdx'
+      en: 'fr/tests.mdx'
     },
     contentsProcessed: {
       fr: TestsFr,

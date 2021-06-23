@@ -39,6 +39,7 @@ const PrincipalVisualizationPart3 = ({step, width, height}) => {
           dataFilename="part_3_step1_viz_data.csv"
           totalWidth={width} // @TODO adapter la height
           numberOfColumns={25}
+          rowHeight={height*0.3}
         />
       </div>
       <div className={cx('step', {'is-visible': step === 2})}>

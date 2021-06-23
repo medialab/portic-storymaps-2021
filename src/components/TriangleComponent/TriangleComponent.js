@@ -69,7 +69,7 @@ const TriangleComponent = ({
         return +port.nb_pointcalls_out;
       })
     )
-  ]).range([0, columnWidth]);
+  ]).range([0, columnWidth*4]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
 
   const scaleY = scaleLinear().domain([
     0,
@@ -78,7 +78,7 @@ const TriangleComponent = ({
         return +port.mean_tonnage; // parseFloat(port.mean_tonnage);
       })
     )
-  ]).range([0, (1 - marginUnderText - marginBetweenTriangleAndText) * rowHeight]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
+  ]).range([0, rowHeight*0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
   // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
 

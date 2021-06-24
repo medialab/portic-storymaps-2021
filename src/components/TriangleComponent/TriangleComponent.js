@@ -14,9 +14,7 @@ const TriangleComponent = ({
   dataFilename,
   totalWidth = 1200,
   rowHeight = 200,
-  numberOfColumns = 5,
-  marginUnderText = 0.1, // obsolète (mais encore utilisé dans le code)
-  marginBetweenTriangleAndText = 0.1 // obsolète (mais encore utilisé dans le code)
+  numberOfColumns = 5
 }) => {
 
   // raw marker data

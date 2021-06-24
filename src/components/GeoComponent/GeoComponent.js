@@ -133,7 +133,8 @@ const GeoComponent = ({
             latitude: datum.latitude,
             longitude: datum.longitude,
             color: datum[markerColor],
-            size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize]
+            size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize],
+            else: datum // à changer mais pour l'instant je ne sais pas faire autrement
           }
         } else {
           coordsMap[mark].size += (isNaN(+datum[markerSize]) ? 0 : +datum[markerSize])
@@ -190,19 +191,19 @@ const GeoComponent = ({
 
     if (backgroundData) { // que si center on region
       if (centerOnRegion) {
-        setScale(height*20); // 500000
+        setScale(height*24); // 500000
         setCenterX(-1.7475027);
         setCenterY(46.573642);
         projection
           .scale(scale) // 50000 for a centered map
           .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
-          .translate([translationX * 0.8, translationY * 0.4]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
+          .translate([translationX * 0.8, translationY * 0.56]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage : j'essaie de cadrer entre Nantes et Bordeaux)
       } else {
         // if bg data is available fit on whole geometry
         projection
           .fitSize([width, height], backgroundData)
       }
-      if (rotationDegree != 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+      if (rotationDegree !== 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
         setScale(width*28)
         setRotation(rotationDegree);
         projection
@@ -343,7 +344,7 @@ const GeoComponent = ({
                   {
                     typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
                     // je veux un élément html
-                    renderObject(datum, x, y)
+                    renderObject(datum, x, y, {width})
                         :
                   <g transform={`translate(${x},${y})`}>
                           <circle

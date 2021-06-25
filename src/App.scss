@@ -477,9 +477,12 @@ svg text {
 }
 
 .Caller {
-  background: lightgreen;
+  background: $color-background-blue;
+  font-family: $font-family-1;
+  padding: $small-gutter;
+  font-size: .7rem;
   &.is-active {
-    background: red;
+    background: $color-accent-background;
     color: white;
   }
   &.is-clearfix {

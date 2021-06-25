@@ -18,7 +18,7 @@ import summary from '../../summary';
 import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
-const CENTER_FRACTION = 0.2;
+const CENTER_FRACTION = 0.5;
 // const CENTER_FRACTION = .6;
 
 const metadata = {
@@ -81,6 +81,13 @@ function Home({ match: {
       setActiveVisualization(undefined);
     }
   }
+
+  /**
+   * Scroll to top on mount
+   */
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   /**
    * Scrollytelling management
    */

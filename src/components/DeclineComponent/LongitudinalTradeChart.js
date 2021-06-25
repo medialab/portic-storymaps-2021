@@ -4,6 +4,8 @@ import {extent, max} from 'd3-array';
 import { useMemo, useRef, useState, useEffect } from "react";
 import {axisPropsFromTickScale} from 'react-d3-axis';
 
+import ReactTooltip from 'react-tooltip';
+
 import colorsPalettes from "../../colorPalettes";
 
 const LongitudinalTradeChart = ({
@@ -21,6 +23,8 @@ const LongitudinalTradeChart = ({
   startYear,
   endYear,
   fillGaps,
+  barTooltipFn,
+  cityName,
 
   title,
   colorScaleMessages,
@@ -218,6 +222,14 @@ const LongitudinalTradeChart = ({
                   // opacity={herfindhalField && d[herfindhalField]
                   //         ? herfindhalOpacityScale(+d[herfindhalField])
                   //         : 1}
+                  data-tip={barTooltipFn ? 
+                    barTooltipFn(d.year, (d[shareField] * 100).toFixed(2), cityName, d[herfindhalField] && (+d[herfindhalField] || 0).toFixed(2)) 
+                    .replace('[colorBox]', `<span style="display:inline-block;width: .8em;height:.8em;background:${herfindhalColorScale(+d[herfindhalField] || 0)}"></span>`)
+                    : undefined}
+                  data-for={cityName}
+                  data-effect="solid"
+                  data-html={true}
+                  data-class="bar-tooltip"
                 />
               )
             })
@@ -271,6 +283,9 @@ const LongitudinalTradeChart = ({
         </g>
         
       </svg>
+
+
+      <ReactTooltip id={cityName} />
       
     </div>
   );

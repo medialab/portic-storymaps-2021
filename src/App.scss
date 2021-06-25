@@ -166,7 +166,7 @@ svg text {
   overflow: auto;
   // background: $color-background;
   background: $color-background;
-  transition: .2s all ease;
+  transition: .1s all ease;
   /* background: rgba(240,240,240,1); */
 
   display: flex;
@@ -514,6 +514,8 @@ button.is-active {
   left: 1rem;
   top: 1rem;
   position: absolute;
+  // overflow: hidden;
+  // background: lightgrey;
 }
 
 /**
@@ -780,5 +782,16 @@ button.is-active {
     .atlas-link-container {
       text-align: center;
     }
+  }
+}
+
+.bar-tooltip {
+  background: white!important;
+  color: $color-text!important;
+  font-family: $font-family-1;
+  max-width: 300px;
+  padding: $medium-gutter!important;
+  &:after {
+    display: none!important;
   }
 }

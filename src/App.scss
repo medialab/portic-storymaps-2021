@@ -1,49 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap");
 // @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;1,400;1,500&display=swap');
 
-$font-family-1 : 'IBM Plex Sans', sans-serif;
-$font-family-2 : 'Lora', serif;
+$font-family-1: "IBM Plex Sans", sans-serif;
+$font-family-2: "Lora", serif;
 
 $fontsize_part_title: 2rem;
-$fontsize_title2 : 1.3rem;
+$fontsize_title2: 1.3rem;
 $fontsize_nav: 1rem;
 
-$color-text : #403D3D;
-$color-accent : #34495E;
-$color-accent-background: #336D7C;
-$color-background-blue:#D3E5E5;
-$color-background:#EBEBEB;
+$color-text: #403d3d;
+$color-accent: #34495e;
+$color-accent-background: #336d7c;
+$color-background-blue: #d3e5e5;
+$color-background: #ebebeb;
 
-$small-gutter: .5rem;
+$small-gutter: 0.5rem;
 $medium-gutter: $small-gutter * 2;
 $external_gutter: 15vw;
+
+$header_height: 4.8rem;
 
 $footer_height: 20rem;
 
 body {
-    font-family: $font-family-2;
-    color: $color-text;
-    // background: $color-background;
+  font-family: $font-family-2;
+  color: $color-text;
+  // background: $color-background;
 }
 
 header {
-    position: fixed; /* pour fixer le header pendant le scroll */
-    width: 100%;
-    z-index: 2;
-    font-family: $font-family-1;
-    /* background-color: rgb(58, 118, 135); */
-    /* color: whitesmoke; */
+  position: fixed; /* pour fixer le header pendant le scroll */
+  width: 100%;
+  z-index: 2;
+  font-family: $font-family-1;
+  /* background-color: rgb(58, 118, 135); */
+  /* color: whitesmoke; */
 }
 
-h1,h2,h3,h4,h5, svg text {
+h1,
+h2,
+h3,
+h4,
+h5,
+svg text {
   font-family: $font-family-1;
 }
-
 
 /**
  * NAV
  */
-nav{
+nav {
   padding: 1rem;
   left: 0;
   top: 0;
@@ -51,7 +57,7 @@ nav{
   width: 100%;
   overflow: auto;
   // background: $color-background;
-  background: white;
+  background: $color-background-blue;
   /* background: rgba(240,240,240,1); */
 
   display: flex;
@@ -60,7 +66,7 @@ nav{
   box-sizing: border-box;
   justify-content: space-between;
 
-  ul{
+  ul {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -76,11 +82,11 @@ nav{
     }
   }
 
-  li:not(:last-of-type):not(.lang-toggle){
+  li:not(:last-of-type):not(.lang-toggle) {
     margin-right: 1rem;
   }
 
-  a{
+  a {
     color: inherit;
     text-decoration: none;
   }
@@ -100,6 +106,18 @@ nav{
 
     img {
       max-height: 2rem;
+    }
+  }
+  // logo
+  .navitem-container a {
+    img {
+      transition: 0.5s ease all;
+      transform-origin: center;
+    }
+    &:hover {
+      img {
+        rotate: 90deg;
+      }
     }
   }
 
@@ -124,47 +142,44 @@ nav{
   }
 }
 
-
 /**
  * FOOTER 
  */
 
 .Footer {
-    /* position: fixed; */
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 3;
-    background: $color-background;
-    width: 100%;
-    box-sizing: border-box;
-    padding-left: $external_gutter;
-    padding-right: $external_gutter;
-    padding-bottom: $medium-gutter * 2;
-    padding-top: $medium-gutter;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-gap: $medium-gutter * 2;
-    a {
-      color: inherit;
-      text-decoration: none;
-      font-family : $font-family-1;
-      font-weight: 500;
-    }
-    h2 {
-      margin-bottom: 0;
-      font-weight: medium;
-      font-size: 1rem;
-    }
-    .column:last-of-type {
-      margin-top: 2.2rem;
-      // font-family : $font-family-1;
-    }
-    p{
-      
-      margin-bottom: $small-gutter;
-    }
-
+  /* position: fixed; */
+  // position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background: $color-background;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: $external_gutter;
+  padding-right: $external_gutter;
+  padding-bottom: $medium-gutter * 2;
+  padding-top: $medium-gutter;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: $medium-gutter * 2;
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-family: $font-family-1;
+    font-weight: 500;
+  }
+  h2 {
+    margin-bottom: 0;
+    font-weight: medium;
+    font-size: 1rem;
+  }
+  .column:last-of-type {
+    margin-top: 2.2rem;
+    // font-family : $font-family-1;
+  }
+  p {
+    margin-bottom: $small-gutter;
+  }
 }
 
 #root {
@@ -176,32 +191,33 @@ nav{
 }
 
 #wrapper {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    // height: 100%;
-    display: flex;
-    align-content: stretch;
-    padding: 0;
-    padding-bottom: $footer_height * 1.5;
-    min-height: 100vh;
-    /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  // height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: stretch;
+  padding: 0;
+  // padding-bottom: $footer_height * 1;
+  min-height: 100vh;
+  /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
 }
 
 .HeaderNav {
-    display: flex; 
-    justify-content: space-around;
-    flex-direction: row;
-  }
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
 
 #wrapper > main {
-    display: flex;
-    padding: 1rem;
-    padding-top: 6rem;
-    justify-content: stretch;
-    align-content: stretch;
-    /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+  display: flex;
+  // padding: 1rem;
+  padding-top: $header_height;
+  justify-content: stretch;
+  align-content: stretch;
+  /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
 }
 
 /**
@@ -209,19 +225,21 @@ nav{
 **/
 .ScrollyPage {
   position: relative;
-  width: calc(100vw - 2rem);
-  max-width: calc(100vw - 2rem);
+  width: calc(100vw);
+  // max-width: calc(100vw - 2rem);
+  background: linear-gradient(to bottom, $color-background-blue 10vh, $color-background 50vh);
   // overflow-x: hidden;
   section {
-    width: 30%;
+    width: 40%;
     padding-right: 1rem;
     box-sizing: border-box;
+    padding: 0 $medium-gutter 0 $medium_gutter * 2;
   }
   aside {
     position: fixed;
-    left: 30%;
+    left: 40%;
     bottom: 0;
-    width: calc(70%);
+    width: calc(60%);
     height: calc(100vh - 7rem);
     box-sizing: border-box;
   }
@@ -238,17 +256,17 @@ nav{
  * MISC
  */
 
- button {
+button {
   border: none;
-  background: rgba(220,220,220,1);
-  padding: .5rem;
-  font-family: 'Karla', sans-serif;
+  background: rgba(220, 220, 220, 1);
+  padding: 0.5rem;
+  font-family: "Karla", sans-serif;
   outline: none;
   cursor: pointer;
 }
 
 button.is-active {
-  background: rgba(50,50,50,1);
+  background: rgba(50, 50, 50, 1);
   color: white;
 }
 
@@ -256,48 +274,188 @@ button.is-active {
   border: 1px solid lightgrey;
 }
 
-  .VisualizationController {
-    width: calc(100% - 2rem);
-    height: calc(100% - 2rem);
-    left: 1rem;
-    top: 1rem;
-    position: absolute;
-    // padding-left: 3rem;
-    // padding-right: 5rem;
-   
-  }
+.VisualizationController {
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  left: 1rem;
+  top: 1rem;
+  position: absolute;
+  // padding-left: 3rem;
+  // padding-right: 5rem;
+}
 
 /**
  * Loader (@todo refacto)
- */ 
+ */
 
 /**
-   * Loader
-   */
-   .loader-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+* Loader
+*/
+.loader-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  background: lightgrey;
+  height: 10px;
+  width: 50%;
+  position: relative;
+}
+.loader .loading-bar {
+  background: red;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  transition: width 0.2s ease;
+}
+
+.Home {
+  margin: 0;
+  padding: 0;
+  .header {
+    background: $color-background-blue;
+    min-height: 85vh;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-  }
-
-  .loader{
-    background: lightgrey;
-    height: 10px;
-    width: 50%;
     position: relative;
+    .titles-container {
+      h1{
+        max-width: 35vw;
+        font-size: 2rem;
+        margin-top: 0;
+      }
+      h2{
+        max-width: 35vw;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+      .go-to-start {
+        width: 100%;
+        text-align: center;
+        margin-top: $medium-gutter;
+        font-size: 3rem;
+        font-weight: 900;
+        background: transparent;
+        border: none;
+        height: 3rem;
+        position: relative;
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          transition: .5s ease all;
+        }
+        &:hover {
+          span {
+            top: $small-gutter;
+          }
+        }
+      }
+    }
+    
+    .boats-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20vh;
+    }
   }
-  .loader .loading-bar {
-    background: red;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    transition: width .2s ease;
+  .intro-container {
+    background: $color-accent-background;
+    color: white;
+    box-sizing: border-box;
+    padding-bottom: 15vh;
+    .Contents {
+      section {
+        padding: $medium-gutter;
+        padding-right: 55vw;
+        padding-left: $medium-gutter * 10;
+      }
+    }
+    .VisualizationController {
+      position: fixed;
+      right: $medium-gutter;
+      left: unset;
+      top: $header_height + $medium-gutter;
+      width: 50vw;
+      height: 80vh;
+      &.is-empty {
+        display: none;
+      }
+    }
   }
-  
+  .HomeSummary {
+    margin-left: $medium-gutter * 20;
+    margin-right: $medium-gutter * 20;
+    border-top: 1px solid white;
+    margin-top: $medium-gutter * 5;
+    a {
+      color: white;
+      text-decoration: none;
+      padding: $medium-gutter * 2;
+      border: 1px solid white;
+      display: block;
+    }
+    .intro {
+      padding-top: $medium-gutter;
+      padding-bottom: $medium-gutter;
+      text-align: center;
+      font-style: italic;
+    }
+    .chapters-links-container {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: stretch;
+      margin-top: 0;
+      li {
+        flex: 1;
+        display: flex;
+        justify-content: stretch;
+        &:not(:last-of-type) {
+          margin-right: $small-gutter;
+        }
+      }
+      
+      
+    }
+    .atlas-link-container,
+    .chapters-links-container li {
+      .pretitle {
+        margin: 0;
+        font-weight: 400;
+        font-style: italic;
+        padding-bottom: 0;
+      }
+      .title {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 600;
+      }
+      transition: background .2s ease;
+      &:hover {
+        background: rgba(255,255,255,.2);
+      }
+    }
+    .atlas-link-container {
+      text-align: center;
+    }
+  }
+}

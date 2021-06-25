@@ -13,7 +13,7 @@ import visualizationsList from '../visualizationsList';
 const VisualizationContainer = ({id, dimensions: inputDimensions, ...props}) => {
   const dimensions = {
     ...inputDimensions,
-    height: inputDimensions.height - inputDimensions.top / 2
+    // height: inputDimensions.height - inputDimensions.top / 2
   }
   const datasets = useContext(DatasetsContext);
   const relevantDatasets = useMemo(() => {

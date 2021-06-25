@@ -81,7 +81,7 @@ const LongitudinalTradeChart = ({
   return (
     <div className="LongitudinalTradeChart">
       <div className="chart-header" ref={headerRef}>
-        <h3 >{title}</h3>
+        <h3 style={{marginLeft: margins.left}}>{title}</h3>
         <div className="axis-headers-container">
           <div style={{background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined}} className="axis-header axis-header-left">
             {axisLeftTitle}

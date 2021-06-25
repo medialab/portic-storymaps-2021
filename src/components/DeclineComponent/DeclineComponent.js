@@ -161,12 +161,13 @@ const DeclineComponent = (props) => {
             key={rowIndex}
             partTreshold={productTradePartThreshold}
             height={height/totalRows * rowFlex}
-            barWidth={10}
+            barWidth={width * 0.02}
             years={[startYear, endYear]}
             margins={margins}
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.top90PctTitle[lang]('La Rochelle', startYear, endYear)}
             productTooltipFn={messages.productTooltip[lang]}
+            width={width}
           />
         )
       default:

@@ -134,6 +134,10 @@
           display: flex;
           flex-flow: row nowrap;
           align-items: center;
+          transition: .5s ease all;
+          &:not(:last-of-type) {
+            cursor: pointer;
+          }
           .bar {
             box-sizing: border-box;
             border-bottom: 1px solid white;
@@ -141,6 +145,10 @@
           .label {
             margin-left: .5rem;
             float: right;
+            transition: .5s ease all;
+          }
+          &:last-of-type {
+            opacity: .5;
           }
         }
         &:last-of-type {
@@ -151,12 +159,21 @@
               margin-right: .5rem;
               margin-left: unset;
               float: left;
+              text-align: right;
             }
           }
           .year-label {
             position: relative;
             align-self: flex-end;
             left: 1rem;
+          }
+        }
+      }
+      &.has-highlights {
+        .product-group {
+          opacity: .5;
+          &.is-highlighted {
+            opacity: 1;
           }
         }
       }

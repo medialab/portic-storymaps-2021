@@ -22,6 +22,27 @@
   h3 {
     margin-top: 0;
     margin-bottom: 0;
+    color: grey;
+  }
+  .LongitudinalTradeChart {
+    .axis {
+      text {
+        font-size: .5rem;
+      }
+    }
+    .axis-bottom {
+      .axis-group {
+        text {
+          rotate: -45deg;
+          text-anchor: end;
+        }
+      }
+    }
+    .axis-left {
+      text {
+        text-anchor: end;
+      }
+    }
   }
   .ProductsDistributionChart {
     .years-container {

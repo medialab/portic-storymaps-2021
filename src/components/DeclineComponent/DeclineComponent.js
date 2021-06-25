@@ -65,6 +65,7 @@ const DeclineComponent = (props) => {
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
             title={messages.franceOverviewTitle[lang]()}
+            fillGaps
             {
               ...{
                 startYear,

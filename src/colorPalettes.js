@@ -1,6 +1,13 @@
 
 
 const colorsPalettes = {
+  'ui': {
+    'colorText': '#403d3d',
+    'colorAccent': '#34495e',
+    'colorAccentBackground': '#336d7c',
+    'colorBackgroundBlue': '#d3e5e5',
+    'colorBackground': '#ebebeb',
+  },
   'generic':{
     'dark': '#336D7C',// marine sombre
     'light': '#E0E3E6',// gris clair

@@ -33,6 +33,7 @@ import {DatasetsContext} from './helpers/contexts';
 import './App.scss';
 
 import routes from './summary'
+import Footer from "./components/Footer";
 
 const LANGUAGES = ['fr', 'en'];
 
@@ -162,7 +163,9 @@ function App() {
             <Loader percentsLoaded={loadingFraction * 100} />
           }
         </main>
-        <footer></footer>
+        <Footer
+          lang={'fr'}
+        />
         
         
       </div>

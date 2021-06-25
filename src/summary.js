@@ -38,8 +38,8 @@ const summary = [
       en: 'part-1'
     },
     titles: {
-      fr: 'Partie 1 - Le déclin de la région de La Rochelle suite à la perte du Canada',
-      en: 'Partie 1 - The decline of La Rochelle region after Canada\'s loss'
+      fr: 'Le déclin de la région de La Rochelle suite à la perte du Canada',
+      en: 'The decline of La Rochelle region after Canada\'s loss'
     },
     shortTitles: {
       fr: 'le déclin de la région de La Rochelle',
@@ -62,8 +62,8 @@ const summary = [
       en: 'part-2'
     },
     titles: {
-      fr: 'Partie 2 - Une forte spécialisation portuaire: le cas de la traite négrière, du commerce du sel et de l\'eau-de-vie',
-      en: 'Partie 2 - A strong portual specialization'
+      fr: 'Une forte spécialisation portuaire: le cas de la traite négrière, du commerce du sel et de l\'eau-de-vie',
+      en: 'A strong portual specialization'
     },
     shortTitles: {
       fr: 'une forte spécialisation portuaire',
@@ -158,8 +158,8 @@ const summary = [
       en: 'part-3'
     },
     titles: {
-      fr: 'Partie 3 - La Rochelle, port dominant mais pas structurant',
-      en: 'Part 3 - La Rochelle port, dominating but not structuring'
+      fr: 'La Rochelle, port dominant mais pas structurant',
+      en: 'La Rochelle port, dominating but not structuring'
     },
     shortTitles: {
       fr: 'un port dominant mais pas structurant',
@@ -214,7 +214,7 @@ const summary = [
     },
     contents: {
       fr: 'fr/tests.mdx',
-      en: 'en/Tests.mdx'
+      en: 'fr/tests.mdx'
     },
     contentsProcessed: {
       fr: TestsFr,

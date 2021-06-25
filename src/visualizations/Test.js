@@ -5,7 +5,7 @@ const Test = ({
 }) => {
   return(
     <div className="Test">
-      <div>Coucou, ceci est le composant de la visualisation avec l'id <code>test</code></div>
+      <div>Ceci est un appel pour une visualisation qui n'a pas encore été développée</div>
       {
         Object.keys(datasets).length ? 
         <div>

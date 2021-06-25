@@ -1,8 +1,10 @@
 import {useRef} from 'react';
 import { sortBy, sum } from "lodash";
 import * as d3 from "d3";
-import { scaleLinear } from 'd3';
+import { scaleLinear, scalePow } from 'd3';
 import { extent } from 'vega';
+
+import colorsPalettes from "../../colorPalettes";
 
 // TODO:
 // - click on products highlight same product on all years ?
@@ -15,10 +17,10 @@ const ProductsDistributionChart = ({
   partTreshold,
   height: wholeHeight,
   barWidth,
-  color,
   herfindhalField,
   years,
   title,
+  margins,
 }) => {
   const titleRef = useRef(null);
   let height = wholeHeight;
@@ -28,22 +30,32 @@ const ProductsDistributionChart = ({
     height = wholeHeight - titleRef.current.getBoundingClientRect().height - yearLabelHeight;
   }
 
-  const herfindhalScale = d3
-    .scaleLinear()
+  // const herfindhalScale = d3
+  //   .scaleLinear()
+  //   .domain(d3.extent(tradeData, (d) => +d[herfindhalField]))
+  //   .range([0, 1]);
+
+    const herfindhalColorScale = scalePow()
     .domain(d3.extent(tradeData, (d) => +d[herfindhalField]))
-    .range([0, 1]);
+    .range([colorsPalettes.generic.accent2, 'grey']);
 
   return (
     <div className="ProductsDistributionChart">
       <h3 ref={titleRef}>{title}</h3>
-      <div className="years-container">
+      <div 
+        className="years-container"
+        style={{
+          marginLeft: margins.left,
+          marginRight: margins.right,
+        }}
+      >
       {
-        years.map(year => {
+        years.map((year, yearIndex) => {
           const data = allData.filter(datum => datum.year + '' === year + '');
           const flows = tradeData.filter((d) => d.year === year + '');
           const her = flows && +flows[0][herfindhalField];
           const color = her
-          ? d3.rgb(200, 50, 0, herfindhalScale(+her))
+          ? herfindhalColorScale(+her) // d3.rgb(200, 50, 0, herfindhalScale(+her))
           : "lightgrey";
           const totalValue = sum(data.map((d) => +d[field]));    
           let partAcc = 0;

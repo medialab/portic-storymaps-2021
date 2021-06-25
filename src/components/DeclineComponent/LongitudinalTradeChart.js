@@ -1,6 +1,8 @@
-import * as d3 from "d3";
+import { scalePow, scaleBand, scaleLinear } from "d3-scale";
 import { range } from "lodash";
-import { useEffect, useMemo, useRef } from "react";
+import {extent, max} from 'd3-array';
+import { useMemo, useRef } from "react";
+import {axisPropsFromTickScale} from 'react-d3-axis';
 
 import colorsPalettes from "../../colorPalettes";
 
@@ -20,6 +22,7 @@ const LongitudinalTradeChart = ({
 
   startYear,
   endYear,
+  fillGaps,
 
   title,
 }) => {
@@ -31,122 +34,203 @@ const LongitudinalTradeChart = ({
   }
 
   const margin = { top: 20, right: 50, bottom: 30, left: 50 };
-  const yearsExtent = d3.extent(data.map((d) => +d.year));
+  const yearsExtent = extent(data.map((d) => +d.year));
   const yearsEnumerated = range(...yearsExtent);
 
-  const xBand = d3
-    .scaleBand()
+  const xBand = scaleBand()
     .domain([...yearsEnumerated, endYear, endYear + 1])
     .range([margin.left, width - margin.right])
     .padding(0.1);
-  const herfindhalScale = d3
-    .scaleLinear()
-    .domain(d3.extent(data, (d) => +d[herfindhalField]))
-    .range([0, 1]);
+  const herfindhalColorScale = scalePow()
+    .domain(extent(data, (d) => +d[herfindhalField]))
+    .range([colorsPalettes.generic.accent2, 'grey']);
+  const herfindhalOpacityScale = herfindhalColorScale.copy()
+  .range([1, 0.5])
   const svgNode = useRef();
-  useEffect(() => {
-    const svgPath = d3
-      .select(svgNode.current)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("fill", "none")
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round");
-    // clean SVG
-    svgPath.selectAll("*").remove();
 
-    // X AXIS
+  const yearDomain = xBand.domain().map((y) => +y);
+  const yearTicks = yearDomain
+      .filter((y) => y % 5 === 0)
+  const yAbsoluteScale = scaleLinear()
+    .domain([0, max(data, (d) => +d[absoluteField])])
+    .nice()
+    .range([height - margin.bottom, margin.top]);
+  const yShareScale = scaleLinear()
+      .domain([0, max(data, (d) => +d[shareField])])
+      .nice()
+      .range([height - margin.bottom, margin.top]);
 
-    const yearDomain = xBand.domain().map((y) => +y);
-    const yearTicks = yearDomain
-      .filter((y) => y % 5 === 0 /*&& y !== endYear + 2*/)
-      // .concat([endYear + 1]);
-    const xAxis = (g) =>
-      g
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(xBand).tickValues(yearTicks).tickSizeOuter(0));
-
-    svgPath.append("g").call(xAxis);
-
-    if (data.length > 0) {
-      // LINE PATH FOR ABSOLUTE
-      // Y AXIS
-      const yAbsolute = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, (d) => +d[absoluteField])])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
-      const absoluteYAxis = (g) =>
-        g
-          .attr("transform", `translate(${width - margin.right},0)`)
-          .call(d3.axisRight(yAbsolute))
-          .call((g) => g.select(".domain").remove())
-          .call((g) =>
-            g
-              .select(".tick:last-of-type text")
-              .clone()
-              .attr("x", 3)
-              .attr("text-anchor", "start")
-              .attr("font-weight", "bold")
-              .text(absoluteLabel)
-          );
-      svgPath.append("g").call(absoluteYAxis);
-      // RECT for share series
-      // Y AXIS
-      const yShare = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, (d) => +d[shareField])])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
-      const shareYAxis = (g) =>
-        g
-          .attr("transform", `translate(${margin.left},0)`)
-          .call(d3.axisLeft(yShare))
-          .call((g) => g.select(".domain").remove())
-          .call((g) =>
-            g
-              .select(".tick:last-of-type text")
-              .clone()
-              .attr("x", 3)
-              .attr("text-anchor", "start")
-              .attr("font-weight", "bold")
-              .text(shareLabel)
-          );
-      svgPath.append("g").call(shareYAxis);
-      // BARS
-
-      svgPath
-        .append("g")
-        .selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("fill", colorsPalettes.generic.dark)
-        .attr('opacity', d => herfindhalField && d[herfindhalField]
-        ? herfindhalScale(+d[herfindhalField])
-        : 1)
-        .attr("x", (d) => xBand(+d.year))
-        .attr("y", (d) => yShare(d[shareField]))
-        .attr("height", (d) => yShare(0) - yShare(d[shareField]))
-        .attr("width", xBand.bandwidth());
-      // LINE
-      const line = d3
-        .line()
-        .defined((d) => d[absoluteField] !== "")
-        .x((d) => xBand(+d.year) + xBand.bandwidth() / 2)
-        .y((d) => yAbsolute(+d[absoluteField]));
-
-      svgPath
-        .append("path")
-        .datum(data)
-        .attr("stroke", colorsPalettes.generic.accent2)
-        .attr("stroke-width", 1.5)
-        .attr("d", line);
-    }
-  }, [data, svgNode]);/* eslint react-hooks/exhaustive-deps : 0 */
-
+  const {values: rightYAxisValues} = axisPropsFromTickScale(yAbsoluteScale, Math.round(height / 20));
+  const {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
   return (
     <div className="LongitudinalTradeChart">
       <h3 ref={titleRef}>{title}</h3>
-      <svg ref={svgNode} width={width} height={height}></svg>
+      <svg ref={svgNode} width={width} height={height}>
+        <g
+          className="axis axis-left"
+        >
+          {
+            leftYAxisValue.map(value => {
+              return (
+                <g className="axis-group">
+                  <line
+                    x1={margin.left * .8}
+                    x2={margin.left}
+                    y1={yShareScale(value)}
+                    y2={yShareScale(value)}
+                    stroke={'black'}
+                  />
+                  <line
+                    x1={margin.left}
+                    x2={width - margin.right}
+                    y1={yShareScale(value)}
+                    y2={yShareScale(value)}
+                    stroke={'grey'}
+                    strokeDasharray={'2, 2'}
+                    opacity={.2}
+                  />
+                  <text
+                    x={margin.left * .7}
+                    y={yShareScale(value) + height / 100}
+                    fill={'black'}
+                  >
+                    {Math.round(+value * 100) + '%'}
+                  </text>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g
+          className="axis axis-right"
+        >
+          {
+            rightYAxisValues.map(value => {
+              return (
+                <g className="axis-group">
+                  <line
+                    x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
+                    x2={width - margin.right}
+                    y1={yAbsoluteScale(value)}
+                    y2={yAbsoluteScale(value)}
+                    stroke={colorsPalettes.generic.accent1}
+                    strokeDasharray={'4, 2'}
+                    opacity={.5}
+                  />
+                  <text
+                    x={width - margin.right + 2}
+                    y={yAbsoluteScale(value) + height / 100}
+                    fill={colorsPalettes.generic.accent1}
+                  >
+                    {value > 0 ? Math.round(value/1000000) + 'm livres t.' : 0}
+                  </text>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g className="axis axis-bottom">
+          <line
+            y1={height - margin.bottom}
+            y2={height - margin.bottom}
+            x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
+            x2={width - margin.right}
+            stroke={'black'}
+          />
+          {
+            yearTicks
+            .map(year => {
+              const x = xBand(year) + xBand.bandwidth() / 2;
+              const y = height - margin.bottom;
+              return (
+                <g
+                  key={year}
+                  className="axis-group"
+                  transform={`translate(${x}, ${y})`}
+                >
+                  <line
+                    x1={0}
+                    x2={0}
+                    y1={0}
+                    y2={margin.bottom / 3}
+                    stroke="black"
+                  />
+                  <text y={2 * margin.bottom / 3}>
+                    {year}
+                  </text>
+                </g>
+              )
+            })
+          }
+        </g>
+
+        <g className="bars-container">
+          {
+            data.map((d) => {
+              return (
+                <rect
+                  key={d.year}
+                  x={xBand(+d.year)}
+                  y={yShareScale(d[shareField])}
+                  width={xBand.bandwidth()}
+                  height={yShareScale(0) - yShareScale(d[shareField])}
+                  fill={herfindhalField && d[herfindhalField] ? herfindhalColorScale(+d[herfindhalField]) : colorsPalettes.generic.dark}
+                  opacity={herfindhalField && d[herfindhalField]
+                          ? herfindhalOpacityScale(+d[herfindhalField])
+                          : 1}
+                />
+              )
+            })
+          }
+        </g>
+
+        <g
+          className="lines-container"
+        >
+          {
+            data
+            .sort((a, b) => {
+              if (+a.year > +b.year) {
+                return 1;
+              }
+              return -1;
+            })
+            .filter((d, index) => {
+              const next = data[index + 1];
+              return index < data.length - 1
+              && (fillGaps ? true : +next.year === +d.year + 1)
+            })
+            .map((datum, index) => {
+              const next = data[index + 1];
+              const x1 = xBand(+datum.year) + xBand.bandwidth() / 2;
+              const x2 = xBand(+next.year)+ xBand.bandwidth() / 2;
+              const y1 = yAbsoluteScale(+datum[absoluteField]);
+              const y2 = yAbsoluteScale(+next[absoluteField]);
+              if (!+datum[absoluteField] || !+next[absoluteField]) {
+                return null;
+              }
+              return (
+                 <line
+                   key={datum.year}
+                   {
+                     ...{
+                       x1,
+                       x2,
+                       y1,
+                       y2
+                     }
+                   }
+                   stroke={colorsPalettes.generic.accent1}
+                   title={`${datum.year}-${next.year}`}
+                   strokeWidth={2}
+                 />
+              )
+            })
+          }
+
+        </g>
+        
+      </svg>
     </div>
   );
 };

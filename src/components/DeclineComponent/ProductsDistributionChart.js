@@ -1,11 +1,8 @@
 import {useRef} from 'react';
-import { max, sortBy, sum } from "lodash";
+import { sortBy, sum } from "lodash";
 import * as d3 from "d3";
 import { scaleLinear } from 'd3';
 import { extent } from 'vega';
-
-const MIN_LABEL_SIZE = 0.5;
-const MAX_LABEL_SIZE = 2;
 
 // TODO:
 // - click on products highlight same product on all years ?

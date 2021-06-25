@@ -85,6 +85,10 @@ nav {
   li:not(:last-of-type):not(.lang-toggle) {
     margin-right: 1rem;
   }
+  li.lang-toggle button {
+    padding-right: 0;
+    padding-left: $small-gutter / 2;
+  }
 
   a {
     color: inherit;
@@ -384,8 +388,23 @@ button.is-active {
     .Contents {
       section {
         padding: $medium-gutter;
-        padding-right: 55vw;
-        padding-left: $medium-gutter * 10;
+      }
+      p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
+        margin-right: 55vw;
+        margin-left: $medium-gutter * 10;
+      }
+      .centered-part {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: $medium-gutter * 5;
+        .centered-part-contents {
+          max-width: 40vw;
+        }
+        p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
+          margin-right: 0;
+          margin-left: 0;
+        }
       }
     }
     .VisualizationController {

@@ -1,0 +1,29 @@
+type_of_object,name,cumulated_tonnage_in_region,cumulated_tonnage_out_region,nb_navigo_flows_taken_into_account,customs_office,customs_region,latitude,longitude
+port,Le Château-d'Oléron,237,120,37,Marennes,La Rochelle,45.9,-1.2
+port,Saint-Michel-en-l'Herm,0,0,0,Saint-Michel-en-l'Herm,La Rochelle,ERROR,ERROR
+port,Ribérou,3603,2674,549,Marennes,La Rochelle,45.6755,-0.935826
+port,Moricq,240,0,15,Les Sables-d'Olonne,La Rochelle,46.396209,-1.374028
+port,Ars-en-Ré,1080,205,74,Saint-Martin-de-Ré,La Rochelle,46.216667,-1.516667
+port,Mortagne,0,0,0,Mortagne,La Rochelle,ERROR,ERROR
+port,Champagné-les-Marais,1014,780,52,Les Sables-d'Olonne,La Rochelle,46.366667,-1.133333
+port,Marennes,22476,9753,754,Marennes,La Rochelle,45.816667,-1.116667
+port,La Tremblade,0,0,0,La Tremblade,La Rochelle,ERROR,ERROR
+port,Tonnay-Charente,27431,1536,808,Tonnay-Charente,La Rochelle,45.95,-0.9
+port,Noirmoutier,250,1030,52,Les Sables-d'Olonne,La Rochelle,47,-2.25
+port,Beauvoir-sur-Mer,500,850,47,Les Sables-d'Olonne,La Rochelle,46.916667,-2.05
+port,Soubise,447,117,37,Marennes,La Rochelle,45.933333,-1
+port,Saint-Martin-de-Ré,16382,3491,828,Saint-Martin-de-Ré,La Rochelle,46.2,-1.366667
+port,Royan,210,0,9,Marennes,La Rochelle,45.633333,-1.033333
+port,La Perrotine,2929,103,213,Marennes,La Rochelle,45.964614,-1.243436
+port,Saint-Gilles-sur-Vie,494,220,18,Les Sables-d'Olonne,La Rochelle,46.697882,-1.945124
+port,Saint-Denis d'Oléron,2124,1334,243,Marennes,La Rochelle,46.033333,-1.383333
+port,Rochefort,5297,790,211,Rochefort,La Rochelle,45.943666,-0.97043
+port,Esnandes,400,0,80,La Rochelle,La Rochelle,46.25,-1.083333
+port,La Tranche-sur-Mer,0,0,0,La Tranche-sur-Mer,La Rochelle,ERROR,ERROR
+port,Les Sables-d'Olonne,800,614,151,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
+port,La Flotte-en-Ré,1168,758,113,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
+port,Marans,12670,7821,1454,Marans,La Rochelle,46.312468,-0.995682
+port,La Rochelle,30826,7897,1209,La Rochelle,La Rochelle,46.166667,-1.15
+port,Nantes,985,813,34,undefined customs office,,47.216667,-1.55
+port,Bordeaux,590,1659,91,undefined customs office,,44.833333,-0.566667
+port,Le Havre,225,80,7,undefined customs office,,49.5,0.133333

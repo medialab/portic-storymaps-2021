@@ -16,15 +16,14 @@ const renderLabel = (datum, x, y) => { // fonction à adapter pour donner le dou
     </g>);
 }
 
-const renderDoubleTriangle = (datum, x, y, { width }) => { // fonction à rendre parametrable pour choisir si on veut afficher les ports ou les bureaux 
+const renderStep3Object = (datum, x, y, { width }) => {
 
-  // if (datum.else.type_of_object === objectType) {
     let sizeCoef = width * 0.05;
-    const totalTonnage = parseFloat(datum.else.cumulated_in_region) + parseFloat(datum.else.cumulated_out_region)
-    console.log("tonnage total : ",totalTonnage)
+    const totalTonnage = parseFloat(datum.else.cumulated_tonnage_in_region) + parseFloat(datum.else.cumulated_tonnage_out_region)
+    // console.log("tonnage total : ",totalTonnage)
 
     if (datum.else.type_of_object === "port") {
-      // TODO : dans ce cas juste définir des coefficients de taille des triangles en 3 classes distinctes
+      // définition des coefficients de taille des triangles en 3 classes distinctes (pour l'instant la définition des classes est expérimentale)
 
       // se gérerait bien avec un switch
       if (totalTonnage<1000){
@@ -37,8 +36,12 @@ const renderDoubleTriangle = (datum, x, y, { width }) => { // fonction à rendre
       }
     }
 
-    const leftTriangleHeight = parseFloat(datum.else.cumulated_out_region) / totalTonnage * sizeCoef;
-    const rightTriangleHeight = parseFloat(datum.else.cumulated_in_region) / totalTonnage * sizeCoef;
+    const leftTriangleHeight = parseFloat(datum.else.cumulated_tonnage_out_region) / totalTonnage * sizeCoef;
+    const rightTriangleHeight = parseFloat(datum.else.cumulated_tonnage_in_region) / totalTonnage * sizeCoef;
+
+    if (datum.else.type_of_object === 'customs_office') {
+      <path d="M70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
+    }
 
     return (
       <g className='double-triangle' transform={`translate(${x},${y})`}>
@@ -60,7 +63,25 @@ const renderDoubleTriangle = (datum, x, y, { width }) => { // fonction à rendre
               Z
               `}
         />
+        <>
+        {
+          datum.else.type_of_object === "customs_office" ?
+          <>
+          <path 
+            d={`M ${0} ${0} 
+                C ${70} ${140}, ${110} ${140}, ${110} ${110}
+                `}  
+            stroke="black" fill="transparent"/>
 
+          <path 
+            d={`M ${0} ${0} 
+            C ${120} ${80}, ${180} ${80}, ${170} ${60}
+            `} 
+            stroke="red" fill="transparent"/>
+          </>
+          : null
+        }
+        </>
       </g>);
   }
 
@@ -105,7 +126,7 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
       <div className={cx('step', { 'is-visible': step === 3 })} height={height}>
         <GeoComponent
           backgroundFilename="cartoweb_france_1789_geojson.geojson"
-          dataFilename="part_3_step3_viz_data.csv"
+          dataFilename="part_3_step3_viz_customs_offices_data.csv"
           width={width}
           height={height * 0.99}
           // markerColor="type_of_object"
@@ -113,7 +134,7 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
           label="name"
           showLabels
           centerOnRegion
-          renderObject={renderDoubleTriangle}
+          renderObject={renderStep3Object}
         // debug="true"
         />
       </div>

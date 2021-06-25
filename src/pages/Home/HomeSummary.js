@@ -18,6 +18,7 @@ function HomeSummary({ lang, summary }) {
   }
   return (
     <div className="HomeSummary">
+      <div className="contents">
       <div className="intro">
         {messages.intro[lang]}
       </div>
@@ -43,6 +44,7 @@ function HomeSummary({ lang, summary }) {
         <Link to={`/${lang}/atlas`}>
           <h3 className="title">{messages.atlas[lang]}</h3>
         </Link>
+      </div>
       </div>
     </div>
   )

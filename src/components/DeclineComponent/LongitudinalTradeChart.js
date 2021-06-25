@@ -45,6 +45,7 @@ const LongitudinalTradeChart = ({
         }
       }
       setHeight(newHeight);
+      ReactTooltip.rebuild();
     })
     
   }, [wholeHeight])
@@ -230,6 +231,7 @@ const LongitudinalTradeChart = ({
                   data-effect="solid"
                   data-html={true}
                   data-class="bar-tooltip"
+                  data-place="left"
                 />
               )
             })
@@ -275,6 +277,9 @@ const LongitudinalTradeChart = ({
                    stroke={colorsPalettes.generic.accent1}
                    title={`${datum.year}-${next.year}`}
                    strokeWidth={2}
+                   data-tip={`${datum.year}-${next.year} : ${parseInt(+datum[absoluteField])} → ${parseInt(+next[absoluteField])} livres tournois`}
+                    data-for={cityName}
+                    data-class="bar-tooltip"
                  />
               )
             })

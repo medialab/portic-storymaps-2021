@@ -52,14 +52,14 @@ def prepare_contents(str):
   return parts
 
 # get parts
-# with requests.Session() as s:
-#   download = s.get(GDOC_HTML_URL)
-#   decoded_content = download.content.decode('utf-8')
-#   for i, part in enumerate(prepare_contents(decoded_content)):
-#     md_path = TARGET_BASE + 'partie-' + str(i + 1) + '.mdx'
-#     f = open(md_path, "w")
-#     f.write(part)
-#     f.close()
+with requests.Session() as s:
+  download = s.get(GDOC_HTML_URL)
+  decoded_content = download.content.decode('utf-8')
+  for i, part in enumerate(prepare_contents(decoded_content)):
+    md_path = TARGET_BASE + 'partie-' + str(i + 1) + '.mdx'
+    f = open(md_path, "w")
+    f.write(part)
+    f.close()
 
 # get intro
 with requests.Session() as s:

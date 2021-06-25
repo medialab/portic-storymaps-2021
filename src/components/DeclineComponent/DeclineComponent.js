@@ -25,8 +25,8 @@ const DeclineComponent = (props) => {
       en: (cityName, start, end) => `Evolution of ${cityName} trade from ${start} to ${end}`
     },
     top90PctTitle: {
-      fr: (cityName, start, end) => `Comparaison des produits exportés par ${cityName} totalisant plus de 90% du commerce en ${start} et en ${end}`,
-      en: (cityName, start, end) => `Comparison of the top 90% of exported products by ${cityName} in ${start} and in ${end}`,
+      fr: (cityName, start, end) => `Comparaison des parts des produits exportés par ${cityName} totalisant plus de 90% du commerce en ${end}, en ${start} et en ${end}`,
+      en: (cityName, start, end) => `Comparison of shares of the top 90% of exported products by ${cityName} in ${start}, in ${start} and in ${end}`,
     },
     partInPct: {
       fr: () => 'part en %',
@@ -53,6 +53,10 @@ const DeclineComponent = (props) => {
     barTooltip: {
       fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (concentration) : <span>[colorBox] ${herfindal}</span>`,
       en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (diversité) : <span>[colorBox] ${herfindal}</span>`,
+    },
+    productTooltip: {
+      fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
+      en: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
     },
   }
   const margins = { top: 20, right: 50, bottom: 30, left: 50 };
@@ -162,6 +166,7 @@ const DeclineComponent = (props) => {
             margins={margins}
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.top90PctTitle[lang]('La Rochelle', startYear, endYear)}
+            productTooltipFn={messages.productTooltip[lang]}
           />
         )
       default:

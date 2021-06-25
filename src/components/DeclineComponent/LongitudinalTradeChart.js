@@ -200,9 +200,13 @@ const LongitudinalTradeChart = ({
                     y2={margins.bottom / 3}
                     stroke="grey"
                   />
-                  <text y={2 * margins.bottom / 3}>
+                  <g 
+                    transform={`translate(${(xBand.bandwidth() * .5)}, ${margins.bottom / 2})`}
+                  >
+                  <text>
                     {year}
                   </text>
+                  </g>
                 </g>
               )
             })

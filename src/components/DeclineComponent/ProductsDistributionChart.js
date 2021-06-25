@@ -1,9 +1,11 @@
 import {useRef} from 'react';
 import { max, sortBy, sum } from "lodash";
 import * as d3 from "d3";
+import { scaleLinear } from 'd3';
+import { extent } from 'vega';
 
 const MIN_LABEL_SIZE = 0.5;
-const MAX_LABEL_SIZE = 2.5;
+const MAX_LABEL_SIZE = 2;
 
 // TODO:
 // - click on products highlight same product on all years ?
@@ -23,7 +25,7 @@ const ProductsDistributionChart = ({
 }) => {
   const titleRef = useRef(null);
   let height = wholeHeight;
-  const yearLabelHeight = window.innerHeight / 40 + 10;
+  const yearLabelHeight = height / 20 + 10;
 
   if (titleRef && titleRef.current) {
     height = wholeHeight - titleRef.current.getBoundingClientRect().height - yearLabelHeight;
@@ -59,12 +61,13 @@ const ProductsDistributionChart = ({
             product: `${data.length - dataTillTreshold.length} autre produits`,
           };
           dataTillTreshold.push(aggregatedMiscProducts);
-          const maxValue = +dataTillTreshold[0][field];
 
           const scaleValue = (value) => {
             const v = (value / totalValue) * height;
             return v;
           };
+
+          const labelScale = scaleLinear().domain(extent(data, datum => +datum[field])).range([height / 100, height / 15])
 
           return (
             <div
@@ -95,10 +98,11 @@ const ProductsDistributionChart = ({
                   <span
                     className="label"
                     style={{
-                      fontSize: `${max([
-                        MAX_LABEL_SIZE * (d[field] / maxValue),
-                        MIN_LABEL_SIZE,
-                      ])}rem`,
+                      fontSize: labelScale(+d[field])
+                      // `${max([
+                      //   MAX_LABEL_SIZE * (d[field] / maxValue),
+                      //   MIN_LABEL_SIZE,
+                      // ])}rem`,
                     }}
                   >
                     {d.product}

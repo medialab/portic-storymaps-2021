@@ -9,7 +9,7 @@ const VisualizationController = ({
   activeVisualization
 }) => {
   const [dimensions, setDimensions] = useState({});
-  const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId'])
+  const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId']);
   return (
     <Measure 
       bounds

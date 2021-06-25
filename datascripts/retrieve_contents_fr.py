@@ -16,35 +16,50 @@ def prepare_contents(str):
   lines = md.split('\n')[2:]
   parts = []
   current_part = []
+  center_mode = False
   # split parts
   for line in lines:
     if line.startswith('# '):
+      if center_mode == True:
+        current_part.append('</div></div>')
+        center_mode = False
       parts.append(current_part)
       current_part = []
     elif line.startswith('&lt;Caller') and line.endswith('/&gt;'):
       line = re.sub(r"^&lt;Caller (.*)/&gt;$", r"<Caller \1/>", line).replace('”', '"')
+      if line == '<Caller />':
+        current_part.append('<div className="centered-part"><div className="centered-part-contents">')
+        current_part.append('')
+        center_mode = True
+      elif center_mode == True:
+        current_part.append('</div></div>')
+        center_mode = False
     elif line.startswith('import'):
       line = '| ' + line
+    elif line.startswith('Publié par <a href="//docs.google.com/"'):
+      line = ''
     current_part.append(line)
+  if center_mode == True:
+    current_part.append('</div></div>')
+    center_mode = False
   parts.append(current_part)
 
   parts = parts[1:] if len(parts) > 1 else parts  
   for i, part in enumerate(parts):
-    if (part[-1].startswith('Publié par <a href="//docs.google.com/" rel="noopener" target="_blank" title="Learn more about Google Drive">Google Drive</a>')):
-      part = part[0:-2]
+    
     part_with_caller = ["import Caller from '../../components/Caller'", "\n"] + part
     parts[i] = '\n'.join(part_with_caller)
   return parts
 
 # get parts
-with requests.Session() as s:
-  download = s.get(GDOC_HTML_URL)
-  decoded_content = download.content.decode('utf-8')
-  for i, part in enumerate(prepare_contents(decoded_content)):
-    md_path = TARGET_BASE + 'partie-' + str(i + 1) + '.mdx'
-    f = open(md_path, "w")
-    f.write(part)
-    f.close()
+# with requests.Session() as s:
+#   download = s.get(GDOC_HTML_URL)
+#   decoded_content = download.content.decode('utf-8')
+#   for i, part in enumerate(prepare_contents(decoded_content)):
+#     md_path = TARGET_BASE + 'partie-' + str(i + 1) + '.mdx'
+#     f = open(md_path, "w")
+#     f.write(part)
+#     f.close()
 
 # get intro
 with requests.Session() as s:

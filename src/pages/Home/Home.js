@@ -98,6 +98,7 @@ function Home({ match: {
 } }) {
   const introRef = useRef(null);
   const title = metadata[lang].title
+  const titleHTML = metadata[lang].titleHTML;
   const subtitle = metadata[lang].subtitle
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
@@ -182,7 +183,7 @@ function Home({ match: {
       </Helmet>
       <div className="header">
         <div className="titles-container">
-          <h1>{title}</h1>
+          <h1 dangerouslySetInnerHTML={{__html: titleHTML}}/>
           <h2>{subtitle}</h2>
           <button onClick={onClickOnStart} className="go-to-start">
           <span>⌄</span>

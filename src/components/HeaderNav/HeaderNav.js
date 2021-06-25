@@ -6,6 +6,7 @@ import { useScrollYPosition } from 'react-use-scroll-position';
 import {scaleLinear} from 'd3-scale';
 
 import colorPalettes from '../../colorPalettes'
+import { useDebounce } from '../../helpers/hooks';
 
 const {
   ui: {
@@ -37,7 +38,9 @@ const HeaderNav = ({
   } else if (location.pathname.includes('/en/')) {
     lang = 'en';
   }
-  const scrollY = useScrollYPosition();
+  const liveScrollY = useScrollYPosition();
+
+  const scrollY = useDebounce(liveScrollY, 50)
 
   const pageColorScale = scaleLinear().range([colorBackgroundBlue, colorBackground]).domain([0, 1])
   const {fontColor, backgroundColor} = useMemo(() => {

@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {useLocation} from 'react-router-dom';
 import {NavLink as Link} from 'react-router-dom'; 
+import { useScrollYPosition } from 'react-use-scroll-position';
+
+import {scaleLinear} from 'd3-scale';
+
+import colorPalettes from '../../colorPalettes'
+
+const {
+  ui: {
+    colorText,
+    // colorAccent,
+    colorAccentBackground,
+    colorBackgroundBlue,
+    colorBackground
+  }
+} = colorPalettes;
 
 const HeaderNav = ({
   routes,
   onLangChange,
 }) => {
   const location = useLocation();
+  const pageType = useMemo(() => {
+    if (location.pathname.includes('/page/')) {
+      return 'page';
+    } else if (location.pathname === '/fr/' || location.pathname === '/en/') {
+      return 'home';
+    }
+    else return 'other-page';
+  }, [location])
   const paramsLang = location && location.match && location.match.params && location.match.params.lang;
   let lang = 'fr';
   if (paramsLang) {
@@ -14,12 +37,68 @@ const HeaderNav = ({
   } else if (location.pathname.includes('/en/')) {
     lang = 'en';
   }
+  const scrollY = useScrollYPosition();
+
+  const pageColorScale = scaleLinear().range([colorBackgroundBlue, colorBackground]).domain([0, 1])
+  const {fontColor, backgroundColor} = useMemo(() => {
+    // const wrapper = document.getElementById('wrapper');
+    // if (!wrapper) {
+    //   return {fontColor: undefined, backgroundColor: undefined}
+    // }
+    // const scrollHeight = wrapper.offsetHeight;
+    const screenHeight = window.innerHeight;
+    switch(pageType) {
+      case 'page':
+        if (scrollY < screenHeight) {
+          return {
+            fontColor: colorText,
+            backgroundColor: pageColorScale((scrollY / (screenHeight / 2))),
+          }
+        } else {
+          return {
+            backgroundColor: colorBackground
+          }
+        }
+      case 'home':
+        if (scrollY < screenHeight * .8) {
+          return {
+            fontColor: colorText,
+            backgroundColor: colorBackgroundBlue,
+          }
+        } else {
+          return {
+            fontColor: 'white',
+            backgroundColor: colorAccentBackground
+          }
+        }
+        
+      case 'other-page':
+      default:
+        return {
+          fontColor: undefined,
+          backgroundColor: undefined
+        }
+
+    }
+    
+  }, [scrollY, pageColorScale, pageType])
+
   return (
-    <nav>
+    <nav
+      style={{
+        background: backgroundColor,
+        color: fontColor
+      }}
+    >
       <ul className="primary-nav-container">
         <li className="navitem-container">
           <Link exact to={'/'}>
-            <img src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
+            {
+              fontColor === 'white' ?
+              <img src={`${process.env.PUBLIC_URL}/rose_des_vents_white.svg`} alt="logo" />
+              :
+              <img src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
+            }
           </Link>
         </li>
         {

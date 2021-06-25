@@ -18,7 +18,7 @@ $small-gutter: 0.5rem;
 $medium-gutter: $small-gutter * 2;
 $external_gutter: 15vw;
 
-$header_height: 4.8rem;
+$header_height: 3.8rem;
 
 $footer_height: 20rem;
 
@@ -51,13 +51,15 @@ svg text {
  */
 nav {
   padding: 1rem;
+  padding-bottom: 0;
   left: 0;
   top: 0;
   position: fixed;
   width: 100%;
   overflow: auto;
   // background: $color-background;
-  background: $color-background-blue;
+  background: $color-background;
+  transition: .2s all ease;
   /* background: rgba(240,240,240,1); */
 
   display: flex;

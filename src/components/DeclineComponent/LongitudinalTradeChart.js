@@ -1,18 +1,11 @@
 import * as d3 from "d3";
 import { range } from "lodash";
-import { useEffect, useRef } from "react";
-import { ProductsDistributionChart } from "./ProductsDistributionChart";
+import { useEffect, useMemo, useRef } from "react";
 
 import colorsPalettes from "../../colorPalettes";
 
-// TODO: refacto fields props to ease exports/Imports switch
-
-const PRODUCT_TRADE_PART_TRESHOLD = 0.9;
-
 const LongitudinalTradeChart = ({
-  data,
-  // possible extension
-  productsData,
+  data: inputData,
   // fields: if null, viz will not show the corresponding data
   absoluteField,
   shareField,
@@ -22,16 +15,28 @@ const LongitudinalTradeChart = ({
   shareLabel,
 
   width,
-  height,
+  height: wholeHeight,
   productsHeight,
 
-  showProducts,
-  messages,
+  startYear,
+  endYear,
+
+  title,
 }) => {
+  const data = useMemo(() => inputData.filter(d => +d.year >= startYear & +d.year <= endYear), [startYear, endYear, inputData])
+  const titleRef = useRef(null);
+  let height = wholeHeight;
+  if (titleRef && titleRef.current) {
+    height = wholeHeight - titleRef.current.getBoundingClientRect().height;
+  }
+
   const margin = { top: 20, right: 50, bottom: 30, left: 50 };
+  const yearsExtent = d3.extent(data.map((d) => +d.year));
+  const yearsEnumerated = range(...yearsExtent);
+
   const xBand = d3
     .scaleBand()
-    .domain(range(...d3.extent(data.map((d) => +d.year))))
+    .domain([...yearsEnumerated, endYear, endYear + 1])
     .range([margin.left, width - margin.right])
     .padding(0.1);
   const herfindhalScale = d3
@@ -53,8 +58,8 @@ const LongitudinalTradeChart = ({
 
     const yearDomain = xBand.domain().map((y) => +y);
     const yearTicks = yearDomain
-      .filter((y) => y % 5 === 0 && y !== 1790)
-      .concat([1789]);
+      .filter((y) => y % 5 === 0 /*&& y !== endYear + 2*/)
+      // .concat([endYear + 1]);
     const xAxis = (g) =>
       g
         .attr("transform", `translate(0,${height - margin.bottom})`)
@@ -138,73 +143,11 @@ const LongitudinalTradeChart = ({
     }
   }, [data, svgNode]);/* eslint react-hooks/exhaustive-deps : 0 */
 
-  //TODO: make that a prop or a config
-  const productVizHeight = productsHeight || height;
-
-  // pass herfindhal for products chart color
-  const her1750 = (data.filter((d) => d.year === "1750")[0] || {})[
-    herfindhalField
-  ];
-  const her1789 = (data.filter((d) => d.year === "1789")[0] || {})[
-    herfindhalField
-  ];
-
-
   return (
-    <>
+    <div className="LongitudinalTradeChart">
+      <h3 ref={titleRef}>{title}</h3>
       <svg ref={svgNode} width={width} height={height}></svg>
-      {/* TODO: make year display generic peeking what's in the data ? */}
-      {productsData && showProducts && (
-        <div
-          style={{
-            position: "relative",
-            height: productVizHeight,
-            width: `${width}px`,
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              right: width - xBand(1750) - xBand.bandwidth(),
-            }}
-          >
-            <ProductsDistributionChart
-              data={productsData.filter((d) => d.year === "1750")}
-              field="Exports"
-              partTreshold={PRODUCT_TRADE_PART_TRESHOLD}
-              height={productVizHeight}
-              barWidth={xBand.bandwidth()}
-              color={
-                her1750
-                  ? d3.rgb(200, 50, 0, herfindhalScale(+her1750))
-                  : "lightgrey"
-              }
-              labelFirst={true}
-            />
-          </div>
-
-          <div style={{ position: "absolute", left: xBand(1789) }}>
-            <ProductsDistributionChart
-              data={productsData.filter((d) => d.year === "1789")}
-              field="Exports"
-              partTreshold={PRODUCT_TRADE_PART_TRESHOLD}
-              height={productVizHeight}
-              barWidth={xBand.bandwidth()}
-              color={
-                her1789
-                  ? d3.rgb(200, 50, 0, herfindhalScale(+her1789))
-                  : "lightgrey"
-              }
-            />
-          </div>
-          <h4>
-            Noms des produits totalisant {PRODUCT_TRADE_PART_TRESHOLD * 100}% du
-            commerce{" "}
-          </h4>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 export default LongitudinalTradeChart;

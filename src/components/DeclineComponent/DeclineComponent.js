@@ -50,7 +50,10 @@ const DeclineComponent = (props) => {
       fr: () => `commerce très diversifié`,
       en: () => `very diverse trade`,
     },
-
+    barTooltip: {
+      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (concentration) : <span>[colorBox] ${herfindal}</span>`,
+      en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (diversité) : <span>[colorBox] ${herfindal}</span>`,
+    },
   }
   const margins = { top: 20, right: 50, bottom: 30, left: 50 };
 
@@ -96,6 +99,8 @@ const DeclineComponent = (props) => {
             axisLeftTitle={messages.partInPct[lang]()}
             axisRightTitle={messages.absoluteValue[lang]()}
             margins={margins}
+            barTooltipFn={messages.barTooltip[lang]}
+            cityName="La Rochelle"
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),
               minimum: messages.herfindal0[lang](),
@@ -124,6 +129,8 @@ const DeclineComponent = (props) => {
             title={messages.tradeEvolutionTitle[lang]('Bordeaux', startYear, endYear)}
             axisLeftTitle={messages.partInPct[lang]()}
             axisRightTitle={messages.absoluteValue[lang]()}
+            barTooltipFn={ messages.barTooltip[lang]}
+            cityName="Bordeaux"
             margins={margins}
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),

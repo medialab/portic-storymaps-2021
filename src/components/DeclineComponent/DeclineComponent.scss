@@ -82,6 +82,18 @@
         }
       }
     }
+
+    .bars-container {
+      &:hover {
+        rect {
+          opacity: .5;
+          transition: .5s ease all;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
   .ProductsDistributionChart {
     .years-container {

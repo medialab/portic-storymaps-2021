@@ -18,7 +18,7 @@ import summary from '../../summary';
 import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
-const CENTER_FRACTION = 0.3;
+const CENTER_FRACTION = 0.2;
 // const CENTER_FRACTION = .6;
 
 const metadata = {
@@ -54,8 +54,16 @@ function Home({ match: {
       const { ref } = visualization;
       if (ref.current) {
         const { y: initialVisY } = ref.current.getBoundingClientRect();
-        const visY = initialVisY + window.scrollY;
-        if (y > visY) {
+        let visY = initialVisY + window.scrollY;
+        // @todo refactor this, it is dirty
+        if (ref.current.parentNode.className === 'centered-part-contents') {
+          visY += ref.current.parentNode.parentNode.getBoundingClientRect().y;
+        }
+        if (!visualization.visualizationId && scrollY + window.innerHeight * .8 > visY) {
+          found = true;
+          setActiveVisualization(undefined);
+          break;
+        } else if (y > visY) {
           found = true;
           if (visualization.visualizationId) {
             setActiveVisualization(visualization);
@@ -64,6 +72,8 @@ function Home({ match: {
           }
           break;
         }
+      } else {
+        console.error('cant find ref for', visualizationEntries[index])
       }
     }
     
@@ -101,7 +111,7 @@ function Home({ match: {
   const onClickOnStart = () => {
     if (introRef && introRef.current) {
       const intro = introRef.current;
-      const top = intro.offsetTop - (window.innerHeight / 10);
+      const top = intro.offsetTop - (window.innerHeight / 15);
       window.scrollTo({
         top,
         behavior: 'smooth'

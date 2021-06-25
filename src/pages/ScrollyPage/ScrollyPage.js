@@ -1,4 +1,4 @@
-import {useState, useReducer, useEffect} from 'react';
+import {useState, useReducer, useEffect, useRef} from 'react';
 import {Helmet} from "react-helmet";
 import {useScrollYPosition } from 'react-use-scroll-position';
 
@@ -14,7 +14,7 @@ const ScrollyPage = ({
   title,
   lang,
 }) => {
-
+  const sectionRef = useRef(null);
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -28,6 +28,14 @@ const ScrollyPage = ({
       const y = scrollY + DISPLACE_Y;
       const visualizationEntries = Object.entries(visualizations);
       let found;
+      const sectionDims = sectionRef.current && sectionRef.current.getBoundingClientRect();
+      const sectionEnd = sectionDims.y + window.scrollY + sectionDims.height;
+      if (y > sectionEnd) {
+        if (activeVisualization) {
+          setActiveVisualization(undefined);
+        }
+        return;
+      }
       // on parcourt la liste à l'envers pour récupérer
       // la visualisation la plus haute de la page qui est
       // au-dessus du milieu de l'écran
@@ -110,7 +118,7 @@ const ScrollyPage = ({
         <title>{title}</title>
       </Helmet>
       <div className="ScrollyPage">
-          <section>
+          <section ref={sectionRef}>
             <ContentSync />
           </section>
           <aside>

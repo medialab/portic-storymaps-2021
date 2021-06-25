@@ -354,7 +354,9 @@ svg text {
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-gap: $medium-gutter * 2;
-    max-width: 80vw;
+    max-width: calc(100vw - #{$medium-gutter * 8});
+    margin-top: $medium-gutter * 2;
+    margin-bottom: $medium-gutter * 2;
   }
   
   a {
@@ -444,14 +446,33 @@ svg text {
     width: 40%;
     box-sizing: border-box;
     padding: 0 $medium-gutter 0 $medium_gutter * 4;
+    margin-bottom: $medium-gutter * 15;
   }
   aside {
     position: fixed;
-    left: 40%;
+    right: 0;
     bottom: 0;
-    width: calc(60%);
-    height: calc(100vh - 7rem);
+    width: 60%;
+    height: calc(100vh - #{$header_height});
     box-sizing: border-box;
+  }
+  @include tablet {
+    section {
+      width: 50%;
+      padding-left: $medium-gutter;
+      padding-top: $medium-gutter * 2;
+    }
+    aside {
+      width: 50%;
+    }
+  }
+  @include phone {
+    section {
+      width: 100%;
+    }
+    aside {
+      display: none;
+    }
   }
 }
 
@@ -687,7 +708,7 @@ button.is-active {
     box-sizing: border-box;
     .contents {
       border-top: 1px solid white;
-      max-width: 80vw;
+      max-width: calc(100% - #{$medium-gutter * 8});
       box-sizing: border-box;
       @include tablet {
         max-width: 80vw;

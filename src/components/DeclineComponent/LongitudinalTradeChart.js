@@ -1,7 +1,7 @@
 import { scalePow, scaleBand, scaleLinear } from "d3-scale";
 import { range } from "lodash";
 import {extent, max} from 'd3-array';
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState, useEffect } from "react";
 import {axisPropsFromTickScale} from 'react-d3-axis';
 
 import colorsPalettes from "../../colorPalettes";
@@ -12,41 +12,52 @@ const LongitudinalTradeChart = ({
   absoluteField,
   shareField,
   herfindhalField,
-  // for axes
-  absoluteLabel,
-  shareLabel,
 
   width,
   height: wholeHeight,
-  productsHeight,
+  axisLeftTitle,
+  axisRightTitle,
 
   startYear,
   endYear,
   fillGaps,
 
   title,
+  colorScaleMessages,
+  margins
 }) => {
   const data = useMemo(() => inputData.filter(d => +d.year >= startYear & +d.year <= endYear), [startYear, endYear, inputData])
-  const titleRef = useRef(null);
-  let height = wholeHeight;
-  if (titleRef && titleRef.current) {
-    height = wholeHeight - titleRef.current.getBoundingClientRect().height;
-  }
+  const headerRef = useRef(null);
+  const footerRef = useRef(null);
+  const [height, setHeight] = useState(wholeHeight);
+  useEffect(() => {
+    // handling ref updates to set the correct height
+    setTimeout(() => {
+      let newHeight = wholeHeight;
+      if (headerRef && headerRef.current) {
+        newHeight = wholeHeight - headerRef.current.offsetHeight;
+        if (footerRef && footerRef.current) {
+          newHeight -= footerRef.current.offsetHeight;;
+        }
+      }
+      setHeight(newHeight);
+    })
+    
+  }, [wholeHeight])
+  
 
-  const margin = { top: 20, right: 50, bottom: 30, left: 50 };
   const yearsExtent = extent(data.map((d) => +d.year));
   const yearsEnumerated = range(...yearsExtent);
 
   const xBand = scaleBand()
     .domain([...yearsEnumerated, endYear, endYear + 1])
-    .range([margin.left, width - margin.right])
+    .range([margins.left, width - margins.right])
     .padding(0.1);
   const herfindhalColorScale = scalePow()
     .domain(extent(data, (d) => +d[herfindhalField]))
     .range([colorsPalettes.generic.accent2, 'grey']);
-  const herfindhalOpacityScale = herfindhalColorScale.copy()
-  .range([1, 0.5])
-  const svgNode = useRef();
+  // const herfindhalOpacityScale = herfindhalColorScale.copy()
+  // .range([1, 0.5])
 
   const yearDomain = xBand.domain().map((y) => +y);
   const yearTicks = yearDomain
@@ -54,18 +65,47 @@ const LongitudinalTradeChart = ({
   const yAbsoluteScale = scaleLinear()
     .domain([0, max(data, (d) => +d[absoluteField])])
     .nice()
-    .range([height - margin.bottom, margin.top]);
+    .range([height - margins.bottom, margins.top]);
   const yShareScale = scaleLinear()
       .domain([0, max(data, (d) => +d[shareField])])
       .nice()
-      .range([height - margin.bottom, margin.top]);
+      .range([height - margins.bottom, margins.top]);
 
   const {values: rightYAxisValues} = axisPropsFromTickScale(yAbsoluteScale, Math.round(height / 20));
   const {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
   return (
     <div className="LongitudinalTradeChart">
-      <h3 ref={titleRef}>{title}</h3>
-      <svg ref={svgNode} width={width} height={height}>
+      <div className="chart-header" ref={headerRef}>
+        <h3 >{title}</h3>
+        <div className="axis-headers-container">
+          <div style={{background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined}} className="axis-header axis-header-left">
+            {axisLeftTitle}
+          </div>
+          {
+            colorScaleMessages ?
+            <div className="color-scale-container">
+              <div className="color-scale-detail">
+                <div 
+                  className="bar"
+                  style={{
+                    background: `linear-gradient(to right, ${herfindhalColorScale(herfindhalColorScale.domain()[0])}, ${herfindhalColorScale(1)})`
+                  }}
+                />
+                <div className="labels">
+                  <span>{colorScaleMessages.maximum}</span>
+                  {/* <span>{colorScaleMessages.title}</span> */}
+                  <span>{colorScaleMessages.minimum}</span>
+                </div>
+              </div>
+            </div>
+            : null
+          }
+          <div style={{background: axisRightTitle && axisRightTitle.length ? colorsPalettes.generic.accent1 : undefined}} className="axis-header axis-header-right">
+            {axisRightTitle}
+          </div>
+        </div>
+      </div>
+      <svg width={width} height={height}>
         <g
           className="axis axis-left"
         >
@@ -74,15 +114,15 @@ const LongitudinalTradeChart = ({
               return (
                 <g className="axis-group">
                   <line
-                    x1={margin.left * .8}
-                    x2={margin.left}
+                    x1={margins.left * .8}
+                    x2={margins.left}
                     y1={yShareScale(value)}
                     y2={yShareScale(value)}
-                    stroke={'black'}
+                    stroke={'grey'}
                   />
                   <line
-                    x1={margin.left}
-                    x2={width - margin.right}
+                    x1={margins.left}
+                    x2={width - margins.right}
                     y1={yShareScale(value)}
                     y2={yShareScale(value)}
                     stroke={'grey'}
@@ -90,9 +130,9 @@ const LongitudinalTradeChart = ({
                     opacity={.2}
                   />
                   <text
-                    x={margin.left * .7}
+                    x={margins.left * .7}
                     y={yShareScale(value) + height / 100}
-                    fill={'black'}
+                    fill={'grey'}
                   >
                     {Math.round(+value * 100) + '%'}
                   </text>
@@ -110,7 +150,7 @@ const LongitudinalTradeChart = ({
                 <g className="axis-group">
                   <line
                     x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
-                    x2={width - margin.right}
+                    x2={width - margins.right}
                     y1={yAbsoluteScale(value)}
                     y2={yAbsoluteScale(value)}
                     stroke={colorsPalettes.generic.accent1}
@@ -118,7 +158,7 @@ const LongitudinalTradeChart = ({
                     opacity={.5}
                   />
                   <text
-                    x={width - margin.right + 2}
+                    x={width - margins.right + 2}
                     y={yAbsoluteScale(value) + height / 100}
                     fill={colorsPalettes.generic.accent1}
                   >
@@ -131,17 +171,17 @@ const LongitudinalTradeChart = ({
         </g>
         <g className="axis axis-bottom">
           <line
-            y1={height - margin.bottom}
-            y2={height - margin.bottom}
+            y1={height - margins.bottom}
+            y2={height - margins.bottom}
             x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
-            x2={width - margin.right}
-            stroke={'black'}
+            x2={xBand(yearTicks[yearTicks.length - 1]) + xBand.bandwidth() / 2}
+            stroke={'grey'}
           />
           {
             yearTicks
             .map(year => {
               const x = xBand(year) + xBand.bandwidth() / 2;
-              const y = height - margin.bottom;
+              const y = height - margins.bottom;
               return (
                 <g
                   key={year}
@@ -152,10 +192,10 @@ const LongitudinalTradeChart = ({
                     x1={0}
                     x2={0}
                     y1={0}
-                    y2={margin.bottom / 3}
-                    stroke="black"
+                    y2={margins.bottom / 3}
+                    stroke="grey"
                   />
-                  <text y={2 * margin.bottom / 3}>
+                  <text y={2 * margins.bottom / 3}>
                     {year}
                   </text>
                 </g>
@@ -175,9 +215,9 @@ const LongitudinalTradeChart = ({
                   width={xBand.bandwidth()}
                   height={yShareScale(0) - yShareScale(d[shareField])}
                   fill={herfindhalField && d[herfindhalField] ? herfindhalColorScale(+d[herfindhalField]) : colorsPalettes.generic.dark}
-                  opacity={herfindhalField && d[herfindhalField]
-                          ? herfindhalOpacityScale(+d[herfindhalField])
-                          : 1}
+                  // opacity={herfindhalField && d[herfindhalField]
+                  //         ? herfindhalOpacityScale(+d[herfindhalField])
+                  //         : 1}
                 />
               )
             })
@@ -231,6 +271,7 @@ const LongitudinalTradeChart = ({
         </g>
         
       </svg>
+      
     </div>
   );
 };

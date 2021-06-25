@@ -29,27 +29,30 @@ const DeclineComponent = (props) => {
       en: (cityName, start, end) => `Comparison of the top 90% of exported products by ${cityName} in ${start} and in ${end}`,
     },
     partInPct: {
-      fr: () => 'Part en %',
-      en: () => 'Part in %'
+      fr: () => 'part en %',
+      en: () => 'part in %'
     },
     absoluteValue: {
-      fr: () => 'Valeur absolue',
-      en: () => 'Absolute value'
+      fr: () => 'valeur absolue',
+      en: () => 'absolute value'
     },
     herfindalLegendTitle: {
-      fr: () => `Degré de diversité du commerce (inverse de l’indice de Herfindahl)`,
-      en: () => `Degree of trade diversity (inverse of the Herfindahl index)`,
+      // fr: () => `Degré de diversité du commerce (inverse de l’indice de Herfindahl)`,
+      // en: () => `Degree of trade diversity (inverse of the Herfindahl index)`,
+      fr: () => `degré de diversité du commerce`,
+      en: () => `degree of trade diversity`,
     },
     herfindal0: {
-      fr: () => `0 (commerce peu diversifié)`,
-      en: () => `0 (fewly diverse trade)`,
+      fr: () => `commerce peu diversifié`,
+      en: () => `fewly diverse trade`,
     },
     herfindal1: {
-      fr: () => `1 (commerce très diversifié)`,
-      en: () => `1 (very diverse trade)`,
+      fr: () => `commerce très diversifié`,
+      en: () => `very diverse trade`,
     },
 
   }
+  const margins = { top: 20, right: 50, bottom: 30, left: 50 };
 
   const totalRows = Object.entries(rows).reduce((sum, [id, count]) => sum + count, 0)
   const renderRow = (row, rowFlex, rowIndex) => {
@@ -65,6 +68,9 @@ const DeclineComponent = (props) => {
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
             title={messages.franceOverviewTitle[lang]()}
+            axisLeftTitle={''}
+            axisRightTitle={messages.absoluteValue[lang]()}
+            margins={margins}
             fillGaps
             {
               ...{
@@ -87,6 +93,14 @@ const DeclineComponent = (props) => {
             shareField="Exports_share"
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.tradeEvolutionTitle[lang]('La Rochelle', startYear, endYear)}
+            axisLeftTitle={messages.partInPct[lang]()}
+            axisRightTitle={messages.absoluteValue[lang]()}
+            margins={margins}
+            colorScaleMessages={{
+              title: messages.herfindalLegendTitle[lang](),
+              minimum: messages.herfindal0[lang](),
+              maximum: messages.herfindal1[lang](),
+            }}
             {
               ...{
                 startYear,
@@ -108,6 +122,14 @@ const DeclineComponent = (props) => {
             shareField="Exports_share"
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.tradeEvolutionTitle[lang]('Bordeaux', startYear, endYear)}
+            axisLeftTitle={messages.partInPct[lang]()}
+            axisRightTitle={messages.absoluteValue[lang]()}
+            margins={margins}
+            colorScaleMessages={{
+              title: messages.herfindalLegendTitle[lang](),
+              minimum: messages.herfindal0[lang](),
+              maximum: messages.herfindal1[lang](),
+            }}
             {
               ...{
                 startYear,
@@ -130,6 +152,7 @@ const DeclineComponent = (props) => {
             height={height/totalRows * rowFlex}
             barWidth={10}
             years={[startYear, endYear]}
+            margins={margins}
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.top90PctTitle[lang]('La Rochelle', startYear, endYear)}
           />

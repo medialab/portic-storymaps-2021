@@ -21,10 +21,22 @@
 
   h3 {
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: .5rem;
     color: grey;
+    font-weight: 500;
   }
   .LongitudinalTradeChart {
+    .axis-headers-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      font-size: .6rem;
+      color: white;
+      .axis-header {
+        padding: .1rem .2rem;
+        box-sizing: border-box;
+      }
+    }
     .axis {
       text {
         font-size: .5rem;
@@ -43,6 +55,33 @@
         text-anchor: end;
       }
     }
+
+    .color-scale-container {
+      display: flex;
+      flex-flow: column nowrap;
+      width: 30%;
+      .color-scale-detail {
+        position: relative;
+        .bar {
+          height: 1rem;
+        }
+        .labels {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          font-size: .5rem;
+          padding: .2rem;
+          padding-top: .1rem;
+          box-sizing: border-box;
+          height: 1rem;
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-between;
+          color: white;
+        }
+      }
+    }
   }
   .ProductsDistributionChart {
     .years-container {
@@ -53,7 +92,7 @@
         margin: 0;
         padding: 0;
         font-weight: 300;
-        font-size: .8rem;
+        font-size: .6rem;
         margin-bottom: 10px;
         span {
           rotate: -45deg;
@@ -100,5 +139,4 @@
       }
     }
   }
-
 }

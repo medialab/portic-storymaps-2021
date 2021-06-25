@@ -20,6 +20,7 @@ const ProductsDistributionChart = ({
   barWidth,
   herfindhalField,
   years,
+  width,
   title,
   margins,
   productTooltipFn,
@@ -97,8 +98,8 @@ const ProductsDistributionChart = ({
       <div 
         className={cx("years-container", {'has-highlights': hoveredProduct !== undefined})}
         style={{
-          marginLeft: margins.left,
-          marginRight: margins.right,
+          marginLeft: margins.left + 5,
+          marginRight: margins.right + width * .002,
         }}
       >
       {

@@ -1,8 +1,9 @@
 
-import React, { useMemo, useState, useReducer, useEffect } from 'react';
+import React, { useRef, useState, useReducer, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { NavLink as Link } from 'react-router-dom';
 /* eslint-disable import/no-webpack-loader-syntax */
+import Measure from 'react-measure'
 
 import metadataFr from '../../contents/fr/metadata'
 import metadataEn from '../../contents/en/metadata'
@@ -18,7 +19,8 @@ import VisualizationController from '../../components/VisualizationController';
 import { VisualizationControlContext } from '../../helpers/contexts';
 import summary from '../../summary';
 
-const CENTER_FRACTION = .6;
+const CENTER_FRACTION = 0.3;
+// const CENTER_FRACTION = .6;
 
 const metadata = {
   fr: metadataFr,
@@ -45,7 +47,7 @@ function HomeSummary({ lang }) {
       <div className="intro">
         {messages.intro[lang]}
       </div>
-      <ul>
+      <ul className="chapters-links-container">
         {
           summary
             .filter(item => item.routeGroup === 'primary')
@@ -55,7 +57,8 @@ function HomeSummary({ lang }) {
               return (
                 <li key={itemIndex}>
                   <Link to={route}>
-                    {title}
+                    <h4 className="pretitle">{messages.chapter[lang]} {itemIndex + 1}</h4>
+                    <h3 className="title">{title}</h3>
                   </Link>
                 </li>
               )
@@ -64,18 +67,38 @@ function HomeSummary({ lang }) {
       </ul>
       <div className="atlas-link-container">
         <Link to={`/${lang}/atlas`}>
-          {messages.atlas[lang]}
+          <h3 className="title">{messages.atlas[lang]}</h3>
         </Link>
       </div>
     </div>
   )
 }
 
+const BoatsContainer = () => {
+  const [dimensions, setDimensions] = useState({});
+
+  return (
+    <Measure 
+      bounds
+      onResize={contentRect => {
+        setDimensions(contentRect.bounds)
+      }}
+    >
+      {({ measureRef }) => (
+        <div ref={measureRef} className="boats-container">
+          <BoatsIllustration {...{...dimensions}} />
+        </div>
+      )}
+    </Measure>
+  )
+}
+
 function Home({ match: {
   params: { lang }
 } }) {
+  const introRef = useRef(null);
   const title = metadata[lang].title
-  const subtitle = metadata[lang].title
+  const subtitle = metadata[lang].subtitle
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -109,10 +132,8 @@ function Home({ match: {
         }
       }
     }
-    if (scrollY === 0 && visualizationEntries.length) {
-      setActiveVisualization(visualizationEntries[0][1])
-    }
-    else if (!found && activeVisualization) {
+    
+    if (!found && activeVisualization) {
       setActiveVisualization(undefined);
     }
   }
@@ -143,17 +164,34 @@ function Home({ match: {
   const onBlockClick = (id, ref) => {
     console.log('on block click', { id, ref })
   }
+  const onClickOnStart = () => {
+    if (introRef && introRef.current) {
+      const intro = introRef.current;
+      const top = intro.offsetTop - (window.innerHeight / 10);
+      window.scrollTo({
+        top,
+        behavior: 'smooth'
+      })
+    }
+    
+  }
   return (
     <div className="Home">
       <Helmet>
-        <title>{metadata[lang].title}</title>
+        <title>{title}</title>
       </Helmet>
-      <header>
-        <h1>{title}</h1>
-        <h2>{subtitle}</h2>
-        <BoatsIllustration />
-      </header>
-      <main>
+      <div className="header">
+        <div className="titles-container">
+          <h1>{title}</h1>
+          <h2>{subtitle}</h2>
+          <button onClick={onClickOnStart} className="go-to-start">
+          <span>⌄</span>
+          </button>
+        </div>
+        
+        <BoatsContainer />
+      </div>
+      <main ref={introRef} className="intro-container">
         <VisualizationControlContext.Provider
           value={{
             activeVisualization,
@@ -171,11 +209,8 @@ function Home({ match: {
             </aside>
           </div>
         </VisualizationControlContext.Provider>
-      </main>
-      <div>
         <HomeSummary lang={lang} />
-      </div>
-
+      </main>
     </div>
   )
 }

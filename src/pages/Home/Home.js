@@ -1,9 +1,7 @@
 
 import React, { useRef, useState, useReducer, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { NavLink as Link } from 'react-router-dom';
 /* eslint-disable import/no-webpack-loader-syntax */
-import Measure from 'react-measure'
 
 import metadataFr from '../../contents/fr/metadata'
 import metadataEn from '../../contents/en/metadata'
@@ -11,13 +9,14 @@ import metadataEn from '../../contents/en/metadata'
 import ContentsFr from '!babel-loader!mdx-loader!../../contents/fr/introduction.mdx'
 import ContentsEn from '!babel-loader!mdx-loader!../../contents/en/introduction.mdx'
 
-import BoatsIllustration from '../../components/BoatsIllustration';
-
 import { useScrollYPosition } from 'react-use-scroll-position';
 
 import VisualizationController from '../../components/VisualizationController';
 import { VisualizationControlContext } from '../../helpers/contexts';
 import summary from '../../summary';
+
+import BoatsContainer from './BoatsContainer';
+import HomeSummary from './HomeSummary';
 
 const CENTER_FRACTION = 0.3;
 // const CENTER_FRACTION = .6;
@@ -25,72 +24,6 @@ const CENTER_FRACTION = 0.3;
 const metadata = {
   fr: metadataFr,
   en: metadataEn
-}
-
-function HomeSummary({ lang }) {
-  const messages = {
-    intro: {
-      fr: 'découvrir les 3 temps de l’étude de cas',
-      en: 'discover the 3 steps of the case study'
-    },
-    atlas: {
-      fr: 'Accéder à l\'atlas de toutes les visualisations',
-      en: 'Access all visualizations\' atlas'
-    },
-    chapter: {
-      fr: 'Chapitre',
-      en: 'Chapter'
-    }
-  }
-  return (
-    <div className="HomeSummary">
-      <div className="intro">
-        {messages.intro[lang]}
-      </div>
-      <ul className="chapters-links-container">
-        {
-          summary
-            .filter(item => item.routeGroup === 'primary')
-            .map((item, itemIndex) => {
-              const title = item.titles[lang];
-              const route = `/${lang}/page/${item.routes[lang]}`;
-              return (
-                <li key={itemIndex}>
-                  <Link to={route}>
-                    <h4 className="pretitle">{messages.chapter[lang]} {itemIndex + 1}</h4>
-                    <h3 className="title">{title}</h3>
-                  </Link>
-                </li>
-              )
-            })
-        }
-      </ul>
-      <div className="atlas-link-container">
-        <Link to={`/${lang}/atlas`}>
-          <h3 className="title">{messages.atlas[lang]}</h3>
-        </Link>
-      </div>
-    </div>
-  )
-}
-
-const BoatsContainer = () => {
-  const [dimensions, setDimensions] = useState({});
-
-  return (
-    <Measure 
-      bounds
-      onResize={contentRect => {
-        setDimensions(contentRect.bounds)
-      }}
-    >
-      {({ measureRef }) => (
-        <div ref={measureRef} className="boats-container">
-          <BoatsIllustration {...{...dimensions}} />
-        </div>
-      )}
-    </Measure>
-  )
 }
 
 function Home({ match: {
@@ -210,7 +143,7 @@ function Home({ match: {
             </aside>
           </div>
         </VisualizationControlContext.Provider>
-        <HomeSummary lang={lang} />
+        <HomeSummary lang={lang} summary={summary} />
       </main>
     </div>
   )

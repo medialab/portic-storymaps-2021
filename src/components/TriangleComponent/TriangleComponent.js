@@ -8,15 +8,15 @@ import { max } from 'd3-array';
 
 // import { generatePalette } from '../../helpers/misc';
 
-import './TriangleComponent.css'
+import './TriangleComponent.scss'
 
 const TriangleComponent = ({
   dataFilename,
   totalWidth = 1200,
-  rowHeight = 200, 
+  rowHeight = 200,
   numberOfColumns = 5,
-  marginUnderText = 0.1, // je ne sais pas si c'est le mieux comme unité pour une marge ...
-  marginBetweenTriangleAndText = 0.1
+  marginUnderText = 0.1, // obsolète (mais encore utilisé dans le code)
+  marginBetweenTriangleAndText = 0.1 // obsolète (mais encore utilisé dans le code)
 }) => {
 
   // raw marker data
@@ -69,7 +69,7 @@ const TriangleComponent = ({
         return +port.nb_pointcalls_out;
       })
     )
-  ]).range([0, columnWidth]);
+  ]).range([0, columnWidth*4]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
 
   const scaleY = scaleLinear().domain([
     0,
@@ -78,20 +78,20 @@ const TriangleComponent = ({
         return +port.mean_tonnage; // parseFloat(port.mean_tonnage);
       })
     )
-  ]).range([0,(1 - marginUnderText - marginBetweenTriangleAndText) *rowHeight]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
+  ]).range([0, rowHeight*0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
   // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
 
 
   return (
-    <div>
+    <div className="TriangleComponent">
 
       <svg width={totalWidth} height={totalHeight} viewBox={`0 0 ${totalWidth} ${totalHeight}`} style={{ border: '1px solid lightgrey' }}>
         {
           data.map((port, index) => {
 
-            const rectWidth = scaleX(+port.nb_pointcalls_out)
-            const rectHeight = scaleY(+port.mean_tonnage)
+            const triangleWidth = scaleX(+port.nb_pointcalls_out)
+            const triangleHeight = scaleY(+port.mean_tonnage)
 
             const xIndex = index % numberOfColumns;
             const yIndex = (index - index % numberOfColumns) / numberOfColumns;
@@ -103,7 +103,6 @@ const TriangleComponent = ({
                 // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
                 transform={`translate(${xTransform}, ${yTransform})`}
               >
-
                 <rect
                   x={0}
                   y={0}
@@ -111,31 +110,27 @@ const TriangleComponent = ({
                   height={rowHeight}
                 />
 
-                <path
-                  d={`M ${(columnWidth - rectWidth) / 2} ${0} 
-                        H ${(columnWidth - rectWidth) / 2 + rectWidth}
-                        L ${columnWidth / 2} ${rectHeight}
-                        Z
-                        `} // accents chelous : "je commence à faire des interpolations" 
-
-
+                <path class='horizontalLine'
+                  d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight)/1.2} 
+                        V ${rowHeight / 7}
+                        `}
                 />
 
-                {/* <path
-                  key={`path-${i}`}
-                  d={geoPath().projection(projection)(d)}
-                  className="geopart"
-                  fill={`rgba(38,50,56,${1 / backgroundData.features.length * i})`}
-                  stroke="#FFFFFF"
-                  strokeWidth={0.5}
-                /> */}
-                <text
-                  x={parseInt(columnWidth / 2)}
-                  y={parseInt(rowHeight * (1 - marginUnderText))}
-                  // centrer le texte horizontalement
-                  dominant-baseline="middle"
-                  text-anchor="middle"
-                > {port.port} </text>
+                <path
+                  d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight)/1.2} 
+                        H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
+                        L ${columnWidth / 2} ${(rowHeight - triangleHeight)/1.2 + triangleHeight}
+                        Z
+                        `} // accents chelous : "je commence à faire des interpolations" 
+                />
+
+                <g transform={`translate(${-columnWidth/1.25}, ${rowHeight/50}) rotate(-45 0 0)`}>
+                  <text
+                    x={parseInt(columnWidth / 2)}
+                    y={parseInt(rowHeight / 3)}
+                    text-anchor="left"
+                  > {port.port} </text>
+                </g>
 
               </g>
             )

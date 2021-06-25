@@ -37,32 +37,32 @@ const Button = ({
   onMouseDown,
   ...props
 }) => {
-  const[isMouseDown, setState] = useState(false)
+  const [isMouseDown, setState] = useState(false)
 
   useEffect(() => {
-    let interval 
-    if (isMouseDown){
+    let interval
+    if (isMouseDown) {
       console.log("setInterval")
       interval = setInterval(onMouseDown, 100)
     }
-    return ()=>{
+    return () => {
       console.log("clearInterval")
       clearInterval(interval)
     }
   }, [isMouseDown, onMouseDown])
 
-  return <button 
-            {...props} 
-            onMouseDown={() => {
-              setState(true)
-            }}
-            onMouseUp={() => {
-              setState(false)
-            }}
-            style={{background: isMouseDown ? 'red' : undefined}}
-            > 
-            {children} 
-          </button>
+  return <button
+    {...props}
+    onMouseDown={() => {
+      setState(true)
+    }}
+    onMouseUp={() => {
+      setState(false)
+    }}
+    style={{ background: isMouseDown ? 'red' : undefined }}
+  >
+    {children}
+  </button>
 }
 
 
@@ -72,13 +72,14 @@ const GeoComponent = ({
   width = 1800,
   height = 1500,
   label,
+  renderObject, // fonction : par défaut la représentation des données est sous forme de cercles, mais peut se changer en passant une autre fonction
   markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
   centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant
-  rotationDegree = 0, 
+  rotationDegree = 0,
   debug = false
-}) => {  
+}) => {
   // viz params variables
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
@@ -180,29 +181,33 @@ const GeoComponent = ({
    * d3 projection making
    */
   const projection = useMemo(() => {
+     setTranslationX(width/2)
+     setTranslationY(height/2) 
+
     let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
       .scale(scale)
       .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
     if (backgroundData) { // que si center on region
       if (centerOnRegion) {
-        setScale(50000);
+        setScale(height*20); // 500000
         setCenterX(-1.7475027);
         setCenterY(46.573642);
         projection
           .scale(scale) // 50000 for a centered map
           .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
-          .translate([translationX*0.8, translationY*0.68])
+          .translate([translationX * 0.8, translationY * 0.4]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
       } else {
         // if bg data is available fit on whole geometry
         projection
           .fitSize([width, height], backgroundData)
       }
       if (rotationDegree != 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+        setScale(width*28)
         setRotation(rotationDegree);
         projection
           .angle(rotation)
-          .translate([translationX*0.65, translationY*0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut
+          .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut :  @TODO stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
       }
 
     }
@@ -229,7 +234,7 @@ const GeoComponent = ({
       {
         debug ?
           <>
-            <h2>scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}, centerX: {centerX}, centerY: {centerY}</h2>          
+            <h2>scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}, centerX: {centerX}, centerY: {centerY}</h2>
             <div class="table">
               <ul id="horizontal-list">
                 <li>
@@ -330,31 +335,39 @@ const GeoComponent = ({
             markerData
               .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
               .map((datum, index) => {
+                // console.log("datum : ",datum)
                 const { latitude, longitude, size, color, label } = datum;
                 const [x, y] = projection([+longitude, +latitude]);
                 return (
+                  <>
+                  {
+                    typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
+                    // je veux un élément html
+                    renderObject(datum, x, y)
+                        :
                   <g transform={`translate(${x},${y})`}>
-                    <circle
-                      key={index}
-                      cx={0}
-                      cy={0}
-                      r={size}
-                      fill={color}
-                      className="marker"
-                    />
-                    {
-                      label ?
-                        <text
-                          x={size + 5}
-                          y={size / 2}
-                        >
-                          {label}
-                        </text>
-                        : null
-                    }
-                  </g>
-                );
-              })
+                          <circle
+                            key={index}
+                            cx={0}
+                            cy={0}
+                            r={size}
+                            fill={color}
+                            className="marker"
+                          />
+                          {
+                            label ?
+                              <text
+                                x={size + 5}
+                                y={size / 2}
+                              >
+                                {label}
+                              </text>
+                              : null
+                          }
+                        </g>
+                      }
+                </>);
+                 })
           }
         </g>
         {
@@ -387,7 +400,7 @@ const GeoComponent = ({
             </g>
             : null
         }
-        <circle cx={centerX} cy={centerY} r={5} fill={'red'} />
+        <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
       </svg>
     </div>
   )

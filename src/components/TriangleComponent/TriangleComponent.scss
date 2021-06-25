@@ -1,0 +1,17 @@
+.TriangleComponent {
+
+    rect {
+        fill : transparent;
+        stroke : transparent;
+    }
+
+    path {
+        stroke : rgb(44, 74, 156);
+        fill : rgb(39, 129, 141);
+    }
+
+    path.horizontalLine {
+        stroke : rgb(105, 107, 112);
+    }
+
+}

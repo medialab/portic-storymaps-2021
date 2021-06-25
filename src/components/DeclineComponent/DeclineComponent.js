@@ -12,7 +12,6 @@ const DeclineComponent = (props) => {
     startYear = 1720,
     endYear = 1789,
     productTradePartThreshold = 0.9,
-    visibleRows,
     rows,
     datasets = {},
   } = props;
@@ -52,7 +51,8 @@ const DeclineComponent = (props) => {
 
   }
 
-  const renderRow = (row, rowIndex) => {
+  const totalRows = Object.entries(rows).reduce((sum, [id, count]) => sum + count, 0)
+  const renderRow = (row, rowFlex, rowIndex) => {
     switch(row) {
       case 'France':
         if (!datasets['decline_longitudinal_data.csv']) {
@@ -61,7 +61,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height/rows.length}
+            height={height/totalRows * rowFlex}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
             title={messages.franceOverviewTitle[lang]()}
@@ -80,7 +80,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height / visibleRows.length}
+            height={height/totalRows * rowFlex}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "La Rochelle")}
             absoluteField="Exports"
             shareField="Exports_share"
@@ -101,7 +101,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height / visibleRows.length}
+            height={height/totalRows * rowFlex}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "Bordeaux")}
             absoluteField="Exports"
             shareField="Exports_share"
@@ -126,7 +126,7 @@ const DeclineComponent = (props) => {
             field="Exports"
             key={rowIndex}
             partTreshold={productTradePartThreshold}
-            height={height / visibleRows.length}
+            height={height/totalRows * rowFlex}
             barWidth={10}
             years={[startYear, endYear]}
             herfindhalField="product_revolutionempire_exports_herfindahl"
@@ -140,10 +140,10 @@ const DeclineComponent = (props) => {
   return (
     <div className="DeclineComponent">
       {
-        rows.map((row, rowIndex) => {
+        Object.entries(rows).map(([rowId, rowFlex], rowIndex) => {
           return (
-            <div className={cx('row', {'is-visible': visibleRows.includes(rowIndex)})}>
-                {renderRow(row, rowIndex)}
+            <div className={cx('row', {'is-visible': rows[rowId]})}>
+                {renderRow(rowId, rowFlex, rowIndex)}
             </div>
           )
         })

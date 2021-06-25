@@ -36,8 +36,16 @@ const ScrollyPage = ({
         const { ref } = visualization;
         if (ref.current) {
           const { y: initialVisY } = ref.current.getBoundingClientRect();
-          const visY = initialVisY + window.scrollY;
-          if (y > visY) {
+          let visY = initialVisY + window.scrollY;
+          // @todo refactor this, it is dirty
+          if (ref.current.parentNode.className === 'centered-part-contents') {
+            visY += ref.current.parentNode.parentNode.getBoundingClientRect().y;
+          }
+          if (!visualization.visualizationId && scrollY + window.innerHeight * .8 > visY) {
+            found = true;
+            setActiveVisualization(undefined);
+            break;
+          } else if (y > visY) {
             found = true;
             if (visualization.visualizationId) {
               setActiveVisualization(visualization);

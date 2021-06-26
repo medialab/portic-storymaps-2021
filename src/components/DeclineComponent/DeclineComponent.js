@@ -17,24 +17,24 @@ const DeclineComponent = (props) => {
   } = props;
   const messages = {
     franceOverviewTitle: {
-      fr: () => `Évolution de la valeur absolue cumulée des exports du royaume de France`,
-      en: () => `Evolution of the absolute cumulated value of exports from the kingdom of France`
+      fr: () => `Évolution de la valeur des exports du royaume de France au dix-huitième siècle`,
+      en: () => `Evolution of the value of exports from the kingdom of France in the eighteenth century`
     },
     tradeEvolutionTitle: {
-      fr: (cityName, start, end) => `Évolution du commerce de ${cityName} de ${start} à ${end}`,
-      en: (cityName, start, end) => `Evolution of ${cityName} trade from ${start} to ${end}`
+      fr: (cityName, start, end) => `Évolution du commerce de la direction des fermes de ${cityName} de ${start} à ${end}`,
+      en: (cityName, start, end) => `Evolution of the direction des fermes of ${cityName} trade from ${start} to ${end}`
     },
     top90PctTitle: {
-      fr: (cityName, start, end) => `Comparaison des parts des produits exportés par ${cityName} totalisant plus de 90% du commerce en ${end}, en ${start} et en ${end}`,
-      en: (cityName, start, end) => `Comparison of shares of the top 90% of exported products by ${cityName} in ${start}, in ${start} and in ${end}`,
+      fr: (cityName, start, end) => `Comparaison des parts des produits exportés par la direction des fermes de ${cityName} totalisant plus de 90% du commerce en ${end}, en ${start} et en ${end}`,
+      en: (cityName, start, end) => `Comparison of shares of the top 90% of exported products by the direction des fermes of ${cityName} in ${start}, in ${start} and in ${end}`,
     },
     partInPct: {
-      fr: () => 'part en %',
-      en: () => 'part in %'
+      fr: () => 'part des exports fr.',
+      en: () => 'share of french exports'
     },
     absoluteValue: {
-      fr: () => 'valeur absolue',
-      en: () => 'absolute value'
+      fr: () => 'valeur absolue des exports',
+      en: () => 'exports\' absolute value'
     },
     herfindalLegendTitle: {
       // fr: () => `Degré de diversité du commerce (inverse de l’indice de Herfindahl)`,
@@ -51,15 +51,15 @@ const DeclineComponent = (props) => {
       en: () => `very diverse trade`,
     },
     barTooltip: {
-      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (concentration) : <span>[colorBox] ${herfindal}</span>`,
-      en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal (diversité) : <span>[colorBox] ${herfindal}</span>`,
+      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice Herfindahl-Hirschmann : somme du carré des parts du marché français par type de produits)</i> : <span>[colorBox] ${herfindal}</span>`,
+      en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal () : <span>[colorBox] ${herfindal}</span>`,
     },
     productTooltip: {
-      fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
+      fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de la classe "${product}" représentaient <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.`,
       en: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
     },
   }
-  const margins = { top: 20, right: 50, bottom: 30, left: 50 };
+  const margins = { top: 10, right: 50, bottom: 30, left: 50 };
 
   const totalRows = Object.entries(rows).reduce((sum, [id, count]) => sum + count, 0)
   const renderRow = (row, rowFlex, rowIndex) => {

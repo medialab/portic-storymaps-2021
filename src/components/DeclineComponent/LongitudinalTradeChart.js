@@ -119,7 +119,7 @@ const LongitudinalTradeChart = ({
                 <div 
                   className="bar"
                   style={{
-                    background: `linear-gradient(to right, ${herfindhalColorScale(herfindhalColorScale.domain()[0])}, ${herfindhalColorScale(1)})`
+                    background: `linear-gradient(to right, ${herfindhalColorScale(herfindhalColorScale.domain()[0])}, ${herfindhalColorScale(herfindhalColorScale.domain()[1])})`
                   }}
                 />
                 <div className="labels">

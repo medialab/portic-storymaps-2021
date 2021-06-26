@@ -17,8 +17,8 @@ const DeclineComponent = (props) => {
   } = props;
   const messages = {
     franceOverviewTitle: {
-      fr: () => `Évolution de la valeur des exports du royaume de France au dix-huitième siècle`,
-      en: () => `Evolution of the value of exports from the kingdom of France in the eighteenth century`
+      fr: (start, end) => `Évolution de la valeur des exports du royaume de France de ${start} à ${end}`,
+      en: (start, end) => `Evolution of the value of exports from the kingdom of France from ${start} to ${end}`
     },
     tradeEvolutionTitle: {
       fr: (cityName, start, end) => `Évolution du commerce de la direction des fermes de ${cityName} de ${start} à ${end}`,
@@ -51,13 +51,17 @@ const DeclineComponent = (props) => {
       en: () => `very diverse trade`,
     },
     barTooltip: {
-      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice Herfindahl-Hirschmann : somme du carré des parts du marché français par type de produits)</i> : <span>[colorBox] ${herfindal}</span>`,
+      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice Herfindahl-Hirschmann : somme du carré des parts du marché français par classe de produits exportés)</i> : <span>[colorBox] ${herfindal}</span>`,
       en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal () : <span>[colorBox] ${herfindal}</span>`,
     },
     productTooltip: {
       fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de la classe "${product}" représentaient <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.`,
       en: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
     },
+    sevenYearsWar: {
+      fr: () => 'guerre de sept ans',
+      en: () => 'seven years war'
+    }
   }
   const margins = { top: 10, right: 50, bottom: 30, left: 50 };
 
@@ -74,10 +78,18 @@ const DeclineComponent = (props) => {
             height={height/totalRows * rowFlex}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
-            title={messages.franceOverviewTitle[lang]()}
+            title={messages.franceOverviewTitle[lang](startYear, endYear)}
             axisLeftTitle={''}
             axisRightTitle={messages.absoluteValue[lang]()}
             margins={margins}
+            annotations={[
+              {
+                type: 'span',
+                startYear: 1756,
+                endYear: 1763,
+                label: messages.sevenYearsWar[lang]()
+              }
+            ]}
             fillGaps
             {
               ...{
@@ -105,6 +117,14 @@ const DeclineComponent = (props) => {
             margins={margins}
             barTooltipFn={messages.barTooltip[lang]}
             cityName="La Rochelle"
+            annotations={[
+              {
+                type: 'span',
+                startYear: 1756,
+                endYear: 1763,
+                label: messages.sevenYearsWar[lang]()
+              }
+            ]}
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),
               minimum: messages.herfindal0[lang](),
@@ -135,6 +155,14 @@ const DeclineComponent = (props) => {
             axisRightTitle={messages.absoluteValue[lang]()}
             barTooltipFn={ messages.barTooltip[lang]}
             cityName="Bordeaux"
+            annotations={[
+              {
+                type: 'span',
+                startYear: 1756,
+                endYear: 1763,
+                label: messages.sevenYearsWar[lang]()
+              }
+            ]}
             margins={margins}
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),

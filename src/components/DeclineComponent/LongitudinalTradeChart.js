@@ -8,6 +8,28 @@ import ReactTooltip from 'react-tooltip';
 
 import colorsPalettes from "../../colorPalettes";
 
+
+const prettifyValue = str => {
+  const inted = Math.round(+str) + '';
+  let finalStr = '';
+  let count = 0;
+  for (let i = inted.length - 1; i >= 0; i--) {
+    const char = inted[i];
+    count++;
+    
+    finalStr = char + finalStr;
+    if (count === 3) {
+      count = 0;
+      finalStr = ',' + finalStr;
+    }
+  }
+  if (finalStr[0] === ',') {
+    finalStr = finalStr.slice(1);
+  }
+
+  return finalStr;
+}
+
 const LongitudinalTradeChart = ({
   data: inputData,
   // fields: if null, viz will not show the corresponding data
@@ -340,6 +362,7 @@ const LongitudinalTradeChart = ({
               if (!+datum[absoluteField] || !+next[absoluteField]) {
                 return null;
               }
+              const ratio = +next[absoluteField] > +datum[absoluteField] ? +next[absoluteField] / +datum[absoluteField] - 1 : -(1 - +next[absoluteField] / +datum[absoluteField]);
               return (
                  <line
                    key={datum.year}
@@ -354,9 +377,10 @@ const LongitudinalTradeChart = ({
                    stroke={colorsPalettes.generic.accent1}
                    title={`${datum.year}-${next.year}`}
                    strokeWidth={2}
-                   data-tip={`${datum.year}-${next.year} : ${parseInt(+datum[absoluteField])} → ${parseInt(+next[absoluteField])} livres tournois`}
+                   data-tip={`${datum.year} → <strong>${prettifyValue(+datum[absoluteField])}</strong> livres tournois <br/>${next.year} → <strong>${prettifyValue(+next[absoluteField])}</strong> livres tournois<br/><i>(${ratio > 0 ? '+' : ''}${Math.round(ratio * 100)}%)</i>`}
                     data-for={cityName}
                     data-class="bar-tooltip"
+                    data-html={true}
                  />
               )
             })

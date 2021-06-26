@@ -83,7 +83,10 @@ const LongitudinalTradeChart = ({
       <div className="chart-header" ref={headerRef}>
         <h3 style={{marginLeft: margins.left}}>{title}</h3>
         <div className="axis-headers-container">
-          <div style={{background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined}} className="axis-header axis-header-left">
+          <div style={{
+            background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined,
+            marginLeft: margins.left,
+          }} className="axis-header axis-header-left">
             {axisLeftTitle}
           </div>
           {
@@ -105,7 +108,10 @@ const LongitudinalTradeChart = ({
             </div>
             : null
           }
-          <div style={{background: axisRightTitle && axisRightTitle.length ? colorsPalettes.generic.accent1 : undefined}} className="axis-header axis-header-right">
+          <div style={{
+            background: axisRightTitle && axisRightTitle.length ? colorsPalettes.generic.accent1 : undefined,
+            marginRight: margins.right,
+          }} className="axis-header axis-header-right">
             {axisRightTitle}
           </div>
         </div>
@@ -123,21 +129,21 @@ const LongitudinalTradeChart = ({
                     x2={margins.left}
                     y1={yShareScale(value)}
                     y2={yShareScale(value)}
-                    stroke={'grey'}
+                    stroke={colorsPalettes.generic.accent2}
                   />
                   <line
                     x1={margins.left}
                     x2={width - margins.right}
                     y1={yShareScale(value)}
                     y2={yShareScale(value)}
-                    stroke={'grey'}
+                    stroke={colorsPalettes.generic.accent2}
                     strokeDasharray={'2, 2'}
                     opacity={.2}
                   />
                   <text
                     x={margins.left * .7}
                     y={yShareScale(value) + height / 100}
-                    fill={'grey'}
+                    fill={colorsPalettes.generic.accent2}
                   >
                     {Math.round(+value * 100) + '%'}
                   </text>
@@ -180,7 +186,7 @@ const LongitudinalTradeChart = ({
             y2={height - margins.bottom}
             x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
             x2={xBand(yearTicks[yearTicks.length - 1]) + xBand.bandwidth() / 2}
-            stroke={'grey'}
+            stroke={'lightgrey'}
           />
           {
             yearTicks
@@ -203,7 +209,7 @@ const LongitudinalTradeChart = ({
                   <g 
                     transform={`translate(${(xBand.bandwidth() * .5)}, ${margins.bottom / 2})`}
                   >
-                  <text>
+                  <text fill="grey">
                     {year}
                   </text>
                   </g>

@@ -94,7 +94,7 @@ const ProductsDistributionChart = ({
     .range([colorsPalettes.generic.accent2, 'grey']);
   return (
     <div className="ProductsDistributionChart">
-      <h3 ref={titleRef}>{title}</h3>
+      <h3 style={{marginLeft: margins.left}} ref={titleRef}>{title}</h3>
       <div 
         className={cx("years-container", {'has-highlights': hoveredProduct !== undefined})}
         style={{

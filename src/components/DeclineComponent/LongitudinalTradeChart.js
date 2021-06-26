@@ -28,6 +28,7 @@ const LongitudinalTradeChart = ({
 
   title,
   colorScaleMessages,
+  annotations = [],
   margins
 }) => {
   const data = useMemo(() => inputData.filter(d => +d.year >= startYear & +d.year <= endYear), [startYear, endYear, inputData])
@@ -213,6 +214,72 @@ const LongitudinalTradeChart = ({
                     {year}
                   </text>
                   </g>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g className="annotations-container">
+          {
+            annotations.map((annotation, annotationIndex) => {
+              const {startYear, endYear, label} = annotation;
+              return (
+                <g className="annotation" key={annotationIndex}>
+                  <rect
+                    x={xBand(startYear)}
+                    width={xBand(endYear) - xBand(startYear)}
+                    height={height - margins.top - margins.bottom}
+                    y={margins.top}
+                    fill="url(#diagonalHatch)"
+                    opacity={.4}
+                  />
+                  <line
+                    x1={xBand(startYear)}
+                    x2={xBand(startYear)}
+                    y1={margins.top}
+                    y2={height - margins.bottom}
+                    stroke="grey"
+                    opacity={.4}
+                    strokeDasharray={'4,2'}
+                  />
+                  <line
+                    x1={xBand(endYear)}
+                    x2={xBand(endYear)}
+                    y1={margins.top}
+                    y2={height - margins.bottom}
+                    stroke="grey"
+                    opacity={.4}
+                    strokeDasharray={'4,2'}
+                  />
+                  <line 
+                    x1={xBand(endYear) + 20} 
+                    x2={xBand(endYear) + 10} 
+                    y1={margins.top + 7.5}
+                    y2={margins.top + 7.5}
+                    stroke="grey" 
+                    marker-end="url(#arrowhead)" 
+                  />
+                  <text
+                    x={xBand(endYear) + 22}
+                    y={margins.top + 10}
+                    fontSize={'.5rem'}
+                    fill="grey"
+                  >
+                    {label}
+                  </text>
+                  <defs>
+                    <marker id="arrowhead" markerWidth="5" markerHeight="5" 
+                    refX="0" refY="2.5" orient="auto">
+                      <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
+                    </marker>
+                  </defs>
+                  <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
+                  <path d="M-1,1 l2,-2
+                          M0,4 l4,-4
+                          M3,5 l2,-2" 
+                        style={{stroke:'grey', opacity: .5, strokeWidth:1}} />
+                </pattern>
+
                 </g>
               )
             })

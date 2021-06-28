@@ -221,6 +221,7 @@ const summary = [
       en: TestsEn,
     },
     routeGroup: 'secondary',
+    hide: process.env.NODE_ENV === 'development'
   }
 ]
 

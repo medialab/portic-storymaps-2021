@@ -40,7 +40,11 @@ const Caller = ({id: visualizationId, ...props}) => {
     <div
       ref={ref}
       onClick={onClick} 
-      className={cx("Caller", {'is-active': activeVisualization && id === activeVisualization.id, 'is-clearfix': !visualizationId})}
+      className={cx("Caller", {
+        'is-active': activeVisualization && id === activeVisualization.id, 
+        'is-clearfix': !visualizationId,
+        'is-hidden': process.env.NODE_ENV !== 'development'
+      })}
     >
       {
         visualizationId ?

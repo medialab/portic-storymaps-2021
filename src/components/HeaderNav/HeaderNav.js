@@ -120,7 +120,7 @@ const HeaderNav = ({
           </li>
           {
               routes
-              .filter(({routeGroup = 'primary'}) => routeGroup === 'primary')
+              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'primary' && !hide)
               .map(({shortTitles, routes: inputRoute}, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
@@ -136,7 +136,7 @@ const HeaderNav = ({
         <ul className="secondary-nav-container">
           {
               routes
-              .filter(({routeGroup = 'primary'}) => routeGroup === 'secondary')
+              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'secondary' && !hide)
               .map(({shortTitles, routes: inputRoute}, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
@@ -153,18 +153,25 @@ const HeaderNav = ({
                 {lang === 'fr' ? 'atlas des visualisations' : 'visualizations atlas'}
               </Link>
             </li>
-            <li className="navitem-container lang-toggle">
-              <button 
-                className={lang === 'fr' ? 'is-active': ''}
-                onClick={() => onLangChange('fr')}
-              >fr</button>
-            </li>
-            <li className="navitem-container lang-toggle">
-              <button
-                className={lang === 'en' ? 'is-active': ''}
-                onClick={() => onLangChange('en')}
-              >en</button>
-            </li>
+            {
+              // @todo delete this ternary when english contents are ready
+              process.env.NODE_ENV === 'development' ?
+              <>
+              <li className="navitem-container lang-toggle">
+                <button 
+                  className={lang === 'fr' ? 'is-active': ''}
+                  onClick={() => onLangChange('fr')}
+                >fr</button>
+              </li>
+              <li className="navitem-container lang-toggle">
+                <button
+                  className={lang === 'en' ? 'is-active': ''}
+                  onClick={() => onLangChange('en')}
+                >en</button>
+              </li>
+              </>
+              : null
+            }
         </ul>
       </nav>
       <nav
@@ -184,7 +191,7 @@ const HeaderNav = ({
           </li>
           {
               routes
-              .filter(({routeGroup = 'primary'}) => routeGroup === 'primary')
+              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'primary' && !hide)
               .map(({shortTitles, routes: inputRoute}, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
@@ -200,7 +207,7 @@ const HeaderNav = ({
         <ul className="secondary-nav-container">
           {
               routes
-              .filter(({routeGroup = 'primary'}) => routeGroup === 'secondary')
+              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'secondary' && !hide)
               .map(({shortTitles, routes: inputRoute}, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
@@ -217,23 +224,30 @@ const HeaderNav = ({
                 {lang === 'fr' ? 'atlas des visualisations' : 'visualizations atlas'}
               </Link>
             </li>
-            <li className="navitem-container lang-toggle">
-              <ul className="lang-toggle-container">
-                <li>
-                  <button 
-                    className={lang === 'fr' ? 'is-active': ''}
-                    onClick={() => onLangChange('fr')}
-                  >fr</button>
-                </li>
-                <li>
-                  <button
-                    className={lang === 'en' ? 'is-active': ''}
-                    onClick={() => onLangChange('en')}
-                  >en</button>
-                </li>
-              </ul>
-              
-            </li>
+            {
+              // @todo delete this ternary when english contents are ready
+              process.env.NODE_ENV === 'development' ?
+              <li className="navitem-container lang-toggle">
+                <ul className="lang-toggle-container">
+                  <li>
+                    <button 
+                      className={lang === 'fr' ? 'is-active': ''}
+                      onClick={() => onLangChange('fr')}
+                    >fr</button>
+                  </li>
+                  <li>
+                    <button
+                      className={lang === 'en' ? 'is-active': ''}
+                      onClick={() => onLangChange('en')}
+                    >en</button>
+                  </li>
+                </ul>
+                
+              </li>
+              :
+              null
+            }
+            
             
         </ul>
         </div>

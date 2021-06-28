@@ -527,6 +527,12 @@ svg text {
   &.is-clearfix {
     display: none;
   }
+  &.is-hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
 }
 /**
  * MISC

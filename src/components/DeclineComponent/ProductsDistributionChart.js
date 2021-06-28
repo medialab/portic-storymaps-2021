@@ -56,7 +56,7 @@ const ProductsDistributionChart = ({
     // group the long tail of low value (under the part Treshold) products as one aggregated misc
     const aggregatedMiscProducts = {
       [field]: lastYearTotalValue - sum(dataTillTreshold.map((d) => +d[field])),
-      product: `${lastYearData.length - dataTillTreshold.length} autre produits`,
+      product: `${lastYearData.length - dataTillTreshold.length} autres types de produits`,
     };
     dataTillTreshold.push(aggregatedMiscProducts);
 
@@ -78,7 +78,7 @@ const ProductsDistributionChart = ({
       })
       thisYearData.push({
         [field]: thisTotalValue - sum(thisYearData.map((d) => +d[field])),
-        product: `${thisData.length - thisYearData.length} autre produits`,
+        product: `${thisData.length - thisYearData.length} autres types de produits`,
       })
       return {
         ...dict,

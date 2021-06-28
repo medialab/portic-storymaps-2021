@@ -7,7 +7,7 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
-import { resetIdCounter } from 'vega-lite';
+// import { resetIdCounter } from 'vega-lite';
 
 import './GeoComponent.css'
 
@@ -213,7 +213,7 @@ const GeoComponent = ({
 
     }
     return projection;
-  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY])
+  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY, rotationDegree])
 
 
 

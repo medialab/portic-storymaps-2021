@@ -39,10 +39,6 @@ const renderStep3Object = (datum, x, y, { width }) => {
     const leftTriangleHeight = parseFloat(datum.else.cumulated_tonnage_out_region) / totalTonnage * sizeCoef;
     const rightTriangleHeight = parseFloat(datum.else.cumulated_tonnage_in_region) / totalTonnage * sizeCoef;
 
-    if (datum.else.type_of_object === 'customs_office') {
-      <path d="M70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
-    }
-
     return (
       <g className='double-triangle' transform={`translate(${x},${y})`}>
 

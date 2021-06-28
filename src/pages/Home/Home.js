@@ -43,13 +43,13 @@ function Home({ match: {
   const updateCurrentVisualization = () => {
     // const bodyPos = document.body.getBoundingClientRect();
     const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
-    const y = scrollY + DISPLACE_Y;
     const visualizationEntries = Object.entries(visualizations);
     let found;
     // on parcourt la liste à l'envers pour récupérer
     // la visualisation la plus haute de la page qui est
     // au-dessus du milieu de l'écran
     for (let index = visualizationEntries.length - 1; index >= 0; index--) {
+      const y = index === 0 ? scrollY + window.innerHeight * .2 : scrollY + DISPLACE_Y;
       const [_id, visualization] = visualizationEntries[index];/* eslint no-unused-vars : 0 */
       const { ref } = visualization;
       if (ref.current) {

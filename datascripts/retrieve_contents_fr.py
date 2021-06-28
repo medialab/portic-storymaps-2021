@@ -28,8 +28,10 @@ def prepare_contents(str):
     current_part.append(line)
   parts.append(current_part)
 
-  parts = parts[1:] if len(parts) > 1 else parts
+  parts = parts[1:] if len(parts) > 1 else parts  
   for i, part in enumerate(parts):
+    if (part[-1].startswith('Publié par <a href="//docs.google.com/" rel="noopener" target="_blank" title="Learn more about Google Drive">Google Drive</a>')):
+      part = part[0:-2]
     part_with_caller = ["import Caller from '../../components/Caller'", "\n"] + part
     parts[i] = '\n'.join(part_with_caller)
   return parts

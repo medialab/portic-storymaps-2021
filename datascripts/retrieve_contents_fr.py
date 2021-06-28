@@ -38,6 +38,8 @@ def prepare_contents(str):
       line = '| ' + line
     elif line.startswith('Publié par <a href="//docs.google.com/"'):
       line = ''
+    elif line.startswith('Published by <a href="//docs.google.com/"'):
+      line = ''
     current_part.append(line)
   if center_mode == True:
     current_part.append('</div></div>')

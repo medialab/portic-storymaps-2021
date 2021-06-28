@@ -4,17 +4,77 @@ import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent';
 import TriangleComponent from '../../components/TriangleComponent';
 import BoatsIllustration from '../../components/BoatsIllustration';
+import BezierComponent from '../../components/BezierComponent';
+
 
 Test en prod
+
+## Test courbes de bézier
+<BezierComponent
+  dataFilename="part_3_step3_viz_customs_offices_data.csv"
+  />
+  
+
+## Test triangle 
+<TriangleComponent 
+  dataFilename="part_3_step1_viz_data.csv" 
+  rowHeight={300}
+  numberOfColumns = {25}
+  totalWidth = {1600}
+  />
+
+
+## Carto en react+d3+SVG
+
+Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+
+# Fond de carte centré sur région, avec 1 pt discret par port, tourné à 90° ou 270°
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="null"
+  markerSize="null"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+  // rotationDegree={58}
+  debug="true"
+/>
+
+Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+  centerOnRegion
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+/>
+
+<GeoComponent 
+  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
+  dataFilename="navigo-out-of-ships-from-region.csv"
+  markerColor="pointcall_admiralty"
+  markerSize="tonnage"
+  label="pointcall"
+  showLabels
+/>
+
 
 # Test bateaux
 
 <BoatsIllustration />
 
-
-# Test triangle
-
-<TriangleComponent dataFilename="part_3-tonnages_per_ports.csv" />
 
 # Commerce multi-échelle dans la région de La Rochelle
 
@@ -77,34 +137,3 @@ Paramètres :
   labelDensity={0.5}
 />
 
-## Carto en react+d3+SVG
-
-Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
-
-Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  label="pointcall"
-  showLabels
-  centerOnRegion
-/>
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-/>
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  label="pointcall"
-  showLabels
-/>

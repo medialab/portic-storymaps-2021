@@ -10,7 +10,11 @@ import {DatasetsContext} from '../helpers/contexts';
 
 import visualizationsList from '../visualizationsList';
 
-const VisualizationContainer = ({id, dimensions, ...props}) => {
+const VisualizationContainer = ({id, dimensions: inputDimensions, ...props}) => {
+  const dimensions = {
+    ...inputDimensions,
+    // height: inputDimensions.height - inputDimensions.top / 2
+  }
   const datasets = useContext(DatasetsContext);
   const relevantDatasets = useMemo(() => {
     const viz = visualizationsList.find(v => v.id === id);

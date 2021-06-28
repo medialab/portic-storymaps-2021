@@ -166,7 +166,7 @@ svg text {
   overflow: auto;
   // background: $color-background;
   background: $color-background;
-  transition: .2s all ease;
+  transition: .1s all ease;
   /* background: rgba(240,240,240,1); */
 
   display: flex;
@@ -331,6 +331,44 @@ svg text {
   @include tablet {
     display: block;
   }
+  .drawer-background {
+    position : absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    cursor: pointer;
+    background: rgba(0,0,0, 0);
+    pointer-events: none;
+    transition: .5s ease all;
+  }
+  &.is-open {
+    .drawer-header {
+      h1 {
+        color: white;
+        opacity: 1;
+      }
+      img {
+        rotate: 90deg;
+      }
+      &:hover {
+        img {
+          rotate: 45deg;
+        }
+      }
+    }
+    .drawer-background {
+      background: rgba(0,0,0,0.7);
+      pointer-events: all;
+    }
+    .drawer-body {
+      left: 0;
+    }
+  }
+
+  @include tablet {
+    display: block;
+  }
 }
 
 
@@ -344,7 +382,7 @@ svg text {
   bottom: 0;
   left: 0;
   z-index: 3;
-  background: $color-background;
+  background: linear-gradient(to bottom, $color-background 10%, $color-background-blue 90%);
   width: 100%;
   box-sizing: border-box;
   display: flex;
@@ -477,9 +515,13 @@ svg text {
 }
 
 .Caller {
-  background: lightgreen;
+  background: $color-background-blue;
+  font-family: $font-family-1;
+  padding: $small-gutter;
+  font-size: .7rem;
+  // opacity: 0;
   &.is-active {
-    background: red;
+    background: $color-accent-background;
     color: white;
   }
   &.is-clearfix {
@@ -514,6 +556,9 @@ button.is-active {
   left: 1rem;
   top: 1rem;
   position: absolute;
+
+  // overflow: hidden;
+  // background: lightgrey;
 }
 
 /**
@@ -556,7 +601,7 @@ button.is-active {
   width: 100vw;
   .header {
     background: $color-background-blue;
-    min-height: calc(100vh - #{$header_height});
+    min-height: calc(100vh - #{$header_height} - 1rem);
     max-width: 100vw;
     display: flex;
     flex-flow: column nowrap;
@@ -780,5 +825,16 @@ button.is-active {
     .atlas-link-container {
       text-align: center;
     }
+  }
+}
+
+.bar-tooltip {
+  background: white!important;
+  color: $color-text!important;
+  font-family: $font-family-1;
+  max-width: 300px;
+  padding: $medium-gutter!important;
+  &:after {
+    display: none!important;
   }
 }

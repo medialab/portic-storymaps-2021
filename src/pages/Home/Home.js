@@ -18,7 +18,7 @@ import summary from '../../summary';
 import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
-const CENTER_FRACTION = 0.2;
+const CENTER_FRACTION = 0.5;
 // const CENTER_FRACTION = .6;
 
 const metadata = {
@@ -50,6 +50,7 @@ function Home({ match: {
     // la visualisation la plus haute de la page qui est
     // au-dessus du milieu de l'écran
     for (let index = visualizationEntries.length - 1; index >= 0; index--) {
+      const y = index === 0 ? scrollY + window.innerHeight * .2 : scrollY + DISPLACE_Y;
       const [_id, visualization] = visualizationEntries[index];/* eslint no-unused-vars : 0 */
       const { ref } = visualization;
       if (ref.current) {
@@ -81,6 +82,13 @@ function Home({ match: {
       setActiveVisualization(undefined);
     }
   }
+
+  /**
+   * Scroll to top on mount
+   */
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   /**
    * Scrollytelling management
    */

@@ -11,7 +11,7 @@ const colorsPalettes = {
   'generic':{
     'dark': '#336D7C',// marine sombre
     'light': '#E0E3E6',// gris clair
-    'accent1': '#00FFC8',// vert d'eau
+    'accent1': '#00C4AF',// '#00FFC8',// vert d'eau
     'accent2': '#FEA43B'// orange
   },
   'admiralties': {

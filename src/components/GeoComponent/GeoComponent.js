@@ -7,6 +7,63 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
+// import { resetIdCounter } from 'vega-lite';
+
+import './GeoComponent.css'
+
+const Input = ({
+  value: inputValue,
+  onBlur,
+  ...props
+}) => {
+  const [value, setValue] = useState(inputValue)
+  useEffect(() => {
+    setValue(inputValue)
+  }, [inputValue])
+
+  return <input
+    value={value}
+    onChange={(e) => {
+      setValue(e.target.value)
+    }}
+    onBlur={(e) => {
+      onBlur(e.target.value)
+    }}
+  />
+}
+
+const Button = ({
+  children,
+  onMouseDown,
+  ...props
+}) => {
+  const [isMouseDown, setState] = useState(false)
+
+  useEffect(() => {
+    let interval
+    if (isMouseDown) {
+      console.log("setInterval")
+      interval = setInterval(onMouseDown, 100)
+    }
+    return () => {
+      console.log("clearInterval")
+      clearInterval(interval)
+    }
+  }, [isMouseDown, onMouseDown])
+
+  return <button
+    {...props}
+    onMouseDown={() => {
+      setState(true)
+    }}
+    onMouseUp={() => {
+      setState(false)
+    }}
+    style={{ background: isMouseDown ? 'red' : undefined }}
+  >
+    {children}
+  </button>
+}
 
 
 const GeoComponent = ({
@@ -15,11 +72,22 @@ const GeoComponent = ({
   width = 1800,
   height = 1500,
   label,
-  markerSize,
+  renderObject, // fonction : par défaut la représentation des données est sous forme de cercles, mais peut se changer en passant une autre fonction
+  markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
-  centerOnRegion
+  centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant
+  rotationDegree = 0,
+  debug = false
 }) => {
+  // viz params variables
+  const [scale, setScale] = useState(200)
+  const [rotation, setRotation] = useState(0)
+  const [translationX, setTranslationX] = useState(width / 2)
+  const [translationY, setTranslationY] = useState(height / 2)
+  const [centerX, setCenterX] = useState(-1.7475027) // -1.7475027 pour centrer sur région
+  const [centerY, setCenterY] = useState(46.573642) // 46.573642
+
   // raw marker data
   const [data, setData] = useState(null);
   // map background data
@@ -65,7 +133,8 @@ const GeoComponent = ({
             latitude: datum.latitude,
             longitude: datum.longitude,
             color: datum[markerColor],
-            size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize]
+            size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize],
+            else: datum // à changer mais pour l'instant je ne sais pas faire autrement
           }
         } else {
           coordsMap[mark].size += (isNaN(+datum[markerSize]) ? 0 : +datum[markerSize])
@@ -113,20 +182,38 @@ const GeoComponent = ({
    * d3 projection making
    */
   const projection = useMemo(() => {
-    if (backgroundData) {
+     setTranslationX(width/2)
+     setTranslationY(height/2) 
+
+    let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
+      .scale(scale)
+      .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
+
+    if (backgroundData) { // que si center on region
       if (centerOnRegion) {
-        return geoEqualEarth()
-        .scale(50000)
-        .center([-1.7475027, 46.573642])
+        setScale(height*24); // 500000
+        setCenterX(-1.7475027);
+        setCenterY(46.573642);
+        projection
+          .scale(scale) // 50000 for a centered map
+          .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
+          .translate([translationX * 0.8, translationY * 0.56]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage : j'essaie de cadrer entre Nantes et Bordeaux)
+      } else {
+        // if bg data is available fit on whole geometry
+        projection
+          .fitSize([width, height], backgroundData)
       }
-      // if bg data is available fit on whole geometry
-      return geoEqualEarth()
-      .fitSize([width, height], backgroundData)
+      if (rotationDegree !== 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+        setScale(width*28)
+        setRotation(rotationDegree);
+        projection
+          .angle(rotation)
+          .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut :  @TODO stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
+      }
+
     }
-    return geoEqualEarth()
-      .scale(200)
-      .translate([width / 2, height / 2])
-  }, [backgroundData, width, height, centerOnRegion])
+    return projection;
+  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY, rotationDegree])
 
 
 
@@ -140,8 +227,93 @@ const GeoComponent = ({
     )
   }
 
+  const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
+
   return (
     <div>
+
+      {
+        debug ?
+          <>
+            <h2>scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}, centerX: {centerX}, centerY: {centerY}</h2>
+            <div class="table">
+              <ul id="horizontal-list">
+                <li>
+                  <ul>
+                    <li>
+                      <Button onMouseDown={() => setScale(scale * 1.6)}>scale+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setScale(scale / 1.6)}>scale-</Button>
+                    </li>
+                    <li>
+                      <Input value={scale} placeHolder={"entrez une valeur pour la scale"} onBlur={(str) => {
+                        const val = isNaN(+str) ? scale : +str
+                        setScale(val)
+                      }} />
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <Button onMouseDown={() => { console.log("DOWN !!"); setRotation(rotation + 2) }}>rotation+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setRotation(rotation - 2)}>rotation-</Button>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <Button onMouseDown={() => setTranslationX(translationX * 1.2)}>translationX+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setTranslationX(translationX * 0.8)}>translationX-</Button>
+                    </li>
+                    <li>b
+                      <Button onMouseDown={() => setTranslationY(translationY * 1.2)}>translationY+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setTranslationY(translationY * 0.8)}>translationY-</Button>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <ul>
+                    <li>
+                      <Button onMouseDown={() => setCenterX(centerX + 0.3)}>centerX+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setCenterX(centerX - 0.3)}>centerX-</Button>
+                    </li>
+                    <li>b
+                      <Button onMouseDown={() => setCenterY(centerY + 0.3)}>centerY+</Button>
+                    </li>
+                    <li>
+                      <Button onMouseDown={() => setCenterY(centerY - 0.3)}>centerY-</Button>
+                    </li>
+                    <li>
+                      <Input value={centerX} placeHolder={"entrez une valeur pour la latitude"} onBlur={(str) => {
+                        const val = isNaN(+str) ? centerX : +str
+                        setCenterX(val)
+                      }} />
+                    </li>
+                    <li>
+                      <Input value={centerY} placeHolder={"entrez une valeur pour la longitude"} onBlur={(str) => {
+                        const val = isNaN(+str) ? centerY : +str
+                        setCenterY(val)
+                      }} />
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </>
+          : null
+      }
+
       <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
         <g className="background">
           {
@@ -164,63 +336,72 @@ const GeoComponent = ({
             markerData
               .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
               .map((datum, index) => {
+                // console.log("datum : ",datum)
                 const { latitude, longitude, size, color, label } = datum;
                 const [x, y] = projection([+longitude, +latitude]);
                 return (
+                  <>
+                  {
+                    typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
+                    // je veux un élément html
+                    renderObject(datum, x, y, {width})
+                        :
                   <g transform={`translate(${x},${y})`}>
-                    <circle
-                      key={index}
-                      cx={0}
-                      cy={0}
-                      r={size}
-                      fill={color}
-                      className="marker"
-                    />
-                    {
-                      label ? 
-                      <text
-                        x={size + 5}
-                        y= {size/2}
-                      >
-                        {label}
-                      </text>
-                      : null
-                    }
-                  </g>
-                );
-              })
+                          <circle
+                            key={index}
+                            cx={0}
+                            cy={0}
+                            r={size}
+                            fill={color}
+                            className="marker"
+                          />
+                          {
+                            label ?
+                              <text
+                                x={size + 5}
+                                y={size / 2}
+                              >
+                                {label}
+                              </text>
+                              : null
+                          }
+                        </g>
+                      }
+                </>);
+                 })
           }
         </g>
         {
           colorsMap ?
-          <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20})`}>
-            <g>
-              <text style={{fontWeight: 800}}>
-                {markerColor}
-              </text>
+            <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20})`}>
+              <g>
+                <text style={{ fontWeight: 800 }}>
+                  {markerColor}
+                </text>
+              </g>
+              {
+                Object.entries(colorsMap)
+                  .map(([label, color], index) => {
+                    return (
+                      <g transform={`translate(0, ${(index + 1) * 20})`}>
+                        <rect
+                          x={0}
+                          y={-8}
+                          width={10}
+                          height={10}
+                          fill={color}
+                        />
+                        <text x={15} y={0}>
+                          {label || 'Indéterminé'}
+                        </text>
+                      </g>
+                    )
+                  })
+              }
             </g>
-            {
-              Object.entries(colorsMap)
-              .map(([label, color], index) => {
-                return (
-                  <g transform={`translate(0, ${(index + 1) * 20})`}>
-                    <rect
-                      x={0}
-                      y={-8}
-                      width={10}
-                      height={10}
-                      fill={color}
-                    />
-                    <text x={15} y={0}>
-                      {label || 'Indéterminé'}
-                    </text>
-                  </g>
-                )
-              })
-            }
-          </g>
-          : null
+            : null
         }
+        <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
       </svg>
     </div>
   )

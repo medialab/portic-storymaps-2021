@@ -4,8 +4,8 @@ import { NavLink as Link } from 'react-router-dom';
 function HomeSummary({ lang, summary }) {
   const messages = {
     intro: {
-      fr: 'découvrir les 3 temps de l’étude de cas',
-      en: 'discover the 3 steps of the case study'
+      fr: 'découvrir les 3 chapitres de l’étude de cas',
+      en: 'discover the 3 chapters of the case study'
     },
     atlas: {
       fr: 'Accéder à l\'atlas de toutes les visualisations',

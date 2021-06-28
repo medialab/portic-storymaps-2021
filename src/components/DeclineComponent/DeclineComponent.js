@@ -44,19 +44,19 @@ const DeclineComponent = (props) => {
     },
     herfindal0: {
       fr: () => `commerce peu diversifié`,
-      en: () => `fewly diverse trade`,
+      en: () => `fewly diversified trade`,
     },
     herfindal1: {
       fr: () => `commerce très diversifié`,
-      en: () => `very diverse trade`,
+      en: () => `very diversified trade`,
     },
     barTooltip: {
-      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice Herfindahl-Hirschmann : somme du carré des parts du marché français par classe de produits exportés)</i> : <span>[colorBox] ${herfindal}</span>`,
-      en: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Indice de herfindal () : <span>[colorBox] ${herfindal}</span>`,
+      fr: (year, pct, city, herfindal) => `En <strong>${year}</strong>, ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice de Herfindahl-Hirschmann : somme du carré des parts du marché français par classe de produits exportés)</i> : <span>[colorBox] ${herfindal}</span>`,
+      en: (year, pct, city, herfindal) => `In <strong>${year}</strong>, ${pct}% of exported goods from France are exported <strong>${city}</strong>.<br/><br/>Trade concentration <i>(Herfindahl-Hirschmann index : sum of square french market' shares sorted by exported products classes)</i> : <span>[colorBox] ${herfindal}</span>`,
     },
     productTooltip: {
-      fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de la classe "${product}" représentaient <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.`,
-      en: (year, product, pct) => `En <strong>${year}</strong>, les produits de type "${product}" représentaient ${pct}% des biens exportés par La Rochelle`,
+      fr: (year, product, pct) => `En <strong>${year}</strong>, les produits de la classe "${product}" représentent <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.`,
+      en: (year, product, pct) => `In <strong>${year}</strong>, products classed as "${product}" represent ${pct}% of goods exported by La Rochelle's direction des fermes.`,
     },
     sevenYearsWar: {
       fr: () => 'guerre de sept ans',

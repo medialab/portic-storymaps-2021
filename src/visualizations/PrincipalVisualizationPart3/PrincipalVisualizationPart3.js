@@ -124,9 +124,17 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
           nodeSize={`inside_degree`}
           labelDensity={0.5}
         />
+        <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-0.png`} />
+        <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
         </>
         :
         <>
+        <SigmaComponent
+          data="toflit_aggregate_1789_only_out.gexf"
+          nodeColor={`admiralty`}
+          nodeSize={`inside_degree`}
+          labelDensity={0.5}
+        />
           <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-0.png`} />
           <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
         </>

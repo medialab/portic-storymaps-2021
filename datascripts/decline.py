@@ -36,6 +36,9 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
     LaRochelle_partners = DefaultDict(
         lambda: DefaultDict(Counter))
     for flow in toflit18_flows:
+        # ATTENTION we filter out Ports Francs
+        if flow['partner_grouping'] == 'France':
+          continue;
         # longitudinal absolute and share trade
         year = flow['year'].split(
             '.')[0] if "." in flow['year'] else flow['year']

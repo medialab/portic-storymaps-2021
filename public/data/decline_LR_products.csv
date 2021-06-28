@@ -1,116 +1,92 @@
 product,year,Exports,Imports
-Animaux,1789,88124.0,
-Chevaux et bêtes de somme,1789,1920.0,
-Café,1789,2625168.0,3744519.3
-Beurre,1789,7698.50003,25193.0
-Combustibles dont charbons et bois,1789,194173.0,73370.0
-"Ouvrages de bois, liège et jonc",1789,93207.52,709938.9030210001
-Chanvre,1789,12476.0,115471.74799
-Blé et autres grains comestibles,1789,475849.00181999995,632887.3273
-Légumes,1789,23384.00011,25304.599990000002
-Coton non transformé,1789,5984.0,766442.0
-Subsistances diverses et mélangées,1789,5363.0,14332.1499
-Divers mélangés,1789,5236.0,10535.0
-"Porcelaine, poterie, faïence et ouvrages de terre",1789,27440.0,77352.0
-Pêche et fruits de mer,1789,3906.8,25118.0002
-Toiles de chanvre et de lin,1789,200949.25,100386.6
-Sel,1789,527254.2679000001,194356.0
-Chairs et œufs,1789,18345.0,315785.10022
+Café,1789,2625168.0,3728201.0
+Coton non transformé,1789,5984.0,724896.0
 Indigo,1789,262275.0,768549.0
 Rocou,1789,3714.0,22588.0
-Bois divers hors combustible,1789,3990.0,165213.0
-Sucre,1789,2200710.1001,2144347.0
-"Brai, goudron et résines",1789,32405.5,75291.00044
-Matières premières diverses,1789,16343.0,17329.600010000002
-Cire,1789,1862.5,
-Cordage et filets,1789,22204.0,2484.8899
-Étoffes de laine,1789,61453.0,6676.0
-Graisses diverses,1789,1155.0001,75270.0999
-Étoffes diverses,1789,17305.0,
-"Farine, gruau, biscuits et pâtes",1789,258385.235,6418.25
-Ouvrages métalliques,1789,131308.00002,292723.45431
-Fruits frais,1789,3605.0,1065.0
-Fruits secs et noix,1789,2593.0,12457.600410000001
+Sucre,1789,2199311.0,2144347.0
 Denrées coloniales et épiceries diverses,1789,43594.0,1748.0
-Habits et lingerie,1789,3078.0,2705.0
-Librairie,1789,200.0,
-Mercerie,1789,4522.0,6143.0
-Ouvrages divers et mélangés,1789,17939.0,105465.0
-"Meubles, glaces et miroirs",1789,2973.0,2527.0
-Cordonnerie et sellerie,1789,16099.0,
-"Mousseline, basin et nankin",1789,56903.0,
-Eaux-de-vie et liqueurs,1789,6781409.919820002,207061.877
+Eaux-de-vie et liqueurs,1789,6002913.500020001,7498.0
 Graines grasses,1789,59248.559,
-"Cuirs, peaux et pelleterie",1789,6112.0,126497.0
-Vins divers,1789,347667.14099,32443.0
-"Bière, cidre et vinaigre",1789,34404.28113,68413.722221
-Papier,1789,5034.0,529.60004
-Bâtiments de mer et apparaux,1789,2538.0,52711.5
-Fromage,1789,409.09999,176494.10004
-Verrerie,1789,7694.0,8946.0
-Bonneterie hors soie,1789,2323.0,
-Bonneterie de soie,1789,600.0,
-Chapeaux hors paille et écorce,1789,11505.0,
-Matières brutes et transformées pour teinture,1789,8000.0,51715.00002
-Drogues diverses,1789,442.20001,1293.0
-Toiles de coton,1789,379900.5,27726.75
-Étoffes de soie,1789,33281.5,
-Fer,1789,1248.0,1158.35006
-Textiles manufacturés divers et mélangés,1789,1050.0,
-Riz,1789,3798.0,18981.70076
-Huile d'olive à manger,1789,1952.0,138353.1466
-Huiles diverses,1789,177.60001,21030.000500000002
-Huile de poisson,1789,4172.75,251.10001
-Lin,1789,4931.0,4198.0002
-Châles et mouchoirs hors soie,1789,18717.0,
-Quincaillerie,1789,15271.0,44984.950079999995
-Savon,1789,3681.6000000000004,1053961.594
-Salpêtre et soufre,1789,361.5,9274.75
-Thé,1789,240.0,
-Toiles diverses,1789,103479.79999,2600.0
-"Bougies, chandelles et flambeaux",1789,271.60001,2544.19998
-"Armes, munitions, poudre et pierres à fusil",1789,37447.0,5850.0
+"Cuirs, peaux et pelleterie",1789,1240.0,113806.5
+Vins divers,1789,291472.16809,264.0
+"Ouvrages de bois, liège et jonc",1789,38017.0,524071.103021
+Divers mélangés,1789,1608.0,6148.0
+Sel,1789,298213.5679,
+Matières brutes et transformées pour teinture,1789,8000.0,48783.00002
+"Bière, cidre et vinaigre",1789,24016.24891,50812.722221
+"Armes, munitions, poudre et pierres à fusil",1789,37447.0,870.0
+Fruits secs et noix,1789,391.0,
+Beurre,1789,5818.0,25193.0
+"Farine, gruau, biscuits et pâtes",1789,22470.0,4962.5
+Bonneterie hors soie,1789,783.0,
 Soieries diverses,1789,324.0,
+"Brai, goudron et résines",1789,32173.0,6795.00021
+Verrerie,1789,7034.0,153.0
 Objets d'art et d'histoire naturelle,1789,289713.0,57199.0
+Chairs et œufs,1789,17396.0,310890.30002
+Subsistances diverses et mélangées,1789,3585.0,12370.1499
 "Cornes, corail, écailles, ivoire et nacre",1789,2800.0,47556.0
+Chapeaux hors paille et écorce,1789,2700.0,
 Cacao et chocolat,1789,120.0,3522.0
-Manne et médicaments,1789,896.0,23523.0
-Quinquina,1789,900.0,2748.0
+Cordage et filets,1789,21808.0,
+Ouvrages métalliques,1789,128146.0,287855.65401
+Étoffes de laine,1789,30580.0,4770.0
+Manne et médicaments,1789,896.0,2279.0
+Quinquina,1789,900.0,
 Salsepareille,1789,204.0,
 Céruse et blanc de plomb,1789,191.0,15090.2002
+Étoffes diverses,1789,11920.0,
+Étoffes de soie,1789,26929.0,
 Dorure,1789,360.0,
-Fer-blanc,1789,1604.0,51116.7021
-Métaux divers et mélangés,1789,255.0,8246.40001
-Fils divers,1789,260.0,21486.0
+"Porcelaine, poterie, faïence et ouvrages de terre",1789,16379.0,76947.0
+Fer-blanc,1789,1604.0,46721.7021
+Bâtiments de mer et apparaux,1789,738.0,50148.0
+Métaux divers et mélangés,1789,255.0,8000.0
+Fils divers,1789,260.0,
+Riz,1789,3578.0,13265.800299999999
+Blé et autres grains comestibles,1789,4538.0,613927.3263
+Habits et lingerie,1789,2880.0,
+Légumes,1789,14448.0,24619.0
+Mercerie,1789,2054.0,5749.0
+Châles et mouchoirs hors soie,1789,12441.0,
 Châles et mouchoirs de soie,1789,144.0,
+Ouvrages divers et mélangés,1789,17314.0,38834.0
 Argenterie et orfèvrerie,1789,710.0,
+Papier,1789,1396.0,529.60004
+Matières premières diverses,1789,4280.0,14699.0
+Pêche et fruits de mer,1789,212.0,4912.0002
 Plomb,1789,54212.0,68544.672
+Quincaillerie,1789,14851.0,29750.84998
+Toiles de coton,1789,368714.0,14745.75
+Toiles diverses,1789,94051.0,
+Toiles de chanvre et de lin,1789,170361.0,100386.6
 Produits inconnus,1789,1221.0,
 Vin de liqueurs,1789,132.0,
 Divers incertains,1789,38060.0,
-Gommes diverses,1789,,124.0
-Bouchons principalement en liège,1789,,546.0
-Marbre brut et ouvré,1789,,2066.0
+Combustibles dont charbons et bois,1789,,73370.0
+Fromage,1789,,176494.10004
 Acier,1789,,16322.050299999999
 Fleurs artificielles et ouvrages de mode,1789,,360.0
+Chanvre,1789,,115230.598
 Colles diverses,1789,,1222.5
-Cuivre,1789,,26154.8985
+Cuivre,1789,,23999.8985
 Azur et cobalt,1789,,1260.0
 "Alquifoux, mine de plomb et graphite",1789,,3202.5002
 Poivre et piment,1789,,7709.0
 Étain,1789,,3860.0
-Poils et crin,1789,,12948.001
+Graisses diverses,1789,,64574.5499
+Bois divers hors combustible,1789,,3454.0
+Huiles diverses,1789,,14850.0005
+Lin,1789,,4006.0002
 Sirop et mélasse,1789,,40345.0
-Vins de Bordeaux,1789,,266.0
-Bijouterie et pierres fines,1789,,112.5
-Drogues médicinales diverses,1789,,8383.0
-Séné,1789,,1375.2001
-Réglisse,1789,,1016.5
-Alun,1789,,2413.95
-Parfumerie et toilette,1789,,2416.0
-Cannelle,1789,,6504.0
-Graines de jardin,1789,,658.5
+"Bougies, chandelles et flambeaux",1789,,2413.29999
+Drogues médicinales diverses,1789,,1664.0
+Alun,1789,,1365.0
+Cannelle,1789,,6360.0
+Fer,1789,,669.00005
+Graines de jardin,1789,,418.5
 Laines non transformées diverses,1789,,100.0
+"Meubles, glaces et miroirs",1789,,166.0
 "Faucilles, faux et limes",1789,,2180.0
 Rubanerie et passementerie diverse,1789,,560.0
 Café,1750,212967.40402,207144.0

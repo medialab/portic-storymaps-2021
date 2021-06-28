@@ -25,8 +25,8 @@ const DeclineComponent = (props) => {
       en: (cityName, start, end) => `Evolution of the direction des fermes of ${cityName} trade from ${start} to ${end}`
     },
     top90PctTitle: {
-      fr: (cityName, start, end) => `Comparaison des parts des produits exportés par la direction des fermes de ${cityName} totalisant plus de 90% du commerce en ${end}, en ${start} et en ${end}`,
-      en: (cityName, start, end) => `Comparison of shares of the top 90% of exported products by the direction des fermes of ${cityName} in ${start}, in ${start} and in ${end}`,
+      fr: (cityName, start, end) => `Comparaison des parts des produits exportés par la direction des fermes de ${cityName} totalisant plus de 90% du commerce en ${end}, en ${start} et en ${end} (ports francs non pris en compte)`,
+      en: (cityName, start, end) => `Comparison of shares of the top 90% of exported products by the direction des fermes of ${cityName} in ${start}, in ${start} and in ${end} (ports francs non pris en compte)`,
     },
     partInPct: {
       fr: () => 'part des exports fr.',

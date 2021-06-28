@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import omit from 'lodash/omit';
+import cx from 'classnames';
 import Measure from 'react-measure'
 
 import VisualizationContainer from '../../visualizations/index.js';
@@ -8,7 +9,7 @@ const VisualizationController = ({
   activeVisualization
 }) => {
   const [dimensions, setDimensions] = useState({});
-  const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId'])
+  const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId']);
   return (
     <Measure 
       bounds
@@ -17,7 +18,7 @@ const VisualizationController = ({
       }}
     >
       {({ measureRef }) => (
-          <div ref={measureRef} className="VisualizationController">
+          <div ref={measureRef} className={cx("VisualizationController", {'is-empty': !activeVisualization})}>
           {/* <h2>Visualization controller</h2> */}
           {
             activeVisualization ?

@@ -1,208 +1,399 @@
-import * as d3 from "d3";
+import { scalePow, scaleBand, scaleLinear } from "d3-scale";
 import { range } from "lodash";
-import { useEffect, useRef } from "react";
-import { ProductsDistributionChart } from "./ProductsDistributionChart";
+import {extent, max} from 'd3-array';
+import { useMemo, useRef, useState, useEffect } from "react";
+import {axisPropsFromTickScale} from 'react-d3-axis';
 
-// TODO: refacto fields props to ease exports/Imports switch
+import ReactTooltip from 'react-tooltip';
 
-const PRODUCT_TRADE_PART_TRESHOLD = 0.9;
+import colorsPalettes from "../../colorPalettes";
+
+
+const prettifyValue = str => {
+  const inted = Math.round(+str) + '';
+  let finalStr = '';
+  let count = 0;
+  for (let i = inted.length - 1; i >= 0; i--) {
+    const char = inted[i];
+    count++;
+    
+    finalStr = char + finalStr;
+    if (count === 3) {
+      count = 0;
+      finalStr = ',' + finalStr;
+    }
+  }
+  if (finalStr[0] === ',') {
+    finalStr = finalStr.slice(1);
+  }
+
+  return finalStr;
+}
 
 const LongitudinalTradeChart = ({
-  data,
-  // possible extension
-  productsData,
+  data: inputData,
   // fields: if null, viz will not show the corresponding data
   absoluteField,
   shareField,
   herfindhalField,
-  // for axes
-  absoluteLabel,
-  shareLabel,
 
   width,
-  height,
-  productsHeight,
+  height: wholeHeight,
+  axisLeftTitle,
+  axisRightTitle,
 
-  showProducts,
+  startYear,
+  endYear,
+  fillGaps,
+  barTooltipFn,
+  cityName,
+
+  title,
+  colorScaleMessages,
+  annotations = [],
+  margins
 }) => {
-  const margin = { top: 20, right: 50, bottom: 30, left: 50 };
-  const xBand = d3
-    .scaleBand()
-    .domain(range(...d3.extent(data.map((d) => +d.year))))
-    .range([margin.left, width - margin.right])
-    .padding(0.1);
-  const herfindhalScale = d3
-    .scaleLinear()
-    .domain(d3.extent(data, (d) => +d[herfindhalField]))
-    .range([0, 0.8]);
-  const svgNode = useRef();
+  const data = useMemo(() => inputData.filter(d => +d.year >= startYear & +d.year <= endYear), [startYear, endYear, inputData])
+  const headerRef = useRef(null);
+  const footerRef = useRef(null);
+  const [height, setHeight] = useState(wholeHeight);
   useEffect(() => {
-    const svgPath = d3
-      .select(svgNode.current)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("fill", "none")
-      .attr("stroke-linejoin", "round")
-      .attr("stroke-linecap", "round");
-    // clean SVG
-    svgPath.selectAll("*").remove();
+    // handling ref updates to set the correct height
+    setTimeout(() => {
+      let newHeight = wholeHeight;
+      if (headerRef && headerRef.current) {
+        newHeight = wholeHeight - headerRef.current.offsetHeight;
+        if (footerRef && footerRef.current) {
+          newHeight -= footerRef.current.offsetHeight;;
+        }
+      }
+      setHeight(newHeight);
+      ReactTooltip.rebuild();
+    })
+    
+  }, [wholeHeight])
+  
 
-    // X AXIS
+  const yearsExtent = extent(data.map((d) => +d.year));
+  const yearsEnumerated = range(...yearsExtent);
 
-    const yearDomain = xBand.domain().map((y) => +y);
-    const yearTicks = yearDomain
-      .filter((y) => y % 5 === 0 && y !== 1790)
-      .concat([1789]);
-    const xAxis = (g) =>
-      g
-        .attr("transform", `translate(0,${height - margin.bottom})`)
-        .call(d3.axisBottom(xBand).tickValues(yearTicks).tickSizeOuter(0));
+  const xBand = scaleBand()
+    .domain([...yearsEnumerated, endYear, endYear + 1])
+    .range([margins.left, width - margins.right])
+    .padding(0.1);
+  const herfindhalColorScale = scalePow()
+    .domain(extent(data, (d) => +d[herfindhalField]))
+    .range([colorsPalettes.generic.accent2, 'grey']);
+  // const herfindhalOpacityScale = herfindhalColorScale.copy()
+  // .range([1, 0.5])
 
-    svgPath.append("g").call(xAxis);
+  const yearDomain = xBand.domain().map((y) => +y);
+  const yearTicks = yearDomain
+      .filter((y) => y % 5 === 0)
+  const yAbsoluteScale = scaleLinear()
+    .domain([0, max(data, (d) => +d[absoluteField])])
+    .nice()
+    .range([height - margins.bottom, margins.top]);
+  const yShareScale = scaleLinear()
+      .domain([0, max(data, (d) => +d[shareField])])
+      .nice()
+      .range([height - margins.bottom, margins.top]);
 
-    if (data.length > 0) {
-      // LINE PATH FOR ABSOLUTE
-      // Y AXIS
-      const yAbsolute = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, (d) => +d[absoluteField])])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
-      const absoluteYAxis = (g) =>
-        g
-          .attr("transform", `translate(${width - margin.right},0)`)
-          .call(d3.axisRight(yAbsolute))
-          .call((g) => g.select(".domain").remove())
-          .call((g) =>
-            g
-              .select(".tick:last-of-type text")
-              .clone()
-              .attr("x", 3)
-              .attr("text-anchor", "start")
-              .attr("font-weight", "bold")
-              .text(absoluteLabel)
-          );
-      svgPath.append("g").call(absoluteYAxis);
-      // RECT for share series
-      // Y AXIS
-      const yShare = d3
-        .scaleLinear()
-        .domain([0, d3.max(data, (d) => +d[shareField])])
-        .nice()
-        .range([height - margin.bottom, margin.top]);
-      const shareYAxis = (g) =>
-        g
-          .attr("transform", `translate(${margin.left},0)`)
-          .call(d3.axisLeft(yShare))
-          .call((g) => g.select(".domain").remove())
-          .call((g) =>
-            g
-              .select(".tick:last-of-type text")
-              .clone()
-              .attr("x", 3)
-              .attr("text-anchor", "start")
-              .attr("font-weight", "bold")
-              .text(shareLabel)
-          );
-      svgPath.append("g").call(shareYAxis);
-      // BARS
-
-      svgPath
-        .append("g")
-        .selectAll("rect")
-        .data(data)
-        .join("rect")
-        .attr("fill", (d) =>
-          herfindhalField && d[herfindhalField]
-            ? d3.rgb(200, 50, 0, herfindhalScale(+d[herfindhalField]))
-            : "lightgrey"
-        )
-        .attr("x", (d) => xBand(+d.year))
-        .attr("y", (d) => yShare(d[shareField]))
-        .attr("height", (d) => yShare(0) - yShare(d[shareField]))
-        .attr("width", xBand.bandwidth());
-      // LINE
-      const line = d3
-        .line()
-        .defined((d) => d[absoluteField] !== "")
-        .x((d) => xBand(+d.year) + xBand.bandwidth() / 2)
-        .y((d) => yAbsolute(+d[absoluteField]));
-
-      svgPath
-        .append("path")
-        .datum(data)
-        .attr("stroke", "steelblue")
-        .attr("stroke-width", 1.5)
-        .attr("d", line);
-    }
-  }, [data, svgNode]);/* eslint react-hooks/exhaustive-deps : 0 */
-
-  //TODO: make that a prop or a config
-  const productVizHeight = productsHeight || height;
-
-  // pass herfindhal for products chart color
-  const her1750 = (data.filter((d) => d.year === "1750")[0] || {})[
-    herfindhalField
-  ];
-  const her1789 = (data.filter((d) => d.year === "1789")[0] || {})[
-    herfindhalField
-  ];
-
-
+  const {values: rightYAxisValues} = axisPropsFromTickScale(yAbsoluteScale, Math.round(height / 20));
+  const {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
   return (
-    <>
-      <svg ref={svgNode} width={width} height={height}></svg>
-      {/* TODO: make year display generic peeking what's in the data ? */}
-      {productsData && showProducts && (
-        <div
-          style={{
-            position: "relative",
-            height: productVizHeight,
-            width: `${width}px`,
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              right: width - xBand(1750) - xBand.bandwidth(),
-            }}
-          >
-            <ProductsDistributionChart
-              data={productsData.filter((d) => d.year === "1750")}
-              field="Exports"
-              partTreshold={PRODUCT_TRADE_PART_TRESHOLD}
-              height={productVizHeight}
-              barWidth={xBand.bandwidth()}
-              color={
-                her1750
-                  ? d3.rgb(200, 50, 0, herfindhalScale(+her1750))
-                  : "lightgrey"
-              }
-              labelFirst={true}
-            />
+    <div className="LongitudinalTradeChart">
+      <div className="chart-header" ref={headerRef}>
+        <h3 style={{marginLeft: margins.left}}>{title}</h3>
+        <div className="axis-headers-container">
+          <div style={{
+            background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined,
+            marginLeft: margins.left,
+          }} className="axis-header axis-header-left">
+            {axisLeftTitle}
           </div>
-
-          <div style={{ position: "absolute", left: xBand(1789) }}>
-            <ProductsDistributionChart
-              data={productsData.filter((d) => d.year === "1789")}
-              field="Exports"
-              partTreshold={PRODUCT_TRADE_PART_TRESHOLD}
-              height={productVizHeight}
-              barWidth={xBand.bandwidth()}
-              color={
-                her1789
-                  ? d3.rgb(200, 50, 0, herfindhalScale(+her1789))
-                  : "lightgrey"
-              }
-            />
+          {
+            colorScaleMessages ?
+            <div className="color-scale-container">
+              <div className="color-scale-detail">
+                <div 
+                  className="bar"
+                  style={{
+                    background: `linear-gradient(to right, ${herfindhalColorScale(herfindhalColorScale.domain()[0])}, ${herfindhalColorScale(herfindhalColorScale.domain()[1])})`
+                  }}
+                />
+                <div className="labels">
+                  <span>{colorScaleMessages.maximum}</span>
+                  {/* <span>{colorScaleMessages.title}</span> */}
+                  <span>{colorScaleMessages.minimum}</span>
+                </div>
+              </div>
+            </div>
+            : null
+          }
+          <div style={{
+            background: axisRightTitle && axisRightTitle.length ? colorsPalettes.generic.accent1 : undefined,
+            marginRight: margins.right,
+          }} className="axis-header axis-header-right">
+            {axisRightTitle}
           </div>
-          <h4>
-            Noms des produits totalisant {PRODUCT_TRADE_PART_TRESHOLD * 100}% du
-            commerce{" "}
-          </h4>
         </div>
-      )}
-    </>
+      </div>
+      <svg width={width} height={height}>
+        <g
+          className="axis axis-left"
+        >
+          {
+            leftYAxisValue.map(value => {
+              return (
+                <g className="axis-group">
+                  <line
+                    x1={margins.left * .8}
+                    x2={margins.left}
+                    y1={yShareScale(value)}
+                    y2={yShareScale(value)}
+                    stroke={colorsPalettes.generic.accent2}
+                  />
+                  <line
+                    x1={margins.left}
+                    x2={width - margins.right}
+                    y1={yShareScale(value)}
+                    y2={yShareScale(value)}
+                    stroke={colorsPalettes.generic.accent2}
+                    strokeDasharray={'2, 2'}
+                    opacity={.2}
+                  />
+                  <text
+                    x={margins.left * .7}
+                    y={yShareScale(value) + height / 100}
+                    fill={colorsPalettes.generic.accent2}
+                  >
+                    {Math.round(+value * 100) + '%'}
+                  </text>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g
+          className="axis axis-right"
+        >
+          {
+            rightYAxisValues.map(value => {
+              return (
+                <g className="axis-group">
+                  <line
+                    x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
+                    x2={width - margins.right}
+                    y1={yAbsoluteScale(value)}
+                    y2={yAbsoluteScale(value)}
+                    stroke={colorsPalettes.generic.accent1}
+                    strokeDasharray={'4, 2'}
+                    opacity={.5}
+                  />
+                  <text
+                    x={width - margins.right + 2}
+                    y={yAbsoluteScale(value) + height / 100}
+                    fill={colorsPalettes.generic.accent1}
+                  >
+                    {value > 0 ? Math.round(value/1000000) + 'm livres t.' : 0}
+                  </text>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g className="axis axis-bottom">
+          <line
+            y1={height - margins.bottom}
+            y2={height - margins.bottom}
+            x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
+            x2={xBand(yearTicks[yearTicks.length - 1]) + xBand.bandwidth() / 2}
+            stroke={'lightgrey'}
+          />
+          {
+            yearTicks
+            .map(year => {
+              const x = xBand(year) + xBand.bandwidth() / 2;
+              const y = height - margins.bottom;
+              return (
+                <g
+                  key={year}
+                  className="axis-group"
+                  transform={`translate(${x}, ${y})`}
+                >
+                  <line
+                    x1={0}
+                    x2={0}
+                    y1={0}
+                    y2={margins.bottom / 3}
+                    stroke="grey"
+                  />
+                  <g 
+                    transform={`translate(${(xBand.bandwidth() * .5)}, ${margins.bottom / 2})`}
+                  >
+                  <text fill="grey">
+                    {year}
+                  </text>
+                  </g>
+                </g>
+              )
+            })
+          }
+        </g>
+        <g className="annotations-container">
+          {
+            annotations.map((annotation, annotationIndex) => {
+              const {startYear, endYear, label} = annotation;
+              return (
+                <g className="annotation" key={annotationIndex}>
+                  <rect
+                    x={xBand(startYear)}
+                    width={xBand(endYear) - xBand(startYear)}
+                    height={height - margins.top - margins.bottom}
+                    y={margins.top}
+                    fill="url(#diagonalHatch)"
+                    opacity={.4}
+                  />
+                  <line
+                    x1={xBand(startYear)}
+                    x2={xBand(startYear)}
+                    y1={margins.top}
+                    y2={height - margins.bottom}
+                    stroke="grey"
+                    opacity={.4}
+                    strokeDasharray={'4,2'}
+                  />
+                  <line
+                    x1={xBand(endYear)}
+                    x2={xBand(endYear)}
+                    y1={margins.top}
+                    y2={height - margins.bottom}
+                    stroke="grey"
+                    opacity={.4}
+                    strokeDasharray={'4,2'}
+                  />
+                  <line 
+                    x1={xBand(endYear) + 20} 
+                    x2={xBand(endYear) + 10} 
+                    y1={margins.top + 7.5}
+                    y2={margins.top + 7.5}
+                    stroke="grey" 
+                    marker-end="url(#arrowhead)" 
+                  />
+                  <text
+                    x={xBand(endYear) + 22}
+                    y={margins.top + 10}
+                    fontSize={'.5rem'}
+                    fill="grey"
+                  >
+                    {label}
+                  </text>
+                  <defs>
+                    <marker id="arrowhead" markerWidth="5" markerHeight="5" 
+                    refX="0" refY="2.5" orient="auto">
+                      <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
+                    </marker>
+                  </defs>
+                  <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
+                  <path d="M-1,1 l2,-2
+                          M0,4 l4,-4
+                          M3,5 l2,-2" 
+                        style={{stroke:'grey', opacity: .5, strokeWidth:1}} />
+                </pattern>
+
+                </g>
+              )
+            })
+          }
+        </g>
+
+        <g className="bars-container">
+          {
+            data.map((d) => {
+              return (
+                <rect
+                  key={d.year}
+                  x={xBand(+d.year)}
+                  y={yShareScale(d[shareField])}
+                  width={xBand.bandwidth()}
+                  height={yShareScale(0) - yShareScale(d[shareField])}
+                  fill={herfindhalField && d[herfindhalField] ? herfindhalColorScale(+d[herfindhalField]) : colorsPalettes.generic.dark}
+                  // opacity={herfindhalField && d[herfindhalField]
+                  //         ? herfindhalOpacityScale(+d[herfindhalField])
+                  //         : 1}
+                  data-tip={barTooltipFn ? 
+                    barTooltipFn(d.year, (d[shareField] * 100).toFixed(2), cityName, d[herfindhalField] && (+d[herfindhalField] || 0).toFixed(2)) 
+                    .replace('[colorBox]', `<span style="display:inline-block;width: .8em;height:.8em;background:${herfindhalColorScale(+d[herfindhalField] || 0)}"></span>`)
+                    : undefined}
+                  data-for={cityName}
+                  data-effect="solid"
+                  data-html={true}
+                  data-class="bar-tooltip"
+                  data-place="left"
+                />
+              )
+            })
+          }
+        </g>
+
+        <g
+          className="lines-container"
+        >
+          {
+            data
+            .sort((a, b) => {
+              if (+a.year > +b.year) {
+                return 1;
+              }
+              return -1;
+            })
+            .filter((d, index) => {
+              const next = data[index + 1];
+              return index < data.length - 1
+              && (fillGaps ? true : +next.year === +d.year + 1)
+            })
+            .map((datum, index) => {
+              const next = data[index + 1];
+              const x1 = xBand(+datum.year) + xBand.bandwidth() / 2;
+              const x2 = xBand(+next.year)+ xBand.bandwidth() / 2;
+              const y1 = yAbsoluteScale(+datum[absoluteField]);
+              const y2 = yAbsoluteScale(+next[absoluteField]);
+              if (!+datum[absoluteField] || !+next[absoluteField]) {
+                return null;
+              }
+              const ratio = +next[absoluteField] > +datum[absoluteField] ? +next[absoluteField] / +datum[absoluteField] - 1 : -(1 - +next[absoluteField] / +datum[absoluteField]);
+              return (
+                 <line
+                   key={datum.year}
+                   {
+                     ...{
+                       x1,
+                       x2,
+                       y1,
+                       y2
+                     }
+                   }
+                   stroke={colorsPalettes.generic.accent1}
+                   title={`${datum.year}-${next.year}`}
+                   strokeWidth={2}
+                   data-tip={`${datum.year} → <strong>${prettifyValue(+datum[absoluteField])}</strong> livres tournois <br/>${next.year} → <strong>${prettifyValue(+next[absoluteField])}</strong> livres tournois<br/><i>(${ratio > 0 ? '+' : ''}${Math.round(ratio * 100)}%)</i>`}
+                    data-for={cityName}
+                    data-class="bar-tooltip"
+                    data-html={true}
+                 />
+              )
+            })
+          }
+
+        </g>
+        
+      </svg>
+
+
+      <ReactTooltip id={cityName} />
+      
+    </div>
   );
 };
 export default LongitudinalTradeChart;

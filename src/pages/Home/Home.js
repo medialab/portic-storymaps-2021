@@ -43,7 +43,6 @@ function Home({ match: {
   const updateCurrentVisualization = () => {
     // const bodyPos = document.body.getBoundingClientRect();
     const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
-    const y = scrollY + DISPLACE_Y;
     const visualizationEntries = Object.entries(visualizations);
     let found;
     // on parcourt la liste à l'envers pour récupérer

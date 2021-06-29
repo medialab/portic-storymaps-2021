@@ -49,7 +49,6 @@ const LongitudinalTradeChart = ({
   barTooltipFn,
   cityName,
   highlightYears,
-
   title,
   colorScaleMessages,
   annotations = [],

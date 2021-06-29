@@ -117,6 +117,7 @@ const DeclineComponent = (props) => {
             margins={margins}
             barTooltipFn={messages.barTooltip[lang]}
             cityName="La Rochelle"
+            highlightYears={rows.comparison > 0 ? [startYear, endYear] : undefined}
             annotations={[
               {
                 type: 'span',

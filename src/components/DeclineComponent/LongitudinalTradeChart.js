@@ -3,6 +3,7 @@ import { range } from "lodash";
 import {extent, max} from 'd3-array';
 import { useMemo, useRef, useState, useEffect } from "react";
 import {axisPropsFromTickScale} from 'react-d3-axis';
+import cx from 'classnames';
 
 import ReactTooltip from 'react-tooltip';
 
@@ -47,6 +48,7 @@ const LongitudinalTradeChart = ({
   fillGaps,
   barTooltipFn,
   cityName,
+  highlightYears,
 
   title,
   colorScaleMessages,
@@ -102,7 +104,7 @@ const LongitudinalTradeChart = ({
   const {values: rightYAxisValues} = axisPropsFromTickScale(yAbsoluteScale, Math.round(height / 20));
   const {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
   return (
-    <div className="LongitudinalTradeChart">
+    <div className={cx("LongitudinalTradeChart", {'has-highlights': highlightYears !== undefined})}>
       <div className="chart-header" ref={headerRef}>
         <h3 style={{marginLeft: margins.left}}>{title}</h3>
         <div className="axis-headers-container">
@@ -331,6 +333,7 @@ const LongitudinalTradeChart = ({
                   data-html={true}
                   data-class="bar-tooltip"
                   data-place="left"
+                  className={cx('graph-bar', {'is-highlighted': highlightYears && highlightYears.includes(+d.year)})}
                 />
               )
             })

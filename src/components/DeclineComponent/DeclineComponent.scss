@@ -96,6 +96,14 @@
         }
       }
     }
+    &.has-highlights {
+      .graph-bar {
+        opacity: .5;
+        &.is-highlighted {
+          opacity: 1;
+        }
+      }
+    }
     .lines-container {
       &:hover {
         line {

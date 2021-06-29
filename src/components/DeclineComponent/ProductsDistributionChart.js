@@ -24,6 +24,7 @@ const ProductsDistributionChart = ({
   title,
   margins,
   productTooltipFn,
+  compareFrom
 }) => {
   const titleRef = useRef(null);
 
@@ -41,48 +42,73 @@ const ProductsDistributionChart = ({
     height = wholeHeight - titleRef.current.getBoundingClientRect().height - yearLabelHeight;
   }
   const finalData= useMemo(() => {
-    // const lastYear = years[years.length - 1];
-    const lastYear = years[years.length - 1];
-    const lastYearData =  allData.filter(datum => datum.year + '' === lastYear + '');
-    const lastYearTotalValue = sum(lastYearData.map((d) => +d[field])); 
-    let partAcc = 0;
-    // Sort by trade value and keep only the top products which totalizes partTreshold of share
-    const dataTillTreshold = sortBy(lastYearData, (d) => -d[field])
-    .filter((d) => {
-      partAcc += +d[field];
-      return partAcc <= partTreshold * lastYearTotalValue;
-    });
-    const topProducts = dataTillTreshold.map(d => d.product);
-    // group the long tail of low value (under the part Treshold) products as one aggregated misc
-    const aggregatedMiscProducts = {
-      [field]: lastYearTotalValue - sum(dataTillTreshold.map((d) => +d[field])),
-      product: `${lastYearData.length - dataTillTreshold.length} autres types de produits`,
-    };
-    dataTillTreshold.push(aggregatedMiscProducts);
-
+    if (compareFrom) {
+      const lastYear = years[years.length - 1];
+      const lastYearData =  allData.filter(datum => datum.year + '' === lastYear + '');
+      const lastYearTotalValue = sum(lastYearData.map((d) => +d[field])); 
+      let partAcc = 0;
+      // Sort by trade value and keep only the top products which totalizes partTreshold of share
+      const dataTillTreshold = sortBy(lastYearData, (d) => -d[field])
+      .filter((d) => {
+        partAcc += +d[field];
+        return partAcc <= partTreshold * lastYearTotalValue;
+      });
+      const topProducts = dataTillTreshold.map(d => d.product);
+      // group the long tail of low value (under the part Treshold) products as one aggregated misc
+      const aggregatedMiscProducts = {
+        [field]: lastYearTotalValue - sum(dataTillTreshold.map((d) => +d[field])),
+        product: `${lastYearData.length - dataTillTreshold.length} autres types de produits`,
+      };
+      dataTillTreshold.push(aggregatedMiscProducts);
     return years.reduce((dict, year) => {
-      if (year === lastYear) {
+
+        if (year === lastYear) {
+          return {
+            ...dict,
+            [year]: dataTillTreshold
+          }
+        }
+        const thisData = allData.filter(datum => datum.year + '' === year + '');
+        const thisTotalValue =  sum(thisData.map((d) => +d[field]));
+        const thisYearData = thisData.filter(d => topProducts.includes(d.product))
+        .sort((a, b) => {
+          if (+a[field] > +b[field]) {
+            return -1;
+          }
+          return 1;
+        })
+        thisYearData.push({
+          [field]: thisTotalValue - sum(thisYearData.map((d) => +d[field])),
+          product: `${thisData.length - thisYearData.length} autres types de produits`,
+        })
         return {
           ...dict,
-          [year]: dataTillTreshold
+          [year]: thisYearData
         }
-      }
-      const thisData = allData.filter(datum => datum.year + '' === year + '');
-      const thisTotalValue =  sum(thisData.map((d) => +d[field]));
-      const thisYearData = thisData.filter(d => topProducts.includes(d.product))
-      .sort((a, b) => {
-        if (+a[field] > +b[field]) {
-          return -1;
-        }
-        return 1;
-      })
-      thisYearData.push({
-        [field]: thisTotalValue - sum(thisYearData.map((d) => +d[field])),
-        product: `${thisData.length - thisYearData.length} autres types de produits`,
-      })
+      });
+    }
+    
+
+    return years.reduce((dict, year) => {
+      const thisYearData =  allData.filter(datum => datum.year + '' === year + '');
+      const totalValue = sum(thisYearData.map((d) => +d[field])); 
+      let partAcc = 0;
+      // Sort by trade value and keep only the top products which totalizes partTreshold of share
+      const dataTillTreshold = sortBy(thisYearData, (d) => -d[field])
+      .filter((d) => {
+        partAcc += +d[field];
+        return partAcc <= partTreshold * totalValue;
+      });
+      const topProducts = dataTillTreshold.map(d => d.product);
+      // group the long tail of low value (under the part Treshold) products as one aggregated misc
+      const aggregatedMiscProducts = {
+        [field]: totalValue - sum(dataTillTreshold.map((d) => +d[field])),
+        product: `${thisYearData.length - dataTillTreshold.length} autres types de produits`,
+      };
+      dataTillTreshold.push(aggregatedMiscProducts);
       return {
         ...dict,
-        [year]: thisYearData
+        [year]: dataTillTreshold
       }
     }, {})
 

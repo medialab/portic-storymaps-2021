@@ -4,13 +4,13 @@
     "static/js/0.504ed43d.chunk.js.map": "/portic-storymaps-2021/static/js/0.504ed43d.chunk.js.map",
     "static/js/1.20f51c75.chunk.js": "/portic-storymaps-2021/static/js/1.20f51c75.chunk.js",
     "static/js/1.20f51c75.chunk.js.map": "/portic-storymaps-2021/static/js/1.20f51c75.chunk.js.map",
-    "main.css": "/portic-storymaps-2021/static/css/main.e1e9956c.chunk.css",
-    "main.js": "/portic-storymaps-2021/static/js/main.5b8ab0a7.chunk.js",
-    "main.js.map": "/portic-storymaps-2021/static/js/main.5b8ab0a7.chunk.js.map",
+    "main.css": "/portic-storymaps-2021/static/css/main.9f9b93e9.chunk.css",
+    "main.js": "/portic-storymaps-2021/static/js/main.9638fbb1.chunk.js",
+    "main.js.map": "/portic-storymaps-2021/static/js/main.9638fbb1.chunk.js.map",
     "runtime-main.js": "/portic-storymaps-2021/static/js/runtime-main.31bebf2f.js",
     "runtime-main.js.map": "/portic-storymaps-2021/static/js/runtime-main.31bebf2f.js.map",
-    "static/js/4.99daa2f0.chunk.js": "/portic-storymaps-2021/static/js/4.99daa2f0.chunk.js",
-    "static/js/4.99daa2f0.chunk.js.map": "/portic-storymaps-2021/static/js/4.99daa2f0.chunk.js.map",
+    "static/js/4.2e979018.chunk.js": "/portic-storymaps-2021/static/js/4.2e979018.chunk.js",
+    "static/js/4.2e979018.chunk.js.map": "/portic-storymaps-2021/static/js/4.2e979018.chunk.js.map",
     "static/js/5.03866158.chunk.js": "/portic-storymaps-2021/static/js/5.03866158.chunk.js",
     "static/js/5.03866158.chunk.js.map": "/portic-storymaps-2021/static/js/5.03866158.chunk.js.map",
     "static/js/6.ca6cd7a2.chunk.js": "/portic-storymaps-2021/static/js/6.ca6cd7a2.chunk.js",
@@ -26,13 +26,13 @@
     "static/js/11.080af7de.chunk.js": "/portic-storymaps-2021/static/js/11.080af7de.chunk.js",
     "static/js/11.080af7de.chunk.js.map": "/portic-storymaps-2021/static/js/11.080af7de.chunk.js.map",
     "index.html": "/portic-storymaps-2021/index.html",
-    "static/css/main.e1e9956c.chunk.css.map": "/portic-storymaps-2021/static/css/main.e1e9956c.chunk.css.map",
-    "static/js/4.99daa2f0.chunk.js.LICENSE.txt": "/portic-storymaps-2021/static/js/4.99daa2f0.chunk.js.LICENSE.txt"
+    "static/css/main.9f9b93e9.chunk.css.map": "/portic-storymaps-2021/static/css/main.9f9b93e9.chunk.css.map",
+    "static/js/4.2e979018.chunk.js.LICENSE.txt": "/portic-storymaps-2021/static/js/4.2e979018.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.31bebf2f.js",
-    "static/js/4.99daa2f0.chunk.js",
-    "static/css/main.e1e9956c.chunk.css",
-    "static/js/main.5b8ab0a7.chunk.js"
+    "static/js/4.2e979018.chunk.js",
+    "static/css/main.9f9b93e9.chunk.css",
+    "static/js/main.9638fbb1.chunk.js"
   ]
 }

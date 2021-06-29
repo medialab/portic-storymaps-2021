@@ -117,10 +117,39 @@
     }
   }
   .ProductsDistributionChart {
+    position: relative;
+    
     .years-container {
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
+      position: relative;
+      
+      .links-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: .5;
+        z-index: -1;
+        .link {
+          fill: none;
+          stroke: grey;
+          stroke-dasharray: 4,2;
+          transition: .5s ease;
+          opacity: .5;
+        }
+        &.has-highlights {
+          .link{
+            opacity: 0;
+            &.is-highlighted {
+              opacity: 1;
+            }
+          }
+        }
+      }
+      .year-items {
+        position: relative;
+      }
       .year-label {
         margin: 0;
         padding: 0;
@@ -156,6 +185,7 @@
             margin-left: .5rem;
             float: right;
             transition: .5s ease all;
+            box-sizing: border-box;
           }
           &:last-of-type {
             opacity: .3;

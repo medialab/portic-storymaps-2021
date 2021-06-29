@@ -9,7 +9,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
     toflit18_flows = csv.DictReader(f)
     flows_fieldnames = toflit18_flows.fieldnames
     for flow in toflit18_flows:
-      if flow['year'] == '1789' and flow['customs_region'] == 'La Rochelle' and flow['best_guess_region_prodxpart'] == '1':
+      if flow['year'] == '1789' and flow['customs_region'] == 'La Rochelle' and flow['best_guess_region_prodxpart'] == '1' and flow['partner_grouping'] != 'France':
         relevant_flows.append(flow)
 
 # format flows

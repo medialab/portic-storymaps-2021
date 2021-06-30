@@ -7,6 +7,7 @@ import BoatsIllustration from '../../components/BoatsIllustration';
 import BezierComponent from '../../components/BezierComponent';
 import DataProvider from '../../components/DataProvider';
 import LineChart from '../../components/LineChart';
+import BarChart from '../../components/BarChart';
 
 ## Test courbes de bézier
 <BezierComponent
@@ -138,7 +139,7 @@ Paramètres :
 
 
 
-# Tests composants de visualisation statistique simple
+# Tests composant LineChart
 
 <DataProvider data={'decline_longitudinal_data.csv'}>
   {
@@ -242,6 +243,270 @@ Paramètres :
           // title: 'Région'
         }}
         // tooltip={d => `import de ${d.Imports} en ${d.year} pour ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+
+# Tests composant BarChart
+
+## Horizontal bar chart
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data.filter(d => d.region === 'France')}
+        title="Test de bar chart (sans fill gaps)"
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickFormat: (d, i) => +d%5 === 0 ? d : undefined,
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data.filter(d => d.region === 'France')}
+        title="Test de bar chart (fill gaps)"
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+          tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
+          fillGaps: true
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (stacked, fill gaps)"
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+          tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
+          fillGaps: true
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'region',
+          title: 'région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year}`}
+      />
+    )
+  }
+</DataProvider>
+
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (grouped, fill gaps)"
+        width={window.innerWidth - 20}
+        layout={'groups'}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+          tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
+          fillGaps: true
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'region',
+          title: 'région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} par ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (grouped, no fill gaps)"
+        width={3000}
+        layout={'groups'}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+          // tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'region',
+          title: 'région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} par ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+## Vertical bar charts
+
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data.filter(d => d.region === 'France')}
+        title="Test de bar chart"
+        // width={window.innerWidth - 20}
+        orientation="vertical"
+        y={{
+          field: 'year',
+          title: 'année',
+          // tickFormat: (d, i) => +d%5 === 0 ? d : undefined,
+        }}
+        x={{
+          field: 'Imports',
+          title: 'imports',
+          // tickSpan: 1000000,
+          // tickFormat: v => `${v} lt.`
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_LR_partners.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (stacked)"
+        // width={window.innerWidth - 20}
+        orientation="vertical"
+        height={200}
+        y={{
+          field: 'year',
+          title: 'année',
+        }}
+        x={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'partner',
+          title: 'partenaire'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} depuis ${d.partner}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_LR_partners.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (stacked, dimensionnement par la hauteur des lignes)"
+        // width={window.innerWidth - 20}
+        orientation="vertical"
+        y={{
+          field: 'year',
+          title: 'année',
+          rowHeight: 30,
+        }}
+        x={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'partner',
+          title: 'partenaire'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} depuis ${d.partner}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_LR_partners.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data}
+        title="Test de bar chart (grouped)"
+        // width={window.innerWidth - 20}
+        orientation="vertical"
+        layout={'groups'}
+        height={800}p
+        y={{
+          field: 'year',
+          title: 'année',
+        }}
+        x={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 1000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'partner',
+          title: 'partenaire'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} depuis ${d.partner}`}
       />
     )
   }

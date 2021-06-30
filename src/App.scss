@@ -1123,6 +1123,11 @@ button.is-active {
   }
 }
 
+.BarChart {
+  .vertical-bar-label {
+    text-anchor: end;
+  }
+}
 .ColorLegend {
   font-family: $font-family-1;
   background: $color-background;

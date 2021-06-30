@@ -7,13 +7,15 @@ const PlainPage = ({
   title,
 }) => {
   return (
-    <div className="PlainPage">
+    <div className="PlainPage secondary-page">
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Suspense fallback={<div>Chargement</div>}>
-        <Content />
-      </Suspense>
+      <div className="centered-contents">
+        <Suspense fallback={<div>Chargement</div>}>
+          <Content />
+        </Suspense>
+      </div>
   </div>
   )
 }

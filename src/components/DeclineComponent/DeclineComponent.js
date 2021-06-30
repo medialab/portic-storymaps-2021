@@ -7,14 +7,16 @@ import './DeclineComponent.scss';
 const DeclineComponent = (props) => {
   const {
     width, 
-    height, 
+    height: containerHeight, 
     lang = 'fr',
     startYear = 1720,
     endYear = 1789,
     productTradePartThreshold = 0.9,
     rows,
     datasets = {},
+    atlasMode
   } = props;
+  const height = atlasMode ? 1200 : containerHeight;
   const messages = {
     franceOverviewTitle: {
       fr: (start, end) => `Évolution de la valeur des exports du royaume de France de ${start} à ${end}`,
@@ -191,10 +193,10 @@ const DeclineComponent = (props) => {
             partTreshold={productTradePartThreshold}
             height={height/totalRows * rowFlex}
             barWidth={width * 0.02}
-            years={[startYear, endYear]}
+            years={[atlasMode ? 1750 : startYear, atlasMode ? 1789 : endYear]}
             margins={margins}
             herfindhalField="product_revolutionempire_exports_herfindahl"
-            title={messages.top90PctTitle[lang]('La Rochelle', startYear, endYear)}
+            title={messages.top90PctTitle[lang]('La Rochelle', atlasMode ? 1750 : startYear, atlasMode ? 1789 : endYear)}
             productTooltipFn={messages.productTooltip[lang]}
             width={width}
           />

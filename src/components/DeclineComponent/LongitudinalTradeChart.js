@@ -185,7 +185,7 @@ const LongitudinalTradeChart = ({
                 <g className="axis-group">
                   <line
                     x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
-                    x2={width - margins.right}
+                    x2={xBand(yearTicks[yearTicks.length - 1])}
                     y1={yAbsoluteScale(value)}
                     y2={yAbsoluteScale(value)}
                     stroke={colorsPalettes.generic.accent1}
@@ -227,7 +227,7 @@ const LongitudinalTradeChart = ({
                     x1={0}
                     x2={0}
                     y1={0}
-                    y2={margins.bottom / 3}
+                    y2={margins.bottom / 6}
                     stroke="grey"
                   />
                   <g 

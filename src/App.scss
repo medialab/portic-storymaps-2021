@@ -20,7 +20,7 @@ $external_gutter: 15vw;
 
 $header_height: 3rem;
 
-$footer_height: 20rem;
+$footer_height: 18rem;
 $drawer-width: 300px;
 
 /*
@@ -879,7 +879,7 @@ button.is-active {
   margin: 0;
   padding: 0;
   width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - #{$footer_height});
   background: $color-background;
   display: flex;
   flex-flow: row nowrap;
@@ -958,25 +958,29 @@ button.is-active {
       position: fixed;
       left: 0;
       top: 0;
-      width: 100vw;
+      width: calc(100vw - #{$medium-gutter});
       height: 100vh;
       z-index: 4;
       display: flex;
       flex-flow: row nowrap;
       justify-content: stretch;
-      padding: $medium-gutter;
+      margin: $medium-gutter;
       box-sizing: border-box;
+      overflow: auto;
+      pointer-events: none;
       .visualization-details {
         color: white;
         flex: 1;
         box-sizing: border-box;
         padding: $medium-gutter;
         padding-top: 0;
+        order: 2;
         .details-header {
+          pointer-events: all;
           display: flex;
           flex-flow: row nowrap;
           justify-content: stretch;
-          align-items: start;
+          align-items: flex-start;
           h2 {
             margin: 0;
             flex: 1;
@@ -989,11 +993,36 @@ button.is-active {
             font-size: 1.5em;
           }
         }
+        .details-contents {
+          pointer-events: all;
+        }
       }
       .visualization-wrapper {
+        pointer-events: all;
         background: white;
         flex: 2;
         max-width: 70vw;
+        position: relative;
+        box-sizing: border-box;
+        .VisualizationController {
+          padding: $medium-gutter;
+          padding-bottom: $medium-gutter * 4;
+          position: relative;
+          width: unset;
+          height: unset;
+          left: 0;
+          top: 0;
+          background: white;
+        }
+      }
+      @include tablet {
+        flex-flow: column nowrap;
+        .visualization-details {
+          order: unset;
+        }
+        .visualization-wrapper {
+          max-width: calc(100% - #{$medium-gutter});
+        }
       }
     }
   }

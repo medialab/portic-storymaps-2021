@@ -794,6 +794,9 @@ button.is-active {
         &:not(:last-of-type) {
           margin-right: $small-gutter;
         }
+        a {
+          width: 100%;
+        }
       }
       @include phone {
         flex-direction: column;

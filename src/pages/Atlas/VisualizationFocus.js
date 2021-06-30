@@ -26,7 +26,7 @@ const VisualizationFocus = ({ visualization, lang, history }) => {
         
         <div className="visualization-details">
           <div className="details-header">
-            <h2>Visualisation en lightbox : {visualization[`titre_${lang}`]}</h2>
+            <h2>{visualization[`titre_${lang}`]}</h2>
             <button className="close-btn" onClick={handleClose}>
             ✕
             </button>
@@ -35,7 +35,7 @@ const VisualizationFocus = ({ visualization, lang, history }) => {
             {
               howDone && howDone.length ?
               <section className="details-contents-section">
-                <h2>{messages.howDone[lang]}</h2>
+                <h3>{messages.howDone[lang]}</h3>
                 <p>
                   {howDone}
                 </p>
@@ -45,7 +45,7 @@ const VisualizationFocus = ({ visualization, lang, history }) => {
             {
               howRead && howRead.length ?
               <section className="details-contents-section">
-                <h2>{messages.howRead[lang]}</h2>
+                <h3>{messages.howRead[lang]}</h3>
                 <p>
                   {howRead}
                 </p>

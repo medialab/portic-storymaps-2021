@@ -12,15 +12,53 @@ import { generatePalette } from '../../helpers/misc';
 
 const { generic } = colorsPalettes;
 
+/**
+ * LineChart component - returns a <figure> containing a svg linechart
+ * 
+ * @param {array} data 
+ * @param {string} title 
+ * @param {width} number 
+ * @param {height} number 
+ * 
+ * @param {object} color
+ * @param {string} color.field
+ * @param {string} color.title
+ * @param {object} color.palette
+ * 
+ * @param {object} x
+ * @param {string} x.field
+ * @param {string} x.title
+ * @param {number} x.tickSpan
+ * @param {function} x.tickFormat
+ * @param {array} x.domain
+ * 
+ * @param {object} x
+ * @param {string} y.field
+ * @param {string} y.title
+ * @param {number} y.tickSpan
+ * @param {function} y.tickFormat
+ * @param {array} y.domain
+ * @param {boolean} y.fillGaps
+ * 
+ * @param {object} margins
+ * @param {number} margins.left
+ * @param {number} margins.top
+ * @param {number} margins.right
+ * @param {number} margins.bottom
+ * 
+ * @param {function} tooltip
+ * 
+ * @returns {react}
+ */
 const LineChart = ({
   data,
   title,
   width : initialWidth = 1000,
   height: initialHeight = 400,
   color,
-  tooltip,
   x,
   y,
+  tooltip,
   margins: inputMargins = {}
 }) => {
   const [headersHeight, setHeadersHeight] = useState(0);
@@ -50,13 +88,13 @@ const LineChart = ({
 
   const {
     tickFormat: yTickFormat,
-    tickSpan: yTickSpan = 10000000000,
+    tickSpan: yTickSpan,
     domain: initialYDomain,
     fillGaps
   } = y;
   const {
     tickFormat: xTickFormat,
-    tickSpan: xTickSpan = 5,
+    tickSpan: xTickSpan,
     domain: initialXDomain,
   } = x;
   let colorPalette;
@@ -71,15 +109,13 @@ const LineChart = ({
     }), {})
   }
   const xDomain = initialXDomain || extent(data.filter(d => +d[y.field]).map(d => +d[x.field]));
-
-
   const yDomain = initialYDomain || [0, max(data.map(d => +d[y.field]))];
 
   const xScale = scaleLinear().domain(xDomain).range([margins.left, width - margins.right]);
   const yScale = scaleLinear().domain(yDomain).range([height - margins.bottom, margins.top]);
   const groups = color ? Object.entries(groupBy(data, d => d[color.field])) : [[undefined, data]];
   let { values: xAxisValues } = axisPropsFromTickScale(xScale);
-  let { values: yAxisValues } = axisPropsFromTickScale(yScale);;
+  let { values: yAxisValues } = axisPropsFromTickScale(yScale, 10);
   if (xTickSpan) {
     xDomain[0] = xDomain[0] - xDomain[0] % xTickSpan;
     xDomain[1] = xDomain[1] + (xTickSpan - xDomain[0] % xTickSpan);
@@ -102,7 +138,7 @@ const LineChart = ({
           <svg className="chart" width={width} height={height}>
             <g className="axis left-axis ticks">
               <text x={margins.left - 10} y={margins.top} className="axis-title">
-                {y.title}
+                {y.title || y.field}
               </text>
               {
                 yAxisValues.map(value => (
@@ -234,13 +270,10 @@ const LineChart = ({
                 className="ColorLegend"
                 ref={legendRef}
                 style={{
-                  top: headersHeight + margins.top,
-                  // right: margins.top,
-                  // top: 0,
-                  // position: 'absolute'
+                  top: headersHeight + margins.top
                 }}
               >
-                <h5>{color.title}</h5>
+                <h5>{color.title || 'Légende'}</h5>
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)

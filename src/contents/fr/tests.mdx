@@ -172,6 +172,7 @@ Paramètres :
         x={{
           field: 'year',
           title: 'année',
+          tickSpan: 10,
         }}
         y={{
           field: 'Imports',
@@ -184,6 +185,62 @@ Paramètres :
           title: 'Région'
         }}
         tooltip={d => `import de ${d.Imports} en ${d.year} pour ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <LineChart
+        data={data}
+        title="test de line chart (fill gaps)"
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`,
+          fillGaps: true
+        }}
+        color={{
+          field: 'region',
+          title: 'Région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} pour ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <LineChart
+        data={data}
+        title="test de linechart (minimum de props)"
+        // width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          // title: 'année',
+        }}
+        y={{
+          field: 'Imports',
+          // title: 'imports',
+          // tickSpan: 100000000,
+          // tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'region',
+          // title: 'Région'
+        }}
+        // tooltip={d => `import de ${d.Imports} en ${d.year} pour ${d.region}`}
       />
     )
   }

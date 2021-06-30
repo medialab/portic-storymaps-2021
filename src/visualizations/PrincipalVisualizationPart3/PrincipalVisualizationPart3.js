@@ -130,23 +130,6 @@ const renderStep3Object = (datum, x, y, { width }) => {
 }
 
 
-{/* <path
-d={`${leftPath}
-`}
-stroke="blue"
-stroke-width="10" // à ajuster en fonction de la largeur de l'écran
-fill="transparent"
-/>
-
-<path
-d={`${rightPath}
-`}
-stroke="red"
-stroke-width="10" // à ajuster en fonction de la largeur de l'écran
-fill="transparent"
-/> */}
-
-
 
 const PrincipalVisualizationPart3 = ({ step, width, height }) => {
   console.log(process.env.NODE_ENV)
@@ -170,7 +153,6 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
             <TriangleComponent
               dataFilename="part_3_step1_viz_data.csv"
               totalWidth={width} // @TODO adapter la height
-              numberOfColumns={25}
               rowHeight={height * 0.3}
             />
           </>

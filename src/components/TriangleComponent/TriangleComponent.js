@@ -13,8 +13,7 @@ import './TriangleComponent.scss'
 const TriangleComponent = ({
   dataFilename,
   totalWidth = 1200,
-  rowHeight = 200,
-  numberOfColumns = 5
+  rowHeight = 200
 }) => {
 
   // raw marker data
@@ -54,6 +53,7 @@ const TriangleComponent = ({
     )
   }
 
+  const numberOfColumns = data.length
   const columnWidth = totalWidth / numberOfColumns
   const numberOfRows = data.length / numberOfColumns
   const totalHeight = numberOfRows * rowHeight

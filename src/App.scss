@@ -25,7 +25,7 @@ $drawer-width: 300px;
 
 /*
  * Responsive design mixins
- */ 
+ */
 // Small tablets and large smartphones (landscape view)
 $screen-sm-min: 576px;
 
@@ -41,28 +41,28 @@ $screen-xl-min: 1200px;
 // Small devices
 @mixin phone {
   @media (max-width: #{$screen-sm-min}) {
-      @content;
+    @content;
   }
 }
 
 // Medium devices
 @mixin tablet {
   @media (max-width: #{$screen-md-min}) {
-      @content;
+    @content;
   }
 }
 
 // Large devices
 @mixin large-screen {
   @media (max-width: #{$screen-lg-min}) {
-      @content;
+    @content;
   }
 }
 
 // Extra large devices
 @mixin xl-screen {
   @media (max-width: #{$screen-xl-min}) {
-      @content;
+    @content;
   }
 }
 
@@ -94,7 +94,6 @@ svg text {
  * NAV
  */
 .nav {
-
   ul {
     list-style: none;
     padding: 0;
@@ -134,7 +133,7 @@ svg text {
       transition: 0.5s ease all;
       transform-origin: center;
       position: relative;
-      top: -.2rem;
+      top: -0.2rem;
     }
     &:hover {
       img {
@@ -154,7 +153,6 @@ svg text {
     color: inherit;
     font-weight: 800;
   }
-
 }
 .nav-large {
   padding: 1rem;
@@ -166,7 +164,7 @@ svg text {
   overflow: auto;
   // background: $color-background;
   background: $color-background;
-  transition: .1s all ease;
+  transition: 0.1s all ease;
   /* background: rgba(240,240,240,1); */
 
   display: flex;
@@ -182,7 +180,6 @@ svg text {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-
 
     &.primary-nav-container {
       justify-content: start;
@@ -230,25 +227,25 @@ svg text {
       align-items: center;
     }
     img {
-      transition: .5s ease all;
+      transition: 0.5s ease all;
       border-radius: 50%;
     }
     h1 {
       margin: 0;
       padding: 0;
-      font-size: .8rem;
+      font-size: 0.8rem;
       font-weight: 400;
       position: relative;
-      top: .5rem;
+      top: 0.5rem;
       opacity: 0;
-      transition: .5s ease all;
+      transition: 0.5s ease all;
     }
     &:hover {
       img {
         rotate: 45deg;
       }
       h1 {
-        opacity: .7;
+        opacity: 0.7;
       }
     }
   }
@@ -266,7 +263,7 @@ svg text {
     padding-top: $medium-gutter * 2;
     padding-bottom: $medium-gutter;
     box-sizing: border-box;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     padding-right: $medium-gutter;
     ul {
       flex-direction: column;
@@ -294,15 +291,15 @@ svg text {
     }
   }
   .drawer-background {
-    position : absolute;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100vh;
     cursor: pointer;
-    background: rgba(0,0,0, 0);
+    background: rgba(0, 0, 0, 0);
     pointer-events: none;
-    transition: .5s ease all;
+    transition: 0.5s ease all;
   }
   &.is-open {
     .drawer-header {
@@ -320,7 +317,7 @@ svg text {
       }
     }
     .drawer-background {
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       pointer-events: all;
     }
     .drawer-body {
@@ -332,15 +329,15 @@ svg text {
     display: block;
   }
   .drawer-background {
-    position : absolute;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100vh;
     cursor: pointer;
-    background: rgba(0,0,0, 0);
+    background: rgba(0, 0, 0, 0);
     pointer-events: none;
-    transition: .5s ease all;
+    transition: 0.5s ease all;
   }
   &.is-open {
     .drawer-header {
@@ -358,7 +355,7 @@ svg text {
       }
     }
     .drawer-background {
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       pointer-events: all;
     }
     .drawer-body {
@@ -370,7 +367,6 @@ svg text {
     display: block;
   }
 }
-
 
 /**
  * FOOTER 
@@ -396,7 +392,7 @@ svg text {
     margin-top: $medium-gutter * 2;
     margin-bottom: $medium-gutter * 2;
   }
-  
+
   a {
     color: inherit;
     text-decoration: none;
@@ -518,7 +514,7 @@ svg text {
   background: $color-background-blue;
   font-family: $font-family-1;
   padding: $small-gutter;
-  font-size: .7rem;
+  font-size: 0.7rem;
   // opacity: 0;
   &.is-active {
     background: $color-accent-background;
@@ -616,11 +612,11 @@ button.is-active {
     .titles-container {
       max-width: 40%;
 
-      h1{
+      h1 {
         font-size: 2rem;
         margin-top: 0;
       }
-      h2{
+      h2 {
         font-weight: 400;
         font-style: italic;
         font-size: 1.1rem;
@@ -642,7 +638,7 @@ button.is-active {
           left: 0;
           width: 100%;
           text-align: center;
-          transition: .5s ease all;
+          transition: 0.5s ease all;
         }
         &:hover {
           span {
@@ -652,16 +648,15 @@ button.is-active {
       }
 
       @include tablet {
-          max-width: 60%;
-          padding-left: $medium-gutter * 4;
+        max-width: 60%;
+        padding-left: $medium-gutter * 4;
       }
       @include phone {
-          max-width: 100%;
-          padding-left: $medium-gutter;
+        max-width: 100%;
+        padding-left: $medium-gutter;
       }
-
     }
-    
+
     .boats-container {
       position: absolute;
       bottom: 0;
@@ -685,7 +680,18 @@ button.is-active {
         padding: $medium-gutter;
         padding-left: 0;
       }
-      p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      pre,
+      blockquote,
+      .Caller {
         max-width: 40vw;
         margin-left: $medium-gutter * 4;
       }
@@ -698,7 +704,18 @@ button.is-active {
         .centered-part-contents {
           max-width: 40vw;
         }
-        p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote,
+        .Caller {
           margin-right: 0;
           margin-left: 0;
           box-sizing: border-box;
@@ -714,14 +731,36 @@ button.is-active {
       }
 
       @include tablet {
-        p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote,
+        .Caller {
           max-width: 60vw;
           margin-left: 0;
         }
       }
       @include phone {
-        p, h1, h2, h3, h4, h5, h6, ul, ol, pre,blockquote, .Caller {
-          max-width:unset;
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote,
+        .Caller {
+          max-width: unset;
           margin-left: 0;
         }
       }
@@ -825,9 +864,9 @@ button.is-active {
         margin-bottom: 0;
         font-weight: 600;
       }
-      transition: background .2s ease;
+      transition: background 0.2s ease;
       &:hover {
-        background: rgba(255,255,255,.2);
+        background: rgba(255, 255, 255, 0.2);
       }
     }
     .atlas-link-container {
@@ -868,7 +907,7 @@ button.is-active {
     margin-bottom: $medium-gutter * 2;
     cursor: pointer;
     .visualization-item {
-      transition: .5s ease all;
+      transition: 0.5s ease all;
       opacity: 1;
       .thumbnail-container {
         min-height: 15rem;
@@ -885,7 +924,6 @@ button.is-active {
         font-weight: 400;
       }
       &.is-active {
-
       }
     }
     &:hover {
@@ -904,15 +942,70 @@ button.is-active {
       flex-flow: column nowrap;
     }
   }
+
+  .VisualizationFocus {
+    .lightbox-background {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 4;
+      cursor: pointer;
+    }
+    .lightbox-contents {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 4;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: stretch;
+      padding: $medium-gutter;
+      box-sizing: border-box;
+      .visualization-details {
+        color: white;
+        flex: 1;
+        box-sizing: border-box;
+        padding: $medium-gutter;
+        padding-top: 0;
+        .details-header {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: stretch;
+          align-items: start;
+          h2 {
+            margin: 0;
+            flex: 1;
+          }
+          .close-btn {
+            color: white;
+            background: inherit;
+            cursor: pointer;
+            font-weight: 900;
+            font-size: 1.5em;
+          }
+        }
+      }
+      .visualization-wrapper {
+        background: white;
+        flex: 2;
+        max-width: 70vw;
+      }
+    }
+  }
 }
 
 .bar-tooltip {
-  background: white!important;
-  color: $color-text!important;
+  background: white !important;
+  color: $color-text !important;
   font-family: $font-family-1;
   max-width: 300px;
-  padding: $medium-gutter!important;
+  padding: $medium-gutter !important;
   &:after {
-    display: none!important;
+    display: none !important;
   }
 }

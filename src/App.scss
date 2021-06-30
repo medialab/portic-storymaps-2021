@@ -54,14 +54,14 @@ $screen-xl-min: 1200px;
 
 // Large devices
 @mixin large-screen {
-  @media (min-width: #{$screen-lg-min}) {
+  @media (max-width: #{$screen-lg-min}) {
       @content;
   }
 }
 
 // Extra large devices
 @mixin xl-screen {
-  @media (min-width: #{$screen-xl-min}) {
+  @media (max-width: #{$screen-xl-min}) {
       @content;
   }
 }
@@ -832,6 +832,76 @@ button.is-active {
     }
     .atlas-link-container {
       text-align: center;
+    }
+  }
+}
+
+.secondary-page {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background: $color-background;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.centered-contents {
+  min-width: $screen-md-min;
+  @include tablet {
+    margin-top: $header_height;
+    min-width: unset;
+    width: 100%;
+    padding: 0 $medium-gutter 0 $medium_gutter;
+  }
+}
+
+.Atlas {
+  .visualizations-list {
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: $medium-gutter;
+    margin-top: $medium-gutter * 2;
+    margin-bottom: $medium-gutter * 2;
+    cursor: pointer;
+    .visualization-item {
+      transition: .5s ease all;
+      opacity: 1;
+      .thumbnail-container {
+        min-height: 15rem;
+        padding: 0;
+        margin: 0;
+        background: $color-accent-background;
+      }
+      .visualization-title {
+        margin: 0;
+        margin-top: $small-gutter;
+        padding-top: $small-gutter;
+        border-top: 1px solid $color-text;
+        text-align: center;
+        font-weight: 400;
+      }
+      &.is-active {
+
+      }
+    }
+    &:hover {
+      .visualization-item {
+        opacity: 0.7;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    @include tablet {
+      grid-template-columns: repeat(2, auto);
+    }
+    @include phone {
+      display: flex;
+      flex-flow: column nowrap;
     }
   }
 }

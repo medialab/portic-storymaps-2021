@@ -31,28 +31,41 @@ function Atlas({
   const history = useHistory();
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (
-  <div>
-    <h1>Atlas</h1>
-    <ul>
-      {
-        visualizations.map((visualization, visualizationIndex) => {
-          const handleClick = () => {
-            history.push({
-              pathname: `/${lang}/atlas/${visualization.id}`
-            })
-          }
-          return (
-            <li 
-              className={cx({'is-active': shownVisualization && shownVisualization.id === visualization.id})} 
-              onClick={handleClick} 
-              key={visualizationIndex}
-            >
-              {visualization[`titre_${lang}`]}
-            </li>
-          )
-        })
-      }
-    </ul>
+  <div className="Atlas secondary-page">
+    <div className="centered-contents">
+      <h1>Atlas</h1>
+      <ul className="visualizations-list">
+        {
+          visualizations.map((visualization, visualizationIndex) => {
+            const handleClick = () => {
+              history.push({
+                pathname: `/${lang}/atlas/${visualization.id}`
+              })
+            }
+            return (
+              <li 
+                className={cx('visualization-item', {'is-active': shownVisualization && shownVisualization.id === visualization.id})} 
+                onClick={handleClick} 
+                key={visualizationIndex}
+              >
+                <figure className="thumbnail-container">
+                  {visualization.thumbnail ? 
+                    <img 
+                      src={`${process.env.PUBLIC_URL}/images/thumbnails/${visualization.thumbnail}}`}
+                      alt= {visualization[`titre_${lang}`]}
+                    />
+                    : null
+                  }
+                </figure>
+                <h5 className="visualization-title">
+                  {visualization[`titre_${lang}`]}
+                </h5>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </div>
     {
       shownVisualization ?
         <VisualizationFocus visualization={shownVisualization} lang={lang} />

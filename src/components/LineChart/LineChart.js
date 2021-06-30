@@ -111,8 +111,8 @@ const LineChart = ({
   const xDomain = initialXDomain || extent(data.filter(d => +d[y.field]).map(d => +d[x.field]));
   const yDomain = initialYDomain || [0, max(data.map(d => +d[y.field]))];
 
-  const xScale = scaleLinear().domain(xDomain).range([margins.left, width - margins.right]);
-  const yScale = scaleLinear().domain(yDomain).range([height - margins.bottom, margins.top]);
+  const xScale = scaleLinear().domain(xDomain).range([margins.left, width - margins.right]).nice();
+  const yScale = scaleLinear().domain(yDomain).range([height - margins.bottom, margins.top]).nice();
   const groups = color ? Object.entries(groupBy(data, d => d[color.field])) : [[undefined, data]];
   let { values: xAxisValues } = axisPropsFromTickScale(xScale);
   let { values: yAxisValues } = axisPropsFromTickScale(yScale, 10);
@@ -137,17 +137,17 @@ const LineChart = ({
         <div className="row vis-row">
           <svg className="chart" width={width} height={height}>
             <g className="axis left-axis ticks">
-              <text x={margins.left - 10} y={margins.top} className="axis-title">
+              <text x={margins.left - 10} y={margins.top - 10} className="axis-title">
                 {y.title || y.field}
               </text>
               {
-                yAxisValues.map(value => (
+                yAxisValues.map((value, valueIndex) => (
                   <g
                     key={value}
                     transform={`translate(0, ${yScale(value)})`}
                   >
                     <text x={margins.left - 10} y={3}>
-                      {typeof yTickFormat === 'function' ? yTickFormat(value) : value}
+                      {typeof yTickFormat === 'function' ? yTickFormat(value, valueIndex) : value}
                     </text>
                     <line
                       className="tick-mark"
@@ -169,13 +169,13 @@ const LineChart = ({
             </g>
             <g className="axis bottom-axis ticks">
               {
-                xAxisValues.map(value => (
+                xAxisValues.map((value, valueIndex) => (
                   <g
                     key={value}
                     transform={`translate(${xScale(value)}, 0)`}
                   >
                     <text x={0} y={height - margins.bottom + 20}>
-                      {typeof xTickFormat === 'function' ? xTickFormat(value) : value}
+                      {typeof xTickFormat === 'function' ? xTickFormat(value, valueIndex) : value}
                     </text>
                     <line
                       className="background-line"

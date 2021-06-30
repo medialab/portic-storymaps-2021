@@ -1028,7 +1028,8 @@ button.is-active {
   }
 }
 
-.bar-tooltip {
+.__react_component_tooltip {
+  // .bar-tooltip {
   background: white !important;
   color: $color-text !important;
   font-family: $font-family-1;
@@ -1036,5 +1037,126 @@ button.is-active {
   padding: $medium-gutter !important;
   &:after {
     display: none !important;
+  }
+}
+
+
+/**
+ * GENERIC VISUALIZATIONS STYLING
+ */
+.GenericVisualization {
+  margin: 0;
+  padding: 0;
+  .background-rect {
+    fill: rgba(0, 0, 0, 0.05);
+  }
+  text {
+    font-family: $font-family-1;
+    font-size: 14px;
+  }
+  .title {
+    font-weight: 800;
+    font-size: 20px;
+  }
+  .ticks {
+    .tick-mark {
+      stroke: grey;
+      stroke-width: .5;
+    }
+    text {
+      font-size: 10px;
+      text-anchor: middle;
+    }
+    &.left-axis {
+      text{
+        text-anchor: end;
+      }
+      .axis-title {
+        font-weight: 800;
+        font-style: italic;
+        background: $color-text;
+      }
+    }
+    .background-line {
+      stroke: rgba(0, 0, 0, 0.2);;
+      stroke-dasharray: 4,2;
+    }
+  }
+  .headers {
+    font-weight: 800;
+  }
+  path,
+  .chart-line {
+    stroke: $color-accent;
+  }
+
+  .visualization-title {
+    margin: 0;
+    padding: 0;
+  }
+  .row {
+    &.vis-row {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: stretch;
+      svg {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.LineChart {
+  .data-dot-container {
+    .data-dot {
+      // stroke: $color-accent;
+    }
+    .data-dot-big {
+      opacity: 0;
+      transition: .5s ease all;
+    }
+    &:hover {
+      .data-dot-big {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.ColorLegend {
+  font-family: $font-family-1;
+  background: $color-background;
+  padding: $small-gutter;
+  padding-top: 0;
+  box-sizing: border-box;
+  position: relative;
+  // min-width: 10vw;
+  // max-width: 10vw;
+  h5{
+    margin: 0;
+    padding: 0;
+  }
+  .color-legend {
+    list-style: none;
+    padding: 0;
+    margin-top: $small-gutter;
+    li {
+      display: flex;
+      flex-flow: row nowrap;
+      margin-bottom: $small-gutter;
+      font-size: .7rem;
+      .color-box{
+        display: inline-block;
+        width: .7rem;
+        min-width: .7rem;
+        height: .7rem;
+        min-height: .7rem;
+        margin-right: $small-gutter / 2;
+      } 
+      .color-label {
+        position: relative;
+        // top: .1rem;
+      }
+    }
   }
 }

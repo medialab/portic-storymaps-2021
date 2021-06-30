@@ -3,6 +3,9 @@ import get from 'axios';
 import iwanthue from 'iwanthue';
 import {useRef, useEffect} from 'react';
 // import Graph from 'graphology-types';
+import palettes from '../colorPalettes';
+
+const {generic} = palettes;
 
 const DEFAULT_COLOR_SPACE = {
   cmin: 25.59,
@@ -46,7 +49,9 @@ export function usePrevious(value) {
 export function generatePalette(name, count) {
   if (count === 1 || !count) return SINGLE_COLOR_PALETTE;
   else if (count === 2) {
-    return ['#D77186', '#61A2DA']
+    return [generic.accent1, generic.accent2]
+  } else if (count === 3) {
+    return [generic.dark, generic.accent1, generic.accent2]
   }
 
   return iwanthue(count, {

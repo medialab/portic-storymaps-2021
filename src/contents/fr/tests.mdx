@@ -5,9 +5,8 @@ import GeoComponent from '../../components/GeoComponent';
 import TriangleComponent from '../../components/TriangleComponent';
 import BoatsIllustration from '../../components/BoatsIllustration';
 import BezierComponent from '../../components/BezierComponent';
-
-
-Test en prod
+import DataProvider from '../../components/DataProvider';
+import LineChart from '../../components/LineChart';
 
 ## Test courbes de bézier
 <BezierComponent
@@ -137,3 +136,55 @@ Paramètres :
   labelDensity={0.5}
 />
 
+
+
+# Tests composants de visualisation statistique simple
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <LineChart
+        data={data.filter(d => d.region === 'France')}
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year}`}
+      />
+    )
+  }
+</DataProvider>
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <LineChart
+        data={data}
+        title="test de titre"
+        width={window.innerWidth - 20}
+        x={{
+          field: 'year',
+          title: 'année',
+        }}
+        y={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 100000000,
+          tickFormat: v => `${v} lt.`
+        }}
+        color={{
+          field: 'region',
+          title: 'Région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} pour ${d.region}`}
+      />
+    )
+  }
+</DataProvider>

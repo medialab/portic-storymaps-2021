@@ -1,10 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import {Helmet} from "react-helmet";
 import cx from 'classnames';
 
 // charger le json de la liste des visualisations de l'atlas
 import visualizations from '../../visualizationsList';
 import VisualizationFocus from './VisualizationFocus';
+
+import {buildPageTitle} from '../../helpers/misc';
 
 
 const visualizationsMap = visualizations.reduce((res, visualization) => ({
@@ -24,6 +27,9 @@ function Atlas({
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (
     <div className="Atlas secondary-page">
+      <Helmet>
+        <title>{buildPageTitle('Atlas', lang)}</title>
+      </Helmet>
       <div className="centered-contents">
         <h1>Atlas</h1>
         <ul className="visualizations-list">

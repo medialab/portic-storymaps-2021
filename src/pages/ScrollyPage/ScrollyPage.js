@@ -5,6 +5,7 @@ import {useScrollYPosition } from 'react-use-scroll-position';
 import VisualizationController from '../../components/VisualizationController';
 import {VisualizationControlContext} from '../../helpers/contexts';
 
+import {buildPageTitle} from '../../helpers/misc';
 
 const CENTER_FRACTION = .6;
 
@@ -115,7 +116,7 @@ const ScrollyPage = ({
       }}
     >
       <Helmet>
-        <title>{title}</title>
+        <title>{buildPageTitle(title, lang)}</title>
       </Helmet>
       <div className="ScrollyPage">
           <section ref={sectionRef}>

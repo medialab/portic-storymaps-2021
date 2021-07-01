@@ -8,16 +8,21 @@ import TriangleComponent from '../../components/TriangleComponent/TriangleCompon
 import './PrincipalVisualizationPart3.scss';
 
 
-const renderLabel = (datum, x, y) => { // fonction à adapter pour donner le double triangle + cercle qui va bien de la partie 3
+const renderLabel = (datum, projection) => { // à terme on pourrait mettre un objet 
   // console.log("datum : ",datum)
+
+  const [x, y] = projection([+datum.longitude, +datum.latitude])
+
   return (
     <g transform={`translate(${x},${y})`}>
       <text>{datum.label}</text>
     </g>);
 }
 
-const renderStep3Object = (datum, x, y, { width }) => {
+const renderStep3Object = (datum, projection, { width }) => {
 
+  const [x, y] = projection([+datum.longitude, +datum.latitude])
+  
   let sizeCoef = width * 0.05;
   const totalTonnage = parseFloat(datum.else.cumulated_tonnage_out_region) + parseFloat(datum.else.cumulated_tonnage_in_region)
   // console.log("tonnage total : ",totalTonnage)
@@ -46,7 +51,7 @@ const renderStep3Object = (datum, x, y, { width }) => {
 
     const totalValue = parseFloat(datum.else.cumulated_exports_value_from_region) + parseFloat(datum.else.cumulated_exports_value_from_ext)
     const inPercentage = parseFloat(datum.else.cumulated_exports_value_from_region) / totalValue * 100
-    console.log("inPercentage ", datum.label," : ", inPercentage)
+    // console.log("inPercentage ", datum.label," : ", inPercentage)
 
     const partialCircle = require('svg-partial-circle')
 
@@ -99,13 +104,16 @@ const renderStep3Object = (datum, x, y, { width }) => {
               Z
               `}
       />
+
+      <text font-size="smaller"> {datum.label} </text>
+      
       <>
         {
           // datum.else.type_of_object === "customs_office" ?
           leftPath != null ?
 
             <>
-              <text font-size="smaller"> {datum.label} </text>
+
               <path
                 d={`${leftPath}
                 `}
@@ -191,7 +199,7 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
           <>
             <GeoComponent
               backgroundFilename="cartoweb_france_1789_geojson.geojson"
-              dataFilename="part_3_step3_viz_customs_offices_data.csv"
+              dataFilename="part_3_step3_viz_ports_data.csv"
               width={width}
               height={height * 0.99}
               // markerColor="type_of_object"

@@ -137,7 +137,7 @@ const VerticalBarChart = ({
   }
   let yValues = uniq(data.map(d => d[y.field]));
   let bandsNb = yValues.length;
-  let vizHeight = (fixedRowHeight ? fixedRowHeight * (bandsNb + 1) : height) - margins.top - margins.bottom;
+  let vizHeight = (fixedRowHeight ? fixedRowHeight * (bandsNb) : height - headersHeight);
 
   let rowHeight = fixedRowHeight || vizHeight / bandsNb;
 
@@ -193,9 +193,9 @@ const VerticalBarChart = ({
                       x1={0}
                       x2={0}
                       y1={margins.top}
-                      y2={finalHeight - margins.bottom}
+                      y2={vizHeight + margins.top}
                     />
-                    <text x={0} y={finalHeight - margins.bottom + 20}>
+                    <text x={0} y={svgHeight - margins.bottom + 10}>
                       {typeof xTickFormat === 'function' ? xTickFormat(value, valueIndex) : value}
                     </text>
                     {/* <line

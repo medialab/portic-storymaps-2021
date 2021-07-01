@@ -370,9 +370,9 @@ Paramètres :
   {
     data => (
       <BarChart
-        data={data}
+        data={data.filter(d => +d.year < 1750)}
         title="Test de bar chart (grouped, no fill gaps)"
-        width={3000}
+        width={window.innerWidth - 20}
         layout={'groups'}
         x={{
           field: 'year',
@@ -416,7 +416,7 @@ Paramètres :
           field: 'Imports',
           title: 'imports',
           // tickSpan: 1000000,
-          // tickFormat: v => `${v} lt.`
+          //tickFormat: v => `${v} lt.`
         }}
         tooltip={d => `import de ${d.Imports} en ${d.year}`}
       />
@@ -482,31 +482,65 @@ Paramètres :
   }
 </DataProvider>
 
-<DataProvider data={'decline_LR_partners.csv'}>
+<DataProvider data={'decline_longitudinal_data.csv'}>
   {
     data => (
       <BarChart
-        data={data}
+        data={data.filter(d => +d.year < 1750)}
         title="Test de bar chart (grouped)"
-        // width={window.innerWidth - 20}
-        orientation="vertical"
+        width={window.innerWidth - 20}
+        orientation={'vertical'}
         layout={'groups'}
-        height={800}p
         y={{
           field: 'year',
           title: 'année',
+          tickSpan: 10,
+          // tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
         }}
         x={{
           field: 'Imports',
           title: 'imports',
-          tickSpan: 1000000,
-          tickFormat: v => `${v} lt.`
+          tickSpan: 50000000,
+          tickFormat: v => `${v / 1000}k lt.`
         }}
         color={{
-          field: 'partner',
-          title: 'partenaire'
+          field: 'region',
+          title: 'région'
         }}
-        tooltip={d => `import de ${d.Imports} en ${d.year} depuis ${d.partner}`}
+        tooltip={d => `import de ${d.Imports} en ${d.year} par ${d.region}`}
+      />
+    )
+  }
+</DataProvider>
+
+
+<DataProvider data={'decline_longitudinal_data.csv'}>
+  {
+    data => (
+      <BarChart
+        data={data.filter(d => +d.year < 1750)}
+        title="Test de bar chart (grouped - dimensionnement par hauteur des lignes)"
+        width={window.innerWidth - 20}
+        orientation={'vertical'}
+        layout={'groups'}
+        y={{
+          field: 'year',
+          title: 'année',
+          tickSpan: 10,
+          rowHeight: 50
+          // tickFormat: (d, i) => +d%10 === 0 ? d : undefined,
+        }}
+        x={{
+          field: 'Imports',
+          title: 'imports',
+          tickSpan: 50000000,
+          tickFormat: v => `${v / 1000}k lt.`
+        }}
+        color={{
+          field: 'region',
+          title: 'région'
+        }}
+        tooltip={d => `import de ${d.Imports} en ${d.year} par ${d.region}`}
       />
     )
   }

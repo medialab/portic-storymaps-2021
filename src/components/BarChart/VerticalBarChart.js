@@ -13,10 +13,57 @@ import { generatePalette } from '../../helpers/misc';
 const { generic } = colorsPalettes;
 
 
+/**
+ * BarChart component - returns a <figure> containing a svg linechart
+ * 
+ * @param {array} data 
+ * @param {string} title 
+ * @param {string} layout ['stack', 'groups'] 
+ * @param {width} number 
+ * @param {height} number 
+ * 
+ * @param {object} color
+ * @param {string} color.field
+ * @param {string} color.title
+ * @param {object} color.palette
+ * 
+ * @param {object} x
+ * @param {string} x.field
+ * @param {string} x.title
+ * @param {number} x.tickSpan
+ * @param {function} x.tickFormat
+ * @param {array} x.domain
+ * @param {object} x.sort
+ * @param {string} x.sort.field
+ * @param {boolean} x.sort.ascending
+ * @param {string} x.sort.type ['number', 'string']
+ * 
+ * @param {object} x
+ * @param {string} y.field
+ * @param {string} y.title
+ * @param {number} y.tickSpan
+ * @param {function} y.tickFormat
+ * @param {array} y.domain
+ * @param {boolean} y.fillGaps
+ * @param {boolean} y.formatLabel
+ * @param {object} y.sort
+ * @param {string} y.sort.field
+ * @param {boolean} y.sort.ascending
+ * @param {string} y.sort.type
+ * 
+ * @param {object} margins
+ * @param {number} margins.left
+ * @param {number} margins.top
+ * @param {number} margins.right
+ * @param {number} margins.bottom
+ * 
+ * @param {function} tooltip
+ * 
+ * @returns {react}
+ */
 const VerticalBarChart = ({
   data,
   title,
-  orientation = 'horizontal',
   layout = 'stack',
   width : initialWidth = 1200,
   height: initialHeight = 1200,
@@ -25,7 +72,6 @@ const VerticalBarChart = ({
   x,
   tooltip,
   margins: inputMargins = {},
-  formatLabel
 }) => {
   const [headersHeight, setHeadersHeight] = useState(0);
   const [legendWidth, setLegendWidth] = useState(0);
@@ -48,7 +94,7 @@ const VerticalBarChart = ({
     left: 100,
     top: 30,
     bottom: 20,
-    right: 20,
+    right: 30,
     ...inputMargins
   };
 
@@ -56,10 +102,25 @@ const VerticalBarChart = ({
     tickFormat: xTickFormat,
     tickSpan: xTickSpan,
     domain: initialXDomain,
+    field: xField,
+    sort : sortX = {}
   } = x;
   const {
-    rowHeight: fixedRowHeight
+    rowHeight: fixedRowHeight,
+    formatLabel,
+    field: yField,
+    sort : sortY = {}
   } = y;
+  const {
+    field: sortYField = yField,
+    ascending: sortYAscending = true,
+    type: sortYType
+  } = sortY;
+  const {
+    field: sortXField = xField,
+    ascending: sortXAscending = true,
+    type: sortXType = 'number'
+  } = sortX;
   let colorPalette;
   let colorModalities;
   if (color) {
@@ -107,14 +168,16 @@ const VerticalBarChart = ({
     xAxisValues = range(xDomain[0], xDomain[1], xTickSpan);
     xScale.domain(xDomain);
   }
+  const svgHeight = vizHeight + margins.top + margins.bottom;
+  const finalHeight = initialHeight > (svgHeight + headersHeight) ? initialHeight : svgHeight + headersHeight;
   return (
     <>
-      <figure style={{width: initialWidth, height: initialHeight}} className="BarChart is-vertical GenericVisualization">
+      <figure style={{width: initialWidth, height: finalHeight}} className="BarChart is-vertical GenericVisualization">
         <div ref={headerRef} className="row">
           {title ? <h5 className="visualization-title" style={{ marginLeft: margins.left }}>{title}</h5> : null}
         </div>
         <div className="row vis-row">
-          <svg className="chart" width={width} height={vizHeight + margins.top + margins.bottom}>
+          <svg className="chart" width={width} height={svgHeight}>
             <g className="axis top-axis ticks">
               {
                 xAxisValues.map((value, valueIndex) => (
@@ -130,9 +193,9 @@ const VerticalBarChart = ({
                       x1={0}
                       x2={0}
                       y1={margins.top}
-                      y2={height - margins.bottom}
+                      y2={finalHeight - margins.bottom}
                     />
-                    <text x={0} y={height - margins.bottom + 20}>
+                    <text x={0} y={finalHeight - margins.bottom + 20}>
                       {typeof xTickFormat === 'function' ? xTickFormat(value, valueIndex) : value}
                     </text>
                     {/* <line
@@ -148,7 +211,30 @@ const VerticalBarChart = ({
             </g>
             <g className="bars-container">
               {
-                groups.map(([yModality, items], groupIndex) => {
+                groups
+                .sort((a, b) => {
+                  const multiplier = sortYAscending ? 1 : -1;
+                  if (sortYField === y.field) {
+                    const aVal = sortYType === 'number' ? +a[0] : a[0];
+                    const bVal = sortYType === 'number' ? +b[0] : b[0];
+                    if (aVal < bVal) {
+                      return -1 * multiplier;
+                    }
+                    return 1 * multiplier;
+                  }
+                  const aVal = sortYType === 'number' ? 
+                    +a[1].reduce((sum, datum) => sum + +datum[sortYField], 0) 
+                    : a[1][sortYField];
+                  const bVal = sortYType === 'number' ? 
+                    +b[1].reduce((sum, datum) => sum + +datum[sortYField], 0) 
+                    : b[1][sortYField];
+                  if (aVal < bVal) {
+                    return -1 * multiplier;
+                  }
+                  return 1 * multiplier;
+                  
+                })
+                .map(([yModality, items], groupIndex) => {
                   let stackDisplaceX = margins.left;
                   
                   return (
@@ -157,7 +243,17 @@ const VerticalBarChart = ({
                         {typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}
                       </text>
                       {
-                        items.map((item, itemIndex) => {
+                        items
+                        .sort((a, b) => {
+                          const multiplier = sortXAscending ? 1 : -1;
+                          const aVal = sortXType === 'number' ? +a[sortXField] : a[sortXField];
+                          const bVal = sortXType === 'number' ? +b[sortXField] : b[sortXField];
+                          if (aVal > +bVal) {
+                            return -1 * multiplier;
+                          }
+                          return 1 * multiplier;
+                        })
+                        .map((item, itemIndex) => {
                           
                           const thatY = layout === 'stack' ? bandHeight / 2 : itemIndex * ((rowHeight * .5) / items.length) + rowHeight / 4;
                           const thatWidth = layout === 'stack' ? xStackScale(+item[x.field]) :  xScale(item[x.field]);

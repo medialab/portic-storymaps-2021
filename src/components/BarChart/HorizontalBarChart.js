@@ -13,6 +13,54 @@ import { generatePalette } from '../../helpers/misc';
 const { generic } = colorsPalettes;
 
 
+/**
+ * BarChart component - returns a <figure> containing a svg linechart
+ * 
+ * @param {array} data 
+ * @param {string} title 
+ * @param {string} orientation ['horizontal', 'vertical'] 
+ * @param {string} layout ['stack', 'groups'] 
+ * @param {width} number 
+ * @param {height} number 
+ * 
+ * @param {object} color
+ * @param {string} color.field
+ * @param {string} color.title
+ * @param {object} color.palette
+ * 
+ * @param {object} x
+ * @param {string} x.field
+ * @param {string} x.title
+ * @param {number} x.tickSpan
+ * @param {function} x.tickFormat
+ * @param {array} x.domain
+ * @param {object} x.sort
+ * @param {string} x.sort.field
+ * @param {boolean} x.sort.ascending
+ * @param {string} x.sort.type ['number', 'string']
+ * 
+ * @param {object} x
+ * @param {string} y.field
+ * @param {string} y.title
+ * @param {number} y.tickSpan
+ * @param {function} y.tickFormat
+ * @param {array} y.domain
+ * @param {boolean} y.fillGaps
+ * @param {object} y.sort
+ * @param {string} y.sort.field
+ * @param {boolean} y.sort.ascending
+ * @param {string} y.sort.type
+ * 
+ * @param {object} margins
+ * @param {number} margins.left
+ * @param {number} margins.top
+ * @param {number} margins.right
+ * @param {number} margins.bottom
+ * 
+ * @param {function} tooltip
+ * 
+ * @returns {react}
+ */
 const HorizontalBarChart = ({
   data,
   title,
@@ -55,13 +103,27 @@ const HorizontalBarChart = ({
     tickFormat: yTickFormat,
     tickSpan: yTickSpan,
     domain: initialYDomain,
+    field: yField,
+    sort: sortY = {}
   } = y;
   const {
     tickFormat: xTickFormat,
     tickSpan: xTickSpan,
     domain: initialXDomain,
     fillGaps: fillXGaps,
+    field: xField,
+    sort : sortX = {},
   } = x;
+  const {
+    field: sortYField = yField,
+    ascending: sortYAscending = true,
+    type: sortYType = 'number'
+  } = sortY;
+  const {
+    field: sortXField = xField,
+    ascending: sortXAscending = true,
+    type: sortXType
+  } = sortX;
   let colorPalette;
   let colorModalities;
   if (color) {
@@ -203,12 +265,45 @@ const HorizontalBarChart = ({
             </g>
             <g className="bars-container">
               {
-                groups.map(([xModality, items], groupIndex) => {
+                groups
+                .sort((a, b) => {
+                  const multiplier = sortXAscending ? 1 : -1;
+                  if (sortXField === x.field) {
+                    const aVal = sortXType === 'number' ? +a[0] : a[0];
+                    const bVal = sortXType === 'number' ? +b[0] : b[0];
+                    if (aVal < bVal) {
+                      return -1 * multiplier;
+                    }
+                    return 1 * multiplier;
+                  }
+                  const aVal = sortXType === 'number' ? 
+                    +a[1].reduce((sum, datum) => sum + +datum[sortXField], 0) 
+                    : a[1][sortXField];
+                  const bVal = sortXType === 'number' ? 
+                    +b[1].reduce((sum, datum) => sum + +datum[sortXField], 0) 
+                    : b[1][sortXField];
+                  if (aVal < bVal) {
+                    return -1 * multiplier;
+                  }
+                  return 1 * multiplier;
+                  
+                })
+                .map(([xModality, items], groupIndex) => {
                   let stackDisplaceY = height - margins.bottom;
                   return (
                     <g key={groupIndex} transform={`translate(${xScale(items[0][x.field])}, 0)`}>
                       {
-                        items.map((item, itemIndex) => {
+                        items
+                        .sort((a, b) => {
+                          const multiplier = sortYAscending ? 1 : -1;
+                          const aVal = sortYType === 'number' ? +a[sortYField] : a[sortYField];
+                          const bVal = sortYType === 'number' ? +b[sortYField] : b[sortYField];
+                          if (aVal > +bVal) {
+                            return -1 * multiplier;
+                          }
+                          return 1 * multiplier;
+                        })
+                        .map((item, itemIndex) => {
                           const thatX = layout === 'stack' ? -bandWidth / 2 : itemIndex * ((columnWidth * .5) / items.length) - columnWidth / 4;
                           const thatHeight = layout === 'stack' ? yStackScale(item[y.field]) : height - margins.bottom - yScale(item[y.field]) || 0;
                           

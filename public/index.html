@@ -4,44 +4,66 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Storymaps built from PORTIC's datasprint #1 in 2021"
-    />
 
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
     <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <!-- META DUBLIN CORE -->
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+    <meta name="DC.title" lang="fr" content="Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle" />
+    <meta name="DC.contributor" content="Cécile Asselin" />
+    <meta name="DC.contributor" content="Robin de Mourat" />
+    <meta name="DC.contributor" content="Silvia Marzagalli" />
+    <meta name="DC.contributor" content="Christine Plumejeaud" />
+    <meta name="DC.contributor" content="Guillaume Daudin" />
+    <meta name="DC.contributor" content="Loïc Charles" />
+    <meta name="DC.contributor" content="Thierry Sauzeau" />
+    <meta name="DC.contributor" content="Géraldine Geoffroy" />
+    <meta name="DC.contributor" content="Paul Girard" />
+    <meta name="DC.contributor" content="Maxime Zoffoli" />
+    <meta name="DC.date.created" scheme="W3CDTF" content="2021-07-01" />
+    <meta name="DC.language" scheme="DCTERMS.RFC4646" content="fr-FR" />
+    <meta name="DC.description" lang="fr"
+        content="Une étude de cas du programme de recherche interdisciplinaire PORTIC" />
+    <!-- END META DUBLIN CORE -->
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>PORTIC storymaps #1</title>
+    <!-- REGULAR META -->
+    <meta name="description" content="Une étude de cas du programme de recherche interdisciplinaire PORTIC" />
+    <meta name="viewport" content="user-scalable=no,width=device-width" />
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- END REGULAR META -->
+
+    <!-- META TWITTER -->
+    <meta name="twitter:card" value="summary" />
+    <meta name="twitter:site" content="https://medialab.github.io/portic-storymaps-2021">
+    <meta name="twitter:title" content="Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle" />
+    <meta name="twitter:description" content="Une étude de cas du programme de recherche interdisciplinaire PORTIC" />
+    <!-- <meta name="twitter:creator" content="@medialab" /> -->
+    <meta name="twitter:image" content="https://medialab.github.io/portic-storymaps-2021/larochelle-rs.png">
+    <!-- end meta twitter-->
+
+    <!-- META GOOGLE + -->
+    <meta itemprop="name" content="Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle" />
+    <meta itemprop="description" content="Une étude de cas du programme de recherche interdisciplinaire PORTIC" />
+    <meta itemprop="image" content="https://medialab.github.io/portic-storymaps-2021/larochelle-rs.png">
+    <!-- END META GOOGLE + -->
+
+    <!-- META OPEN GRAPH / FACEBOOK -->
+    <meta property="og:title" content="Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://medialab.github.io/portic-storymaps-2021"/>
+    <meta property="og:description" content="Une étude de cas du programme de recherche interdisciplinaire PORTIC" />
+    <meta property="og:image" content="https://medialab.github.io/portic-storymaps-2021/larochelle-rs.png"/>
+    <meta property="og:image:width" content="1905"/>
+    <meta property="og:image:height" content="952"/>
+    <title>Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Vous aurez besoin de javascript pour lire ce site.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

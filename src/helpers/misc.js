@@ -2,7 +2,14 @@ import { csvParse } from 'd3-dsv';
 import get from 'axios';
 import iwanthue from 'iwanthue';
 import {useRef, useEffect} from 'react';
+import metadataFr from '../contents/fr/metadata'
+import metadataEn from '../contents/en/metadata'
 // import Graph from 'graphology-types';
+
+const metadata = {
+  fr: metadataFr,
+  en: metadataEn
+}
 
 const DEFAULT_COLOR_SPACE = {
   cmin: 25.59,
@@ -12,6 +19,10 @@ const DEFAULT_COLOR_SPACE = {
 };
 
 const SINGLE_COLOR_PALETTE = ['#999'];
+
+export function buildPageTitle (title, lang = 'fr') {
+  return `${title} | ${metadata[lang].title} | PORTIC`;
+}
 
 export function trimText(str, limit = 30) {
   if (str.length > limit) {

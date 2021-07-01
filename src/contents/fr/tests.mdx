@@ -159,6 +159,15 @@ Paramètres :
           tickFormat: v => `${v} lt.`
         }}
         tooltip={d => `import de ${d.Imports} en ${d.year}`}
+        annotations={[
+              {
+                type: 'span',
+                start: 1756,
+                end: 1763,
+                axis: 'x',
+                label: 'guerre de sept ans'
+              }
+            ]}
       />
     )
   }
@@ -271,6 +280,15 @@ Paramètres :
           tickSpan: 100000000,
           tickFormat: v => `${v} lt.`
         }}
+        annotations={[
+          {
+            type: 'span',
+            start: 1756,
+            end: 1763,
+            axis: 'x',
+            label: 'guerre de sept ans'
+          }
+        ]}
         tooltip={d => `import de ${d.Imports} en ${d.year}`}
       />
     )

@@ -56,6 +56,7 @@ const { generic } = colorsPalettes;
  * @param {number} margins.top
  * @param {number} margins.right
  * @param {number} margins.bottom
+ * @param {number} annotations
  * 
  * @param {function} tooltip
  * 
@@ -72,7 +73,8 @@ const HorizontalBarChart = ({
   x,
   y,
   tooltip,
-  margins: inputMargins = {}
+  margins: inputMargins = {},
+  annotations = []
 }) => {
   const [headersHeight, setHeadersHeight] = useState(0);
   const [legendWidth, setLegendWidth] = useState(0);
@@ -261,6 +263,75 @@ const HorizontalBarChart = ({
                     />
                   </g>
                 ))
+              }
+            </g>
+            <g className="annotations-container">
+              {
+                annotations.map((annotation, annotationIndex) => {
+                  const {start, end, label} = annotation;
+                  const thatHeight = height - yScale(yAxisValues[yAxisValues.length - 1]) - margins.bottom;
+                  const thatY1 = height - margins.bottom;
+                  const thatY2 = yScale(yAxisValues[yAxisValues.length - 1]);
+                  return (
+                    <g className="annotation" key={annotationIndex}>
+                      <rect
+                        x={xScale(start)}
+                        width={xScale(end) - xScale(start)}
+                        height={thatHeight}
+                        y={thatY2}
+                        fill="url(#diagonalHatch)"
+                        opacity={.4}
+                      />
+                      <line
+                        x1={xScale(start)}
+                        x2={xScale(start)}
+                        y1={thatY1}
+                        y2={thatY2}
+                        stroke="grey"
+                        opacity={.4}
+                        strokeDasharray={'4,2'}
+                      />
+                      <line
+                        x1={xScale(end)}
+                        x2={xScale(end)}
+                        y1={thatY1}
+                        y2={thatY2}
+                        stroke="grey"
+                        opacity={.4}
+                        strokeDasharray={'4,2'}
+                      />
+                      <line 
+                        x1={xScale(end) + 20} 
+                        x2={xScale(end) + 10} 
+                        y1={thatY2 + 15}
+                        y2={thatY2 + 15}
+                        stroke="grey" 
+                        marker-end="url(#arrowhead)" 
+                      />
+                      <text
+                        x={xScale(end) + 22}
+                        y={thatY2 + 20}
+                        fontSize={'.5rem'}
+                        fill="grey"
+                      >
+                        {label}
+                      </text>
+                      <defs>
+                        <marker id="arrowhead" markerWidth="5" markerHeight="5" 
+                        refX="0" refY="2.5" orient="auto">
+                          <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
+                        </marker>
+                      </defs>
+                      <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
+                      <path d="M-1,1 l2,-2
+                              M0,4 l4,-4
+                              M3,5 l2,-2" 
+                            style={{stroke:'grey', opacity: .5, strokeWidth:1}} />
+                    </pattern>
+
+                    </g>
+                  )
+                })
               }
             </g>
             <g className="bars-container">

@@ -5,6 +5,9 @@ import {useRef, useEffect} from 'react';
 import metadataFr from '../contents/fr/metadata'
 import metadataEn from '../contents/en/metadata'
 // import Graph from 'graphology-types';
+import palettes from '../colorPalettes';
+
+const {generic} = palettes;
 
 const metadata = {
   fr: metadataFr,
@@ -57,7 +60,9 @@ export function usePrevious(value) {
 export function generatePalette(name, count) {
   if (count === 1 || !count) return SINGLE_COLOR_PALETTE;
   else if (count === 2) {
-    return ['#D77186', '#61A2DA']
+    return [generic.accent1, generic.accent2]
+  } else if (count === 3) {
+    return [generic.dark, generic.accent1, generic.accent2]
   }
 
   return iwanthue(count, {

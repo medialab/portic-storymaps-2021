@@ -47,7 +47,7 @@
     .axis-bottom {
       .axis-group {
         text {
-          rotate: -45deg;
+          transform: rotate(-45deg);
           text-anchor: end;
         }
       }

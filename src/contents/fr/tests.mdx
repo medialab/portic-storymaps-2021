@@ -8,6 +8,27 @@ import BezierComponent from '../../components/BezierComponent';
 
 
 Test en prod
+  
+# Test carto pour intro
+
+<GeoComponent
+  backgroundFilename="cartoweb_france_1789_geojson.geojson"
+  dataFilename="ports_locations_data.csv"
+  height={1200} // @TODO à changer quand je combin erais en un seul SVG ou component custom
+  label="port"
+  markerColor='customs_office'
+  width={1200} // j'aurais besoin de responsive
+  showLabels
+  centerOnRegion
+  // renderObject={renderLabel}
+/>
+
+## Test triangle 
+<TriangleComponent 
+  dataFilename="part_3_step1_viz_data.csv" 
+  rowHeight={300}
+  totalWidth = {1600}
+  />
 
 ## Test courbes de bézier
 <BezierComponent
@@ -19,20 +40,10 @@ Test en prod
   // start={Math.PI / 2}
   // end={Math.PI * 3 / 2}
   />
-  
-
-## Test triangle 
-<TriangleComponent 
-  dataFilename="part_3_step1_viz_data.csv" 
-  rowHeight={300}
-  totalWidth = {1600}
-  />
-
 
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
-
 
 # Fond de carte centré sur région, avec 1 pt discret par port, tourné à 90° ou 270°
 <GeoComponent 

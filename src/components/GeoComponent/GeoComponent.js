@@ -65,6 +65,12 @@ const Button = ({
   </button>
 }
 
+let defaultProjectionConfig = {
+  rotationDegree: 0, 
+  centerX: -1.7475027, 
+  centerY: 46.573642, 
+  scale: 200};
+
 
 const GeoComponent = ({
   dataFilename,
@@ -76,11 +82,14 @@ const GeoComponent = ({
   markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
-  centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant
-  rotationDegree = 0,
+  projectionTemplate = 'France', // de base centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
+  projectionConfig: inputProjectionConfig = defaultProjectionConfig, // customed config that will overwrite a template (optional argument) 
   debug = false
 }) => {
+
+  let projectionConfig = { ...inputProjectionConfig } // casser la référence à defaultProj pour respecter principe react qu'on ne modifie pas un objet reçu en argument
   // viz params variables
+  
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
   const [translationX, setTranslationX] = useState(width / 2)
@@ -178,42 +187,75 @@ const GeoComponent = ({
 
   }, [backgroundFilename])
 
+
   /**
    * d3 projection making
    */
   const projection = useMemo(() => {
-     setTranslationX(width/2)
-     setTranslationY(height/2) 
+    setTranslationX(width/2)
+    setTranslationY(height/2) 
 
-    let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
-      .scale(scale)
-      .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
+    let projection = geoEqualEarth()
+
+    projection // ce qui vaut dans tous les cas ...
+    .scale(scale)
 
     if (backgroundData) { // que si center on region
-      if (centerOnRegion) {
-        setScale(height*24); // 500000
-        setCenterX(-1.7475027);
-        setCenterY(46.573642);
-        projection
-          .scale(scale) // 50000 for a centered map
-          .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
-          .translate([translationX * 0.8, translationY * 0.56]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage : j'essaie de cadrer entre Nantes et Bordeaux)
-      } else {
-        // if bg data is available fit on whole geometry
-        projection
-          .fitSize([width, height], backgroundData)
+      
+      switch (projectionTemplate) {
+        case 'France':
+          return projection.fitSize([width, height], backgroundData)
+        case 'coast from Nantes to Bordeaux':
+          projectionConfig = { 
+            ...projectionConfig,
+            scale: height*24, 
+            translationX: translationX * 0.8, 
+            translationY: translationY * 0.56
+          }
+          break;
+        case 'Poitou':
+          projectionConfig = { 
+            ...projectionConfig,
+            scale: height*45, 
+            translationX: translationX * 0.8, 
+            translationY: translationY * 0.1
+          }
+          break;
+        case 'rotated Poitou':
+          projectionConfig = { 
+            ...projectionConfig,
+            rotationDegree: 58,
+            scale: height*50, 
+            translationX: translationX * 0.58, 
+            translationY: translationY * 0.6 // 0.364 au départ
+          }
+          break;
+        default: // as France config ??
+          console.log(`we are taking the config as specified in config parameters ===> if not specified, the view should correspond to France`);
+          break;
       }
-      if (rotationDegree !== 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
-        setScale(width*28)
-        setRotation(rotationDegree);
-        projection
-          .angle(rotation)
-          .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut :  @TODO stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
+
+      // update the config
+      setScale(projectionConfig.scale)
+      setRotation(projectionConfig.rotationDegree) 
+      setCenterX(projectionConfig.centerX)
+      setCenterY(projectionConfig.centerY)
+      if (projectionConfig.translationX !== undefined) {
+        setTranslationX(projectionConfig.translationX) 
+        setTranslationY(projectionConfig.translationY) 
       }
+
+      projection.center([centerX, centerY])
+
+      if (projectionConfig.rotationDegree) {
+        projection.angle(rotation)
+      }
+
+      projection.translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
     }
     return projection;
-  }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY, rotationDegree])
+  }, [backgroundData, width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY centerX, centerY
 
 
 
@@ -408,3 +450,62 @@ const GeoComponent = ({
 }
 
 export default GeoComponent;
+
+
+// old GeoComp handling for configs
+
+
+/*
+const projection = useMemo(() => {
+  setTranslationX(width/2)
+  setTranslationY(height/2) 
+
+ let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
+   .scale(scale)
+   .translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
+
+ if (backgroundData) { // que si center on region
+   if (centerOnRegion) {
+     setScale(height*24); // 500000 //*24
+     setCenterX(-1.7475027);
+     setCenterY(46.573642);
+     projection
+       .scale(scale) // 50000 for a centered map
+       .center([centerX, centerY]) // -1.7475027, 46.573642 for a centered map
+       .translate([translationX * 0.8, translationY * 0.56]) // @TODO : stabiliser avec coefficients calculés (pour l'instant c'est du bricolage : j'essaie de cadrer entre Nantes et Bordeaux)
+   } else {
+     // if bg data is available fit on whole geometry
+     projection
+       .fitSize([width, height], backgroundData)
+   }
+   if (rotationDegree !== 0) { // seul cas où on veut une carte tournée pour le moment c'est dans le cas step 1 main viz part 3
+     setScale(width*28)
+     setRotation(rotationDegree);
+     projection
+       .angle(rotation)
+       .translate([translationX * 0.65, translationY * 0.65]) // dans ce cas besoin de décaler la carte vers la droite et vers le haut :  @TODO stabiliser avec coefficients calculés (pour l'instant c'est du bricolage)
+   }
+
+ }
+ return projection;
+}, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY, rotationDegree])
+
+
+
+
+
+
+  switch (projectionTemplate) {
+    case 'France':
+      projectionConfig = {rotationDegree=0, centerX=-1.7475027, centerY=46.573642, scale=200} // je ne sais pas si on peut modifier un param comme ça
+      break;
+    case 'coast from Nantes to Bordeaux':
+    case 'Poitou':
+      console.log('Mangoes and papayas are $2.79 a pound.');
+      // expected output: "Mangoes and papayas are $2.79 a pound."
+      break;
+    default:
+      console.log(`Sorry, we are out of ${expr}.`);
+  }
+
+*/

@@ -1,6 +1,15 @@
 
 """
-écriture des csv de données pour nourrir les différentes étapes de la visualisation principale de la partie 3
+Ecriture de csv de données pour nourrir les visualisations 
+
+(csv 0 de localisation de tous les ports de la DFLR dans leurs bureaus, provinces, amirautés, directions ... pour nourrir les cartes de l'intro)
+pour chaque port DFLR en 1789 :
+- nom du port
+- coordonnées géographiques
+- entités administratives d'appartenance (bureau, provinve, amirauté, direction)
+
+
+écriture des csv de données pour nourrir les différentes étapes de la visualisation principale de la partie 3 :
 
 step 1 / csv 1 (données Navigo) : 
 pour chaque port DFLR en 1789 :
@@ -10,11 +19,14 @@ pour chaque port DFLR en 1789 :
 step 2 / gexf :
 A FAIRE
 
-step 3 / csv 3 (données Navigo + Toflit) : 
+step 3 / csv 3.1 (données Navigo sur les ports) et 3.2 (données Toflit sur les bureaux) :
+
+csv 3.1
 en 1789, pour chaque port DFLR + ports de Bordeaux, Le Havre, Nantes (données Navigo): 
 - tonnage cumulé à destination de l’extérieur de la région
 - tonnage cumulé à destination de l’hinterland de la région
 
+csv 3.2
 en 1789 pour tous bureaux DFLR + Bordeaux, Le Havre, Nantes (données Toflit): 
 - valeur cumulée exports produits d'origine extérieure à la région
 - valeur cumulée exports produits originaires de l’hinterland (PASA)
@@ -52,8 +64,11 @@ def clean_names(name):
     else:
         return name
 
-# 1. write csv file to feed step 1 of the viz
+# 1. write csv files :
+# OUTPUT 0 : aims to feed intro maps (ports located in their bureaus, and provinces, and admiralties) 
+# OUTPUT1 : aims to feed step 1 of the main viz of part3
 
+OUTPUT0 = "../public/data/ports_locations_data.csv"
 OUTPUT1 = "../public/data/part_3_step1_viz_data.csv" 
 
 relevant_pointcalls = []
@@ -92,6 +107,10 @@ for p in relevant_pointcalls :
     if 'latitude' not in ports[port].keys():
         ports[port]['latitude'] = p['latitude']  
         ports[port]['longitude'] = p['longitude']
+        ports[port]['customs_office'] = clean_names(p['ferme_bureau']) 
+        ports[port]['province'] = p['pointcall_province']
+        ports[port]['admiralty'] = p['pointcall_admiralty']
+        ports[port]['customs_region'] = p['ferme_direction']
 
 # calculate mean tonnage by port
 for port, values in ports.items():
@@ -99,14 +118,22 @@ for port, values in ports.items():
 # sort data geographically
 ports = sorted(ports.values(), key=itemgetter('longitude'), reverse=True) 
 
-# write dataset
+# write datasets
+with open(OUTPUT0, "w", newline='') as csvfile:
+    fieldnames = ['port' , 'latitude', 'longitude', 'customs_office','province','admiralty', 'customs_region']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for port in ports:
+        writer.writerow({'port' : port["port"], 'latitude' : port["latitude"], 'longitude' : port["longitude"], 'customs_office' : port["customs_office"],'province' : port["province"],'admiralty' : port["admiralty"], 'customs_region' : port["customs_region"]}) 
+
 with open(OUTPUT1, "w", newline='') as csvfile:
     fieldnames = ['port','nb_pointcalls_out','mean_tonnage','cumulated_tonnage', 'latitude', 'longitude']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
     for port in ports:
-        writer.writerow(port) 
+        writer.writerow({'port' : port["port"],'nb_pointcalls_out' : port["nb_pointcalls_out"],'mean_tonnage' : port["mean_tonnage"],'cumulated_tonnage' : port["cumulated_tonnage"], 'latitude' : port["latitude"], 'longitude' : port["longitude"]}) 
 
 
 # 3. write csv file to feed step 3 of the viz

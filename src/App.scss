@@ -482,6 +482,14 @@ svg text {
     box-sizing: border-box;
     padding: 0 $medium-gutter 0 $medium_gutter * 4;
     margin-bottom: $medium-gutter * 15;
+
+    p,ul,ol,blockquote {
+      font-size: 1.1rem;
+      @include tablet {
+        font-size: 1rem;
+      }
+    }
+    
   }
   aside {
     position: fixed;
@@ -702,6 +710,12 @@ button.is-active {
       .Caller {
         max-width: 40vw;
         margin-left: $medium-gutter * 4;
+      }
+      p,ul,ol,blockquote {
+        font-size: 1.1rem;
+        @include tablet {
+          font-size: 1rem;
+        }
       }
       .centered-part {
         display: flex;

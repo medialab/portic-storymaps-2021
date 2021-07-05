@@ -46,6 +46,11 @@ const { generic } = colorsPalettes;
  * @param {number} margins.right
  * @param {number} margins.bottom
  * @param {array} annotations
+ * @params {string} annotations[n].type ['span]
+ * @params {number} annotations[n].start
+ * @params {number} annotations[n].end
+ * @params {string} annotations[n].axis ['x', 'y']
+ * @params {string} annotations[n].label
  * 
  * @param {function} tooltip
  * 
@@ -199,13 +204,15 @@ const LineChart = ({
             </g>
             <g className="annotations-container">
               {
-                annotations.map((annotation, annotationIndex) => {
-                  const {start, end, label} = annotation;
+                annotations
+                .filter(a => a.axis === 'x')
+                .map((annotation, annotationIndex) => {
+                  const {start, end, label, labelPosition = 20} = annotation;
                   const thatHeight = height - yScale(yAxisValues[yAxisValues.length - 1]) - margins.bottom;
                   const thatY1 = height - margins.bottom;
                   const thatY2 = yScale(yAxisValues[yAxisValues.length - 1]);
                   return (
-                    <g className="annotation" key={annotationIndex}>
+                    <g className="annotation x-axis-annotation" key={annotationIndex}>
                       <rect
                         x={xScale(start)}
                         width={xScale(end) - xScale(start)}
@@ -235,14 +242,82 @@ const LineChart = ({
                       <line 
                         x1={xScale(end) + 20} 
                         x2={xScale(end) + 10} 
-                        y1={thatY2 + 15}
-                        y2={thatY2 + 15}
+                        y1={thatY2 + labelPosition - 5}
+                        y2={thatY2 + labelPosition - 5}
                         stroke="grey" 
                         marker-end="url(#arrowhead)" 
                       />
                       <text
                         x={xScale(end) + 22}
-                        y={thatY2 + 20}
+                        y={thatY2 + labelPosition}
+                        fontSize={'.5rem'}
+                        fill="grey"
+                      >
+                        {label}
+                      </text>
+                      <defs>
+                        <marker id="arrowhead" markerWidth="5" markerHeight="5" 
+                        refX="0" refY="2.5" orient="auto">
+                          <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
+                        </marker>
+                      </defs>
+                      <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
+                      <path d="M-1,1 l2,-2
+                              M0,4 l4,-4
+                              M3,5 l2,-2" 
+                            style={{stroke:'grey', opacity: .5, strokeWidth:1}} />
+                    </pattern>
+
+                    </g>
+                  )
+                })
+              }
+              {
+                annotations
+                .filter(a => a.axis === 'y')
+                .map((annotation, annotationIndex) => {
+                  const {start, end, label, labelPosition = 20} = annotation;
+                  const thatX1 = margins.left;
+                  const thatX2 = xScale(xAxisValues[xAxisValues.length - 1]);
+                  return (
+                    <g className="annotation y-axis-annotation" key={annotationIndex}>
+                      <rect
+                        x={thatX1}
+                        width={thatX2 - thatX1}
+                        y={yScale(start)}
+                        height={Math.abs(yScale(end) - yScale(start))}
+                        fill="url(#diagonalHatch)"
+                        opacity={.4}
+                      />
+                       <line
+                        x1={thatX1}
+                        x2={thatX2}
+                        y1={yScale(start)}
+                        y2={yScale(start)}
+                        stroke="grey"
+                        opacity={.4}
+                        strokeDasharray={'4,2'}
+                      />
+                      <line
+                        x1={thatX1}
+                        x2={thatX2}
+                        y1={yScale(end)}
+                        y2={yScale(end)}
+                        stroke="grey"
+                        opacity={.4}
+                        strokeDasharray={'4,2'}
+                      />
+                      <line 
+                        x1={thatX1 + labelPosition - 5} 
+                        x2={thatX1 + labelPosition - 5} 
+                        y1={yScale(start) - 15}
+                        y2={yScale(start) - 5}
+                        stroke="grey" 
+                        marker-end="url(#arrowhead)" 
+                      />
+                     <text
+                        x={thatX1 + labelPosition}
+                        y={yScale(start) - 10}
                         fontSize={'.5rem'}
                         fill="grey"
                       >

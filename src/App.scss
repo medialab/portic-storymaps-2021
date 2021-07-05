@@ -616,6 +616,13 @@ button.is-active {
       h1 {
         font-size: 2rem;
         margin-top: 0;
+        .century {
+          font-size: .8em;
+          
+        }
+        sup {
+            font-size: .6em;
+        }
       }
       h2 {
         font-weight: 400;

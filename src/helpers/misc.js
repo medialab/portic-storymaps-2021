@@ -24,7 +24,8 @@ const DEFAULT_COLOR_SPACE = {
 const SINGLE_COLOR_PALETTE = ['#999'];
 
 export function buildPageTitle (title, lang = 'fr') {
-  return `${title} | ${metadata[lang].title} | PORTIC`;
+  const currentMetadata = metadata[lang] || metadataFr;
+  return `${title} | ${currentMetadata.title} | PORTIC`;
 }
 
 export function trimText(str, limit = 30) {

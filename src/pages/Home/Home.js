@@ -27,12 +27,13 @@ const metadata = {
 }
 
 function Home({ match: {
-  params: { lang }
+  params: { lang = 'fr' }
 } }) {
   const introRef = useRef(null);
-  const title = metadata[lang].title
-  const titleHTML = metadata[lang].titleHTML;
-  const subtitle = metadata[lang].subtitle
+  const currentMetadata = metadata[lang] || metadataFr;
+  const title = currentMetadata.title
+  const titleHTML = currentMetadata.titleHTML;
+  const subtitle = currentMetadata.subtitle
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -73,7 +74,7 @@ function Home({ match: {
           break;
         }
       } else {
-        console.error('cant find ref for', visualizationEntries[index])
+        // console.error('cant find ref for', visualizationEntries[index])
       }
     }
     
@@ -113,7 +114,7 @@ function Home({ match: {
     setVisualizations(newVis)
   }
   const onBlockClick = (id, ref) => {
-    console.log('on block click', { id, ref })
+    // console.log('on block click', { id, ref })
   }
   const onClickOnStart = () => {
     if (introRef && introRef.current) {

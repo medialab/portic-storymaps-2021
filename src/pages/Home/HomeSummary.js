@@ -1,7 +1,7 @@
 import { NavLink as Link } from 'react-router-dom';
 
 
-function HomeSummary({ lang, summary }) {
+function HomeSummary({ lang = 'fr', summary }) {
   const messages = {
     intro: {
       fr: 'découvrir les 3 chapitres de l’étude de cas',
@@ -26,6 +26,7 @@ function HomeSummary({ lang, summary }) {
         {
           summary
             .filter(item => item.routeGroup === 'primary')
+            .filter(item => item.routes[lang])
             .map((item, itemIndex) => {
               const title = item.titles[lang];
               const route = `/${lang}/page/${item.routes[lang]}`;
@@ -41,7 +42,8 @@ function HomeSummary({ lang, summary }) {
         }
       </ul>
       <div className="atlas-link-container">
-        <Link to={`/${lang}/atlas`}>
+        {/* @todo this is a react-snap trick that should be cleaned some day, removing it somehow breaks the pages building process */}
+        <Link to={navigator.userAgent === "ReactSnap" ? '/fr/atlas' : `/${lang}/atlas`}>
           <h3 className="title">{messages.atlas[lang]}</h3>
         </Link>
       </div>

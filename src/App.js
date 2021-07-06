@@ -137,7 +137,8 @@ function App() {
           <Switch>
             {
               LANGUAGES.map(lang => {
-                return routes.map(({
+                return routes
+                .map(({
                   titles,
                   routes: inputRoute,
                   contents,
@@ -147,7 +148,7 @@ function App() {
                   const route = `/${lang}/page/${inputRoute[lang]}`
                   const title = titles[lang];
                   const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`));
-                  const ContentSync = contentsProcessed[lang]
+                  const ContentSync = contentsProcessed[lang];
                   return (
                     <Route key={index} path={route} exact>
                       {renderRoute({ Content, ThatComponent, title, ContentSync })}
@@ -198,8 +199,9 @@ function App() {
 }
 
 const BASE_NAME =
-  navigator.userAgent === "ReactSnap"
-    ? "/"
+  process.env.NODE_ENV === 'development'
+  // navigator.userAgent === "ReactSnap"
+    ? undefined
     : `/${homepage.split('/').pop()}`;
 
 

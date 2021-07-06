@@ -11,6 +11,7 @@ import {
   useLocation,
   Link,
 } from "react-router-dom";
+import {homepage} from '../package.json'
 
 import uniq from 'lodash/uniq';
 import { csvParse, tsvParse } from 'd3-dsv';
@@ -199,7 +200,7 @@ function App() {
 
 export default function Wrapper() {
   return (
-    <Router>
+    <Router basename={`/${homepage.split('/').pop()}`}>
       <App />
     </Router>
   )

@@ -26,7 +26,7 @@ const VisualizationController = ({
             <>
               <VisualizationContainer atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
             </>
-            : <div>Pas de visualisation à afficher</div>
+            : null // <div>Pas de visualisation à afficher</div>
           }
         </div>
       )}

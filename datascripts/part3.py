@@ -257,7 +257,7 @@ for f in relevant_toflit_flows:
             else:
                 bureaus[bureau]['cumulated_exports_value_from_ext'] += value
         elif f['customs_office'] == 'Nantes':
-            if f['origin_province'] == 'Bretagne':
+            if f['origin_province'] == 'Bretagne' or f['origin_province'] == 'anjou' or f['origin_province'] == 'Touraine' or f['origin_province'] == 'Maine' or f['origin_province'] == 'Orléanais':
                 bureaus[bureau]['cumulated_exports_value_from_region'] += value  
             else:
                 bureaus[bureau]['cumulated_exports_value_from_ext'] += value

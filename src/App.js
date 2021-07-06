@@ -177,7 +177,7 @@ function App() {
           LANGUAGES.map(lang => {
             return routes
             // @todo this is dirty and should be removed at some point
-            .filter(({routes}) => !routes[lang].includes('test'))
+            .filter(({routes}) => routes[lang] && !routes[lang].includes('test'))
             .map(({
               titles,
               routes: inputRoute,
@@ -197,10 +197,15 @@ function App() {
   );
 }
 
+const BASE_NAME =
+  navigator.userAgent === "ReactSnap"
+    ? "/"
+    : `/${homepage.split('/').pop()}`;
+
 
 export default function Wrapper() {
   return (
-    <Router basename={`/${homepage.split('/').pop()}`}>
+    <Router basename={BASE_NAME}>
       <App />
     </Router>
   )

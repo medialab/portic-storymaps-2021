@@ -923,7 +923,7 @@ button.is-active {
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 33.333%);
     grid-gap: $medium-gutter;
     margin-top: $medium-gutter * 2;
     margin-bottom: $medium-gutter * 2;

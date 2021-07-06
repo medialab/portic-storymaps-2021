@@ -11,6 +11,22 @@ import { generatePalette } from '../../helpers/misc';
 
 import './GeoComponent.css'
 
+/* DOCUMENTATION : API de ce GéoComponent
+
+  Principe :
+    Composants réutilisable pour toutes les cartes utilisés sur les sites PORTIC
+    cartographie en SVG
+    -> permet de faire des cartes choroplètes, de représenter des ports, des flux de navires, ...
+
+  Paramètres : 
+    dataFilename : données à afficher sur la carte
+    backgroundFilename : données du fond de cartes
+    renderObject : fonction d'affichage des données (par défaut les objets affichés sont des cercles, mais peut se changer en passant une autre fonction)
+    projectionTemplate : configuration de carte utilisée fréquemment ('France', 'coast from Nantes to Bordeaux', 'Poitou', 'rotated Poitou')
+    projectionConfig: configuration de carte customisée (ce paramètre prime sur projectionTemplate si les 2 sont données en même temps)
+    debug : permet d'ajuster manuellement la configuration de la carte quand true (les paramètres de zoom, les coordonnées du centre, la rotation et les translations sont ajustables)
+*/
+
 const Input = ({
   value: inputValue,
   onBlur,
@@ -82,12 +98,13 @@ const GeoComponent = ({
   markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
-  projectionTemplate = 'France', // de base centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
+  projectionTemplate, // de base centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
   projectionConfig: inputProjectionConfig = defaultProjectionConfig, // customed config that will overwrite a template (optional argument) 
   debug = false
 }) => {
 
   let projectionConfig = { ...inputProjectionConfig } // casser la référence à defaultProj pour respecter principe react qu'on ne modifie pas un objet reçu en argument
+  
   // viz params variables
   
   const [scale, setScale] = useState(200)
@@ -106,7 +123,10 @@ const GeoComponent = ({
   const [loadingData, setLoadingData] = useState(true);
   const [loadingBackground, setLoadingBackground] = useState(true);
 
-
+  let inputCenterX = { ...centerX }
+  let inputCenterY = { ...centerY }
+  let inputTranslationX = { ...translationX }
+  let inputTranslationY = { ...translationY }
   /**
    * Marker data loading
    */
@@ -255,8 +275,8 @@ const GeoComponent = ({
 
     }
     return projection;
-  }, [backgroundData, width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY centerX, centerY
-
+  }, [backgroundData, width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY, centerX, centerY
+  // , inputCenterX, inputCenterY, inputTranslationX, inputTranslationY =< m'empêche de compiler
 
 
   if (loadingBackground || loadingData) {

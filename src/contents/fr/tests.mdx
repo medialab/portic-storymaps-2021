@@ -6,56 +6,19 @@ import TriangleComponent from '../../components/TriangleComponent';
 import BoatsIllustration from '../../components/BoatsIllustration';
 import BezierComponent from '../../components/BezierComponent';
 
-
-Test en prod
-
 import DataProvider from '../../components/DataProvider';
 import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 
-## Test courbes de bézier
-<BezierComponent
-  dataFilename="part_3_step3_viz_customs_offices_data.csv"
-  />
 
-  
-# Test carto pour intro
+Test en prod
 
-<GeoComponent
-  backgroundFilename="cartoweb_france_1789_geojson.geojson"
-  dataFilename="ports_locations_data.csv"
-  height={1200} // @TODO à changer quand je combin erais en un seul SVG ou component custom
-  label="port"
-  markerColor='customs_office'
-  width={1200} // j'aurais besoin de responsive
-  showLabels
-  centerOnRegion
-  // renderObject={renderLabel}
-/>
-
-## Test triangle 
-<TriangleComponent 
-  dataFilename="part_3_step1_viz_data.csv" 
-  rowHeight={300}
-  totalWidth = {1600}
-  />
-
-## Test courbes de bézier
-<BezierComponent
-  dataFilename="part_3_step3_viz_customs_offices_data.csv"
-  cx={300}
-  cy={250}
-  r={210}
-  inPercentage={10}
-  // start={Math.PI / 2}
-  // end={Math.PI * 3 / 2}
-  />
 
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
 
-# Fond de carte centré sur région, avec 1 pt discret par port, tourné à 90° ou 270°
+### Fond de carte - config "France"
 <GeoComponent 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
   dataFilename="navigo-out-of-ships-from-region.csv"
@@ -63,11 +26,27 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
   markerSize="null"
   label="pointcall"
   showLabels
-  centerOnRegion
-  // rotationDegree={58}
+  projectionTemplate = 'France'
   debug="true"
+  height={800}
+  width={1200}
 />
 
+### Fond de carte - config "coast from Nantes to Bordeaux"
+
+<GeoComponent
+  backgroundFilename="cartoweb_france_1789_geojson.geojson"
+  dataFilename="ports_locations_data.csv"
+  height={800} // @TODO à changer quand je combin erais en un seul SVG ou component custom
+  label="port"
+  markerColor='customs_office'
+  width={1200} // j'aurais besoin de responsive
+  showLabels
+  projectionTemplate = 'coast from Nantes to Bordeaux'
+  // renderObject={renderLabel}
+/>
+
+### Fond de carte - config "Poitou"
 Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
 
 <GeoComponent 
@@ -77,14 +56,23 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   markerSize="tonnage"
   label="pointcall"
   showLabels
-  centerOnRegion
+  projectionTemplate = 'Poitou'
+  height={800}
+  width={1200}
 />
+
+### Fond de carte - config "rotated Poitou"
 
 <GeoComponent 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
+  dataFilename="part_3_step1_viz_data.csv"
   markerColor="pointcall_admiralty"
   markerSize="tonnage"
+  projectionTemplate = 'rotated Poitou'
+  showLabels
+  label="port"
+  height={800}
+  width={1200}
 />
 
 <GeoComponent 
@@ -95,75 +83,6 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   label="pointcall"
   showLabels
 />
-
-
-# Test bateaux
-
-<BoatsIllustration />
-
-
-# Commerce multi-échelle dans la région de La Rochelle
-
-
-Voici un tour d'horizon des modules react préparés pour faciliter le développement :
-
-## Image SVG (avec webpack)
-
-On intègre une image  SVG depuis le local (elle sera donc packée par webpack) :
-
-
-## Image SVG (sans webpack)
-
-On intègre ici directement une image à partir de son URL en ligne (depuis le dossier `public`)
-##### ! cassé pour le moment
-// <SvgComponent path ="/svg/ports-region-1789.svg" />
-
-## Visualisation vega
-
-Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `public/data` et d'une spec vega.
-
-<VegaComponent 
-  data="sorties_navires_vers_colonies.csv" 
-  spec={{
-    "mark": "rect",
-    "encoding": {
-      "x": {
-        "field": "port_depart",
-        "type": "nominal"
-      },
-      "y": {
-        "field": "port_destination",
-        "type": "nominal"
-      },
-      "color": {
-        "type": "quantitative",
-        "field": "tonnage",
-        "aggregate": "sum"
-      }
-      
-    }
-  }}
-/>
-
-## Réseau avec sigma
-
-Les visualisations sigma ont besoin d'un fichier gexf stocké dans le dossier `public/data`.
-
-Paramètres :
-
-* `nodeColor` : attribut pour couleur
-* `nodeSize` : attribut pour taille
-* `labelDensity` : densité des labels (float dans [0, 1])
-
-
-<SigmaComponent 
-  data="toflit_aggregate_1789_only_out.gexf" 
-  nodeColor={`admiralty`}
-  nodeSize={`inside_degree`}
-  labelDensity={0.5}
-/>
-
-
 
 # Tests composant LineChart
 
@@ -601,3 +520,90 @@ Paramètres :
     )
   }
 </DataProvider>
+
+
+
+## Test triangle 
+<TriangleComponent 
+  dataFilename="part_3_step1_viz_data.csv" 
+  rowHeight={300}
+  totalWidth = {1600}
+  />
+
+## Test courbes de bézier
+<BezierComponent
+  dataFilename="part_3_step3_viz_customs_offices_data.csv"
+  cx={300}
+  cy={250}
+  r={210}
+  inPercentage={10}
+  // start={Math.PI / 2}
+  // end={Math.PI * 3 / 2}
+  />
+
+# Test bateaux
+
+<BoatsIllustration />
+
+
+# Commerce multi-échelle dans la région de La Rochelle
+
+
+Voici un tour d'horizon des modules react préparés pour faciliter le développement :
+
+## Image SVG (avec webpack)
+
+On intègre une image  SVG depuis le local (elle sera donc packée par webpack) :
+
+
+## Image SVG (sans webpack)
+
+On intègre ici directement une image à partir de son URL en ligne (depuis le dossier `public`)
+##### ! cassé pour le moment
+// <SvgComponent path ="/svg/ports-region-1789.svg" />
+
+## Visualisation vega
+
+Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `public/data` et d'une spec vega.
+
+<VegaComponent 
+  data="sorties_navires_vers_colonies.csv" 
+  spec={{
+    "mark": "rect",
+    "encoding": {
+      "x": {
+        "field": "port_depart",
+        "type": "nominal"
+      },
+      "y": {
+        "field": "port_destination",
+        "type": "nominal"
+      },
+      "color": {
+        "type": "quantitative",
+        "field": "tonnage",
+        "aggregate": "sum"
+      }
+      
+    }
+  }}
+/>
+
+## Réseau avec sigma
+
+Les visualisations sigma ont besoin d'un fichier gexf stocké dans le dossier `public/data`.
+
+Paramètres :
+
+* `nodeColor` : attribut pour couleur
+* `nodeSize` : attribut pour taille
+* `labelDensity` : densité des labels (float dans [0, 1])
+
+
+<SigmaComponent 
+  data="toflit_aggregate_1789_only_out.gexf" 
+  nodeColor={`admiralty`}
+  nodeSize={`inside_degree`}
+  labelDensity={0.5}
+/>
+

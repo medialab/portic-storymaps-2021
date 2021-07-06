@@ -9,8 +9,6 @@ import {renderLabel, renderStep3Object} from './renderObjectFunctions';
 import './PrincipalVisualizationPart3.scss';
 
 
-
-
 const PrincipalVisualizationPart3 = ({ step, width, height }) => {
   console.log(process.env.NODE_ENV)
   return (

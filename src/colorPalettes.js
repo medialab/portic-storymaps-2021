@@ -44,9 +44,9 @@ const colorsPalettes = {
     'La Rochelle': '#41BEA3',
     'Rochefort': '#349883',
     'Saint-Martin-de-Ré': '#277262',
-    'Charente': '#5AD0F4',
-    'Aligre': '#67CBB6',
-    'Les Sables d\'Olonne': '#668EDB',
+    'Tonnay-Charente': '#5AD0F4',
+    'Marans': '#67CBB6',
+    "Les Sables-d'Olonne": '#668EDB',
     'Marennes': '#A7E6F9',
   }
 }

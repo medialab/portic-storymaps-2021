@@ -128,12 +128,12 @@ with open(OUTPUT0, "w", newline='') as csvfile:
         writer.writerow({'port' : port["port"], 'latitude' : port["latitude"], 'longitude' : port["longitude"], 'customs_office' : port["customs_office"],'province' : port["province"],'admiralty' : port["admiralty"], 'customs_region' : port["customs_region"]}) 
 
 with open(OUTPUT1, "w", newline='') as csvfile:
-    fieldnames = ['port','nb_pointcalls_out','mean_tonnage','cumulated_tonnage', 'latitude', 'longitude']
+    fieldnames = ['port','nb_pointcalls_out','mean_tonnage','cumulated_tonnage', 'latitude', 'longitude', 'customs_office']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
     writer.writeheader()
     for port in ports:
-        writer.writerow({'port' : port["port"],'nb_pointcalls_out' : port["nb_pointcalls_out"],'mean_tonnage' : port["mean_tonnage"],'cumulated_tonnage' : port["cumulated_tonnage"], 'latitude' : port["latitude"], 'longitude' : port["longitude"]}) 
+        writer.writerow({'port' : port["port"],'nb_pointcalls_out' : port["nb_pointcalls_out"],'mean_tonnage' : port["mean_tonnage"],'cumulated_tonnage' : port["cumulated_tonnage"], 'latitude' : port["latitude"], 'longitude' : port["longitude"], 'customs_office' : port["customs_office"]}) 
 
 
 # 3. write csv file to feed step 3 of the viz

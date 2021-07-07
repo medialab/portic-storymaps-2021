@@ -16,8 +16,14 @@ const DataProvider = ({
     if (dataFilename) {
       const dataURL = `${process.env.PUBLIC_URL}/data/${dataFilename}`;
       get(dataURL)
-        .then(({ data: csvString }) => {
-          const newData = csvParse(csvString);
+        .then(({ data: str }) => {
+          const extension = dataFilename.split('.').pop();
+          let newData;
+          if (extension === 'csv') {
+            newData = csvParse(str);
+          } else if (extension === 'geojson') {
+            newData = str;
+          }
 
           setData(newData);
           setLoadingData(false);

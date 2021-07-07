@@ -2,14 +2,13 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
 import { geoEqualEarth, geoPath } from "d3-geo";
-import { uniq } from 'lodash';
-import { scaleLinear } from 'd3-scale';
-import { extent } from 'd3-array';
+import ChoroplethLayer from './ChoroplethLayer';
+import PointsLayer from './PointsLayer';
 
 import { generatePalette } from '../../helpers/misc';
 // import { resetIdCounter } from 'vega-lite';
 
-import './GeoComponent.css'
+import './GeoComponent.scss'
 
 /* DOCUMENTATION : API de ce GéoComponent
 
@@ -82,24 +81,13 @@ const Button = ({
 }
 
 
-
-
 const GeoComponent = ({
   width = 1500,
   height = 1500,
-  dataFilename,
-  backgroundFilename, // but à terme d'avoir un layer qui s'occupe d'afficher un certain type d'objet, grâce à un fichier de données spécifiées (c'est le layer lui même qui s'occupe de charger les données ?)
-  // layers (array avec nom des layers : déclaré dans le component parent et passé en paramètre ?)
-  // layers[n].data : filename 
-  // layers[n].type ([ 'flow', 'choroplète (zones)', 'point', (customs)]) : manière de remplacer le renderObject je pense
-  renderObject, // fonction : par défaut la représentation des données est sous forme de cercles, mais peut se changer en passant une autre fonction
-  label,
-  markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
-  markerColor,
-  showLabels,
-  projectionTemplate, // de base centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
+  layers = [],
+  projectionTemplate, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
   projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
-  debug = false
+  debug = false // @TODO : à réparer
 }) => {
 
   // viz params variables
@@ -111,105 +99,59 @@ const GeoComponent = ({
   const [centerX, setCenterX] = useState(-1.7475027) // -1.7475027 pour centrer sur région
   const [centerY, setCenterY] = useState(46.573642) // 46.573642
 
-  // raw marker data
-  const [data, setData] = useState(null);
-  // map background data
-  const [backgroundData, setBackgroundData] = useState(null);
-  const [colorsMap, setColorsMap] = useState(null);
+  // @TODO : gérer le responsive sur mes maps
 
-  const [loadingData, setLoadingData] = useState(true);
-  const [loadingBackground, setLoadingBackground] = useState(true);
+                
+  // /**
+  //  * Data aggregation for viz (note : could be personalized if we visualize other things than points)
+  //  */
+  // const markerData = useMemo(() => {
+  //   if (data) {
+  //     // regroup data by coordinates
+  //     const coordsMap = {};
+  //     data.forEach(datum => {
+  //       const mark = datum.latitude + ',' + datum.longitude;
+  //       if (!coordsMap[mark]) {
+  //         coordsMap[mark] = {
+  //           label: showLabels && label ? datum[label] : undefined,
+  //           latitude: datum.latitude,
+  //           longitude: datum.longitude,
+  //           color: datum[markerColor],
+  //           size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize],
+  //           else: datum // à changer mais pour l'instant je ne sais pas faire autrement
+  //         }
+  //       } else {
+  //         coordsMap[mark].size += (isNaN(+datum[markerSize]) ? 0 : +datum[markerSize])
+  //       }
+  //     })
+  //     let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
+  //     const colorValues = uniq(grouped.map(g => g.color));
+  //     const palette = generatePalette('map', colorValues.length);
+  //     const thatColorsMap = colorValues.reduce((res, key, index) => ({
+  //       ...res,
+  //       [key]: palette[index]
+  //     }), {});
+  //     setColorsMap(thatColorsMap);
 
-  let inputCenterX = { ...centerX }
-  let inputCenterY = { ...centerY }
-  let inputTranslationX = { ...translationX }
-  let inputTranslationY = { ...translationY }
-  /**
-   * Marker data loading
-   */
-  useEffect(() => {
-    if (dataFilename) {
-      const dataURL = `${process.env.PUBLIC_URL}/data/${dataFilename}`;
-      get(dataURL)
-        .then(({ data: csvString }) => {
-          const newData = csvParse(csvString);
+  //     const sizeExtent = extent(grouped.map(g => g.size));
+  //     const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 100])
+  //     grouped = grouped.map(datum => ({
+  //       ...datum,
+  //       color: thatColorsMap[datum.color],
+  //       size: sizeScale(datum.size)
+  //     }))
+  //     return grouped;
+  //   }
+  // }, [data, markerColor, markerSize, width, label, showLabels])
 
-          setData(newData);
-          setLoadingData(false);
-        })
-        .catch((err) => {
-          setLoadingData(false);
-        })
-    }
 
-  }, [dataFilename])
-
-  /**
-   * Data aggregation for viz (note : could be personalized if we visualize other things than points)
-   */
-  const markerData = useMemo(() => {
-    if (data) {
-      // regroup data by coordinates
-      const coordsMap = {};
-      data.forEach(datum => {
-        const mark = datum.latitude + ',' + datum.longitude;
-        if (!coordsMap[mark]) {
-          coordsMap[mark] = {
-            label: showLabels && label ? datum[label] : undefined,
-            latitude: datum.latitude,
-            longitude: datum.longitude,
-            color: datum[markerColor],
-            size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize],
-            else: datum // à changer mais pour l'instant je ne sais pas faire autrement
-          }
-        } else {
-          coordsMap[mark].size += (isNaN(+datum[markerSize]) ? 0 : +datum[markerSize])
-        }
-      })
-      let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
-      const colorValues = uniq(grouped.map(g => g.color));
-      const palette = generatePalette('map', colorValues.length);
-      const thatColorsMap = colorValues.reduce((res, key, index) => ({
-        ...res,
-        [key]: palette[index]
-      }), {});
-      setColorsMap(thatColorsMap);
-
-      const sizeExtent = extent(grouped.map(g => g.size));
-      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 100])
-      grouped = grouped.map(datum => ({
-        ...datum,
-        color: thatColorsMap[datum.color],
-        size: sizeScale(datum.size)
-      }))
-      return grouped;
-    }
-  }, [data, markerColor, markerSize, width, label, showLabels])
-
-  /**
-   * Map background data loading
-   */
-  useEffect(() => {
-    if (backgroundFilename) {
-      const backgroundURL = `${process.env.PUBLIC_URL}/data/${backgroundFilename}`;
-      get(backgroundURL)
-        .then(({ data: bgData }) => {
-          setBackgroundData(bgData);
-          setLoadingBackground(false);
-        })
-        .catch((err) => {
-          setLoadingBackground(false);
-        })
-    }
-
-  }, [backgroundFilename])
 
   const defaultProjectionConfig = useMemo(() => {
     return {
       rotationDegree: 0,
       centerX: 2.4486203,
       centerY: 46.8576176,
-      scale: height*6 // a terme : modifier avec un multiple de height
+      scale: height * 6 // a terme : modifier avec un multiple de height
     };
   }, [height]) // repsponsive : se fait en fonction de la height de l'écran
 
@@ -222,97 +164,87 @@ const GeoComponent = ({
 
     let projection = geoEqualEarth()
 
-      switch (projectionTemplate) {
-        case 'coast from Nantes to Bordeaux':
-          projectionConfig = {
-            ...projectionConfig,
-            scale: height * 24,
-            centerX: -1.7475027,
-            centerY: 46.573642,
-            translationX: width * 0.4,
-            translationY: height * 0.28
-          }
-          break;
-        case 'Poitou':
-          projectionConfig = {
-            ...projectionConfig,
-            scale: height * 45,
-            centerX: -1.7475027,
-            centerY: 46.573642,
-            translationX: width * 0.4,
-            translationY: height * 0.05
-          }
-          break;
-        case 'rotated Poitou':
-          projectionConfig = {
-            ...projectionConfig,
-            rotationDegree: 58,
-            scale: height * 50,
-            centerX: -1.7475027,
-            centerY: 46.573642,
-            translationX: width * 0.29,
-            translationY: height * 0.3 
-          }
-          break;
-        case 'France':
-        default: // as France config 
-          console.log('projection config in dry version', projectionConfig);
-          console.log(`we are taking the config as specified in config parameters ===> if not specified, the view should correspond to France`);
-          break;
-      }
-
-      if (inputProjectionConfig !== undefined) {
+    switch (projectionTemplate) {
+      case 'coast from Nantes to Bordeaux':
         projectionConfig = {
           ...projectionConfig,
-          ...inputProjectionConfig
+          scale: height * 24,
+          centerX: -1.7475027,
+          centerY: 46.573642,
+          translationX: width * 0.4,
+          translationY: height * 0.28
         }
+        break;
+      case 'Poitou':
+        projectionConfig = {
+          ...projectionConfig,
+          scale: height * 45,
+          centerX: -1.7475027,
+          centerY: 46.573642,
+          translationX: width * 0.4,
+          translationY: height * 0.05
+        }
+        break;
+      case 'rotated Poitou':
+        projectionConfig = {
+          ...projectionConfig,
+          rotationDegree: 58,
+          scale: height * 50,
+          centerX: -1.7475027,
+          centerY: 46.573642,
+          translationX: width * 0.29,
+          translationY: height * 0.3
+        }
+        break;
+      case 'France':
+      default: // as France config 
+        // console.log('projection config in dry version', projectionConfig);
+        // console.log(`we are taking the config as specified in config parameters ===> if not specified, the view should correspond to France`);
+        break;
+    }
+
+    if (inputProjectionConfig !== undefined) {
+      projectionConfig = {
+        ...projectionConfig,
+        ...inputProjectionConfig
       }
+    }
 
-      // update the config
-      setScale(projectionConfig.scale)
+    // update the config
+    setScale(projectionConfig.scale)
 
-      setRotation(projectionConfig.rotationDegree)
+    setRotation(projectionConfig.rotationDegree)
 
-      setCenterX(projectionConfig.centerX)
-      setCenterY(projectionConfig.centerY)
+    setCenterX(projectionConfig.centerX)
+    setCenterY(projectionConfig.centerY)
 
-      
-      if (projectionConfig.translationX !== undefined) {
-        setTranslationX(projectionConfig.translationX)
-        setTranslationY(projectionConfig.translationY)
-      }
-      else {
-        projectionConfig.translationX = width / 2;
-        projectionConfig.translationY = height / 2;
-        setTranslationX(width / 2)
-        setTranslationY(height / 2)
-      }
 
-      projection // ce qui vaut dans tous les cas ...
-        .scale(projectionConfig.scale)
+    if (projectionConfig.translationX !== undefined) {
+      setTranslationX(projectionConfig.translationX)
+      setTranslationY(projectionConfig.translationY)
+    }
+    else {
+      projectionConfig.translationX = width / 2;
+      projectionConfig.translationY = height / 2;
+      setTranslationX(width / 2)
+      setTranslationY(height / 2)
+    }
 
-      projection.center([projectionConfig.centerX, projectionConfig.centerY])
+    projection // ce qui vaut dans tous les cas ...
+      .scale(projectionConfig.scale)
 
-      if (projectionConfig.rotationDegree) {
-        projection.angle(projectionConfig.rotationDegree)
-      }
+    projection.center([projectionConfig.centerX, projectionConfig.centerY])
 
-      projection.translate([projectionConfig.translationX, projectionConfig.translationY]) // put the center of the map at the center of the box in which the map takes place ?
+    if (projectionConfig.rotationDegree) {
+      projection.angle(projectionConfig.rotationDegree)
+    }
+
+    projection.translate([projectionConfig.translationX, projectionConfig.translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
     return projection;
   }, [width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY, centerX, centerY
   // , inputCenterX, inputCenterY, inputTranslationX, inputTranslationY => m'empêche de compiler
 
-
-  if (loadingBackground || loadingData) {
-    return (
-      <div>Chargement des données ...</div>
-    )
-  } else if (!backgroundData || !data) {
-    return (
-      <div>Erreur ...</div>
-    )
-  }
 
   const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
 
@@ -401,92 +333,32 @@ const GeoComponent = ({
           : null
       }
 
-      <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
-        <g className="background">
-          {
-            backgroundData.features.map((d, i) => {
-              return (
-                <path
-                  key={`path-${i}`}
-                  d={geoPath().projection(projection)(d)}
-                  className="geopart"
-                  fill={`rgba(38,50,56,${1 / backgroundData.features.length * i})`}
-                  stroke="#FFFFFF"
-                  strokeWidth={0.5}
-                />
-              )
-            })
-          }
-        </g>
-        <g className="markers">
-          {
-            markerData
-              .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
-              .map((datum, index) => {
-                // console.log("datum : ",datum)
-                const { latitude, longitude, size, color, label } = datum;
-                const [x, y] = projection([+longitude, +latitude]);
-                return (
-                  <>
-                    {
-                      typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
-                        // je veux un élément html
-                        renderObject(datum, projection, { width })
-                        :
-                        <g transform={`translate(${x},${y})`}>
-                          <circle
-                            key={index}
-                            cx={0}
-                            cy={0}
-                            r={size}
-                            fill={color}
-                            className="marker"
-                          />
-                          {
-                            label ?
-                              <text
-                                x={size + 5}
-                                y={size / 2}
-                              >
-                                {label}
-                              </text>
-                              : null
-                          }
-                        </g>
-                    }
-                  </>);
-              })
-          }
-        </g>
+      <svg className="GeoComponent" width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
+
         {
-          colorsMap ?
-            <g className="legend" transform={`translate(${width * .85}, ${height - (Object.keys(colorsMap).length + 1) * 20})`}>
-              <g>
-                <text style={{ fontWeight: 800 }}>
-                  {markerColor}
-                </text>
-              </g>
-              {
-                Object.entries(colorsMap)
-                  .map(([label, color], index) => {
-                    return (
-                      <g transform={`translate(0, ${(index + 1) * 20})`}>
-                        <rect
-                          x={0}
-                          y={-8}
-                          width={10}
-                          height={10}
-                          fill={color}
-                        />
-                        <text x={15} y={0}>
-                          {label || 'Indéterminé'}
-                        </text>
-                      </g>
-                    )
-                  })
-              }
-            </g>
-            : null
+          layers.map((layer, layerIndex) => {
+            // console.log("heyyy")
+            // return (<rect fill="red" x={0} y={0} width={200} height={200} />)
+            switch (layer.type) {
+              case 'choropleth':
+                return <ChoroplethLayer 
+                          key={layerIndex}
+                          layer={layer}
+                          projection={projection}
+                          />
+                
+              case 'points':
+                return <PointsLayer 
+                          key={layerIndex}
+                          layer={layer}
+                          projection={projection}
+                          width={width}
+                          />
+    
+              default:
+                return <g key={layerIndex}><text>Unsupported layer type</text></g>
+            }
+          })
         }
         <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
         <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} />

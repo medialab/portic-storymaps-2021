@@ -9,6 +9,7 @@ import BezierComponent from '../../components/BezierComponent';
 import DataProvider from '../../components/DataProvider';
 import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
+import colorPalettes from '../../colorPalettes.js';
 
 
 Test en prod
@@ -17,6 +18,47 @@ Test en prod
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+
+### Fond de carte - config "rotated Poitou"
+
+<DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+  {
+    backgroundData => (
+      <DataProvider data={'part_3_step1_viz_data.csv'}>
+        {
+          visData => (
+            <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: backgroundData
+                },
+                {
+                  type: 'points',
+                  data: visData,
+                  color: {
+                    field: 'customs_office',
+                    palette: colorPalettes.customs_office
+                  },
+                  size: {
+                    field: 'mean_tonnage'
+                  },
+                  label: {
+                    field: 'port'
+                  }
+                }
+              ]}
+              projectionTemplate = 'rotated Poitou'
+              height={800}
+              width={1200}
+            />
+          )
+        }
+      </DataProvider>
+    )
+  }
+</DataProvider>
 
 ### Fond de carte - config "France"
 <GeoComponent 
@@ -61,20 +103,7 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   width={1200}
 />
 
-### Fond de carte - config "rotated Poitou"
-
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="part_3_step1_viz_data.csv"
-  markerColor="pointcall_admiralty"
-  markerSize="tonnage"
-  projectionTemplate = 'rotated Poitou'
-  showLabels
-  label="port"
-  height={800}
-  width={1200}
-/>
-
+## Fond de carte sans template pour la config
 <GeoComponent 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
   dataFilename="navigo-out-of-ships-from-region.csv"
@@ -84,7 +113,7 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   showLabels
 />
 
-# Tests composant LineChart
+<!-- # Tests composant LineChart
 
 <DataProvider data={'decline_longitudinal_data.csv'}>
   {
@@ -606,4 +635,4 @@ Paramètres :
   nodeSize={`inside_degree`}
   labelDensity={0.5}
 />
-
+ -->

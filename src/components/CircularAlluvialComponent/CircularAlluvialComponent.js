@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import {
   schemeAccent as colorScheme1,
@@ -13,6 +13,7 @@ import './CircularAlluvialComponent.scss';
 import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
 import { cartesian2Polar, trimText } from '../../helpers/misc';
+import ReactTooltip from 'react-tooltip';
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
 
@@ -26,7 +27,9 @@ const CircularAlluvialComponent = ({
   debug = false,
   colorsPalettes,
   centerHorizontalLabels = true,
-  displaceHorizontalLabels = true
+  displaceHorizontalLabels = true,
+  tooltips,
+  lang,
 }) => {
   // state is used for managing interactions through svg elements' classes
   const [highlightedFlow, setHighlightedFlow] = useState(undefined);
@@ -43,7 +46,13 @@ const CircularAlluvialComponent = ({
       .reduce((sum, flow) => sum + (+flow[sumBy]), 0)
     }
     return inputData.reduce((sum, flow) => sum + (+flow[sumBy]), 0)
-  }, [inputData, sumBy, filters])
+  }, [inputData, sumBy, filters]);
+
+  let tooltipContent;
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  })
 
   // build categorical color scales
   const colorScales = useMemo(() => {
@@ -136,7 +145,10 @@ const CircularAlluvialComponent = ({
   return (
     <>
       <div style={{ fontSize: '.6rem', alignSelf: 'flex-start' }}>Agrégation par le champ : {sumBy}</div>
-      <svg width={width} height={height} className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}>
+      <svg 
+      data-for="alluvial-tooltip"
+      data-tip={tooltipContent}
+      width={width} height={height} className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}>
         <g  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
         <g className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
           <line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />
@@ -181,7 +193,8 @@ const CircularAlluvialComponent = ({
             IMPORTS
           </text>
         </g>
-        <g transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} onMouseOut={handleMouseOut}>
+        <g 
+        transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} onMouseOut={handleMouseOut}>
           {
             data
               .map((step, stepIndex) => {
@@ -315,6 +328,9 @@ const CircularAlluvialComponent = ({
                                       controlPoint2BX = x4 - (4 / 3) * (1 - Math.cos(45) / Math.sin(45)) * Math.abs(x4 - x3);
                                       controlPoint2AY = y3 + (4 / 3) * (1 - Math.cos(45) / Math.sin(45)) * Math.abs(y3 - y4);
                                     }
+                                    const {flow_type, customs_office, product, partner} = flow;
+                                    const value = flow[sumBy];
+                                    const tContent = tooltips.flow[lang]({flow_type, customs_office, product, sumBy, value, partner})
                                     return (
                                       <g
                                         onMouseOver={handleMouseOver}
@@ -324,6 +340,8 @@ const CircularAlluvialComponent = ({
                                             (highlightedFilter && flow[highlightedFilter.key] === highlightedFilter.value)
                                         })}
                                         key={linkIndex}
+                                        data-for="alluvial-tooltip"
+                                        data-tip={tContent}
                                       >
                                         {/* <path 
                                     d={`
@@ -479,6 +497,7 @@ const CircularAlluvialComponent = ({
                         (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value);
                         const nodeIsHighlighted = (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value);
                         const labelFontSize = (highlightedFilter || highlightedNode) ? labelHighlightPart > 0 ? textScale(labelHighlightPart) : textScale(node.valuePart) : textScale(1)
+                        const tContent = tooltips.node[lang](node, stepIndex);
                         return (
                           <g
                             className={cx("step-node-container", {
@@ -488,6 +507,8 @@ const CircularAlluvialComponent = ({
                             })}
                             key={node.id}
                             onMouseOver={handleMouseOver}
+                            data-for="alluvial-tooltip"
+                            data-tip={tContent}
                           >
                             <rect
                               x={x}
@@ -586,19 +607,7 @@ const CircularAlluvialComponent = ({
         </g>
         </g>
       </svg>
-      {
-        highlightedFlow ?
-          <div style={{
-            position: 'absolute',
-            left: 0,
-            bottom: '1rem',
-            maxWidth: smallestDimension / 2,
-            fontSize: '.8rem'
-          }}>
-            Flux affiché : {highlightedFlow.flow_type} de {highlightedFlow.product} {highlightedFlow.flow_type === 'export' ? 'vers' : 'depuis'} {highlightedFlow.partner} (valeur : {highlightedFlow[sumBy]})
-          </div>
-          : null
-      }
+      <ReactTooltip id="alluvial-tooltip" />
     </>
   )
 }

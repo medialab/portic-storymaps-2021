@@ -15,7 +15,7 @@ const { generic } = colorsPalettes;
 /**
  * LineChart component - returns a <figure> containing a svg linechart
  * 
- * @param {array} data 
+ * @param {array} data
  * @param {string} title 
  * @param {width} number 
  * @param {height} number 

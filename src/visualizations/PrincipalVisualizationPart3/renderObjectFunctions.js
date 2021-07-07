@@ -48,6 +48,7 @@ export function renderLabel (datum, projection) { // à terme on pourrait mettre
   
       let start = null
       let end = null
+      // let transformGeo = {`translate(${x},${y})`} // ce serzit param qui se mmodifie en attribue de positionnement réparti en bas à droite si co sans coords
   
       // calcul des angles de départ et d'arrivée de l'arc de cercle, en fonction des données
       start = Math.PI / 2 + (inPercentage - 50) / 100 * Math.PI
@@ -61,7 +62,6 @@ export function renderLabel (datum, projection) { // à terme on pourrait mettre
       )
         .map((command) => command.join(' '))
         .join(' ')
-      // console.log(`<path d="${leftPath}" />`)
   
       rightPath = partialCircle(
         0, 0,             // center X and Y
@@ -71,12 +71,15 @@ export function renderLabel (datum, projection) { // à terme on pourrait mettre
       )
         .map((command) => command.join(' '))
         .join(' ')
-      // console.log(`<path d="${rightPath}" />`)
   
     }
   
     return (
-      <g className='double-triangle' transform={`translate(${x},${y})`}>
+      <g 
+        className='double-triangle' 
+        transform={`translate(${x},${y})`}
+        // { datum.longitude === 0 ? x=1 : null }
+        >
   
         <path className='left-triangle' fill='rgb(39, 129, 141)'
           d={`M ${0} ${0}

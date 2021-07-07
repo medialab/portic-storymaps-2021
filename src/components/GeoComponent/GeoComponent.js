@@ -16,7 +16,7 @@ import './GeoComponent.css'
   Principe :
     Composants réutilisable pour toutes les cartes utilisés sur les sites PORTIC
     cartographie en SVG
-    -> permet de faire des cartes choroplètes, de représenter des ports, des flux de navires, ...
+    -> permet de faire des cartes choroplèthes, de représenter des ports, des flux de navires, ...
 
   Paramètres : 
     dataFilename : données à afficher sur la carte
@@ -81,32 +81,29 @@ const Button = ({
   </button>
 }
 
-let defaultProjectionConfig = {
-  rotationDegree: 0, 
-  centerX: -1.7475027, 
-  centerY: 46.573642, 
-  scale: 200};
+
 
 
 const GeoComponent = ({
-  dataFilename,
-  backgroundFilename,
-  width = 1800,
+  width = 1500,
   height = 1500,
-  label,
+  dataFilename,
+  backgroundFilename, // but à terme d'avoir un layer qui s'occupe d'afficher un certain type d'objet, grâce à un fichier de données spécifiées (c'est le layer lui même qui s'occupe de charger les données ?)
+  // layers (array avec nom des layers : déclaré dans le component parent et passé en paramètre ?)
+  // layers[n].data : filename 
+  // layers[n].type ([ 'flow', 'choroplète (zones)', 'point', (customs)]) : manière de remplacer le renderObject je pense
   renderObject, // fonction : par défaut la représentation des données est sous forme de cercles, mais peut se changer en passant une autre fonction
+  label,
   markerSize, // TODO : permettre de paramétrer le type d'objet rendu (callback function ? => appeler un component par exemple)
   markerColor,
   showLabels,
   projectionTemplate, // de base centerOnRegion, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
-  projectionConfig: inputProjectionConfig = defaultProjectionConfig, // customed config that will overwrite a template (optional argument) 
+  projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
   debug = false
 }) => {
 
-  let projectionConfig = { ...inputProjectionConfig } // casser la référence à defaultProj pour respecter principe react qu'on ne modifie pas un objet reçu en argument
-  
   // viz params variables
-  
+
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
   const [translationX, setTranslationX] = useState(width / 2)
@@ -207,76 +204,104 @@ const GeoComponent = ({
 
   }, [backgroundFilename])
 
+  const defaultProjectionConfig = useMemo(() => {
+    return {
+      rotationDegree: 0,
+      centerX: 2.4486203,
+      centerY: 46.8576176,
+      scale: height*6 // a terme : modifier avec un multiple de height
+    };
+  }, [height]) // repsponsive : se fait en fonction de la height de l'écran
 
   /**
    * d3 projection making
    */
-  const projection = useMemo(() => {
-    setTranslationX(width/2)
-    setTranslationY(height/2) 
+  const projection = useMemo(() => { // def les bonnes valeurs pour la config de la projection // enregistrer dans le state // les appliquer dans la projection
+
+    let projectionConfig = { ...defaultProjectionConfig } // casser la référence à defaultProj pour respecter principe react qu'on ne modifie pas un objet reçu en argument
 
     let projection = geoEqualEarth()
 
-    projection // ce qui vaut dans tous les cas ...
-    .scale(scale)
-
-    if (backgroundData) { // que si center on region
-      
       switch (projectionTemplate) {
-        case 'France':
-          return projection.fitSize([width, height], backgroundData)
         case 'coast from Nantes to Bordeaux':
-          projectionConfig = { 
+          projectionConfig = {
             ...projectionConfig,
-            scale: height*24, 
-            translationX: translationX * 0.8, 
-            translationY: translationY * 0.56
+            scale: height * 24,
+            centerX: -1.7475027,
+            centerY: 46.573642,
+            translationX: width * 0.4,
+            translationY: height * 0.28
           }
           break;
         case 'Poitou':
-          projectionConfig = { 
+          projectionConfig = {
             ...projectionConfig,
-            scale: height*45, 
-            translationX: translationX * 0.8, 
-            translationY: translationY * 0.1
+            scale: height * 45,
+            centerX: -1.7475027,
+            centerY: 46.573642,
+            translationX: width * 0.4,
+            translationY: height * 0.05
           }
           break;
         case 'rotated Poitou':
-          projectionConfig = { 
+          projectionConfig = {
             ...projectionConfig,
             rotationDegree: 58,
-            scale: height*50, 
-            translationX: translationX * 0.58, 
-            translationY: translationY * 0.6 // 0.364 au départ
+            scale: height * 50,
+            centerX: -1.7475027,
+            centerY: 46.573642,
+            translationX: width * 0.29,
+            translationY: height * 0.3 
           }
           break;
-        default: // as France config ??
+        case 'France':
+        default: // as France config 
+          console.log('projection config in dry version', projectionConfig);
           console.log(`we are taking the config as specified in config parameters ===> if not specified, the view should correspond to France`);
           break;
       }
 
+      if (inputProjectionConfig !== undefined) {
+        projectionConfig = {
+          ...projectionConfig,
+          ...inputProjectionConfig
+        }
+      }
+
       // update the config
       setScale(projectionConfig.scale)
-      setRotation(projectionConfig.rotationDegree) 
+
+      setRotation(projectionConfig.rotationDegree)
+
       setCenterX(projectionConfig.centerX)
       setCenterY(projectionConfig.centerY)
+
+      
       if (projectionConfig.translationX !== undefined) {
-        setTranslationX(projectionConfig.translationX) 
-        setTranslationY(projectionConfig.translationY) 
+        setTranslationX(projectionConfig.translationX)
+        setTranslationY(projectionConfig.translationY)
+      }
+      else {
+        projectionConfig.translationX = width / 2;
+        projectionConfig.translationY = height / 2;
+        setTranslationX(width / 2)
+        setTranslationY(height / 2)
       }
 
-      projection.center([centerX, centerY])
+      projection // ce qui vaut dans tous les cas ...
+        .scale(projectionConfig.scale)
+
+      projection.center([projectionConfig.centerX, projectionConfig.centerY])
 
       if (projectionConfig.rotationDegree) {
-        projection.angle(rotation)
+        projection.angle(projectionConfig.rotationDegree)
       }
 
-      projection.translate([translationX, translationY]) // put the center of the map at the center of the box in which the map takes place ?
+      projection.translate([projectionConfig.translationX, projectionConfig.translationY]) // put the center of the map at the center of the box in which the map takes place ?
 
-    }
     return projection;
-  }, [backgroundData, width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY, centerX, centerY
-  // , inputCenterX, inputCenterY, inputTranslationX, inputTranslationY =< m'empêche de compiler
+  }, [width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY, centerX, centerY
+  // , inputCenterX, inputCenterY, inputTranslationX, inputTranslationY => m'empêche de compiler
 
 
   if (loadingBackground || loadingData) {
@@ -403,12 +428,12 @@ const GeoComponent = ({
                 const [x, y] = projection([+longitude, +latitude]);
                 return (
                   <>
-                  {
-                    typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
-                    // je veux un élément html
-                    renderObject(datum, projection, {width})
+                    {
+                      typeof renderObject === "function" ? // si la fonction est définie je veux l'utiliser dans mon render, sinon (si j'ai pas ce paramètre je veux rendre cercles par défaut) 
+                        // je veux un élément html
+                        renderObject(datum, projection, { width })
                         :
-                  <g transform={`translate(${x},${y})`}>
+                        <g transform={`translate(${x},${y})`}>
                           <circle
                             key={index}
                             cx={0}
@@ -428,9 +453,9 @@ const GeoComponent = ({
                               : null
                           }
                         </g>
-                      }
-                </>);
-                 })
+                    }
+                  </>);
+              })
           }
         </g>
         {
@@ -464,6 +489,7 @@ const GeoComponent = ({
             : null
         }
         <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
+        <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} />
       </svg>
     </div>
   )
@@ -478,7 +504,7 @@ export default GeoComponent;
 /*
 const projection = useMemo(() => {
   setTranslationX(width/2)
-  setTranslationY(height/2) 
+  setTranslationY(height/2)
 
  let projection = geoEqualEarth() // ce qui vaut dans tous les cas ...
    .scale(scale)

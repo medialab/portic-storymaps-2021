@@ -1,3 +1,4 @@
+import {useMemo} from 'react';
 import CircularAlluvialComponent from "../../components/CircularAlluvialComponent/CircularAlluvialComponent";
 
 import colorsPalettes from '../../colorPalettes';
@@ -14,45 +15,52 @@ const PrincipalVisualizationPart2 = ({
   ...props
 }) => {
   const {step} = props;
-  let alluvialFilters = [];
-  let sumToflitBy = 'value';
   const height = atlasMode ? 1200 : containerHeight;
-  switch(step) {
-    case 2:
-      alluvialFilters = [
-        {
+  const {sumToflitBy, alluvialFilters} = useMemo(() => {
+    let sumBy = 'value';
+    let filters = [];
+    switch(step) {
+      case 2:
+        filters = [
+          {
+            key: 'product',
+            value: `produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')`
+          },
+          {
+            key: 'partner',
+            value: `Afrique`
+          },
+          {
+            key: 'partner',
+            value: `Colonies`
+          }
+        ];
+        break;
+      case 3:
+        filters = [
+          {
+            key: 'product',
+            value: `eau-de-vie et vins divers`
+          }
+        
+        ];
+        break;
+      case 4:
+        filters = [{
           key: 'product',
-          value: `produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')`
-        },
-        {
-          key: 'partner',
-          value: `Afrique`
-        },
-        {
-          key: 'partner',
-          value: `Colonies`
-        }
-      ];
-      break;
-    case 3:
-      alluvialFilters = [
-        {
-          key: 'product',
-          value: `eau-de-vie et vins divers`
-        }
-      
-      ];
-      break;
-    case 4:
-      alluvialFilters = [{
-        key: 'product',
-        value: `sel`
-      }];
-      sumToflitBy = 'product_weight_kg'
-      break;
-    default:
-      break;
-  }
+          value: `sel`
+        }];
+        sumBy = 'product_weight_kg'
+        break;
+      default:
+        break;
+    }
+
+    return {
+      sumToflitBy: sumBy,
+      alluvialFilters: filters
+    }
+  }, [step]);
   return (
     <div className="PrincipalVisualizationPart2">
      <div>
@@ -68,7 +76,7 @@ const PrincipalVisualizationPart2 = ({
             node: {
               fr: ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'importé' : 'exporté'} ${node[sumToflitBy]} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'importé' : 'exporté'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
                 } else if (step === 1 || step === 4) {
                   return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'importé' : 'exporté'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
                 } else {

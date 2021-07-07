@@ -54,6 +54,11 @@ const CircularAlluvialComponent = ({
     ReactTooltip.rebuild();
   })
 
+  useEffect(() => {
+    setHighlightedFlow(undefined);
+    setHighlightedFilter(undefined);
+  }, [filters])
+
   // build categorical color scales
   const colorScales = useMemo(() => {
     const modalitiesMap = data.reduce((cur, datum) => {
@@ -86,10 +91,6 @@ const CircularAlluvialComponent = ({
   // margin for double bars
   const HORIZONTAL_MARGIN = smallestDimension * .2;
   const textScale = scaleLinear().range([smallestDimension / 120, smallestDimension / 70]).domain([0, 1])
-  const handleMouseOut = () => {
-    setHighlightedFlow(undefined);
-    setHighlightedFilter(undefined);
-  }
   // these radiuses are used to align bars extremities on the three implicit circles they form
   // (circle 1 : inner intersection of the 4 bars)
   // (circle 2 : outer intersection of the external point of 4 bars)
@@ -194,7 +195,7 @@ const CircularAlluvialComponent = ({
           </text>
         </g>
         <g 
-        transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} onMouseOut={handleMouseOut}>
+        transform={`translate(${width / 2 - smallestDimension / 2}, 0)`}>
           {
             data
               .map((step, stepIndex) => {
@@ -229,11 +230,18 @@ const CircularAlluvialComponent = ({
                                 node.flows
                                   .filter(f => f.nextPosition)
                                   .map((flow, linkIndex) => {
-                                    const handleMouseOver = () => {
-                                      if (highlightedFilter) {
+                                    const handleClick = () => {
+                                      if (highlightedFlow && highlightedFlow._id === flow._id) {
                                         setHighlightedFilter(undefined);
+                                        setHighlightedFlow(undefined);
                                       }
-                                      setHighlightedFlow({...flow, stepIndex});
+                                      else {
+                                        if (highlightedFilter) {
+                                          setHighlightedFilter(undefined);
+                                        }
+                                        setHighlightedFlow({...flow, stepIndex});
+                                      }
+                                      
                                     }
                                     const nextStepScales = stepScales[stepIndex + 1];
                                     let nextNodesSizeScale = scaleLinear().domain([0, 1]).range([0, nextStepScales.orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE - BAR_WIDTH / 3]);
@@ -333,7 +341,7 @@ const CircularAlluvialComponent = ({
                                     const tContent = tooltips.flow[lang]({flow_type, customs_office, product, sumBy, value, partner})
                                     return (
                                       <g
-                                        onMouseOver={handleMouseOver}
+                                        onClick={handleClick}
                                         className={cx("flow-link", {
                                           'is-filtered-in': filters && filters.find(({ key, value }) => flow[key] === value),
                                           'is-highlighted': (highlightedFlow && highlightedFlow._id === flow._id) ||
@@ -454,11 +462,17 @@ const CircularAlluvialComponent = ({
                         if (stepIndex === 4) {
                           y += BAR_WIDTH;
                         }
-                        const handleMouseOver = () => {
-                          if (highlightedFlow) {
+                        const handleClick = () => {
+                          if (highlightedFilter && highlightedFilter.value === node.id) {
                             setHighlightedFlow(undefined);
+                            setHighlightedFilter(undefined);
                           }
-                          setHighlightedFilter({ key: step.field, value: node.id, index: stepIndex })
+                          else {
+                            if (highlightedFlow) {
+                              setHighlightedFlow(undefined);
+                            }
+                            setHighlightedFilter({ key: step.field, value: node.id, index: stepIndex })
+                          }
                         }
                         const isHighlighted = highlightedFilter && node.id === highlightedFilter.value && stepIndex === highlightedFilter.index;
                         let labelHighlightPart = 0;
@@ -506,7 +520,7 @@ const CircularAlluvialComponent = ({
                               'is-highlighted': nodeIsHighlighted,
                             })}
                             key={node.id}
-                            onMouseOver={handleMouseOver}
+                            onClick={handleClick}
                             data-for="alluvial-tooltip"
                             data-tip={tContent}
                           >

@@ -19,7 +19,7 @@ function Atlas({
   match: {
     params: {
       visualizationId,
-      lang
+      lang = 'fr'
     }
   }
 }) {

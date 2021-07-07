@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import {
   schemeAccent as colorScheme1,
@@ -22,15 +22,18 @@ const CircularAlluvialComponent = ({
   sumBy,
   steps,
   width = 1200,
-  height = 800,
+  height : inputHeight = 800,
   filters = [],
   debug = false,
+  title,
   colorsPalettes,
   centerHorizontalLabels = true,
   displaceHorizontalLabels = true,
   tooltips,
   lang,
 }) => {
+  const titleRef = useRef(null);
+  const height = titleRef.current ? inputHeight - titleRef.current.getBoundingClientRect().height : inputHeight;
   // state is used for managing interactions through svg elements' classes
   const [highlightedFlow, setHighlightedFlow] = useState(undefined);
   const [highlightedFilter, setHighlightedFilter] = useState(undefined);
@@ -145,7 +148,7 @@ const CircularAlluvialComponent = ({
   const highlightedNodeTotal = highlightedNode ? highlightedNode.flows.reduce((sum, f) => sum + (+f[sumBy]), 0) : 0;
   return (
     <>
-      <div style={{ fontSize: '.6rem', alignSelf: 'flex-start' }}>Agrégation par le champ : {sumBy}</div>
+      <h5 ref={titleRef} className="visualization-title">{title}</h5>
       <svg 
       data-for="alluvial-tooltip"
       data-tip={tooltipContent}

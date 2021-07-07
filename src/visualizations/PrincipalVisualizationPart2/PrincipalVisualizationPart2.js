@@ -61,6 +61,10 @@ const PrincipalVisualizationPart2 = ({
       alluvialFilters: filters
     }
   }, [step]);
+  const titles = {
+    fr: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commercialle' : 'poids de marchandises'}`,
+    en: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commercialle' : 'poids de marchandises'}`
+  };
   return (
     <div className="PrincipalVisualizationPart2">
      <div>
@@ -72,6 +76,7 @@ const PrincipalVisualizationPart2 = ({
           filters={alluvialFilters}
           colorsPalettes={colorsPalettes}
           lang={lang}
+          title={titles[lang]}
           tooltips={{
             node: {
               fr: ({id, ...node}, step) => {

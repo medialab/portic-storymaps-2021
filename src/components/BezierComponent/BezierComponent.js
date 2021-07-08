@@ -56,7 +56,7 @@ const BezierComponent = ({
     // ${70} ${140}, ${110} ${140}, ${110} ${110} 
     // a ${R} : aire selon x de l'ellipse, ${R} : aire selon y de l'elipse, 0 : rotation de l'ellipse selon x, 1, 0 : sweep-flag (détermine si l’arc doit commencer son mouvement à un angle négatif ou positif), -(${R} * 2) 0 : coords de l'arrivée
 
-    const R = totalWidth/10
+    // const R = totalWidth/10
 
     const partialCircle = require('svg-partial-circle')
 

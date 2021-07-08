@@ -1,12 +1,13 @@
 type_of_object,name,cumulated_tonnage_in_region,cumulated_tonnage_out_region,nb_navigo_flows_taken_into_account,cumulated_exports_value_from_region,cumulated_exports_value_from_ext,nb_toflit_flows_taken_into_account,customs_office,customs_region,latitude,longitude
-customs_office,Tonnay-Charente,28967,0,808,5875341.900699999,0,40,Tonnay-Charente,La Rochelle,45.95,-0.9
-customs_office,Bordeaux,0,0,0,29592078.048586,101917033.16928202,2156,Bordeaux,Rouen,ERROR,ERROR
-customs_office,Marans,20491,0,1454,886293.0719,2115.0,59,Marans,La Rochelle,46.312468,-0.995682
-customs_office,Saint-Martin-de-Ré,23084,0,1015,582453.2410399999,39574.230030000006,49,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
-customs_office,Nantes,0,0,0,3082208.0,36318516.0,800,Nantes,Rouen,ERROR,ERROR
-customs_office,Les Sables-d'Olonne,6792,0,335,108379.00005,2148.0,26,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
-customs_office,undefined customs office,1800,2552,132,0,0,0,undefined customs office,,47.216667,-1.55
-customs_office,Le Havre,0,0,0,2211500.0,35406442.0,1124,Le Havre,Rouen,ERROR,ERROR
-customs_office,Marennes,46127,0,1842,900590.5355199998,2420.3518,50,Marennes,La Rochelle,45.816667,-1.116667
-customs_office,La Rochelle,39123,0,1289,320999.62899,6756080.55,334,La Rochelle,La Rochelle,46.166667,-1.15
-customs_office,Rochefort,6087,0,211,271247.216,2926.0,16,Rochefort,La Rochelle,45.943666,-0.97043
+customs_office,Les Sables-d'Olonne,7327,0,353,108378.99994971,2148.0,26,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
+customs_office,Saint-Martin-de-Ré,24596,0,1123,582453.230921804,39574.22998465999,49,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
+customs_office,Oléron,5457,0,373,0,0,0,Oléron,La Rochelle,45.933333,-1.3
+customs_office,Marans,20491,0,1454,886293.0956804581,2115.0,59,Marans,La Rochelle,46.312468,-0.995682
+customs_office,Tonnay-Charente,0,0,0,5875341.8166987905,0,40,Tonnay-Charente,La Rochelle,ERROR,ERROR
+customs_office,Rochefort,6087,0,211,271247.212830719,2926.0,16,Rochefort,La Rochelle,45.943666,-0.97043
+customs_office,Bordeaux,590,1659,91,29592078.06609868,101917033.17109513,2156,Bordeaux,Bordeaux,44.833333,-0.566667
+customs_office,La Rochelle,40719,0,1400,320999.62901201996,6756080.55002922,334,La Rochelle,La Rochelle,46.166667,-1.15
+customs_office,Nantes,985,813,34,3082208.0,36318516.0,800,Nantes,Nantes,47.216667,-1.55
+customs_office,undefined customs office,0,0,0,0,0,0,undefined customs office,La Rochelle,ERROR,ERROR
+customs_office,Le Havre,225,80,7,2211500.0,35406442.0,1124,Le Havre,Rouen,49.5,0.133333
+customs_office,Marennes,72543,0,2402,900590.5277161099,2420.3518472,50,Marennes,La Rochelle,45.816667,-1.116667

@@ -29,9 +29,11 @@ step 3 : vérifier si la comparaison avec les ports de Nantes, Bordeaux, Le Havr
 import csv
 from operator import itemgetter
 
-PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
+# PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
+ports_dflr = set()
 PORTS_FOR_COMPARISON = {'Bordeaux', 'Nantes', 'Le Havre'}
-BUREAUS = {'Bordeaux', 'Nantes', 'Le Havre', 'La Rochelle', 'Marans', 'Saint-Martin-de-Ré', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'Marennes', 'undefined customs office'}
+# je laisse Oléron dans les bureaus car c'est un bureau selon Navigo, mais étrange car n'en est pas un selon Toflit
+BUREAUS = {'Bordeaux', 'Nantes', 'Le Havre', 'La Rochelle', 'Marans', 'Saint-Martin-de-Ré', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'Marennes', 'undefined customs office', 'Oléron'}
 
 
 def clean_names(name):
@@ -62,6 +64,7 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
     for pointcall in pointcalls:
       if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out': # par défaut dans le csv on a déjà que des pointcalls de 1789
         relevant_pointcalls.append(pointcall)
+        ports_dflr.add(pointcall['toponyme_fr'])
 # print("nombre de pointcalls sortis des ports de la DFLR en 1789  :", len(relevant_pointcalls))
 
 # aggregate data by port
@@ -69,7 +72,7 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
 # init port objects
 ports = {}
 
-for p in PORTS_DFLR:
+for p in ports_dflr:
     ports[p] = {
         "port": p,
         "nb_pointcalls_out":0,
@@ -110,6 +113,7 @@ with open(OUTPUT1, "w", newline='') as csvfile:
 OUTPUT3_PORTS = "../public/data/part_3_step3_viz_ports_data.csv" 
 OUTPUT3_OFFICES = "../public/data/part_3_step3_viz_customs_offices_data.csv" 
 
+
 relevant_navigo_flows = []
 # retrieve relevant flows
 with open('../data/navigo_all_flows_1789.csv', 'r') as f:
@@ -117,7 +121,11 @@ with open('../data/navigo_all_flows_1789.csv', 'r') as f:
     for flow in flows:
       if flow['departure_ferme_direction'] == 'La Rochelle' or flow['departure_fr'] in ['Bordeaux', 'Nantes', 'Le Havre']:
         relevant_navigo_flows.append(flow)
+        ports_dflr.add(flow['departure_fr'])
+# print("ports de la DFLR (noms standardisés) : ", ports_dflr)
 print("nombre de flows navigo partis de la DFLR + Nantes, Bordeaux, Le Havre en 1789  :", len(relevant_navigo_flows))
+
+toflit_cos = set()
 
 relevant_toflit_flows = []
 # retrieve relevant flows
@@ -126,6 +134,8 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
     for flow in flows:
       if flow['year'] == '1789' and flow['export_import'] == 'Exports' and flow['customs_office'] in ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré',"Les Sables d'Olonne",'Aligre', 'Charente', 'Le Havre', 'Bordeaux', 'Nantes']: 
         relevant_toflit_flows.append(flow)
+        toflit_cos.add(flow['customs_office'])
+# print("bureaus de la DFLR selon toflit (noms pas standardisés) : ", toflit_cos)
 print("nombre d'exports des bureaux de la DFLR + Nantes, Bordeaux, Le Havre en 1789  :", len(relevant_toflit_flows))
 
 
@@ -136,7 +146,7 @@ print("nombre d'exports des bureaux de la DFLR + Nantes, Bordeaux, Le Havre en 1
 ports = {}
 bureaus = {}
 
-for p in list(PORTS_DFLR)+list(PORTS_FOR_COMPARISON):
+for p in list(ports_dflr)+list(PORTS_FOR_COMPARISON):
     ports[p] = {
         "port": p,
         "nb_navigo_flows_taken_into_account": 0,
@@ -159,7 +169,8 @@ for b in list(BUREAUS):
 for f in relevant_navigo_flows : 
     port = f['departure_fr']
     bureau = clean_names(f['departure_ferme_bureau']) 
-    if f['tonnage'] != '': # voir si ne pose pas de soucis, sinon != ''
+  
+    if f['tonnage'] != '': 
         tonnage = int(f['tonnage']) 
     else:
         tonnage = 0
@@ -191,30 +202,21 @@ for f in relevant_navigo_flows :
         bureaus[bureau]['longitude'] = f['departure_longitude']
         bureaus[bureau]['customs_region'] = f['departure_ferme_direction']
 
-# incohérences orthographiques à gérer : Saint-Martin-de-Ré ≠ Saint Martin de Ré   Les Sables d'Olonne ≠ Sables d' Olonne    Aligre ≠ Aligre de Marans
 
 # fill port objects with cumulated data from toflit, (customs_office scaled data)
 for f in relevant_toflit_flows:
     bureau = clean_names(f['customs_office'])
-    # corriger l'orthographe
-    # incohérences orthographiques (entre écriture de Toflit et de Navigo) à gérer
-    # if bureau == "Les Sables d'Olonne":
-    #     bureau = "Les Sables-d'Olonne"
-    # elif bureau == 'Aligre':
-    #     bureau = 'Marans' # j'ai un doute là dessus mais c'est bien le toponyme_fr
-    # elif bureau == 'Charente':
-    #     bureau = 'Tonnay-Charente'
 
     if f['value'] is not None and f['value'] != '':
         value = float(f['value'])
     else:
         value = 0
-    if f['customs_region'] == 'La Rochelle': # j'espère que tous les flux de 89 venant d'un bureau de la DFLR ont cet attribut
+    if f['customs_region'] == 'La Rochelle': # à priori tous les flux de 89 venant d'un bureau de la DFLR ont bien cet attribut
         if f['origin_province'] in ['Aunis', 'Poitou', 'Saintonge', 'Angoumois']:
             bureaus[bureau]['cumulated_exports_value_from_region'] += value  
         else:
             bureaus[bureau]['cumulated_exports_value_from_ext'] += value
-    else: # dans ce cas on est censés avoir un flux pas dans DFLR
+    else: # dans ce cas on est censés avoir un flux pas dans la DFLR
         if f['customs_office'] in ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré',"Les Sables d'Olonne",'Aligre', 'Charente']:
             print("soucis") # si on a un flux DFLR c'est que filtre customs_region à changer
         if f['customs_office'] == 'Le Havre':
@@ -266,14 +268,13 @@ with open(OUTPUT3_OFFICES, 'w', newline='') as csvfile2:
     direction = None
 
     for bureau, values in bureaus.items():
-        # if bureau in ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré', "Les Sables-d'Olonne", 'Marans', 'Charente', 'Le Havre', 'Bordeaux', 'Nantes']:
         if 'customs_region' in values.keys():
             direction = values['customs_region'] 
-        elif port == 'Le Havre':
+        elif bureau == 'Le Havre':
             direction = 'Rouen'
-        elif port == 'Nantes':
+        elif bureau == 'Nantes':
             direction = 'Nantes'
-        elif port == 'Bordeaux':
+        elif bureau == 'Bordeaux':
             direction = 'Bordeaux'
         else:
             direction = 'La Rochelle'

@@ -1,16 +1,16 @@
-export function renderLabel (datum, projection) { // à terme on pourrait mettre un objet 
+export function renderLabel (datum, projection, {width}) { // à terme on pourrait mettre un objet 
     // console.log("datum : ",datum)
   
     const [x, y] = projection([+datum.longitude, +datum.latitude])
   
     return (
       <g transform={`translate(${x},${y})`}>
-        <text>{datum.label}</text>
+        <text size={width*0.05}>{datum.label}</text>
       </g>);
   }
 
 
-  export function renderStep3Object (datum, projection, { width }) {
+  export function renderStep3Object (datum, projection, { width }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
   
     const [x, y] = projection([+datum.longitude, +datum.latitude])
     

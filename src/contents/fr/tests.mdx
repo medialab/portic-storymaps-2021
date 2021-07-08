@@ -11,6 +11,8 @@ import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
 
+import { renderLabel, renderStep3Object } from '../../visualizations/PrincipalVisualizationPart3/renderObjectFunctions.js'
+
 
 
 Test en prod
@@ -29,6 +31,40 @@ Test en prod
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+### Fond de carte - test custom layer avec config "coast from Nantes to Bordeaux"
+
+<DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+  {
+    backgroundData => (
+      <DataProvider data={'part_3_step3_viz_customs_offices_data.csv'}>
+        {
+          visData => (
+            <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: backgroundData,
+                  color:{
+                    field: 'shortname'
+                  }
+                },
+                {
+                  type: 'custom',
+                  data: visData,
+                  renderObject: {renderStep3Object}
+                }
+              ]}
+              projectionTemplate = 'coast from Nantes to Bordeaux'
+              height={800}
+              width={1200}
+            />
+          )
+        }
+      </DataProvider>
+    )
+  }
+</DataProvider>
 
 ### Fond de carte - test flows avec config "France"
 
@@ -156,20 +192,6 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
   }
 </DataProvider>
 
-
-### Fond de carte - config "coast from Nantes to Bordeaux"
-
-<GeoComponent
-  backgroundFilename="cartoweb_france_1789_geojson.geojson"
-  dataFilename="ports_locations_data.csv"
-  height={800} // @TODO à changer quand je combin erais en un seul SVG ou component custom
-  label="port"
-  markerColor='customs_office'
-  width={1200} // j'aurais besoin de responsive
-  showLabels
-  projectionTemplate = 'coast from Nantes to Bordeaux'
-  // renderObject={renderLabel}
-/>
 
 ### Fond de carte - config "Poitou"
 Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :

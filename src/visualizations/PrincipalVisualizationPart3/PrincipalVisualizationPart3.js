@@ -4,7 +4,7 @@ import cx from 'classnames';
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
-import {renderLabel, renderStep3Object} from './renderObjectFunctions';
+import {renderLabel, renderStep3Object} from './renderObjectFunctions'; // pas sur que ça reste à terme
 
 import './PrincipalVisualizationPart3.scss';
 

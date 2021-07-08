@@ -3,6 +3,7 @@ import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
 import FlowsLayer from './FlowsLayer';
+import CustomObjectLayer from './CustomObjectLayer';
 import Button from './Button';
 import Input from './Input';
 
@@ -268,6 +269,14 @@ const GeoComponent = ({
 
               case 'flows':
                 return <FlowsLayer
+                  key={layerIndex}
+                  layer={layer}
+                  projection={projection}
+                  width={width}
+                />
+
+              case 'custom':
+                return <CustomObjectLayer
                   key={layerIndex}
                   layer={layer}
                   projection={projection}

@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
+import FlowsLayer from './FlowsLayer';
 import Button from './Button';
 import Input from './Input';
 
@@ -67,6 +68,16 @@ const GeoComponent = ({
     let projection = geoEqualEarth()
 
     switch (projectionTemplate) {
+      case 'World':
+        projectionConfig = {
+          ...projectionConfig,
+          scale: height/2.5,
+          centerX: 21.201099,
+          centerY:  -6.356008,
+          // translationX: width * 0.4,
+          // translationY: height * 0.28
+        }
+        break;
       case 'coast from Nantes to Bordeaux':
         projectionConfig = {
           ...projectionConfig,
@@ -249,6 +260,14 @@ const GeoComponent = ({
 
               case 'points':
                 return <PointsLayer
+                  key={layerIndex}
+                  layer={layer}
+                  projection={projection}
+                  width={width}
+                />
+
+              case 'flows':
+                return <FlowsLayer
                   key={layerIndex}
                   layer={layer}
                   projection={projection}

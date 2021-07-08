@@ -73,7 +73,7 @@ const BezierComponent = ({
     )
     .map((command) => command.join(' '))
     .join(' ')
-    // console.log(`<path d="${leftPath}" />`)
+    console.log(`<path d="${leftPath}" />`)
 
     const rightPath = partialCircle(
         cx, cy,             // center X and Y
@@ -83,7 +83,7 @@ const BezierComponent = ({
     )
     .map((command) => command.join(' '))
     .join(' ')
-    // console.log(`<path d="${rightPath}" />`)
+    console.log(`<path d="${rightPath}" />`)
 
     return (
         <div className="BezierComponent">

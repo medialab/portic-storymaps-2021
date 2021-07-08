@@ -10,7 +10,6 @@ const ChoroplethLayer = ({ layer, projection }) => {
     let palette;
 
     if (layer.data.features && layer.color && layer.color.field) {
-        console.log("hey")
         // colors palette building
         const colorValues = uniq(layer.data.features.map(datum => datum.properties[layer.color.field]));
         if (layer.color.palette) { // if palette given in parameters we use it, otherwise one palette is generated
@@ -22,7 +21,6 @@ const ChoroplethLayer = ({ layer, projection }) => {
                 [key]: colors[index]
             }), {});
         }
-        console.log("palette 1 : ", palette)
     }
 
     return (

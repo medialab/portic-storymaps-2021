@@ -5,6 +5,7 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
+import { CompositeMarkNormalizer } from 'vega-lite/build/src/compositemark/base';
 
 const PointsLayer = ({ layer, projection, width }) => {
 
@@ -32,6 +33,8 @@ const PointsLayer = ({ layer, projection, width }) => {
       })
 
       let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
+      // console.log("grouped : ", grouped)
+
       // colors palette building
       let palette;
       const colorValues = uniq(grouped.map(g => g.color));
@@ -53,9 +56,13 @@ const PointsLayer = ({ layer, projection, width }) => {
         color: palette[datum.color],
         size: sizeScale(datum.size)
       }))
+
+      // console.log("grouped (PointsLayer): ", grouped)
       return grouped;
     }
   }, [projection, width, layer]) 
+
+  // console.log("markerData (pointsLayer): ", markerData)
 
   return (
     <g className="PointsLayer">

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
+import { json } from "d3";
 
 const DataProvider = ({
   data: dataFilename,
@@ -23,6 +24,8 @@ const DataProvider = ({
             newData = csvParse(str);
           } else if (extension === 'geojson') {
             newData = str;
+          } else if (extension === 'json') {
+            newData = json(str)
           }
 
           setData(newData);

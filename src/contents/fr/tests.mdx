@@ -15,10 +15,58 @@ import colorPalettes from '../../colorPalettes.js';
 
 Test en prod
 
+## Test courbes de bézier
+<BezierComponent
+  dataFilename="part_3_step3_viz_customs_offices_data.csv"
+  cx={300}
+  cy={250}
+  r={210}
+  inPercentage={10}
+  start={Math.PI / 2}
+  end={Math.PI * 3 / 2}
+  />
 
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
+
+### Fond de carte - test flows avec config "France"
+
+<DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+  {
+    backgroundData => (
+      <DataProvider data={'aggregated_flows.json'}>
+        {
+          visData => (
+            <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: backgroundData,
+                  color:{
+                    field: 'shortname',
+                    palette: colorPalettes.provinces
+                  }
+                },
+                {
+                  type: 'flows',
+                  data: visData,
+                  size: {
+                    field: 'tonnages_cumulés'
+                  }
+                }
+              ]}
+              projectionTemplate = 'France'
+              height={800}
+              width={1200}
+            />
+          )
+        }
+      </DataProvider>
+    )
+  }
+</DataProvider>
+
 
 ### Fond de carte - config "France"
 

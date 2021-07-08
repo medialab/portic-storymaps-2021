@@ -10,7 +10,7 @@ const PointsLayer = ({ layer, projection, width }) => {
 
   /**
     * Data aggregation for viz (note : could be personalized if we visualize other things than points)
-    */
+  */
   const markerData = useMemo(() => {
     if (layer.data) {
 
@@ -30,6 +30,7 @@ const PointsLayer = ({ layer, projection, width }) => {
           coordsMap[mark].size += (isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field])
         }
       })
+
       let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
       // colors palette building
       let palette;
@@ -64,7 +65,7 @@ const PointsLayer = ({ layer, projection, width }) => {
           .map((datum, index) => {
             const { latitude, longitude, size, color, label } = datum;
             const [x, y] = projection([+longitude, +latitude]);
-            // console.table([{x,y,size}])
+            
             return (
               <g className="point-group" transform={`translate(${x},${y})`}>
                 <circle

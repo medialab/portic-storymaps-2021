@@ -1,26 +1,49 @@
 import { geoPath } from "d3-geo";
+import { generatePalette } from '../../helpers/misc';
+import { uniq } from 'lodash';
 
+
+// @TODO : mettre en place une palette de couleurs quantitative 
 
 const ChoroplethLayer = ({ layer, projection }) => {
-  return (
-    <g className="ChoroplethLayer">
-      {
-        layer.data.features.map((d, i) => {
-          return (
-            <path
-              key={`path-${i}`}
-              d={geoPath().projection(projection)(d)}
-              className="geopart"
-              // fill="purple"
-              // stroke="black"
-              // strokeWidth={0.5}
-            />
-          )
-        })
-      }
-    </g>
-  );
 
-}
+    let palette;
+
+    if (layer.data.features && layer.color && layer.color.field) {
+        console.log("hey")
+        // colors palette building
+        const colorValues = uniq(layer.data.features.map(datum => datum.properties[layer.color.field]));
+        if (layer.color.palette) { // if palette given in parameters we use it, otherwise one palette is generated
+            palette = layer.color.palette;
+        } else {
+            const colors = generatePalette('map', layer.data.properties.length);
+            palette = colorValues.reduce((res, key, index) => ({
+                ...res,
+                [key]: colors[index]
+            }), {});
+        }
+        console.log("palette 1 : ", palette)
+    }
+
+    return (
+        <g className="ChoroplethLayer">
+            {
+                layer.data.features.map((d, i) => {
+                    return (
+                        <path
+                            key={`path-${i}`}
+                            d={geoPath().projection(projection)(d)}
+                            className="geopart"
+                            style= {{
+                                fill: palette[d.properties[layer.color.field]]
+                            }}
+                        />
+                    )
+                })
+            }
+        </g>
+    );
+
+    }
 
 export default ChoroplethLayer;

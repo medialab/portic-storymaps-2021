@@ -12,6 +12,7 @@ import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
 
 
+
 Test en prod
 
 
@@ -19,6 +20,49 @@ Test en prod
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
 
+### Fond de carte - config "France"
+
+<DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+  {
+    backgroundData => (
+      <DataProvider data={'ports_locations_data.csv'}>
+        {
+          visData => (
+            <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: backgroundData,
+                  color:{
+                    field: 'shortname',
+                    palette: colorPalettes.provinces
+                  }
+                },
+                {
+                  type: 'points',
+                  data: visData,
+                  color: {
+                    field: 'admiralty',
+                    palette: colorPalettes.admiralties
+                  },
+                  size: {
+                    field: 'customs_region'
+                  },
+                  label: {
+                    field: 'port'
+                  }
+                }
+              ]}
+              projectionTemplate = 'France'
+              height={800}
+              width={1200}
+            />
+          )
+        }
+      </DataProvider>
+    )
+  }
+</DataProvider>
 
 ### Fond de carte - config "rotated Poitou"
 
@@ -32,7 +76,11 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
               layers={[
                 {
                   type: 'choropleth',
-                  data: backgroundData
+                  data: backgroundData,
+                  color:{
+                    field: 'shortname',
+                    palette: colorPalettes.provinces
+                  }
                 },
                 {
                   type: 'points',
@@ -60,19 +108,6 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
   }
 </DataProvider>
 
-### Fond de carte - config "France"
-<GeoComponent 
-  backgroundFilename="cartoweb_france_1789_geojson.geojson" 
-  dataFilename="navigo-out-of-ships-from-region.csv"
-  markerColor="null"
-  markerSize="null"
-  label="pointcall"
-  showLabels
-  projectionTemplate = 'France'
-  debug="true"
-  height={800}
-  width={1200}
-/>
 
 ### Fond de carte - config "coast from Nantes to Bordeaux"
 

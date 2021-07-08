@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { csvParse } from 'd3-dsv';
-import get from 'axios';
-import { geoEqualEarth, geoPath } from "d3-geo";
+import React, { useState, useMemo } from 'react';
+import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
-
-import { generatePalette } from '../../helpers/misc';
-// import { resetIdCounter } from 'vega-lite';
+import Button from './Button';
+import Input from './Input';
 
 import './GeoComponent.scss'
 
@@ -24,74 +21,24 @@ import './GeoComponent.scss'
     projectionTemplate : configuration de carte utilisée fréquemment ('France', 'coast from Nantes to Bordeaux', 'Poitou', 'rotated Poitou')
     projectionConfig: configuration de carte customisée (ce paramètre prime sur projectionTemplate si les 2 sont données en même temps)
     debug : permet d'ajuster manuellement la configuration de la carte quand true (les paramètres de zoom, les coordonnées du centre, la rotation et les translations sont ajustables)
-*/
 
-const Input = ({
-  value: inputValue,
-  onBlur,
-  ...props
-}) => {
-  const [value, setValue] = useState(inputValue)
-  useEffect(() => {
-    setValue(inputValue)
-  }, [inputValue])
+  @TODO : gérer le responsive sur mes maps
+  @TODO : rendre les attributs color et size optionnels ? (=> tout est gris par défaut)
+  @TODO : documenter ce component comme LinearGraph
+  */
 
-  return <input
-    value={value}
-    onChange={(e) => {
-      setValue(e.target.value)
-    }}
-    onBlur={(e) => {
-      onBlur(e.target.value)
-    }}
-  />
-}
-
-const Button = ({
-  children,
-  onMouseDown,
-  ...props
-}) => {
-  const [isMouseDown, setState] = useState(false)
-
-  useEffect(() => {
-    let interval
-    if (isMouseDown) {
-      console.log("setInterval")
-      interval = setInterval(onMouseDown, 100)
-    }
-    return () => {
-      console.log("clearInterval")
-      clearInterval(interval)
-    }
-  }, [isMouseDown, onMouseDown])
-
-  return <button
-    {...props}
-    onMouseDown={() => {
-      setState(true)
-    }}
-    onMouseUp={() => {
-      setState(false)
-    }}
-    style={{ background: isMouseDown ? 'red' : undefined }}
-  >
-    {children}
-  </button>
-}
 
 
 const GeoComponent = ({
   width = 1500,
   height = 1500,
   layers = [],
-  projectionTemplate, // @TODO : rendre centerOnRegion et RotationDegree moins spécifique aux 2 configs existantes sur le site pour l'instant (enlever la France par défaut je pense)
+  projectionTemplate,
   projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
   debug = false // @TODO : à réparer
 }) => {
 
   // viz params variables
-
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
   const [translationX, setTranslationX] = useState(width / 2)
@@ -99,61 +46,16 @@ const GeoComponent = ({
   const [centerX, setCenterX] = useState(-1.7475027) // -1.7475027 pour centrer sur région
   const [centerY, setCenterY] = useState(46.573642) // 46.573642
 
-  // @TODO : gérer le responsive sur mes maps
 
-                
-  // /**
-  //  * Data aggregation for viz (note : could be personalized if we visualize other things than points)
-  //  */
-  // const markerData = useMemo(() => {
-  //   if (data) {
-  //     // regroup data by coordinates
-  //     const coordsMap = {};
-  //     data.forEach(datum => {
-  //       const mark = datum.latitude + ',' + datum.longitude;
-  //       if (!coordsMap[mark]) {
-  //         coordsMap[mark] = {
-  //           label: showLabels && label ? datum[label] : undefined,
-  //           latitude: datum.latitude,
-  //           longitude: datum.longitude,
-  //           color: datum[markerColor],
-  //           size: isNaN(+datum[markerSize]) ? 0 : +datum[markerSize],
-  //           else: datum // à changer mais pour l'instant je ne sais pas faire autrement
-  //         }
-  //       } else {
-  //         coordsMap[mark].size += (isNaN(+datum[markerSize]) ? 0 : +datum[markerSize])
-  //       }
-  //     })
-  //     let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
-  //     const colorValues = uniq(grouped.map(g => g.color));
-  //     const palette = generatePalette('map', colorValues.length);
-  //     const thatColorsMap = colorValues.reduce((res, key, index) => ({
-  //       ...res,
-  //       [key]: palette[index]
-  //     }), {});
-  //     setColorsMap(thatColorsMap);
-
-  //     const sizeExtent = extent(grouped.map(g => g.size));
-  //     const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 100])
-  //     grouped = grouped.map(datum => ({
-  //       ...datum,
-  //       color: thatColorsMap[datum.color],
-  //       size: sizeScale(datum.size)
-  //     }))
-  //     return grouped;
-  //   }
-  // }, [data, markerColor, markerSize, width, label, showLabels])
-
-
-
+  // define a default map Config
   const defaultProjectionConfig = useMemo(() => {
     return {
       rotationDegree: 0,
       centerX: 2.4486203,
       centerY: 46.8576176,
-      scale: height * 6 // a terme : modifier avec un multiple de height
+      scale: height * 6
     };
-  }, [height]) // repsponsive : se fait en fonction de la height de l'écran
+  }, [height]) // repsonsive : se fait en fonction de la height de l'écran
 
   /**
    * d3 projection making
@@ -218,7 +120,6 @@ const GeoComponent = ({
     setCenterX(projectionConfig.centerX)
     setCenterY(projectionConfig.centerY)
 
-
     if (projectionConfig.translationX !== undefined) {
       setTranslationX(projectionConfig.translationX)
       setTranslationY(projectionConfig.translationY)
@@ -230,7 +131,7 @@ const GeoComponent = ({
       setTranslationY(height / 2)
     }
 
-    projection // ce qui vaut dans tous les cas ...
+    projection
       .scale(projectionConfig.scale)
 
     projection.center([projectionConfig.centerX, projectionConfig.centerY])
@@ -239,11 +140,11 @@ const GeoComponent = ({
       projection.angle(projectionConfig.rotationDegree)
     }
 
-    projection.translate([projectionConfig.translationX, projectionConfig.translationY]) // put the center of the map at the center of the box in which the map takes place ?
+    projection.translate([projectionConfig.translationX, projectionConfig.translationY])
 
     return projection;
-  }, [width, height, scale, rotation]) // avant j'avais centerOnRegion et RotationDegree translationX, translationY, centerX, centerY
-  // , inputCenterX, inputCenterY, inputTranslationX, inputTranslationY => m'empêche de compiler
+  }, [width, height, scale, rotation]) // avant j'avais et RotationDegree translationX, translationY, centerX, centerY
+
 
 
   const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
@@ -337,24 +238,23 @@ const GeoComponent = ({
 
         {
           layers.map((layer, layerIndex) => {
-            // console.log("heyyy")
-            // return (<rect fill="red" x={0} y={0} width={200} height={200} />)
+
             switch (layer.type) {
               case 'choropleth':
-                return <ChoroplethLayer 
-                          key={layerIndex}
-                          layer={layer}
-                          projection={projection}
-                          />
-                
+                return <ChoroplethLayer
+                  key={layerIndex}
+                  layer={layer}
+                  projection={projection}
+                />
+
               case 'points':
-                return <PointsLayer 
-                          key={layerIndex}
-                          layer={layer}
-                          projection={projection}
-                          width={width}
-                          />
-    
+                return <PointsLayer
+                  key={layerIndex}
+                  layer={layer}
+                  projection={projection}
+                  width={width}
+                />
+
               default:
                 return <g key={layerIndex}><text>Unsupported layer type</text></g>
             }
@@ -407,23 +307,5 @@ const projection = useMemo(() => {
  }
  return projection;
 }, [backgroundData, width, height, centerOnRegion, scale, rotation, translationX, translationY, centerX, centerY, rotationDegree])
-
-
-
-
-
-
-  switch (projectionTemplate) {
-    case 'France':
-      projectionConfig = {rotationDegree=0, centerX=-1.7475027, centerY=46.573642, scale=200} // je ne sais pas si on peut modifier un param comme ça
-      break;
-    case 'coast from Nantes to Bordeaux':
-    case 'Poitou':
-      console.log('Mangoes and papayas are $2.79 a pound.');
-      // expected output: "Mangoes and papayas are $2.79 a pound."
-      break;
-    default:
-      console.log(`Sorry, we are out of ${expr}.`);
-  }
 
 */

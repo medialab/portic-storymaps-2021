@@ -1,6 +1,9 @@
 
 import React, { useRef, useState, useReducer, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
+import cx from 'classnames';
+import ReactTooltip from 'react-tooltip';
+
 /* eslint-disable import/no-webpack-loader-syntax */
 
 import metadataFr from '../../contents/fr/metadata'
@@ -30,8 +33,9 @@ function Home({ match: {
   params: { lang = 'fr' }
 } }) {
   const introRef = useRef(null);
+  const [focusOnViz, setFocusOnViz] = useState(false);
   const currentMetadata = metadata[lang] || metadataFr;
-  const title = currentMetadata.title
+  const title = currentMetadata.title;
   const titleHTML = currentMetadata.titleHTML;
   const subtitle = currentMetadata.subtitle
   const [activeVisualization, setActiveVisualization] = useState(undefined);
@@ -153,16 +157,25 @@ function Home({ match: {
           }}
         >
           <div className="Contents">
-            <section>
+            <section className={cx({'is-focused': !focusOnViz})}>
               {lang === 'fr' ? <ContentsFr /> : <ContentsEn />}
             </section>
-            <aside>
+            <aside className={cx({'is-focused': focusOnViz})}>
               <VisualizationController activeVisualization={activeVisualization} />
             </aside>
           </div>
         </VisualizationControlContext.Provider>
         <HomeSummary lang={lang} summary={summary} />
+        <div className={cx("vis-focus-container", {
+          'is-active': focusOnViz,
+          'is-visible': activeVisualization
+          })}>
+          <button data-for="contents-tooltip" data-effect="solid" data-tip={lang === 'fr' ? 'voir la visualisation associée' : 'see associated visualization'} onClick={() => setFocusOnViz(!focusOnViz)}>
+            <span>{'˃'}</span>
+          </button>
+        </div>
       </main>
+      <ReactTooltip id="contents-tooltip" />
     </div>
   )
 }

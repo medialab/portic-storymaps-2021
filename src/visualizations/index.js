@@ -4,6 +4,7 @@ import Test from './Test';
 import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
 import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
 import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
+import BarChart from '../components/BarChart';
 
 
 import {DatasetsContext} from '../helpers/contexts';
@@ -16,6 +17,7 @@ const VisualizationContainer = ({id, dimensions: inputDimensions, ...props}) => 
     // height: inputDimensions.height - inputDimensions.top / 2
   }
   const datasets = useContext(DatasetsContext);
+
   const relevantDatasets = useMemo(() => {
     const viz = visualizationsList.find(v => v.id === id);
     if (viz) {
@@ -35,6 +37,44 @@ const VisualizationContainer = ({id, dimensions: inputDimensions, ...props}) => 
       return <PrincipalVisualizationPart2 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
     case 'viz-principale-partie-3':
       return <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
+    case 'partie-1-produits-importants-pour-la-rochelle':
+      return (
+      <BarChart
+        data={
+          relevantDatasets[Object.keys(relevantDatasets)[0]]
+          .sort((a, b) => {
+            if (+a.order > +b.order) {
+              return 1;
+            }
+            return -1;
+          })
+          .slice(0, 20)
+        }
+        title="Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française"
+        width={dimensions.width}
+        height={dimensions.height}
+        orientation={'vertical'}
+        layout={'groups'}
+        y={{
+          field: 'product',
+          title: 'produit',
+        }}
+        x={{
+          field: 'value_rel_per_direction',
+          title: 'Valeur en pourcentage',
+          tickSpan: .1,
+          tickFormat: (d, i) => parseInt(d * 100) + '%'
+        }}
+        color={{
+          field: 'entity',
+          title: 'Part des exports pour :'
+        }}
+        margins={{
+          left: 180
+        }}
+        tooltip={d => `Le produit ${d.product} représente ${(d.value_rel_per_direction * 100).toFixed(2)}% des exports pour ${d.entity.includes('France') ? 'la France' : 'la direction des fermes de La Rochelle'}`}
+      />
+    )
     case 'test':
     default:
       return <Test {...props} datasets={relevantDatasets || {}} />;

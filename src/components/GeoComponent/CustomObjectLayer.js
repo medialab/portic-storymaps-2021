@@ -6,6 +6,9 @@ const CustomObjectLayer = ({ layer, projection, width, height }) => {
     return (
         <g className="CustomObjectsLayer">
           {
+            typeof layer.renderObjects === 'function' ?
+                layer.renderObjects({data: layer.data, projection, width, height})
+            :
             layer.data
               // .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
               .map((datum, index) => {

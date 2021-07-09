@@ -11,47 +11,10 @@ import { max } from 'd3-array';
 import './TriangleComponent.scss'
 
 const TriangleComponent = ({
-  dataFilename,
+  data,
   totalWidth = 1200,
   rowHeight = 200
 }) => {
-
-  // raw marker data
-  const [data, setData] = useState(null);
-
-  const [loadingData, setLoadingData] = useState(true);
-
-
-
-  /**
-   * Marker data loading
-   */
-  useEffect(() => {
-    if (dataFilename) {
-      const dataURL = `${process.env.PUBLIC_URL}/data/${dataFilename}`;
-      get(dataURL)
-        .then(({ data: csvString }) => {
-          const newData = csvParse(csvString);
-
-          setData(newData);
-          setLoadingData(false);
-        })
-        .catch((err) => {
-          setLoadingData(false);
-        })
-    }
-
-  }, [dataFilename])
-
-  if (loadingData) {
-    return (
-      <div>Chargement des données ...</div>
-    )
-  } else if (!data) {
-    return (
-      <div>Erreur ...</div>
-    )
-  }
 
   const numberOfColumns = data.length
   const columnWidth = totalWidth / numberOfColumns
@@ -67,7 +30,7 @@ const TriangleComponent = ({
         return +port.nb_pointcalls_out;
       })
     )
-  ]).range([0, columnWidth*4]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
+  ]).range([0, columnWidth * 4]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
 
   const scaleY = scaleLinear().domain([
     0,
@@ -76,69 +39,81 @@ const TriangleComponent = ({
         return +port.mean_tonnage; // parseFloat(port.mean_tonnage);
       })
     )
-  ]).range([0, rowHeight*0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
+  ]).range([0, rowHeight * 0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
   // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
 
 
   return (
-    <div className="TriangleComponent">
 
-      <svg width={totalWidth} height={totalHeight} viewBox={`0 0 ${totalWidth} ${totalHeight}`} style={{ border: '1px solid lightgrey' }}>
-        {
-          data.map((port, index) => {
+    <g className="TriangleComponent" width={totalWidth} height={totalHeight} transform={`translate(0, ${totalHeight * 2.3})`} style={{ border: '1px solid lightgrey' }}>
+      {
+        data.map((port, index) => {
 
-            const triangleWidth = scaleX(+port.nb_pointcalls_out)
-            const triangleHeight = scaleY(+port.mean_tonnage)
+          const triangleWidth = scaleX(+port.nb_pointcalls_out)
+          const triangleHeight = scaleY(+port.mean_tonnage)
 
-            const xIndex = index % numberOfColumns;
-            const yIndex = (index - index % numberOfColumns) / numberOfColumns;
-            const xTransform = xIndex * columnWidth;
-            const yTransform = yIndex * rowHeight;
-            return (
-              <g
-                key={index}
-                // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
-                transform={`translate(${xTransform}, ${yTransform})`}
-              >
-                <rect
-                  x={0}
-                  y={0}
-                  width={columnWidth}
-                  height={rowHeight}
-                />
+          const xIndex = index % numberOfColumns;
+          const yIndex = (index - index % numberOfColumns) / numberOfColumns;
+          const xTransform = xIndex * columnWidth;
+          const yTransform = yIndex * rowHeight;
+          return (
+            <g
+              key={index}
+              // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
+              transform={`translate(${xTransform}, ${yTransform})`}
+            >
+              <rect
+                x={0}
+                y={0}
+                width={columnWidth}
+                height={rowHeight}
+              />
 
-                <path class='horizontalLine'
-                  d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight)/1.2} 
+              {/* <defs>
+                <marker id="label" 
+                  refX="0" refY="0"
+                  markerUnits="strokeWidth"
+                  markerWidth="10" markerHeight="10"
+                  orient="auto">
+                  <g transform={`rotate(-45 0 0)`}>
+                    <text> {port.port} </text>
+                  </g>
+                </marker>
+              </defs> */}
+              <path class='horizontalLine'
+                d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2} 
                         V ${rowHeight / 7}
                         `}
-                />
+              />
 
-                <path
-                  d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight)/1.2} 
+              <path
+                d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight) / 1.2} 
                         H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
-                        L ${columnWidth / 2} ${(rowHeight - triangleHeight)/1.2 + triangleHeight}
+                        L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
                         Z
                         `} // accents chelous : "je commence à faire des interpolations" 
-                />
+              />
 
-                <g transform={`translate(${-columnWidth/1.25}, ${rowHeight/50}) rotate(-45 0 0)`}>
-                  <text
-                    x={parseInt(columnWidth / 2)}
-                    y={parseInt(rowHeight / 3)}
-                    text-anchor="left"
-                  > {port.port} </text>
-                </g>
+              <g transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight*0.025})`}>
 
+                <text 
+                  transformOrigin="bottom left" 
+                  transform="rotate (-45)"
+                  font-size={totalHeight*0.07}
+                  x={0}
+                  y={0}
+                  text-anchor="left"
+                > {port.port} </text>
               </g>
-            )
-          })
 
-        }
+            </g>
+          )
+        })
 
-      </svg>
+      }
 
-    </div>
+    </g>
   )
 
 }

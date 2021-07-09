@@ -4,6 +4,7 @@ import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
 import FlowsLayer from './FlowsLayer';
 import CustomObjectLayer from './CustomObjectLayer';
+import TriangleComponent from '../TriangleComponent/TriangleComponent';
 import Button from './Button';
 import Input from './Input';
 
@@ -103,11 +104,11 @@ const GeoComponent = ({
         projectionConfig = {
           ...projectionConfig,
           rotationDegree: 58,
-          scale: height * 50,
+          scale: height * 32,
           centerX: -1.7475027,
           centerY: 46.573642,
           translationX: width * 0.29,
-          translationY: height * 0.3
+          translationY: height * 0.25
         }
         break;
       case 'France':
@@ -291,8 +292,8 @@ const GeoComponent = ({
             }
           })
         }
-        <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
-        <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} />
+        {/* <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
+        <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} /> */}
       </svg>
     </div>
   )

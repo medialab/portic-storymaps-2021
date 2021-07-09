@@ -7,7 +7,7 @@ import { uniq } from 'lodash';
 
 const ChoroplethLayer = ({ layer, projection }) => {
 
-    let palette = null;
+    let palette ;
 
     if (layer.data.features && layer.color && layer.color.field) {
         // colors palette building
@@ -33,7 +33,7 @@ const ChoroplethLayer = ({ layer, projection }) => {
                             d={geoPath().projection(projection)(d)}
                             className="geopart"
                             style= {{
-                                fill: palette !== null ? palette[d.properties[layer.color.field]] : '#d3d9de'
+                                fill: layer.color !== undefined ? palette[d.properties[layer.color.field]] : 'transparent'
                             }}
                         />
                     )

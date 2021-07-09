@@ -1,3 +1,5 @@
+import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
+
 export function renderLabel (datum, projection, {width}) { // à terme on pourrait mettre un objet 
     // console.log("datum : ",datum)
   
@@ -131,3 +133,12 @@ export function renderLabel (datum, projection, {width}) { // à terme on pourra
       </g>);
   }
   
+
+  export function renderTriangles ({ data, projection, width, height }) {
+    console.log("data : layder.data ", data)
+    return (<TriangleComponent
+              data={data}
+              totalWidth={width} // @TODO : il faudrait réduire cette width 
+              rowHeight={height * 0.3}
+              />);
+  }

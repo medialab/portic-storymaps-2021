@@ -24,8 +24,8 @@ const PointsLayer = ({ layer, projection, width }) => {
             label: layer.label ? datum[layer.label.field] : undefined,
             latitude: +datum.latitude,
             longitude: +datum.longitude,
-            color: datum[layer.color.field],
-            size: isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field]
+            color: datum.color !== undefined ? datum[layer.color.field] : 'default',
+            size: datum.size !== undefined ? isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field] : width / 100
           }
         } else {
           coordsMap[mark].size += (isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field])
@@ -38,29 +38,31 @@ const PointsLayer = ({ layer, projection, width }) => {
       // colors palette building
       let palette;
       const colorValues = uniq(grouped.map(g => g.color));
-      if (layer.color.palette) { // if palette given in parameters we use it, otherwise one palette is generated
-        palette = layer.color.palette;
-      } else {
-        const colors = generatePalette('map', colorValues.length);
-        palette = colorValues.reduce((res, key, index) => ({
-          ...res,
-          [key]: colors[index]
-        }), {});
+      if (layer.color !== undefined) {
+        if (layer.color.palette) { // if palette given in parameters we use it, otherwise one palette is generated
+          palette = layer.color.palette;
+        } else {
+          const colors = generatePalette('map', colorValues.length);
+          palette = colorValues.reduce((res, key, index) => ({
+            ...res,
+            [key]: colors[index]
+          }), {});
+        }
       }
-      
+
       // size building
       const sizeExtent = extent(grouped.map(g => g.size));
-      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 100]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 80]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
-        color: palette[datum.color],
+        color: layer.color !== undefined ? palette[datum.color] : 'grey',
         size: sizeScale(datum.size)
       }))
 
       // console.log("grouped (PointsLayer): ", grouped)
       return grouped;
     }
-  }, [projection, width, layer]) 
+  }, [projection, width, layer])
 
   // console.log("markerData (pointsLayer): ", markerData)
 
@@ -72,7 +74,7 @@ const PointsLayer = ({ layer, projection, width }) => {
           .map((datum, index) => {
             const { latitude, longitude, size, color, label } = datum;
             const [x, y] = projection([+longitude, +latitude]);
-            
+
             return (
               <g className="point-group" transform={`translate(${x},${y})`}>
                 <circle
@@ -80,7 +82,7 @@ const PointsLayer = ({ layer, projection, width }) => {
                   cx={0}
                   cy={0}
                   r={size}
-                  style={{fill: color}}
+                  style={{ fill: color }}
                   className="marker"
                 />
                 {

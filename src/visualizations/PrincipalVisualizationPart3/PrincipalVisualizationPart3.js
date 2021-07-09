@@ -4,7 +4,9 @@ import cx from 'classnames';
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
-import {renderLabel, renderStep3Object} from './renderObjectFunctions'; // pas sur que ça reste à terme
+import { renderLabel, renderStep3Object, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
+import DataProvider from '../../components/DataProvider';
+import colorPalettes from '../../colorPalettes.js';
 
 import './PrincipalVisualizationPart3.scss';
 
@@ -16,23 +18,38 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
       <div className={cx('step', { 'is-visible': step === 1 })}>
         {process.env.NODE_ENV === 'development' ?
           <>
-            <GeoComponent
-              backgroundFilename="cartoweb_france_1789_geojson.geojson"
-              dataFilename="part_3_step1_viz_data.csv"
-              height={height * 0.7} // @TODO à changer quand je combin erais en un seul SVG ou component custom
-              label="port"
-              width={width} // j'aurais besoin de responsive
-              showLabels
-              projectionTemplate = 'rotated Poitou'
-              renderObject={renderLabel}
-            // debug
-            />
-
-            <TriangleComponent
-              dataFilename="part_3_step1_viz_data.csv"
-              totalWidth={width} // @TODO adapter la height
-              rowHeight={height * 0.3}
-            />
+            <DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+              {
+                backgroundData => (
+                  <DataProvider data={'part_3_step1_viz_data.csv'}>
+                    {
+                      visData => (
+                        <GeoComponent
+                          layers={[
+                            {
+                              type: 'choropleth',
+                              data: backgroundData
+                            },
+                            {
+                              type: 'points',
+                              data: visData
+                            },
+                            {
+                              type: 'custom',
+                              data: visData,
+                              renderObjects: renderTriangles
+                            }
+                          ]}
+                          projectionTemplate='rotated Poitou'
+                          height={height}
+                          width={width}
+                        />
+                      )
+                    }
+                  </DataProvider>
+                )
+              }
+            </DataProvider>
           </>
           :
           <img alt="step-3.1" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.1.svg`} />
@@ -76,7 +93,7 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
               markerSize="type_of_object"
               label="name"
               showLabels
-              projectionTemplate = 'Poitou'
+              projectionTemplate='Poitou'
               renderObject={renderStep3Object}
             // debug="true"
             />

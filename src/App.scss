@@ -590,6 +590,8 @@ button.is-active {
   left: 1rem;
   top: 1rem;
   position: absolute;
+  display: flex;
+  align-items: center;
   // overflow: hidden;
   // background: lightgrey;
 }
@@ -1213,7 +1215,7 @@ button.is-active {
     box-sizing: border-box;
     text-align: end;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     overflow: visible;
   }

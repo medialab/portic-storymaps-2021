@@ -22,10 +22,8 @@ const DataProvider = ({
           let newData;
           if (extension === 'csv') {
             newData = csvParse(str);
-          } else if (extension === 'geojson') {
+          } else if (extension === 'geojson' || extension === 'json') {
             newData = str;
-          } else if (extension === 'json') {
-            newData = json(str)
           }
 
           setData(newData);

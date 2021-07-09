@@ -17,17 +17,6 @@ import { renderLabel, renderStep3Object } from '../../visualizations/PrincipalVi
 
 Test en prod
 
-## Test courbes de bézier
-<BezierComponent
-  dataFilename="part_3_step3_viz_customs_offices_data.csv"
-  cx={300}
-  cy={250}
-  r={210}
-  inPercentage={10}
-  start={Math.PI / 2}
-  end={Math.PI * 3 / 2}
-  />
-
 ## Carto en react+d3+SVG
 
 Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3 + du rendu direct en SVG via react.
@@ -52,7 +41,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
                 {
                   type: 'custom',
                   data: visData,
-                  renderObject: {renderStep3Object}
+                  renderObject: renderStep3Object
                 }
               ]}
               projectionTemplate = 'coast from Nantes to Bordeaux'
@@ -64,9 +53,9 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
       </DataProvider>
     )
   }
-</DataProvider>
+</DataProvider> 
 
-### Fond de carte - test flows avec config "France"
+### Fond de carte - test flows avec config "World"
 
 <DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
   {
@@ -92,7 +81,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
                   }
                 }
               ]}
-              projectionTemplate = 'France'
+              projectionTemplate = 'World'
               height={800}
               width={1200}
             />
@@ -217,6 +206,17 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   label="pointcall"
   showLabels
 />
+
+## Test courbes de bézier
+<BezierComponent
+  dataFilename="part_3_step3_viz_customs_offices_data.csv"
+  cx={300}
+  cy={250}
+  r={210}
+  inPercentage={10}
+  start={Math.PI / 2}
+  end={Math.PI * 3 / 2}
+  />
 
 <!-- # Tests composant LineChart
 

@@ -265,6 +265,7 @@ const GeoComponent = ({
                   layer={layer}
                   projection={projection}
                   width={width}
+                  height={height}
                 />
 
               case 'flows':
@@ -273,6 +274,7 @@ const GeoComponent = ({
                   layer={layer}
                   projection={projection}
                   width={width}
+                  height={height}
                 />
 
               case 'custom':
@@ -281,6 +283,7 @@ const GeoComponent = ({
                   layer={layer}
                   projection={projection}
                   width={width}
+                  height={height}
                 />
 
               default:

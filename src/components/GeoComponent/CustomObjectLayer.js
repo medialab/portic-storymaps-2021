@@ -1,7 +1,7 @@
 
 
 
-const CustomObjectLayer = ({ layer, projection, width}) => {
+const CustomObjectLayer = ({ layer, projection, width, height }) => {
 
     return (
         <g className="CustomObjectsLayer">
@@ -11,8 +11,7 @@ const CustomObjectLayer = ({ layer, projection, width}) => {
               .map((datum, index) => {
                 // const { latitude, longitude, size, color, label } = datum;
                 // const [x, y] = projection([+longitude, +latitude]);
-                console.log("layer.renderObject : ", layer.renderObject)
-                // return layer.renderObject(datum, projection, { width })
+                return layer.renderObject({ datum, projection, width, height })
               })
           }
         </g>

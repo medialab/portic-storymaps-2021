@@ -4,7 +4,7 @@ import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
 
 /*
-Principe : path entre deux point géographiques, dont le stroke peut varier, et on peut avoir la direction avec une fleche (marker-end sur path : https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/marker-end)
+Principe : path entre deux point géographiques, dont le stroke peut varier, et on peut avoir la direction avec une fleche 
 
 format des données attendu (json) : 
 
@@ -18,71 +18,76 @@ Exemple :
 "longitude_dest": -1.15, 
 "nb_flows": 22, 
 "tonnages_cumulés": 730}
+
+@TODO : régler le fait que la pointe des flèches ne soit pas à l'arrivée (en l'état c'est la base du triangle qui est sur les coords d'arrivée) => se règle en reculant le triangle :   viewBox="-10 0 10 10" &  <path d="M -10 0 L 0 5 L -10 10 Z" fill="black" /> (à ce moment il fut rétrécir la longueur du path qui fait la barre de la flèche)
+@TODO : mettre un point au départ de mes flows ? (pas adapté quand on a des points de départ et d'arrivée qui se recoupent)
 */
 
-const FlowsLayer = ({ layer, projection, width }) => {
+const FlowsLayer = ({ layer, projection, width, height }) => {
 
-  console.log("heyyyyyyy 1")
   /**
     * Data aggregation for viz (note : could be personalized if we visualize other things than points)
   */
   const markerData = useMemo(() => {
     if (layer.data) {
 
-      console.log("heyyyyyyy 2")
-      console.log("data : ",layer.data)
+      console.log("data : ", layer.data)
       // size building
-      // const strokeWidthScale = scaleLinear().domain([
-      //   0,
-      //   max(
-      //     layer.data.map((flow) => {
-      //       // return +flow[tonnages_cumulés];
-      //       return +flow[layer.size.field];
-      //     })
-      //   )
-      // ]).range([0, width / 6]);
+      const strokeWidthScale = scaleLinear().domain([
+        0,
+        max(
+          layer.data.map((flow) => {
+            // return +flow[tonnages_cumulés];
+            console.log("flow[layer.size.field] : ", flow[layer.size.field])
+            return +flow[layer.size.field];
+          })
+        )
+      ]).range([0, width*height / 100000]);
 
-      // let grouped = layer.data.map(flow => ({ // je ne sais pas si grouped reste le plus adapté
-      //   ...flow,
-      //   color: palette[datum.color],
-      //   size: strokeWidthScale(flow) === undefined ? 1 : strokeWidthScale(flow) // pour l'instant je mets en place cette ternaire care ùon strokeWidthScale ne fonctionne pas (renvoie toujours undefined)
-      // }))
+      const arrowSizeScale = strokeWidthScale.copy().range([0, width*height / 100000]);
 
-      console.log("grouped (FlowsLayer): ")
-      // return grouped;
+      let grouped = layer.data.map(flow => ({ // je ne sais pas si grouped reste le plus adapté
+        ...flow,
+        // color: palette[datum.color],
+        strokeWidth: strokeWidthScale(+flow[layer.size.field]),
+        arrowSize: arrowSizeScale(layer.data.strokeWidth) 
+      }))
+      console.log("grouped : ", grouped)
+      return grouped;
     }
   }, [projection, width, layer])
 
   console.log("markerData (FlowsLayer) : ", markerData)
 
   return (
-    <g className="FlowsLayer">
-      {/* {
+    <g className="FlowsLayer" >
+      {
         markerData
-          .filter(({ latitude_dep, longitude_dep, latitude_dest, longitude_dep }) => latitude_dep && longitude_dep && latitude_dest && longitude_dest && !isNaN(latitude_dep) && !isNaN(longitude_dep) && !isNaN(latitude_dest) && !isNaN(longitude_dest))
+          .filter(({ latitude_dep, longitude_dep, latitude_dest, longitude_dest }) => latitude_dep && longitude_dep && latitude_dest && longitude_dest && !isNaN(latitude_dep) && !isNaN(longitude_dep) && !isNaN(latitude_dest) && !isNaN(longitude_dest))
           .map((datum, index) => {
-            const { latitude_dep, longitude_dep, latitude_dep, longitude_dep, size } = datum;
+            const { latitude_dep, longitude_dep, latitude_dest, longitude_dest, strokeWidth, arrowSize } = datum;
             const [xDep, yDep] = projection([+longitude_dep, +latitude_dep]);
             const [xDest, yDest] = projection([+longitude_dest, +latitude_dest]);
+            // console.log("[xDep, yDep] / [xDest, yDest] : ", [xDep, yDep], " / ", [xDest, yDest]);
 
             return (
-              <g className="flow-group" transform={`translate(${xDep},${yDep})`}>
+              <g className="flow-group">
                 <defs>
-                  <marker id={index} viewBox="0 0 10 10"
+                  <marker id="triangle" viewBox="0 0 10 10"
                     refX="1" refY="5"
                     markerUnits="strokeWidth"
-                    markerWidth="10" markerHeight="10"
+                    markerWidth={arrowSize} markerHeight={arrowSize}
                     orient="auto">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#f00" />
+                    <path d="M 0 0 L 10 5 L 0 10 Z" fill="black" />
                   </marker>
                 </defs>
-                <polyline fill="none" stroke="black" stroke-width={size} className="marker"
-                  points="20,100 40,60 70,80 100,20" marker-end="url(#triangle)" />
+                <path d={`M ${xDep} ${yDep} L ${xDest} ${yDest}`} stroke="black" strokeWidth={strokeWidth} marker-end="url(#triangle)" />
+                {/* <line x1={xDep} y1={yDep} x2={xDest} y2={yDest} stroke="black" stroke-width={size} marker-end="url(#triangle)" /> */}
               </g>
 
             );
           })
-      } */}
+      }
     </g>
   );
 }

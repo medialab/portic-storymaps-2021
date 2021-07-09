@@ -7,15 +7,15 @@ import { uniq } from 'lodash';
 
 const ChoroplethLayer = ({ layer, projection }) => {
 
-    let palette;
+    let palette = null;
 
     if (layer.data.features && layer.color && layer.color.field) {
         // colors palette building
         const colorValues = uniq(layer.data.features.map(datum => datum.properties[layer.color.field]));
         if (layer.color.palette) { // if palette given in parameters we use it, otherwise one palette is generated
             palette = layer.color.palette;
-        } else {
-            const colors = generatePalette('map', layer.data.properties.length);
+        } else if (layer.color.generatedPalette) {
+            const colors = generatePalette('map', layer.data.features.length);
             palette = colorValues.reduce((res, key, index) => ({
                 ...res,
                 [key]: colors[index]
@@ -33,7 +33,7 @@ const ChoroplethLayer = ({ layer, projection }) => {
                             d={geoPath().projection(projection)(d)}
                             className="geopart"
                             style= {{
-                                fill: palette[d.properties[layer.color.field]]
+                                fill: palette !== null ? palette[d.properties[layer.color.field]] : '#d3d9de'
                             }}
                         />
                     )

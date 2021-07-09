@@ -10,15 +10,15 @@ export function renderLabel (datum, projection, {width}) { // à terme on pourra
   }
 
 
-  export function renderStep3Object (datum, projection, { width }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
+  export function renderStep3Object ({ datum, projection, width, height }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
   
     const [x, y] = projection([+datum.longitude, +datum.latitude])
     
     let sizeCoef = width * 0.05;
-    const totalTonnage = parseFloat(datum.else.cumulated_tonnage_out_region) + parseFloat(datum.else.cumulated_tonnage_in_region)
+    const totalTonnage = parseFloat(datum.cumulated_tonnage_out_region) + parseFloat(datum.cumulated_tonnage_in_region)
     // console.log("tonnage total : ",totalTonnage)
   
-    if (datum.else.type_of_object === "port") {
+    if (datum.type_of_object === "port") {
       // définition des coefficients de taille des triangles en 3 classes distinctes (pour l'instant la définition des classes est expérimentale)
   
       // se gérerait bien avec un switch
@@ -32,16 +32,16 @@ export function renderLabel (datum, projection, {width}) { // à terme on pourra
       }
     }
   
-    const leftTriangleHeight = parseFloat(datum.else.cumulated_tonnage_out_region) / totalTonnage * sizeCoef;
-    const rightTriangleHeight = parseFloat(datum.else.cumulated_tonnage_in_region) / totalTonnage * sizeCoef; // je pourrais déduire cette donnée de la taille du triangle gauche
+    const leftTriangleHeight = parseFloat(datum.cumulated_tonnage_out_region) / totalTonnage * sizeCoef;
+    const rightTriangleHeight = parseFloat(datum.cumulated_tonnage_in_region) / totalTonnage * sizeCoef; // je pourrais déduire cette donnée de la taille du triangle gauche
   
     let leftPath = null
     let rightPath = null
   
-    if (datum.else.type_of_object === "customs_office") {
+    if (datum.type_of_object === "customs_office") {
   
-      const totalValue = parseFloat(datum.else.cumulated_exports_value_from_region) + parseFloat(datum.else.cumulated_exports_value_from_ext)
-      const inPercentage = parseFloat(datum.else.cumulated_exports_value_from_region) / totalValue * 100
+      const totalValue = parseFloat(datum.cumulated_exports_value_from_region) + parseFloat(datum.cumulated_exports_value_from_ext)
+      const inPercentage = parseFloat(datum.cumulated_exports_value_from_region) / totalValue * 100
       // console.log("inPercentage ", datum.label," : ", inPercentage)
   
       const partialCircle = require('svg-partial-circle')

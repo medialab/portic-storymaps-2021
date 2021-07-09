@@ -109,6 +109,42 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           tooltip={d => `En ${d.year}, la direction des fermes de la Rochelle a ${d.type === 'import' ? 'importé' : 'exporté'} ${(+d.portion * 100).toFixed(2)}% des ${d.type === 'import' ? 'imports' : 'exports'} français totaux`}
         />
       )
+    case 'partie-1-pays-port-d-attache':
+      return (
+        <BarChart
+          data={
+            relevantDatasets[Object.keys(relevantDatasets)[0]]
+          }
+          title="Pays d'attache des navires étrangers partant de la région en 1789"
+          width={dimensions.width}
+          height={dimensions.height}
+          orientation={'vertical'}
+          y={{
+            field: 'country',
+            title: 'Pays du port d\'attache',
+            sort: {
+              field: 'nb_outs',
+              autoSort: true,
+              ascending: false,
+              type: 'number'
+            }
+          }}
+          x={{
+            field: 'nb_outs',
+            title: 'Nombre de départs',
+            // tickSpan: 100,
+            tickFormat: (d, i) => `${d} départs`
+          }}
+          // color={{
+          //   field: 'entity',
+          //   title: 'Part des exports pour :'
+          // }}
+          // margins={{
+          //   left: 140
+          // }}
+          tooltip={d => `En 1789, ${d.nb_outs} bateaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
+        />
+      )
     case 'test':
     default:
       return <Test {...props} datasets={relevantDatasets || {}} />;

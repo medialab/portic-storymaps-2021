@@ -240,6 +240,26 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
       })
   write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
+def compute_foreign_homeports (pointcalls):
+  countries = {}
+  for pointcall in pointcalls:
+    if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge"] and pointcall["homeport_state_1789_fr"] != "France":
+      country = pointcall["homeport_state_1789_fr"]
+      tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+      if country in countries :
+        countries[country]["nb_outs"] += 1;
+        countries[country]["tonnage"] += tonnage;
+      else:
+        countries[country] = {
+          "nb_outs" : 1,
+          "tonnage": tonnage
+        }
+  output = [{"country": country, **values} for country,values in countries.items() if country != ""]
+  write_csv("origines_bateaux_etrangers_partant_de_la_region.csv", output)
+
+"""
+  Data reading and building functions calls
+"""
 with open('../data/toflit18_all_flows.csv', 'r') as f:
     toflit18_flows = csv.DictReader(f)
     # fill relevant flows
@@ -259,3 +279,12 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
 
     compute_top_shared_toflit18_products(flows_1789_by_region)
     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
+
+with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
+  pointcalls = csv.DictReader(f)
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes"]
+  out_from_region = []
+  for pointcall in pointcalls:
+    if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
+      out_from_region.append(pointcall)
+  compute_foreign_homeports(out_from_region)

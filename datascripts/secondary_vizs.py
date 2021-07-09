@@ -122,8 +122,7 @@ def compute_top_shared_toflit18_products(flows):
     product_exports_values_per_direction_1789_without_ports_francs = aggregate_exports_by_product_removing_ports_francs(
         flows)
 
-    print("product_exports_values_per_direction_1789_without_ports_francs :",
-          product_exports_values_per_direction_1789_without_ports_francs)
+    # print("product_exports_values_per_direction_1789_without_ports_francs :", product_exports_values_per_direction_1789_without_ports_francs)
 
     for product, values in product_exports_values_per_direction_1789.items():
         total_exports_la_rochelle_1789 += values['exports_la_rochelle']
@@ -192,17 +191,71 @@ def compute_top_shared_toflit18_products(flows):
 
         i += 1
     write_csv("comparison_products_exports_part_la_rochelle.csv", final_vega_data_1789_without_ports_francs)
-    print("final_vega_data_1789_without_ports_francs",
-          final_vega_data_1789_without_ports_francs)
 
+def compute_global_la_rochelle_evolution (flows_national, flows_regional):
+  years_list = [y + 1720 for y in range(1789 - 1720 + 1)]
+  flows_national = [f for f in flows_national if int(f["year"].split('.')[0]) >= 1720 and int(f["year"].split('.')[0]) <= 1789]
+  flows_regional = [f for f in flows_regional if int(f["year"].split('.')[0]) >= 1720 and int(f["year"].split('.')[0]) <= 1789]
+  years = {}
+  for y in years_list:
+      years[y] = {
+          "year": y,
+          "france_total": 0,
+          "france_export": 0,
+          "france_import": 0,
+          
+          "la_rochelle_total": 0,
+          "la_rochelle_export": 0,
+          "la_rochelle_import": 0,
+      }
+  
+  for f in flows_national:
+      year = int(str(f['year'].split('.')[0]))
+      value = float(f['value']) if f['value'] != '' else 0
+      itype = f['export_import'] if f['export_import'] != 'import' else 'Imports'
+
+      detailed_field = 'france_import' if itype == 'Imports' else 'france_export'
+      years[year]['france_total'] = years[year]['france_total'] + value        
+      years[year][detailed_field] = years[year][detailed_field] + value      
+  for f in flows_regional:
+      year = int(str(f['year'].split('.')[0]))
+      value = float(f['value']) if f['value'] != '' else 0
+      itype = f['export_import'] if f['export_import'] != 'import' else 'Imports'
+      from_larochelle = f['customs_region'] == 'La Rochelle'
+      if from_larochelle:
+          detailed_field = 'la_rochelle_import' if itype == 'Imports' else 'la_rochelle_export'
+          years[year]['la_rochelle_total'] += value     
+          years[year][detailed_field] += value
+  part_by_year = []
+  for year, values in years.items():
+      part_by_year.append({
+          "year": year,
+          "type": "import",
+          "portion": values['la_rochelle_import'] / values['france_total'] if  values['france_total'] > 0 else 0
+      })
+      part_by_year.append({
+          "year": year,
+          "type": "export",
+          "portion": values['la_rochelle_export'] / values['france_total'] if  values['france_total'] > 0 else 0
+      })
+  write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
 with open('../data/toflit18_all_flows.csv', 'r') as f:
     toflit18_flows = csv.DictReader(f)
     # fill relevant flows
-    compute_top_shared_toflit18_products_flows = []
+    flows_1789_by_region = []
+    flows_1789_national = []
+    flows_national_all_years = []
+    flows_regional_all_years = []
     for flow in toflit18_flows:
-        if flow["year"] == "1789" and flow["best_guess_region_prodxpart"] == "1":
-            compute_top_shared_toflit18_products_flows.append(flow)
+      # filtering out ports francs
+        if flow["year"] == "1789":
+          if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+            flows_1789_by_region.append(flow)
+        if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+            flows_regional_all_years.append(flow)
+        if flow["best_guess_national_partner"] == "1":
+          flows_national_all_years.append(flow)
 
-    compute_top_shared_toflit18_products(
-        compute_top_shared_toflit18_products_flows)
+    compute_top_shared_toflit18_products(flows_1789_by_region)
+    compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)

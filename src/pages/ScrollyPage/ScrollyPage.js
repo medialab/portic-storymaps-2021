@@ -1,6 +1,8 @@
 import {useState, useReducer, useEffect, useRef} from 'react';
 import {Helmet} from "react-helmet";
 import {useScrollYPosition } from 'react-use-scroll-position';
+import cx from 'classnames';
+import ReactTooltip from 'react-tooltip';
 
 import VisualizationController from '../../components/VisualizationController';
 import {VisualizationControlContext} from '../../helpers/contexts';
@@ -16,12 +18,19 @@ const ScrollyPage = ({
   lang,
 }) => {
   const sectionRef = useRef(null);
+  const [focusOnViz, setFocusOnViz] = useState(false);
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
     {}
   )
   const scrollY = useScrollYPosition();
+
+  useEffect(() => {
+    if (!activeVisualization && focusOnViz) {
+      setFocusOnViz(false);
+    }
+  }, [activeVisualization])
 
   const updateCurrentVisualization = () => {
     // const bodyPos = document.body.getBoundingClientRect();
@@ -119,12 +128,21 @@ const ScrollyPage = ({
         <title>{buildPageTitle(title, lang)}</title>
       </Helmet>
       <div className="ScrollyPage">
-          <section ref={sectionRef}>
+          <section ref={sectionRef} className={cx({'is-focused': !focusOnViz})}>
             <ContentSync />
           </section>
-          <aside>
+          <aside className={cx({'is-focused': focusOnViz})}>
             <VisualizationController activeVisualization={activeVisualization} />
           </aside>
+          <div className={cx("vis-focus-container", {
+          'is-active': focusOnViz,
+          'is-visible': activeVisualization
+          })}>
+          <button data-for="contents-tooltip" data-effect="solid" data-tip={lang === 'fr' ? 'voir la visualisation associée' : 'see associated visualization'} onClick={() => setFocusOnViz(!focusOnViz)}>
+            <span>{'˃'}</span>
+          </button>
+        </div>
+          <ReactTooltip id="contents-tooltip" />
       </div>
     </VisualizationControlContext.Provider>
   )

@@ -39,6 +39,7 @@
   }
 
   .node-level-label {
+    cursor: pointer;
     &.is-highlighted {
       font-weight: 900;
     }
@@ -49,6 +50,7 @@
     stroke-width: 0;
     fill: transparent;
     stroke: black;
+    cursor: pointer;
     &.is-highlighted {
       fill: red;
     }
@@ -60,6 +62,7 @@
       fill: lightgrey;
       stroke: none;
       opacity: .5;
+      cursor: pointer;
     }
     &.is-highlighted {
       polygon,

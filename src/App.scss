@@ -1205,7 +1205,17 @@ button.is-active {
 
 .BarChart {
   .vertical-bar-label {
-    text-anchor: end;
+    // text-anchor: end;
+    font-family: $font-family-1;
+    text-align: right;
+    font-size: .7rem;
+    padding: $small-gutter;
+    box-sizing: border-box;
+    text-align: end;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    overflow: visible;
   }
 }
 .ColorLegend {

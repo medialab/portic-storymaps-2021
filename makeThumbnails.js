@@ -17,6 +17,7 @@ const Screenshot = async () => {
     height: 800,
     deviceScaleFactor: 1,
   });
+  await page.waitForTimeout(1000);
 
   for (const i in langs) {
     const lang = langs[i];
@@ -29,12 +30,22 @@ const Screenshot = async () => {
       console.log('saving it to', path);
       await page.goto(url, {
         waitUntil: 'networkidle2',
-      });  
-      await page.waitForTimeout(3000);
+      });
+      if (i === 0 && j === 0) {
+        await page.waitForTimeout(4000);
+      }
+      await page.waitForTimeout(4000);
       await page.screenshot({ 
         path,
-        fullPage: false
+        fullPage: true
       });
+      await page.waitForTimeout(1000);
+      // doing it twice
+      await page.screenshot({ 
+        path,
+        fullPage: true
+      });
+      await page.waitForTimeout(1000);
     }
     
   }

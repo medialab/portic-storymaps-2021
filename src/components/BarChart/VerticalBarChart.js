@@ -160,7 +160,6 @@ const VerticalBarChart = ({
     :
     // group -> max = abs max
     [0, max(data.map(d => +d[x.field]))];
-  console.log('domain', xDomain)
 
   let bandHeight = layout === 'stack' ? rowHeight / 2 : (rowHeight / colorModalities.length) * .5;
   const xScale = scaleLinear().domain(xDomain).range([0, width - margins.left - margins.right]).nice();

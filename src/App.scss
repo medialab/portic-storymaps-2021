@@ -1076,17 +1076,26 @@ button.is-active {
       }
       .visualization-wrapper {
         pointer-events: all;
-        background: white;
+        background: transparent;
         flex: 2;
         max-width: 70vw;
         position: relative;
+        min-height: 50vh;
         box-sizing: border-box;
+        // padding: $medium-gutter;
+        // padding-bottom: $medium-gutter * 5;
+        padding: 0;
         .VisualizationController {
-          padding: $medium-gutter;
-          padding-bottom: $medium-gutter * 4;
+          // padding: $small-gutter;
+          padding-bottom: $medium-gutter * 5;
+          padding-top: $medium-gutter;
+          padding-right: $medium-gutter;
+          box-sizing: border-box;
           position: relative;
           width: unset;
           height: unset;
+          max-width: 100%;
+          // min-height: 50vh;
           left: 0;
           top: 0;
           background: white;
@@ -1222,7 +1231,7 @@ button.is-active {
 }
 .ColorLegend {
   font-family: $font-family-1;
-  background: $color-background;
+  background: inherit;
   padding: $small-gutter;
   padding-top: 0;
   box-sizing: border-box;

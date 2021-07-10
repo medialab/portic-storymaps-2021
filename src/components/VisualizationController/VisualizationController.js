@@ -11,6 +11,7 @@ const VisualizationController = ({
 }) => {
   const [dimensions, setDimensions] = useState({});
   const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId']);
+  console.log(dimensions.height);
   return (
     <Measure 
       bounds

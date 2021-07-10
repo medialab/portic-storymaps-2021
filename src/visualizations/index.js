@@ -52,7 +52,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }
           title="Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française"
           width={dimensions.width}
-          height={dimensions.height}
+          height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
           orientation={'vertical'}
           layout={'groups'}
           y={{
@@ -83,7 +83,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }
           title="Évolution globale de la part des échanges de La Rochelle par rapport à l'ensemble de la France"
           width={dimensions.width}
-          height={dimensions.height * .5}
+          height={props.atlasMode ? window.innerHeight / 2 : dimensions.height * .5}
           orientation={'horizontal'}
           layout={'stack'}
           y={{
@@ -117,7 +117,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }
           title="Pays d'attache des navires étrangers partant de la région en 1789"
           width={dimensions.width}
-          height={dimensions.height}
+          height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
           y={{
             field: 'country',
@@ -139,9 +139,9 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           //   field: 'entity',
           //   title: 'Part des exports pour :'
           // }}
-          // margins={{
-          //   left: 140
-          // }}
+          margins={{
+            right: 60
+          }}
           tooltip={d => `En 1789, ${d.nb_outs} bateaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
         />
       )

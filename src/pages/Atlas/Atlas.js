@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import cx from 'classnames';
@@ -23,6 +23,12 @@ function Atlas({
     }
   }
 }) {
+  /**
+   * Scroll to top on mount
+   */
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   const history = useHistory();
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (

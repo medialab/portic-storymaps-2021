@@ -990,7 +990,22 @@ button.is-active {
         min-height: 15rem;
         padding: 0;
         margin: 0;
-        background: $color-accent-background;
+        background: white;
+        img {
+          max-width: 100%;
+          padding: $small-gutter;
+          box-sizing: border-box;
+          opacity: .5;
+          transition: .5s ease all;
+          // background: $color-accent-background;
+          filter: grayscale(80%)
+        }
+        &:hover {
+          img {
+            opacity: 1;
+            filter: none;
+          }
+        }
       }
       .visualization-title {
         margin: 0;
@@ -1319,5 +1334,25 @@ button.is-active {
       color: white;
       border: 1px solid white;
     }
+  }
+}
+
+
+.StandaloneVisualization {
+  position: fixed;
+  background: white;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+  .VisualizationController {
+    background: white;
+    position: fixed;
+    background: white;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+    overflow: auto;
   }
 }

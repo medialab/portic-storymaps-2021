@@ -23,6 +23,7 @@ import visualizationsList from './visualizationsList';
 /* import pages */
 import Home from './pages/Home';
 import Atlas from "./pages/Atlas";
+import StandaloneVisualization from "./pages/StandaloneVisualization";
 
 /* import components */
 import HeaderNav from './components/HeaderNav';
@@ -56,7 +57,6 @@ function App() {
     const datasetsNames = uniq(visualizationsList.filter(d => d.datasets).reduce((res, d) => [...res, ...d.datasets.split(',').map(d => d.trim())], []));
     datasetsNames.reduce((cur, datasetName, datasetIndex) => {
       return cur.then((res) => new Promise((resolve, reject) => {
-
         const url = datasetName ? `${process.env.PUBLIC_URL}/data/${datasetName}` : undefined;
         if (url) {
           axios.get(url, {
@@ -153,6 +153,19 @@ function App() {
                     <Route key={index} path={route} exact>
                       {renderRoute({ Content, ThatComponent, title, ContentSync })}
                     </Route>
+                  )
+                })
+              })
+            }
+            {
+              LANGUAGES.map(lang => {
+                return visualizationsList
+                .map(({
+                  id
+                }, index) => {
+                  const route = `/${lang}/visualization/${id}`;
+                  return (
+                    <Route key={index} path={route} exact component={() => <StandaloneVisualization {...{id, lang}} />} />
                   )
                 })
               })

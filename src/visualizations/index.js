@@ -30,6 +30,10 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
       }
     }
   }, [id, datasets]);
+  const hasData = Object.keys(relevantDatasets || {}).length && !Object.entries(relevantDatasets).find(([id, payload]) => !payload);
+  if (!hasData) {
+    return null;
+  }
   switch (id) {
     case 'viz-principale-partie-1':
       return <PrincipalVisualizationPart1 {...props} datasets={relevantDatasets || {}} {...dimensions} />;

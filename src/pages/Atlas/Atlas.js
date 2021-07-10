@@ -53,13 +53,10 @@ function Atlas({
                   key={visualizationIndex}
                 >
                   <figure className="thumbnail-container">
-                    {visualization.thumbnail ?
                       <img
-                        src={`${process.env.PUBLIC_URL}/images/thumbnails/${visualization.thumbnail}}`}
+                        src={`${process.env.PUBLIC_URL}/thumbnails/${lang}/${visualization.id}.png`}
                         alt={visualization[`titre_${lang}`]}
                       />
-                      : null
-                    }
                   </figure>
                   <h5 className="visualization-title">
                     {visualization[`titre_${lang}`]}

@@ -149,6 +149,77 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           tooltip={d => `En 1789, ${d.nb_outs} bateaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
         />
       )
+      // case 'partie-1-produits-importants-pour-la-rochelle':
+      //   return (
+      //     <BarChart
+      //       data={
+      //         relevantDatasets[Object.keys(relevantDatasets)[0]]
+      //           .sort((a, b) => {
+      //             if (+a.order > +b.order) {
+      //               return 1;
+      //             }
+      //             return -1;
+      //           })
+      //           .slice(0, 20)
+      //       }
+      //       title="Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française"
+      //       width={dimensions.width}
+      //       height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+      //       orientation={'vertical'}
+      //       layout={'groups'}
+      //       y={{
+      //         field: 'product',
+      //         title: 'produit',
+      //       }}
+      //       x={{
+      //         field: 'value_rel_per_direction',
+      //         title: 'Valeur en pourcentage',
+      //         tickSpan: .1,
+      //         tickFormat: (d, i) => parseInt(d * 100) + '%'
+      //       }}
+      //       color={{
+      //         field: 'entity',
+      //         title: 'Part des exports pour :'
+      //       }}
+      //       margins={{
+      //         left: 140
+      //       }}
+      //       tooltip={d => `Le produit ${d.product} représente ${(d.value_rel_per_direction * 100).toFixed(2)}% des exports pour ${d.entity.includes('France') ? 'la France' : 'la direction des fermes de La Rochelle'}`}
+      //     />
+      //   )
+      case 'partie-3-comparaison-exports-coloniaux':
+        return (
+          <BarChart
+            data={
+              relevantDatasets[Object.keys(relevantDatasets)[0]]
+            }
+            title="Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes"
+            width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight * .8 : dimensions.height * .5}
+            orientation={'vertical'}
+            layout={'grouped'}
+            y={{
+              field: 'customs_office',
+              title: 'Bureau des fermes',
+              // tickFormat: d => parseInt(d * 100) + '%'
+            }}
+            x={{
+              field: 'value',
+              title: 'valeur en livres tournoi',
+              tickSpan: 1000000,
+              domain: [0, 6000000]
+            }}
+            color={{
+              field: 'type',
+              title: 'Type de produit'
+            }}
+            margins={{
+              left: 140,
+              right: 50,
+            }}
+            tooltip={d => `En 1789, le bureau des fermes de ${d.customs_office} a exporté à l'étrange ${d.value} livres tournois de produits de type ${d.type}`}
+          />
+        )
     case 'test':
     default:
       return <Test {...props} datasets={relevantDatasets || {}} />;

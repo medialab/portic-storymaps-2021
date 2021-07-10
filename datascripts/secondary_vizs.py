@@ -18,7 +18,7 @@ def write_csv(filename, data):
 Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française
 """
 def compute_top_shared_toflit18_products(flows):
-
+    print('compute_top_shared_toflit18_products')
     total_exports_per_direction = {}
     total_imports_per_direction = {}
 
@@ -193,6 +193,7 @@ def compute_top_shared_toflit18_products(flows):
     write_csv("comparison_products_exports_part_la_rochelle.csv", final_vega_data_1789_without_ports_francs)
 
 def compute_global_la_rochelle_evolution (flows_national, flows_regional):
+  print('compute_global_la_rochelle_evolution')
   years_list = [y + 1720 for y in range(1789 - 1720 + 1)]
   flows_national = [f for f in flows_national if int(f["year"].split('.')[0]) >= 1720 and int(f["year"].split('.')[0]) <= 1789]
   flows_regional = [f for f in flows_regional if int(f["year"].split('.')[0]) >= 1720 and int(f["year"].split('.')[0]) <= 1789]
@@ -241,9 +242,10 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
   write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
 def compute_foreign_homeports (pointcalls):
+  print('compute_foreign_homeports')
   countries = {}
   for pointcall in pointcalls:
-    if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge"] and pointcall["homeport_state_1789_fr"] != "France":
+    if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
       country = pointcall["homeport_state_1789_fr"]
       tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
       if country in countries :
@@ -256,6 +258,54 @@ def compute_foreign_homeports (pointcalls):
         }
   output = [{"country": country, **values} for country,values in countries.items() if country != ""]
   write_csv("origines_bateaux_etrangers_partant_de_la_region.csv", output)
+
+def compute_exports_colonial_products(flows):
+  print('compute_exports_colonial_products')
+
+  output = []
+  origins = set()
+  pasa_provinces = ['Aunis', 'Poitou', 'Saintonge', 'Angoumois']
+  customs_offices = {}
+
+  for f in [f for f in flows if f["customs_region"] == "La Rochelle"] :
+    product_viz = ''
+    product_viz_alt = ''
+    product = f['product_revolutionempire']
+    customs_office = f['customs_office'];
+    if (customs_office not in customs_offices):
+      customs_offices[customs_office] = {
+        "autres produits": 0,
+        "produits coloniaux": 0,
+        "produits de la région PASA" : 0
+      }
+
+    value = str(f['value']).split('.')[0] if str(f['value']).split('.')[0] != '' else 0
+    # f['value'] = float(value)
+    flow_type = f['export_import']
+    local_origin = True if f['origin_province'] in pasa_provinces else False
+    
+    if product in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']:
+        product_viz = "produits coloniaux"
+        product_viz_alt = "produits coloniaux"
+    else:
+        product_viz = "autres produits"
+        if local_origin == True:
+            product_viz_alt = "produits de la région PASA"
+        else:
+            product_viz_alt = "autres produits"
+    if f["export_import"] == "Exports":
+      customs_offices[customs_office][product_viz_alt] += float(value)
+
+  for customs_office, products in customs_offices.items():
+    for product, value in products.items():
+      output.append({
+        "value": value,
+        "customs_office": customs_office,
+        "type": product
+      })
+  output = sorted(output, key=lambda v : -v["value"])
+  write_csv("comparaison_exports_coloniaux.csv", output)
+
 
 """
   Data reading and building functions calls
@@ -279,6 +329,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
 
     compute_top_shared_toflit18_products(flows_1789_by_region)
     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
+    compute_exports_colonial_products(flows_1789_by_region)
 
 with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   pointcalls = csv.DictReader(f)

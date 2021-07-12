@@ -246,7 +246,7 @@ const VerticalBarChart = ({
                     let stackDisplaceX = margins.left;
                     return (
                       <g key={groupIndex} transform={`translate(0, ${margins.top + rowHeight * groupIndex})`}>
-                        <foreignObject x={0} y={layout === 'stack' ? bandHeight / 4 : bandHeight/2 + bandHeight * (items.length / 2)} width={margins.left} height={rowHeight}>
+                        <foreignObject x={0} y={layout === 'stack' ? bandHeight / 4 : bandHeight/2 /* + bandHeight * (items.length / 2)*/} width={margins.left} height={rowHeight}>
                           <div className="vertical-bar-label">
                           <div>{typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}</div>
                           </div>

@@ -1,5 +1,6 @@
 import React, {useCallback, useRef, useState, useEffect, useMemo} from 'react';
 import gexf from 'graphology-gexf';
+import forceAtlas2 from 'graphology-layout-forceatlas2';
 import Graph from 'graphology';
 import {WebGLRenderer as Renderer} from 'sigma';
 import {scaleLinear} from 'd3-scale';
@@ -12,7 +13,7 @@ import {generatePalette, usePrevious} from '../../helpers/misc';
 
 import GraphControls from './GraphControls';
 
-import './GraphContainer.css';
+import './GraphContainer.scss';
 
 // Defaults
 const CELL_HEIGHT_RANGE = [200, 10];
@@ -45,6 +46,7 @@ function GraphContainer({
   onCameraUpdate,
   cameraPosition,
   updateTimestamp,
+  ratio,
 }) {
   let sizes = useMemo(() => {
     const res = [];
@@ -186,6 +188,9 @@ function GraphContainer({
         const newRenderer = new Renderer(graph, node, {nodeReducer, edgeReducer});
         setRenderer(newRenderer);
         const camera = newRenderer.getCamera();
+        console.log('state', camera.getState());
+        camera.setState({...camera.getState(), ratio: ratio || 1});
+        camera.disable();
         onCameraUpdate(camera.getState())
         camera.on('updated', state => {
           onCameraUpdate(state);
@@ -200,31 +205,34 @@ function GraphContainer({
   return (
     <div className="VisContainer GraphContainer" >
 
-      <div ref={setContainer} style={{width: '100%', height: '50vh'}}></div>
-      {renderer && (
+      <div ref={setContainer} style={{width: '100%', height: '100%', minHeight: '10vh'}}></div>
+      {/*renderer && (
         <GraphControls
           rescale={rescale.bind(null, renderer)}
           zoomIn={zoomIn.bind(null, renderer)}
           zoomOut={zoomOut.bind(null, renderer)}
         />
-      )}
+      )*/}
     </div>
   );
 }
 
 
 export default function SigmaComponent({
-  data: filename,
+  data: gexfString,
   nodeColor,
   nodeLabel,
   nodeSize,
   labelDensity = 0.5,
-  cameraPosition: inputCameraPosition = { x: 0.5, y: 0.5, angle: 0, ratio: 1 }
+  spatialize,
+  cameraPosition: inputCameraPosition = { x: 0.5, y: 0.5, angle: 0, ratio: 1 },
+  width,
+  height,
+  ratio,
+  title
 }) {
     // useState renvoie un state et un seter qui permet de le modifier
-    const [graph, setGraph] = useState(null);
     const [cameraPosition, setCameraPosition] = useState(inputCameraPosition);
-    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       if (['x', 'y', 'angle', 'ratio'].find(prop => inputCameraPosition[prop] !== cameraPosition[prop])) {
@@ -235,42 +243,24 @@ export default function SigmaComponent({
     const onCameraUpdate = cam => {
       setCameraPosition(cam);
     }
-  
-    const URL = `${process.env.PUBLIC_URL}/data/${filename}`;
-  
-    useEffect(() => {
-      // aller chercher les données (get : lancement de la promesse se lance de suite : synchrone, then et catch plus tard)
-      get(URL)
-      .then(({data: gexfString}) => {
-        const graph = gexf.parse(Graph, gexfString);
-        graph.forEachNode((node) => {
-          graph.updateNode(node, attr => {
-            return {
-              ...attr,
-              x: attr.x ? attr.x : 0,
-              y: attr.y ? attr.y : 0
-            }
-          })
-        })
-        setGraph(graph);
-        setLoading(false);
-      })
-      .catch((_err) => {
-        setLoading(false);
-      })
-    }, [URL])
-  
-    if (loading) {
-      return (
-        <div>Chargement des données ({URL}) ...</div>
-      )
-    } else if (!graph) {
-      return (
-      <div>Erreur ...</div>
-      )
+
+    const graph = useMemo(() => {
+      const g = gexf.parse(Graph, gexfString);
+      if (spatialize) {
+        // To directly assign the positions to the nodes:
+        forceAtlas2.assign(g, {iterations: 50});
+      }
+      return g;
+    }, [gexfString]);
+
+    if (!graph) {
+      return null;
     }
     return (
-        <div className="SigmaComponent">
+        <div className="SigmaComponent" style={{width: '100%', height: '100%'}}>
+          <div className="row visualization-title-container">
+            {title ? <h5 className="visualization-title">{title}</h5> : null}
+          </div>
           <GraphContainer
             {
               ...{
@@ -280,6 +270,7 @@ export default function SigmaComponent({
                 nodeSize,
                 labelDensity,
                 nodeLabel,
+                ratio,
                 onCameraUpdate
               }
             }

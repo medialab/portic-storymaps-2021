@@ -44,6 +44,7 @@ export function createNodeReducer({
     if (!nodeColor) {
       renderedNode.color = attr.color || DEFAULT_NODE_COLOR;
     } else {
+      // console.log('color the attr', nodeColor.name, attr[nodeColor.name]);
       renderedNode.color =
         nodeColor.palette[attr[nodeColor.name]] || DEFAULT_NODE_COLOR;
     }
@@ -52,6 +53,7 @@ export function createNodeReducer({
       let v = attr.size || 1;
       renderedNode.size = nodeSizeScale(v);
     } else {
+      // console.log('size attr', nodeSize.name, attr);
       let v = attr[nodeSize.name];
       v = typeof v === 'number' ? v : 1;
       renderedNode.size = nodeSizeScale(v);

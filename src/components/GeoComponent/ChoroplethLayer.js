@@ -27,7 +27,6 @@ const ChoroplethLayer = ({ layer, projection }) => {
         <g className="ChoroplethLayer">
             {
                 layer.data.features.map((d, i) => {
-                    console.log(" d: ", d);
                     return (
                         <path
                             key={`path-${i}`}

@@ -104,9 +104,9 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                               renderObject: renderStep3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
                             }
                           ]}
-                          projectionTemplate='coast from Nantes to Bordeaux'
-                          height={800}
-                          width={1200}
+                          projectionTemplate='Poitou'
+                          height={height}
+                          width={width}
                         />
                       )
                     }

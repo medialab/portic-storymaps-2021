@@ -247,7 +247,7 @@ const GeoComponent = ({
           : null
       }
 
-      <svg className="GeoComponent" width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ border: '1px solid lightgrey' }}>
+      <svg className="GeoComponent" width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
 
         {
           layers.map((layer, layerIndex) => {

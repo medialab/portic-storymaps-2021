@@ -11,8 +11,7 @@ import colorPalettes from '../../colorPalettes.js';
 import './PrincipalVisualizationPart3.scss';
 
 
-const PrincipalVisualizationPart3 = ({ step, width, height }) => {
-  console.log(process.env.NODE_ENV)
+const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
   return (
     <div className="PrincipalVisualizationPart3" height={height}>
       <div className={cx('step', { 'is-visible': step === 1 })}>

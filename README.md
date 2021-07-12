@@ -16,6 +16,30 @@ yarn data:update
 yarn start
 ```
 
+# Useful scripts
+
+## Data-related scripts
+
+```bash
+yarn data:load # fetches data from toflit18 and navigo sources
+yarn data:build # builds derivated datasets from complete data given by data:load script
+yarn data:load # orchestrates data fetching and building, then destroys the temp data folder
+```
+
+## Updating the thumbnails
+
+Thumbnails making for the `atlas` view is automated. To update thumbnails, in two different terminal tab, run :
+
+```bash
+yarn start
+```
+
+Then run:
+
+```bash
+yarn run thumbnails:make
+```
+
 # Contributing
 
 ## Suggested guidelines for commiting the repository

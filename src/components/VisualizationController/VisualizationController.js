@@ -6,6 +6,7 @@ import Measure from 'react-measure'
 import VisualizationContainer from '../../visualizations/index.js';
 
 const VisualizationController = ({
+  lang,
   activeVisualization,
   atlasMode
 }) => {
@@ -24,7 +25,7 @@ const VisualizationController = ({
           {
             activeVisualization ?
             <>
-              <VisualizationContainer atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
+              <VisualizationContainer lang={lang} atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
             </>
             : null // <div>Pas de visualisation à afficher</div>
           }

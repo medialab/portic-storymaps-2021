@@ -80,20 +80,24 @@ const HorizontalBarChart = ({
   annotations = []
 }) => {
   const [headersHeight, setHeadersHeight] = useState(0);
-  const [legendWidth, setLegendWidth] = useState(0);
+  // const [legendWidth, setLegendWidth] = useState(0);
 
   const legendRef = useRef(null);
   const headerRef = useRef(null);
   
-  const width = initialWidth - legendWidth;
+  const width = initialWidth;
   const height = initialHeight - headersHeight;
+
+  useEffect(() => {
+    Tooltip.rebuild();
+  })
 
   useEffect(() => {
     setTimeout(() => {
       const newHeadersHeight = headerRef.current ?  headerRef.current.getBoundingClientRect().height : 0;
-      const newLegendWidth = legendRef.current ?  legendRef.current.getBoundingClientRect().width : 0;
+      // const newLegendWidth = legendRef.current ?  legendRef.current.getBoundingClientRect().width : 0;
       setHeadersHeight(newHeadersHeight);
-      setLegendWidth(newLegendWidth);
+      // setLegendWidth(newLegendWidth);
     })
   }, [width, height, color, data])
   const margins = {
@@ -122,7 +126,8 @@ const HorizontalBarChart = ({
   const {
     field: sortYField = yField,
     ascending: sortYAscending = true,
-    type: sortYType = 'number'
+    type: sortYType = 'number',
+    autoSort: yAutoSort = false
   } = sortY;
   const {
     field: sortXField = xField,
@@ -161,7 +166,7 @@ const HorizontalBarChart = ({
     const xExtent = extent(xValues.filter(v => +v).map(v => +v));
     if (xTickSpan) {
       xExtent[0] = xExtent[0] - xExtent[0] % xTickSpan;
-      xExtent[1] = xExtent[1] + (xTickSpan - xExtent[0] % xTickSpan);
+      xExtent[1] = xExtent[1] + xExtent[1] % xTickSpan;
     }
     xDomain = range(xExtent[0], xExtent[1]);
     xValues = xDomain;
@@ -192,7 +197,7 @@ const HorizontalBarChart = ({
   
 
   // let { values: xAxisValues } = axisPropsFromTickScale(xScale);
-  const xAxisValues = xValues;
+  const xAxisValues = xTickSpan ? range(xDomain[0], xDomain[xDomain.length - 1], xTickSpan) : xValues;
   let { values: yAxisValues } = axisPropsFromTickScale(yScale, 10);
 
   if (yTickSpan) {
@@ -210,7 +215,7 @@ const HorizontalBarChart = ({
         <div className="row vis-row">
           <svg className="chart" width={width} height={height}>
             <g className="axis left-axis ticks">
-              <text x={margins.left - 10} y={margins.top - 10} className="axis-title">
+              <text x={margins.left - 10} y={margins.top - 15} className="axis-title">
                 {y.title || y.field}
               </text>
               {
@@ -439,6 +444,9 @@ const HorizontalBarChart = ({
                       {
                         items
                         .sort((a, b) => {
+                          if (!yAutoSort) {
+                            return 0;
+                          }
                           const multiplier = sortYAscending ? 1 : -1;
                           const aVal = sortYType === 'number' ? +a[sortYField] : a[sortYField];
                           const bVal = sortYType === 'number' ? +b[sortYField] : b[sortYField];
@@ -487,7 +495,7 @@ const HorizontalBarChart = ({
                 className="ColorLegend"
                 ref={legendRef}
                 style={{
-                  top: headersHeight + margins.top
+                  top: headersHeight
                 }}
               >
                 <h5>{color.title || 'Légende'}</h5>

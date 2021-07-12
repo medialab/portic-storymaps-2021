@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import cx from 'classnames';
@@ -23,6 +23,12 @@ function Atlas({
     }
   }
 }) {
+  /**
+   * Scroll to top on mount
+   */
+   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   const history = useHistory();
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (
@@ -47,13 +53,10 @@ function Atlas({
                   key={visualizationIndex}
                 >
                   <figure className="thumbnail-container">
-                    {visualization.thumbnail ?
                       <img
-                        src={`${process.env.PUBLIC_URL}/images/thumbnails/${visualization.thumbnail}}`}
+                        src={`${process.env.PUBLIC_URL}/thumbnails/${lang}/${visualization.id}.png`}
                         alt={visualization[`titre_${lang}`]}
                       />
-                      : null
-                    }
                   </figure>
                   <h5 className="visualization-title">
                     {visualization[`titre_${lang}`]}

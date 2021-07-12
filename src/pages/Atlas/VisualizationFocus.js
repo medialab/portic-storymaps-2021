@@ -55,7 +55,7 @@ const VisualizationFocus = ({ visualization, lang, history }) => {
           </div>
         </div>
         <div className="visualization-wrapper">
-          <VisualizationController atlasMode activeVisualization={visualization} />
+          <VisualizationController lang={lang} atlasMode activeVisualization={visualization} />
         </div>
       </div>
     </div>

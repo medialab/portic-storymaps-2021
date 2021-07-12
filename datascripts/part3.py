@@ -1,4 +1,3 @@
-
 """
 Ecriture de csv de données pour nourrir les visualisations 
 
@@ -37,9 +36,10 @@ step 3 : essayer de voir pourquoi en choisissant les flows Navigo plutot que les
 step 3 : vérifier si la comparaison avec les ports de Nantes, Bordeaux, Le Havre n'est pas plus pertinentes avec les données 87 de Navigo (données 89 bien renseignées que pour la DFLR) => si besoin utiliser à la fois données 87 pour Toflit et Navigo pour la partie comparative exter region (LR / LH / Nantes / Bordeaux)
 """
 
-
+import networkx as nx
 import csv
 from operator import itemgetter
+from random import random
 
 # PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
 ports_dflr = set()
@@ -308,3 +308,131 @@ with open(OUTPUT3_OFFICES, 'w', newline='') as csvfile2:
 
         writer2.writerow({'type_of_object': 'customs_office', 'name': values['bureau'], 'cumulated_tonnage_in_region': values['cumulated_tonnage_in_region'], 'cumulated_tonnage_out_region': values['cumulated_tonnage_out_region'], 'nb_navigo_flows_taken_into_account': values['nb_navigo_flows_taken_into_account'], 'cumulated_exports_value_from_region': values['cumulated_exports_value_from_region'] if 'cumulated_exports_value_from_region' in values.keys() else 'ERROR', 'cumulated_exports_value_from_ext': values['cumulated_exports_value_from_ext'] if 'cumulated_exports_value_from_ext' in values.keys() else 'ERROR', 'nb_toflit_flows_taken_into_account': values['nb_toflit_flows_taken_into_account'] if 'nb_toflit_flows_taken_into_account' in values.keys() else 'ERROR', 'customs_office': bureau, 'customs_region': direction, 'latitude': values['latitude'] if 'latitude' in values.keys() else 'ERROR', 'longitude': values['longitude'] if 'longitude' in values.keys() else 'ERROR'})
 
+"""
+PART 3.2
+"""
+
+relevant_navigo_flows = []
+# retrieve relevant flows
+with open('../data/navigo_all_flows_1787.csv', 'r') as f:
+    flows = csv.DictReader(f)
+    for flow in flows:
+        relevant_navigo_flows.append(flow)
+
+def build_graph(name, flows, admiralties):
+    graph = nx.DiGraph()
+
+    def add_node(g, name, admiralty=None, peche=0, flow=None):
+        if admiralty is None:
+            admiralty = 'n/a'
+        g.add_node(
+            name,
+            admiralty=admiralty,
+            internal= 'interne à la région' if admiralty in admiralties else 'externe à la région',
+            degree=0,
+            # inside_degree=0,
+            # outside_degree=0,
+            x= flow["departure_latitude"] if flow else random(),
+            y= flow["departure_longitude"] if flow else random()
+        )
+
+    def add_edge(g, source, target, tonnage):
+        if g.has_edge(source, target):
+            attr = g[source][target]
+            attr['weight'] += 1
+            attr['tonnage'] += tonnage
+        else:
+            g.add_edge(
+                source,
+                target,
+                weight=1,
+                tonnage=tonnage
+            )
+
+    for flow in flows:
+        
+        source = flow['departure']
+        target = flow['destination']
+
+        source_admiralty = flow['departure_admiralty']
+        target_admiralty = flow['destination_admiralty']
+
+        concerns_flow = source_admiralty in admiralties or target_admiralty in admiralties
+        
+        if not concerns_flow:
+            continue
+            
+        tonnage = 0
+
+        try:
+            tonnage = int(flow['tonnage'] if flow['tonnage'] is not None else 0)
+        except ValueError:
+            pass
+
+        # Macro graph
+        if source == target:
+            add_node(graph, source, source_admiralty, 1)
+        else:
+            add_node(graph, source, source_admiralty, flow=flow)
+            add_node(graph, target, target_admiralty, flow=flow)
+            add_edge(graph, source, target, tonnage)
+
+    degrees = graph.degree()
+    for node, val in degrees.items():
+      graph.node[node]["degree"] = val
+
+
+    nx.write_gexf(graph, '../public/data/%s.gexf' % name)  
+    return graph
+
+def build_centrality_metrics(flows):
+  metrics = []
+  # page_ranks = []
+  # betweenness_centralities = []
+  ports_to_compare = [
+    {
+        "main_port": "La Rochelle",
+        "admiralties": ["Sables-d'Olonne", "Les Sables d'Olonne", "Les Sables-d'Olonne", "La Rochelle", "Marennes"]
+        # "admiralties": [ "La Rochelle"]
+    },
+    {
+        "main_port": "Nantes",
+        "admiralties": ["Nantes"]
+    },
+    {
+        "main_port": "Bordeaux",
+        "admiralties": ["Bordeaux"]
+    },
+    {
+        "main_port": "Le Havre",
+        "admiralties": ["Le Havre", "Havre"]
+    }
+  ]
+
+  for p in ports_to_compare:
+      port, admiralties = p.values()
+      graph = build_graph("flows_1787_around_" + port, flows, admiralties)
+      page_rank = nx.pagerank(graph)
+      betweenness_centrality =  nx.betweenness_centrality(graph)
+      metrics.append({
+          "port": port,
+          "metrics_type": "page rank",
+          "score": page_rank[port],
+      })
+      # page_ranks += [{"group": port, "port": p, "page_rank": value} for (p, value) in page_rank.items() if graph.nodes[p]['internal'] == True]
+      metrics.append({
+          "port": port,
+          "metrics_type": "betweenness centrality",
+          "score": betweenness_centrality[port]
+      })
+      # betweenness_centralities += [{"group": port, "port": p, "betweenness_centrality": value} for (p, value) in betweenness_centrality.items()if graph.nodes[p]['internal'] == True]
+  
+  with open('../public/data/part_3_centralite_comparaison.csv', 'w', newline='') as csvfile:
+    fieldnames = metrics[0].keys()
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    for m in metrics:
+        writer.writerow(m)
+
+build_centrality_metrics(relevant_navigo_flows)

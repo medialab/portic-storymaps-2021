@@ -27,13 +27,14 @@ const ChoroplethLayer = ({ layer, projection }) => {
         <g className="ChoroplethLayer">
             {
                 layer.data.features.map((d, i) => {
+                    console.log(" d: ", d);
                     return (
                         <path
                             key={`path-${i}`}
                             d={geoPath().projection(projection)(d)}
                             className="geopart"
                             style= {{
-                                fill: layer.color !== undefined ? palette[d.properties[layer.color.field]] : 'transparent'
+                                fill: layer.color !== undefined && palette !== undefined ? palette[d.properties[layer.color.field]] : 'transparent'
                             }}
                         />
                     )

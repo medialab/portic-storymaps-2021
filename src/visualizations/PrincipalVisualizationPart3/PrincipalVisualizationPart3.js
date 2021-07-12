@@ -84,19 +84,37 @@ const PrincipalVisualizationPart3 = ({ step, width, height }) => {
       <div className={cx('step', { 'is-visible': step === 3 })} height={height}>
         {process.env.NODE_ENV === 'development' ?
           <>
-            <GeoComponent
-              backgroundFilename="cartoweb_france_1789_geojson.geojson"
-              dataFilename="part_3_step3_viz_customs_offices_data.csv"
-              width={width}
-              height={height * 0.99}
-              // markerColor="type_of_object"
-              markerSize="type_of_object"
-              label="name"
-              showLabels
-              projectionTemplate='Poitou'
-              renderObject={renderStep3Object}
-            // debug="true"
-            />
+            <DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
+              {
+                backgroundData => (
+                  <DataProvider data={'part_3_step3_viz_customs_offices_data.csv'}>
+                    {
+                      visData => (
+                        <GeoComponent
+                          layers={[
+                            {
+                              type: 'choropleth',
+                              data: backgroundData,
+                              color: {
+                                field: 'shortname'
+                              }
+                            },
+                            {
+                              type: 'custom',
+                              data: visData,
+                              renderObject: renderStep3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
+                            }
+                          ]}
+                          projectionTemplate='coast from Nantes to Bordeaux'
+                          height={800}
+                          width={1200}
+                        />
+                      )
+                    }
+                  </DataProvider>
+                )
+              }
+            </DataProvider>
           </>
           :
           <img alt="step-3.3" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.3.svg`} />

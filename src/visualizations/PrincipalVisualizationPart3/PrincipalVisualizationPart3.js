@@ -66,7 +66,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                   nodeSize={`degree`}
                   labelDensity={.7}
                   spatialize
-                  title={'Réseau des voyages partant ou arrivant dans la région PASA en 1787'}
+                  title={'Réseau des voyages partant ou arrivant dans la région PASA en 1787 ...'}
                 />
               </div>
               <div className="graph-container" style={{width: width * .4, height: height * .3, position: 'absolute', right: 0, top: 0}}>
@@ -76,7 +76,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                   nodeSize={`degree`}
                   labelDensity={1}
                   spatialize
-                  title={'Réseau des voyages partant ou arrivant dans l\'amirauté de Bordeaux en 1787'}
+                  title={'...comparé à celui de l\'amirauté de Bordeaux'}
                   ratio={1.5}
                 />
               </div>
@@ -86,7 +86,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                   nodeColor={`internal`}
                   nodeSize={`degree`}
                   labelDensity={1}
-                  title={'Réseau des voyages partant ou arrivant dans l\'amirauté de Nantes en 1787'}
+                  title={'...comparé à celui de l\'amirauté de Nantes'}
                   ratio={1.5}
                   spatialize
                 />

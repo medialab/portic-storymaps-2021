@@ -10,21 +10,21 @@ import { max } from 'd3-array';
 
 import './TriangleComponent.scss'
 
-  
+
 
 const TriangleComponent = ({
   data,
   totalWidth = 1200,
   legendWidth = 0.1,
   margins = {
-    left: 0.05,
+    left: 0.0,
     right: 0.09
   },
   rowHeight = 200
 }) => {
 
   const numberOfColumns = data.length
-  const columnWidth = (totalWidth* (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
+  const columnWidth = (totalWidth * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
   const numberOfRows = data.length / numberOfColumns
   const totalHeight = numberOfRows * rowHeight
 
@@ -49,33 +49,68 @@ const TriangleComponent = ({
   ]).range([0, rowHeight * 0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
   // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
+  const legendTriangleWidth = 35;
+  const legendTriangleHeight = 60;
+
   return (
 
     <g className="TriangleComponent" width={totalWidth} height={totalHeight} transform={`translate(0, ${totalHeight * 2.3})`} style={{ border: '1px solid lightgrey' }}>
-      <g className="legend" width={legendWidth}>
-        <circle fill="red"/>
-      {/* <path
-                  d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight) / 1.2} 
-                        H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
-                        L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
+      <g className="legend" width={legendWidth} transform={`translate(${legendWidth * totalWidth * 0.5}, 0)`} >
+
+        <path
+          d={`M ${(legendWidth - legendTriangleWidth) / 2} ${(rowHeight - legendTriangleHeight) / 1.2} 
+                        H ${(legendWidth - legendTriangleWidth) / 2 + legendTriangleWidth}
+                        L ${legendWidth / 2} ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight}
                         Z
-                        `} 
-                /> */}
-        {/* <rect
-          x={0}
-          y={0}
-          width={columnWidth}
-          height={rowHeight}
+                        `}
         />
 
-        <path class='horizontalLine'
-          d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2} 
-                        V ${rowHeight / 7}
-                        `}
-        /> */}
-        
+        <g className="top-arrow">
+          <defs>
+          <marker id="triangle-left" viewBox="0 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth*totalWidth*0.08} markerHeight={rowHeight*0.04}
+              orient="auto">
+              <path d="M 10 0 L 0 5 L 10 10 Z" fill="black" />
+            </marker>
+            <marker id="triangle-right" viewBox="-10 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth*totalWidth*0.08} markerHeight={rowHeight*0.04}
+              orient="auto">
+              <path d="M -10 0 L 0 5 L -10 10 Z" fill="black" />
+            </marker>
+          </defs>
+          <path d={`M ${(legendWidth - legendTriangleWidth) / 2} ${(rowHeight - legendTriangleHeight) / 1.3}  
+                    H ${(legendWidth - legendTriangleWidth) / 2 + legendTriangleWidth}
+                    `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" marker-end="url(#triangle-right)" />
+        </g>
+
+        <g className="left-arrow">
+          <defs>
+          <marker id="triangle-left" viewBox="-10 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth*totalWidth*0.08} markerHeight={rowHeight*0.04}
+              orient="auto">
+              <path d="M 0 0 L -10 5 L 0 10 Z" fill="black" />
+            </marker>
+            <marker id="triangle-right" viewBox="0 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth*totalWidth*0.08} markerHeight={rowHeight*0.04}
+              orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 Z" fill="black" />
+            </marker>
+          </defs>
+          <path d={`M ${(legendWidth - legendTriangleWidth) / 1.6} ${(rowHeight - legendTriangleHeight) / 1.2}  
+                    V ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight}
+                    `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" marker-end="url(#triangle-right)" />
+        </g>
+
       </g>
-      <g className="triangles" width={totalWidth * (1 - margins.left - margins.right)} transform={`translate(${(legendWidth + margins.left) * totalWidth}, 0)`}>
+      <g className="triangles" width={totalWidth * (1 - margins.left - margins.right - legendWidth)} transform={`translate(${(legendWidth + margins.left) * totalWidth}, 0)`}>
         {
           data.map((port, index) => {
 
@@ -86,6 +121,7 @@ const TriangleComponent = ({
             const yIndex = (index - index % numberOfColumns) / numberOfColumns;
             const xTransform = xIndex * columnWidth;
             const yTransform = yIndex * rowHeight;
+
             return (
               <g
                 key={index}
@@ -110,7 +146,7 @@ const TriangleComponent = ({
                         H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
                         L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
                         Z
-                        `} 
+                        `}
                 />
 
                 <g transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight * 0.025})`}>

@@ -114,6 +114,34 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
             <div style={{
               position: 'absolute',
               bottom: 0,
+              left: 0,
+              width: width * .3,
+              height: height * .3
+            }}
+            className="ColorLegend"
+            >
+              <h5>Légende des réseaux</h5>
+              <ul className="color-legend">
+                <li>
+                  Taille des points représentant les ports : nombre de liens avec d'autres ports dans le réseau
+                </li>
+                <li>
+                  <span style={{background: colorPalettes.generic.dark}} className="color-box"></span>
+                  <span className="color-label">
+                    Port interne à la région
+                  </span>
+                </li>
+                <li>
+                  <span style={{background: colorPalettes.generic.accent2}} className="color-box"></span>
+                  <span className="color-label">
+                    Port externe à la région
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div style={{
+              position: 'absolute',
+              bottom: 0,
               right: 0,
               width: width * .7,
               height: height * .3

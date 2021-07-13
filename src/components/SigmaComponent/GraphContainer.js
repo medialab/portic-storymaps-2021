@@ -186,9 +186,9 @@ function GraphContainer({
 
       if (node && graph) {
         const newRenderer = new Renderer(graph, node, {nodeReducer, edgeReducer});
+        newRenderer.settings.labelFont = 'IBM Plex Sans';
         setRenderer(newRenderer);
         const camera = newRenderer.getCamera();
-        console.log('state', camera.getState());
         camera.setState({...camera.getState(), ratio: ratio || 1});
         camera.disable();
         onCameraUpdate(camera.getState())

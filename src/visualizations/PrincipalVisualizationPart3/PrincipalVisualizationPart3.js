@@ -16,27 +16,15 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
   return (
     <div className="PrincipalVisualizationPart3" height={height}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
-        {process.env.NODE_ENV === 'development' ?
-          <>
-            <DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
-              {
-                backgroundData => (
-                  <DataProvider data={'part_3_step1_viz_data.csv'}>
-                    {
-                      visData => (
-                        <GeoComponent
+            <GeoComponent
                           layers={[
                             {
                               type: 'choropleth',
-                              data: backgroundData
+                              data: datasets['cartoweb_france_1789_geojson.geojson']
                             },
-                            // {
-                            //   type: 'points',
-                            //   data: visData
-                            // },
                             {
                               type: 'custom',
-                              data: visData,
+                              data: datasets['part_3_step1_viz_data.csv'],
                               renderObjects: renderTriangles
                             }
                           ]}
@@ -44,19 +32,8 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                           height={height}
                           width={width}
                         />
-                      )
-                    }
-                  </DataProvider>
-                )
-              }
-            </DataProvider>
-          </>
-          :
-          <img alt="step-3.1" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.1.svg`} />
-        }
       </div>
       <div className={cx('step', { 'is-visible': step === 2 })}>
-        {process.env.NODE_ENV === 'development' ?
           <>
             <div className="graphs-container" style={{position: 'relative', height: height * .6}}>
               <div className="graph-container" style={{width: width * .6, height: height * .6, position: 'absolute'}}>
@@ -178,41 +155,20 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
             />
             </div>
           </>
-          :
-          <>
-            {/* <SigmaComponent
-              data="toflit_aggregate_1789_only_out.gexf"
-              nodeColor={`admiralty`}
-              nodeSize={`inside_degree`}
-              labelDensity={0.5}
-            /> */}
-            <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-0.png`} />
-            <img alt="step-3.2" src={`${process.env.PUBLIC_URL}/maquettes/comparaison_centralite-1.png`} />
-          </>
-
-        }
       </div>
       <div className={cx('step', { 'is-visible': step === 3 })} height={height}>
-        {process.env.NODE_ENV === 'development' ?
-          <>
-            <DataProvider data={'cartoweb_france_1789_geojson.geojson'}>
-              {
-                backgroundData => (
-                  <DataProvider data={'part_3_step3_viz_customs_offices_data.csv'}>
-                    {
-                      visData => (
-                        <GeoComponent
+          <GeoComponent
                           layers={[
                             {
                               type: 'choropleth',
-                              data: backgroundData,
+                              data: datasets['cartoweb_france_1789_geojson.geojson'],
                               color: {
                                 field: 'shortname'
                               }
                             },
                             {
                               type: 'custom',
-                              data: visData,
+                              data: datasets['part_3_step3_viz_customs_offices_data.csv'],
                               renderObject: renderStep3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
                             }
                           ]}
@@ -220,16 +176,6 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                           height={height}
                           width={width}
                         />
-                      )
-                    }
-                  </DataProvider>
-                )
-              }
-            </DataProvider>
-          </>
-          :
-          <img alt="step-3.3" src={`${process.env.PUBLIC_URL}/maquettes/VIZ_3.3.svg`} />
-        }
       </div>
     </div>
   )

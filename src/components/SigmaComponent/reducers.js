@@ -90,15 +90,15 @@ export function createEdgeReducer({
     // color with biggest node
     const sourceNodeSize = nodeSize ? sourceNode[nodeSize.name] : sourceNode.size;
     const targetNodeSize = nodeSize ? targetNode[nodeSize.name] : targetNode.size;
-    const biggerNode = sourceNodeSize > targetNodeSize ? sourceNode : targetNode;
+    const smallerNode = sourceNodeSize < targetNodeSize ? sourceNode : targetNode;
 
     // Color
-    if (biggerNode) {
+    if (smallerNode) {
       if (!nodeColor) {
-        renderedEdge.color = biggerNode.color || DEFAULT_NODE_COLOR;
+        renderedEdge.color = smallerNode.color || DEFAULT_NODE_COLOR;
       } else {
         renderedEdge.color =
-          nodeColor.palette[biggerNode[nodeColor.name]] || DEFAULT_NODE_COLOR;
+          nodeColor.palette[smallerNode[nodeColor.name]] || DEFAULT_NODE_COLOR;
       }
       renderedEdge.color = Color(renderedEdge.color).lighten(0.4).rgb().string();
     }

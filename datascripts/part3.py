@@ -416,7 +416,7 @@ def build_centrality_metrics(flows):
       betweenness_centrality =  nx.betweenness_centrality(graph)
       metrics.append({
           "port": port,
-          "metrics_type": "page rank",
+          "metrics_type": "PageRank",
           "score": page_rank[port],
       })
       # page_ranks += [{"group": port, "port": p, "page_rank": value} for (p, value) in page_rank.items() if graph.nodes[p]['internal'] == True]

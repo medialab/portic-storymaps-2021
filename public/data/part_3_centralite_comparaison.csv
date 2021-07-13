@@ -1,5 +1,9 @@
-port,page_rank,betweenness_centrality
-La Rochelle,0.12948131433822815,0.1134237729118606
-Nantes,0.15459090348203505,0.21906423122790827
-Bordeaux,0.2255098178741409,0.2850458881251245
-Le Havre,0.28166395625061563,0.32013949433304273
+port,metrics_type,score
+La Rochelle,PageRank,0.12948131433822815
+La Rochelle,betweenness centrality,0.1134237729118606
+Nantes,PageRank,0.15459090348203505
+Nantes,betweenness centrality,0.21906423122790827
+Bordeaux,PageRank,0.2255098178741409
+Bordeaux,betweenness centrality,0.2850458881251245
+Le Havre,PageRank,0.28166395625061563
+Le Havre,betweenness centrality,0.32013949433304273

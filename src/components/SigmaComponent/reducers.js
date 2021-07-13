@@ -44,6 +44,7 @@ export function createNodeReducer({
     if (!nodeColor) {
       renderedNode.color = attr.color || DEFAULT_NODE_COLOR;
     } else {
+      // console.log('color the attr', nodeColor.name, attr[nodeColor.name]);
       renderedNode.color =
         nodeColor.palette[attr[nodeColor.name]] || DEFAULT_NODE_COLOR;
     }
@@ -52,6 +53,7 @@ export function createNodeReducer({
       let v = attr.size || 1;
       renderedNode.size = nodeSizeScale(v);
     } else {
+      // console.log('size attr', nodeSize.name, attr);
       let v = attr[nodeSize.name];
       v = typeof v === 'number' ? v : 1;
       renderedNode.size = nodeSizeScale(v);
@@ -88,15 +90,15 @@ export function createEdgeReducer({
     // color with biggest node
     const sourceNodeSize = nodeSize ? sourceNode[nodeSize.name] : sourceNode.size;
     const targetNodeSize = nodeSize ? targetNode[nodeSize.name] : targetNode.size;
-    const biggerNode = sourceNodeSize > targetNodeSize ? sourceNode : targetNode;
+    const smallerNode = sourceNodeSize < targetNodeSize ? sourceNode : targetNode;
 
     // Color
-    if (biggerNode) {
+    if (smallerNode) {
       if (!nodeColor) {
-        renderedEdge.color = biggerNode.color || DEFAULT_NODE_COLOR;
+        renderedEdge.color = smallerNode.color || DEFAULT_NODE_COLOR;
       } else {
         renderedEdge.color =
-          nodeColor.palette[biggerNode[nodeColor.name]] || DEFAULT_NODE_COLOR;
+          nodeColor.palette[smallerNode[nodeColor.name]] || DEFAULT_NODE_COLOR;
       }
       renderedEdge.color = Color(renderedEdge.color).lighten(0.4).rgb().string();
     }

@@ -77,7 +77,11 @@ function App() {
                 resolve({ ...res, [datasetName]: loadedData })
               })
             })
-            .catch(reject)
+            // make get errors non-blocking
+            .catch(err => {
+              console.error(err);
+              return resolve(res);
+            })
         } else return resolve(res);
 
       }))

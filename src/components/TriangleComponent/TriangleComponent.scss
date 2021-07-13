@@ -1,13 +1,33 @@
 .TriangleComponent {
 
+    .TriangleLegend{
+        .textLegend{
+            .legendContent{
+            transform : rotate(-90deg);
+            // transform-origin : bottom left;
+            }
+            
+        }
+    }
+
     rect {
         fill : transparent;
         stroke : transparent;
     }
 
-    path {
-        stroke : rgb(39, 129, 141);
-        fill : rgb(39, 129, 141);
+    .triangles{
+        .port-point-and-triangle{
+            transition : .5s ease all;
+            opacity : 1;
+        } 
+        &:hover{
+            .port-point-and-triangle{
+                opacity : .3;
+                &:hover{
+                    opacity: 1;
+                }
+            } 
+        }
     }
 
     path.horizontalLine {

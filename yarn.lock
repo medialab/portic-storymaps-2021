@@ -7541,6 +7541,13 @@ graphology-indices@^0.13.3:
     graphology-utils "^1.7.0"
     mnemonist "^0.38.0"
 
+graphology-layout-forceatlas2@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/graphology-layout-forceatlas2/-/graphology-layout-forceatlas2-0.6.1.tgz#eefaecba56e078724ba242821a73be24e33aec92"
+  integrity sha512-/9ayuwOokigtOjVotrF27k98zUErSgTOxZwcgqiHprf0C6rVMsckRgg+gCHEmeoxei+MBPrznzh8qGJVpmZxgQ==
+  dependencies:
+    graphology-utils "^2.1.0"
+
 graphology-metrics@1.13.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/graphology-metrics/-/graphology-metrics-1.13.0.tgz#33a6b82260bc4c587d2a702970dd1fed9ce5b320"
@@ -7576,6 +7583,11 @@ graphology-utils@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/graphology-utils/-/graphology-utils-2.1.0.tgz#e284c0b2f401a14e8f6b67fbbe9a24f7ecb6c2d5"
   integrity sha512-riI6qHSORCBXpTEtNmJ/0Sp0FQkWanv2WEnirMyQufUdr8gVwmRQCVoA+6o5K+YlT4elpS8jjFRBHNGCtsRf1w==
+
+graphology-utils@^2.1.0:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/graphology-utils/-/graphology-utils-2.1.1.tgz#bebe050a1290c67133a45c9de2d2a36ad2d25f8c"
+  integrity sha512-ujeOQJQF64qIwepLjJqb91P3jYFsjzyEZPDSwDx8RG34iNKqmDogJRH0lawzvietaJjFKzwegy1ft/g5PTm1zA==
 
 graphology@^0.19.3:
   version "0.19.3"

@@ -133,11 +133,12 @@ export function renderLabel (datum, projection, {width}) { // à terme on pourra
   }
   
 
-  export function renderTriangles ({ data, projection, width, height }) {
+  export function renderTriangles ({ data, width, height, projection }) {
     // console.log("data : layder.data ", data)
     return (<TriangleComponent
               data={data}
               totalWidth={width} // @TODO : il faudrait réduire cette width 
               rowHeight={height * 0.3}
+              projection={projection}
               />);
   }

@@ -30,10 +30,10 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
                               type: 'choropleth',
                               data: backgroundData
                             },
-                            {
-                              type: 'points',
-                              data: visData
-                            },
+                            // {
+                            //   type: 'points',
+                            //   data: visData
+                            // },
                             {
                               type: 'custom',
                               data: visData,

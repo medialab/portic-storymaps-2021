@@ -1,40 +1,40 @@
 type_of_object,name,cumulated_tonnage_in_region,cumulated_tonnage_out_region,nb_navigo_flows_taken_into_account,customs_office,customs_region,latitude,longitude
-port,mer des Pertuis,0,138,3,La Rochelle,La Rochelle,46.044980, -1.204802
-port,île d'Oléron,1226,416,93,Oléron,La Rochelle,45.933333,-1.3
-port,Martrou,0,0,0,Martrou,La Rochelle,ERROR,ERROR
-port,Brouage ,0,0,0,Brouage ,La Rochelle,ERROR,ERROR
-port,Seudre,864,400,32,Marennes,La Rochelle,45.8,-1.15
-port,Châlon,0,0,0,Châlon,La Rochelle,ERROR,ERROR
-port,Le Havre,225,80,7,Le Havre,Rouen,49.5,0.133333
-port,Ars-en-Ré,1080,205,74,Saint-Martin-de-Ré,La Rochelle,46.216667,-1.516667
-port,Champagné-les-Marais,1794,0,52,Les Sables-d'Olonne,La Rochelle,46.366667,-1.133333
-port,île de Ré,1512,0,108,Saint-Martin-de-Ré,La Rochelle,46.2,-1.416667
-port,Saint-Michel-en-l'Herm,0,0,0,Saint-Michel-en-l'Herm,La Rochelle,ERROR,ERROR
-port,Les Sables-d'Olonne,800,614,151,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
-port,Le Château-d'Oléron,237,120,37,Oléron,La Rochelle,45.9,-1.2
-port,Le Chapus,0,0,0,Le Chapus,La Rochelle,ERROR,ERROR
-port,Soubise,564,0,37,Marennes,La Rochelle,45.933333,-1
-port,l'Aiguillon,0,0,0,l'Aiguillon,La Rochelle,ERROR,ERROR
-port,Saint-Denis d'Oléron,2274,1184,243,Oléron,La Rochelle,46.033333,-1.383333
 port,La Tranche-sur-Mer,0,0,0,La Tranche-sur-Mer,La Rochelle,ERROR,ERROR
-port,La Flotte-en-Ré,1558,368,113,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
-port,Ribérou,3673,2604,549,Marennes,La Rochelle,45.6755,-0.935826
-port,Marans,16982,3509,1454,Marans,La Rochelle,46.312468,-0.995682
-port,La Perrotine,2929,103,213,Marennes,La Rochelle,45.964614,-1.243436
-port,Saint-Gilles-sur-Vie,274,440,18,Les Sables-d'Olonne,La Rochelle,46.697882,-1.945124
-port,Royan,210,0,9,Marennes,La Rochelle,45.633333,-1.033333
-port,La Tremblade,0,0,0,La Tremblade,La Rochelle,ERROR,ERROR
+port,Soubise,564,0,37,Marennes,La Rochelle,45.933333,-1
 port,Nantes,985,813,34,Nantes,Nantes,47.216667,-1.55
-port,Saint-Martin-de-Ré,18202,1671,828,Saint-Martin-de-Ré,La Rochelle,46.2,-1.366667
-port,Noirmoutier,250,1030,52,Les Sables-d'Olonne,La Rochelle,47,-2.25
-port,Mortagne,0,0,0,Mortagne,La Rochelle,ERROR,ERROR
-port,Rochefort,5297,790,211,Rochefort,La Rochelle,45.943666,-0.97043
-port,Marennes,22476,9753,754,Marennes,La Rochelle,45.816667,-1.116667
-port,Moricq,240,0,15,Les Sables-d'Olonne,La Rochelle,46.396209,-1.374028
-port,Bordeaux,590,1659,91,Bordeaux,Bordeaux,44.833333,-0.566667
-port,Le Plomb,1458,0,108,La Rochelle,La Rochelle,46.2,-1.2
-port,Esnandes,400,0,80,La Rochelle,La Rochelle,46.25,-1.083333
-port,Tonnay-Charente,28295,672,808,Marennes,La Rochelle,45.95,-0.9
-port,La Rochelle,32484,6239,1209,La Rochelle,La Rochelle,46.166667,-1.15
-port,île d'Yeu,0,0,0,île d'Yeu,La Rochelle,ERROR,ERROR
+port,île de Ré,1512,0,108,Saint-Martin-de-Ré,La Rochelle,46.2,-1.416667
+port,l'Aiguillon,0,0,0,l'Aiguillon,La Rochelle,ERROR,ERROR
+port,mer des Pertuis,0,138,3,La Rochelle,La Rochelle,46.044980, -1.204802
+port,Seudre,864,400,32,Marennes,La Rochelle,45.8,-1.15
+port,La Flotte-en-Ré,1558,368,113,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
+port,île d'Oléron,1226,416,93,Oléron,La Rochelle,45.933333,-1.3
 port,île de Bouin,520,1365,65,Les Sables-d'Olonne,La Rochelle,46.975134,-1.998682
+port,Le Havre,225,80,7,Le Havre,Rouen,49.5,0.133333
+port,Le Château-d'Oléron,237,120,37,Oléron,La Rochelle,45.9,-1.2
+port,Saint-Gilles-sur-Vie,274,440,18,Les Sables-d'Olonne,La Rochelle,46.697882,-1.945124
+port,Mortagne,0,0,0,Mortagne,La Rochelle,ERROR,ERROR
+port,Champagné-les-Marais,1794,0,52,Les Sables-d'Olonne,La Rochelle,46.366667,-1.133333
+port,Noirmoutier,250,1030,52,Les Sables-d'Olonne,La Rochelle,47,-2.25
+port,Bordeaux,590,1659,91,Bordeaux,Bordeaux,44.833333,-0.566667
+port,Le Chapus,0,0,0,Le Chapus,La Rochelle,ERROR,ERROR
+port,Brouage ,0,0,0,Brouage ,La Rochelle,ERROR,ERROR
+port,Saint-Denis d'Oléron,2274,1184,243,Oléron,La Rochelle,46.033333,-1.383333
+port,Les Sables-d'Olonne,800,614,151,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
+port,La Rochelle,32484,6239,1209,La Rochelle,La Rochelle,46.166667,-1.15
+port,Tonnay-Charente,28295,672,808,Marennes,La Rochelle,45.95,-0.9
+port,Saint-Michel-en-l'Herm,0,0,0,Saint-Michel-en-l'Herm,La Rochelle,ERROR,ERROR
+port,La Perrotine,2929,103,213,Marennes,La Rochelle,45.964614,-1.243436
+port,Ribérou,3673,2604,549,Marennes,La Rochelle,45.6755,-0.935826
+port,Saint-Martin-de-Ré,18202,1671,828,Saint-Martin-de-Ré,La Rochelle,46.2,-1.366667
+port,Marans,16982,3509,1454,Marans,La Rochelle,46.312468,-0.995682
+port,La Tremblade,0,0,0,La Tremblade,La Rochelle,ERROR,ERROR
+port,Royan,210,0,9,Marennes,La Rochelle,45.633333,-1.033333
+port,Ars-en-Ré,1080,205,74,Saint-Martin-de-Ré,La Rochelle,46.216667,-1.516667
+port,Rochefort,5297,790,211,Rochefort,La Rochelle,45.943666,-0.97043
+port,Martrou,0,0,0,Martrou,La Rochelle,ERROR,ERROR
+port,Esnandes,400,0,80,La Rochelle,La Rochelle,46.25,-1.083333
+port,Marennes,22476,9753,754,Marennes,La Rochelle,45.816667,-1.116667
+port,Châlon,0,0,0,Châlon,La Rochelle,ERROR,ERROR
+port,Le Plomb,1458,0,108,La Rochelle,La Rochelle,46.2,-1.2
+port,île d'Yeu,0,0,0,île d'Yeu,La Rochelle,ERROR,ERROR
+port,Moricq,240,0,15,Les Sables-d'Olonne,La Rochelle,46.396209,-1.374028

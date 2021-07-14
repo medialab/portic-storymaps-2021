@@ -4,9 +4,9 @@ value,product_weight_kg,flow_type,customs_office,product,partner
 14667.45519520001,31.641279,export,Rochefort,eau-de-vie et vins divers,Europe
 243480.8976769,309.51575,export,Rochefort,eau-de-vie et vins divers,Grande Bretagne
 10320.0,46404.6,export,Rochefort,autres produits,Europe
-610452.2566122402,31.724495,export,Charente,eau-de-vie et vins divers,Europe
-4497615.4951597005,0,export,Charente,eau-de-vie et vins divers,Grande Bretagne
-50905.56002,203993.25,export,Charente,autres produits,Grande Bretagne
+610452.2566122402,31.724495,export,Tonnay-Charente,eau-de-vie et vins divers,Europe
+4497615.4951597005,0,export,Tonnay-Charente,eau-de-vie et vins divers,Grande Bretagne
+50905.56002,203993.25,export,Tonnay-Charente,autres produits,Grande Bretagne
 2040.48,0,export,Marennes,eau-de-vie et vins divers,Grande Bretagne
 400509.59439569997,0,export,Marennes,eau-de-vie et vins divers,Europe
 104407.42035966998,5678603.847999999,export,Marennes,sel,Europe
@@ -41,9 +41,9 @@ value,product_weight_kg,flow_type,customs_office,product,partner
 18150.000132,28167.298297,import,Saint-Martin-de-Ré,autres produits,Reste du monde (USA)
 328.0,0,import,La Rochelle,eau-de-vie et vins divers,Colonies
 7170.0,0,import,Rochefort,eau-de-vie et vins divers,Colonies
-30120.7005895,449791.75999000005,import,Charente,autres produits,Grande Bretagne
-167791.52533523203,971647.2323109999,import,Charente,autres produits,Europe
-17466.40043666,0,import,Charente,autres produits,Reste du monde (USA)
+30120.7005895,449791.75999000005,import,Tonnay-Charente,autres produits,Grande Bretagne
+167791.52533523203,971647.2323109999,import,Tonnay-Charente,autres produits,Europe
+17466.40043666,0,import,Tonnay-Charente,autres produits,Reste du monde (USA)
 47556.0,3879.7771,import,La Rochelle,autres produits,Afrique
 7480.0000935,0,import,Marennes,autres produits,Europe
 8500.0,166430.0,import,Marennes,autres produits,Grande Bretagne

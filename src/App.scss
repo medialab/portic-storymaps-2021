@@ -821,7 +821,7 @@ button.is-active {
       bottom: $medium-gutter;
       width: 50vw;
       height: calc(100vh - #{$header_height * 1.5});
-      border: 1px solid red;
+      // border: 1px solid red;
       padding: $medium-gutter;
       box-sizing: border-box;
       color: red;

@@ -223,7 +223,6 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           />
         )
     case 'intro-provinces':
-      console.log("heyyyyyy provinces map");
       return(
         <>
         <GeoComponent 
@@ -244,7 +243,6 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           </>
       )
     case 'intro-ports':
-      console.log("heyyyyyy ports map");
       return(
         <>
         <GeoComponent 
@@ -261,9 +259,13 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   type: 'points',
                   data: datasets['ports_locations_data.csv'],
                   color: {
-                    field: 'customs_office',
-                    palette: colorPalettes.customs_office
+                    field: 'province',
+                    palette: colorPalettes.provinces
                   },
+                  // size: {
+                  //   field: 'name',
+                  //   custom: '20'
+                  // },
                   label: {
                     field: 'port'
                   }
@@ -275,7 +277,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           </>
       )
       case 'intro-bureaux':
-        console.log("heyyyyyy bureaux map");
+        // console.log("heyyyyyy bureaux map");
         return(
           <>
           <GeoComponent 
@@ -294,6 +296,9 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                     color: {
                       field: 'name',
                       palette: colorPalettes.customs_office
+                    },
+                    size: {
+                      custom : 5 // 5 fois plus gros que la taille par défaut
                     },
                     label: {
                       field: 'name'

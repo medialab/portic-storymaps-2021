@@ -5,6 +5,8 @@ import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
 import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
 import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
 import BarChart from '../components/BarChart';
+import GeoComponent from '../components/GeoComponent/GeoComponent';
+import colorPalettes from '../colorPalettes'
 
 
 import { DatasetsContext } from '../helpers/contexts';
@@ -219,6 +221,89 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             }}
             tooltip={d => `En 1789, le bureau des fermes de ${d.customs_office} a exporté à l'étrange ${d.value} livres tournois de produits de type ${d.type}`}
           />
+        )
+    case 'intro-provinces':
+      console.log("heyyyyyy provinces map");
+      return(
+        <>
+        <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: datasets['cartoweb_france_1789_geojson.geojson'],
+                  color:{
+                    field: 'shortname',
+                    palette: colorPalettes.provinces
+                  }
+                }
+              ]}
+              projectionTemplate = 'France'
+              height={dimensions.height}
+              width={dimensions.width}
+            />
+          </>
+      )
+    case 'intro-ports':
+      console.log("heyyyyyy ports map");
+      return(
+        <>
+        <GeoComponent 
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: datasets['cartoweb_france_1789_geojson.geojson'],
+                  // color:{
+                  //   field: 'shortname',
+                  //   palette: colorPalettes.provinces
+                  // }
+                },
+                {
+                  type: 'points',
+                  data: datasets['ports_locations_data.csv'],
+                  color: {
+                    field: 'customs_office',
+                    palette: colorPalettes.customs_office
+                  },
+                  label: {
+                    field: 'port'
+                  }
+              }]}
+              projectionTemplate = 'Poitou'
+              height={dimensions.height}
+              width={dimensions.width}
+            />
+          </>
+      )
+      case 'intro-bureaux':
+        console.log("heyyyyyy bureaux map");
+        return(
+          <>
+          <GeoComponent 
+                layers={[
+                  {
+                    type: 'choropleth',
+                    data: datasets['cartoweb_france_1789_geojson.geojson'],
+                    // color:{
+                    //   field: 'shortname',
+                    //   palette: colorPalettes.provinces
+                    // }
+                  },
+                  {
+                    type: 'points',
+                    data: datasets['part_3_step3_viz_customs_offices_data.csv'],
+                    color: {
+                      field: 'name',
+                      palette: colorPalettes.customs_office
+                    },
+                    label: {
+                      field: 'name'
+                    }
+                }]}
+                projectionTemplate = 'Poitou'
+                height={dimensions.height}
+                width={dimensions.width}
+              />
+            </>
         )
     case 'test':
     default:

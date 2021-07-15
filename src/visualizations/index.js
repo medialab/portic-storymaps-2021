@@ -298,7 +298,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                       palette: colorPalettes.customs_office
                     },
                     size: {
-                      custom : 5 // 5 fois plus gros que la taille par défaut
+                      custom : 3 // 3 fois plus gros que la taille par défaut
                     },
                     label: {
                       field: 'name'

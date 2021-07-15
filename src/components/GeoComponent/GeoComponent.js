@@ -258,6 +258,8 @@ const GeoComponent = ({
                   key={layerIndex}
                   layer={layer}
                   projection={projection}
+                  width={width}
+                  height={height}
                 />
 
               case 'points':

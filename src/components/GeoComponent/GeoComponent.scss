@@ -33,6 +33,11 @@
 			stroke: black;
 			stroke-width: 1;
 		}
+		.legend {
+			.color-legend {
+				fill: transparent;
+			}
+		}
 
 	}
 }

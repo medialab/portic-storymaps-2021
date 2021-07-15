@@ -5,9 +5,9 @@ import { uniq } from 'lodash';
 
 // @TODO : mettre en place une palette de couleurs quantitative 
 
-const ChoroplethLayer = ({ layer, projection }) => {
+const ChoroplethLayer = ({ layer, projection, width, height }) => {
 
-    let palette ;
+    let palette;
 
     if (layer.data.features && layer.color && layer.color.field) {
         // colors palette building
@@ -24,24 +24,71 @@ const ChoroplethLayer = ({ layer, projection }) => {
     }
 
     return (
-        <g className="ChoroplethLayer">
-            {
-                layer.data.features.map((d, i) => {
-                    return (
-                        <path
-                            key={`path-${i}`}
-                            d={geoPath().projection(projection)(d)}
-                            className="geopart"
-                            style= {{
-                                fill: layer.color !== undefined && palette !== undefined ? palette[d.properties[layer.color.field]] : 'transparent'
+        <>
+            <g className="ChoroplethLayer">
+                {
+                    layer.data.features.map((d, i) => {
+                        return (
+                            <path
+                                key={`path-${i}`}
+                                d={geoPath().projection(projection)(d)}
+                                className="geopart"
+                                style={{
+                                    fill: layer.color !== undefined && palette !== undefined ? palette[d.properties[layer.color.field]] : 'transparent'
+                                }}
+                            />
+                        )
+                    })
+                }
+            </g>
+            {/* LEGENDE A METTRE EN PLACE, pour l'instant j'ai trop galéré
+                {
+                layer.color ?
+                    <g className="legend">
+                        <rect
+                            className="color-legend"
+                            width={width / 6}
+                            height={height / 6}
+                            transform={`translate(0, ${height / 5})`}
+                            // ref={legendRef}
+                            style={{
+                                fill: "transparent",
+                                top: height
                             }}
-                        />
-                    )
-                })
-            }
-        </g>
+                        >
+                            <text class='title'
+                            width={width / 6}
+                            height={height / 6}
+                            x={0}
+                            y={height/5}
+                            style = {{textSizeAdjust}}
+                            transform={`translate(0, ${height / 5})`}
+                            >{'Légende'}</text>
+                            <g className="colors-legend">
+                                {
+                                    Object.entries(palette)
+                                        .map(([modality, color]) => (
+                                            <rect
+                                                style= {{fill: "transparent"}}
+                                                key={modality}
+                                            >
+                                                <rect className="color-box"
+                                                    style={{ fill: color }}
+                                                />
+                                                <text className="color-label">
+                                                    {modality}
+                                                </text>
+                                            </rect>
+                                        ))
+                                }
+                            </g>
+                        </rect>
+                    </g>
+                    : null
+            } */}
+        </>
     );
 
-    }
+}
 
 export default ChoroplethLayer;

@@ -1,47 +1,40 @@
 type_of_object,name,cumulated_tonnage_in_region,cumulated_tonnage_out_region,nb_navigo_flows_taken_into_account,customs_office,customs_region,latitude,longitude
-port,mer des Pertuis,300,0,10,La Rochelle,La Rochelle,46.044980, -1.204802
-port,L'Houmée,2296,0,82,Marennes,La Rochelle,46.193652,-1.186724
-port,Seudre,5802,1246,147,Marennes,La Rochelle,45.8,-1.15
-port,Esnandes,560,0,20,La Rochelle,La Rochelle,46.25,-1.083333
-port,Soubise,10543,2511,587,Marennes,La Rochelle,45.933333,-1
-port,Mortagne,531,1411,78,Marennes,La Rochelle,45.483333,-0.783333
-port,Marans,117028,43644,6875,Marans,La Rochelle,46.312468,-0.995682
-port,Le Chapus,0,0,0,Le Chapus,La Rochelle,ERROR,ERROR
-port,Chaillevette,308,270,23,Marennes,La Rochelle,45.733333,-1.05
-port,La Flotte-en-Ré,46282,12850,2567,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
-port,Ribérou,92819,17501,7015,Marennes,La Rochelle,45.6755,-0.935826
-port,île de Ré,2901,0,79,Saint-Martin-de-Ré,La Rochelle,46.2,-1.416667
-port,La Tranche-sur-Mer,2994,2923,361,Les Sables-d'Olonne,La Rochelle,46.333333,-1.433333
-port,Saint-Michel-en-l'Herm,4191,1650,571,Les Sables-d'Olonne,La Rochelle,46.35,-1.25
-port,Noirmoutier,2619,76850,2376,Les Sables-d'Olonne,La Rochelle,47,-2.25
-port,Brouage ,0,0,0,Brouage ,La Rochelle,ERROR,ERROR
-port,Marennes,181980,349701,10400,Marennes,La Rochelle,45.816667,-1.116667
-port,Saint-Martin-de-Ré,106734,23528,5102,Saint-Martin-de-Ré,La Rochelle,46.2,-1.366667
-port,Loix,180,0,12,Saint-Martin-de-Ré,La Rochelle,46.233333,-1.416667
-port,Les Sables-d'Olonne,15500,63483,1979,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
-port,Saint-Gilles-sur-Vie,1591,39637,989,Les Sables-d'Olonne,La Rochelle,46.697882,-1.945124
-port,La Brée,300,0,15,Marennes,La Rochelle,46.016667,-1.35
-port,Luçon,1092,0,28,Les Sables-d'Olonne,La Rochelle,46.45,-1.166667
-port,Royan,4313,0,160,Marennes,La Rochelle,45.633333,-1.033333
-port,Rochefort,155571,49434,4836,Rochefort,La Rochelle,45.943666,-0.97043
-port,Châlon,1540,0,77,Marennes,La Rochelle,45.724946,-0.963790
-port,Moricq,51785,1970,1867,Les Sables-d'Olonne,La Rochelle,46.396209,-1.374028
-port,La Perrotine,12537,4837,1013,Marennes,La Rochelle,45.964614,-1.243436
-port,île d'Yeu,456,0,24,Les Sables-d'Olonne,La Rochelle,46.716667,-2.333333
-port,La Rochelle,427509,110688,16215,La Rochelle,La Rochelle,46.166667,-1.15
-port,Tonnay-Charente,342511,97791,11815,Tonnay-Charente,La Rochelle,45.95,-0.9
-port,La Tremblade,1152,0,36,Marennes,La Rochelle,45.766667,-1.133333
+port,Noirmoutier,360,12279,290,Les Sables-d'Olonne,La Rochelle,47,-2.25
+port,mer des Pertuis,0,8,1,La Rochelle,La Rochelle,46.044980, -1.204802
+port,Champagné-les-Marais,0,0,0,Champagné-les-Marais,La Rochelle,ERROR,ERROR
+port,La Tranche-sur-Mer,80,234,24,Les Sables-d'Olonne,La Rochelle,46.333333,-1.433333
+port,Le Chapus,6,0,1,Marennes,La Rochelle,45.850601,-1.15325
+port,Saint-Denis d'Oléron,397,1024,69,Marennes,La Rochelle,46.033333,-1.383333
+port,île de Ré,15,0,1,Saint-Martin-de-Ré,La Rochelle,46.2,-1.416667
+port,l'Aiguillon,12,0,3,Les Sables-d'Olonne,La Rochelle,46.333333,-1.3
+port,Ars-en-Ré,2315,18042,307,Saint-Martin-de-Ré,La Rochelle,46.216667,-1.516667
+port,La Perrotine,749,709,77,Marennes,La Rochelle,45.964614,-1.243436
+port,Les Sables-d'Olonne,1586,2699,162,Les Sables-d'Olonne,La Rochelle,46.5,-1.783333
+port,île d'Yeu,2,0,1,Les Sables-d'Olonne,La Rochelle,46.716667,-2.333333
+port,La Tremblade,8,0,1,Marennes,La Rochelle,45.766667,-1.133333
+port,Saint-Michel-en-l'Herm,152,418,69,Les Sables-d'Olonne,La Rochelle,46.35,-1.25
+port,Marans,9043,4250,640,Marans,La Rochelle,46.312468,-0.995682
+port,La Flotte-en-Ré,61,32,8,Saint-Martin-de-Ré,La Rochelle,46.188459,-1.328716
+port,La Rochelle,25047,23523,1064,La Rochelle,La Rochelle,46.166667,-1.15
+port,Rochefort,12098,13468,371,Rochefort,La Rochelle,45.943666,-0.97043
+port,Saint-Martin-de-Ré,8313,7933,477,Saint-Martin-de-Ré,La Rochelle,46.2,-1.366667
+port,île de Bouin,85,3960,105,ile de Bouin : hors DFLR,La Rochelle,46.975134,-1.998682
+port,Ribérou,4701,1900,438,Marennes,La Rochelle,45.6755,-0.935826
+port,Mortagne,139,456,17,Marennes,La Rochelle,45.483333,-0.783333
+port,Moricq,2174,241,97,Les Sables-d'Olonne,La Rochelle,46.396209,-1.374028
+port,Royan,438,0,14,Marennes,La Rochelle,45.633333,-1.033333
+port,Brouage ,51,152,4,Marennes,La Rochelle,45.866667,-1.066667
+port,Le Château-d'Oléron,368,263,55,Marennes,La Rochelle,45.9,-1.2
+port,Martrou,36,0,1,Marennes,La Rochelle,45.91367,-0.959895
+port,île d'Oléron,70,0,11,Marennes,La Rochelle,45.933333,-1.3
+port,Seudre,962,888,28,Marennes,La Rochelle,45.8,-1.15
+port,Saint-Gilles-sur-Vie,146,2622,72,Les Sables-d'Olonne,La Rochelle,46.697882,-1.945124
+port,Soubise,39,148,7,Marennes,La Rochelle,45.933333,-1
+port,Châlon,100,0,5,Marennes,La Rochelle,45.724946,-0.963790
+port,Tonnay-Charente,16928,11005,619,Tonnay-Charente,La Rochelle,45.95,-0.9
+port,Esnandes,0,0,0,Esnandes,La Rochelle,ERROR,ERROR
 port,other ports not from region => to be erased from data,0,0,0,other ports not from region => to be erased from data,La Rochelle,ERROR,ERROR
-port,Champagné-les-Marais,3276,0,84,Les Sables-d'Olonne,La Rochelle,46.366667,-1.133333
-port,île de Bouin,1047,61900,2171,ile de Bouin : hors DFLR,La Rochelle,46.975134,-1.998682
-port,Meschers,200,0,8,Marennes,La Rochelle,45.566667,-0.95
-port,Talmont,1812,2835,275,Les Sables-d'Olonne,La Rochelle,46.466277,-1.618967
-port,l'Aiguillon,0,0,0,l'Aiguillon,La Rochelle,ERROR,ERROR
-port,île d'Oléron,3213,0,342,Marennes,La Rochelle,45.933333,-1.3
-port,Ars-en-Ré,24289,82187,2273,Saint-Martin-de-Ré,La Rochelle,46.216667,-1.516667
-port,Le Château-d'Oléron,8045,2116,1387,Marennes,La Rochelle,45.9,-1.2
-port,Saint-Denis d'Oléron,5525,10393,835,Marennes,La Rochelle,46.033333,-1.383333
-port,Martrou,3600,0,135,Marennes,La Rochelle,45.91367,-0.959895
+port,Marennes,15563,74798,1496,Marennes,La Rochelle,45.816667,-1.116667
+port,Bordeaux,13595,640668,9669,Bordeaux,Bordeaux,44.833333,-0.566667
 port,Le Havre,1196327,356711,25151,Le Havre,Rouen,49.5,0.133333
 port,Nantes,135344,303099,8014,Nantes,Nantes,47.216667,-1.55
-port,Bordeaux,13595,640668,9669,Bordeaux,Bordeaux,44.833333,-0.566667

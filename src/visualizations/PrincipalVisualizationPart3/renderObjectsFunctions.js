@@ -151,6 +151,170 @@ export function renderStep3Object({ datum, projection, width, height }) { // à 
     </g>);
 }
 
+export function renderStep3SmallMultiples({ data, width, height, projection }) {
+  // could be parametered in props too
+  const legendWidth = width / 6
+  const margins = {
+    left: 0.05,
+    right: 0.05
+  }
+
+  // console.log("data : layder.data ", data)
+  const numberOfColumns = 3
+  // const columnWidth = (width * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
+  const columnWidth = (width * 0.8) / numberOfColumns
+  const numberOfRows = 1
+  const rowHeight = height / 6
+  const totalHeight = numberOfRows * rowHeight
+  const fontSize = totalHeight * 0.05
+
+  console.log({ width, numberOfColumns, columnWidth, numberOfRows, rowHeight, totalHeight, fontSize })
+
+  return (
+    <g className="small-multiples" width={width} height={totalHeight} style={{ border: '1px solid lightgrey' }}>
+
+      <g className="triangles" width={width * 0.5} height={totalHeight}>
+
+        {
+          data.filter(({ name }) => name === 'Le Havre' || name === 'Nantes' || name === 'Bordeaux')
+
+            .map((custom_office, index) => {
+
+              const triangleWidth = custom_office.nb_navigo_flows_taken_into_account
+              const triangleHeight = custom_office.nb_toflit_flows_taken_into_account
+
+              const xIndex = index % numberOfColumns;
+              // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
+              const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * width;
+              const yTransform = totalHeight * 2.3;
+
+
+              let sizeCoef = width * 0.05;
+              const totalTonnage = parseFloat(custom_office.cumulated_tonnage_out_region) + parseFloat(custom_office.cumulated_tonnage_in_region)
+              // console.log("tonnage total : ",totalTonnage)
+
+              const leftTriangleHeight = parseFloat(custom_office.cumulated_tonnage_out_region) / totalTonnage * sizeCoef;
+              const rightTriangleHeight = parseFloat(custom_office.cumulated_tonnage_in_region) / totalTonnage * sizeCoef; // je pourrais déduire cette donnée de la taille du triangle gauche
+
+              let leftPath = null
+              let rightPath = null
+
+              const totalValue = parseFloat(custom_office.cumulated_exports_value_from_region) + parseFloat(custom_office.cumulated_exports_value_from_ext)
+              const inPercentage = parseFloat(custom_office.cumulated_exports_value_from_region) / totalValue * 100
+              // console.log("inPercentage ", datum.label," : ", inPercentage)
+
+              const partialCircle = require('svg-partial-circle')
+
+              let start = null
+              let end = null
+              // let transformGeo = {`translate(${x},${y})`} // ce serzit param qui se mmodifie en attribue de positionnement réparti en bas à droite si co sans coords
+
+              // calcul des angles de départ et d'arrivée de l'arc de cercle, en fonction des données
+              start = Math.PI / 2 + (inPercentage - 50) / 100 * Math.PI
+              end = Math.PI * 3 / 2 - (inPercentage - 50) / 100 * Math.PI
+
+              leftPath = partialCircle(
+                0, 0,         // center X and Y
+                leftTriangleHeight + rightTriangleHeight,              // radius
+                start,          // start angle in radians --> Math.PI / 4
+                end             // end angle in radians --> Math.PI * 7 / 4
+              )
+                .map((command) => command.join(' '))
+                .join(' ')
+
+              rightPath = partialCircle(
+                0, 0,             // center X and Y
+                leftTriangleHeight + rightTriangleHeight,                  // radius
+                start,              // start angle in radians --> Math.PI / 4
+                end - 2 * Math.PI   // end angle in radians --> Math.PI * 7 / 4
+              )
+                .map((command) => command.join(' '))
+                .join(' ')
+
+
+              return (
+                <g className={`${custom_office.name}-small-multiple`} width={columnWidth} transform={`translate(${width * 0.7}, ${height * 0.9})`}>
+
+                  <g className='double-triangle-and-circle'
+                    key={index}
+                    // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
+                    // transform={`translate(${xTransform}, ${yTransform})`}
+                    transform={`translate(${xIndex * width * 0.12}, ${0})`}
+                  >
+
+                    {/* <circle
+                      cx={0}
+                      cy={0}
+                      r={2}
+                      fill='red'
+                    /> */}
+
+                    <path className='left-triangle' fill='rgb(39, 129, 141)'
+                      d={`M ${0} ${0}
+                V ${leftTriangleHeight / 2}
+                L ${-Math.pow(5, 0.5) * leftTriangleHeight / 2} ${0}
+                L ${0} ${-leftTriangleHeight / 2}
+                Z
+                `}
+                    />
+
+                    <path className='right-triangle' fill='rgb(44, 74, 156)'
+                      d={`M ${0} ${0}
+                V ${rightTriangleHeight / 2}
+                L ${Math.pow(5, 0.5) * rightTriangleHeight / 2} ${0}
+                L ${0} ${-rightTriangleHeight / 2}
+                Z
+                `}
+                    />
+
+                    <>
+                      {
+                        // datum.else.type_of_object === "customs_office" ?
+                        leftPath != null ?
+
+                          <>
+
+                            <path
+                              d={`${leftPath}
+                  `}
+                              stroke={colorsPalettes.generic.dark}
+                              stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                              fill="transparent"
+                            />
+
+                            <path
+                              d={`${rightPath}
+                  `}
+                              stroke={colorsPalettes.generic.accent2}
+                              stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                              fill="transparent"
+                            />
+                          </>
+                          :
+                          null
+                      }
+
+                      <text
+                        className='label'
+                        transform={`translate(${-Math.pow(5, 0.5) * (leftTriangleHeight + rightTriangleHeight) / 4}, ${(rightTriangleHeight + leftTriangleHeight) / 1.8})`}
+                        font-size={parseInt(height * 0.013)}
+                      >
+                        {custom_office.name}
+                      </text>
+                    </>
+                  </g>
+
+
+
+                </g>);
+
+            })
+        }
+
+      </g>
+    </g>
+  );
+}
 
 export function renderTriangles({ data, width, height, projection }) {
   // console.log("data : layder.data ", data)

@@ -135,8 +135,7 @@ for p in relevant_pointcalls:
 
 # calculate mean tonnage by port
 for port, values in ports.items():
-    values['mean_tonnage'] = values['cumulated_tonnage'] / \
-        values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
+    values['mean_tonnage'] = values['cumulated_tonnage'] / values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
 
 # write datasets
 with open(OUTPUT0, "w", newline='') as csvfile:
@@ -167,83 +166,86 @@ with open(OUTPUT1, "w", newline='') as csvfile:
                         'cumulated_tonnage': port["cumulated_tonnage"], 'latitude': port["latitude"], 'longitude': port["longitude"], 'customs_office': port["customs_office"]})
 
 
+
 # 3. write csv file to feed step 3 of the viz
 OUTPUT3_PORTS = "../public/data/part_3_step3_viz_ports_data.csv"
 OUTPUT3_OFFICES = "../public/data/part_3_step3_viz_customs_offices_data.csv"
 
+# choose the year you want to work with (seems there is not a lot of data for Nantes, Bordeaux and Le Havre in 1789)
+chosen_year = 1787
+
 # beginning of 1787 option *****************************************************************************
-# chosen_year = 1787
 
-# i = 0
-# j = 0
+if chosen_year == 1787:
 
-# relevant_navigo_flows = []
-# # retrieve relevant flows
-# with open('../data/navigo_all_flows_'+str(chosen_year)+'.csv', 'r') as f:
-#     flows = csv.DictReader(f)
-#     for flow in flows:
-#         if flow['departure_ferme_direction'] == 'La Rochelle':
-#             relevant_navigo_flows.append(flow)
-#             ports_dflr.add(flow['departure_fr'])
-#             i += 1
-#         elif flow['departure_fr'] in ['Bordeaux', 'Nantes', 'Le Havre']:
-#             relevant_navigo_flows.append(flow)
-#             j += 1
+    i = 0
+    j = 0
 
-# # print("ports de la DFLR (noms standardisés) : ", ports_dflr)
-# print("nombre de flows navigo partis de la DFLR en "+str(chosen_year)+"  :", i)
-# print("nombre de flows navigo partis de Nantes, Bordeaux, Le Havre en " +
-#       str(chosen_year)+"  :", j)
+    relevant_navigo_flows = []
+    # retrieve relevant flows
+    with open('../data/navigo_all_flows_'+str(chosen_year)+'.csv', 'r') as f:
+        flows = csv.DictReader(f)
+        for flow in flows:
+            if flow['departure_ferme_direction'] == 'La Rochelle':
+                relevant_navigo_flows.append(flow)
+                ports_dflr.add(flow['departure_fr'])
+                i += 1
+            elif flow['departure_fr'] in ['Bordeaux', 'Nantes', 'Le Havre']:
+                relevant_navigo_flows.append(flow)
+                j += 1
+
+    # print("ports de la DFLR (noms standardisés) : ", ports_dflr)
+    print("nombre de flows navigo partis de la DFLR en "+str(chosen_year)+"  :", i)
+    print("nombre de flows navigo partis de Nantes, Bordeaux, Le Havre en " +
+        str(chosen_year)+"  :", j)
 
 # end of 1787 option / beginning of 1789 option *****************************************************************************
 
-# choose the year you want to work with (seems there is not a lot of data for Nantes, Bordeaux and Le Havre in 1789)
-chosen_year = 1789
+if chosen_year == 1789:
+    relevant_navigo_out_pointcalls = []
+    relevant_navigo_in_pointcalls = []
+    set_pkids = set()
+    i = 0
+    j = 0
 
-relevant_navigo_out_pointcalls = []
-relevant_navigo_in_pointcalls = []
-set_pkids = set()
-i = 0
-j = 0
+    # retrieve relevant pointcalls
+    with open('../data/navigo_all_pointcalls_'+str(chosen_year)+'.csv', 'r') as f:
+        pointcalls = csv.DictReader(f)
+        for pointcall in pointcalls:
+            if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out': # par défaut dans le csv on a déjà que des pointcalls de 1787 ou 1789
+                relevant_navigo_out_pointcalls.append(pointcall)
+                set_pkids.add(str(pointcall['source_doc_id']))
+                ports_dflr.add(pointcall['toponyme_fr'])
+                i+=1
+            if pointcall['ferme_bureau'] in ['Bordeaux', 'Nantes', 'Le Havre'] and pointcall['pointcall_action'] == 'Out':
+                relevant_navigo_out_pointcalls.append(pointcall)
+                set_pkids.add(str(pointcall['source_doc_id']))
+                j+=1
 
-# retrieve relevant pointcalls
-with open('../data/navigo_all_pointcalls_'+str(chosen_year)+'.csv', 'r') as f:
-    pointcalls = csv.DictReader(f)
-    for pointcall in pointcalls:
-      if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out': # par défaut dans le csv on a déjà que des pointcalls de 1787 ou 1789
-        relevant_navigo_out_pointcalls.append(pointcall)
-        set_pkids.add(str(pointcall['source_doc_id']))
-        ports_dflr.add(pointcall['toponyme_fr'])
-        i+=1
-      if pointcall['ferme_bureau'] in ['Bordeaux', 'Nantes', 'Le Havre'] and pointcall['pointcall_action'] == 'Out':
-        relevant_navigo_out_pointcalls.append(pointcall)
-        set_pkids.add(str(pointcall['source_doc_id']))
-        j+=1
+    with open('../data/navigo_all_pointcalls_'+str(chosen_year)+'.csv', 'r') as f:
+        pointcalls = csv.DictReader(f)
+        for pointcall in pointcalls:
+            if str(pointcall['source_doc_id']) is not None:
+                if str(pointcall['source_doc_id']) in set_pkids and pointcall['pointcall_action'] == 'In' or pointcall['pointcall_action'] == 'in':
+                    relevant_navigo_in_pointcalls.append(pointcall)
 
-with open('../data/navigo_all_pointcalls_'+str(chosen_year)+'.csv', 'r') as f:
-    pointcalls = csv.DictReader(f)
-    for pointcall in pointcalls:
-      if str(pointcall['source_doc_id']) is not None:
-          if str(pointcall['source_doc_id']) in set_pkids and pointcall['pointcall_action'] == 'In' or pointcall['pointcall_action'] == 'in':
-            relevant_navigo_in_pointcalls.append(pointcall)
+    print("source_doc_ids au nombre de ", len(set_pkids))
+    print("nombre de pointcalls navigo  partis de la DFLR en "+str(chosen_year)+"  :", i)
+    print("nombre de pointcalls navigo  partis de Nantes, Bordeaux, Le Havre en "+str(chosen_year)+"  :", j)
 
-print("source_doc_ids au nombre de ", len(set_pkids))
-print("nombre de pointcalls navigo  partis de la DFLR en "+str(chosen_year)+"  :", i)
-print("nombre de pointcalls navigo  partis de Nantes, Bordeaux, Le Havre en "+str(chosen_year)+"  :", j)
+    # reconstruct flows
+    flows_navigo_reconstructed = []
+    for pointcall_out in relevant_navigo_out_pointcalls :
+        source_doc_id = pointcall_out['source_doc_id']
+        for pointcall_in in relevant_navigo_in_pointcalls :
+            if pointcall_in['source_doc_id'] == source_doc_id:
+                flows_navigo_reconstructed.append({
+                    "flow_source_doc_id": source_doc_id,
+                    "pointcall_out": pointcall_out,
+                    "pointcall_in": pointcall_in
+                    })
 
-# reconstruct flows
-flows_navigo_reconstructed = []
-for pointcall_out in relevant_navigo_out_pointcalls :
-    source_doc_id = pointcall_out['source_doc_id']
-    for pointcall_in in relevant_navigo_in_pointcalls :
-        if pointcall_in['source_doc_id'] == source_doc_id:
-            flows_navigo_reconstructed.append({
-                "flow_source_doc_id": source_doc_id,
-                "pointcall_out": pointcall_out,
-                "pointcall_in": pointcall_in
-                })
-
-print("length of flows : ", len(flows_navigo_reconstructed))
+    print("length of flows : ", len(flows_navigo_reconstructed))
 # end of 1789 option *****************************************************************************
 
 
@@ -288,83 +290,92 @@ for b in list(BUREAUS):
 
 # beginning of 1787 option ***************************************************************************************
 
-# # fill objects with cumulated data from navigo, and ports coord
-# for f in relevant_navigo_flows :
-#     port = f['departure_fr']
-#     bureau = clean_names(correct_localities_alignment(f['departure_fr'])) if port in ['Beauvoir-sur-Mer','Champagné-les-Marais', 'Tonnay-Charente', "Saint-Denis d'Oléron", "Le Château-d'Oléron", 'Île d’Oléron', "île d'Oléron", 'La Brée', 'île de Bouin'] else clean_names(f['departure_ferme_bureau'])
+if chosen_year == 1787:
+    # fill objects with cumulated data from navigo, and ports coord
+    for f in relevant_navigo_flows :
+        port = f['departure_fr']
+        bureau = clean_names(correct_localities_alignment(f['departure_fr'])) if port in ['Beauvoir-sur-Mer','Champagné-les-Marais', 'Tonnay-Charente', "Saint-Denis d'Oléron", "Le Château-d'Oléron", 'Île d’Oléron', "île d'Oléron", 'La Brée', 'île de Bouin'] else clean_names(f['departure_ferme_bureau'])
 
-#     if f['tonnage'] != '':
-#         tonnage = int(f['tonnage'])
-#     else:
-#         tonnage = 0
-#     if f['departure_ferme_direction'] == 'La Rochelle':
-#         if f['destination_ferme_direction'] == 'La Rochelle':
-#             ports[port]['cumulated_tonnage_in_region'] += tonnage
-#             bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage
-#         else:
-#             # print("f['destination_ferme_direction'] : ", f['destination_ferme_direction'])
-#             ports[port]['cumulated_tonnage_out_region'] += tonnage
-#             bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage
-#     elif f['departure_province'] is not None: # dans ce cas là notre flow ne part pas de La Rochelle, besoin de distinguer cas bordeaux, nantes, le havre
-#         if f['departure_province'] == f['destination_province']:
-#             ports[port]['cumulated_tonnage_in_region'] += tonnage
-#             bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage
-#         else:
-#             ports[port]['cumulated_tonnage_out_region'] += tonnage
-#             bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage
-#     else:
-#         print("on n'a rien ajouté")
-#     ports[port]['nb_navigo_flows_taken_into_account'] += 1
-#     bureaus[bureau]['nb_navigo_flows_taken_into_account'] += 1
-#     if 'latitude' not in ports[port].keys():
-#         ports[port]['latitude'] = f['departure_latitude']
-#         ports[port]['longitude'] = f['departure_longitude']
-#         ports[port]['customs_office'] = bureau
-#         ports[port]['customs_region'] = f['departure_ferme_direction']
-#     if 'latitude' not in bureaus[bureau].keys():
-#         bureaus[bureau]['latitude'] = f['departure_latitude']
-#         bureaus[bureau]['longitude'] = f['departure_longitude']
-#         bureaus[bureau]['customs_region'] = f['departure_ferme_direction']
+        if f['tonnage'] != '':
+            tonnage = int(f['tonnage'])
+        else:
+            tonnage = 0
+        if f['departure_ferme_direction'] == 'La Rochelle':
+            if f['destination_ferme_direction'] == 'La Rochelle':
+                ports[port]['cumulated_tonnage_in_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage
+            else:
+                # print("f['destination_ferme_direction'] : ", f['destination_ferme_direction'])
+                ports[port]['cumulated_tonnage_out_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage
+        elif f['departure_province'] is not None: # dans ce cas là notre flow ne part pas de La Rochelle, besoin de distinguer cas bordeaux, nantes, le havre
+            if f['departure_province'] == f['destination_province']:
+                ports[port]['cumulated_tonnage_in_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage
+            else:
+                ports[port]['cumulated_tonnage_out_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage
+        else:
+            print("on n'a rien ajouté")
+        ports[port]['nb_navigo_flows_taken_into_account'] += 1
+        bureaus[bureau]['nb_navigo_flows_taken_into_account'] += 1
+        if 'latitude' not in ports[port].keys():
+            ports[port]['latitude'] = f['departure_latitude']
+            ports[port]['longitude'] = f['departure_longitude']
+            ports[port]['customs_office'] = bureau
+            ports[port]['customs_region'] = f['departure_ferme_direction']
+        if 'latitude' not in bureaus[bureau].keys():
+            bureaus[bureau]['latitude'] = f['departure_latitude']
+            bureaus[bureau]['longitude'] = f['departure_longitude']
+            bureaus[bureau]['customs_region'] = f['departure_ferme_direction']
 
 # end of 1787 option / beginning of 1789 option ************************************************************************
 
-for f in flows_navigo_reconstructed : 
-    port = f['pointcall_out']['toponyme_fr'] if (f['pointcall_out']['ferme_direction'] == 'La Rochelle' and f['pointcall_out']['toponyme_fr'] not in ['Nantes', 'Bordeaux', 'Le Havre']) else 'other ports not from region => to be erased from data'
-    # print("port : ", port)
-    bureau = clean_names(correct_localities_alignment(f['pointcall_out']['toponyme_fr'])) if port in ['Beauvoir-sur-Mer','Champagné-les-Marais', 'Tonnay-Charente', "Saint-Denis d'Oléron", "Le Château-d'Oléron", 'Île d’Oléron', 'La Brée', "île d'Oléron", 'île de Bouin'] else clean_names(f['pointcall_out']['ferme_bureau']) 
-  
-    if f['pointcall_out']['tonnage'] != '': 
-        tonnage = int(f['pointcall_out']['tonnage']) 
-    else:
-        tonnage = 0
-    if f['pointcall_out']['ferme_direction'] == 'La Rochelle':
-        if f['pointcall_in']['ferme_direction'] == 'La Rochelle':
-            ports[port]['cumulated_tonnage_in_region'] += tonnage  
-            bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage  
+if chosen_year == 1789:
+
+    for f in flows_navigo_reconstructed : 
+        port = f['pointcall_out']['toponyme_fr'] if (f['pointcall_out']['ferme_direction'] == 'La Rochelle' and f['pointcall_out']['toponyme_fr'] not in ['Nantes', 'Bordeaux', 'Le Havre']) else 'other ports not from region => to be erased from data'
+        # print("port : ", port)
+        bureau = clean_names(correct_localities_alignment(f['pointcall_out']['toponyme_fr'])) if port in ['Beauvoir-sur-Mer','Champagné-les-Marais', 'Tonnay-Charente', "Saint-Denis d'Oléron", "Le Château-d'Oléron", 'Île d’Oléron', 'La Brée', "île d'Oléron", 'île de Bouin'] else clean_names(f['pointcall_out']['ferme_bureau']) 
+    
+        if f['pointcall_out']['tonnage'] != '': 
+            tonnage = int(f['pointcall_out']['tonnage']) 
         else:
-            # print("f['destination_ferme_direction'] : ", f['destination_ferme_direction'])
-            ports[port]['cumulated_tonnage_out_region'] += tonnage  
-            bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage  
-    elif f['pointcall_out']['pointcall_province'] is not None: # dans ce cas là notre flow ne part pas de La Rochelle, besoin de distinguer cas bordeaux, nantes, le havre
-        if f['pointcall_out']['pointcall_province'] == f['pointcall_in']['pointcall_province']:
-            ports[port]['cumulated_tonnage_in_region'] += tonnage
-            bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage  
+            tonnage = 0
+        if f['pointcall_out']['ferme_direction'] == 'La Rochelle':
+            if f['pointcall_in']['ferme_direction'] == 'La Rochelle':
+                ports[port]['cumulated_tonnage_in_region'] += tonnage  
+                bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage  
+            else:
+                # print("f['destination_ferme_direction'] : ", f['destination_ferme_direction'])
+                ports[port]['cumulated_tonnage_out_region'] += tonnage  
+                bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage  
+        elif f['pointcall_out']['pointcall_province'] is not None: # dans ce cas là notre flow ne part pas de La Rochelle, besoin de distinguer cas bordeaux, nantes, le havre
+            if f['pointcall_out']['pointcall_province'] == f['pointcall_in']['pointcall_province']:
+                ports[port]['cumulated_tonnage_in_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_in_region'] += tonnage  
+            else:
+                ports[port]['cumulated_tonnage_out_region'] += tonnage
+                bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage  
         else:
-            ports[port]['cumulated_tonnage_out_region'] += tonnage
-            bureaus[bureau]['cumulated_tonnage_out_region'] += tonnage  
-    else:
-        print("on n'a rien ajouté")
-    ports[port]['nb_navigo_flows_taken_into_account'] += 1  
-    bureaus[bureau]['nb_navigo_flows_taken_into_account'] += 1  
-    if 'latitude' not in ports[port].keys():
-        ports[port]['latitude'] = f['pointcall_out']['latitude']  
-        ports[port]['longitude'] = f['pointcall_out']['longitude']
-        ports[port]['customs_office'] = bureau  
-        ports[port]['customs_region'] = f['pointcall_out']['ferme_direction']
-    if 'latitude' not in bureaus[bureau].keys():
-        bureaus[bureau]['latitude'] = f['pointcall_out']['latitude']  
-        bureaus[bureau]['longitude'] = f['pointcall_out']['longitude']
-        bureaus[bureau]['customs_region'] = f['pointcall_out']['ferme_direction']
+            print("on n'a rien ajouté")
+        ports[port]['nb_navigo_flows_taken_into_account'] += 1  
+        bureaus[bureau]['nb_navigo_flows_taken_into_account'] += 1  
+        if (bureau) == 'Le Havre':
+            print("\nflow associé au bureau du Havre de source doc id: ", f['pointcall_out']['source_doc_id'])
+            print("province de départ : ", f['pointcall_out']['pointcall_province'], " / d'arrivée : ", f['pointcall_in']['pointcall_province'])
+            print("(port de départ : ", f['pointcall_out']['toponyme_fr'], " / d'arrivée : ", f['pointcall_in']['toponyme_fr'], ")")
+            print("tonnage erenseigné départ : ", f['pointcall_out']['tonnage'], " / à l'arrivée : ", f['pointcall_in']['tonnage'], " ==> ce qui donne tonnage = ", tonnage)
+
+        if 'latitude' not in ports[port].keys():
+            ports[port]['latitude'] = f['pointcall_out']['latitude']  
+            ports[port]['longitude'] = f['pointcall_out']['longitude']
+            ports[port]['customs_office'] = bureau  
+            ports[port]['customs_region'] = f['pointcall_out']['ferme_direction']
+        if 'latitude' not in bureaus[bureau].keys():
+            bureaus[bureau]['latitude'] = f['pointcall_out']['latitude']  
+            bureaus[bureau]['longitude'] = f['pointcall_out']['longitude']
+            bureaus[bureau]['customs_region'] = f['pointcall_out']['ferme_direction']
 
 # end of 1789 option *********************************************************************************
 

@@ -4,7 +4,7 @@ import cx from 'classnames';
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
-import { renderLabel, renderStep3Object, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
+import { renderLabel, renderStep3Object, renderStep3SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
 import DataProvider from '../../components/DataProvider';
 import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
@@ -170,6 +170,11 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
               type: 'custom',
               data: datasets['part_3_step3_viz_customs_offices_data.csv'],
               renderObject: renderStep3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
+            },
+            {
+              type: 'custom',
+              data: datasets['part_3_step3_viz_customs_offices_data.csv'],
+              renderObjects: renderStep3SmallMultiples
             }
           ]}
           projectionTemplate='Poitou'

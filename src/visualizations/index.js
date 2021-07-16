@@ -233,7 +233,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 {
                   type: 'choropleth',
                   data: datasets['cartoweb_france_1789_geojson.geojson'],
-                  reverseColors: true,
+                  reverseColors: props.atlasMode ? undefined : true,
                   color:{
                     field: 'shortname',
                     palette: colorPalettes.provinces
@@ -254,7 +254,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 {
                   type: 'choropleth',
                   data: datasets['cartoweb_france_1789_geojson.geojson'],
-                  reverseColors: true,
+                  reverseColors: props.atlasMode ? undefined : true,
                   // color:{
                   //   field: 'shortname',
                   //   palette: colorPalettes.provinces
@@ -266,7 +266,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   color: {
                     field: 'province',
                     palette: colorPalettes.provinces,
-                    labelsColor: 'white'
+                    labelsColor: props.atlasMode ? undefined : 'white'
                   },
                   // size: {
                   //   field: 'name',
@@ -291,7 +291,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   {
                     type: 'choropleth',
                     data: datasets['cartoweb_france_1789_geojson.geojson'],
-                    reverseColors: true,
+                    reverseColors: props.atlasMode ? true : false,
                     // color:{
                     //   field: 'shortname',
                     //   palette: colorPalettes.provinces
@@ -303,7 +303,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                     color: {
                       field: 'name',
                       palette: colorPalettes.customs_office,
-                      labelsColor: 'white'
+                      labelsColor: props.atlasMode ? undefined : 'white'
                     },
                     size: {
                       custom : 3 // 3 fois plus gros que la taille par défaut

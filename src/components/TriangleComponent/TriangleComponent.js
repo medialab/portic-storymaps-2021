@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* DOCUMENTATION : API de ce TriangleComponent
 
   Principe :
@@ -178,7 +179,7 @@ const TriangleComponent = ({
             const triangleHeight = scaleY(+port.mean_tonnage)
 
             const xIndex = index % numberOfColumns;
-            const yIndex = (index - index % numberOfColumns) / numberOfColumns;
+            // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
             const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * totalWidth;
             const yTransform = totalHeight * 2.3;
 

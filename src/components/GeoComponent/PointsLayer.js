@@ -70,7 +70,7 @@ const PointsLayer = ({ layer, projection, width }) => {
       console.log("grouped (PointsLayer): ", grouped)
       return grouped;
     }
-  }, [projection, width, layer])
+  }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */
 
   // console.log("markerData (pointsLayer): ", markerData)
 

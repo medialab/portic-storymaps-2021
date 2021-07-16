@@ -181,10 +181,10 @@ export function renderStep3Object({ datum, projection, width, height }) { // à 
 export function renderStep3SmallMultiples({ data, width, height, projection }) {
   // could be parametered in props too
   const legendWidth = width / 6
-  const margins = {
-    left: 0.05,
-    right: 0.05
-  }
+  // const margins = {
+  //   left: 0.05,
+  //   right: 0.05
+  // }
 
   // console.log("data : layder.data ", data)
   const numberOfColumns = 3
@@ -193,7 +193,7 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
   const numberOfRows = 1
   const rowHeight = height / 6
   const totalHeight = numberOfRows * rowHeight
-  const fontSize = totalHeight * 0.05
+  // const fontSize = totalHeight * 0.05
 
   // console.log({ width, numberOfColumns, columnWidth, numberOfRows, rowHeight, totalHeight, fontSize })
 
@@ -466,7 +466,7 @@ export function renderTriangles({ data, width, height, projection }) {
 
 
 // trash code
-
+/* eslint-disable */
 {/* { showLegend?
         // create an exemple object for the legend that has all required properties for the viz
         

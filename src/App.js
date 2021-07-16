@@ -11,33 +11,30 @@ import {
   useLocation,
   Link,
 } from "react-router-dom";
-import {homepage} from '../package.json'
-
 import uniq from 'lodash/uniq';
 import { csvParse, tsvParse } from 'd3-dsv';
-
-
 import axios from 'axios';
-import visualizationsList from './visualizationsList';
 
 /* import pages */
 import Home from './pages/Home';
 import Atlas from "./pages/Atlas";
 import StandaloneVisualization from "./pages/StandaloneVisualization";
+import PlainPage from './pages/PlainPage';
 
 /* import components */
 import HeaderNav from './components/HeaderNav';
 import Loader from './components/Loader/Loader';
+import Footer from "./components/Footer";
 
-import PlainPage from './pages/PlainPage';
-
+/* import utils */
 import { DatasetsContext } from './helpers/contexts';
 
 /* import other assets */
 import './App.scss';
 
-import routes from './summary'
-import Footer from "./components/Footer";
+import visualizationsList from './visualizationsList';
+import {homepage} from '../package.json';
+import routes from './summary';
 
 const LANGUAGES = ['fr', 'en'];
 
@@ -45,6 +42,7 @@ function App() {
 
   const history = useHistory();
   const location = useLocation();
+
   const [datasets, setDatasets] = useState({})
   const [loadingFraction, setLoadingFraction] = useState(0);
 
@@ -53,7 +51,7 @@ function App() {
    */
   useEffect(() => {
     // loading all datasets from the atlas
-    // @todo do this on a page-to-page basis if datasets happens to be to big/numerous
+    // @todo do this on a page-to-page basis if datasets happens to be too big/numerous
     const datasetsNames = uniq(visualizationsList.filter(d => d.datasets).reduce((res, d) => [...res, ...d.datasets.split(',').map(d => d.trim())], []));
     datasetsNames.reduce((cur, datasetName, datasetIndex) => {
       return cur.then((res) => new Promise((resolve, reject) => {
@@ -77,7 +75,7 @@ function App() {
                 resolve({ ...res, [datasetName]: loadedData })
               })
             })
-            // make get errors non-blocking
+            // make get errors non-blocking to get all available datasets in the app even if some are broken
             .catch(err => {
               console.error(err);
               return resolve(res);
@@ -90,13 +88,14 @@ function App() {
         setLoadingFraction(1);
         setDatasets(newDatasets)
       })
-      .catch(console.log)
+      .catch(console.error)
   }, [])
 
   const onLangChange = (ln) => {
     const otherLang = ln === 'fr' ? 'en' : 'fr';
 
     const { pathname } = location;
+    // @todo refactor this to be handled based on the routes config JSON ?
     if (pathname.includes('atlas')) {
       const visualizationId = pathname.split('/atlas/').pop();
       history.push(`/${ln}/atlas/${visualizationId || ''}`);
@@ -139,7 +138,7 @@ function App() {
         </header>
         <main>
           <Switch>
-            {
+            {// looping through the page
               LANGUAGES.map(lang => {
                 return routes
                 .map(({
@@ -151,6 +150,7 @@ function App() {
                 }, index) => {
                   const route = `/${lang}/page/${inputRoute[lang]}`
                   const title = titles[lang];
+                  // @todo remove Content as it is not used anymore ? (importing md content with React.lazy did not play nice with scrollytelling-related features)
                   const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`));
                   const ContentSync = contentsProcessed[lang];
                   return (
@@ -190,11 +190,12 @@ function App() {
 
 
       </div>
+      {/* following react fragment is aimed at allowing react-snap to parse all the pages that have a dynamic URL */}
       <React.Fragment>
-        {
+        {// looping through the pages to add a blank link to all of them
           LANGUAGES.map(lang => {
             return routes
-            // @todo this is dirty and should be removed at some point
+            // @todo this is dirty and should be removed at some point (test page is not exported in prod, so no need for react-snap)
             .filter(({routes}) => routes[lang] && !routes[lang].includes('test'))
             .map(({
               titles,
@@ -215,9 +216,12 @@ function App() {
   );
 }
 
+/**
+ * the following variable is aimed at allowing browser-router to function
+ * for deployments on gh-pages (prefixing all routes with the repo name to match ghp URL pattern e.g. https://username.github.io/projectname/)
+ */
 const BASE_NAME =
   process.env.NODE_ENV === 'development'
-  // navigator.userAgent === "ReactSnap"
     ? undefined
     : `/${homepage.split('/').pop()}`;
 

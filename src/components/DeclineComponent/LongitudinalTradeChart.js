@@ -244,7 +244,9 @@ const LongitudinalTradeChart = ({
         </g>
         <g className="annotations-container">
           {
-            annotations.map((annotation, annotationIndex) => {
+            annotations
+            .filter(({startYear: aStartYear, endYear: aEndYear}) => aStartYear >= startYear && aEndYear <= endYear)
+            .map((annotation, annotationIndex) => {
               const {startYear, endYear, label} = annotation;
               return (
                 <g className="annotation" key={annotationIndex}>

@@ -29,7 +29,7 @@ import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
 import FlowsLayer from './FlowsLayer';
 import CustomObjectLayer from './CustomObjectLayer';
-import TriangleComponent from '../TriangleComponent/TriangleComponent';
+// import TriangleComponent from '../TriangleComponent/TriangleComponent';
 import Button from './Button';
 import Input from './Input';
 
@@ -160,11 +160,11 @@ const GeoComponent = ({
     projection.translate([projectionConfig.translationX, projectionConfig.translationY])
 
     return projection;
-  }, [width, height, scale, rotation]) // avant j'avais et RotationDegree translationX, translationY, centerX, centerY
+  }, [width, height, scale, rotation])/* eslint react-hooks/exhaustive-deps : 0 */ // avant j'avais et RotationDegree translationX, translationY, centerX, centerY
 
 
 
-  const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
+  // const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
 
   return (
     <div>

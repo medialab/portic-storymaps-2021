@@ -81,11 +81,11 @@ const PrincipalVisualizationPart2 = ({
             node: {
               fr: ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'importé' : 'exporté'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'exporté' : 'importé'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
                 } else if (step === 1 || step === 4) {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'importé' : 'exporté'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
+                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
                 } else {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'importé' : 'exporté'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} vers le partenaire ${id}.`;
+                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${node.valueAbs} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} vers le partenaire ${id}.`;
                 }
               },
               en: () => ({id, ...node}, step) => {

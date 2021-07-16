@@ -47,15 +47,23 @@ const Caller = ({id: visualizationId, ...props}) => {
       })}
     >
       {
-        visualizationId ?
-        <>caller pour la visualisation <code>{visualizationId}</code> </>
+        process.env.NODE_ENV === 'development' ?
+        <>
+          {
+          visualizationId ?
+          <>caller pour la visualisation <code>{visualizationId}</code> </>
+          :
+          <>caller sans id (agit comme un clearfix)</>
+        }{
+          Object.keys(props).length ? 
+            <span>avec les paramètres {JSON.stringify(props)}</span>
+          : null
+        }
+        </>
         :
-        <>caller sans id (agit comme un clearfix)</>
-      }{
-        Object.keys(props).length ? 
-          <span>avec les paramètres {JSON.stringify(props)}</span>
-        : null
+        null
       }
+      
     </div>
   );
 }

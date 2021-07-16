@@ -558,10 +558,13 @@ svg text {
     display: none;
   }
   &.is-hidden {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0;
+    max-width: 2rem;
+    padding: 0.3rem;
+    margin: 0;
+    // opacity: 0;
+    // max-height: 0;
+    // overflow: hidden;
+    // padding: 0;
   }
 }
 /**

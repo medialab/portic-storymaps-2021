@@ -524,7 +524,7 @@ def build_graph(name, flows, admiralties):
             name,
             admiralty=admiralty,
             internal= 'interne à la région' if admiralty in admiralties else 'externe à la région',
-            degree=0,
+            degree=1,
             # inside_degree=0,
             # outside_degree=0,
             x= flow["departure_latitude"] if flow else random(),
@@ -573,9 +573,13 @@ def build_graph(name, flows, admiralties):
             add_edge(graph, source, target, tonnage)
 
     degrees = graph.degree()
-    # print(degrees)
-    for (node, val) in degrees:
-      graph.node[node]["degree"] = val
+    print(degrees)
+    if type(degrees) is dict:
+      for (node, val) in degrees.items():
+        graph.node[node]["degree"] = val
+    else:
+      for (node, val) in degrees:
+        graph.node[node]["degree"] = val
 
 
     nx.write_gexf(graph, '../public/data/%s.gexf' % name)  

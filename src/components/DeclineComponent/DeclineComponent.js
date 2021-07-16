@@ -63,7 +63,15 @@ const DeclineComponent = (props) => {
     sevenYearsWar: {
       fr: () => 'guerre de sept ans',
       en: () => 'seven years war'
-    }
+    },
+    austriaWar: {
+      fr: () => 'guerre de succession d’Autriche',
+      en: () => 'guerre de succession d’Autriche',
+    },
+    usIndependance: {
+      fr: () => 'guerre d’indépendance Américaine',
+      en: () => 'guerre d’indépendance Américaine',
+    },
   }
   const margins = { top: 10, right: 50, bottom: 30, left: 50 };
 
@@ -90,7 +98,21 @@ const DeclineComponent = (props) => {
                 startYear: 1756,
                 endYear: 1763,
                 label: messages.sevenYearsWar[lang]()
-              }
+              },
+              {
+                type: 'span',
+                startYear: 1744,
+                endYear: 1748,
+                label: messages.austriaWar[lang]()
+              },
+              {
+                type: 'span',
+                startYear: 1778,
+                endYear: 1781,
+                label: messages.usIndependance[lang]()
+              },
+
+              
             ]}
             fillGaps
             {
@@ -126,7 +148,19 @@ const DeclineComponent = (props) => {
                 startYear: 1756,
                 endYear: 1763,
                 label: messages.sevenYearsWar[lang]()
-              }
+              },
+              {
+                type: 'span',
+                startYear: 1744,
+                endYear: 1748,
+                label: messages.austriaWar[lang]()
+              },
+              {
+                type: 'span',
+                startYear: 1778,
+                endYear: 1781,
+                label: messages.usIndependance[lang]()
+              },
             ]}
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),
@@ -164,7 +198,19 @@ const DeclineComponent = (props) => {
                 startYear: 1756,
                 endYear: 1763,
                 label: messages.sevenYearsWar[lang]()
-              }
+              },
+              {
+                type: 'span',
+                startYear: 1744,
+                endYear: 1748,
+                label: messages.austriaWar[lang]()
+              },
+              {
+                type: 'span',
+                startYear: 1778,
+                endYear: 1781,
+                label: messages.usIndependance[lang]()
+              },
             ]}
             margins={margins}
             colorScaleMessages={{

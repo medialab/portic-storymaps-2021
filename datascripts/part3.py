@@ -578,8 +578,8 @@ def build_graph(name, flows, admiralties):
       for (node, val) in degrees.items():
         graph.node[node]["degree"] = val
     else:
-      for (node, val) in degrees:
-        graph.node[node]["degree"] = val
+      for id in graph.nodes():
+        graph.node[id]["degree"] = graph.degree(id)
 
 
     nx.write_gexf(graph, '../public/data/%s.gexf' % name)  

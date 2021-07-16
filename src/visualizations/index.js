@@ -1,3 +1,6 @@
+// @TODO : colorLegends et titres à mettre en place pour cartes notamment
+// @TODO : faire une passe sur visualizationList.json que j'ai rempli approximativement pour les vizs 'intro-provinces', 'intro-ports', et 'intro-bureaux'
+
 import { useContext, useMemo } from 'react';
 
 import Test from './Test';

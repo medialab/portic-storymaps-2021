@@ -1,3 +1,28 @@
+/*
+DOCUMENTATION : sommaires des fonctions
+
+- renderLabel (renderObject)
+positionner geographiquement des labels
+
+- renderStep3Object (renderObject)
+création d'un double triangle et d'un cercle autour (deux courbes de bézier), positionné géographiquement
+(objet associé à un bureau de ferme)
+
+- fonction renderStep3SmallMultiples (renderObjects)
+création des objets double triangle et cercles pour les small multiples de la viz 3.3, positionnés en bas à droite du SVG
++ un objet de légende
+
+- renderTriangles (renderObjects)
+création des triangles pour la viz 3.1, reliés par une courbe pointillée à des points positionnés géographiquement
++ un triangle de légende
+
+@TODO : compléter la fonction step3Object (ou créer une nouvelle fonction), pour gérer l'apparition des doubles triangles pour chaque port
+-  cette fonctionnalité est déjà prévue dans la fonction renderStep3Object (dans la boucle   if (datum.type_of_object === "port") { ...}) mais en l'état les objets ports sont positionnés géographiquement
+- il faudrait adapter pour positionner les objets ports en colonne, sur la gauche du SVG, et qu'ils aient par défaut une opacité à 0% sauf au hover de l'objet bureau des fermes correspondant => apparition
+
+*/
+
+
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
 import colorsPalettes from '../../colorPalettes';
 
@@ -150,6 +175,8 @@ export function renderStep3Object({ datum, projection, width, height }) { // à 
       </>
     </g>);
 }
+
+
 
 export function renderStep3SmallMultiples({ data, width, height, projection }) {
   // could be parametered in props too

@@ -3,9 +3,7 @@ import cx from 'classnames';
 
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
-import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
-import { renderLabel, renderStep3Object, renderStep3SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
-import DataProvider from '../../components/DataProvider';
+import { renderStep3Object, renderStep3SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
 import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
 

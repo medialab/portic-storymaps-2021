@@ -339,3 +339,14 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
     if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
       out_from_region.append(pointcall)
   compute_foreign_homeports(out_from_region)
+
+
+
+"""
+(partie 2)
+carte de flux des navires de La Rochelle, aggregable par tonnages cumulés, ou nombre de trajets (interactivité)
+
+@TODO le notebook est là : https://github.com/medialab/portic-datasprint-2021/blob/main/productions_post_sprint/carte-trajets-navires-homeport-la-rochelle-1787/carte-trajets-navires-homeport-la-rochelle-1787.ipynb
+je n'ai juste pas eu le temps de transposer le script (Cécile)
+"""
+

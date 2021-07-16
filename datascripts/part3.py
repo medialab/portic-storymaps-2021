@@ -1,5 +1,7 @@
 """
-Ecriture de csv de données pour nourrir les visualisations
+DOCUMENTATION DE CE SCRIPT 
+
+Ce qu'il fait ? ==> Ecriture de csv de données pour nourrir les visualisations
 
 (csv 0 de localisation de tous les ports de la DFLR dans leurs bureaus, provinces, amirautés, directions ... pour nourrir les cartes de l'intro)
 pour chaque port DFLR en 1789 :
@@ -8,7 +10,7 @@ pour chaque port DFLR en 1789 :
 - entités administratives d'appartenance (bureau, provinve, amirauté, direction)
 
 
-écriture des csv de données pour nourrir les différentes étapes de la visualisation principale de la partie 3 :
+csv pour nourrir les différentes étapes de la visualisation principale de la partie 3 :
 
 step 1 / csv 1 (données Navigo) :
 pour chaque port DFLR en 1789 :
@@ -16,12 +18,15 @@ pour chaque port DFLR en 1789 :
 - tonnage moyen de ces bateaux
 
 step 2 / gexf :
-A FAIRE
+nourrir les réseaux de flux entre les ports
+- de la DFLR
+- des directions de Nantes et Bordeaux (comparaison)
+
 
 step 3 / csv 3.1 (données Navigo sur les ports) et 3.2 (données Toflit sur les bureaux) :
 
 csv 3.1
-en 1789, pour chaque port DFLR + ports de Bordeaux, Le Havre, Nantes (données Navigo):
+en 1789, pour chaque port DFLR + en 1787 pour chaque port de Bordeaux, Le Havre, Nantes (données Navigo):
 - tonnage cumulé à destination de l’extérieur de la région
 - tonnage cumulé à destination de l’hinterland de la région
 
@@ -30,10 +35,21 @@ en 1789 pour tous bureaux DFLR + Bordeaux, Le Havre, Nantes (données Toflit):
 - valeur cumulée exports produits d'origine extérieure à la région
 - valeur cumulée exports produits originaires de l’hinterland (PASA)
 
-@TODO
-step 3 : attention on n'a pas les noms standardisés fr des bureaux de fermes associés aux flows navigo collectés, donc à corriger plus tard dans le csv, ou faire attention bien agréger les orthographes différentes ensemble au moment des agrégations par bureau de ferme dans la viz
-step 3 : essayer de voir pourquoi en choisissant les flows Navigo plutot que les pointcalls on perd de vue des sorties des ports de La Tranche-sur-Mer, La Tremblade, Saint-Michel-enl'Herm, Mortagne
-step 3 : vérifier si la comparaison avec les ports de Nantes, Bordeaux, Le Havre n'est pas plus pertinentes avec les données 87 de Navigo (données 89 bien renseignées que pour la DFLR) => si besoin utiliser à la fois données 87 pour Toflit et Navigo pour la partie comparative exter region (LR / LH / Nantes / Bordeaux)
+
+************** UTILS *******************
+- fonction clean_names : permet de standardiser certains noms de ports / bureaux (basé sur le champ toponyme_fr de Navigo)
+- fonction correct_localities_alignment : permet de renvoyer les bureaux d'appartenance de certains ports à donner en entrée (correction des differences d'alignement entre l'API Portic et celles sur lesquels nous nous etions accordés sur le spreadsheet d'alignement) 
+- variable chosen_year (peut être mise à 1787 si vous voulez avoir les données Navigo en 1787 pour DFLR et pas que autres régions)
+
+
+*********** REMARQUES / A GARDER A L'ESPRIT ******************
+step 3 :
+- pour les données Navigo sur Nantes, Bordeaux et Le Havre, j'ai choisi de prendre l'année 1787 car on n'avait que très peu de données en 1789, et que les tonnages du Havre n'étaient pas mentionnés
+  (j'ai gardé néanmoins les données DFLR à 1789 pour être alignés aux données Toflit sur lesquelles on ne peut prendre que l'année 1789, l'année 1787 n'ayant pas de données)
+- pour les données Navigo portant sur la DFLR en 1789, on utilise les objets pointcalls et pas flows, car les flows de 1789 n'étaient pas encore correctement stabilisés sur l'API Portic au moment de l'écriture de ce script
+- au niveau de la force de la visualisation pour argumenter "port de La Rochelle dominant mais pas structurant" : ça marche bien avec les données Toflit, c'est moins évident avec Navigo selon les données choisies 
+  (attention au bureau de Saint Martin de-Ré : encore plus tourné vers l'exterieur de la région que La Rochelle en termes de tonnages cumulés qui sortent du bureau, mais on a peu de données sur ce bureau donc peu représentatif
+   pour Marennes c'est le seul qui donne des gros tonnages vers l'extérieur) 
 """
 
 import networkx as nx
@@ -64,8 +80,6 @@ def clean_names(name):
         return name
 
 # fonction de correction d'incohérence observées dans les données Navigo, qui se base sur cet alignement : https://docs.google.com/spreadsheets/d/1_lg15b21Y6eA60dj7CmHvfcYkAd8riy7PCYxCFKTRR8/edit#gid=1003102058
-
-
 def correct_localities_alignment(port):
     if port in ['Beauvoir-sur-Mer', 'Champagné-les-Marais']:
         # (pas Beauvoir-sur-Mer et Champagné-les-Marais)

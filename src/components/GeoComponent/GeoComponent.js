@@ -1,3 +1,28 @@
+/* DOCUMENTATION : API de ce GéoComponent
+
+  Principe :
+    Composants réutilisable pour toutes les cartes utilisés sur les sites PORTIC
+    cartographie en SVG
+    -> permet de faire des cartes choroplèthes, de représenter des ports, des flux de navires, ...
+
+  Paramètres : 
+    * width : largeur de la carte (par défaut à 1500 px)
+    * height : hauteur de la carte (par défaut à 1500 px)
+
+    * layers : différentes couches de la carte ('choropleth', 'points', 'flows', 'custom'), à chaque layer il faut donner un fichier de données (stocké dans public/data) pour construire le objets qui le constituent, les couleurs, tailles, labels de ces objets sont paramètrables 
+        si layer 'custom' choisi, il faut passer au layer une fonction d'affichage des données :
+        - renderObject : donner un objet de donnée en paramètre, la fonction s'occupe de construire sa représentation SVG et de la positionner individuellement sur la carte
+        - renderObjects : donner un dataset, la fonction s'occupe de construire une représentation SVG de l'ensemble des objets, et de gérer leurs positionnement sur la carte (souvent adapté quand le positionnement n'est pas géographique, qu'on a besoin de gérer les espacements entre objets ...)
+
+    * projectionTemplate : configuration de carte utilisée fréquemment ('France', 'coast from Nantes to Bordeaux', 'Poitou', 'rotated Poitou')
+    * projectionConfig: configuration de carte customisée (ce paramètre prime sur projectionTemplate si les 2 sont données en même temps)
+
+    * debug : permet d'ajuster manuellement la configuration de la carte quand true (les paramètres de zoom, les coordonnées du centre, la rotation et les translations sont ajustables)
+    
+  @TODO : documenter ce component de manière standardisée
+  */
+
+
 import React, { useState, useMemo } from 'react';
 import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
@@ -9,27 +34,6 @@ import Button from './Button';
 import Input from './Input';
 
 import './GeoComponent.scss'
-
-/* DOCUMENTATION : API de ce GéoComponent
-
-  Principe :
-    Composants réutilisable pour toutes les cartes utilisés sur les sites PORTIC
-    cartographie en SVG
-    -> permet de faire des cartes choroplèthes, de représenter des ports, des flux de navires, ...
-
-  Paramètres : 
-    dataFilename : données à afficher sur la carte
-    backgroundFilename : données du fond de cartes
-    renderObject : fonction d'affichage des données (par défaut les objets affichés sont des cercles, mais peut se changer en passant une autre fonction)
-    projectionTemplate : configuration de carte utilisée fréquemment ('France', 'coast from Nantes to Bordeaux', 'Poitou', 'rotated Poitou')
-    projectionConfig: configuration de carte customisée (ce paramètre prime sur projectionTemplate si les 2 sont données en même temps)
-    debug : permet d'ajuster manuellement la configuration de la carte quand true (les paramètres de zoom, les coordonnées du centre, la rotation et les translations sont ajustables)
-
-  @TODO : gérer le responsive sur mes maps
-  @TODO : rendre les attributs color et size optionnels ? (=> tout est gris par défaut)
-  @TODO : documenter ce component comme LinearGraph
-  */
-
 
 
 const GeoComponent = ({
@@ -271,7 +275,7 @@ const GeoComponent = ({
                   height={height}
                 />
 
-              case 'flows':
+              case 'flows': 
                 return <FlowsLayer
                   key={layerIndex}
                   layer={layer}

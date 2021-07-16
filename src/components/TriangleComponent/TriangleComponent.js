@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* DOCUMENTATION : API de ce TriangleComponent
 
   Principe :

@@ -60,7 +60,7 @@ const PointsLayer = ({ layer, projection, width }) => {
       }
 
       const sizeExtent = extent(grouped.map(g => g.size));
-      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 10]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
         color: layer.color !== undefined ? palette[datum.color] : 'grey',

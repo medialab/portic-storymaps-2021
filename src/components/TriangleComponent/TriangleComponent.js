@@ -1,17 +1,30 @@
+<<<<<<< HEAD
+/* DOCUMENTATION : API de ce TriangleComponent
+
+  Principe :
+    Composant conçu spécifiquement pour les triangles de la viz 3.1, mais pourrait être décliné
+    -> permet de produire une série d'objets en SVG, qui se disposent dans une grille en fonction de la longueur du dataset, et les dimensions de cette grille sont paramètrables
+
+  Paramètres : 
+    data : données à afficher sur la carte,
+    totalWidth : largeur totale du composant (1 objet de légende + grille d'objets) (par défaut à 1200 px)
+    legendWidth : largeur de la légende (par défaut à un dizième de la largeur totale)
+    margins : marges de gauche (entre l'objet de la légende et la grille) et de froite (entr la droite de la grille et l'extrémité droite de l'écran)
+    rowHeight : hauteur d'une ligne de la grille (par défaut à 200px)
+    projection : on passe en paramètre la projection de d3 geo pour pouvoir donner accès au positionnement géographique sur une carte (permet dans le cas de la viz 3.1 de lier les triangles au point de localisation géographique du port qu'ils représentent => point et triangle sont nesté dans un même objet, ce qui permet d'établir une courbe pointillée entre eux et gérer l'interaction avec des jeux d'opacité au hover)
+
+  Pistes d'amélioration : 
+  - filtrer les objets à l'entrée ? (par exemple pour la viz 3.1 on pourrait choisir d'afficher le triangle associé à un port que si les dimensions dépassent un certain seuil) => cela permettrait d'alléger la carte, en affichant seulement les ports pour lesquels on a des données représentatives
+
+  @TODO : documenter ce component de maière standardisée
+  */
+
 import React from 'react';
-// import { csvParse } from 'd3-dsv';
-// import get from 'axios';
-// import { geoEqualEarth, geoPath } from "d3-geo";
-// import { uniq } from 'lodash';
 import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
 
-// import { generatePalette } from '../../helpers/misc';
-
 import './TriangleComponent.scss'
 import colorsPalettes from '../../colorPalettes';
-
-// @TODO : documenter API
 
 
 const TriangleComponent = ({

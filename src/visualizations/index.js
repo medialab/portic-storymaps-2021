@@ -291,7 +291,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   {
                     type: 'choropleth',
                     data: datasets['cartoweb_france_1789_geojson.geojson'],
-                    reverseColors: props.atlasMode ? true : false,
+                    reverseColors: props.atlasMode ? false : true,
                     // color:{
                     //   field: 'shortname',
                     //   palette: colorPalettes.provinces

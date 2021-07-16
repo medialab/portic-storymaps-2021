@@ -57,6 +57,8 @@ import csv
 from operator import itemgetter
 from random import random
 
+"""
+
 # PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
 ports_dflr = set()
 PORTS_FOR_COMPARISON = {'Bordeaux', 'Nantes', 'Le Havre'}
@@ -516,7 +518,8 @@ with open(OUTPUT3_OFFICES, 'w', newline='') as csvfile2:
             direction = 'La Rochelle'
 
         writer2.writerow({'type_of_object': 'customs_office', 'name': values['bureau'], 'cumulated_tonnage_in_region': values['cumulated_tonnage_in_region'], 'cumulated_tonnage_out_region': values['cumulated_tonnage_out_region'], 'nb_navigo_flows_taken_into_account': values['nb_navigo_flows_taken_into_account'], 'cumulated_exports_value_from_region': values['cumulated_exports_value_from_region'] if 'cumulated_exports_value_from_region' in values.keys() else 'ERROR', 'cumulated_exports_value_from_ext': values['cumulated_exports_value_from_ext'] if 'cumulated_exports_value_from_ext' in values.keys() else 'ERROR', 'nb_toflit_flows_taken_into_account': values['nb_toflit_flows_taken_into_account'] if 'nb_toflit_flows_taken_into_account' in values.keys() else 'ERROR', 'customs_office': bureau, 'customs_region': direction, 'latitude': values['latitude'] if 'latitude' in values.keys() else 'ERROR', 'longitude': values['longitude'] if 'longitude' in values.keys() else 'ERROR'})
-    
+
+"""   
 """
 PART 3.2
 """
@@ -587,13 +590,12 @@ def build_graph(name, flows, admiralties):
             add_edge(graph, source, target, tonnage)
 
     degrees = graph.degree()
-    print(degrees)
     if type(degrees) is dict:
       for (node, val) in degrees.items():
         graph.node[node]["degree"] = val
     else:
       for id in graph.nodes():
-        graph.node[id]["degree"] = graph.degree(id)
+        graph.nodes[id]["degree"] = graph.degree(id)
 
 
     nx.write_gexf(graph, '../public/data/%s.gexf' % name)  

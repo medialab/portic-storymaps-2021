@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { csvParse } from 'd3-dsv';
-import get from 'axios';
+import React from 'react';
+// import { csvParse } from 'd3-dsv';
+// import get from 'axios';
 // import { geoEqualEarth, geoPath } from "d3-geo";
 // import { uniq } from 'lodash';
 import { scaleLinear } from 'd3-scale';
@@ -166,7 +166,7 @@ const TriangleComponent = ({
             const triangleHeight = scaleY(+port.mean_tonnage)
 
             const xIndex = index % numberOfColumns;
-            const yIndex = (index - index % numberOfColumns) / numberOfColumns;
+            // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
             const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * totalWidth;
             const yTransform = totalHeight * 2.3;
 

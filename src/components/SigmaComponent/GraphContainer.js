@@ -6,12 +6,12 @@ import { WebGLRenderer as Renderer } from 'sigma';
 import { scaleLinear } from 'd3-scale';
 import { min, max, extent } from 'd3-array';
 import { uniq } from 'lodash';
-import get from 'axios';
+// import get from 'axios';
 
 import { createNodeReducer, createEdgeReducer } from './reducers';
 import { generatePalette, usePrevious } from '../../helpers/misc';
 
-import GraphControls from './GraphControls';
+// import GraphControls from './GraphControls';
 
 import './GraphContainer.scss';
 
@@ -22,20 +22,20 @@ const CELL_HEIGHT_SCALE = scaleLinear().domain([0, 1]).range(CELL_HEIGHT_RANGE);
 const CELL_WIDTH_SCALE = scaleLinear().domain([0, 1]).range(CELL_WIDTH_RANGE);
 
 // Camera controls
-function rescale(renderer) {
-  const camera = renderer.getCamera();
-  camera.animatedReset(renderer);
-}
+// function rescale(renderer) {
+//   const camera = renderer.getCamera();
+//   camera.animatedReset(renderer);
+// }
 
-function zoomIn(renderer) {
-  const camera = renderer.getCamera();
-  camera.animatedZoom(renderer);
-}
+// function zoomIn(renderer) {
+//   const camera = renderer.getCamera();
+//   camera.animatedZoom(renderer);
+// }
 
-function zoomOut(renderer) {
-  const camera = renderer.getCamera();
-  camera.animatedUnzoom(renderer);
-}
+// function zoomOut(renderer) {
+//   const camera = renderer.getCamera();
+//   camera.animatedUnzoom(renderer);
+// }
 
 function GraphContainer({
   graph,

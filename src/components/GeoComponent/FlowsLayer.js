@@ -55,7 +55,7 @@ const FlowsLayer = ({ layer, projection, width, height }) => {
       console.log("grouped : ", grouped)
       return grouped;
     }
-  }, [projection, width, layer])
+  }, [projection, width, layer, height])/* eslint react-hooks/exhaustive-deps : 0 */
 
   console.log("markerData (FlowsLayer) : ", markerData)
 

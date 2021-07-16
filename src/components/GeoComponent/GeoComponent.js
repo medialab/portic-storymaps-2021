@@ -156,7 +156,7 @@ const GeoComponent = ({
     projection.translate([projectionConfig.translationX, projectionConfig.translationY])
 
     return projection;
-  }, [width, height, scale, rotation])/* eslint react-hooks/exhaustive-deps : 0 */ // avant j'avais et RotationDegree translationX, translationY, centerX, centerY
+  }, [width, height, scale, rotation, defaultProjectionConfig, inputProjectionConfig, projectionTemplate]) // avant j'avais et RotationDegree translationX, translationY, centerX, centerY
 
 
 
@@ -260,6 +260,7 @@ const GeoComponent = ({
                   projection={projection}
                   width={width}
                   height={height}
+                  reverseColors={layer.reverseColors}
                 />
 
               case 'points':

@@ -1,11 +1,12 @@
 import { geoPath } from "d3-geo";
 import { generatePalette } from '../../helpers/misc';
 import { uniq } from 'lodash';
+import cx from 'classnames';
 
 
 // @TODO : mettre en place une palette de couleurs quantitative 
 
-const ChoroplethLayer = ({ layer, projection, width, height }) => {
+const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) => {
 
     let palette;
 
@@ -25,7 +26,7 @@ const ChoroplethLayer = ({ layer, projection, width, height }) => {
 
     return (
         <>
-            <g className="ChoroplethLayer">
+            <g className={cx("ChoroplethLayer", {'reverse-colors': reverseColors})}>
                 {
                     layer.data.features.map((d, i) => {
                         return (

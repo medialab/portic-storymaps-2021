@@ -97,6 +97,7 @@ const PointsLayer = ({ layer, projection, width }) => {
                     <text
                       x={size + 5}
                       y={size / 2}
+                      fill={layer.color && layer.color.labelsColor}
                     >
                       {label}
                     </text>

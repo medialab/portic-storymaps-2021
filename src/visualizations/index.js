@@ -230,6 +230,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 {
                   type: 'choropleth',
                   data: datasets['cartoweb_france_1789_geojson.geojson'],
+                  reverseColors: true,
                   color:{
                     field: 'shortname',
                     palette: colorPalettes.provinces
@@ -250,6 +251,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 {
                   type: 'choropleth',
                   data: datasets['cartoweb_france_1789_geojson.geojson'],
+                  reverseColors: true,
                   // color:{
                   //   field: 'shortname',
                   //   palette: colorPalettes.provinces
@@ -260,7 +262,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   data: datasets['ports_locations_data.csv'],
                   color: {
                     field: 'province',
-                    palette: colorPalettes.provinces
+                    palette: colorPalettes.provinces,
+                    labelsColor: 'white'
                   },
                   // size: {
                   //   field: 'name',
@@ -285,6 +288,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   {
                     type: 'choropleth',
                     data: datasets['cartoweb_france_1789_geojson.geojson'],
+                    reverseColors: true,
                     // color:{
                     //   field: 'shortname',
                     //   palette: colorPalettes.provinces
@@ -295,7 +299,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                     data: datasets['part_3_step3_viz_customs_offices_data.csv'],
                     color: {
                       field: 'name',
-                      palette: colorPalettes.customs_office
+                      palette: colorPalettes.customs_office,
+                      labelsColor: 'white'
                     },
                     size: {
                       custom : 3 // 3 fois plus gros que la taille par défaut

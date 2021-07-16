@@ -33,6 +33,13 @@
 			stroke: black;
 			stroke-width: 1;
 		}
+    &.reverse-colors {
+      .geopart {
+        fill: transparent;
+        stroke: white;
+      }
+      
+    }
 		.legend {
 			.color-legend {
 				fill: transparent;

@@ -69,6 +69,7 @@ $screen-xl-min: 1200px;
 }
 
 html {
+  overflow-x: hidden;
   @include phone {
     max-width: 100vw;
     overflow-x: hidden;

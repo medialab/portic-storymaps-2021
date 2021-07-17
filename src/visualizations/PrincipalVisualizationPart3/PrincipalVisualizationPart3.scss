@@ -18,4 +18,12 @@
       pointer-events: all;
     }
   }
+  .GeoComponent {
+    .ChoroplethLayer {
+      .geopart {
+        stroke: white;
+        fill: lightgrey!important;
+      }
+    }
+  }
 }

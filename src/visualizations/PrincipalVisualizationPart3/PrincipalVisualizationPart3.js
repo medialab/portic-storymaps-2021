@@ -1,5 +1,6 @@
 
 import cx from 'classnames';
+import { useState, useEffect } from 'react';
 
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
@@ -11,6 +12,22 @@ import './PrincipalVisualizationPart3.scss';
 
 
 const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
+  const ANIMATION_DURATION = 1000;
+  const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
+  useEffect(() => {
+    setTimeout(() => {
+      switch(step) {
+        case 1:
+          setCurrentMapTemplate('rotated Poitou');
+          break;
+        case 3:
+          setCurrentMapTemplate('Poitou');
+          break;
+        default:
+          break;
+      }
+    }, ANIMATION_DURATION)
+  }, [step])
   return (
     <div className="PrincipalVisualizationPart3" height={height}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
@@ -26,7 +43,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
               renderObjects: renderTriangles
             }
           ]}
-          projectionTemplate='rotated Poitou'
+          projectionTemplate={currentMapTemplate}
           height={height}
           width={width}
         />
@@ -175,7 +192,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
               renderObjects: renderStep3SmallMultiples
             }
           ]}
-          projectionTemplate='Poitou'
+          projectionTemplate={currentMapTemplate}
           height={height}
           width={width}
         />

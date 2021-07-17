@@ -201,7 +201,7 @@ const TriangleComponent = ({
                     key={index}
                     cx={0}
                     cy={0}
-                    r={totalHeight * 0.035}
+                    r={totalHeight * 0.02}
                     style={{ fill: colorsPalettes.generic.dark }}
                     className="marker"
                   />

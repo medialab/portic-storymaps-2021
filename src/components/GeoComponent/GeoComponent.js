@@ -39,6 +39,7 @@ import './GeoComponent.scss'
 const GeoComponent = ({
   width = 1500,
   height = 1500,
+  title,
   layers = [],
   projectionTemplate: initialProjectionTemplate,
   projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
@@ -174,9 +175,10 @@ const GeoComponent = ({
 
 
   // const [xCenterPoint, yCenterPoint] = projection([centerX, centerY]);
-
   return (
-    <div>
+    <div className="GeoComponentWrapper">
+
+      {title ? <h5 className="visualization-title">{title}</h5> : null}
 
       {
         debug ?

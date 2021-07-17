@@ -8,31 +8,47 @@ import { generatePalette } from '../../helpers/misc';
 import { useSpring, animated } from 'react-spring'
 
 const PointGroup = ({ projection, datum, layer }) => {
-  const { latitude, longitude, size, color, label, labelPosition = 'right' } = datum;
+  const { latitude, longitude, size, color, label, labelPosition = 'right', labelSize } = datum;
   const [x, y] = projection([+longitude, +latitude]);
-  const {transform} = useSpring({transform: `translate(${x},${y})`});
+  const { transform } = useSpring({ transform: `translate(${x},${y})` });
   return (
-    <animated.g className="point-group" transform={transform}>
-      <circle
-        cx={0}
-        cy={0}
-        r={size}
-        style={{ fill: color }}
-        className="marker"
-      />
-      {
-        label ?
-          <text
-            x={labelPosition === 'right' ? size + 5 : -size - 5}
-            y={size / 2}
-            fill={layer.color && layer.color.labelsColor}
-            textAnchor={labelPosition === 'right' ? 'start' : 'end'}
-          >
-            {label}
-          </text>
-          : null
-      }
-    </animated.g>
+    <>
+      <animated.g className="point-group" transform={transform}>
+        <circle
+          cx={0}
+          cy={0}
+          r={size}
+          style={{ fill: color }}
+          className="marker"
+        />
+      </animated.g>
+    </>
+
+  );
+}
+
+const PointLabel = ({ projection, datum, layer }) => {
+  const { latitude, longitude, size, color, label, labelPosition = 'right', labelSize } = datum;
+  const [x, y] = projection([+longitude, +latitude]);
+  const { transform } = useSpring({ transform: `translate(${x},${y})` });
+  return (
+    <>
+      <animated.g className="point-group" transform={transform}>
+        {
+          label ?
+            <text
+              x={labelPosition === 'right' ? size + 5 : -size - 5}
+              y={size / 2}
+              fill={layer.color && layer.color.labelsColor}
+              textAnchor={labelPosition === 'right' ? 'start' : 'end'}
+              fontSize={labelSize}
+            >
+              {label}
+            </text>
+            : null
+        }
+      </animated.g>
+    </>
 
   );
 }
@@ -93,10 +109,12 @@ const PointsLayer = ({ layer, projection, width }) => {
 
       const sizeExtent = extent(grouped.map(g => g.size));
       const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      const labelSizeScale = scaleLinear().domain(sizeExtent).range([5, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
         color: layer.color !== undefined ? palette[datum.color] : 'grey',
-        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100
+        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100,
+        labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width / 100
       }))
 
       // console.log("grouped (PointsLayer): ", grouped)
@@ -105,17 +123,28 @@ const PointsLayer = ({ layer, projection, width }) => {
   }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */
 
   // console.log("markerData (pointsLayer): ", markerData)
-
+  const visibleMarkers = markerData
+  .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
   return (
     <g className="PointsLayer">
       {
-        markerData
-          .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
+        visibleMarkers
           .map((datum, index) => {
             return (
               <PointGroup
                 key={datum.label}
-                {...{projection, datum, layer}}
+                {...{ projection, datum, layer }}
+              />
+            )
+          })
+      }
+      {
+        visibleMarkers
+          .map((datum, index) => {
+            return (
+              <PointLabel
+                key={datum.label}
+                {...{ projection, datum, layer }}
               />
             )
           })

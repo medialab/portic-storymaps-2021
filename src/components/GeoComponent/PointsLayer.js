@@ -6,11 +6,24 @@ import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
 import { useSpring, animated } from 'react-spring'
+import { useEffect, useState } from 'react';
+
 
 const PointGroup = ({ projection, datum, layer }) => {
   const { latitude, longitude, size, color } = datum;
   const [x, y] = projection([+longitude, +latitude]);
-  const { transform } = useSpring({ transform: `translate(${x},${y})` });
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+  const { transform } = useSpring({ 
+    to: {
+      transform: `translate(${x},${y})`
+   },
+   immediate: !isInited
+  });
   return (
     <>
       <animated.g className="point-group" transform={transform}>
@@ -30,7 +43,18 @@ const PointGroup = ({ projection, datum, layer }) => {
 const PointLabel = ({ projection, datum, layer }) => {
   const { latitude, longitude, size, label, labelPosition = 'right', labelSize } = datum;
   const [x, y] = projection([+longitude, +latitude]);
-  const { transform } = useSpring({ transform: `translate(${x},${y})` });
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+  const { transform } = useSpring({ 
+    to: {
+      transform: `translate(${x},${y})`
+   },
+   immediate: !isInited
+   });
   return (
     <>
       <animated.g className="point-group" transform={transform}>

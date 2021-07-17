@@ -3,13 +3,23 @@ import { generatePalette } from '../../helpers/misc';
 import { uniq } from 'lodash';
 import cx from 'classnames';
 import { useSpring, animated } from 'react-spring'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
 const GeoPart = ({ d: initialD, projection, palette, layer}) => {
 
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+
   const animationProps = useSpring({
+    to: {
       d: geoPath().projection(projection)(initialD)
+    },
+    immediate: !isInited
   });
 
   useEffect(() => {

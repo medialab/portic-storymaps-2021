@@ -1,9 +1,71 @@
 import cx from 'classnames';
 import GeoComponent from "../../components/GeoComponent/GeoComponent";
+import { useSpring, animated } from 'react-spring'
 
+import { useEffect, useState } from 'react';
 import './IntroBureaux.scss';
 
 import colorPalettes from "../../colorPalettes";
+
+const Bureau = ({
+  projection,
+  height,
+  datum,
+  width,
+  index,
+  radius
+}) => {
+  const [x, y] = projection([+datum.longitude, +datum.latitude]);
+  const labelOnRight = ['La Rochelle', 'Tonnay-Charente'].includes(datum.name);
+  const thatWidth = datum.name.length * width * height * .0005;
+
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+  const {transform} = useSpring({ 
+    to: {
+      transform: `translate(${x}, ${y})` 
+    },
+    immediate: !isInited
+  });
+  return (
+    <animated.g transform={transform}>
+      <circle
+        r={radius * 2}
+        cx={0}
+        cy={0}
+        fill={`url(#bureau-${index})`}
+      />
+      <circle
+        r={2}
+        cx={0}
+        cy={0}
+        fill={'white'}
+      />
+      <foreignObject
+        x={labelOnRight ? radius : -radius - thatWidth}
+        y={-radius / 2}
+        fill="white"
+        width={thatWidth}
+        height={height / 20}
+        className={cx("bureau-label", {
+          'is-reversed': !labelOnRight
+        })}
+      >
+        <span xmlns="http://www.w3.org/1999/xhtml">
+          {datum.name}
+        </span>
+      </foreignObject>
+      <radialGradient id={`bureau-${index}`}>
+        <stop offset="20%" stop-color={colorPalettes.customs_office[datum.name]} />
+        <stop offset="100%" stop-color="rgba(51,109,124,0)" />
+      </radialGradient>
+    </animated.g>
+  )
+}
 
 const renderBureaux = ({ data, projection, width, height }) => {
   const radius = width * height * 0.00006;
@@ -13,46 +75,21 @@ const renderBureaux = ({ data, projection, width, height }) => {
       {
         data
           .filter(d => !isNaN(+d.latitude))
-          .map((datum, index) => {
-            const [x, y] = projection([+datum.longitude, +datum.latitude]);
-            const transform = `translate(${x}, ${y})`;
-            const labelOnRight = ['La Rochelle', 'Tonnay-Charente'].includes(datum.name);
-            const thatWidth = datum.name.length * width * height * .0005;
-            return (
-              <g transform={transform}>
-                <circle
-                  r={radius * 2}
-                  cx={0}
-                  cy={0}
-                  fill={`url(#bureau-${index})`}
-                />
-                <circle
-                  r={2}
-                  cx={0}
-                  cy={0}
-                  fill={'white'}
-                />
-                <foreignObject
-                  x={labelOnRight ? radius : -radius - thatWidth}
-                  y={-radius / 2}
-                  fill="white"
-                  width={thatWidth}
-                  height={height / 20}
-                  className={cx("bureau-label", {
-                    'is-reversed': !labelOnRight
-                  })}
-                >
-                  <span xmlns="http://www.w3.org/1999/xhtml">
-                    {datum.name}
-                  </span>
-                </foreignObject>
-                <radialGradient id={`bureau-${index}`}>
-                  <stop offset="20%" stop-color={colorPalettes.customs_office[datum.name]} />
-                  <stop offset="100%" stop-color="rgba(51,109,124,0)" />
-                </radialGradient>
-              </g>
-            )
-          })
+          .map((datum, index) => (
+            <Bureau
+              key={index}
+              {
+              ...{
+                projection,
+                height,
+                datum,
+                width,
+                index,
+                radius
+              }
+              }
+            />
+          ))
       }
     </g>
   )

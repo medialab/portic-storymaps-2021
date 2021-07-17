@@ -230,6 +230,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
       return (
         <>
           <GeoComponent
+            title={'Carte des provinces étudiées : Poitou-Aunis-Saintonge-Angoumois (PASA)'}
             layers={[
               {
                 type: 'choropleth',
@@ -238,6 +239,9 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 color: {
                   field: 'shortname',
                   palette: colorPalettes.provinces
+                },
+                tooltip: (d) => {
+                  return d.properties.shortname
                 }
               }
             ]}
@@ -251,6 +255,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
       return (
         <>
           <GeoComponent
+            title={'Carte des ports de la région PASA'}
             layers={[
               {
                 type: 'choropleth',
@@ -269,10 +274,10 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   palette: colorPalettes.provinces,
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
-                // size: {
-                //   field: 'name',
-                //   custom: '20'
-                // },
+                size: {
+                  field: 'nb_pointcalls',
+                  // custom: '20'
+                },
                 label: {
                   field: 'port',
                   position: 'left'

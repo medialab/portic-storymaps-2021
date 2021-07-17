@@ -3,16 +3,24 @@ import { generatePalette } from '../../helpers/misc';
 import { uniq } from 'lodash';
 import cx from 'classnames';
 import { useSpring, animated } from 'react-spring'
+import { useEffect } from "react";
+import ReactTooltip from "react-tooltip";
 
 const GeoPart = ({ d: initialD, projection, palette, layer}) => {
 
   const animationProps = useSpring({
       d: geoPath().projection(projection)(initialD)
   });
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  })
   return (
     <animated.path
       d={animationProps.d}
       className="geopart"
+      data-tip={layer.tooltip ? layer.tooltip(initialD) : undefined}
+      data-for="geo-tooltip"
       style={{
         fill: layer.color !== undefined && palette !== undefined ? palette[initialD.properties[layer.color.field]] : 'transparent'
       }}
@@ -96,7 +104,7 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
                         </rect>
                     </g>
                     : null
-            } */}
+            } */}    
     </>
   );
 

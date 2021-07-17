@@ -24,6 +24,7 @@
 
 
 import React, { useState, useMemo, useEffect } from 'react';
+import ReactTooltip from 'react-tooltip';
 import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
@@ -313,6 +314,7 @@ const GeoComponent = ({
         {/* <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
         <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} /> */}
       </svg>
+      <ReactTooltip id="geo-tooltip" />
     </div>
   )
 }

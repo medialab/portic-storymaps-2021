@@ -32,6 +32,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
     <div className="PrincipalVisualizationPart3" height={height}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
         <GeoComponent
+          title={'Des profils de ports diversifiés'}
           layers={[
             {
               type: 'choropleth',

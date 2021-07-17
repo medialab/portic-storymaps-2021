@@ -828,7 +828,6 @@ button.is-active {
       // border: 1px solid red;
       padding: $medium-gutter;
       box-sizing: border-box;
-      color: red;
       &.is-empty {
         display: none;
       }
@@ -1196,15 +1195,7 @@ button.is-active {
     stroke: $color-accent;
   }
 
-  .visualization-title {
-    margin: 0;
-    padding: 0;
-    margin-top: 0;
-    margin-bottom: .5rem;
-    color: grey;
-    font-weight: 500;
-    font-size: 1rem;
-  }
+  
   .row {
     &.vis-row {
       display: flex;
@@ -1215,6 +1206,17 @@ button.is-active {
       }
     }
   }
+}
+
+.visualization-title {
+  margin: 0;
+  padding: 0;
+  margin-bottom: .5rem;
+  color: inherit;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-left: 0!important;
+  margin-top: 0;
 }
 
 .LineChart {

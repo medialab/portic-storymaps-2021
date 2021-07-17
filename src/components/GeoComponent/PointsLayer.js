@@ -8,7 +8,7 @@ import { generatePalette } from '../../helpers/misc';
 import { useSpring, animated } from 'react-spring'
 
 const PointGroup = ({ projection, datum, layer }) => {
-  const { latitude, longitude, size, color, label, labelPosition = 'right', labelSize } = datum;
+  const { latitude, longitude, size, color } = datum;
   const [x, y] = projection([+longitude, +latitude]);
   const { transform } = useSpring({ transform: `translate(${x},${y})` });
   return (
@@ -28,7 +28,7 @@ const PointGroup = ({ projection, datum, layer }) => {
 }
 
 const PointLabel = ({ projection, datum, layer }) => {
-  const { latitude, longitude, size, color, label, labelPosition = 'right', labelSize } = datum;
+  const { latitude, longitude, size, label, labelPosition = 'right', labelSize } = datum;
   const [x, y] = projection([+longitude, +latitude]);
   const { transform } = useSpring({ transform: `translate(${x},${y})` });
   return (

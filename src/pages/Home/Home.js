@@ -34,6 +34,7 @@ function Home({ match: {
 } }) {
   const introRef = useRef(null);
   const [focusOnViz, setFocusOnViz] = useState(false);
+  const [inVis, setInVis] = useState(false);
   const currentMetadata = metadata[lang] || metadataFr;
   const title = currentMetadata.title;
   const titleHTML = currentMetadata.titleHTML;
@@ -50,13 +51,16 @@ function Home({ match: {
     const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
     const visualizationEntries = Object.entries(visualizations);
     let found;
+    let newActiveVisualization;
     // on parcourt la liste à l'envers pour récupérer
     // la visualisation la plus haute de la page qui est
     // au-dessus du milieu de l'écran
+    let firstOneY = Infinity;
     for (let index = visualizationEntries.length - 1; index >= 0; index--) {
       const y = index === 0 ? scrollY + window.innerHeight * .2 : scrollY + DISPLACE_Y;
       const [_id, visualization] = visualizationEntries[index];/* eslint no-unused-vars : 0 */
       const { ref } = visualization;
+      console.log(index, ref.current)
       if (ref.current) {
         const { y: initialVisY } = ref.current.getBoundingClientRect();
         let visY = initialVisY + window.scrollY;
@@ -64,16 +68,22 @@ function Home({ match: {
         if (ref.current.parentNode.className === 'centered-part-contents') {
           visY += ref.current.parentNode.parentNode.getBoundingClientRect().y;
         }
-        if (!visualization.visualizationId && scrollY + window.innerHeight * .8 > visY) {
+        if (visY < firstOneY) {
+          firstOneY = visY;
+        }
+        if (index === 0 && y < visY) {
           found = true;
-          setActiveVisualization(undefined);
+          newActiveVisualization = visualization;
+        } /*else if (!visualization.visualizationId && scrollY + window.innerHeight * .8 > visY) {
+          found = true;
+          newActiveVisualization = undefined;
           break;
-        } else if (y > visY) {
+        }*/ else if (y > visY) {
           found = true;
           if (visualization.visualizationId) {
-            setActiveVisualization(visualization);
+            newActiveVisualization = visualization;
           } else {
-            setActiveVisualization(undefined);
+            newActiveVisualization = undefined;
           }
           break;
         }
@@ -81,9 +91,23 @@ function Home({ match: {
         // console.error('cant find ref for', visualizationEntries[index])
       }
     }
-    
+
+    if (scrollY > window.innerHeight * .9 && !inVis) {
+      setInVis(true);
+    } else if (scrollY < window.innerHeight * .9 && inVis) {
+      setInVis(false);
+    }
+
+    if (!found && scrollY < firstOneY && visualizationEntries.length) {
+      newActiveVisualization = visualizationEntries[0][1]
+    }
     if (!found && activeVisualization) {
-      setActiveVisualization(undefined);
+      newActiveVisualization = undefined;
+    }
+    if (activeVisualization !== !newActiveVisualization) {
+      setActiveVisualization(newActiveVisualization)
+    } else if ((!activeVisualization && newActiveVisualization) || activeVisualization.id !== newActiveVisualization.id) {
+      setActiveVisualization(newActiveVisualization)
     }
   }
 
@@ -97,6 +121,12 @@ function Home({ match: {
    * Scrollytelling management
    */
   useEffect(updateCurrentVisualization, [scrollY, visualizations]) /* eslint react-hooks/exhaustive-deps : 0 */
+
+  useEffect(() => {
+    if (!activeVisualization && focusOnViz) {
+      setFocusOnViz(false);
+    }
+  }, [activeVisualization])
 
   const onRegisterVisualization = (params) => {
     const finalParams = {
@@ -131,6 +161,7 @@ function Home({ match: {
     }
     
   }
+  console.log('in vis', inVis)
   return (
     <div className="Home">
       <Helmet>
@@ -157,12 +188,14 @@ function Home({ match: {
           }}
         >
           <div className="Contents">
+            
             <section className={cx({'is-focused': !focusOnViz})}>
               {lang === 'fr' ? <ContentsFr /> : <ContentsEn />}
             </section>
-            <aside className={cx({'is-focused': focusOnViz})}>
+            <aside className={cx({'is-focused': focusOnViz, 'is-fixed': inVis})}>
               <VisualizationController activeVisualization={activeVisualization} />
             </aside>
+            
           </div>
         </VisualizationControlContext.Provider>
         <HomeSummary lang={lang} summary={summary} />

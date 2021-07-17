@@ -722,6 +722,7 @@ button.is-active {
       padding-left: $medium-gutter;
     }
     .Contents {
+      position: relative;
       section {
         padding: $medium-gutter;
         padding-left: 0;
@@ -736,10 +737,21 @@ button.is-active {
       ul,
       ol,
       pre,
-      blockquote,
-      .Caller {
+      blockquote
+       {
         max-width: 40vw;
         margin-left: $medium-gutter * 4;
+      }
+      .Caller {
+        margin-left: $medium-gutter * 4;
+        background: $color-background-blue;
+        opacity: .5;
+        &.is-active {
+          opacity: 1;
+        }
+        &.is-devmode {
+          max-width: 40vw;
+        }
       }
       p,ul,ol,blockquote {
         font-size: 1.1rem;
@@ -795,7 +807,7 @@ button.is-active {
         pre,
         blockquote,
         .Caller {
-          max-width: 60vw;
+          // max-width: 60vw;
           margin-left: 0;
         }
       }
@@ -810,21 +822,56 @@ button.is-active {
         ul,
         ol,
         pre,
-        blockquote,
-        .Caller {
+        blockquote {
+          // max-width: unset;
+          margin-left: 0;
           max-width: unset;
+        }
+        .Caller {
           margin-left: 0;
         }
       }
     }
-    .VisualizationController {
-      position: fixed;
-      right: $medium-gutter;
-      left: unset;
-      top: unset;
-      bottom: $medium-gutter;
+    aside {
+      position: absolute;
+      right: 0;
+      top: 0;
       width: 50vw;
       height: calc(100vh - #{$header_height * 1.5});
+      &.is-fixed {
+        top: $header_height * 1.5;
+        position: fixed;
+        @include tablet {
+          // width: 35vw;
+          height: 100vh;
+          top: 0;
+        }
+      }
+      @include phone {
+        width: 100vw; // calc(100vw - #{$medium-gutter * 4});
+        position: relative;
+        // left: $medium-gutter * 2;
+        // top: $medium-gutter * 3;
+        right: unset;
+        bottom: unset;
+        // display: none;
+          position: fixed;
+          top: 0;
+          transition: .5s ease all;
+          left: 100vw;
+          &.is-focused {
+            left: 0;
+          }
+      }
+    }
+    
+    .VisualizationController {
+      position: relative;
+      // right: $medium-gutter;
+      left: unset;
+      top: unset;
+      // bottom: $medium-gutter;
+      width: 50vw;
       // border: 1px solid red;
       padding: $medium-gutter;
       box-sizing: border-box;
@@ -832,7 +879,9 @@ button.is-active {
         display: none;
       }
       @include tablet {
-        width: 35vw;
+        // width: 35vw;
+        height: 100%;
+        width: 100%;
       }
       @include phone {
         width: calc(100vw - #{$medium-gutter * 4});
@@ -850,16 +899,6 @@ button.is-active {
         transition: .5s ease all;
         position: relative;
         left: -100vw;
-        &.is-focused {
-          left: 0;
-        }
-      }
-      aside {
-        // position: relative;
-        position: fixed;
-        top: 0;
-        transition: .5s ease all;
-        left: 100vw;
         &.is-focused {
           left: 0;
         }
@@ -1328,7 +1367,7 @@ button.is-active {
     }
 
     &.is-active {
-      right: calc(100vw - 1.5rem);
+      right: calc(100vw - 3rem);
       button {
         rotate: -180deg;
       }

@@ -306,7 +306,28 @@ def compute_exports_colonial_products(flows):
   output = sorted(output, key=lambda v : -v["value"])
   write_csv("comparaison_exports_coloniaux.csv", output)
 
-
+def compute_region_ports_general (pointcalls):
+  ports = {}
+  for pointcall in pointcalls:
+    port = pointcall['toponyme_fr']
+    if port not in ports:
+      new_port = {
+        "port": port,
+        "latitude": pointcall["latitude"],
+        "longitude": pointcall["longitude"],
+        "customs_office": pointcall["ferme_bureau"],
+        "province": pointcall["pointcall_province"],
+        "admiralty": pointcall["pointcall_admiralty"],
+        "customs_region": pointcall["ferme_direction"],
+        "nb_pointcalls": 1
+      }
+      ports[port] = new_port
+    else:
+      ports[port]["nb_pointcalls"] += 1
+  output = []
+  for port in ports.values():
+    output.append(port)
+  write_csv("ports_locations_data.csv", output)
 """
   Data reading and building functions calls
 """
@@ -335,10 +356,14 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   pointcalls = csv.DictReader(f)
   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes"]
   out_from_region = []
+  all_pointcalls_1789 = []
   for pointcall in pointcalls:
+    if pointcall["pointcall_admiralty"] in admiralties:
+      all_pointcalls_1789.append(pointcall)
     if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
       out_from_region.append(pointcall)
   compute_foreign_homeports(out_from_region)
+  compute_region_ports_general(all_pointcalls_1789)
 
 
 

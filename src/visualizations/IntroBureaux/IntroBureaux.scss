@@ -1,0 +1,16 @@
+
+
+.IntroBureaux {
+  .bureau-label {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    
+    span {
+      background: #336d7c;
+      color: white;
+    }
+    &.is-reversed {
+      text-align: right;
+    }
+  }
+}

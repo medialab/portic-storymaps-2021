@@ -6,7 +6,9 @@ import { useSpring, animated } from 'react-spring'
 
 const GeoPart = ({ d: initialD, projection, palette, layer}) => {
 
-  const animationProps = useSpring({d: geoPath().projection(projection)(initialD)});
+  const animationProps = useSpring({
+      d: geoPath().projection(projection)(initialD)
+  });
   return (
     <animated.path
       d={animationProps.d}

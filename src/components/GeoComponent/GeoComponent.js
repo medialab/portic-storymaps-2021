@@ -23,7 +23,7 @@
   */
 
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { geoEqualEarth } from "d3-geo";
 import ChoroplethLayer from './ChoroplethLayer';
 import PointsLayer from './PointsLayer';
@@ -40,7 +40,7 @@ const GeoComponent = ({
   width = 1500,
   height = 1500,
   layers = [],
-  projectionTemplate,
+  projectionTemplate: initialProjectionTemplate,
   projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
   debug = false // @TODO : à réparer
 }) => {
@@ -52,6 +52,15 @@ const GeoComponent = ({
   const [translationY, setTranslationY] = useState(height / 2)
   const [centerX, setCenterX] = useState(-1.7475027) // -1.7475027 pour centrer sur région
   const [centerY, setCenterY] = useState(46.573642) // 46.573642
+
+  const [projectionTemplate, setProjectionTemplate] = useState(initialProjectionTemplate)
+
+  // trick for nice animations
+  useEffect(() => {
+    setTimeout(() => {
+      setProjectionTemplate(initialProjectionTemplate);
+    })
+  }, [initialProjectionTemplate])
 
 
   // define a default map Config

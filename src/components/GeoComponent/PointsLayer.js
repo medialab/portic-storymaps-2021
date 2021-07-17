@@ -5,6 +5,37 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
+import { useSpring, animated } from 'react-spring'
+
+const PointGroup = ({ projection, datum, layer }) => {
+  const { latitude, longitude, size, color, label, labelPosition = 'right' } = datum;
+  const [x, y] = projection([+longitude, +latitude]);
+  const {transform} = useSpring({transform: `translate(${x},${y})`});
+  return (
+    <animated.g className="point-group" transform={transform}>
+      <circle
+        cx={0}
+        cy={0}
+        r={size}
+        style={{ fill: color }}
+        className="marker"
+      />
+      {
+        label ?
+          <text
+            x={labelPosition === 'right' ? size + 5 : -size - 5}
+            y={size / 2}
+            fill={layer.color && layer.color.labelsColor}
+            textAnchor={labelPosition === 'right' ? 'start' : 'end'}
+          >
+            {label}
+          </text>
+          : null
+      }
+    </animated.g>
+
+  );
+}
 
 const PointsLayer = ({ layer, projection, width }) => {
 
@@ -22,6 +53,7 @@ const PointsLayer = ({ layer, projection, width }) => {
         if (!coordsMap[mark]) {
           coordsMap[mark] = {
             label: layer.label ? datum[layer.label.field] : undefined,
+            labelPosition: layer.label ? layer.label.position : undefined,
             latitude: +datum.latitude,
             longitude: +datum.longitude,
             color: layer.color !== undefined ? datum[layer.color.field] : 'default',
@@ -33,7 +65,7 @@ const PointsLayer = ({ layer, projection, width }) => {
       })
 
       let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
-      console.log("grouped : ", grouped)
+      // console.log("grouped : ", grouped)
 
 
       let palette;
@@ -50,7 +82,7 @@ const PointsLayer = ({ layer, projection, width }) => {
           }), {});
         }
       }
-      
+
       // size building
 
       // compute size (would have been more elegand with a ternary but I did not manage to write it properly)
@@ -67,7 +99,7 @@ const PointsLayer = ({ layer, projection, width }) => {
         size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100
       }))
 
-      console.log("grouped (PointsLayer): ", grouped)
+      // console.log("grouped (PointsLayer): ", grouped)
       return grouped;
     }
   }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */
@@ -80,32 +112,12 @@ const PointsLayer = ({ layer, projection, width }) => {
         markerData
           .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
           .map((datum, index) => {
-            const { latitude, longitude, size, color, label } = datum;
-            const [x, y] = projection([+longitude, +latitude]);
-
             return (
-              <g className="point-group" key={index} transform={`translate(${x},${y})`}>
-                <circle
-                  cx={0}
-                  cy={0}
-                  r={size}
-                  style={{ fill: color }}
-                  className="marker"
-                />
-                {
-                  label ?
-                    <text
-                      x={size + 5}
-                      y={size / 2}
-                      fill={layer.color && layer.color.labelsColor}
-                    >
-                      {label}
-                    </text>
-                    : null
-                }
-              </g>
-
-            );
+              <PointGroup
+                key={datum.label}
+                {...{projection, datum, layer}}
+              />
+            )
           })
       }
     </g>

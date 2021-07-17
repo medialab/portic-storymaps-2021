@@ -273,7 +273,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   //   custom: '20'
                   // },
                   label: {
-                    field: 'port'
+                    field: 'port',
+                    position: 'left'
                   }
               }]}
               projectionTemplate = 'Poitou'
@@ -309,7 +310,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                       custom : 3 // 3 fois plus gros que la taille par défaut
                     },
                     label: {
-                      field: 'name'
+                      field: 'name',
+                      position: 'left'
                     }
                 }]}
                 projectionTemplate = 'Poitou'

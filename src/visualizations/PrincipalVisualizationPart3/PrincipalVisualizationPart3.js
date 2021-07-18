@@ -105,7 +105,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
           projectionTemplate={atlasMode ? 'Poitou zoomed' : currentMapTemplate}
           height={height}
           width={width}
-          title={'Extraversion du commerce regroupée par bureau de fermes'}
+          title={'Extraversion du commerce et de la navigation regroupés par bureau de fermes'}
         />
 
       </div>

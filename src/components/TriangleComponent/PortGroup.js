@@ -66,6 +66,17 @@ const PortGroup = ({
   const triangleStartY = cellCenterY + textStartY / 2 - triangleHeight / 2;
   const legendTextWidth= totalWidth * 0.08;
 
+  let labelBgWidth = fontSize * 12;
+  if (port.port.length <= 10) {
+    labelBgWidth = fontSize * 6;
+  } else if (port.port.length <= 12) {
+    labelBgWidth = fontSize * 7;
+  } else if (port.port.length <= 15) {
+    labelBgWidth = fontSize * 8;
+  } else if (port.port.length <= 18) {
+    labelBgWidth = fontSize * 10;
+  }
+
   return (
     <g className={cx('port-point-and-triangle', {'is-minified': projectionTemplate !== 'rotated Poitou'})}>
 
@@ -198,7 +209,8 @@ const PortGroup = ({
         </g>
         <g className='label' transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight * 0.025})`}>
           <path
-            d={`M 0 ${-fontSize} L ${port.port.length * fontSize * .64} ${-fontSize} ${port.port.length * fontSize * .64 - 5} ${(-fontSize + fontSize * 0.2) / 2} ${port.port.length * fontSize * .64} ${fontSize * 0.2} 0 ${fontSize * 0.2} Z`}
+            d={`M 0 ${-fontSize} L ${labelBgWidth} ${-fontSize} ${labelBgWidth - 5} ${(-fontSize + fontSize * 0.2) / 2} ${labelBgWidth} ${fontSize * 0.2} 0 ${fontSize * 0.2} Z`}
+            // d={`M 0 ${-fontSize} L ${port.port.length * fontSize * .64} ${-fontSize} ${port.port.length * fontSize * .64 - 5} ${(-fontSize + fontSize * 0.2) / 2} ${port.port.length * fontSize * .64} ${fontSize * 0.2} 0 ${fontSize * 0.2} Z`}
             // x={0}
             // y={-fontSize}
             // height={fontSize * 1.2}

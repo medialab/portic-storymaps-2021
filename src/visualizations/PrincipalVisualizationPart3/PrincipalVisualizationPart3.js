@@ -4,15 +4,16 @@ import { useState, useEffect } from 'react';
 
 import SigmaComponent from '../../components/SigmaComponent';
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
-import { renderStep3Object, renderStep3SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
+import { Step3Object, renderStep3SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
 import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
 
 import './PrincipalVisualizationPart3.scss';
 
 
-const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
+const PrincipalVisualizationPart3 = ({ datasets, step, width, height : inputHeight, atlasMode }) => {
   const ANIMATION_DURATION = 1000;
+  const height = atlasMode ? window.innerHeight : inputHeight;
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {
     setTimeout(() => {
@@ -29,7 +30,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
     }, ANIMATION_DURATION)
   }, [step])
   return (
-    <div className="PrincipalVisualizationPart3" height={height}>
+    <div className={cx("PrincipalVisualizationPart3", {'is-atlas-mode': atlasMode})} style={{height: atlasMode ? undefined : height}}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
         <GeoComponent
           title={'Des profils de ports diversifiés'}
@@ -44,12 +45,12 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
               renderObjects: renderTriangles
             }
           ]}
-          projectionTemplate={currentMapTemplate}
-          height={height}
+          projectionTemplate={atlasMode ? 'rotated Poitou' : currentMapTemplate}
+          height={atlasMode ? window.innerHeight * .9 : height}
           width={width}
         />
       </div>
-      <div className={cx('step', { 'is-visible': step === 2 })}>
+      <div className={cx('step', { 'is-visible': step === 2 })} style={{height}}>
         <>
           <div className="graphs-container" style={{ position: 'relative', height: height * .6 }}>
             <div className="graph-container" style={{ width: width * .6, height: height * .6, position: 'absolute' }}>
@@ -185,7 +186,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
             {
               type: 'custom',
               data: datasets['part_3_step3_viz_customs_offices_data.csv'],
-              renderObject: renderStep3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
+              renderObject: Step3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
             },
             {
               type: 'custom',
@@ -193,7 +194,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height }) => {
               renderObjects: renderStep3SmallMultiples
             }
           ]}
-          projectionTemplate={currentMapTemplate}
+          projectionTemplate={atlasMode ? 'Poitou' : currentMapTemplate}
           height={height}
           width={width}
         />

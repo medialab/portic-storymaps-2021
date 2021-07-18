@@ -11,7 +11,7 @@ import LineChart from '../../components/LineChart';
 import BarChart from '../../components/BarChart';
 import colorPalettes from '../../colorPalettes.js';
 
-import { renderLabel, renderStep3Object } from '../../visualizations/PrincipalVisualizationPart3/renderObjectsFunctions.js'
+import { renderLabel, Step3Object } from '../../visualizations/PrincipalVisualizationPart3/renderObjectsFunctions.js'
 
 
 
@@ -41,7 +41,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
                 {
                   type: 'custom',
                   data: visData,
-                  renderObject: renderStep3Object
+                  renderObject: Step3Object
                 }
               ]}
               projectionTemplate = 'coast from Nantes to Bordeaux'

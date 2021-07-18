@@ -22,6 +22,9 @@ création des triangles pour la viz 3.1, reliés par une courbe pointillée à d
 
 */
 
+import { useEffect, useState } from 'react';
+import { animated, useSpring } from 'react-spring';
+
 
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
 import colorsPalettes from '../../colorPalettes';
@@ -37,10 +40,15 @@ export function renderLabel(datum, projection, { width }) { // à terme on pourr
 }
 
 
-export function renderStep3Object({ datum, projection, width, height }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
+export function Step3Object({ datum, projection, width, height }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
 
-  const [x, y] = projection([+datum.longitude, +datum.latitude])
-
+  const [x, y] = projection([+datum.longitude, +datum.latitude]);
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
   let sizeCoef = width * 0.05;
   const totalTonnage = parseFloat(datum.cumulated_tonnage_out_region) + parseFloat(datum.cumulated_tonnage_in_region)
   // console.log("tonnage total : ",totalTonnage)
@@ -113,10 +121,19 @@ export function renderStep3Object({ datum, projection, width, height }) { // à 
     noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
   }
 
+  const { transform } = useSpring({ 
+    to: {
+      transform: noOverlapTransform, // `translate(${x},${y})`,
+   },
+   immediate: !isInited
+  });
+
+
   return (
-    <g
+    <animated.g
       className='double-triangle'
-      transform={noOverlapTransform}
+      // transform={noOverlapTransform}
+      transform={transform}
     // { datum.longitude === 0 ? x=1 : null }
     >
 
@@ -173,7 +190,7 @@ export function renderStep3Object({ datum, projection, width, height }) { // à 
           {datum.name}
         </text>
       </>
-    </g>);
+    </animated.g>);
 }
 
 

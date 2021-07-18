@@ -18,12 +18,135 @@
   @TODO : documenter ce component de maière standardisée
   */
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
 
+import { animated, useSpring } from 'react-spring';
+
 import './TriangleComponent.scss'
 import colorsPalettes from '../../colorPalettes';
+
+
+const PortGroup = ({
+  numberOfColumns,
+  port,
+  scaleX,
+  scaleY,
+  legendWidth,
+  columnWidth,
+  totalHeight,
+  totalWidth,
+  projection,
+  index,
+  margins,
+  rowHeight,
+  fontSize
+}) => {
+
+
+  const triangleWidth = scaleX(+port.nb_pointcalls_out)
+  const triangleHeight = scaleY(+port.mean_tonnage)
+
+  const xIndex = index % numberOfColumns;
+  // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
+  const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * totalWidth;
+  const yTransform = totalHeight * 2.3;
+
+  // const [x, y] = projection([+port.longitude, +port.latitude]);
+  const [x, y] = projection([+port.longitude, +port.latitude]);
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+  const { transform, x1, y1, x2, y2 } = useSpring({ 
+    to: {
+      transform: `translate(${x},${y})`,
+      x1: xTransform + columnWidth / 2,
+      y1: yTransform + rowHeight / 7,
+      x2: x,
+      y2: y
+   },
+   immediate: !isInited
+  });
+
+  return (
+    <g className='port-point-and-triangle'>
+
+      <animated.line
+        x1={x1}
+        y1={y1}
+        x2={x2}
+        y2={y2}
+        stroke='grey'
+        strokeDasharray='2, 8'
+      />
+
+      <animated.g className='port-point' transform={transform}>
+        <circle
+          cx={0}
+          cy={0}
+          r={totalHeight * 0.02}
+          style={{ fill: colorsPalettes.generic.dark }}
+          className="marker"
+        />
+      </animated.g>
+
+      <g className='port-triangle'
+        // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
+        transform={`translate(${xTransform}, ${yTransform})`}
+      >
+        <rect
+          x={0}
+          y={0}
+          width={columnWidth}
+          height={rowHeight}
+        />
+
+        <path class='horizontalLine'
+          d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2} 
+              V ${rowHeight / 7}
+              `}
+        />
+
+        <path className='triangle'
+          d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight) / 1.2} 
+              H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
+              L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
+              Z
+              `}
+          fill="url(#TriangleGradient)"
+        />
+
+
+        <g className='label' transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight * 0.025})`}>
+          <path
+            d={`M 0 ${-fontSize} L ${port.port.length * fontSize * .65} ${-fontSize} ${port.port.length * fontSize * .65 - 5} ${(-fontSize + fontSize * 0.2) / 2} ${port.port.length * fontSize * .65} ${fontSize * 0.2} 0 ${fontSize * 0.2} Z`}
+            // x={0}
+            // y={-fontSize}
+            // height={fontSize * 1.2}
+            // width={port.port.length * fontSize * .65}
+            style={{ fill: colorsPalettes.generic.dark }}
+            transformOrigin="bottom left"
+            transform="rotate (-45)"
+          />
+          <text
+            transformOrigin="bottom left"
+            transform="rotate (-45)"
+            font-size={fontSize}
+            style={{ fill: 'white' }}
+            x={0}
+            y={0}
+            text-anchor="left"
+          > {port.port} </text>
+        </g>
+
+      </g>
+    </g>
+  )
+}
 
 
 const TriangleComponent = ({
@@ -172,85 +295,31 @@ const TriangleComponent = ({
             return -1;
 
           })
-          .map((port, index) => {
+            .map((port, index) => {
 
-            const triangleWidth = scaleX(+port.nb_pointcalls_out)
-            const triangleHeight = scaleY(+port.mean_tonnage)
-
-            const xIndex = index % numberOfColumns;
-            // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
-            const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * totalWidth;
-            const yTransform = totalHeight * 2.3;
-
-            const [x, y] = projection([+port.longitude, +port.latitude]);
-
-            return (
-              <g className='port-point-and-triangle'>
-                
-                <line
-                  x1={xTransform + columnWidth/2}
-                  y1={yTransform + rowHeight / 7}
-                  x2={x}
-                  y2={y}
-                  stroke='grey'
-                  strokeDasharray='2, 8'
-                  />
-
-                <g className='port-point' transform={`translate(${x}, ${y})`}>
-                  <circle
-                    key={index}
-                    cx={0}
-                    cy={0}
-                    r={totalHeight * 0.02}
-                    style={{ fill: colorsPalettes.generic.dark }}
-                    className="marker"
-                  />
-                </g>
-
-                <g className='port-triangle'
+              return (
+                <PortGroup
                   key={index}
-                  // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
-                  transform={`translate(${xTransform}, ${yTransform})`}
-                >
-                  <rect
-                    x={0}
-                    y={0}
-                    width={columnWidth}
-                    height={rowHeight}
-                  />
-
-                  <path class='horizontalLine'
-                    d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2} 
-                        V ${rowHeight / 7}
-                        `}
-                  />
-
-                  <path className='triangle'
-                    d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight) / 1.2} 
-                        H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
-                        L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
-                        Z
-                        `}
-                    fill="url(#TriangleGradient)"
-                  />
-
-
-                  <g className='label' transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight * 0.025})`}>
-
-                    <text
-                      transformOrigin="bottom left"
-                      transform="rotate (-45)"
-                      font-size={fontSize}
-                      x={0}
-                      y={0}
-                      text-anchor="left"
-                    > {port.port} </text>
-                  </g>
-
-                </g>
-              </g>
-            )
-          })
+                  {
+                  ...{
+                    numberOfColumns,
+                    port,
+                    scaleX,
+                    scaleY,
+                    legendWidth,
+                    columnWidth,
+                    totalHeight,
+                    totalWidth,
+                    projection,
+                    index,
+                    margins,
+                    rowHeight,
+                    fontSize
+                  }
+                  }
+                />
+              )
+            })
 
         }
       </g>

@@ -19,6 +19,11 @@
         .port-point-and-triangle{
             transition : .5s ease all;
             opacity : 1;
+            .label,
+            .vertical-line
+            {
+              transition: .5s ease all;
+            }
             .local-legend {
               font-family: "IBM Plex Sans", sans-serif;
               font-size: .8rem;
@@ -43,6 +48,12 @@
               }
             }
           &.is-minified {
+            .local-legend,
+            .label,
+            .vertical-line
+            {
+              opacity: 0;
+            }
             &:first-of-type {
               .local-legend {
                 opacity: 0;

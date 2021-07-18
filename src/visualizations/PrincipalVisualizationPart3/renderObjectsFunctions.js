@@ -25,11 +25,13 @@ création des triangles pour la viz 3.1, reliés par une courbe pointillée à d
 import { useEffect, useState } from 'react';
 import { animated, useSpring } from 'react-spring';
 
+import legendPartialCircle from 'svg-partial-circle';
+
 
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
 import colorsPalettes from '../../colorPalettes';
 
-export function renderLabel(datum, projection, { width }) { // à terme on pourrait mettre un objet 
+export function Label(datum, projection, { width }) { // à terme on pourrait mettre un objet 
 
   const [x, y] = projection([+datum.longitude, +datum.latitude])
 
@@ -40,7 +42,13 @@ export function renderLabel(datum, projection, { width }) { // à terme on pourr
 }
 
 
-export function Step3Object({ datum, projection, width, height }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
+export function Step3Object({ 
+  datum, 
+  projection, 
+  width, 
+  height,
+  projectionTemplate
+}) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
 
   const [x, y] = projection([+datum.longitude, +datum.latitude]);
   const [isInited, setIsInited] = useState(false);
@@ -121,11 +129,11 @@ export function Step3Object({ datum, projection, width, height }) { // à priori
     noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
   }
 
-  const { transform } = useSpring({ 
+  const { transform } = useSpring({
     to: {
-      transform: noOverlapTransform, // `translate(${x},${y})`,
-   },
-   immediate: !isInited
+      transform: projectionTemplate === 'France' ? noOverlapTransform + ' scale(0.1)' : noOverlapTransform + ' scale(1)', // `translate(${x},${y})`,
+    },
+    immediate: !isInited
   });
 
 
@@ -194,27 +202,11 @@ export function Step3Object({ datum, projection, width, height }) { // à priori
 }
 
 
-
-export function renderStep3SmallMultiples({ data, width, height, projection }) {
-  // could be parametered in props too
+const Legend = ({
+  width,
+  height
+}) => {
   const legendWidth = width / 6
-  // const margins = {
-  //   left: 0.05,
-  //   right: 0.05
-  // }
-
-  // console.log("data : layder.data ", data)
-  const numberOfColumns = 3
-  // const columnWidth = (width * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
-  const columnWidth = (width * 0.8) / numberOfColumns
-  const numberOfRows = 1
-  const rowHeight = height / 6
-  const totalHeight = numberOfRows * rowHeight
-  // const fontSize = totalHeight * 0.05
-
-  // console.log({ width, numberOfColumns, columnWidth, numberOfRows, rowHeight, totalHeight, fontSize })
-
-
   // create object for legend
   const legendCustomOffice = {
     name: 'Légende',
@@ -225,10 +217,8 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
   }
 
   // @TODO : rendre la légend interactive : on n'a pas la place d'afficher le texte => se fera on hover
-
   const legendSizeCoef = width * 0.05;
   const legendTotalTonnage = parseFloat(legendCustomOffice.cumulated_tonnage_out_region) + parseFloat(legendCustomOffice.cumulated_tonnage_in_region)
-  // console.log("tonnage total : ", totalTonnage)
 
   const legendLeftTriangleHeight = parseFloat(legendCustomOffice.cumulated_tonnage_out_region) / legendTotalTonnage * legendSizeCoef;
   const legendRightTriangleHeight = parseFloat(legendCustomOffice.cumulated_tonnage_in_region) / legendTotalTonnage * legendSizeCoef; // je pourrais déduire cette donnée de la taille du triangle gauche
@@ -238,9 +228,6 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
 
   const legendTotalValue = parseFloat(legendCustomOffice.cumulated_exports_value_from_region) + parseFloat(legendCustomOffice.cumulated_exports_value_from_ext)
   const legendInPercentage = parseFloat(legendCustomOffice.cumulated_exports_value_from_region) / legendTotalValue * 100
-  // console.log("inPercentage ", datum.label," : ", inPercentage)
-
-  const legendPartialCircle = require('svg-partial-circle')
 
   let legendStart = null
   let legendEnd = null
@@ -267,74 +254,85 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
     .map((command) => command.join(' '))
     .join(' ')
 
-
   return (
-    <g className="small-multiples-and-legend-and-title" width={width} height={totalHeight} style={{ border: '1px solid lightgrey' }}>
+    <g className='legend-object' width={legendWidth} transform={`translate(${width * 0.55}, ${height * 0.9})`}>
 
-      <text
-      className='title'
-      transform={`translate(${width * 0.1}, ${height * 0.025})`}
-      // style={{
-      //   font-size: '12'
-      //   font-weight: 'bold'}}
-      > Comparaison des profils de bureaux de Fermes : tournés vers l'extérieur / l'intérieur de leur région </text>
-
-      <g className='legend-object' width={legendWidth} transform={`translate(${width * 0.55}, ${height * 0.9})`}>
-
-        <path className='legend-left-triangle' fill='grey'
-          d={`M ${0} ${0}
+      <path className='legend-left-triangle' fill='grey'
+        d={`M ${0} ${0}
                           V ${legendLeftTriangleHeight / 2}
                           L ${-Math.pow(5, 0.5) * legendLeftTriangleHeight / 2} ${0}
                           L ${0} ${-legendLeftTriangleHeight / 2}
                           Z
                           `}
-        />
+      />
 
-        <path className='legend-right-triangle' fill='black'
-          d={`M ${0} ${0}
+      <path className='legend-right-triangle' fill='black'
+        d={`M ${0} ${0}
                           V ${legendRightTriangleHeight / 2}
                           L ${Math.pow(5, 0.5) * legendRightTriangleHeight / 2} ${0}
                           L ${0} ${-legendRightTriangleHeight / 2}
                           Z
                           `}
-        />
+      />
 
-        <>
-          {
-            legendLeftPath != null ?
+      <>
+        {
+          legendLeftPath != null ?
 
-              <>
-                <path
-                  d={`${legendLeftPath}`}
-                  stroke='grey'
-                  stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
-                  fill="transparent"
-                />
+            <>
+              <path
+                d={`${legendLeftPath}`}
+                stroke='grey'
+                stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                fill="transparent"
+              />
 
-                <path
-                  d={`${legendRightPath}`}
-                  stroke="black"
-                  stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
-                  fill="transparent"
-                />
-              </>
-              :
-              null
-          }
-        </>
-        <text
-          className='label'
-          transform={`translate(${-Math.pow(5, 0.5) * (legendLeftTriangleHeight + legendRightTriangleHeight) / 6}, ${- (legendRightTriangleHeight + legendLeftTriangleHeight) / 1.8})`}
-          font-size={parseInt(height * 0.013)}
-        >
-          {legendCustomOffice.name}
-        </text>
+              <path
+                d={`${legendRightPath}`}
+                stroke="black"
+                stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                fill="transparent"
+              />
+            </>
+            :
+            null
+        }
+      </>
+      <text
+        className='label'
+        transform={`translate(${-Math.pow(5, 0.5) * (legendLeftTriangleHeight + legendRightTriangleHeight) / 6}, ${- (legendRightTriangleHeight + legendLeftTriangleHeight) / 1.8})`}
+        font-size={parseInt(height * 0.013)}
+      >
+        {legendCustomOffice.name}
+      </text>
 
-      </g>
+    </g>
+  )
+}
 
+export function SmallMultiples({ data, width, height, projection }) {
+  // could be parametered in props too
 
+  const numberOfColumns = 3
+  // const columnWidth = (width * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
+  const columnWidth = (width * 0.8) / numberOfColumns
+  const numberOfRows = 1
+  const rowHeight = height / 6
+  const totalHeight = numberOfRows * rowHeight
+  // const fontSize = totalHeight * 0.05
+
+  return (
+    <g className="small-multiples-and-legend-and-title" width={width} height={totalHeight} style={{ border: '1px solid lightgrey' }}>
+
+      <Legend
+        {
+        ...{
+          width,
+          height
+        }
+        }
+      />
       <g className="small-multiples" width={width * 0.5} height={totalHeight}>
-
         {
           data.filter(({ name }) => name === 'Le Havre' || name === 'Nantes' || name === 'Bordeaux')
 
@@ -394,14 +392,6 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
                     // transform={`translate(${xTransform}, ${yTransform})`}
                     transform={`translate(${xIndex * width * 0.12}, ${0})`}
                   >
-
-                    {/* <circle
-                      cx={0}
-                      cy={0}
-                      r={2}
-                      fill='red'
-                    /> */}
-
                     <path className='left-triangle' fill={colorsPalettes.generic.accent2}
                       d={`M ${0} ${0}
                 V ${leftTriangleHeight / 2}
@@ -456,9 +446,6 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
                       </text>
                     </>
                   </g>
-
-
-
                 </g>);
 
             })
@@ -473,13 +460,15 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
 
 export function renderTriangles({ data, width, height, projection, projectionTemplate }) {
   // console.log("data : layder.data ", data)
-  return (<TriangleComponent
-    data={data}
-    totalWidth={width} // @TODO : il faudrait réduire cette width 
-    rowHeight={height * 0.3}
-    projection={projection}
-    projectionTemplate={projectionTemplate}
-  />);
+  return (
+    <TriangleComponent
+      data={data}
+      totalWidth={width} // @TODO : il faudrait réduire cette width 
+      rowHeight={height * 0.3}
+      projection={projection}
+      projectionTemplate={projectionTemplate}
+    />
+  );
 }
 
 

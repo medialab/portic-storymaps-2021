@@ -54,7 +54,7 @@ const PortGroup = ({
       // y1: yTransform + rowHeight / 7,
       x2: x,
       y2: y,
-      staticTransform: projectionTemplate === 'rotated Poitou' ? `translate(${xTransform}, ${yTransform}) scale(1)` : `translate(${x},${y}) scale(${projectionTemplate === 'France' ? 0.2 : 1})`
+      staticTransform: projectionTemplate === 'rotated Poitou' ? `translate(${xTransform}, ${yTransform}) scale(1)` : `translate(${x},${y}) scale(${projectionTemplate === 'France' ? 0.1 : 1})`
       // staticTransform: projectionTemplate === 'rotated Poitou' ? `translate(${xTransform}, ${yTransform}) scale(1)` : `translate(${totalWidth * 0.1},${index * (totalHeight / numberOfColumns)}) scale(${projectionTemplate === 'France' ? 0.2 : 1})`
     },
     immediate: !isInited
@@ -67,7 +67,7 @@ const PortGroup = ({
   const legendTextWidth= totalWidth * 0.08;
 
   return (
-    <g className={cx('port-point-and-triangle', {'is-minified': projectionTemplate === 'France'})}>
+    <g className={cx('port-point-and-triangle', {'is-minified': projectionTemplate !== 'rotated Poitou'})}>
 
       <animated.line
         x1={x1}

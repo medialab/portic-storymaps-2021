@@ -126,7 +126,7 @@ const GeoComponent = ({
           centerY: 46.7,
           // translationX: width * 0.4,
           translationX: width * 0.45,
-          translationY: 0
+          translationY: -height * 0.02
         }
         break;
       case 'rotated Poitou':

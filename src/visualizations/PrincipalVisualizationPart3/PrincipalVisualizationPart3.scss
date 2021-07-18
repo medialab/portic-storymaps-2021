@@ -36,9 +36,22 @@
   }
   // step 3
   .extraversion-object {
+    cursor: pointer;
     .object-label {
       font-weight: 800;
     }
+  }
+
+  .small-multiples {
+    .extraversion-object {
+      cursor: default;
+    }
+  }
+
+  .interaction-cta {
+    font-family: "IBM Plex sans", sans-serif;
+    font-size: .8rem;
+    font-weight: 800;
   }
   
   .legend-container{

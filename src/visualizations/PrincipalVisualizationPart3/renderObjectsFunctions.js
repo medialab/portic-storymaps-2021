@@ -75,10 +75,13 @@ export function Step3Object({
   // handle overlap 
   let noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
   if (datum.name === 'Tonnay-Charente') {
-    noOverlapTransform = `translate(${x + width * 0.03},${y})`
+    noOverlapTransform = `translate(${x + width * 0.04},${y})`
   }
   else if ((datum.name === 'Rochefort')) {
-    noOverlapTransform = `translate(${x - width * 0.03},${y})`
+    noOverlapTransform = `translate(${x - width * 0.03},${y - height * 0.02})`
+  }
+  else if ((datum.name === 'Marennes')) {
+    noOverlapTransform = `translate(${x},${y + height * 0.03})`
   }
 
   const transformGroup = projectionTemplate === 'France' ? noOverlapTransform + ' scale(0.1)' : noOverlapTransform + ' scale(1)';
@@ -130,15 +133,17 @@ export function SmallMultiples({ data, width, height, projection }) {
 
   return (
     <g className="small-multiples-and-legend-and-title">
-
-      {/* <Legend
-        {
-        ...{
-          width,
-          height
-        }
-        }
-      /> */}
+      <foreignObject
+        x={margin * 4}
+        y={multiplesY - circleRadius * 4}
+        width={circleRadius * 7}
+        height={height}
+        className="interaction-cta"
+      >
+        <div>
+          cliquer sur un bureau des fermes pour voir le détail de ses ports
+        </div>
+      </foreignObject>
       <rect
         x={xObjectsStart + margin * 2}
         y={multiplesY - circleRadius * 3}

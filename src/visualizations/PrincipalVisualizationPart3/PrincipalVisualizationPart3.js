@@ -93,7 +93,8 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
             },
             {
               type: 'custom',
-              data: datasets['part_3_step3_viz_customs_offices_data.csv'].filter(d => d.customs_region === 'La Rochelle'),
+              data: datasets['part_3_step3_viz_customs_offices_data.csv']
+              .filter(d => d.customs_region === 'La Rochelle' && d.name !== 'undefined customs office'),
               renderObject: Step3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
             },
             {

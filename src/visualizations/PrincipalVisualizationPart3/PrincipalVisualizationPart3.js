@@ -3,7 +3,7 @@ import cx from 'classnames';
 import { useState, useEffect } from 'react';
 
 import GeoComponent from '../../components/GeoComponent/GeoComponent';
-import { Step3Object, SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
+import { Step3Objects, SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
 
 import './PrincipalVisualizationPart3.scss';
 import colorsPalettes from '../../colorPalettes.js';
@@ -93,9 +93,16 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
             },
             {
               type: 'custom',
-              data: datasets['part_3_step3_viz_customs_offices_data.csv']
-              .filter(d => d.customs_region === 'La Rochelle' && d.name !== 'undefined customs office'),
-              renderObject: Step3Object // besoin de montrer les labels des bureaux et ports => modifier la fonction
+              data: {
+                customsOffices: datasets['part_3_step3_viz_customs_offices_data.csv']
+              .filter(d => 
+                d.customs_region === 'La Rochelle' 
+                && d.name !== 'undefined customs office'
+                && !d.name.includes('Bouin')
+                ),
+                ports: datasets['part_3_step3_viz_ports_data.csv']
+              },
+              renderObjects: Step3Objects // besoin de montrer les labels des bureaux et ports => modifier la fonction
             },
             {
               type: 'custom',

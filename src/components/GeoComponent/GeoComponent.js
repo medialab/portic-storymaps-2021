@@ -125,7 +125,7 @@ const GeoComponent = ({
           // centerY: 46.573872,
           centerY: 46.7,
           // translationX: width * 0.4,
-          translationX: width * 0.45,
+          translationX: width * 0.3,
           translationY: -height * 0.02
         }
         break;

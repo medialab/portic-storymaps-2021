@@ -35,16 +35,34 @@
     }
   }
   // step 3
-  .extraversion-object {
+  .ExtraversionObject {
     cursor: pointer;
     .object-label {
       font-weight: 800;
     }
+    &.is-minified {
+      opacity: .5;
+    }
   }
 
   .small-multiples {
-    .extraversion-object {
+    .ExtraversionObject {
       cursor: default;
+    }
+  }
+  .ports-details {
+    .ports-details-title {
+      h5 {
+        margin-left: 1rem;
+        margin-top: 3rem;
+      }
+    }
+
+    .port-group {
+      line {
+        stroke: darkgrey;
+        stroke-dasharray: 2, 2;
+      }
     }
   }
 

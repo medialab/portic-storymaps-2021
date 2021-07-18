@@ -14,6 +14,7 @@ const ExtraversionObject = ({
   width,
   height,
   name,
+  legendMode,
 }) => {
 
   const [isInited, setIsInited] = useState(false);
@@ -65,7 +66,8 @@ const ExtraversionObject = ({
     )
       .map((command) => command.join(' '))
       .join(' ')
-
+  let labelFontSize = parseInt(height * 0.013);
+  labelFontSize = labelFontSize > 8 ? labelFontSize : 8;
   return (
     <animated.g
       className='extraversion-object'
@@ -73,7 +75,8 @@ const ExtraversionObject = ({
       transform={transform}
     // { datum.longitude === 0 ? x=1 : null }
     >
-      <path className='left-triangle' fill={colorsPalettes.generic.accent2}
+      <path className='left-triangle'
+        fill={legendMode ? 'darkgrey' : colorsPalettes.generic.accent2}
         d={`M ${0} ${-leftTriangleHeight / 2}
             V ${leftTriangleHeight / 2}
             L ${-leftTriangleHeight} ${0}
@@ -81,7 +84,9 @@ const ExtraversionObject = ({
                 `}
       />
 
-      <path className='right-triangle' fill={colorsPalettes.ui.colorAccentBackground}
+      <path 
+        className='right-triangle' 
+        fill={legendMode ? 'grey' : colorsPalettes.ui.colorAccentBackground}
         d={`M ${0} ${-rightTriangleHeight / 2}
             L ${rightTriangleHeight} ${0}
             L ${0} ${rightTriangleHeight / 2}
@@ -91,13 +96,12 @@ const ExtraversionObject = ({
       <>
         {
           leftPath != null ?
-
             <>
 
               <path
                 d={`${leftPath}
                   `}
-                stroke={colorsPalettes.generic.accent2}
+                stroke={legendMode ? 'darkgrey' : colorsPalettes.generic.accent2}
                 stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
               />
@@ -105,7 +109,7 @@ const ExtraversionObject = ({
               <path
                 d={`${rightPath}
                   `}
-                stroke={colorsPalettes.ui.colorAccentBackground}
+                stroke={legendMode ? 'grey' : colorsPalettes.ui.colorAccentBackground}
                 stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
               />
@@ -124,13 +128,100 @@ const ExtraversionObject = ({
           /> */}
           <text
             className='object-label'
-            font-size={parseInt(height * 0.013)}
+            font-size={labelFontSize}
             textAnchor="middle"
           >
             {name}
           </text>
         </g>
       </>
+      {
+        legendMode ?
+        <g className="legend-container">
+          <foreignObject
+            width={circleRadius * 2}
+            height={circleRadius * 2}
+            x={-circleRadius * 3}
+            y={-circleRadius * 1.7}
+            className="top left"
+          >
+            <div className="label-wrapper">
+              <span>
+                Part des exports de produits hors-région
+              </span>
+            </div>
+          </foreignObject>
+          <line
+            x1={-circleRadius * .95}
+            y1={-circleRadius * 1.5}
+            x2={-circleRadius * .5}
+            y2={-circleRadius * 1}
+            marker-end="url(#triangle-end)"
+          />
+          <foreignObject
+            width={circleRadius * 2}
+            height={circleRadius * 2}
+            x={circleRadius * 1.2}
+            y={-circleRadius * 1.7}
+            className="top right"
+          >
+            <div className="label-wrapper">
+              <span>
+                Part des exports de produits de la région
+              </span>
+            </div>
+          </foreignObject>
+          <line
+            x1={circleRadius * 1.15}
+            y1={-circleRadius * 1.5}
+            x2={circleRadius * .5}
+            y2={-circleRadius * 1}
+            marker-end="url(#triangle-end)"
+          />
+          <foreignObject
+            width={circleRadius * 2}
+            height={circleRadius * 2}
+            x={-circleRadius * 3}
+            y={circleRadius / 2}
+            className="bottom left"
+          >
+            <div className="label-wrapper">
+              <span>
+                Part des voyages hors direction
+              </span>
+            </div>
+          </foreignObject>
+          <line
+            x1={-circleRadius * 1.8}
+            y1={circleRadius * .7}
+            x2={-circleRadius * .3}
+            y2={circleRadius * .1}
+            marker-end="url(#triangle-end)"
+          />
+          <foreignObject
+            width={circleRadius * 2}
+            height={circleRadius * 2}
+            x={circleRadius * 1.2}
+            y={circleRadius / 2}
+            className="bottom right"
+          >
+            <div className="label-wrapper">
+              <span>
+                Part des voyages vers la direction
+              </span>
+            </div>
+          </foreignObject>
+          <line
+            x1={circleRadius * 2}
+            y1={circleRadius * .7}
+            x2={circleRadius * .3}
+            y2={circleRadius * .1}
+            marker-end="url(#triangle-end)"
+          />
+          
+        </g>
+        : null
+      }
     </animated.g>);
 }
 

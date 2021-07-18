@@ -34,4 +34,32 @@
       }
     }
   }
+  // step 3
+  .extraversion-object {
+    .object-label {
+      font-weight: 800;
+    }
+  }
+  
+  .legend-container{
+    font-family: "IBM Plex sans", sans-serif;
+    font-size: .7rem;
+    line, path {
+      stroke: darkgrey;
+      fill: transparent;
+    }
+    .label-wrapper {
+      position: relative;
+      // background: red;
+    }
+    .top {
+      span {
+        bottom: 0;
+        right: 0;
+      }
+    }
+    .right {
+      text-align: right;
+    }
+  }
 }

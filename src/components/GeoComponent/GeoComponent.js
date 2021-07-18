@@ -120,7 +120,7 @@ const GeoComponent = ({
       case 'Poitou zoomed':
         projectionConfig = {
           ...projectionConfig,
-          scale: height * 46,
+          scale: height * 43,
           centerX: -1.7475927,
           // centerY: 46.573872,
           centerY: 46.7,

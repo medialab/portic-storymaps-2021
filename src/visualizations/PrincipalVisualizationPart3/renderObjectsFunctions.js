@@ -101,13 +101,19 @@ export function Step3Object({
 
 export function SmallMultiples({ data, width, height, projection }) {
   // could be parametered in props too
-  const bureaux = data.filter(({ name }) => name === 'Le Havre' || name === 'Nantes' || name === 'Bordeaux');
+  const bureaux = data.filter(({ name }) => name === 'Le Havre' || name === 'Nantes' || name === 'Bordeaux' || name === 'La Rochelle')
+  .sort((a, b) => {
+    if (a.cumulated_exports_value_from_region > b.cumulated_exports_value_from_region) {
+      return -1;
+    }
+    return 1;
+  })
   const legendCustomOffice = {
     name: 'Légende',
     cumulated_tonnage_in_region: 60,
-    cumulated_tonnage_out_region: 40,
-    cumulated_exports_value_from_region: 70,
-    cumulated_exports_value_from_ext: 30,
+    cumulated_tonnage_out_region: 60,
+    cumulated_exports_value_from_region: 50,
+    cumulated_exports_value_from_ext: 50,
     legendMode: true
   }
   bureaux.unshift(legendCustomOffice)
@@ -115,6 +121,12 @@ export function SmallMultiples({ data, width, height, projection }) {
   const margin = 15;
   let circleRadius = width * 0.05;
   const multiplesY = height - circleRadius - margin * 2;
+
+  const legendFactor = 1;
+
+  const columnWidth = (circleRadius * 2 + margin);
+
+  const xObjectsStart = width * .4 // circleRadius * legendFactor + circleRadius + margin;
 
   return (
     <g className="small-multiples-and-legend-and-title">
@@ -127,13 +139,25 @@ export function SmallMultiples({ data, width, height, projection }) {
         }
         }
       /> */}
-      <foreignObject
-        x={margin}
+      <rect
+        x={xObjectsStart + margin * 2}
         y={multiplesY - circleRadius * 3}
-        width={width}
+        width={width - xObjectsStart - margin * 4}
+        height={height - multiplesY + circleRadius * 3 - margin / 2}
+        style={{fill: 'white'}}
+        opacity={0.5}
+      />
+      <foreignObject
+        x={xObjectsStart + circleRadius * 1.5}
+        y={multiplesY - circleRadius * 3}
+        width={(circleRadius * 2 + margin) * (bureaux.length - 1)}
         height={height}
       >
-         <h5 className="visualization-title">Comparaison avec les bureaux de fermes et ports dominants d'autres directions de fermes</h5>
+        <div style={{position: 'relative'}}>
+          <h5 className="visualization-title" style={{position: 'absolute', left: 0, bottom: 0}}>
+            Comparaison avec les bureaux de fermes et ports dominants d'autres directions
+          </h5>
+        </div>
       </foreignObject>
       <g className="small-multiples">
         {
@@ -146,13 +170,29 @@ export function SmallMultiples({ data, width, height, projection }) {
 
               const totalValue = parseFloat(custom_office.cumulated_exports_value_from_region) + parseFloat(custom_office.cumulated_exports_value_from_ext)
               const inPercentage = parseFloat(custom_office.cumulated_exports_value_from_region) / totalValue * 100
-              
-
-                return (
+            
+                return custom_office.legendMode ?
+                (
                   <ExtraversionObject
                   {
                     ...{
-                      transformGroup: `translate(${circleRadius + margin + index * (circleRadius * 2 + margin)}, ${multiplesY})`,
+                      transformGroup: `translate(${circleRadius * legendFactor * 4 + margin + index * (circleRadius * legendFactor + margin)}, ${multiplesY - (circleRadius * legendFactor  - circleRadius)})`,
+                      navigoValues: [navigoMetric1, navigoMetric2],
+                      toflitPct: inPercentage,
+                      circleRadius: circleRadius * legendFactor,
+                      width,
+                      height,
+                      name: custom_office.name,
+                      legendMode: custom_office.legendMode
+                    }
+                  }
+                />
+                )
+                : (
+                  <ExtraversionObject
+                  {
+                    ...{
+                      transformGroup: `translate(${xObjectsStart + index * columnWidth}, ${multiplesY})`,
                       navigoValues: [navigoMetric1, navigoMetric2],
                       toflitPct: inPercentage,
                       circleRadius,
@@ -168,8 +208,17 @@ export function SmallMultiples({ data, width, height, projection }) {
         }
 
       </g>
+      <defs>
+        <marker id="triangle-end" viewBox="-10 0 10 10"
+          refX="1" refY="5"
+          markerUnits="strokeWidth"
+          markerWidth={width * 0.01} 
+          markerHeight={width * 0.01}
+          orient="auto">
+          <path d="M -10 0 L 0 5 L -10 10 Z" fill="darkgrey" />
+        </marker>
+      </defs>
     </g>
-
   );
 
 }

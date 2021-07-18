@@ -5,12 +5,21 @@ import { scaleLinear } from 'd3-scale';
 import { extent } from 'd3-array';
 
 import { generatePalette } from '../../helpers/misc';
-import { useSpring, animated } from 'react-spring'
+import { useSpring, animated, Transition } from 'react-spring'
 import { useEffect, useState } from 'react';
+import ReactTooltip from 'react-tooltip';
 
 
-const PointGroup = ({ projection, datum, layer }) => {
-  const { latitude, longitude, size, color } = datum;
+const PointGroup = ({ 
+  projection, 
+  datum, 
+  layer, 
+  opacity,
+  onGroupMouseEnter, 
+  onGroupMouseLeave
+}) => {
+  const {tooltip} = layer;
+  const { latitude, longitude, size, color,label, labelPosition = 'right', labelSize, index } = datum;
   const [x, y] = projection([+longitude, +latitude]);
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -26,7 +35,19 @@ const PointGroup = ({ projection, datum, layer }) => {
   });
   return (
     <>
-      <animated.g className="point-group" transform={transform}>
+      <animated.g 
+        className="point-group" 
+        transform={transform}
+        style={{
+          zIndex: labelSize,
+          opacity: opacity
+        }}
+        onMouseEnter={() => onGroupMouseEnter(index)}
+        onMouseMove={() => onGroupMouseEnter(index)}
+        onMouseLeave={() => onGroupMouseLeave()}
+        data-for="geo-tooltip"
+        data-tip={typeof tooltip === 'function' ? tooltip(datum) : undefined}
+      >
         <circle
           cx={0}
           cy={0}
@@ -34,30 +55,6 @@ const PointGroup = ({ projection, datum, layer }) => {
           style={{ fill: color }}
           className="marker"
         />
-      </animated.g>
-    </>
-
-  );
-}
-
-const PointLabel = ({ projection, datum, layer }) => {
-  const { latitude, longitude, size, label, labelPosition = 'right', labelSize } = datum;
-  const [x, y] = projection([+longitude, +latitude]);
-  const [isInited, setIsInited] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsInited(true)
-    })
-  }, [])
-  const { transform } = useSpring({ 
-    to: {
-      transform: `translate(${x},${y})`
-   },
-   immediate: !isInited
-   });
-  return (
-    <>
-      <animated.g className="point-group" transform={transform}>
         {
           label ?
             <text
@@ -78,6 +75,13 @@ const PointLabel = ({ projection, datum, layer }) => {
 }
 
 const PointsLayer = ({ layer, projection, width }) => {
+
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+
+  useEffect(() => {
+    ReactTooltip.rebuild();
+  })
 
   /**
     * Data aggregation for viz (note : could be personalized if we visualize other things than points)
@@ -133,11 +137,12 @@ const PointsLayer = ({ layer, projection, width }) => {
 
       const sizeExtent = extent(grouped.map(g => g.size));
       const sizeScale = scaleLinear().domain(sizeExtent).range([3, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
-      const labelSizeScale = scaleLinear().domain(sizeExtent).range([5, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      const labelSizeScale = scaleLinear().domain(sizeExtent).range([8, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
         color: layer.color !== undefined ? palette[datum.color] : 'grey',
         size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100,
+        rawSize: datum.size,
         labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width / 100
       }))
 
@@ -149,9 +154,52 @@ const PointsLayer = ({ layer, projection, width }) => {
   // console.log("markerData (pointsLayer): ", markerData)
   const visibleMarkers = markerData
   .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
+  .sort((a, b) => {
+    if (a.latitude > b.latitude) {
+      return 1;
+    }
+    return -1;
+  })
+
+  const onGroupMouseEnter = index => {
+    if (hoveredIndex !== index)
+      setHoveredIndex(index);
+  }
+  const onGroupMouseLeave = () => {
+    setTimeout(() => {
+      if (hoveredIndex !== null)
+        setHoveredIndex(null);
+    })
+  }
+
   return (
     <g className="PointsLayer">
-      {
+      <Transition
+          items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+          // config={config.molasses}
+          // onRest={() => this.setState({ items: [] })}>
+      >
+          {({opacity}, datum, index) => (
+            <PointGroup
+              key={datum.label}
+              {...{ 
+                projection, 
+                datum, 
+                layer, 
+                opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity, 
+                index, 
+                onGroupMouseEnter, 
+                onGroupMouseLeave 
+              }}
+            />
+          )
+
+          }
+      </Transition>
+      {/* {
         visibleMarkers
           .map((datum, index) => {
             return (
@@ -161,18 +209,7 @@ const PointsLayer = ({ layer, projection, width }) => {
               />
             )
           })
-      }
-      {
-        visibleMarkers
-          .map((datum, index) => {
-            return (
-              <PointLabel
-                key={datum.label}
-                {...{ projection, datum, layer }}
-              />
-            )
-          })
-      }
+      } */}
     </g>
   );
 }

@@ -22,10 +22,22 @@
 
 	.PointsLayer {
 		.point-group {
+      // opacity: 1;
+      // transition: .5s all ease;
 			circle {
 				fill : grey;
+        opacity: .9;
 			}
 		}
+    // following is commented because using react-spring
+    // &:hover {
+    //   .point-group {
+    //     opacity: .1;
+    //     &:hover {
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
 	}
 	.ChoroplethLayer {
 		.geopart {

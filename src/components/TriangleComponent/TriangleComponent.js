@@ -18,154 +18,40 @@
   @TODO : documenter ce component de maière standardisée
   */
 
-import React, {useEffect, useState} from 'react';
 import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
-
-import { animated, useSpring } from 'react-spring';
 
 import './TriangleComponent.scss'
 import colorsPalettes from '../../colorPalettes';
 
-
-const PortGroup = ({
-  numberOfColumns,
-  port,
-  scaleX,
-  scaleY,
-  legendWidth,
-  columnWidth,
-  totalHeight,
-  totalWidth,
-  projection,
-  index,
-  margins,
-  rowHeight,
-  fontSize
-}) => {
-
-
-  const triangleWidth = scaleX(+port.nb_pointcalls_out)
-  const triangleHeight = scaleY(+port.mean_tonnage)
-
-  const xIndex = index % numberOfColumns;
-  // const yIndex = (index - index % numberOfColumns) / numberOfColumns;
-  const xTransform = xIndex * columnWidth + (legendWidth + margins.left) * totalWidth;
-  const yTransform = totalHeight * 2.3;
-
-  // const [x, y] = projection([+port.longitude, +port.latitude]);
-  const [x, y] = projection([+port.longitude, +port.latitude]);
-  const [isInited, setIsInited] = useState(false);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsInited(true)
-    })
-  }, [])
-  const { transform, x1, y1, x2, y2 } = useSpring({ 
-    to: {
-      transform: `translate(${x},${y})`,
-      x1: xTransform + columnWidth / 2,
-      y1: yTransform + rowHeight / 7,
-      x2: x,
-      y2: y
-   },
-   immediate: !isInited
-  });
-
-  return (
-    <g className='port-point-and-triangle'>
-
-      <animated.line
-        x1={x1}
-        y1={y1}
-        x2={x2}
-        y2={y2}
-        stroke='grey'
-        strokeDasharray='2, 8'
-      />
-
-      <animated.g className='port-point' transform={transform}>
-        <circle
-          cx={0}
-          cy={0}
-          r={totalHeight * 0.02}
-          style={{ fill: colorsPalettes.generic.dark }}
-          className="marker"
-        />
-      </animated.g>
-
-      <g className='port-triangle'
-        // transform={`translate(${(index) * (columnWidth)}, ${height * .33 + (index%3)*(rowHeight)})`}
-        transform={`translate(${xTransform}, ${yTransform})`}
-      >
-        <rect
-          x={0}
-          y={0}
-          width={columnWidth}
-          height={rowHeight}
-        />
-
-        <path class='horizontalLine'
-          d={`M ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2} 
-              V ${rowHeight / 7}
-              `}
-        />
-
-        <path className='triangle'
-          d={`M ${(columnWidth - triangleWidth) / 2} ${(rowHeight - triangleHeight) / 1.2} 
-              H ${(columnWidth - triangleWidth) / 2 + triangleWidth}
-              L ${columnWidth / 2} ${(rowHeight - triangleHeight) / 1.2 + triangleHeight}
-              Z
-              `}
-          fill="url(#TriangleGradient)"
-        />
-
-
-        <g className='label' transformOrigin="bottom left" transform={`translate(${columnWidth / 2}, ${rowHeight / 7 - totalHeight * 0.025})`}>
-          <path
-            d={`M 0 ${-fontSize} L ${port.port.length * fontSize * .65} ${-fontSize} ${port.port.length * fontSize * .65 - 5} ${(-fontSize + fontSize * 0.2) / 2} ${port.port.length * fontSize * .65} ${fontSize * 0.2} 0 ${fontSize * 0.2} Z`}
-            // x={0}
-            // y={-fontSize}
-            // height={fontSize * 1.2}
-            // width={port.port.length * fontSize * .65}
-            style={{ fill: colorsPalettes.generic.dark }}
-            transformOrigin="bottom left"
-            transform="rotate (-45)"
-          />
-          <text
-            transformOrigin="bottom left"
-            transform="rotate (-45)"
-            font-size={fontSize}
-            style={{ fill: 'white' }}
-            x={0}
-            y={0}
-            text-anchor="left"
-          > {port.port} </text>
-        </g>
-
-      </g>
-    </g>
-  )
-}
+// import TriangleLegend from './TriangleLegend';
+import PortGroup from './PortGroup';
 
 
 const TriangleComponent = ({
   data,
   totalWidth = 1200,
   legendWidth = 0.1,
-  margins = {
-    left: 0.0,
-    right: 0.09
-  },
+  margins: inputMargins,
   rowHeight = 200,
-  projection
+  projection,
+  projectionTemplate
 }) => {
 
-  const numberOfColumns = data.length
-  const columnWidth = (totalWidth * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns
-  const numberOfRows = data.length / numberOfColumns
-  const totalHeight = numberOfRows * rowHeight
-  const fontSize = totalHeight * 0.05
+  const margins = inputMargins ||  {
+    left: totalWidth * .1,
+    right: totalWidth * .1
+  }
+  // {
+  //   left: 0.0,
+  //   right: 0.09
+  // }
+  const numberOfColumns = data.length;
+  const columnWidth = (totalWidth - margins.left - margins.right) / (numberOfColumns) // (totalWidth * (1 - legendWidth - margins.left - margins.right)) / numberOfColumns; // (totalWidth) / (numberOfColumns + 4) //
+  const numberOfRows = data.length / numberOfColumns;
+  const totalHeight = numberOfRows * rowHeight;
+  const fontSize = totalHeight * 0.05;
+
 
   // scaleLinear<Range = number, Output = Range, Unknown = never>(range?: Iterable<Range>): ScaleLinear<Range, Output, Unknown> (+1 overload)
   const scaleX = scaleLinear().domain([
@@ -176,7 +62,8 @@ const TriangleComponent = ({
         return +port.nb_pointcalls_out;
       })
     )
-  ]).range([0, columnWidth * 5]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
+    // ]).range([0, columnWidth * 5]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
+  ]).range([5, columnWidth * 5]); // @TODO : adapter pour permettre chevauchement => ne plus se limiter à la taille d'une colonne (+ centre de mon triangle à gérer)
 
   const scaleY = scaleLinear().domain([
     0,
@@ -185,106 +72,40 @@ const TriangleComponent = ({
         return +port.mean_tonnage; // parseFloat(port.mean_tonnage);
       })
     )
-  ]).range([0, rowHeight * 0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
+  ]).range([5, rowHeight * 0.85]); // pour l'instant j'ai mis le max de longueur à 85% de la hauteur du rectangle conteneur 
   // je pourrais faire  range([0, rowHeight - place occupée par le texte]
 
-  const legendTriangleWidth = 35;
-  const legendTriangleHeight = 60;
+  // const legendTriangleWidth = 35;
+  // const legendTriangleHeight = 60;
 
   return (
 
-    <g className="TriangleComponent" width={totalWidth} height={totalHeight} style={{ border: '1px solid lightgrey' }}>
+    <g className="TriangleComponent">
 
       <defs>
         <linearGradient id="TriangleGradient" x2='0%' y2='100%'>
-          <stop offset="20%" stop-color={colorsPalettes.generic.dark} />
-          <stop offset="100%" stop-color={colorsPalettes.generic.dark} stop-opacity={0.3} />
+          <stop offset="10%" stop-color={`rgb(100,100,100)`} stop-opacity={0.6} />
+          <stop offset="100%" stop-color={colorsPalettes.generic.dark} />
+          {/* <stop offset="20%" stop-color={colorsPalettes.generic.dark} />
+          <stop offset="100%" stop-color={colorsPalettes.generic.dark} stop-opacity={0.3} /> */}
         </linearGradient>
       </defs>
-      <g className="TriangleLegend" width={legendWidth} transform={`translate(${legendWidth * totalWidth * 0.5}, ${totalHeight * 2.3})`} >
-        <g classname="arrows">
-          <path
-            d={`M ${(legendWidth - legendTriangleWidth) / 2} ${(rowHeight - legendTriangleHeight) / 1.2} 
-                        H ${(legendWidth - legendTriangleWidth) / 2 + legendTriangleWidth}
-                        L ${legendWidth / 2} ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight}
-                        Z
-                        `}
-          />
-
-          <g className="top-arrow">
-            <defs>
-              <marker id="triangle-left" viewBox="0 0 10 10"
-                refX="1" refY="5"
-                markerUnits="strokeWidth"
-                markerWidth={legendWidth * totalWidth * 0.08} markerHeight={rowHeight * 0.04}
-                orient="auto">
-                <path d="M 10 0 L 0 5 L 10 10 Z" fill="black" />
-              </marker>
-              <marker id="triangle-right" viewBox="-10 0 10 10"
-                refX="1" refY="5"
-                markerUnits="strokeWidth"
-                markerWidth={legendWidth * totalWidth * 0.08} markerHeight={rowHeight * 0.04}
-                orient="auto">
-                <path d="M -10 0 L 0 5 L -10 10 Z" fill="black" />
-              </marker>
-            </defs>
-            <path d={`M ${(legendWidth - legendTriangleWidth) / 2} ${(rowHeight - legendTriangleHeight) / 1.3}  
-                    H ${(legendWidth - legendTriangleWidth) / 2 + legendTriangleWidth}
-                    `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" marker-end="url(#triangle-right)" />
-          </g>
-
-          <g className="left-arrow">
-            <defs>
-              <marker id="triangle-left" viewBox="-10 0 10 10"
-                refX="1" refY="5"
-                markerUnits="strokeWidth"
-                markerWidth={legendWidth * totalWidth * 0.08} markerHeight={rowHeight * 0.04}
-                orient="auto">
-                <path d="M 0 0 L -10 5 L 0 10 Z" fill="black" />
-              </marker>
-              <marker id="triangle-right" viewBox="0 0 10 10"
-                refX="1" refY="5"
-                markerUnits="strokeWidth"
-                markerWidth={legendWidth * totalWidth * 0.08} markerHeight={rowHeight * 0.04}
-                orient="auto">
-                <path d="M 0 0 L 10 5 L 0 10 Z" fill="black" />
-              </marker>
-            </defs>
-            <path d={`M ${(legendWidth - legendTriangleWidth) / 1.6} ${(rowHeight - legendTriangleHeight) / 1.2}  
-                    V ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight}
-                    `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" marker-end="url(#triangle-right)" />
-          </g>
-
-        </g>
-
-        <g className="textLegend">
-          {/* <text className="legendTitle"
-            // transformOrigin="top left"
-            // transform="rotate (-45)"
-            font-size={totalHeight * 0.07}
-            font-weight="bold"
-            // x={legendWidth / 2}
-            x={0}
-            y={(rowHeight - legendTriangleHeight) / 2}
-          // text-anchor="left"
-          > Légende </text> */}
-
-          <g transform={`translate(${legendWidth / 2 + fontSize / 2}, ${(rowHeight - legendTriangleHeight) / 1.4})`}>
-            <text className="legendContent"
-              font-size={fontSize}
-            > nombre de navires</text>
-          </g>
-
-          <g transform={`translate(${(legendWidth - legendTriangleWidth) / 1.2}, ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight / 2})`}>
-            <text className="legendContent"
-              font-size={fontSize}
-            > tonnage moyen des navires </text>
-          </g>
-        </g>
-
-      </g>
-      <g className="triangles" width={totalWidth * (1 - margins.left - margins.right - legendWidth)}>
+      {/* <TriangleLegend
         {
+        ...{
+          legendWidth,
+          totalWidth,
+          totalHeight,
+          legendTriangleWidth,
+          legendTriangleHeight,
+          rowHeight,
+          fontSize,
+        }
+        }
+      /> */}
+      <g className="triangles">
+        {
+          // sorting groups regarding their projected projection on the horizontal axis (to avoid lines crossings)
           data.sort((a, b) => {
             const [xa] = projection([+a.longitude, +a.latitude]);
             const [xb] = projection([+b.longitude, +b.latitude]);
@@ -293,7 +114,6 @@ const TriangleComponent = ({
               return 1;
             }
             return -1;
-
           })
             .map((port, index) => {
 
@@ -314,7 +134,8 @@ const TriangleComponent = ({
                     index,
                     margins,
                     rowHeight,
-                    fontSize
+                    fontSize,
+                    projectionTemplate
                   }
                   }
                 />
@@ -322,6 +143,24 @@ const TriangleComponent = ({
             })
 
         }
+        <defs>
+            <marker id="triangle-left" viewBox="0 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth * totalWidth * 0.04} 
+              markerHeight={rowHeight * 0.02}
+              orient="auto">
+              <path d="M 10 0 L 0 5 L 10 10 Z" fill="darkgrey" />
+            </marker>
+            <marker id="triangle-right" viewBox="-10 0 10 10"
+              refX="1" refY="5"
+              markerUnits="strokeWidth"
+              markerWidth={legendWidth * totalWidth * 0.04} 
+              markerHeight={rowHeight * 0.024}
+              orient="auto">
+              <path d="M -10 0 L 0 5 L -10 10 Z" fill="darkgrey" />
+            </marker>
+          </defs>
       </g>
 
     </g>

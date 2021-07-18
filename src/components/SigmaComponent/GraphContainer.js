@@ -279,7 +279,7 @@ export default function SigmaComponent({
   return (
     <div className="SigmaComponent" style={{ 
       width: '100%', 
-      height: height || '100%'
+      height: height || '100%',
     }}>
       <div ref={headerRef} className="row visualization-title-container">
         {title ? <h5 className="visualization-title">{title}</h5> : null}

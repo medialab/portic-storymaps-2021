@@ -304,6 +304,7 @@ const GeoComponent = ({
                   key={layerIndex}
                   layer={layer}
                   projection={projection}
+                  projectionTemplate={projectionTemplate}
                   width={width}
                   height={height}
                 />

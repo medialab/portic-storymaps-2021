@@ -471,13 +471,14 @@ export function renderStep3SmallMultiples({ data, width, height, projection }) {
 
 }
 
-export function renderTriangles({ data, width, height, projection }) {
+export function renderTriangles({ data, width, height, projection, projectionTemplate }) {
   // console.log("data : layder.data ", data)
   return (<TriangleComponent
     data={data}
     totalWidth={width} // @TODO : il faudrait réduire cette width 
     rowHeight={height * 0.3}
     projection={projection}
+    projectionTemplate={projectionTemplate}
   />);
 }
 

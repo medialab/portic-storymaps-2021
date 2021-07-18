@@ -19,19 +19,57 @@
         .port-point-and-triangle{
             transition : .5s ease all;
             opacity : 1;
+            .local-legend {
+              font-family: "IBM Plex Sans", sans-serif;
+              font-size: .8rem;
+              transition: .5s all ease;
+              // text-align: right;
+              opacity: 1;
+              transition: .5s ease all;
+              color: darkgrey;
+              pointer-events: none;
+              span {
+                background: #ebebeb;
+              }
+              line,path {
+                stroke: darkgrey;
+                fill: transparent;
+              }
+            }
+            &:not(:first-of-type) {
+              .local-legend {
+                opacity: 0;
+                
+              }
+            }
+          &.is-minified {
+            &:first-of-type {
+              .local-legend {
+                opacity: 0;
+              }
+            }
+          }       
         } 
         &:hover{
             .port-point-and-triangle{
-                opacity : .3;
+                &:first-of-type {
+                  .local-legend {
+                    opacity: 0;
+                  }
+                }
+                opacity : .1;
                 &:hover{
                     opacity: 1;
+                    .local-legend {
+                      opacity: 1;
+                    }
                 }
             } 
         }
     }
 
-    path.horizontalLine {
-        stroke : rgb(105, 107, 112);
+    path.vertical-line {
+        stroke : darkgrey;
     }
 
 }

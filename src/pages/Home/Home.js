@@ -60,7 +60,6 @@ function Home({ match: {
       const y = index === 0 ? scrollY + window.innerHeight * .2 : scrollY + DISPLACE_Y;
       const [_id, visualization] = visualizationEntries[index];/* eslint no-unused-vars : 0 */
       const { ref } = visualization;
-      console.log(index, ref.current)
       if (ref.current) {
         const { y: initialVisY } = ref.current.getBoundingClientRect();
         let visY = initialVisY + window.scrollY;
@@ -161,7 +160,6 @@ function Home({ match: {
     }
     
   }
-  console.log('in vis', inVis)
   return (
     <div className="Home">
       <Helmet>

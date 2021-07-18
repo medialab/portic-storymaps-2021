@@ -25,6 +25,20 @@ const Bureau = ({
       setIsInited(true)
     })
   }, [])
+
+  // const r2 = useMemo(() => ({
+  //   r: radius * 2
+  // }), [radius]);
+  // const r1 = useMemo(() => ({
+  //   r: radius
+  // }), [radius]);
+  // const {r} = useSpring({
+  //   loop: true,
+  //   from: r1,
+  //   to: [r2, r1],
+  //   config: { duration: 1500 }
+  // });
+
   const {transform} = useSpring({ 
     to: {
       transform: `translate(${x}, ${y})` 
@@ -33,7 +47,7 @@ const Bureau = ({
   });
   return (
     <animated.g transform={transform}>
-      <circle
+      <animated.circle
         r={radius * 2}
         cx={0}
         cy={0}
@@ -47,7 +61,7 @@ const Bureau = ({
       />
       <foreignObject
         x={labelOnRight ? radius : -radius - thatWidth}
-        y={-radius / 2}
+        y={0}
         fill="white"
         width={thatWidth}
         height={height / 20}
@@ -72,9 +86,10 @@ const renderBureaux = ({ data, projection, width, height }) => {
 
   return (
     <g className="IntroBureaux">
+      
       {
         data
-          .filter(d => !isNaN(+d.latitude))
+          .filter(d => !isNaN(+d.latitude) && colorPalettes.customs_office[d.name])
           .map((datum, index) => (
             <Bureau
               key={index}
@@ -136,8 +151,8 @@ const IntroBureaux = ({
         }
       ]}
       projectionTemplate='Poitou'
-      height={dimensions.height}
       width={dimensions.width}
+      height={atlasMode ? window.innerHeight * .9 : dimensions.height}
     />
   )
 }

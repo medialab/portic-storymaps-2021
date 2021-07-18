@@ -246,8 +246,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               }
             ]}
             projectionTemplate='France'
-            height={dimensions.height}
             width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight * .9 : dimensions.height}
           />
         </>
       )
@@ -278,14 +278,15 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   field: 'nb_pointcalls',
                   // custom: '20'
                 },
+                tooltip: d => `${d.rawSize} mouvements de bateaux ont été enregistrés par le port de ${d.label} en 1789`,
                 label: {
                   field: 'port',
                   position: 'left'
                 }
               }]}
             projectionTemplate='Poitou'
-            height={dimensions.height}
             width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight * .9 : dimensions.height}
           />
         </>
       )

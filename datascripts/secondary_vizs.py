@@ -327,6 +327,7 @@ def compute_region_ports_general (pointcalls):
   output = []
   for port in ports.values():
     output.append(port)
+  print("compute ports_locations_data.csv")
   write_csv("ports_locations_data.csv", output)
 """
   Data reading and building functions calls
@@ -354,7 +355,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
 
 with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   pointcalls = csv.DictReader(f)
-  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes"]
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   out_from_region = []
   all_pointcalls_1789 = []
   for pointcall in pointcalls:

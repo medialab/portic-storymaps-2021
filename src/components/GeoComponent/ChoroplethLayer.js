@@ -6,7 +6,7 @@ import { useSpring, animated } from 'react-spring'
 import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
-const GeoPart = ({ d: initialD, projection, palette, layer}) => {
+const GeoPart = ({ d: initialD, projection, project, palette, layer, width, height}) => {
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -15,16 +15,23 @@ const GeoPart = ({ d: initialD, projection, palette, layer}) => {
     })
   }, [])
 
+  const currentD = project(initialD);
+
   const animationProps = useSpring({
     to: {
-      d: geoPath().projection(projection)(initialD)
+      d: currentD
     },
     immediate: !isInited
   });
 
+  // @todo do this cleanly (removing out of bound objects to improve performance)
+  // const boundsAbs = geoPath().bounds(initialD);
+  // const boundsRel = [projection(boundsAbs[0]), projection(boundsAbs[1])];
+  // let outOfBounds = boundsRel[0][0] > width;
+
   useEffect(() => {
     ReactTooltip.rebuild();
-  })
+  });
   return (
     <animated.path
       d={animationProps.d}
@@ -44,6 +51,7 @@ const GeoPart = ({ d: initialD, projection, palette, layer}) => {
 const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) => {
 
   let palette;
+  const project = geoPath().projection(projection);
 
   if (layer.data.features && layer.color && layer.color.field) {
     // colors palette building
@@ -65,7 +73,10 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
         {
           layer.data.features.map((d, i) => {
             return (
-              <GeoPart key={i} {...{projection, palette, layer, d}} />
+              <GeoPart 
+                key={d.properties.id || i} 
+                {...{projection, project, palette, layer, d, width, height}}
+              />
             )
           })
         }

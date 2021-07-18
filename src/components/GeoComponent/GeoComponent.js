@@ -71,7 +71,7 @@ const GeoComponent = ({
       rotationDegree: 0,
       centerX: 2.4486203,
       centerY: 46.8576176,
-      scale: height * 6
+      scale: height * 5
     };
   }, [height]) // repsonsive : se fait en fonction de la height de l'écran
 
@@ -108,11 +108,13 @@ const GeoComponent = ({
       case 'Poitou':
         projectionConfig = {
           ...projectionConfig,
-          scale: height * 45,
-          centerX: -1.7475027,
-          centerY: 46.573642,
-          translationX: width * 0.4,
-          translationY: height * 0.05
+          scale: height * 30,
+          centerX: -1.7475927,
+          // centerY: 46.573872,
+          centerY: 47.4,
+          // translationX: width * 0.4,
+          translationX: width * 0.45,
+          translationY: 0
         }
         break;
       case 'rotated Poitou':

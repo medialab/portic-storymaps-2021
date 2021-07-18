@@ -132,7 +132,7 @@ const PointsLayer = ({ layer, projection, width }) => {
       }
 
       const sizeExtent = extent(grouped.map(g => g.size));
-      const sizeScale = scaleLinear().domain(sizeExtent).range([1, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      const sizeScale = scaleLinear().domain(sizeExtent).range([3, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       const labelSizeScale = scaleLinear().domain(sizeExtent).range([5, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,

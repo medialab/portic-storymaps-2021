@@ -10,17 +10,17 @@ import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 
-const PointGroup = ({ 
-  projection, 
-  datum, 
-  layer, 
+const PointGroup = ({
+  projection,
+  datum,
+  layer,
   opacity,
-  onGroupMouseEnter, 
+  onGroupMouseEnter,
   onGroupMouseLeave,
   displayLabel
 }) => {
-  const {tooltip} = layer;
-  const { latitude, longitude, size: area, color,label, labelPosition = 'right', labelSize, index } = datum;
+  const { tooltip } = layer;
+  const { latitude, longitude, size: area, color, label, rawSize, labelPosition = 'right', labelSize, index } = datum;
   const size = Math.sqrt(area / Math.PI)
   const [x, y] = projection([+longitude, +latitude]);
   const [isInited, setIsInited] = useState(false);
@@ -29,16 +29,16 @@ const PointGroup = ({
       setIsInited(true)
     })
   }, [])
-  const { transform } = useSpring({ 
+  const { transform } = useSpring({
     to: {
       transform: `translate(${x},${y})`
-   },
-   immediate: !isInited
+    },
+    immediate: !isInited
   });
   return (
     <>
-      <animated.g 
-        className="point-group" 
+      <animated.g
+        className="point-group"
         transform={transform}
         style={{
           zIndex: labelSize,
@@ -57,6 +57,20 @@ const PointGroup = ({
           style={{ fill: color }}
           className="marker"
         />
+        {
+          layer.size.displayMetric && labelSize > 6 ?
+            <text
+              x={0}
+              y={labelSize / 4}
+              textAnchor="middle"
+              fontSize={labelSize / 2}
+              fill="white"
+            >
+              {rawSize}
+            </text>
+            : null
+        }
+
         {
           label && displayLabel ?
             <text
@@ -82,12 +96,12 @@ const StackedLabelGroup = ({
   thatIndex,
   opacity,
   stackedRowHeight,
-  onGroupMouseEnter, 
+  onGroupMouseEnter,
   onGroupMouseLeave,
   projection
 }) => {
-  const {tooltip} = layer;
-  const { latitude, longitude, size: area, color,label, labelPosition = 'right', labelSize, index } = datum;
+  const { tooltip } = layer;
+  const { latitude, longitude, size: area, color, label, labelPosition = 'right', labelSize, index } = datum;
   const size = Math.sqrt(area / Math.PI)
   const [x, y] = projection([+longitude, +latitude]);
   const [isInited, setIsInited] = useState(false);
@@ -96,13 +110,13 @@ const StackedLabelGroup = ({
       setIsInited(true)
     })
   }, [])
-  const { x2, y2, transformLabel } = useSpring({ 
+  const { x2, y2, transformLabel } = useSpring({
     to: {
       x2: x - size,
       y2: y,
-      transformLabel: `translate(0, ${datum.labelY})`
-   },
-   immediate: !isInited
+      transformLabel: `translate(${window.innerWidth * 0.01}, ${datum.labelY})`
+    },
+    immediate: !isInited
   });
   return (
     <animated.g
@@ -117,14 +131,14 @@ const StackedLabelGroup = ({
       data-tip={typeof tooltip === 'function' ? tooltip(datum) : undefined}
     >
       <animated.g className="label-container" transform={transformLabel}>
-        <text style={{fontSize: stackedRowHeight}}>
-        {
-          label
-        }
+        <text style={{ fontSize: stackedRowHeight }}>
+          {
+            label
+          }
         </text>
       </animated.g>
       <animated.line
-        x1={stackedRowHeight * label.length * .5}
+        x1={stackedRowHeight * label.length * .5 + window.innerWidth * 0.01}
         y1={datum.labelY - stackedRowHeight * .2}
         x2={x2}
         y2={y2}
@@ -203,7 +217,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
       grouped = grouped.map(datum => ({
         ...datum,
         color: layer.color !== undefined ? palette[datum.color] : 'grey',
-        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size): width / 100,
+        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100,
         rawSize: datum.size,
         labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width / 100
       }))
@@ -214,13 +228,13 @@ const PointsLayer = ({ layer, projection, width, height }) => {
   }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */
 
   let visibleMarkers = markerData
-  .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
-  .sort((a, b) => {
-    if (a.latitude > b.latitude) {
-      return 1;
-    }
-    return -1;
-  })
+    .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
+    .sort((a, b) => {
+      if (a.latitude > b.latitude) {
+        return 1;
+      }
+      return -1;
+    })
 
   const onGroupMouseEnter = index => {
     if (hoveredIndex !== index)
@@ -237,75 +251,75 @@ const PointsLayer = ({ layer, projection, width, height }) => {
   const stackedRowHeight = stackedLabelsHeight / visibleMarkers.length;
   if (layer.stackLabels) {
     visibleMarkers = visibleMarkers
-    .sort((a, b) => {
-      if (a.latitude > b.latitude) {
-        return -1;
-      }
-      return 1;
-    })
-    .map((d, i) => ({
-      ...d,
-      labelY: stackedRowHeight * i + stackedLabelsTop
-    }))
+      .sort((a, b) => {
+        if (a.latitude > b.latitude) {
+          return -1;
+        }
+        return 1;
+      })
+      .map((d, i) => ({
+        ...d,
+        labelY: stackedRowHeight * i + stackedLabelsTop
+      }))
   }
-  visibleMarkers = visibleMarkers.map((d, index) => ({...d, index}));
+  visibleMarkers = visibleMarkers.map((d, index) => ({ ...d, index }));
   return (
     <g className="PointsLayer">
       {
         layer.stackLabels ?
-        <g className="stacked-labels-container">
-          <Transition
-          // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
-          items={visibleMarkers}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
-      >
-          {({opacity}, datum, thatIndex) => (
-            <StackedLabelGroup
-              key={datum.label}
-              {...{ 
-                projection, 
-                datum, 
-                layer,
-                opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity, 
-                thatIndex: datum.index, 
-                onGroupMouseEnter, 
-                onGroupMouseLeave,
-                stackedRowHeight,
-              }}
-            />
-          )
+          <g className="stacked-labels-container">
+            <Transition
+              // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+              items={visibleMarkers}
+              from={{ opacity: 0 }}
+              enter={{ opacity: 1 }}
+              leave={{ opacity: 0 }}
+            >
+              {({ opacity }, datum, thatIndex) => (
+                <StackedLabelGroup
+                  key={datum.label}
+                  {...{
+                    projection,
+                    datum,
+                    layer,
+                    opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity,
+                    thatIndex: datum.index,
+                    onGroupMouseEnter,
+                    onGroupMouseLeave,
+                    stackedRowHeight,
+                  }}
+                />
+              )
 
-          }
-      </Transition>
-        </g>
-        : null
+              }
+            </Transition>
+          </g>
+          : null
       }
       <Transition
-          // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
-          items={visibleMarkers}
-          from={{ opacity: 0 }}
-          enter={{ opacity: 1 }}
-          leave={{ opacity: 0 }}
+        // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+        items={visibleMarkers}
+        from={{ opacity: 0 }}
+        enter={{ opacity: 1 }}
+        leave={{ opacity: 0 }}
       >
-          {({opacity}, datum, index) => (
-            <PointGroup
-              key={datum.label}
-              {...{ 
-                projection, 
-                datum, 
-                layer, 
-                opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity, 
-                index: datum.index, 
-                onGroupMouseEnter, 
-                onGroupMouseLeave,
-                displayLabels: !layer.stackLabels
-              }}
-            />
-          )
+        {({ opacity }, datum, index) => (
+          <PointGroup
+            key={datum.label}
+            {...{
+              projection,
+              datum,
+              layer,
+              opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity,
+              index: datum.index,
+              onGroupMouseEnter,
+              onGroupMouseLeave,
+              displayLabels: !layer.stackLabels
+            }}
+          />
+        )
 
-          }
+        }
       </Transition>
       {/* {
         visibleMarkers

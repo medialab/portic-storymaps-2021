@@ -36,6 +36,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
       }
     }
   }, [id, datasets]);
+
   const hasData = Object.keys(relevantDatasets || {}).length && !Object.entries(relevantDatasets).find(([id, payload]) => !payload);
   if (!hasData) {
     return null;
@@ -307,6 +308,51 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             }
           }
         />
+      )
+    case 'partie-2-part-navigation-francaise':
+      return (
+        <>
+          <GeoComponent
+            title={'Part de la navigation française dans la région'}
+            layers={[
+              {
+                type: 'choropleth',
+                data: datasets['cartoweb_france_1789_geojson.geojson'],
+                reverseColors: props.atlasMode ? undefined : true,
+                // color:{
+                //   field: 'shortname',
+                //   palette: colorPalettes.provinces
+                // }
+              },
+              {
+                type: 'points',
+                data: datasets['part_navigation_fr.csv'],
+                color: {
+                  field: 'tonnage_part_of_french',
+                  title: 'Part de la navigation française (par tonnage cumulé)',
+                  palette: colorPalettes.tonnageClasses,
+                  labelsColor: props.atlasMode ? undefined : 'white'
+                },
+                size: {
+                  field: 'tonnage',
+                  title: 'Tonnage sorti des ports (en miliers)',
+                  displayMetric: true,
+                  // custom: '20'
+                },
+                // tooltip: d => `${d.rawSize} mouvements de bateaux ont été enregistrés par le port de ${d.label} en 1789`,
+                label: {
+                  field: 'port',
+                  position: 'left'
+                },
+                stackLabels: true
+              }]}
+            projectionTemplate='Poitou'
+            width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight * .9 : dimensions.height}
+            withLegend={'top right'}
+
+          />
+        </>
       )
     case 'test':
     default:

@@ -542,6 +542,20 @@ svg text {
       // display: none;
     }
   }
+  .GeoComponentWrapper {
+    .Legend {
+      background: $color-background;
+    }
+    .GeoComponent {
+      .ChoroplethLayer.reverse-colors {
+        .geopart {
+          stroke: grey;
+        }
+        
+      }
+    }
+    
+  }
 }
 
 .Caller {
@@ -912,6 +926,9 @@ button.is-active {
         text {
           fill: white;
         }
+      }
+      .visualization-title {
+        background: $color-accent-background;
       }
     }
 

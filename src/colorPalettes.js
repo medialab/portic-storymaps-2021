@@ -48,6 +48,11 @@ const colorsPalettes = {
     'Marans': '#67CBB6',
     "Les Sables-d'Olonne": '#668EDB',
     'Marennes': '#A7E6F9',
+  },
+  tonnageClasses: {
+    '100%': '#A07BEE',
+    '75% ou plus': '#41BEA3',
+    'moins de 75%': '#FEA43B',
   }
 }
 

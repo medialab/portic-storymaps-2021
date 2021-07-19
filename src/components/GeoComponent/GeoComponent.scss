@@ -39,6 +39,28 @@
     //   }
     // }
 	}
+
+  .FlowsLayer {
+    .flow-group {
+      opacity: 1;
+      transition: .5s ease all;
+      .label {
+        opacity: 0;
+        transition: .5s ease all;
+      }
+    }
+    &:hover {
+      .flow-group {
+        opacity: 0.1;
+        &:hover {
+          opacity: 1;
+          .label {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
 	.ChoroplethLayer {
 		.geopart {
 			fill: WhiteSmoke;

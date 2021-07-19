@@ -74,7 +74,7 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
           layer.data.features.map((d, i) => {
             return (
               <GeoPart 
-                key={d.properties.id || i} 
+                key={d.properties.id || d.properties.name || i} 
                 {...{projection, project, palette, layer, d, width, height}}
               />
             )

@@ -101,7 +101,7 @@ const StackedLabelGroup = ({
   projection
 }) => {
   const { tooltip } = layer;
-  const { latitude, longitude, size: area, color, label, labelPosition = 'right', labelSize, index } = datum;
+  const { latitude, longitude, size: area, label, /*labelPosition = 'right', labelSize, index*/ } = datum;
   const size = Math.sqrt(area / Math.PI)
   const [x, y] = projection([+longitude, +latitude]);
   const [isInited, setIsInited] = useState(false);

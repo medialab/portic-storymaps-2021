@@ -1,4 +1,3 @@
-import { color } from "d3";
 import { uniq } from "lodash-es";
 import { generatePalette } from '../../helpers/misc';
 

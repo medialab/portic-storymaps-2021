@@ -542,7 +542,11 @@ svg text {
       // display: none;
     }
   }
+  
   .GeoComponentWrapper {
+    .visualization-title {
+      background: $color-background;
+    }
     .Legend {
       background: $color-background;
     }

@@ -60,9 +60,9 @@ const GeoComponent = ({
 
   // trick for nice animations
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       setProjectionTemplate(initialProjectionTemplate);
-    })
+    // })
   }, [initialProjectionTemplate])
 
 
@@ -89,9 +89,9 @@ const GeoComponent = ({
       case 'World':
         projectionConfig = {
           ...projectionConfig,
-          scale: height/2.5,
-          centerX: 21.201099,
-          centerY:  -6.356008,
+          scale: height * .5,
+          centerX: -1,
+          centerY:  15,
           // translationX: width * 0.4,
           // translationY: height * 0.28
         }
@@ -310,6 +310,7 @@ const GeoComponent = ({
                   projection={projection}
                   width={width}
                   height={height}
+                  projectionTemplate={projectionTemplate}
                 />
 
               case 'custom':

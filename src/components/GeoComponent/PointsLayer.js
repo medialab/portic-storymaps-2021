@@ -19,7 +19,8 @@ const PointGroup = ({
   onGroupMouseLeave
 }) => {
   const {tooltip} = layer;
-  const { latitude, longitude, size, color,label, labelPosition = 'right', labelSize, index } = datum;
+  const { latitude, longitude, size: area, color,label, labelPosition = 'right', labelSize, index } = datum;
+  const size = Math.sqrt(area / Math.PI)
   const [x, y] = projection([+longitude, +latitude]);
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -136,12 +137,17 @@ const PointsLayer = ({ layer, projection, width }) => {
       }
 
       const sizeExtent = extent(grouped.map(g => g.size));
-      const sizeScale = scaleLinear().domain(sizeExtent).range([3, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+      // basing the scale on area rather than radius
+      const radiusRange = [3, width / 30];
+      const areaRange = radiusRange.map(r => Math.PI * r * r);
+      
+      const sizeScale = scaleLinear().domain(sizeExtent).range(areaRange) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
+
       const labelSizeScale = scaleLinear().domain(sizeExtent).range([8, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
         color: layer.color !== undefined ? palette[datum.color] : 'grey',
-        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100,
+        size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size): width / 100,
         rawSize: datum.size,
         labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width / 100
       }))

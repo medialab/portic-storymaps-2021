@@ -75,7 +75,11 @@ const DeclineComponent = (props) => {
     laRochelleDiaspora: {
       fr: () => 'Organisation de convois partant de La Rochelle pour échapper aux Anglais',
       en: () => 'Organisation de convois partant de La Rochelle pour échapper aux Anglais',
-    }
+    },
+    // absolute1789: {
+    //   fr: item => `Total des exports en 1789 : ${(item.Exports / 1000000).toFixed(1)} m. de livres tournois`,
+    //   en: item => `Total des exports en 1789 : ${(item.Exports / 1000000).toFixed(1)} m. de livres tournois`
+    // }
   }
   const margins = { top: 10, right: 50, bottom: 30, left: 50 };
 
@@ -107,19 +111,21 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1744,
                 endYear: 1748,
-                row: 1,
+                row: .5,
                 label: messages.austriaWar[lang]()
               },
               {
                 type: 'span',
                 startYear: 1778,
                 endYear: 1781,
+                labelPosition: 'left',
+                row: 3,
                 label: messages.usIndependance[lang]()
               },
 
               
             ]}
-            fillGaps
+            // fillGaps
             {
               ...{
                 startYear,
@@ -172,8 +178,18 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1778,
                 endYear: 1781,
+                labelPosition: 'left',
+                row: 3,
                 label: messages.usIndependance[lang]()
               },
+              // {
+              //   type: 'span',
+              //   startYear: 1789,
+              //   endYear: 1789,
+              //   row: 4,
+              //   labelPosition: 'left',
+              //   label: messages.absolute1789[lang](datasets['decline_longitudinal_data.csv'].find((d) => d.region === "La Rochelle" && d.year === "1789"))
+              // },
             ]}
             colorScaleMessages={{
               title: messages.herfindalLegendTitle[lang](),
@@ -224,6 +240,8 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1778,
                 endYear: 1781,
+                labelPosition: 'left',
+                row: 1,
                 label: messages.usIndependance[lang]()
               },
             ]}

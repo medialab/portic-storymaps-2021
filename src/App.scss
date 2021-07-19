@@ -835,7 +835,7 @@ button.is-active {
     aside {
       position: absolute;
       right: 0;
-      top: 0;
+      top: $medium-gutter * 3;
       width: 50vw;
       height: calc(100vh - #{$header_height * 1.5});
       &.is-fixed {

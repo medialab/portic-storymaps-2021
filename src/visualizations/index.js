@@ -230,7 +230,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
       return (
         <>
           <GeoComponent
-            title={'Carte des provinces étudiées : Poitou-Aunis-Saintonge-Angoumois (PASA)'}
+            title={'Carte des provinces étudiées : Poitou, Aunis, Saintonge, Angoumois (PASA)'}
             layers={[
               {
                 type: 'choropleth',
@@ -277,7 +277,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 },
                 size: {
                   field: 'nb_pointcalls',
-                  title: 'nombre de voyages enregistrés',
+                  title: 'nombre de voyages enregistrés en 1789',
                   // custom: '20'
                 },
                 tooltip: d => `${d.rawSize} mouvements de bateaux ont été enregistrés par le port de ${d.label} en 1789`,

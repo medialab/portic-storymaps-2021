@@ -20,9 +20,9 @@ const colorsPalettes = {
     "Sables d'Olonne": '#668EDB'
   },
   'provinces':{
+    'Poitou': '#668EDB',
     'Aunis': '#41BEA3',
     'Saintonge': '#A7E6F9',
-    'Poitou': '#668EDB',
     'Angoumois': '#514EEE'
   },
   'product': {

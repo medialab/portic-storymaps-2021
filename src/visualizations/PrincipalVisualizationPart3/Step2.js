@@ -68,7 +68,8 @@ const Step2 = ({
             bottom: 0,
             left: 0,
             width: width * .3,
-            height: height * .3
+            height: height * .3,
+            paddingLeft: 0,
           }}
             className="ColorLegend"
           >

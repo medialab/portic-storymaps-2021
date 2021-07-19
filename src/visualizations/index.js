@@ -202,7 +202,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes"
+          title="Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes (1789)"
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height * .5}
           orientation={'vertical'}

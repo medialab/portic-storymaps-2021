@@ -32,7 +32,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
     <div className={cx("PrincipalVisualizationPart3", { 'is-atlas-mode': atlasMode })} style={{ height: atlasMode ? undefined : height }}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
         <GeoComponent
-          title={'Des profils de ports diversifiés'}
+          title={'Navigation au départ des ports de la région PASA en 1789'}
           layers={[
             {
               type: 'choropleth',
@@ -113,7 +113,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
           projectionTemplate={atlasMode ? 'Poitou zoomed' : currentMapTemplate}
           height={height}
           width={width}
-          title={'Extraversion du commerce et de la navigation regroupés par bureau de fermes'}
+          title={'Extraversion du commerce et de la navigation regroupés par bureau de fermes en 1789'}
         />
 
       </div>

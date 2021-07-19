@@ -26,6 +26,11 @@
       pointer-events: all;
     }
   }
+  .GeoComponentWrapper {
+    .visualization-title {
+      background: transparent!important;
+    }
+  }
   .GeoComponent {
     .ChoroplethLayer {
       .geopart {

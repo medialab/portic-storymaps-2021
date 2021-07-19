@@ -110,7 +110,7 @@ function Step3Object({
 }
 
 export function Step3Objects({
-  data: { customsOffices, ports },
+  data: { customsOffices = [], ports = [] },
   projection,
   width,
   height,

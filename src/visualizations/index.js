@@ -271,11 +271,13 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 data: datasets['ports_locations_data.csv'],
                 color: {
                   field: 'province',
+                  title: 'Province du port',
                   palette: colorPalettes.provinces,
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
                 size: {
                   field: 'nb_pointcalls',
+                  title: 'nombre de voyages enregistrés',
                   // custom: '20'
                 },
                 tooltip: d => `${d.rawSize} mouvements de bateaux ont été enregistrés par le port de ${d.label} en 1789`,
@@ -287,6 +289,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             projectionTemplate='Poitou'
             width={dimensions.width}
             height={props.atlasMode ? window.innerHeight * .9 : dimensions.height}
+            withLegend={'bottom left'}
+
           />
         </>
       )

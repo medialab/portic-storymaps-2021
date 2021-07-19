@@ -33,6 +33,7 @@ import CustomObjectLayer from './CustomObjectLayer';
 // import TriangleComponent from '../TriangleComponent/TriangleComponent';
 import Button from './Button';
 import Input from './Input';
+import Legend from './Legend';
 
 import './GeoComponent.scss'
 
@@ -44,9 +45,9 @@ const GeoComponent = ({
   layers = [],
   projectionTemplate: initialProjectionTemplate,
   projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
-  debug = false // @TODO : à réparer
+  debug = false, // @TODO : à réparer
+  withLegend,
 }) => {
-
   // viz params variables
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)
@@ -329,6 +330,11 @@ const GeoComponent = ({
         {/* <circle cx={xCenterPoint} cy={yCenterPoint} r={5} fill={'red'} />
         <rect x="58%" y="78%" width={width * 0.4} height={height * 0.2} rx="15" ry="15" fill={'white'} opacity={0.5} /> */}
       </svg>
+      {
+        withLegend ?
+        <Legend layers={layers} position={withLegend} />
+        : null
+      }
       <ReactTooltip id="geo-tooltip" />
     </div>
   )

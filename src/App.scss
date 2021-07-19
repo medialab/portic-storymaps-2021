@@ -894,6 +894,18 @@ button.is-active {
       }
     }
 
+    .GeoComponentWrapper {
+      .Legend {
+        .size-legend-container {
+          .size-icon-container {
+            span {
+              border-color: white;
+            }
+          }
+        }
+      }
+    }
+
     @include phone {
       section {
         transition: .5s ease all;

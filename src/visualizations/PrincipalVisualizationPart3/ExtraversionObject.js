@@ -103,7 +103,7 @@ const ExtraversionObject = ({
                 stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
-                data-tip={`${(100 - toflitPct ).toFixed(1)}% de valeur d'exports de produits fabriqués hors de la direction (cliquer pour voir le détail des ports)`}
+                data-tip={`${(100 - toflitPct ).toFixed(1)}% de valeur d'exports de produits fabriqués hors de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
               />
 
               <path
@@ -113,7 +113,7 @@ const ExtraversionObject = ({
                 stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
-                data-tip={`${(toflitPct).toFixed(1)}% de valeur d'exports de produits fabriqués dans la direction (cliquer pour voir le détail des ports)`}
+                data-tip={`${(toflitPct).toFixed(1)}% de valeur d'exports de produits fabriqués dans la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
               />
             </>
             :
@@ -127,7 +127,7 @@ const ExtraversionObject = ({
             Z
                 `}
                 data-for="geo-tooltip"
-                data-tip={`${(metric1 * 100 ).toFixed(1)}% des voyages réalisés vers l'extérieur de la direction (cliquer pour voir le détail des ports)`}
+                data-tip={`${(metric1 * 100 ).toFixed(1)}% des voyages réalisés vers l'extérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
         />
 
         <path
@@ -139,7 +139,7 @@ const ExtraversionObject = ({
             Z
             `}
             data-for="geo-tooltip"
-            data-tip={`${(metric2 * 100 ).toFixed(1)}% des voyages réalisés vers l'intérieur de la direction (cliquer pour voir le détail des ports)`}
+            data-tip={`${(metric2 * 100 ).toFixed(1)}% des voyages réalisés vers l'intérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
         />
         <g
           transform={`translate(${parseInt(0)}, ${toflitPct ? parseInt(circleRadius) + 15 : max([leftTriangleHeight, rightTriangleHeight]) / 2 + 10})`}

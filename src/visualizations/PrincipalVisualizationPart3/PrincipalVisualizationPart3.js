@@ -11,7 +11,7 @@ import Step2 from './Step2';
 
 
 const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeight, atlasMode }) => {
-  const ANIMATION_DURATION = 500;
+  const ANIMATION_DURATION = 100;
   const height = atlasMode ? window.innerHeight : inputHeight;
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {

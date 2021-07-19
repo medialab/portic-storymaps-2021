@@ -82,5 +82,15 @@
     path.vertical-line {
         stroke : darkgrey;
     }
-
+    &.is-atlas-mode {
+      .triangles {
+        .port-point-and-triangle {
+          .local-legend {
+            span {
+              background : white;
+            }
+          }
+        }
+      }
+    }
 }

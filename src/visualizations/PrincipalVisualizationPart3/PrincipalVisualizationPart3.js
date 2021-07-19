@@ -11,7 +11,7 @@ import Step2 from './Step2';
 
 
 const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeight, atlasMode }) => {
-  const ANIMATION_DURATION = 1000;
+  const ANIMATION_DURATION = 500;
   const height = atlasMode ? window.innerHeight : inputHeight;
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {
@@ -62,7 +62,7 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
             {
               type: 'custom',
               data: datasets['part_3_step1_viz_data.csv'],
-              renderObjects: renderTriangles
+              renderObjects: props => renderTriangles({...props, atlasMode})
             }
           ]}
           projectionTemplate={atlasMode ? 'rotated Poitou' : currentMapTemplate}

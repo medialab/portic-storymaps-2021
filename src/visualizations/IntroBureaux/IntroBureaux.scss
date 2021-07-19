@@ -13,4 +13,12 @@
       text-align: right;
     }
   }
+  &.is-atlas-mode {
+    .bureau-label {
+      span {
+        color: #333;
+        background : white;
+      }
+    }
+  }
 }

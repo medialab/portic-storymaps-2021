@@ -81,11 +81,11 @@ const Bureau = ({
   )
 }
 
-const renderBureaux = ({ data, projection, width, height }) => {
+const renderBureaux = ({ data, projection, width, height, atlasMode }) => {
   const radius = width * height * 0.00006;
 
   return (
-    <g className="IntroBureaux">
+    <g className={cx("IntroBureaux", {'is-atlas-mode': atlasMode})}>
       
       {
         data
@@ -147,7 +147,7 @@ const IntroBureaux = ({
         {
           type: 'custom',
           data: datasets['part_3_step3_viz_customs_offices_data.csv'],
-          renderObjects: renderBureaux
+          renderObjects: props => renderBureaux({...props, atlasMode})
         }
       ]}
       projectionTemplate='Poitou'

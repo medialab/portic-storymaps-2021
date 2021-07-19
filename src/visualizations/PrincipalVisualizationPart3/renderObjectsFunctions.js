@@ -379,7 +379,7 @@ export function SmallMultiples({ data, width, height, projection }) {
 
 }
 
-export function renderTriangles({ data, width, height, projection, projectionTemplate }) {
+export function renderTriangles({ data, width, height, projection, projectionTemplate, atlasMode }) {
   // console.log("data : layder.data ", data)
   return (
     <TriangleComponent
@@ -388,6 +388,7 @@ export function renderTriangles({ data, width, height, projection, projectionTem
       rowHeight={height * 0.3}
       projection={projection}
       projectionTemplate={projectionTemplate}
+      atlasMode={atlasMode}
     />
   );
 }

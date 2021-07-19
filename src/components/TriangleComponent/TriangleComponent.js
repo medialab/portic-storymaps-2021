@@ -20,6 +20,7 @@
 
 import { scaleLinear } from 'd3-scale';
 import { max } from 'd3-array';
+import cx from 'classnames';
 
 import './TriangleComponent.scss'
 import colorsPalettes from '../../colorPalettes';
@@ -35,7 +36,8 @@ const TriangleComponent = ({
   margins: inputMargins,
   rowHeight = 200,
   projection,
-  projectionTemplate
+  projectionTemplate,
+  atlasMode
 }) => {
 
   const margins = inputMargins ||  {
@@ -80,7 +82,7 @@ const TriangleComponent = ({
 
   return (
 
-    <g className="TriangleComponent">
+    <g className={cx("TriangleComponent", {'is-atlas-mode': atlasMode})}>
 
       <defs>
         <linearGradient id="TriangleGradient" x2='0%' y2='100%'>

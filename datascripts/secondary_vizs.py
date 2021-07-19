@@ -259,6 +259,49 @@ def compute_foreign_homeports (pointcalls):
   output = [{"country": country, **values} for country,values in countries.items() if country != ""]
   write_csv("origines_bateaux_etrangers_partant_de_la_region.csv", output)
 
+def compute_french_fleat_part (pointcalls):
+  print('compute_french_fleat_part')
+  ports = {}
+  countries = {}
+  for pointcall in pointcalls:
+    # if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
+    country = "french" if pointcall["homeport_state_1789_fr"] == "France" else "foreign"
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    port = pointcall['toponyme_fr']
+    if port not in ports:
+      new_port = {
+        "port": port,
+        "latitude": pointcall["latitude"],
+        "longitude": pointcall["longitude"],
+        "tonnage": tonnage,
+        "tonnage_by_country": {
+          "french": 0,
+          "foreign": 0
+        }
+      }
+      ports[port] = new_port
+    else:
+      ports[port]["tonnage"] += tonnage
+    
+    ports[port]["tonnage_by_country"][country] += tonnage
+  ports = [port for port_name, port in ports.items()]
+  for port in ports:
+    tonnage_french = port["tonnage_by_country"]["french"]
+    tonnage_foreign = port["tonnage_by_country"]["foreign"]
+    port["tonnage_french"] = tonnage_french
+    port["tonnage_foreign"] = tonnage_foreign
+    tonnage_part_of_french = tonnage_french / port["tonnage"] * 100
+    if tonnage_part_of_french == 100:
+      tonnage_part_of_french = "100%"
+    elif tonnage_part_of_french >= 75:
+      tonnage_part_of_french = "75% ou plus"
+    else:
+      tonnage_part_of_french = "moins de 75%"
+    port["tonnage_part_of_french"] = tonnage_part_of_french
+    del port["tonnage_by_country"]
+    port["tonnage"] = round(port["tonnage"] / 1000, 1)
+  write_csv("part_navigation_fr.csv", ports)
+
 def compute_exports_colonial_products(flows):
   print('compute_exports_colonial_products')
 
@@ -329,43 +372,171 @@ def compute_region_ports_general (pointcalls):
     output.append(port)
   print("compute ports_locations_data.csv")
   write_csv("ports_locations_data.csv", output)
+
+def compute_flows_from_boats_of_la_rochelle_1787(pointcalls_out, pointcalls_in):
+  admiralties = ["Sables-d'Olonne", "Les Sables d'Olonne", "Les Sables-d'Olonne", "La Rochelle", "Marennes"]
+  print("nombre de pointcalls Out ou In-Out (départs et étapes) trouvés pour desnavires du port de La Rochelle:", len(pointcalls_out))
+  print("Nombre de pointcalls In trouvés entre 1787 et 1788 : ", len(pointcalls_in))
+  # collecte de leurs source_doc_id
+  pointcalls_departures_source_doc_ids = set()
+
+  for p in pointcalls_out:
+      pointcalls_departures_source_doc_ids.add(p['source_doc_id'])
+  print("Nombre de source_doc_id trouvés : ", len(pointcalls_departures_source_doc_ids))
+  # retrouver les destinations : 2 etape de filtrage des pointcalls In considérés comme destination des Out sortant de Marennes avec du sel (même pkid)
+  pointcalls_destinations_la_rochelle_homeport = []
+  for p in pointcalls_in:
+      if (str(p['source_doc_id']) in pointcalls_departures_source_doc_ids):
+          pointcalls_destinations_la_rochelle_homeport.append(p)
+
+  print("Nombre de destinations pertinentes trouvées : ", len(pointcalls_destinations_la_rochelle_homeport))
+  flows_la_rochelle_homeport_1787 = {}
+  ## but de reconstruire dicts qui mettent en relation les trajets qui ont le même source doc id mais je ne sais comment gérer les etapes
+  #{
+  #    'source_doc_id':
+  #    { 'lat_dep':
+  #      'lon_dep':
+  #      'lat_step': # après vérification on a au max 1 escale dans les données qu'on utilise
+  #      'lon_step': 
+  #      'lat_dest':
+  #      'lon_dest':
+  #      'tonnage':
+  #    }
+  #}
+
+  for p in pointcalls_out:
+      port = p['pointcall']
+      tonnage = int(p['tonnage']) if p['tonnage'] is not None else 0
+      lat = float(p['latitude']) if p['latitude'] is not None else None
+      lon = float(p['longitude']) if p['longitude'] is not None else None
+      
+      if p['source_doc_id'] not in flows_la_rochelle_homeport_1787:
+          if p['pointcall_action']=='Out':
+              flows_la_rochelle_homeport_1787[p['source_doc_id']] = {
+                  'latitude_dep':lat,
+                  'longitude_dep':lon,
+                  'port_dep':port,
+                  'tonnage':tonnage,
+                  'category': 'région PASA' if p['pointcall_admiralty'] in admiralties else 'France'
+              }
+          else:
+              flows_la_rochelle_homeport_1787[p['source_doc_id']] = {
+                  'latitude_step':lat,
+                  'longitude_step':lon,
+                  'port_step':port,
+                  'tonnage':tonnage,
+                  'category': 'région PASA' if p['pointcall_admiralty'] in admiralties else 'France'
+              }
+      else:
+          if p['pointcall_action']=='Out':
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['port_dep'] = port
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['latitude_dep'] = lat
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['longitude_dep'] = lon
+          else:
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['port_step'] = port
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['latitude_step'] = lat
+              flows_la_rochelle_homeport_1787[p['source_doc_id']]['longitude_step'] = lon
+
+  for p in pointcalls_destinations_la_rochelle_homeport:
+      port = p['pointcall']
+      tonnage = int(p['tonnage']) if p['tonnage'] is not None else 0
+      lat = float(p['latitude'] if p['latitude'] != "" else 0) if p['latitude'] is not None else None
+      lon = float(p['longitude'] if p['longitude'] != "" else 0 ) if p['longitude'] is not None else None
+      
+      if p['source_doc_id'] not in flows_la_rochelle_homeport_1787:
+          print("soucis") # on ne devrait pas avoir de source_doc_id inexistant
+      else:
+          flows_la_rochelle_homeport_1787[p['source_doc_id']]['port_dest'] = port
+          flows_la_rochelle_homeport_1787[p['source_doc_id']]['latitude_dest'] = lat
+          flows_la_rochelle_homeport_1787[p['source_doc_id']]['longitude_dest'] = lon
+
+  for key, values in flows_la_rochelle_homeport_1787.items():
+      if 'latitude_step' not in values:
+          flows_la_rochelle_homeport_1787[key]['port_step'] = None
+          flows_la_rochelle_homeport_1787[key]['latitude_step'] = None
+          flows_la_rochelle_homeport_1787[key]['longitude_step'] = None
+      
+  # print(flows_la_rochelle_homeport_1787)
+
+  unique_flows = {} # but de pouvoir cumuler le nombre de flows / le tonnage sur un même trajet (même trajet si même départ et même destination)
+  # un trajet unique est identifié par 'lat_dep_lon_dep_lat_dest_lon_dest'
+  for source_doc_id, values in flows_la_rochelle_homeport_1787.items():
+      # j'ai 3 flows avec Err dans les coords de destination, et un 4e flow avec ces coords à None => a solutionner si temps
+      if ('latitude_dep' in values and 'longitude_dep' in values and 'latitude_dest' in values and 'longitude_dest' in values):
+          if str(values['latitude_dep'])+'_'+str(values['longitude_dep'])+'_'+str(values['latitude_dest'])+'_'+str(values['longitude_dest']) not in unique_flows:
+              unique_flows[str(values['latitude_dep'])+'_'+str(values['longitude_dep'])+'_'+str(values['latitude_dest'])+'_'+str(values['longitude_dest'])] = {
+                  'port_dep':values['port_dep'],
+                  'port_dest':values['port_dest'],
+                  'latitude_dep':values['latitude_dep'],
+                  'longitude_dep':values['longitude_dep'],
+                  'latitude_dest':values['latitude_dest'],
+                  'longitude_dest':values['longitude_dest'],
+                  'category': values['category'],
+                  'nb_flows': 1,
+                  'tonnages_cumulés':values['tonnage']
+              }
+          else:
+              unique_flows[str(values['latitude_dep'])+'_'+str(values['longitude_dep'])+'_'+str(values['latitude_dest'])+'_'+str(values['longitude_dest'])]['nb_flows'] += 1
+              unique_flows[str(values['latitude_dep'])+'_'+str(values['longitude_dep'])+'_'+str(values['latitude_dest'])+'_'+str(values['longitude_dest'])]['tonnages_cumulés'] += values['tonnage']
+
+  flows_la_rochelle_homeport_1787 = [{'source_doc_id': source_doc_id, **vals} for source_doc_id, vals in flows_la_rochelle_homeport_1787.items()]
+  unique_flows = [{
+    'flow_id': flow_id, 
+    **vals,
+    "category": vals["category"] if vals["category"] != '' else 'Étranger'
+    } for flow_id, vals in unique_flows.items()]
+  # print(unique_flows)
+  write_csv("voyages-bateaux-homeport-larochelle-1787.csv", unique_flows)
+
 """
   Data reading and building functions calls
 """
-with open('../data/toflit18_all_flows.csv', 'r') as f:
-    toflit18_flows = csv.DictReader(f)
-    # fill relevant flows
-    flows_1789_by_region = []
-    flows_1789_national = []
-    flows_national_all_years = []
-    flows_regional_all_years = []
-    for flow in toflit18_flows:
-      # filtering out ports francs
-        if flow["year"] == "1789":
-          if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-            flows_1789_by_region.append(flow)
-        if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-            flows_regional_all_years.append(flow)
-        if flow["best_guess_national_partner"] == "1":
-          flows_national_all_years.append(flow)
+# with open('../data/toflit18_all_flows.csv', 'r') as f:
+#     toflit18_flows = csv.DictReader(f)
+#     # fill relevant flows
+#     flows_1789_by_region = []
+#     flows_1789_national = []
+#     flows_national_all_years = []
+#     flows_regional_all_years = []
+#     for flow in toflit18_flows:
+#       # filtering out ports francs
+#         if flow["year"] == "1789":
+#           if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+#             flows_1789_by_region.append(flow)
+#         if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+#             flows_regional_all_years.append(flow)
+#         if flow["best_guess_national_partner"] == "1":
+#           flows_national_all_years.append(flow)
 
-    compute_top_shared_toflit18_products(flows_1789_by_region)
-    compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
-    compute_exports_colonial_products(flows_1789_by_region)
+#     compute_top_shared_toflit18_products(flows_1789_by_region)
+#     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
+#     compute_exports_colonial_products(flows_1789_by_region)
 
-with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
+# with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
+#   pointcalls = csv.DictReader(f)
+#   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+#   out_from_region = []
+#   all_pointcalls_1789 = []
+#   for pointcall in pointcalls:
+#     if pointcall["pointcall_admiralty"] in admiralties:
+#       all_pointcalls_1789.append(pointcall)
+#     if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
+#       out_from_region.append(pointcall)
+#   compute_foreign_homeports(out_from_region)
+#   compute_french_fleat_part(out_from_region)
+#   compute_region_ports_general(all_pointcalls_1789)
+
+with open('../data/navigo_all_pointcalls_1787.csv', 'r') as f:
   pointcalls = csv.DictReader(f)
-  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
-  out_from_region = []
-  all_pointcalls_1789 = []
+  # admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+  pointcalls_1787_of_boats_from_larochelle_out = []
+  pointcalls_1787_in = []
   for pointcall in pointcalls:
-    if pointcall["pointcall_admiralty"] in admiralties:
-      all_pointcalls_1789.append(pointcall)
-    if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
-      out_from_region.append(pointcall)
-  compute_foreign_homeports(out_from_region)
-  compute_region_ports_general(all_pointcalls_1789)
-
+    if pointcall['homeport'] == 'La Rochelle' and pointcall['pointcall_action'] in ['Out', 'In-Out', 'In-out']:
+      pointcalls_1787_of_boats_from_larochelle_out.append(pointcall)
+    elif pointcall['pointcall_action'] in ['In', 'in']:
+      pointcalls_1787_in.append(pointcall)
+  compute_flows_from_boats_of_la_rochelle_1787(pointcalls_1787_of_boats_from_larochelle_out, pointcalls_1787_in)
 
 
 """

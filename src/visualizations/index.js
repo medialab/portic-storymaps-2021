@@ -16,6 +16,7 @@ import { DatasetsContext } from '../helpers/contexts';
 
 import visualizationsList from '../visualizationsList';
 import IntroBureaux from './IntroBureaux';
+import HomeportFlows from './HomeportFlows/HomeportFlows';
 
 const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) => {
   const dimensions = {
@@ -39,6 +40,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
 
   const hasData = Object.keys(relevantDatasets || {}).length && !Object.entries(relevantDatasets).find(([id, payload]) => !payload);
   if (!hasData) {
+    // console.log('no data for ', id, 'looked for', visualizationsList.find(v => v.id === id))
     return null;
   }
   switch (id) {
@@ -353,7 +355,20 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
 
           />
         </>
-      )
+      );
+    case 'partie-2-carte-direction-bateaux-de-la-rochelle':
+      // voyages-bateaux-homeport-larochelle-1787.csv
+      return (
+        <HomeportFlows
+        {
+          ...{
+            datasets,
+            atlasMode: props.atlasMode,
+            dimensions,
+          }
+        }
+        />
+      );
     case 'test':
     default:
       return <Test {...props} datasets={relevantDatasets || {}} />;

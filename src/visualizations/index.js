@@ -284,12 +284,13 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 label: {
                   field: 'port',
                   position: 'left'
-                }
+                },
+                stackLabels: true
               }]}
             projectionTemplate='Poitou'
             width={dimensions.width}
             height={props.atlasMode ? window.innerHeight * .9 : dimensions.height}
-            withLegend={'bottom left'}
+            withLegend={'top right'}
 
           />
         </>

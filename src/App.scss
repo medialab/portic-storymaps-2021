@@ -896,12 +896,21 @@ button.is-active {
 
     .GeoComponentWrapper {
       .Legend {
+        background: $color-accent-background;
         .size-legend-container {
           .size-icon-container {
             span {
               border-color: white;
             }
           }
+        }
+      }
+      .stacked-labels-container {
+        line {
+          stroke: white;
+        }
+        text {
+          fill: white;
         }
       }
     }

@@ -79,6 +79,10 @@
       right: unset;
       left: 1rem;
     }
+    &.top {
+      bottom: unset;
+      top: 0;
+    }
     .legend-main-title {
       margin-left: 0!important;
       margin-bottom: 1rem;
@@ -148,6 +152,15 @@
           flex: 1;
         }
       }
+    }
+  }
+
+  .stacked-labels-container {
+    line {
+      stroke: black;
+      stroke-dasharray: 2,2;
+      stroke-width: .5px;
+      opacity: .7;
     }
   }
 }

@@ -16,7 +16,8 @@ const PointGroup = ({
   layer, 
   opacity,
   onGroupMouseEnter, 
-  onGroupMouseLeave
+  onGroupMouseLeave,
+  displayLabel
 }) => {
   const {tooltip} = layer;
   const { latitude, longitude, size: area, color,label, labelPosition = 'right', labelSize, index } = datum;
@@ -57,7 +58,7 @@ const PointGroup = ({
           className="marker"
         />
         {
-          label ?
+          label && displayLabel ?
             <text
               x={labelPosition === 'right' ? size + 5 : -size - 5}
               y={size / 2}
@@ -75,7 +76,64 @@ const PointGroup = ({
   );
 }
 
-const PointsLayer = ({ layer, projection, width }) => {
+const StackedLabelGroup = ({
+  layer,
+  datum,
+  thatIndex,
+  opacity,
+  stackedRowHeight,
+  onGroupMouseEnter, 
+  onGroupMouseLeave,
+  projection
+}) => {
+  const {tooltip} = layer;
+  const { latitude, longitude, size: area, color,label, labelPosition = 'right', labelSize, index } = datum;
+  const size = Math.sqrt(area / Math.PI)
+  const [x, y] = projection([+longitude, +latitude]);
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+  const { x2, y2, transformLabel } = useSpring({ 
+    to: {
+      x2: x - size,
+      y2: y,
+      transformLabel: `translate(0, ${datum.labelY})`
+   },
+   immediate: !isInited
+  });
+  return (
+    <animated.g
+      style={{
+        // zIndex: labelSize,
+        opacity: opacity
+      }}
+      onMouseEnter={() => onGroupMouseEnter(thatIndex)}
+      onMouseMove={() => onGroupMouseEnter(thatIndex)}
+      onMouseLeave={() => onGroupMouseLeave()}
+      data-for="geo-tooltip"
+      data-tip={typeof tooltip === 'function' ? tooltip(datum) : undefined}
+    >
+      <animated.g className="label-container" transform={transformLabel}>
+        <text style={{fontSize: stackedRowHeight}}>
+        {
+          label
+        }
+        </text>
+      </animated.g>
+      <animated.line
+        x1={stackedRowHeight * label.length * .5}
+        y1={datum.labelY - stackedRowHeight * .2}
+        x2={x2}
+        y2={y2}
+      />
+    </animated.g>
+  )
+}
+
+const PointsLayer = ({ layer, projection, width, height }) => {
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -140,9 +198,7 @@ const PointsLayer = ({ layer, projection, width }) => {
       // basing the scale on area rather than radius
       const radiusRange = [3, width / 30];
       const areaRange = radiusRange.map(r => Math.PI * r * r);
-      
       const sizeScale = scaleLinear().domain(sizeExtent).range(areaRange) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
-
       const labelSizeScale = scaleLinear().domain(sizeExtent).range([8, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       grouped = grouped.map(datum => ({
         ...datum,
@@ -157,8 +213,7 @@ const PointsLayer = ({ layer, projection, width }) => {
     }
   }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */
 
-  // console.log("markerData (pointsLayer): ", markerData)
-  const visibleMarkers = markerData
+  let visibleMarkers = markerData
   .filter(({ latitude, longitude }) => latitude && longitude && !isNaN(latitude) && !isNaN(longitude))
   .sort((a, b) => {
     if (a.latitude > b.latitude) {
@@ -177,16 +232,62 @@ const PointsLayer = ({ layer, projection, width }) => {
         setHoveredIndex(null);
     })
   }
-
+  const stackedLabelsTop = height * .1;
+  const stackedLabelsHeight = height * .9;
+  const stackedRowHeight = stackedLabelsHeight / visibleMarkers.length;
+  if (layer.stackLabels) {
+    visibleMarkers = visibleMarkers
+    .sort((a, b) => {
+      if (a.latitude > b.latitude) {
+        return -1;
+      }
+      return 1;
+    })
+    .map((d, i) => ({
+      ...d,
+      labelY: stackedRowHeight * i + stackedLabelsTop
+    }))
+  }
+  visibleMarkers = visibleMarkers.map((d, index) => ({...d, index}));
   return (
     <g className="PointsLayer">
-      <Transition
-          items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+      {
+        layer.stackLabels ?
+        <g className="stacked-labels-container">
+          <Transition
+          // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+          items={visibleMarkers}
           from={{ opacity: 0 }}
           enter={{ opacity: 1 }}
           leave={{ opacity: 0 }}
-          // config={config.molasses}
-          // onRest={() => this.setState({ items: [] })}>
+      >
+          {({opacity}, datum, thatIndex) => (
+            <StackedLabelGroup
+              key={datum.label}
+              {...{ 
+                projection, 
+                datum, 
+                layer,
+                opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity, 
+                thatIndex: datum.index, 
+                onGroupMouseEnter, 
+                onGroupMouseLeave,
+                stackedRowHeight,
+              }}
+            />
+          )
+
+          }
+      </Transition>
+        </g>
+        : null
+      }
+      <Transition
+          // items={visibleMarkers.map((d, i) => ({...d, labelPosition: i%2 === 0 ? 'left' : 'right', index: i}))}
+          items={visibleMarkers}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
       >
           {({opacity}, datum, index) => (
             <PointGroup
@@ -196,9 +297,10 @@ const PointsLayer = ({ layer, projection, width }) => {
                 datum, 
                 layer, 
                 opacity: hoveredIndex !== null ? hoveredIndex === datum.index ? 1 : .1 : opacity, 
-                index, 
+                index: datum.index, 
                 onGroupMouseEnter, 
-                onGroupMouseLeave 
+                onGroupMouseLeave,
+                displayLabels: !layer.stackLabels
               }}
             />
           )

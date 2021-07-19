@@ -37,7 +37,7 @@ function Atlas({
         <title>{buildPageTitle('Atlas', lang)}</title>
       </Helmet>
       <div className="centered-contents">
-        <h1>Atlas</h1>
+        <h1>{lang === 'fr' ? 'Atlas des visualisations' : 'Visualizations atlas'}</h1>
         <ul className="visualizations-list">
           {
             visualizations.map((visualization, visualizationIndex) => {

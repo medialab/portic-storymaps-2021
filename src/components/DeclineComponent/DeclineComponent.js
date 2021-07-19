@@ -65,13 +65,17 @@ const DeclineComponent = (props) => {
       en: () => 'seven years war'
     },
     austriaWar: {
-      fr: () => 'guerre de succession d’Autriche',
-      en: () => 'guerre de succession d’Autriche',
+      fr: () => 'guerre franco-britannique au sein de la guerre de succession d’Autriche',
+      en: () => 'guerre franco-britannique au sein de la guerre de succession d’Autriche',
     },
     usIndependance: {
       fr: () => 'guerre d’indépendance Américaine',
       en: () => 'guerre d’indépendance Américaine',
     },
+    laRochelleDiaspora: {
+      fr: () => 'Organisation de convois partant de La Rochelle pour échapper aux Anglais',
+      en: () => 'Organisation de convois partant de La Rochelle pour échapper aux Anglais',
+    }
   }
   const margins = { top: 10, right: 50, bottom: 30, left: 50 };
 
@@ -103,6 +107,7 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1744,
                 endYear: 1748,
+                row: 1,
                 label: messages.austriaWar[lang]()
               },
               {
@@ -153,7 +158,15 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1744,
                 endYear: 1748,
+                row: 1,
                 label: messages.austriaWar[lang]()
+              },
+              {
+                type: 'span',
+                startYear: 1747,
+                endYear: 1747,
+                row: 2,
+                label: messages.laRochelleDiaspora[lang]()
               },
               {
                 type: 'span',
@@ -197,12 +210,14 @@ const DeclineComponent = (props) => {
                 type: 'span',
                 startYear: 1756,
                 endYear: 1763,
+                row: 0.5,
                 label: messages.sevenYearsWar[lang]()
               },
               {
                 type: 'span',
                 startYear: 1744,
                 endYear: 1748,
+                row: 0,
                 label: messages.austriaWar[lang]()
               },
               {

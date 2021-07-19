@@ -184,7 +184,7 @@ const ProductsDistributionChart = ({
   const svgOffset = yearsRef.current && yearsRef.current.length && yearsRef.current[0] ? yearsRef.current[0].parentNode.offsetTop : undefined;
   return (
     <div className="ProductsDistributionChart">
-      <h3 style={{marginLeft: margins.left}} ref={titleRef}>{title}</h3>
+      <h3  className="visualization-title" style={{marginLeft: margins.left}} ref={titleRef}>{title}</h3>
       <div 
         className={cx("years-container", {'has-highlights': hoveredProduct !== undefined})}
         style={{

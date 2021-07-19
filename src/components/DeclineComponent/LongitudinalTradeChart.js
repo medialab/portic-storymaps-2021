@@ -101,11 +101,14 @@ const LongitudinalTradeChart = ({
       .range([height - margins.bottom, margins.top]);
 
   const {values: rightYAxisValues} = axisPropsFromTickScale(yAbsoluteScale, Math.round(height / 20));
-  const {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
+  let {values: leftYAxisValue} = axisPropsFromTickScale(yShareScale, Math.round(height / 20));
+  if (yShareScale.domain()[1] - yShareScale.domain()[0] <= 5) {
+    leftYAxisValue = axisPropsFromTickScale(yShareScale, 5).values;
+  }
   return (
     <div className={cx("LongitudinalTradeChart", {'has-highlights': highlightYears !== undefined})}>
       <div className="chart-header" ref={headerRef}>
-        <h3 style={{marginLeft: margins.left}}>{title}</h3>
+        <h3 className="visualization-title" style={{marginLeft: margins.left}}>{title}</h3>
         <div className="axis-headers-container">
           <div style={{
             background: axisLeftTitle && axisLeftTitle.length ? colorsPalettes.generic.accent2 : undefined,
@@ -247,7 +250,8 @@ const LongitudinalTradeChart = ({
             annotations
             .filter(({startYear: aStartYear, endYear: aEndYear}) => aStartYear >= startYear && aEndYear <= endYear)
             .map((annotation, annotationIndex) => {
-              const {startYear, endYear, label} = annotation;
+              const {startYear, endYear: initialEndYear, label, row = 0} = annotation;
+              const endYear = initialEndYear + 1;
               return (
                 <g className="annotation" key={annotationIndex}>
                   <rect
@@ -279,14 +283,14 @@ const LongitudinalTradeChart = ({
                   <line 
                     x1={xBand(endYear) + 20} 
                     x2={xBand(endYear) + 10} 
-                    y1={margins.top + 7.5}
-                    y2={margins.top + 7.5}
+                    y1={margins.top + 7.5 + row * 20}
+                    y2={margins.top + 7.5 + row * 20}
                     stroke="grey" 
                     marker-end="url(#arrowhead)" 
                   />
                   <text
                     x={xBand(endYear) + 22}
-                    y={margins.top + 10}
+                    y={margins.top + 10 + row * 20}
                     fontSize={'.5rem'}
                     fill="grey"
                   >

@@ -22,8 +22,8 @@
   h3 {
     margin-top: 0;
     margin-bottom: .5rem;
-    color: grey;
-    font-weight: 500;
+    // color: grey;
+    // font-weight: 500;
     font-size: 1rem;
   }
   
@@ -113,6 +113,13 @@
             opacity: 1;
           }
         }
+      }
+    }
+
+    .annotation {
+      text {
+        z-index: 1000;
+        position: relative;
       }
     }
   }

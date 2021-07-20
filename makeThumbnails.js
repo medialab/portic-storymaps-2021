@@ -4,7 +4,9 @@ const visualizationsList = require('./src/visualizationsList.json')
 let signal = null;
 
 
-const langs = ['fr', 'en'];
+// const langs = ['fr', 'en'];
+// just french for now
+const langs = ['fr'];
 const Screenshot = async () => { 
 
   console.log('starting screenshotting')
@@ -39,7 +41,7 @@ const Screenshot = async () => {
         path,
         fullPage: true
       });
-      await page.waitForTimeout(1000);
+      await page.waitForTimeout(1500);
       // doing it twice
       await page.screenshot({ 
         path,

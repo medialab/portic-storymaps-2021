@@ -78,24 +78,27 @@ function Step3Object({
 
   // handle overlap 
   let noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
-  if (datum.name === 'Tonnay-Charente') {
-    noOverlapTransform = `translate(${x + width * 0.16},${y})`
+  if (projectionTemplate.includes('Poitou')) {
+    if (datum.name === 'Tonnay-Charente') {
+      noOverlapTransform = `translate(${x + width * 0.16},${y})`
+    }
+    else if ((datum.name === 'Rochefort')) {
+      noOverlapTransform = `translate(${x + width * 0.04},${y - height * 0.0})`
+    }
+    else if ((datum.name === 'Marennes')) {
+      noOverlapTransform = `translate(${x - width * 0.03},${y + height * 0.05})`
+    }
+    else if ((datum.name === 'Marans')) {
+      noOverlapTransform = `translate(${x + width * 0.03},${y - height * 0.05})`
+    }
+    else if ((datum.name === 'Saint-Martin-de-Ré')) {
+      noOverlapTransform = `translate(${x - width * 0.06},${y})`
+    }
+    else if ((datum.name === `Les Sables-d'Olonne`)) {
+      noOverlapTransform = `translate(${x - width * 0.1},${y - height * 0.1})`
+    }
   }
-  else if ((datum.name === 'Rochefort')) {
-    noOverlapTransform = `translate(${x + width * 0.04},${y - height * 0.0})`
-  }
-  else if ((datum.name === 'Marennes')) {
-    noOverlapTransform = `translate(${x - width * 0.03},${y + height * 0.05})`
-  }
-  else if ((datum.name === 'Marans')) {
-    noOverlapTransform = `translate(${x + width * 0.03},${y - height * 0.05})`
-  }
-  else if ((datum.name === 'Saint-Martin-de-Ré')) {
-    noOverlapTransform = `translate(${x - width * 0.06},${y})`
-  }
-  else if ((datum.name === `Les Sables-d'Olonne`)) {
-    noOverlapTransform = `translate(${x - width * 0.1},${y - height * 0.1})`
-  }
+  
 
   const transformGroup = projectionTemplate === 'France' ? noOverlapTransform + ' scale(0.1)' : noOverlapTransform + ` scale(${isMinified ? 0.5 : 1})`;
   return (

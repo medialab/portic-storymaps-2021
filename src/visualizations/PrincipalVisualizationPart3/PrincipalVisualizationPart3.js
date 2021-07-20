@@ -52,8 +52,8 @@ const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeigh
                   />
                   <defs>
                     <linearGradient id="radial-bg" gradientTransform="rotate(90)">
-                      <stop offset="10%" stop-color={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} />
-                      <stop offset="100%" stop-color={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} stop-opacity={0} />
+                      <stop offset="10%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} />
+                      <stop offset="100%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} stop-opacity={0} />
                     </linearGradient>
                   </defs>
                 </>

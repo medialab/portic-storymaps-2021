@@ -79,13 +79,22 @@ function Step3Object({
   // handle overlap 
   let noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
   if (datum.name === 'Tonnay-Charente') {
-    noOverlapTransform = `translate(${x + width * 0.04},${y})`
+    noOverlapTransform = `translate(${x + width * 0.16},${y})`
   }
   else if ((datum.name === 'Rochefort')) {
-    noOverlapTransform = `translate(${x - width * 0.03},${y - height * 0.02})`
+    noOverlapTransform = `translate(${x + width * 0.04},${y - height * 0.0})`
   }
   else if ((datum.name === 'Marennes')) {
-    noOverlapTransform = `translate(${x},${y + height * 0.03})`
+    noOverlapTransform = `translate(${x - width * 0.03},${y + height * 0.05})`
+  }
+  else if ((datum.name === 'Marans')) {
+    noOverlapTransform = `translate(${x + width * 0.03},${y - height * 0.05})`
+  }
+  else if ((datum.name === 'Saint-Martin-de-Ré')) {
+    noOverlapTransform = `translate(${x - width * 0.06},${y})`
+  }
+  else if ((datum.name === `Les Sables-d'Olonne`)) {
+    noOverlapTransform = `translate(${x - width * 0.1},${y - height * 0.1})`
   }
 
   const transformGroup = projectionTemplate === 'France' ? noOverlapTransform + ' scale(0.1)' : noOverlapTransform + ` scale(${isMinified ? 0.5 : 1})`;
@@ -95,7 +104,7 @@ function Step3Object({
       ...{
         transformGroup,
         navigoValues: [navigoMetric1, navigoMetric2],
-        toflitPct: inPercentage,
+        toflitPct: !isNaN(inPercentage) ? inPercentage : 100,
         circleRadius,
         width,
         height,
@@ -311,7 +320,7 @@ export function SmallMultiples({ data, width, height, projection }) {
       >
         <div style={{ position: 'relative' }}>
           <h5 className="visualization-title" style={{ position: 'absolute', left: 0, bottom: 0 }}>
-            Comparaison avec les bureaux de fermes et ports dominants d'autres directions
+            Comparaison avec les bureaux de fermes et ports dominants d'autres directions en 1787
           </h5>
         </div>
       </foreignObject>

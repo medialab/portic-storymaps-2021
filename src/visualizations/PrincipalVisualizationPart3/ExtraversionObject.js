@@ -127,7 +127,7 @@ const ExtraversionObject = ({
             Z
                 `}
                 data-for="geo-tooltip"
-                data-tip={`${(metric1 * 100 ).toFixed(1)}% des voyages réalisés vers l'extérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+                data-tip={`${(metric1 * 100 ).toFixed(1)}% du tonnage cumulé des voyages réalisés vers l'extérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
         />
 
         <path
@@ -139,7 +139,7 @@ const ExtraversionObject = ({
             Z
             `}
             data-for="geo-tooltip"
-            data-tip={`${(metric2 * 100 ).toFixed(1)}% des voyages réalisés vers l'intérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+            data-tip={`${(metric2 * 100 ).toFixed(1)}% du tonnage cumulé des voyages réalisés vers l'intérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
         />
         <g
           transform={`translate(${parseInt(0)}, ${toflitPct ? parseInt(circleRadius) + 15 : max([leftTriangleHeight, rightTriangleHeight]) / 2 + 10})`}
@@ -200,18 +200,18 @@ const ExtraversionObject = ({
               width={circleRadius * 2}
               height={circleRadius * 2}
               x={-circleRadius * 3}
-              y={circleRadius / 2}
+              y={0}
               className="bottom left"
             >
               <div className="label-wrapper">
                 <span>
-                  Part des voyages hors direction
+                  Part des voyages hors direction (tonnage c.)
                 </span>
               </div>
             </foreignObject>
             <line
               x1={-circleRadius * 1.8}
-              y1={circleRadius * .7}
+              y1={circleRadius * .2}
               x2={-circleRadius * .3}
               y2={circleRadius * .1}
               marker-end="url(#triangle-end)"
@@ -220,18 +220,18 @@ const ExtraversionObject = ({
               width={circleRadius * 2}
               height={circleRadius * 2}
               x={circleRadius * 1.2}
-              y={circleRadius / 2}
+              y={0}
               className="bottom right"
             >
               <div className="label-wrapper">
                 <span>
-                  Part des voyages vers la direction
+                  Part des voyages dans la direction (tonnage c.)
                 </span>
               </div>
             </foreignObject>
             <line
               x1={circleRadius * 2}
-              y1={circleRadius * .7}
+              y1={circleRadius * .2}
               x2={circleRadius * .3}
               y2={circleRadius * .1}
               marker-end="url(#triangle-end)"

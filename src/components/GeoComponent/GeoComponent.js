@@ -121,13 +121,13 @@ const GeoComponent = ({
       case 'Poitou zoomed':
         projectionConfig = {
           ...projectionConfig,
-          scale: height * 43,
+          scale: height * 23,
           centerX: -1.7475927,
           // centerY: 46.573872,
-          centerY: 46.7,
+          centerY: 47.4,
           // translationX: width * 0.4,
-          translationX: width * 0.3,
-          translationY: -height * 0.02
+          translationX: width * 0.45,
+          translationY: 0
         }
         break;
       case 'rotated Poitou':

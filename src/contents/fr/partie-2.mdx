@@ -3,7 +3,23 @@ import Caller from '../../components/Caller'
 
 # Partie 2. Une forte spécialisation portuaire : le cas de la traite négrière, du commerce du sel et de l'eau-de-vie
 
-<Caller id="viz-principale-partie-2" step={1} />
+<Caller id="viz-principale-partie-2" step={1} highlight="toflit18" filter="aucun" />
+
+<a name="t.810cce58daa18de285c78397eee4628b6a06b0d0"></a><a name="t.0"></a>
+
+Mode d’emploi des callers pour la visualisation principale de la partie 2 (ce bout de texte devra être enlevé à terme) :
+
+*   comme partout ailleurs, une ligne qui commence par &lt;Caller signale au site qu’il doit afficher une visualisation à côté du texte qui suit
+*   la partie id=”viz-principale-partie-2” ne doit pas être touchée, elle fait le lien avec le type de visualisation à afficher
+*   le morceaux highlight=”xxx” représente la visualisation à mettre en avant. Si elle est égale à “toflit18”, le graphique toflit18 sera mis en gros et le graphique navigo en plus petit et vice-versa si elle égale à “navigo”
+*   le morceau filter=”xxx” représente les données à filtrer sur chacun des deux graphiques. Il a pour l’instant quatre valeurs possibles :
+*   “aucun” : tous les flux toflit18 et les toiles navigo sont affichés
+*   “colonial” : 
+*   pour toflit18, n’affiche que les flux qui concernent la classe de produits “produits coloniaux”, ou le groupe de partenaires “Afrique” ou “Colonies”
+*   “eau-de-vie” :
+*   pour toflit18, n’affiche que les flux qui concernent la classe de produits “eau-de-vie et vins divers”
+*   “sel” :
+*   pour toflit18, dimensionne les flux par poids (au lieu de valeur en livres tournois pour les autres filtres), et n’affiche que les flux qui concernent la classe de produits “sel”
 
 ## Introduction
 
@@ -13,7 +29,7 @@ La carte représente le tonnage expédié en 1787, à partir des congés délivr
 
 <Caller id="partie-2-part-navigation-francaise" />
 
-Nos analyses ont montré que les tonnages enregistrés à Marennes semblent surestimés à 40%. Même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3&amp;sa=D&amp;source=editors&amp;ust=1626770254993000&amp;usg=AOvVaw2thaOSyONSgqVZF1YxgjCu), La Rochelle n’a pas un rôle structurant dans les relations que les ports de cette région ont avec l’étranger. 
+Nos analyses ont montré que les tonnages enregistrés à Marennes semblent surestimés à 40%. Même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3&amp;sa=D&amp;source=editors&amp;ust=1626772803191000&amp;usg=AOvVaw0qjc6uksL5bZb9oowMyiz9), La Rochelle n’a pas un rôle structurant dans les relations que les ports de cette région ont avec l’étranger. 
 
 La carte permet de constater que les navires expédiés depuis l’Aunis se dirigent vers l’ensemble de l’Europe du Nord, ceux depuis la Saintonge essentiellement vers les îles britanniques et la Hollande, et que ceux au départ du Poitou, nettement moins importants en volume, privilégient l’espace Baltique. Cette différenciation est liée à la nature des produits exportés et du commerce de chaque port.
 
@@ -25,7 +41,7 @@ L’importance des tonnages impliqués n’est au demeurant pas directement corr
 
 Bureaux de Ferme de la direction de La Rochelle, exportations en 1789
 
-<a name="t.f271f803a2027ad5854321e7817f569fb280399d"></a><a name="t.0"></a>
+<a name="t.f271f803a2027ad5854321e7817f569fb280399d"></a><a name="t.1"></a>
 
 Bureau de Ferme
 
@@ -73,11 +89,13 @@ Total avec ports francs / petites Îles :
 
 ## 2.1. La Rochelle et le commerce triangulaire
 
-<Caller id="viz-principale-partie-2" step={2} />
+<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="toflit18" />
 
 Au XVIIIe siècle, les colonies antillaises augmentent très considérablement leur production de sucre, café, indigo et produits tinctoriaux, pour répondre à une demande européenne fortement orientée à la hausse. La croissance de la production passe par un nombre de plus en plus élevé de plantations, qui ont un recours massif à une main-d'œuvre d’esclaves, que les Européens déportent par centaines de milliers depuis l’Afrique dans le cadre de la traite négrière. Ce commerce transatlantique d’êtres humains, achetés sur les côtes d’Afrique par les négriers européens, a commencé au XVe siècle, mais il atteint son apogée au XVIIIe siècle, lorsque 6 millions d’Africains sont déportés aux Amériques. La moitié d’entre eux est vendue aux Antilles. On estime à 1.25 millions \[Silvia: à vérifier\] le nombre d’Africains introduits dans les colonies françaises au XVIIIe siècle. La principale destination est la colonie de Saint-Domingue (aujourd'hui Haïti) qui compte, à la veille de la grande révolte d’esclaves de 1791, un demi-million d’esclaves, dont plus de la moitié sont nés en Afrique.
 
-L’activité négrière est aux mains d’armateurs privés qui espèrent réaliser un profit lors de la revente des esclaves. Si Nantes est le principal port négrier français, La Rochelle a joué un rôle significatif, tout particulièrement dans les années 1730-1740 : entre 1713 et 1744, La Rochelle arme 15% des expéditions négrières, sa part tombe à 11% après la perte du Canada, en sorte que si La Rochelle est le deuxième port négrier le plus important en France avant 1763, il passe au 4e rang par la suite. 
+L’activité négrière est aux mains d’armateurs privés qui espèrent réaliser un profit lors de la revente des esclaves. Si Nantes est le principal port négrier français, La Rochelle a joué un rôle significatif, tout particulièrement dans les années 1730-1740 : entre 1713 et 1744, La Rochelle arme 15% des expéditions négrières, sa part tombe à 11% après la perte du Canada, en sorte que si La Rochelle est le deuxième port négrier le plus important en France avant 1763, il passe au 4e rang par la suite.
+
+<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="navigo" />
 
 Malgré un déclin relatif, l’activité négrière rochelaise est résolument orientée à la hausse. Les armateurs rochelais passent de 4,3 armements négriers par an pour la période 1713-1744 à 12,5 armements par an dans la décennie 1783-1793. Pendant cette dernière, la traite est véritablement de l’activité principale, voire presque exclusive, des armateurs rochelais: sur un total de 200 départs depuis le port de La Rochelle de navires rochelais, un peu plus de la moitié des tonnages se dirigent vers l’Afrique (42% du total) ou vers les colonies antillaises ou les Mascareignes, le reste se répartissant entre Terre-Neuve et Saint-Pierre-et-Miquelon (9.2%) La part des armements vers l’étranger est insignifiante (0.2%), et celle hors des ports limitrophes (Aunis, Poitou, Saintonge) ne dépasse pas le 5%. Les trois quarts de la trentaine de navires rochelais dépassant le 50 tx \[le plus grand faisant 827 tonneaux\] sortis du port de La Rochelle en 1789 se consacrent au commerce transatlantique et négrier.
 
@@ -89,11 +107,11 @@ Alors que dans la plupart des ports négriers français, la part des armements n
 
 En 1789, les 12 négriers partis de La Rochelle sont tous armés par des négociants rochelais. Trois autres négriers partent depuis Rochefort.
 
-Au total, dans les dernières années de l’Ancien Régime, une douzaine de navires reviennent chaque année à La Rochelle depuis les colonies, soit en droiture, soit (et surtout) de retour d’une expédition négrière. La valeur des produits ramenés est estimée, en 1789, à 7.1 millions de livres tournois, dont 5.1 sont réexportés à l’étranger (ANOM, F 2 B 14, tableaux 3 et 5). Les négociants rochelais semblent s’être taillés une position forte dans le marché du café. [https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21](https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21&amp;sa=D&amp;source=editors&amp;ust=1626770255000000&amp;usg=AOvVaw2Ao2fe7hi0QSb5k_wHMjrx)
+Au total, dans les dernières années de l’Ancien Régime, une douzaine de navires reviennent chaque année à La Rochelle depuis les colonies, soit en droiture, soit (et surtout) de retour d’une expédition négrière. La valeur des produits ramenés est estimée, en 1789, à 7.1 millions de livres tournois, dont 5.1 sont réexportés à l’étranger (ANOM, F 2 B 14, tableaux 3 et 5). Les négociants rochelais semblent s’être taillés une position forte dans le marché du café. [https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21](https://drive.google.com/drive/folders/1vv6zi6QJVN203lZPTkRjLrgupEvzNW21&amp;sa=D&amp;source=editors&amp;ust=1626772803201000&amp;usg=AOvVaw2E4VTmqFDsYH-xlETqIcbW)
 
 Si les données collectées par la Balance du commerce ne permettent pas de connaître les destinations des réexportations coloniales rochelaises, les destinations des navires qui quittent le port en 1789 nous en donnent une indication approximative. Les Pays-Bas autrichiens (actuelle Belgique), les Provinces-Unies, Brême, Hambourg, les ports de la Baltique reçoivent chacun de navires totalisant entre 500 et 550 tonneaux. Parmi les autres destinations européennes des navires partis de La Rochelle, seule la Grande-Bretagne (1048 tonneaux) n’est vraisemblablement pas destinataire des produits coloniaux, car elle s’approvisionne dans ses propres colonies.. 
 
-<a name="t.e04ea08ffc0a1e5af3987339feba50fdcd3863fc"></a><a name="t.1"></a>
+<a name="t.e04ea08ffc0a1e5af3987339feba50fdcd3863fc"></a><a name="t.2"></a>
 
 Destinations des navires vers l’étranger (Afrique exclue) au départ du port de La Rochelle, 1789
 
@@ -151,7 +169,7 @@ Il faut observer que la participation rocheloise à la navigation au-delà du ca
 
 ## 2.2. le commerce de l’eau-de-vie
 
-<Caller id="viz-principale-partie-2" step={3} />
+<Caller id="viz-principale-partie-2" filter={"eau-de-vie"} />
 
 total exportations eau-de-vie depuis la France et destinations pour mesurer part direction de la Rochelle (en précisant le bureau des Fermes concernés)
 
@@ -171,7 +189,7 @@ Par ailleurs, d’après Cullen le commerce d’exportation des eaux de vie conn
 
 ## 2.3. Marennes et le commerce du sel
 
-<Caller id="viz-principale-partie-2" step={4} />
+<Caller id="viz-principale-partie-2" filter={"sel"} />
 
 ...
 
@@ -181,7 +199,7 @@ Le bureau des fermes de Marennes est en absolu le principal exportateur de sel e
 
 Les valeurs en jeu ne sont pas très élevées, comparées à celles des flux commerciaux dont il a été question pour La Rochelle et Tonnay-Charente: le sel exporté depuis Marennes, y compris à destination des ports francs français, se chiffre autour de 360,000 livres tournois en 1789 (dont 141,000 vers l’étranger). En revanche, son commerce alimente un mouvement portuaire extrêmement intense, qui fait de Marennes, en termes de nombre de navires sortis et de leur tonnage, le principal port de la région étudiée. Son commerce maritime est donc une activité importante, tant pour la production locale qu’il soutient, que pour l’activité induite liée à son transport (construction navale, emploi maritime).
 
-Tous les flux sont là : [http://toflit18.medialab.sciences-po.fr/\#/exploration/flows?sourceType=Best%20Guess%20customs%20region%20product%20x%20partner&amp;productClassification=product\_revolutionempire&amp;product=%5B%22Sel%7Eproduct\_revolutionempire%22%5D&amp;page=0&amp;region=%24all%24&amp;kind=total&amp;dateMin=1789&amp;dateMax=1789&amp;columns=%5B%22product%22%2C%22region%22%2C%22year%22%2C%22partner%22%2C%22import%22%2C%22value%22%2C%22unitPrice%22%2C%22source%22%2C%22rawUnit%22%5D&amp;orders=%5B%7B%22key%22%3A%22unitPrice%22%2C%22order%22%3A%22DESC%22%7D%5D](http://toflit18.medialab.sciences-po.fr/%23/exploration/flows?sourceType%3DBest%2520Guess%2520customs%2520region%2520product%2520x%2520partner%26productClassification%3Dproduct_revolutionempire%26product%3D%255B%2522Sel%257Eproduct_revolutionempire%2522%255D%26page%3D0%26region%3D%2524all%2524%26kind%3Dtotal%26dateMin%3D1789%26dateMax%3D1789%26columns%3D%255B%2522product%2522%252C%2522region%2522%252C%2522year%2522%252C%2522partner%2522%252C%2522import%2522%252C%2522value%2522%252C%2522unitPrice%2522%252C%2522source%2522%252C%2522rawUnit%2522%255D%26orders%3D%255B%257B%2522key%2522%253A%2522unitPrice%2522%252C%2522order%2522%253A%2522DESC%2522%257D%255D&amp;sa=D&amp;source=editors&amp;ust=1626770255009000&amp;usg=AOvVaw0_bjf08JV2yysv6QbOPkuw)
+Tous les flux sont là : [http://toflit18.medialab.sciences-po.fr/\#/exploration/flows?sourceType=Best%20Guess%20customs%20region%20product%20x%20partner&amp;productClassification=product\_revolutionempire&amp;product=%5B%22Sel%7Eproduct\_revolutionempire%22%5D&amp;page=0&amp;region=%24all%24&amp;kind=total&amp;dateMin=1789&amp;dateMax=1789&amp;columns=%5B%22product%22%2C%22region%22%2C%22year%22%2C%22partner%22%2C%22import%22%2C%22value%22%2C%22unitPrice%22%2C%22source%22%2C%22rawUnit%22%5D&amp;orders=%5B%7B%22key%22%3A%22unitPrice%22%2C%22order%22%3A%22DESC%22%7D%5D](http://toflit18.medialab.sciences-po.fr/%23/exploration/flows?sourceType%3DBest%2520Guess%2520customs%2520region%2520product%2520x%2520partner%26productClassification%3Dproduct_revolutionempire%26product%3D%255B%2522Sel%257Eproduct_revolutionempire%2522%255D%26page%3D0%26region%3D%2524all%2524%26kind%3Dtotal%26dateMin%3D1789%26dateMax%3D1789%26columns%3D%255B%2522product%2522%252C%2522region%2522%252C%2522year%2522%252C%2522partner%2522%252C%2522import%2522%252C%2522value%2522%252C%2522unitPrice%2522%252C%2522source%2522%252C%2522rawUnit%2522%255D%26orders%3D%255B%257B%2522key%2522%253A%2522unitPrice%2522%252C%2522order%2522%253A%2522DESC%2522%257D%255D&amp;sa=D&amp;source=editors&amp;ust=1626772803215000&amp;usg=AOvVaw3018ChDpviuJpunoolq4kf)
 
 (mais pas par bureau).
 
@@ -194,6 +212,8 @@ Exports par bureau hors la France :
 Marchés pour les exports :
 
 Marchés pour les exports de Marennes:
+
+<Caller id="viz-principale-partie-2" filter={"sel"} highlight="navigo" />
 
 Les données sur la navigation aident à préciser la géographie commerciale du sel exporté depuis Marennes, même si elles n’indiquent les quantités exportées. Dans la mesure où les navires qui le transportent sortent souvent chargés entièrement de sel, on peut de manière approximative additionner le total des tonnages des navires chargés de sel pour avoir un ordre de grandeur des trafics. À compter du règne de Louis XIV, la législation relative aux gabelles fait d'ailleurs obligation au chargeur de naviguer avec une cargaison complète. Le tonnage des navires chargés de sel est donc un assez bon indicateur des quantités exportées.
 

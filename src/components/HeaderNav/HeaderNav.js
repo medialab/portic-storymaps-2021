@@ -34,7 +34,7 @@ const HeaderNav = ({
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const location = useLocation();
   const pageType = useMemo(() => {
-    if (location.pathname.includes('/page/')) {
+    if (location.pathname.includes('/page/part')) {
       return 'page';
     } else if (location.pathname === '/fr/' || location.pathname === '/en/') {
       return 'home';
@@ -89,7 +89,7 @@ const HeaderNav = ({
       default:
         return {
           fontColor: undefined,
-          backgroundColor: undefined
+          backgroundColor: colorBackground
         }
 
     }

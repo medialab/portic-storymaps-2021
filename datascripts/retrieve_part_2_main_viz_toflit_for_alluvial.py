@@ -40,7 +40,7 @@ for f in relevant_flows :
     
     if product in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']:
         # product_viz = "produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')"
-        product_viz = "produit colonial"
+        product_viz = "produits coloniaux"
     elif (product == 'Sel'):
         product_viz = 'sel'
     elif (product == 'Eaux-de-vie et liqueurs' or product == 'Vins divers'):

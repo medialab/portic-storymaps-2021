@@ -11,20 +11,21 @@ const PrincipalVisualizationPart2 = ({
   datasets, 
   showOnlyToflit = false, 
   atlasMode, 
-  lang = 'fr', 
+  highlight = 'toflit18',
+  lang = 'fr',
+  filter = 'aucun',
   ...props
 }) => {
-  const {step} = props;
   const height = atlasMode ? 1200 : containerHeight;
   const {sumToflitBy, alluvialFilters} = useMemo(() => {
     let sumBy = 'value';
     let filters = [];
-    switch(step) {
-      case 2:
+    switch(filter) {
+      case "colonial":
         filters = [
           {
             key: 'product',
-            value: `produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')`
+            value: `produits coloniaux`
           },
           {
             key: 'partner',
@@ -36,7 +37,7 @@ const PrincipalVisualizationPart2 = ({
           }
         ];
         break;
-      case 3:
+      case "eau-de-vie":
         filters = [
           {
             key: 'product',
@@ -45,7 +46,7 @@ const PrincipalVisualizationPart2 = ({
         
         ];
         break;
-      case 4:
+      case "sel":
         filters = [{
           key: 'product',
           value: `sel`
@@ -60,18 +61,24 @@ const PrincipalVisualizationPart2 = ({
       sumToflitBy: sumBy,
       alluvialFilters: filters
     }
-  }, [step]);
+  }, [filter]);
   const titles = {
     fr: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`,
     en: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
   };
   return (
     <div className="PrincipalVisualizationPart2">
-     <div>
+     <div 
+      className="circular-alluvial-container"
+      style={{
+        width: highlight === 'toflit18' ? width * .7 : width * .3,
+        height: highlight === 'toflit18' ? height : height * .3,
+      }}
+    >
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={showOnlyToflit ? width : width / 2}
-          height={height}
+          width={highlight === 'toflit18' ? width * .8 : width * .3}
+          height={highlight === 'toflit18' ? height : height * .3}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
           colorsPalettes={colorsPalettes}
@@ -155,7 +162,12 @@ const PrincipalVisualizationPart2 = ({
           ]}
         />
      </div>
-     <div className="radar-container">
+     <div 
+      className="radar-container"
+      style={{
+        width: highlight === 'navigo' ? width * .7 : width * .3
+      }}
+    >
        <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
      </div>
     </div>

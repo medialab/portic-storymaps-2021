@@ -29,7 +29,7 @@ const colorsPalettes = {
     'sel': '#E0CB0E',
     'eau-de-vie et vins divers': '#A07BEE',
     'autres produits': '#72808D',
-    'produit colonial': '#FEA43B',
+    'produits coloniaux': '#FEA43B',
       },
   'partner': {
     'Afrique': '#875E2E',

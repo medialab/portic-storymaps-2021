@@ -27,7 +27,7 @@ def prepare_contents(str):
       parts.append(current_part)
       current_part = []
     elif line.startswith('&lt;Caller') and line.endswith('/&gt;'):
-      line = re.sub(r"^&lt;Caller (.*)/&gt;$", r"<Caller \1/>", line).replace('”', '"')
+      line = re.sub(r"^&lt;Caller (.*)/&gt;$", r"<Caller \1/>", line).replace('”', '"').replace('“', '"')
       if line == '<Caller />':
         current_part.append('<div className="centered-part"><div className="centered-part-contents">')
         current_part.append('')

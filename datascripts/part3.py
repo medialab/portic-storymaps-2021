@@ -445,7 +445,6 @@ if chosen_year == 1789:
 # fill port objects with cumulated data from toflit, (customs_office scaled data)
 for f in relevant_toflit_flows:
     bureau = clean_names(f['customs_office'])
-
     if f['value'] is not None and f['value'] != '':
         value = float(f['value'])
     else:
@@ -472,7 +471,6 @@ for f in relevant_toflit_flows:
             else:
                 bureaus[bureau]['cumulated_exports_value_from_ext'] += value
     bureaus[bureau]['nb_toflit_flows_taken_into_account'] += 1 
-
 
 # write dataset
 with open(OUTPUT3_PORTS, 'w', newline='') as csvfile1:

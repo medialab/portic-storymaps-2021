@@ -491,40 +491,40 @@ def compute_flows_from_boats_of_la_rochelle_1787(pointcalls_out, pointcalls_in):
 """
   Data reading and building functions calls
 """
-# with open('../data/toflit18_all_flows.csv', 'r') as f:
-#     toflit18_flows = csv.DictReader(f)
-#     # fill relevant flows
-#     flows_1789_by_region = []
-#     flows_1789_national = []
-#     flows_national_all_years = []
-#     flows_regional_all_years = []
-#     for flow in toflit18_flows:
-#       # filtering out ports francs
-#         if flow["year"] == "1789":
-#           if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-#             flows_1789_by_region.append(flow)
-#         if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-#             flows_regional_all_years.append(flow)
-#         if flow["best_guess_national_partner"] == "1":
-#           flows_national_all_years.append(flow)
+with open('../data/toflit18_all_flows.csv', 'r') as f:
+    toflit18_flows = csv.DictReader(f)
+    # fill relevant flows
+    flows_1789_by_region = []
+    flows_1789_national = []
+    flows_national_all_years = []
+    flows_regional_all_years = []
+    for flow in toflit18_flows:
+      # filtering out ports francs
+        if flow["year"] == "1789":
+          if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+            flows_1789_by_region.append(flow)
+        if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+            flows_regional_all_years.append(flow)
+        if flow["best_guess_national_partner"] == "1":
+          flows_national_all_years.append(flow)
 
-#     compute_top_shared_toflit18_products(flows_1789_by_region)
-#     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
-#     compute_exports_colonial_products(flows_1789_by_region)
+    compute_top_shared_toflit18_products(flows_1789_by_region)
+    compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
+    compute_exports_colonial_products(flows_1789_by_region)
 
-# with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
-#   pointcalls = csv.DictReader(f)
-#   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
-#   out_from_region = []
-#   all_pointcalls_1789 = []
-#   for pointcall in pointcalls:
-#     if pointcall["pointcall_admiralty"] in admiralties:
-#       all_pointcalls_1789.append(pointcall)
-#     if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
-#       out_from_region.append(pointcall)
-#   compute_foreign_homeports(out_from_region)
-#   compute_french_fleat_part(out_from_region)
-#   compute_region_ports_general(all_pointcalls_1789)
+with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
+  pointcalls = csv.DictReader(f)
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+  out_from_region = []
+  all_pointcalls_1789 = []
+  for pointcall in pointcalls:
+    if pointcall["pointcall_admiralty"] in admiralties:
+      all_pointcalls_1789.append(pointcall)
+    if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
+      out_from_region.append(pointcall)
+  compute_foreign_homeports(out_from_region)
+  compute_french_fleat_part(out_from_region)
+  compute_region_ports_general(all_pointcalls_1789)
 
 with open('../data/navigo_all_pointcalls_1787.csv', 'r') as f:
   pointcalls = csv.DictReader(f)

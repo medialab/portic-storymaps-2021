@@ -28,6 +28,9 @@ import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';
 import AboutFr from '!babel-loader!mdx-loader!./contents/fr/a-propos.mdx';
 import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
 
+import ReferencesFr from '!babel-loader!mdx-loader!./contents/fr/references.mdx';
+import ReferencesEn from '!babel-loader!mdx-loader!./contents/en/references.mdx';
+
 import TestsFr from '!babel-loader!mdx-loader!./contents/fr/tests.mdx';
 import TestsEn from '!babel-loader!mdx-loader!./contents/en/tests.mdx';
 
@@ -103,6 +106,29 @@ const summary = [
     },
     Component: ScrollyPage,
     routeGroup: 'primary'
+  },
+  {
+    routes: {
+      fr: 'references',
+      en: 'references'
+    },
+    titles: {
+      fr: 'Références',
+      en: 'References'
+    },
+    shortTitles: {
+      fr: 'références',
+      en: 'references'
+    },
+    contents: {
+      fr: 'fr/references.mdx',
+      en: 'en/references.mdx'
+    },
+    contentsProcessed: {
+      fr: ReferencesFr,
+      en: ReferencesEn,
+    },
+    routeGroup: 'secondary',
   },
   {
     routes: {

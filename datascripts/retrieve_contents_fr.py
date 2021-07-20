@@ -19,6 +19,7 @@ def prepare_contents(str):
   center_mode = False
   # split parts
   for line in lines:
+    line = line.replace('https://www.google.com/url?q=', '')
     if line.startswith('# '):
       if center_mode == True:
         current_part.append('</div></div>')
@@ -58,7 +59,15 @@ with requests.Session() as s:
   download = s.get(GDOC_HTML_URL)
   decoded_content = download.content.decode('utf-8')
   for i, part in enumerate(prepare_contents(decoded_content)):
-    md_path = TARGET_BASE + 'partie-' + str(i + 1) + '.mdx'
+    md_path = ''
+    if i == 0:
+      md_path = TARGET_BASE + 'introduction.mdx'
+    elif i < 4:
+      md_path = TARGET_BASE + 'partie-' + str(i) + '.mdx'
+    elif i == 5:
+      md_path = TARGET_BASE + 'a-propos.mdx'
+    else:
+      md_path = TARGET_BASE + 'references.mdx'
     f = open(md_path, "w")
     f.write(part)
     f.close()

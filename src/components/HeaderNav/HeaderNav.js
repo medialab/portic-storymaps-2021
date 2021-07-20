@@ -1,13 +1,13 @@
 import React, { useMemo, useState } from 'react';
-import {useLocation} from 'react-router-dom';
-import {NavLink as Link} from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
+import { NavLink as Link } from 'react-router-dom';
 import { useScrollYPosition } from 'react-use-scroll-position';
 import cx from 'classnames';
 
 import metadataFr from '../../contents/fr/metadata'
 import metadataEn from '../../contents/en/metadata'
 
-import {scaleLinear} from 'd3-scale';
+import { scaleLinear } from 'd3-scale';
 
 import colorPalettes from '../../colorPalettes'
 import { useDebounce } from '../../helpers/hooks';
@@ -53,14 +53,14 @@ const HeaderNav = ({
   const scrollY = useDebounce(liveScrollY, 50)
 
   const pageColorScale = scaleLinear().range([colorBackgroundBlue, colorBackground]).domain([0, 1])
-  const {fontColor, backgroundColor} = useMemo(() => {
+  const { fontColor, backgroundColor } = useMemo(() => {
     // const wrapper = document.getElementById('wrapper');
     // if (!wrapper) {
     //   return {fontColor: undefined, backgroundColor: undefined}
     // }
     // const scrollHeight = wrapper.offsetHeight;
     const screenHeight = window.innerHeight;
-    switch(pageType) {
+    switch (pageType) {
       case 'page':
         if (scrollY < screenHeight) {
           return {
@@ -84,7 +84,7 @@ const HeaderNav = ({
             backgroundColor: colorAccentBackground
           }
         }
-        
+
       case 'other-page':
       default:
         return {
@@ -93,7 +93,7 @@ const HeaderNav = ({
         }
 
     }
-    
+
   }, [scrollY, pageColorScale, pageType])
 
   const title = metadata[lang].titleHTML
@@ -112,16 +112,16 @@ const HeaderNav = ({
             <Link exact to={`/${lang}/`}>
               {
                 fontColor === 'white' ?
-                <img src={`${process.env.PUBLIC_URL}/rose_des_vents_white.svg`} alt="logo" />
-                :
-                <img src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
+                  <img src={`${process.env.PUBLIC_URL}/rose_des_vents_white.svg`} alt="logo" />
+                  :
+                  <img src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
               }
             </Link>
           </li>
           {
-              routes
-              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'primary' && !hide)
-              .map(({shortTitles, routes: inputRoute}, index) => {
+            routes
+              .filter(({ routeGroup = 'primary', hide }) => routeGroup === 'primary' && !hide)
+              .map(({ shortTitles, routes: inputRoute }, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
                   <li key={index} className="navitem-container">
@@ -130,14 +130,19 @@ const HeaderNav = ({
                     </Link>
                   </li>
                 )
-                })
-            }
+              })
+          }
         </ul>
         <ul className="secondary-nav-container">
+          <li className="navitem-container">
+            <Link to={`/${lang}/atlas`}>
+              {lang === 'fr' ? 'atlas des visualisations' : 'visualizations atlas'}
+            </Link>
+          </li>
           {
-              routes
-              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'secondary' && !hide)
-              .map(({shortTitles, routes: inputRoute}, index) => {
+            routes
+              .filter(({ routeGroup = 'primary', hide }) => routeGroup === 'secondary' && !hide)
+              .map(({ shortTitles, routes: inputRoute }, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`
                 return (
                   <li key={index} className="navitem-container">
@@ -146,32 +151,28 @@ const HeaderNav = ({
                     </Link>
                   </li>
                 )
-                })
-            }
-            <li className="navitem-container">
-              <Link to={`/${lang}/atlas`}>
-                {lang === 'fr' ? 'atlas des visualisations' : 'visualizations atlas'}
-              </Link>
-            </li>
-            {
-              // @todo delete this ternary when english contents are ready
-              process.env.NODE_ENV === 'development' ?
+              })
+          }
+
+          {
+            // @todo delete this ternary when english contents are ready
+            process.env.NODE_ENV === 'development' ?
               <>
-              <li className="navitem-container lang-toggle">
-                <button 
-                  className={lang === 'fr' ? 'is-active': ''}
-                  onClick={() => onLangChange('fr')}
-                >fr</button>
-              </li>
-              <li className="navitem-container lang-toggle">
-                <button
-                  className={lang === 'en' ? 'is-active': ''}
-                  onClick={() => onLangChange('en')}
-                >en</button>
-              </li>
+                <li className="navitem-container lang-toggle">
+                  <button
+                    className={lang === 'fr' ? 'is-active' : ''}
+                    onClick={() => onLangChange('fr')}
+                  >fr</button>
+                </li>
+                <li className="navitem-container lang-toggle">
+                  <button
+                    className={lang === 'en' ? 'is-active' : ''}
+                    onClick={() => onLangChange('en')}
+                  >en</button>
+                </li>
               </>
               : null
-            }
+          }
         </ul>
       </nav>
       <nav
@@ -179,44 +180,44 @@ const HeaderNav = ({
           // background: backgroundColor,
           // color: fontColor
         }}
-        className={cx("nav nav-drawer", {'is-open': drawerIsOpen})}
+        className={cx("nav nav-drawer", { 'is-open': drawerIsOpen })}
       >
         <div className="drawer-background" onClick={() => setDrawerIsOpen(!drawerIsOpen)} />
         <div className="drawer-body">
-        <ul className="primary-nav-container">
-          <li onClick={() => setDrawerIsOpen(false)} className="navitem-container">
-            <Link exact to={`/${lang}/`}>
-              {lang === 'fr' ? 'accueil' : 'home'}
-            </Link>
-          </li>
-          {
+          <ul className="primary-nav-container">
+            <li onClick={() => setDrawerIsOpen(false)} className="navitem-container">
+              <Link exact to={`/${lang}/`}>
+                {lang === 'fr' ? 'accueil' : 'home'}
+              </Link>
+            </li>
+            {
               routes
-              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'primary' && !hide)
-              .map(({shortTitles, routes: inputRoute}, index) => {
-                const route = `/${lang}/page/${inputRoute[lang]}`
-                return (
-                  <li onClick={() => setDrawerIsOpen(false)} key={index} className="navitem-container">
-                    <Link to={route}>
-                      {shortTitles[lang]}
-                    </Link>
-                  </li>
-                )
+                .filter(({ routeGroup = 'primary', hide }) => routeGroup === 'primary' && !hide)
+                .map(({ shortTitles, routes: inputRoute }, index) => {
+                  const route = `/${lang}/page/${inputRoute[lang]}`
+                  return (
+                    <li onClick={() => setDrawerIsOpen(false)} key={index} className="navitem-container">
+                      <Link to={route}>
+                        {shortTitles[lang]}
+                      </Link>
+                    </li>
+                  )
                 })
             }
-        </ul>
-        <ul className="secondary-nav-container">
-          {
+          </ul>
+          <ul className="secondary-nav-container">
+            {
               routes
-              .filter(({routeGroup = 'primary', hide}) => routeGroup === 'secondary' && !hide)
-              .map(({shortTitles, routes: inputRoute}, index) => {
-                const route = `/${lang}/page/${inputRoute[lang]}`
-                return (
-                  <li onClick={() => setDrawerIsOpen(false)} key={index} className="navitem-container">
-                    <Link to={route}>
-                      {shortTitles[lang]}
-                    </Link>
-                  </li>
-                )
+                .filter(({ routeGroup = 'primary', hide }) => routeGroup === 'secondary' && !hide)
+                .map(({ shortTitles, routes: inputRoute }, index) => {
+                  const route = `/${lang}/page/${inputRoute[lang]}`
+                  return (
+                    <li onClick={() => setDrawerIsOpen(false)} key={index} className="navitem-container">
+                      <Link to={route}>
+                        {shortTitles[lang]}
+                      </Link>
+                    </li>
+                  )
                 })
             }
             <li onClick={() => setDrawerIsOpen(false)} className="navitem-container">
@@ -227,44 +228,44 @@ const HeaderNav = ({
             {
               // @todo delete this ternary when english contents are ready
               process.env.NODE_ENV === 'development' ?
-              <li className="navitem-container lang-toggle">
-                <ul className="lang-toggle-container">
-                  <li>
-                    <button 
-                      className={lang === 'fr' ? 'is-active': ''}
-                      onClick={() => onLangChange('fr')}
-                    >fr</button>
-                  </li>
-                  <li>
-                    <button
-                      className={lang === 'en' ? 'is-active': ''}
-                      onClick={() => onLangChange('en')}
-                    >en</button>
-                  </li>
-                </ul>
-                
-              </li>
-              :
-              null
+                <li className="navitem-container lang-toggle">
+                  <ul className="lang-toggle-container">
+                    <li>
+                      <button
+                        className={lang === 'fr' ? 'is-active' : ''}
+                        onClick={() => onLangChange('fr')}
+                      >fr</button>
+                    </li>
+                    <li>
+                      <button
+                        className={lang === 'en' ? 'is-active' : ''}
+                        onClick={() => onLangChange('en')}
+                      >en</button>
+                    </li>
+                  </ul>
+
+                </li>
+                :
+                null
             }
-            
-            
-        </ul>
+
+
+          </ul>
         </div>
         <div className="drawer-header">
           <button onClick={() => setDrawerIsOpen(!drawerIsOpen)} className={cx('drawer-button')}>
             {
               fontColor === 'white' || drawerIsOpen ?
-              <img style={{background: drawerIsOpen ? undefined: backgroundColor}} src={`${process.env.PUBLIC_URL}/rose_des_vents_white.svg`} alt="logo" />
-              :
-              <img style={{background: drawerIsOpen ? undefined: backgroundColor}} src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
+                <img style={{ background: drawerIsOpen ? undefined : backgroundColor }} src={`${process.env.PUBLIC_URL}/rose_des_vents_white.svg`} alt="logo" />
+                :
+                <img style={{ background: drawerIsOpen ? undefined : backgroundColor }} src={`${process.env.PUBLIC_URL}/rose_des_vents.svg`} alt="logo" />
             }
           </button>
           <Link exact to={`/${lang}/`}>
             <h1 style={{
               color: drawerIsOpen ? undefined : fontColor,
               background: drawerIsOpen ? undefined : backgroundColor,
-              }} dangerouslySetInnerHTML={{__html: title}} />
+            }} dangerouslySetInnerHTML={{ __html: title }} />
           </Link>
         </div>
       </nav>

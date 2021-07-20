@@ -1,5 +1,5 @@
 value,product_weight_kg,flow_type,customs_office,product,partner
-5088790.0,2658811.8855,export,La Rochelle,produit colonial,Indéterminé supposé Europe
+5088790.0,2658811.8855,export,La Rochelle,produits coloniaux,Indéterminé supposé Europe
 47308.0,2020.1665,export,La Rochelle,autres produits,Indéterminé supposé Europe
 14667.45519520001,31.641279,export,Rochefort,eau-de-vie et vins divers,Europe
 243480.8976769,309.51575,export,Rochefort,eau-de-vie et vins divers,Grande Bretagne
@@ -24,13 +24,13 @@ value,product_weight_kg,flow_type,customs_office,product,partner
 21813.351531080007,0,export,Saint-Martin-de-Ré,autres produits,Europe
 1413233.0,768771.6261069002,export,La Rochelle,autres produits,Afrique
 97219.0,72370.2194926,export,La Rochelle,autres produits,Colonies
-3948.0,2093.5915,export,La Rochelle,produit colonial,Afrique
+3948.0,2093.5915,export,La Rochelle,produits coloniaux,Afrique
 173859.0,0,export,La Rochelle,eau-de-vie et vins divers,Afrique
 12259.0,0,export,La Rochelle,eau-de-vie et vins divers,Colonies
 89706.0,115744.72167,import,La Rochelle,autres produits,Colonies
 5950.0,0,import,Aligre,autres produits,Grande Bretagne
-7007451.0,3856420.042,import,La Rochelle,produit colonial,Colonies
-358542.0,226470.110992,import,Rochefort,produit colonial,Colonies
+7007451.0,3856420.042,import,La Rochelle,produits coloniaux,Colonies
+358542.0,226470.110992,import,Rochefort,produits coloniaux,Colonies
 612.60002042,499.77951,import,Aligre,autres produits,Europe
 917706.75066427,1160050.4007900003,import,Rochefort,autres produits,Europe
 225559.52152622002,2157406.6136000003,import,Rochefort,autres produits,Grande Bretagne

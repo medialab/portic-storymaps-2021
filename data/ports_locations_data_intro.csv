@@ -1,0 +1,59 @@
+port,latitude,longitude,customs_office,province,admiralty,customs_region,nb_pointcalls
+La Rochelle,46.166667,-1.15,La Rochelle,Aunis,La Rochelle,La Rochelle,1950
+Seudre,45.8,-1.15,Marennes,Saintonge,Marennes,La Rochelle,52
+Tonnay-Charente,45.95,-0.9,Marennes,Saintonge,Marennes,La Rochelle,1321
+Beauvoir-sur-Mer,46.916667,-2.05,Beauvoir-sur-Mer,Poitou,Sables-d’Olonne,Nantes,132
+Marennes,45.816667,-1.116667,Marennes,Saintonge,Marennes,La Rochelle,1709
+île de Bouin,46.975134,-1.998682,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,119
+Le Château-d'Oléron,45.9,-1.2,Oléron,Saintonge,Marennes,La Rochelle,62
+Brouage ,45.866667,-1.066667,Marennes,Saintonge,Marennes,La Rochelle,19
+Rochefort,45.943666,-0.97043,Rochefort,Aunis,La Rochelle,La Rochelle,572
+Noirmoutier,47,-2.25,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,317
+Saint-Michel-en-l'Herm,46.35,-1.25,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,113
+Marans,46.312468,-0.995682,Alligre,Aunis,La Rochelle,La Rochelle,955
+Saint-Martin-de-Ré,46.2,-1.366667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,568
+île de Ré,46.2,-1.416667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,200
+Royan,45.633333,-1.033333,Marennes,Saintonge,Marennes,La Rochelle,32
+Moricq,46.396209,-1.374028,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,208
+Ker Châlon,46.71658,-2.341046,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,97
+Luçon,46.45,-1.166667,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,8
+Ribérou,45.6755,-0.935826,Marennes,Saintonge,Marennes,La Rochelle,470
+Les Sables-d'Olonne,46.5,-1.783333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,323
+île d'Oléron,45.933333,-1.3,Oléron,Saintonge,Marennes,La Rochelle,405
+La Perrotine,45.964614,-1.243436,Marennes,Saintonge,Marennes,La Rochelle,100
+Ars-en-Ré,46.216667,-1.516667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,337
+La Tremblade,45.766667,-1.133333,Marennes,Saintonge,Marennes,La Rochelle,29
+Champagné-les-Marais,46.366667,-1.133333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,10
+La Tranche-sur-Mer,46.333333,-1.433333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,31
+Saint-Gilles-sur-Vie,46.697882,-1.945124,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,131
+La Flotte-en-Ré,46.188459,-1.328716,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,227
+Le Chapus,45.850601,-1.15325,Marennes,Saintonge,Marennes,La Rochelle,14
+Saintes,45.75,-0.633333,Marennes,Saintonge,Marennes,La Rochelle,6
+Mortagne,45.483333,-0.783333,Marennes,Saintonge,Marennes,La Rochelle,17
+Saint-Denis d'Oléron,46.033333,-1.383333,Oléron,Saintonge,Marennes,La Rochelle,73
+Saint-Savinien,45.883333,-0.683333,Marennes,Saintonge,Marennes,La Rochelle,33
+île d'Yeu,46.716667,-2.333333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,31
+Dercie,45.707894,-0.937643,Marennes,Saintonge,Marennes,La Rochelle,7
+mer des Pertuis,46.044980, -1.204802,La Rochelle,Aunis,La Rochelle,La Rochelle,8
+Esnandes,46.25,-1.083333,La Rochelle,Aunis,La Rochelle,La Rochelle,39
+île d'Aix,46.0125,-1.175,La Rochelle,Aunis,La Rochelle,La Rochelle,1
+Talmont,46.466277,-1.618967,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,1
+La Barre-de-Monts,46.88487,-2.122107,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,2
+l'Aiguillon,46.333333,-1.3,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,11
+La Couarde,46.2,-1.4,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,3
+Soubise,45.933333,-1,Marennes,Aunis,La Rochelle,La Rochelle,43
+Martrou,45.91367,-0.959895,Marennes,Saintonge,Marennes,La Rochelle,1
+Rivedoux,46.166667,-1.266667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,1
+Mornac,45.716667,-1.033333,Marennes,Saintonge,Marennes,La Rochelle,1
+Port-d'Envaux,45.833333,-0.683333,Marennes,Saintonge,Marennes,La Rochelle,17
+Loix,46.233333,-1.416667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,7
+Fouras,45.989007,-1.095572,La Rochelle,Aunis,La Rochelle,La Rochelle,3
+Avallon,45.74369849847762, -1.1089594426355542,Marennes,Saintonge,Marennes,La Rochelle,1
+Le Plomb,46.2,-1.2,La Rochelle,Aunis,La Rochelle,La Rochelle,12
+Bourcefranc ,45.850003,-1.142263,Marennes,Saintonge,Marennes,La Rochelle,3
+Chaillevette,45.733333,-1.05,Marennes,Saintonge,Marennes,La Rochelle,2
+pertuis Breton,46.25,-1.366667,Alligre,Aunis,La Rochelle,La Rochelle,2
+Hors du Pertuis,46.347308, -1.702029,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,2
+Croix-de-Vie,46.7,-1.95,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,1
+Taillebourg,45.833333,-0.65,Marennes,Saintonge,Marennes,La Rochelle,4
+Charron,46.283333,-1.1,Alligre,Aunis,La Rochelle,La Rochelle,1

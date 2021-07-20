@@ -74,8 +74,8 @@ const Bureau = ({
         </span>
       </foreignObject>
       <radialGradient id={`bureau-${index}`}>
-        <stop offset="20%" stop-color={colorPalettes.customs_office[datum.name]} />
-        <stop offset="100%" stop-color="rgba(51,109,124,0)" />
+        <stop offset="20%" stopColor={colorPalettes.customs_office[datum.name]} />
+        <stop offset="100%" stopColor="rgba(51,109,124,0)" />
       </radialGradient>
     </animated.g>
   )

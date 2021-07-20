@@ -271,7 +271,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               },
               {
                 type: 'points',
-                data: datasets['ports_locations_data.csv'],
+                data: datasets['ports_locations_data_intro.csv'],
                 color: {
                   field: 'province',
                   title: 'Province du port',

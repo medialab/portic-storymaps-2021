@@ -178,8 +178,16 @@ with open(OUTPUT1, "w", newline='') as csvfile:
 
     writer.writeheader()
     for port in ports.values():
-        writer.writerow({'port': port["port"], 'nb_pointcalls_out': port["nb_pointcalls_out"], 'mean_tonnage': port["mean_tonnage"],
-                        'cumulated_tonnage': port["cumulated_tonnage"], 'latitude': port["latitude"], 'longitude': port["longitude"], 'customs_office': port["customs_office"]})
+        writer.writerow({
+          'port': port["port"], 
+          'nb_pointcalls_out': port["nb_pointcalls_out"], 
+          'mean_tonnage': port["mean_tonnage"],
+          'cumulated_tonnage': port["cumulated_tonnage"], 
+          'latitude': port["latitude"], 
+          'longitude': port["longitude"], 
+          'customs_office': 
+          port["customs_office"]
+        })
 
 
 

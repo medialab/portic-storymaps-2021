@@ -370,8 +370,8 @@ def compute_region_ports_general (pointcalls):
   output = []
   for port in ports.values():
     output.append(port)
-  print("compute ports_locations_data.csv")
-  write_csv("ports_locations_data.csv", output)
+  print("compute ports_locations_data_intro.csv")
+  write_csv("ports_locations_data_intro.csv", output)
 
 def compute_flows_from_boats_of_la_rochelle_1787(pointcalls_out, pointcalls_in):
   admiralties = ["Sables-d'Olonne", "Les Sables d'Olonne", "Les Sables-d'Olonne", "La Rochelle", "Marennes"]

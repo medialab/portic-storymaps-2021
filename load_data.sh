@@ -16,6 +16,8 @@ curl -o data/navigo_all_pointcalls_1787.csv "data.portic.fr/api/pointcalls/?date
 echo "fetching latest navigo flows data"
 curl -o data/navigo_all_flows_1789.csv "data.portic.fr/api/flows/?date=1789&format=csv"
 curl -o data/navigo_all_flows_1787.csv "data.portic.fr/api/flows/?date=1787&format=csv"
+curl -o data/navigo_raw_flows_1787.csv "data.portic.fr/api/rawflows/?date=1787&format=csv"
+curl -o data/navigo_raw_flows_1789.csv "data.portic.fr/api/rawflows/?date=1789&format=csv"
 echo "fetching latest navigo pointcalls schema"
 curl -o data/portic_pointcalls_descriptions.json "http://data.portic.fr/api/fieldnames/?API=pointcalls"
 echo "fetching latest navigo flows schema"

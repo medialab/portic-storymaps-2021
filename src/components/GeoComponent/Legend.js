@@ -38,7 +38,7 @@ const Legend = ({
             <>
               {
                 hasSize ?
-                <div className="size-legend-container">
+                <div key={id} className="size-legend-container">
                   {/* <h6 className="legend-title">Taille des cercles</h6> */}
                   <div className="size-legend-item">
                   <span className="size-icon-container">
@@ -54,7 +54,7 @@ const Legend = ({
               }
               {
                 hasColors ?
-                <div className="color-legend-container">
+                <div key={id + 'b'} className="color-legend-container">
                   <h6 className="legend-title">{layer.color.title || layer.color.field}</h6>
                   <ul className="modalities-list">
                     {

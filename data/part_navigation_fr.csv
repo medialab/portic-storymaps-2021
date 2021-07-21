@@ -1,37 +1,37 @@
 port,latitude,longitude,tonnage,tonnage_french,tonnage_foreign,tonnage_part_of_french
 La Rochelle,46.166667,-1.15,48.9,41899,6976,75% ou plus
-Seudre,45.8,-1.15,1.9,448,1402,moins de 75%
-Tonnay-Charente,45.95,-0.9,28.0,21051,6907,75% ou plus
-Beauvoir-sur-Mer,46.916667,-2.05,4.2,3631,543,75% ou plus
 Marennes,45.816667,-1.116667,90.4,80432,9929,75% ou plus
-île de Bouin,46.975134,-1.998682,4.0,3673,372,75% ou plus
-Le Château-d'Oléron,45.9,-1.2,0.6,588,43,75% ou plus
+Beauvoir-sur-Mer,46.916667,-2.05,4.2,3631,543,75% ou plus
+Seudre,45.8,-1.15,1.9,448,1402,moins de 75%
 Brouage ,45.866667,-1.066667,0.2,0,203,moins de 75%
+île de Bouin,46.975134,-1.998682,4.0,3673,372,75% ou plus
+Tonnay-Charente,45.95,-0.9,28.0,21051,6907,75% ou plus
+Noirmoutier,47,-2.25,12.6,7437,5202,moins de 75%
 Saint-Michel-en-l'Herm,46.35,-1.25,0.6,532,38,75% ou plus
+Rochefort,45.943666,-0.97043,25.6,16562,9004,moins de 75%
+Le Château-d'Oléron,45.9,-1.2,0.6,588,43,75% ou plus
+Ars-en-Ré,46.216667,-1.516667,20.4,9165,11192,moins de 75%
 Saint-Martin-de-Ré,46.2,-1.366667,16.2,10312,5936,moins de 75%
 Les Sables-d'Olonne,46.5,-1.783333,7.9,7839,40,75% ou plus
-Ribérou,45.6755,-0.935826,6.6,6484,105,75% ou plus
-Ars-en-Ré,46.216667,-1.516667,20.4,9165,11192,moins de 75%
 Marans,46.312468,-0.995682,13.3,12875,418,75% ou plus
 Champagné-les-Marais,46.366667,-1.133333,0.0,27,0,100%
-Rochefort,45.943666,-0.97043,25.6,16562,9004,moins de 75%
-Noirmoutier,47,-2.25,12.6,7437,5202,moins de 75%
+Ribérou,45.6755,-0.935826,6.6,6484,105,75% ou plus
+La Perrotine,45.964614,-1.243436,1.5,1442,16,75% ou plus
+Royan,45.633333,-1.033333,0.4,438,0,100%
+Saint-Gilles-sur-Vie,46.697882,-1.945124,2.8,2765,75,75% ou plus
 La Tranche-sur-Mer,46.333333,-1.433333,0.3,276,38,75% ou plus
 Moricq,46.396209,-1.374028,2.4,2379,36,75% ou plus
-La Perrotine,45.964614,-1.243436,1.5,1442,16,75% ou plus
-Saint-Gilles-sur-Vie,46.697882,-1.945124,2.8,2765,75,75% ou plus
-La Flotte-en-Ré,46.188459,-1.328716,0.1,93,0,100%
 Mortagne,45.483333,-0.783333,0.6,367,228,moins de 75%
-Royan,45.633333,-1.033333,0.4,438,0,100%
+Esnandes,46.25,-1.083333,0.0,35,0,100%
 île d'Oléron,45.933333,-1.3,0.1,70,0,100%
 Saint-Denis d'Oléron,46.033333,-1.383333,1.4,1369,16,75% ou plus
 Soubise,45.933333,-1,0.2,187,0,100%
-Esnandes,46.25,-1.083333,0.0,35,0,100%
+La Flotte-en-Ré,46.188459,-1.328716,0.1,93,0,100%
 Ker Châlon,46.71658,-2.341046,0.1,100,0,100%
 l'Aiguillon,46.333333,-1.3,0.0,12,0,100%
 La Tremblade,45.766667,-1.133333,0.0,8,0,100%
 île d'Yeu,46.716667,-2.333333,0.0,2,0,100%
 mer des Pertuis,46.044980, -1.204802,0.0,8,0,100%
-île de Ré,46.2,-1.416667,0.0,15,0,100%
 Martrou,45.91367,-0.959895,0.0,36,0,100%
 Le Chapus,45.850601,-1.15325,0.0,6,0,100%
+île de Ré,46.2,-1.416667,0.0,15,0,100%

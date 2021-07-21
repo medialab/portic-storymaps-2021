@@ -856,6 +856,7 @@ button.is-active {
       top: $medium-gutter * 3;
       width: 50vw;
       height: calc(100vh - #{$header_height * 1.5});
+      pointer-events: none;
       &.is-fixed {
         top: $header_height * 1.5;
         position: fixed;
@@ -891,6 +892,7 @@ button.is-active {
       // bottom: $medium-gutter;
       width: 50vw;
       // border: 1px solid red;
+      pointer-events: all;
       padding: $medium-gutter;
       box-sizing: border-box;
       &.is-empty {

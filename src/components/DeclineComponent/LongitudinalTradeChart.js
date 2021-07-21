@@ -250,7 +250,7 @@ const LongitudinalTradeChart = ({
             annotations
               .filter(({ startYear: aStartYear, endYear: aEndYear }) => aStartYear >= startYear && aEndYear <= endYear)
               .map((annotation, annotationIndex) => {
-                const { startYear, endYear: initialEndYear, label, row = 0, labelPosition = 'right' } = annotation;
+                const { startYear, endYear: initialEndYear } = annotation;
                 const endYear = initialEndYear + 1;
                 return (
                   <g className="annotation" key={annotationIndex}>
@@ -280,54 +280,6 @@ const LongitudinalTradeChart = ({
                       opacity={.4}
                       strokeDasharray={'4,2'}
                     />
-                    {
-                      labelPosition === 'right' ?
-                        <>
-                          <line
-                            x1={xBand(endYear) + 20}
-                            x2={xBand(endYear) + 10}
-                            y1={margins.top + 7.5 + row * 20}
-                            y2={margins.top + 7.5 + row * 20}
-                            stroke="grey"
-                            marker-end="url(#arrowhead)"
-                          />
-                          <text
-                            x={xBand(endYear) + 22}
-                            y={margins.top + 10 + row * 20}
-                            fontSize={'.5rem'}
-                            fill="grey"
-                          >
-                            {label}
-                          </text>
-                        </>
-                        :
-                        <>
-                          <line
-                            x1={xBand(startYear) - 20}
-                            x2={xBand(startYear) - 10}
-                            y1={margins.top + 7.5 + row * 20}
-                            y2={margins.top + 7.5 + row * 20}
-                            stroke="grey"
-                            marker-end="url(#arrowhead)"
-                          />
-                          <text
-                            x={xBand(startYear) - 22}
-                            y={margins.top + 10 + row * 20}
-                            fontSize={'.5rem'}
-                            textAnchor={'end'}
-                            fill="grey"
-                          >
-                            {label}
-                          </text>
-                        </>
-                    }
-
-                    <defs>
-                      <marker id="arrowhead" markerWidth="5" markerHeight="5"
-                        refX="0" refY="2.5" orient="auto">
-                        <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
-                      </marker>
-                    </defs>
                     <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
                       <path d="M-1,1 l2,-2
                           M0,4 l4,-4
@@ -427,13 +379,22 @@ const LongitudinalTradeChart = ({
                 }
                 return -1;
               })
-              .filter((d, index) => {
-                const next = data[index + 1];
-                return index < data.length - 1
-                  && (fillGaps ? true : +next.year === +d.year + 1)
-              })
+              // .filter((d, index) => {
+              //   const next = data[index + 1];
+              //   if (+d.year === 1787 && !barTooltipFn) {
+              //     console.log('2 next for 1787', d.year, +next.year, next)
+              //   }
+              //   return index < data.length - 1
+              //     && (fillGaps ? true : +next.year === +d.year + 1)
+              // })
               .map((datum, index) => {
                 const next = data[index + 1];
+                if (index === data.length - 1 || fillGaps ? false : +next.year !== +datum.year + 1) {
+                  return null;
+                }
+                if (!next) {
+                  return null;
+                }
                 const x1 = xBand(+datum.year) + xBand.bandwidth() / 2;
                 const x2 = xBand(+next.year) + xBand.bandwidth() / 2;
                 const y1 = yAbsoluteScale(+datum[absoluteField]);
@@ -465,6 +426,76 @@ const LongitudinalTradeChart = ({
               })
           }
 
+        </g>
+
+        <g className="annotations-container">
+          {
+            annotations
+              .filter(({ startYear: aStartYear, endYear: aEndYear }) => aStartYear >= startYear && aEndYear <= endYear)
+              .map((annotation, annotationIndex) => {
+                const { startYear, endYear: initialEndYear, label, row = 0, labelPosition = 'right' } = annotation;
+                const endYear = initialEndYear + 1;
+                return (
+                  <g className="annotation" key={annotationIndex}>
+                    {
+                      labelPosition === 'right' ?
+                        <>
+                          <line
+                            x1={xBand(endYear) + 20}
+                            x2={xBand(endYear) + 10}
+                            y1={margins.top + 7.5 + row * 20}
+                            y2={margins.top + 7.5 + row * 20}
+                            stroke="grey"
+                            marker-end="url(#arrowhead)"
+                          />
+                          <text
+                            x={xBand(endYear) + 22}
+                            y={margins.top + 10 + row * 20}
+                            fontSize={'.5rem'}
+                            fill="grey"
+                          >
+                            {label}
+                          </text>
+                        </>
+                        :
+                        <>
+                          <line
+                            x1={xBand(startYear) - 20}
+                            x2={xBand(startYear) - 10}
+                            y1={margins.top + 7.5 + row * 20}
+                            y2={margins.top + 7.5 + row * 20}
+                            stroke="grey"
+                            marker-end="url(#arrowhead)"
+                          />
+                          <text
+                            x={xBand(startYear) - 22}
+                            y={margins.top + 10 + row * 20}
+                            fontSize={'.5rem'}
+                            textAnchor={'end'}
+                            fill="grey"
+                          >
+                            {label}
+                          </text>
+                        </>
+                    }
+
+                    <defs>
+                      <marker id="arrowhead" markerWidth="5" markerHeight="5"
+                        refX="0" refY="2.5" orient="auto">
+                        <polygon stroke="grey" fill="transparent" points="0 0, 5 2.5, 0 5" />
+                      </marker>
+                    </defs>
+                    <pattern id="diagonalHatch" patternUnits="userSpaceOnUse" width="4" height="4">
+                      <path d="M-1,1 l2,-2
+                          M0,4 l4,-4
+                          M3,5 l2,-2"
+                        style={{ stroke: 'grey', opacity: .5, strokeWidth: 1 }} />
+                    </pattern>
+
+                  </g>
+                )
+              })
+          }
         </g>
 
       </svg>

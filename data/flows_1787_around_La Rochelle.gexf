@@ -362,8 +362,8 @@
           <attvalue for="0" value="Marennes" />
           <attvalue for="1" value="interne à la région" />
           <attvalue for="2" value="21" />
-          <attvalue for="3" value="0.09301168297941453" />
-          <attvalue for="4" value="0.07817553480662764" />
+          <attvalue for="3" value="0.21726384901507456" />
+          <attvalue for="4" value="0.8392263491730676" />
         </attvalues>
       </node>
       <node id="Molène" label="Molène">

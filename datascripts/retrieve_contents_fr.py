@@ -19,7 +19,7 @@ def prepare_contents(str):
   center_mode = False
   # split parts
   for line in lines:
-    line = line.replace('https://www.google.com/url?q=', '')
+    # line = line.replace('https://www.google.com/url?q=', '')
     if line.startswith('# '):
       if center_mode == True:
         current_part.append('</div></div>')
@@ -41,6 +41,8 @@ def prepare_contents(str):
       line = ''
     elif line.startswith('Published by <a href="//docs.google.com/"'):
       line = ''
+    line = re.sub(r"\(https://www\.google\.com/url\?q=(.*)&amp;sa=([^)]*)\)", r"(\1)", line)
+    line = re.sub(r"\[(.*)\]\((.*)\)", r'<a target="blank" rel="noopener" href="\2">\1</a>', line)
     current_part.append(line)
   if center_mode == True:
     current_part.append('</div></div>')
@@ -73,11 +75,11 @@ with requests.Session() as s:
     f.close()
 
 # get intro
-with requests.Session() as s:
-  download = s.get(GDOC_INTRO_URL)
-  decoded_content = download.content.decode('utf-8')
-  intro = prepare_contents(decoded_content)[0]
-  md_path = TARGET_BASE + 'introduction.mdx'
-  f = open(md_path, "w")
-  f.write(intro)
-  f.close()
+# with requests.Session() as s:
+#   download = s.get(GDOC_INTRO_URL)
+#   decoded_content = download.content.decode('utf-8')
+#   intro = prepare_contents(decoded_content)[0]
+#   md_path = TARGET_BASE + 'introduction.mdx'
+#   f = open(md_path, "w")
+#   f.write(intro)
+#   f.close()

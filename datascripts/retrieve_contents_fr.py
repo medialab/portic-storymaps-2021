@@ -41,8 +41,14 @@ def prepare_contents(str):
       line = ''
     elif line.startswith('Published by <a href="//docs.google.com/"'):
       line = ''
+    if ('uniformisation des variations orthographiques' in line):
+      print(line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=(.*)&amp;sa=([^)]*)\)", r"(\1)", line)
-    line = re.sub(r"\[(.*)\]\((.*)\)", r'<a target="blank" rel="noopener" href="\2">\1</a>', line)
+    line = re.sub(r"\(https://www\.google\.com/url\?q=(.*)\)", r"(\1)", line)
+    # line = re.sub(r"\[(.*)\]\((.*)\)", r'<a target="blank" rel="noopener" href="\2">\1</a>', line)
+    if ('uniformisation des variations orthographiques' in line):
+      print('***')
+      print(line)
     current_part.append(line)
   if center_mode == True:
     current_part.append('</div></div>')

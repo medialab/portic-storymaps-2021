@@ -493,6 +493,10 @@ svg text {
     padding: 0 $medium-gutter 0 $medium_gutter * 4;
     margin-bottom: $medium-gutter * 15;
 
+    a {
+      color: inherit;
+    }
+
     p,ul,ol,blockquote {
       font-size: 1.1rem;
       @include tablet {
@@ -770,6 +774,10 @@ button.is-active {
         &.is-devmode {
           max-width: 40vw;
         }
+      }
+
+      a{
+        color: inherit;
       }
       p,ul,ol,blockquote {
         font-size: 1.1rem;

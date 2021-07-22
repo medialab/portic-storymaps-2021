@@ -7,6 +7,7 @@ More to see here soon ...
 
 ```bash
 yarn install
+pip install -r requirements.txt
 yarn data:update
 ```
 

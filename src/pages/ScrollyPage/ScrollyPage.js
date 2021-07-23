@@ -113,7 +113,6 @@ const ScrollyPage = ({
     setVisualizations(newVis)
   }
   const onBlockClick = (id, ref) => {
-    console.log('on block click', {id, ref})
     const { y: initialVisY } = ref.current.getBoundingClientRect();
     const visY = initialVisY + window.scrollY;
     const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
@@ -122,7 +121,6 @@ const ScrollyPage = ({
       top: scrollTo,
       behavior: 'smooth'
     });
-
   }
   return (
     <VisualizationControlContext.Provider

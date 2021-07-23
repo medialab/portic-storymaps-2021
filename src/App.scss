@@ -571,6 +571,7 @@ svg text {
   font-family: $font-family-1;
   padding: $small-gutter;
   font-size: 0.7rem;
+  cursor: pointer;
   // opacity: 0;
   &.is-active {
     background: $color-accent-background;

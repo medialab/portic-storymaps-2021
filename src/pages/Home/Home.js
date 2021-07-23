@@ -147,7 +147,14 @@ function Home({ match: {
     setVisualizations(newVis)
   }
   const onBlockClick = (id, ref) => {
-    // console.log('on block click', { id, ref })
+    const { y: initialVisY } = ref.current.getBoundingClientRect();
+    const visY = initialVisY + window.scrollY;
+    const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
+    const scrollTo = visY - DISPLACE_Y * .9;
+    window.scrollTo({
+      top: scrollTo,
+      behavior: 'smooth'
+    });
   }
   const onClickOnStart = () => {
     if (introRef && introRef.current) {

@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2021-07-27">
-    <creator>NetworkX 2.5.1</creator>
-  </meta>
-  <graph defaultedgetype="directed" mode="static" name="">
+<gexf xmlns="http://www.gexf.net/1.1draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:viz="http://www.gexf.net/1.1draft/viz" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance" version="1.1">
+  <graph defaultedgetype="directed" mode="static">
     <attributes mode="static" class="edge">
       <attribute id="5" title="tonnage" type="long" />
     </attributes>
@@ -28,7 +25,7 @@
         <attvalues>
           <attvalue for="0" value="Bordeaux" />
           <attvalue for="1" value="interne à la région" />
-          <attvalue for="2" value="279" />
+          <attvalue for="2" value="280" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -46,27 +43,9 @@
         <attvalues>
           <attvalue for="0" value="Dunkerque" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="5" />
+          <attvalue for="2" value="3" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Marennes" label="Marennes">
-        <attvalues>
-          <attvalue for="0" value="Marennes" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="6" />
-          <attvalue for="3" value="45.816667" />
-          <attvalue for="4" value="-1.116667" />
-        </attvalues>
-      </node>
-      <node id="Granville" label="Granville">
-        <attvalues>
-          <attvalue for="0" value="Granville" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="5" />
-          <attvalue for="3" value="44.633333" />
-          <attvalue for="4" value="-1.15" />
         </attvalues>
       </node>
       <node id="Brest" label="Brest">
@@ -82,18 +61,18 @@
         <attvalues>
           <attvalue for="0" value="Bordeaux" />
           <attvalue for="1" value="interne à la région" />
-          <attvalue for="2" value="44" />
-          <attvalue for="3" value="45.133333" />
-          <attvalue for="4" value="-0.666667" />
+          <attvalue for="2" value="46" />
+          <attvalue for="3" value="45.816667" />
+          <attvalue for="4" value="-1.116667" />
         </attvalues>
       </node>
-      <node id="Le Pouliguen" label="Le Pouliguen">
+      <node id="Nantes" label="Nantes">
         <attvalues>
           <attvalue for="0" value="Nantes" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="47.266667" />
-          <attvalue for="4" value="-2.433333" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="47.216667" />
+          <attvalue for="4" value="-1.55" />
         </attvalues>
       </node>
       <node id="Lannion" label="Lannion">
@@ -110,24 +89,6 @@
           <attvalue for="0" value="Morlaix" />
           <attvalue for="1" value="externe à la région" />
           <attvalue for="2" value="2" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Rouen" label="Rouen">
-        <attvalues>
-          <attvalue for="0" value="Rouen" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="5" />
-          <attvalue for="3" value="49.433333" />
-          <attvalue for="4" value="1.083333" />
-        </attvalues>
-      </node>
-      <node id="Le Havre" label="Le Havre">
-        <attvalues>
-          <attvalue for="0" value="Le Havre" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="4" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -159,11 +120,29 @@
           <attvalue for="4" value="1.833333" />
         </attvalues>
       </node>
+      <node id="Saint Valéry sur Somme" label="Saint Valéry sur Somme">
+        <attvalues>
+          <attvalue for="0" value="Saint-Valéry-sur-Somme" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="50.183333" />
+          <attvalue for="4" value="1.633333" />
+        </attvalues>
+      </node>
+      <node id="Le Havre" label="Le Havre">
+        <attvalues>
+          <attvalue for="0" value="Le Havre" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="5" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
       <node id="Dieppe" label="Dieppe">
         <attvalues>
           <attvalue for="0" value="Dieppe" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
+          <attvalue for="2" value="3" />
           <attvalue for="3" value="49.933333" />
           <attvalue for="4" value="1.083333" />
         </attvalues>
@@ -186,31 +165,22 @@
           <attvalue for="4" value="-1.116667" />
         </attvalues>
       </node>
-      <node id="Nantes" label="Nantes">
+      <node id="Marennes" label="Marennes">
         <attvalues>
-          <attvalue for="0" value="Nantes" />
+          <attvalue for="0" value="Marennes" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="5" />
-          <attvalue for="3" value="47.216667" />
-          <attvalue for="4" value="-1.55" />
+          <attvalue for="2" value="6" />
+          <attvalue for="3" value="45.816667" />
+          <attvalue for="4" value="-1.116667" />
         </attvalues>
       </node>
       <node id="Saint Gilles sur Vie" label="Saint Gilles sur Vie">
         <attvalues>
           <attvalue for="0" value="Sables-d’Olonne" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="4" />
           <attvalue for="3" value="46.697882" />
           <attvalue for="4" value="-1.945124" />
-        </attvalues>
-      </node>
-      <node id="Beauvoir-sur-Mer" label="Beauvoir-sur-Mer">
-        <attvalues>
-          <attvalue for="0" value="Sables-d’Olonne" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="46.916667" />
-          <attvalue for="4" value="-2.05" />
         </attvalues>
       </node>
       <node id="Santander" label="Santander">
@@ -229,6 +199,15 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Rouen" label="Rouen">
+        <attvalues>
+          <attvalue for="0" value="Rouen" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="49.433333" />
+          <attvalue for="4" value="1.083333" />
         </attvalues>
       </node>
       <node id="Redon" label="Redon">
@@ -276,15 +255,6 @@
           <attvalue for="4" value="-4.25" />
         </attvalues>
       </node>
-      <node id="Ile de Bouin" label="Ile de Bouin">
-        <attvalues>
-          <attvalue for="0" value="Sables-d’Olonne" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
       <node id="Lorient" label="Lorient">
         <attvalues>
           <attvalue for="0" value="Lorient" />
@@ -312,15 +282,6 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Saint Valéry sur Somme" label="Saint Valéry sur Somme">
-        <attvalues>
-          <attvalue for="0" value="Saint-Valéry-sur-Somme" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="50.183333" />
-          <attvalue for="4" value="1.633333" />
-        </attvalues>
-      </node>
       <node id="Dublin" label="Dublin">
         <attvalues>
           <attvalue for="0" value="" />
@@ -339,6 +300,15 @@
           <attvalue for="4" value="-3.966667" />
         </attvalues>
       </node>
+      <node id="La Tremblade" label="La Tremblade">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
       <node id="Pointe à Pitre" label="Pointe à Pitre">
         <attvalues>
           <attvalue for="0" value="Pointe-à-Pitre" />
@@ -348,11 +318,11 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Ars en Ré" label="Ars en Ré">
+      <node id="Détroit de Gibraltar" label="Détroit de Gibraltar">
         <attvalues>
-          <attvalue for="0" value="La Rochelle" />
+          <attvalue for="0" value="" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
+          <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -361,7 +331,7 @@
         <attvalues>
           <attvalue for="0" value="La Hougue" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="4" />
           <attvalue for="3" value="45.133333" />
           <attvalue for="4" value="-0.666667" />
         </attvalues>
@@ -379,7 +349,7 @@
         <attvalues>
           <attvalue for="0" value="Saint-Malo" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="8" />
+          <attvalue for="2" value="7" />
           <attvalue for="3" value="48.65" />
           <attvalue for="4" value="-2.016667" />
         </attvalues>
@@ -388,7 +358,7 @@
         <attvalues>
           <attvalue for="0" value="Honfleur" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="49.420164" />
           <attvalue for="4" value="0.231886" />
         </attvalues>
@@ -406,7 +376,7 @@
         <attvalues>
           <attvalue for="0" value="La Rochelle" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="4" />
+          <attvalue for="2" value="5" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -429,6 +399,15 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
+      <node id="Ars en Ré" label="Ars en Ré">
+        <attvalues>
+          <attvalue for="0" value="La Rochelle" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="46.216667" />
+          <attvalue for="4" value="-1.516667" />
+        </attvalues>
+      </node>
       <node id="Port Bail" label="Port Bail">
         <attvalues>
           <attvalue for="0" value="Port-Bail" />
@@ -443,8 +422,35 @@
           <attvalue for="0" value="Bordeaux" />
           <attvalue for="1" value="interne à la région" />
           <attvalue for="2" value="25" />
+          <attvalue for="3" value="45.943666" />
+          <attvalue for="4" value="-0.97043" />
+        </attvalues>
+      </node>
+      <node id="Granville" label="Granville">
+        <attvalues>
+          <attvalue for="0" value="Granville" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="4" />
           <attvalue for="3" value="44.633333" />
           <attvalue for="4" value="-1.15" />
+        </attvalues>
+      </node>
+      <node id="Charente" label="Charente">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="45.95" />
+          <attvalue for="4" value="-0.9" />
+        </attvalues>
+      </node>
+      <node id="Rochefort" label="Rochefort">
+        <attvalues>
+          <attvalue for="0" value="La Rochelle" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="4" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
       <node id="La Rochelle" label="La Rochelle">
@@ -456,38 +462,11 @@
           <attvalue for="4" value="-1.15" />
         </attvalues>
       </node>
-      <node id="La Tremblade" label="La Tremblade">
-        <attvalues>
-          <attvalue for="0" value="Marennes" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Boulogne sur Mer" label="Boulogne sur Mer">
-        <attvalues>
-          <attvalue for="0" value="Boulogne" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Saint Pierre et Miquelon" label="Saint Pierre et Miquelon">
-        <attvalues>
-          <attvalue for="0" value="Saint-Pierre-et-Miquelon" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="46.833333" />
-          <attvalue for="4" value="-56.333333" />
-        </attvalues>
-      </node>
       <node id="Le Conquet" label="Le Conquet">
         <attvalues>
           <attvalue for="0" value="Brest" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="48.366667" />
           <attvalue for="4" value="-4.766667" />
         </attvalues>
@@ -605,8 +584,8 @@
           <attvalue for="0" value="Isigny" />
           <attvalue for="1" value="externe à la région" />
           <attvalue for="2" value="4" />
-          <attvalue for="3" value="49.316667" />
-          <attvalue for="4" value="-1.1" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
       <node id="Argenton" label="Argenton">
@@ -618,29 +597,20 @@
           <attvalue for="4" value="-4.75" />
         </attvalues>
       </node>
-      <node id="Rochefort" label="Rochefort">
-        <attvalues>
-          <attvalue for="0" value="La Rochelle" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="4" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Quillebeuf" label="Quillebeuf">
-        <attvalues>
-          <attvalue for="0" value="Quillebeuf" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="49.466667" />
-          <attvalue for="4" value="0.516667" />
-        </attvalues>
-      </node>
       <node id="Cote d' or" label="Cote d' or">
         <attvalues>
           <attvalue for="0" value="" />
           <attvalue for="1" value="externe à la région" />
           <attvalue for="2" value="1" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Chaillevette" label="Chaillevette">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="3" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -681,6 +651,33 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
+      <node id="Saint Pierre et Miquelon" label="Saint Pierre et Miquelon">
+        <attvalues>
+          <attvalue for="0" value="Saint-Pierre-et-Miquelon" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="46.833333" />
+          <attvalue for="4" value="-56.333333" />
+        </attvalues>
+      </node>
+      <node id="Gravelines" label="Gravelines">
+        <attvalues>
+          <attvalue for="0" value="Dunkerque" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Boulogne sur Mer" label="Boulogne sur Mer">
+        <attvalues>
+          <attvalue for="0" value="Boulogne" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
       <node id="La Martinique" label="La Martinique">
         <attvalues>
           <attvalue for="0" value="" />
@@ -694,7 +691,7 @@
         <attvalues>
           <attvalue for="0" value="Saint-Brieuc" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -748,18 +745,9 @@
         <attvalues>
           <attvalue for="0" value="Brest" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="1" />
           <attvalue for="3" value="48.733333" />
           <attvalue for="4" value="-3.983333" />
-        </attvalues>
-      </node>
-      <node id="Noirmoutier" label="Noirmoutier">
-        <attvalues>
-          <attvalue for="0" value="Sables-d’Olonne" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="4" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
       <node id="Norkoping [Norrköping]" label="Norkoping [Norrköping]">
@@ -769,15 +757,6 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Chaillevette" label="Chaillevette">
-        <attvalues>
-          <attvalue for="0" value="Marennes" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="44.916667" />
-          <attvalue for="4" value="-0.233333" />
         </attvalues>
       </node>
       <node id="Wismar" label="Wismar">
@@ -825,6 +804,15 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
+      <node id="Royan" label="Royan">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="45.633333" />
+          <attvalue for="4" value="-1.033333" />
+        </attvalues>
+      </node>
       <node id="Barfleur" label="Barfleur">
         <attvalues>
           <attvalue for="0" value="Barfleur" />
@@ -834,15 +822,6 @@
           <attvalue for="4" value="-1.25" />
         </attvalues>
       </node>
-      <node id="Aber Ildut" label="Aber Ildut">
-        <attvalues>
-          <attvalue for="0" value="Brest" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="4" />
-          <attvalue for="3" value="45.133333" />
-          <attvalue for="4" value="-0.666667" />
-        </attvalues>
-      </node>
       <node id="Fécamp" label="Fécamp">
         <attvalues>
           <attvalue for="0" value="Fécamp" />
@@ -850,6 +829,15 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="49.75" />
           <attvalue for="4" value="0.366667" />
+        </attvalues>
+      </node>
+      <node id="Le Croisic" label="Le Croisic">
+        <attvalues>
+          <attvalue for="0" value="Nantes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="47.3" />
+          <attvalue for="4" value="-2.516667" />
         </attvalues>
       </node>
       <node id="Aber Wrac' h" label="Aber Wrac' h">
@@ -915,13 +903,13 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Charente" label="Charente">
+      <node id="Beauvoir-sur-Mer" label="Beauvoir-sur-Mer">
         <attvalues>
-          <attvalue for="0" value="Marennes" />
+          <attvalue for="0" value="Sables-d’Olonne" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
-          <attvalue for="3" value="45.95" />
-          <attvalue for="4" value="-0.9" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="46.916667" />
+          <attvalue for="4" value="-2.05" />
         </attvalues>
       </node>
       <node id="Mastrand" label="Mastrand">
@@ -949,6 +937,15 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Saint Denis [d' Oléron]" label="Saint Denis [d' Oléron]">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="46.033333" />
+          <attvalue for="4" value="-1.383333" />
         </attvalues>
       </node>
       <node id="Caverne" label="Caverne">
@@ -994,15 +991,6 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
-        </attvalues>
-      </node>
-      <node id="Moricq" label="Moricq">
-        <attvalues>
-          <attvalue for="0" value="Sables-d’Olonne" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="46.396209" />
-          <attvalue for="4" value="-1.374028" />
         </attvalues>
       </node>
       <node id="Pontusval" label="Pontusval">
@@ -1099,9 +1087,27 @@
         <attvalues>
           <attvalue for="0" value="Sables-d’Olonne" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="46.35" />
+          <attvalue for="4" value="-1.25" />
+        </attvalues>
+      </node>
+      <node id="Soubise" label="Soubise">
+        <attvalues>
+          <attvalue for="0" value="La Rochelle" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Noirmoutier" label="Noirmoutier">
+        <attvalues>
+          <attvalue for="0" value="Sables-d’Olonne" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="47" />
+          <attvalue for="4" value="-2.25" />
         </attvalues>
       </node>
       <node id="Malmoe" label="Malmoe">
@@ -1275,15 +1281,6 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Le Crotoy" label="Le Crotoy">
-        <attvalues>
-          <attvalue for="0" value="Abbeville" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="50.216667" />
-          <attvalue for="4" value="1.616667" />
-        </attvalues>
-      </node>
       <node id="Naples" label="Naples">
         <attvalues>
           <attvalue for="0" value="" />
@@ -1338,11 +1335,29 @@
           <attvalue for="4" value="-1.116667" />
         </attvalues>
       </node>
+      <node id="Aber Ildut" label="Aber Ildut">
+        <attvalues>
+          <attvalue for="0" value="Brest" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="3" />
+          <attvalue for="3" value="45.133333" />
+          <attvalue for="4" value="-0.666667" />
+        </attvalues>
+      </node>
+      <node id="La Perrotine" label="La Perrotine">
+        <attvalues>
+          <attvalue for="0" value="Marennes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="45.964614" />
+          <attvalue for="4" value="-1.243436" />
+        </attvalues>
+      </node>
       <node id="Le Chateau [d' Oléron]" label="Le Chateau [d' Oléron]">
         <attvalues>
           <attvalue for="0" value="Marennes" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
+          <attvalue for="2" value="1" />
           <attvalue for="3" value="45.9" />
           <attvalue for="4" value="-1.2" />
         </attvalues>
@@ -1354,15 +1369,6 @@
           <attvalue for="2" value="2" />
           <attvalue for="3" value="45.6755" />
           <attvalue for="4" value="-0.935826" />
-        </attvalues>
-      </node>
-      <node id="La Perrotine" label="La Perrotine">
-        <attvalues>
-          <attvalue for="0" value="Marennes" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="2" />
-          <attvalue for="3" value="45.964614" />
-          <attvalue for="4" value="-1.243436" />
         </attvalues>
       </node>
       <node id="Côte d' Afrique [de l' Ouest]" label="Côte d' Afrique [de l' Ouest]">
@@ -1379,6 +1385,15 @@
           <attvalue for="0" value="" />
           <attvalue for="1" value="externe à la région" />
           <attvalue for="2" value="1" />
+          <attvalue for="3" value="44.833333" />
+          <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Ile de Bouin" label="Ile de Bouin">
+        <attvalues>
+          <attvalue for="0" value="Sables-d’Olonne" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
         </attvalues>
@@ -1437,15 +1452,6 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Saint Denis [d' Oléron]" label="Saint Denis [d' Oléron]">
-        <attvalues>
-          <attvalue for="0" value="Marennes" />
-          <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="46.033333" />
-          <attvalue for="4" value="-1.383333" />
-        </attvalues>
-      </node>
       <node id="Georgetown" label="Georgetown">
         <attvalues>
           <attvalue for="0" value="" />
@@ -1473,13 +1479,13 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Le Croisic" label="Le Croisic">
+      <node id="Moricq" label="Moricq">
         <attvalues>
-          <attvalue for="0" value="Nantes" />
+          <attvalue for="0" value="Sables-d’Olonne" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="1" />
-          <attvalue for="3" value="47.3" />
-          <attvalue for="4" value="-2.516667" />
+          <attvalue for="2" value="2" />
+          <attvalue for="3" value="46.396209" />
+          <attvalue for="4" value="-1.374028" />
         </attvalues>
       </node>
       <node id="Quiberon" label="Quiberon">
@@ -1509,13 +1515,13 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
-      <node id="Détroit de Gibraltar" label="Détroit de Gibraltar">
+      <node id="Collioure" label="Collioure">
         <attvalues>
-          <attvalue for="0" value="" />
+          <attvalue for="0" value="Collioure" />
           <attvalue for="1" value="externe à la région" />
           <attvalue for="2" value="1" />
-          <attvalue for="3" value="44.833333" />
-          <attvalue for="4" value="-0.566667" />
+          <attvalue for="3" value="42.524957" />
+          <attvalue for="4" value="3.082595" />
         </attvalues>
       </node>
       <node id="Cap [Français]" label="Cap [Français]">
@@ -1855,7 +1861,7 @@
         <attvalues>
           <attvalue for="0" value="Brest" />
           <attvalue for="1" value="externe à la région" />
-          <attvalue for="2" value="3" />
+          <attvalue for="2" value="2" />
           <attvalue for="3" value="48.55" />
           <attvalue for="4" value="-4.7" />
         </attvalues>
@@ -1957,6 +1963,15 @@
           <attvalue for="2" value="1" />
           <attvalue for="3" value="44.833333" />
           <attvalue for="4" value="-0.566667" />
+        </attvalues>
+      </node>
+      <node id="Le Pouliguen" label="Le Pouliguen">
+        <attvalues>
+          <attvalue for="0" value="Nantes" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="47.266667" />
+          <attvalue for="4" value="-2.433333" />
         </attvalues>
       </node>
       <node id="Paimboeuf" label="Paimboeuf">
@@ -2139,6 +2154,15 @@
           <attvalue for="4" value="-0.566667" />
         </attvalues>
       </node>
+      <node id="Socoa [Ciboure]" label="Socoa [Ciboure]">
+        <attvalues>
+          <attvalue for="0" value="Bayonne" />
+          <attvalue for="1" value="externe à la région" />
+          <attvalue for="2" value="1" />
+          <attvalue for="3" value="43.383333" />
+          <attvalue for="4" value="-1.683333" />
+        </attvalues>
+      </node>
       <node id="Alexandrie" label="Alexandrie">
         <attvalues>
           <attvalue for="0" value="" />
@@ -2177,124 +2201,124 @@
       </node>
     </nodes>
     <edges>
-      <edge source="Bayonne" target="Bordeaux" id="0" weight="98">
+      <edge source="Bayonne" target="Bordeaux" id="0" weight="39">
         <attvalues>
-          <attvalue for="5" value="6976" />
+          <attvalue for="5" value="2797" />
         </attvalues>
       </edge>
-      <edge source="Bayonne" target="La Teste" id="1" weight="2">
+      <edge source="Bayonne" target="La Teste" id="1" weight="1">
         <attvalues>
-          <attvalue for="5" value="12" />
+          <attvalue for="5" value="6" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Sebastien" id="2" weight="33">
+      <edge source="Bordeaux" target="Saint Sebastien" id="2" weight="31">
         <attvalues>
-          <attvalue for="5" value="1498" />
+          <attvalue for="5" value="1415" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Granville" id="3" weight="47">
+      <edge source="Bordeaux" target="Lannion" id="3" weight="46">
         <attvalues>
-          <attvalue for="5" value="3241" />
+          <attvalue for="5" value="1636" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Lannion" id="4" weight="45">
+      <edge source="Bordeaux" target="Calais" id="4" weight="31">
         <attvalues>
-          <attvalue for="5" value="1601" />
+          <attvalue for="5" value="1524" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Le Havre" id="5" weight="230">
+      <edge source="Bordeaux" target="Le Havre" id="5" weight="117">
         <attvalues>
-          <attvalue for="5" value="21212" />
+          <attvalue for="5" value="10296" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Calais" id="6" weight="60">
+      <edge source="Bordeaux" target="Dieppe" id="6" weight="17">
         <attvalues>
-          <attvalue for="5" value="3487" />
+          <attvalue for="5" value="1240" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Dieppe" id="7" weight="31">
+      <edge source="Bordeaux" target="Cherbourg" id="7" weight="63">
         <attvalues>
-          <attvalue for="5" value="2230" />
+          <attvalue for="5" value="3434" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Cherbourg" id="8" weight="118">
+      <edge source="Bordeaux" target="Dunkerque" id="8" weight="124">
         <attvalues>
-          <attvalue for="5" value="5907" />
+          <attvalue for="5" value="8449" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Dunkerque" id="9" weight="254">
-        <attvalues>
-          <attvalue for="5" value="18392" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Santander" id="10" weight="41">
+      <edge source="Bordeaux" target="Santander" id="9" weight="41">
         <attvalues>
           <attvalue for="5" value="3449" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Amsterdam" id="11" weight="119">
+      <edge source="Bordeaux" target="Amsterdam" id="10" weight="119">
         <attvalues>
           <attvalue for="5" value="21873" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Redon" id="12" weight="208">
+      <edge source="Bordeaux" target="Redon" id="11" weight="204">
         <attvalues>
-          <attvalue for="5" value="7709" />
+          <attvalue for="5" value="7579" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Hambourg" id="13" weight="152">
+      <edge source="Bordeaux" target="Hambourg" id="12" weight="156">
         <attvalues>
-          <attvalue for="5" value="40523" />
+          <attvalue for="5" value="41353" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Bayonne" id="14" weight="129">
+      <edge source="Bordeaux" target="Bayonne" id="13" weight="62">
         <attvalues>
-          <attvalue for="5" value="7792" />
+          <attvalue for="5" value="3909" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Morlaix" id="15" weight="213">
+      <edge source="Bordeaux" target="Morlaix" id="14" weight="209">
         <attvalues>
-          <attvalue for="5" value="8563" />
+          <attvalue for="5" value="8348" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Copenhague" id="16" weight="21">
+      <edge source="Bordeaux" target="Copenhague" id="15" weight="20">
         <attvalues>
-          <attvalue for="5" value="3117" />
+          <attvalue for="5" value="2972" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Lorient" id="17" weight="549">
+      <edge source="Bordeaux" target="Lorient" id="16" weight="554">
         <attvalues>
-          <attvalue for="5" value="22641" />
+          <attvalue for="5" value="26303" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Rouen" id="18" weight="86">
+      <edge source="Bordeaux" target="Rouen" id="17" weight="69">
         <attvalues>
-          <attvalue for="5" value="8399" />
+          <attvalue for="5" value="6495" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Sables d' Olonne" id="19" weight="221">
+      <edge source="Bordeaux" target="Lisbonne" id="18" weight="34">
         <attvalues>
-          <attvalue for="5" value="10030" />
+          <attvalue for="5" value="3413" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Lisbonne" id="20" weight="29">
-        <attvalues>
-          <attvalue for="5" value="2748" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Dublin" id="21" weight="63">
+      <edge source="Bordeaux" target="Dublin" id="19" weight="63">
         <attvalues>
           <attvalue for="5" value="8262" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Pointe à Pitre" id="22" weight="3">
+      <edge source="Bordeaux" target="La Tremblade" id="20" weight="64">
+        <attvalues>
+          <attvalue for="5" value="3130" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Pointe à Pitre" id="21" weight="3">
         <attvalues>
           <attvalue for="5" value="629" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ars en Ré" id="23" weight="39">
+      <edge source="Bordeaux" target="Détroit de Gibraltar" id="22" weight="32">
         <attvalues>
-          <attvalue for="5" value="3850" />
+          <attvalue for="5" value="3866" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="La Hougue" id="23" weight="8">
+        <attvalues>
+          <attvalue for="5" value="472" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Bristol" id="24" weight="12">
@@ -2302,334 +2326,334 @@
           <attvalue for="5" value="1494" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Gilles sur Vie" id="25" weight="175">
+      <edge source="Bordeaux" target="Saint Gilles sur Vie" id="25" weight="27">
         <attvalues>
-          <attvalue for="5" value="8056" />
+          <attvalue for="5" value="971" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Malo" id="26" weight="367">
-        <attvalues>
-          <attvalue for="5" value="19605" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Honfleur" id="27" weight="12">
-        <attvalues>
-          <attvalue for="5" value="900" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Hull" id="28" weight="6">
+      <edge source="Bordeaux" target="Hull" id="26" weight="6">
         <attvalues>
           <attvalue for="5" value="937" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Halbourg" id="29" weight="1">
+      <edge source="Bordeaux" target="Halbourg" id="27" weight="1">
         <attvalues>
           <attvalue for="5" value="110" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Domingue" id="30" weight="136">
+      <edge source="Bordeaux" target="Saint Domingue" id="28" weight="136">
         <attvalues>
           <attvalue for="5" value="44533" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Brest" id="31" weight="547">
+      <edge source="Bordeaux" target="Brest" id="29" weight="160">
         <attvalues>
-          <attvalue for="5" value="26449" />
+          <attvalue for="5" value="7180" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Rochelle" id="32" weight="634">
+      <edge source="Bordeaux" target="Saint Malo" id="30" weight="164">
         <attvalues>
-          <attvalue for="5" value="20648" />
+          <attvalue for="5" value="7547" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Tremblade" id="33" weight="72">
+      <edge source="Bordeaux" target="Marennes" id="31" weight="98">
         <attvalues>
-          <attvalue for="5" value="4142" />
+          <attvalue for="5" value="4199" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Boulogne sur Mer" id="34" weight="59">
-        <attvalues>
-          <attvalue for="5" value="4098" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Saint Valéry sur Somme" id="35" weight="55">
-        <attvalues>
-          <attvalue for="5" value="3105" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Saint Pierre et Miquelon" id="36" weight="6">
-        <attvalues>
-          <attvalue for="5" value="492" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Petersbourg" id="37" weight="41">
+      <edge source="Bordeaux" target="Petersbourg" id="32" weight="41">
         <attvalues>
           <attvalue for="5" value="8167" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Rotterdam" id="38" weight="47">
+      <edge source="Bordeaux" target="Rotterdam" id="33" weight="46">
         <attvalues>
-          <attvalue for="5" value="9553" />
+          <attvalue for="5" value="9442" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Konigsberg" id="39" weight="39">
+      <edge source="Bordeaux" target="Konigsberg" id="34" weight="37">
         <attvalues>
-          <attvalue for="5" value="6397" />
+          <attvalue for="5" value="5981" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Cayenne" id="40" weight="5">
+      <edge source="Bordeaux" target="Cayenne" id="35" weight="3">
         <attvalues>
-          <attvalue for="5" value="1011" />
+          <attvalue for="5" value="447" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Oléron" id="41" weight="780">
+      <edge source="Bordeaux" target="Oléron" id="36" weight="761">
         <attvalues>
-          <attvalue for="5" value="20607" />
+          <attvalue for="5" value="20114" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Bremen" id="42" weight="93">
+      <edge source="Bordeaux" target="Bremen" id="37" weight="93">
         <attvalues>
           <attvalue for="5" value="18168" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Flensbourg" id="43" weight="4">
+      <edge source="Bordeaux" target="Flensbourg" id="38" weight="4">
         <attvalues>
           <attvalue for="5" value="446" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Ogne [Santoña]" id="44" weight="5">
+      <edge source="Bordeaux" target="Saint Ogne [Santoña]" id="39" weight="4">
         <attvalues>
-          <attvalue for="5" value="275" />
+          <attvalue for="5" value="220" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ostende" id="45" weight="30">
+      <edge source="Bordeaux" target="Ostende" id="40" weight="30">
         <attvalues>
           <attvalue for="5" value="4637" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Marennes" id="46" weight="127">
-        <attvalues>
-          <attvalue for="5" value="5475" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Saint Brieux" id="47" weight="77">
+      <edge source="Bordeaux" target="Saint Brieux" id="41" weight="77">
         <attvalues>
           <attvalue for="5" value="3765" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Nantes" id="48" weight="397">
+      <edge source="Bordeaux" target="Blaye" id="42" weight="28">
         <attvalues>
-          <attvalue for="5" value="19001" />
+          <attvalue for="5" value="1541" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Cote d' or" id="49" weight="9">
+      <edge source="Bordeaux" target="Cote d' or" id="43" weight="10">
         <attvalues>
-          <attvalue for="5" value="2264" />
+          <attvalue for="5" value="2580" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Waterford" id="50" weight="15">
+      <edge source="Bordeaux" target="Waterford" id="44" weight="15">
         <attvalues>
           <attvalue for="5" value="1146" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Le Passage" id="51" weight="7">
+      <edge source="Bordeaux" target="Le Passage" id="45" weight="7">
         <attvalues>
           <attvalue for="5" value="416" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Stettin" id="52" weight="44">
+      <edge source="Bordeaux" target="Stettin" id="46" weight="44">
         <attvalues>
           <attvalue for="5" value="9437" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Nord Ferrow en Norvege" id="53" weight="35">
+      <edge source="Bordeaux" target="Nord Ferrow en Norvege" id="47" weight="35">
         <attvalues>
           <attvalue for="5" value="1228" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Landerneau" id="54" weight="71">
+      <edge source="Bordeaux" target="La Rochelle" id="48" weight="141">
         <attvalues>
-          <attvalue for="5" value="2918" />
+          <attvalue for="5" value="5327" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Rochefort" id="55" weight="425">
+      <edge source="Bordeaux" target="Gravelines" id="49" weight="5">
         <attvalues>
-          <attvalue for="5" value="16082" />
+          <attvalue for="5" value="495" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Martinique" id="56" weight="61">
+      <edge source="Bordeaux" target="Landerneau" id="50" weight="31">
+        <attvalues>
+          <attvalue for="5" value="1129" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="La Martinique" id="51" weight="61">
         <attvalues>
           <attvalue for="5" value="12561" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Paimpol" id="57" weight="29">
+      <edge source="Bordeaux" target="Paimpol" id="52" weight="18">
         <attvalues>
-          <attvalue for="5" value="1138" />
+          <attvalue for="5" value="753" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Corck" id="58" weight="16">
+      <edge source="Bordeaux" target="Corck" id="53" weight="16">
         <attvalues>
           <attvalue for="5" value="1201" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Londres" id="59" weight="61">
+      <edge source="Bordeaux" target="Londres" id="54" weight="53">
         <attvalues>
-          <attvalue for="5" value="7551" />
+          <attvalue for="5" value="6642" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Martin de Ré" id="60" weight="172">
+      <edge source="Bordeaux" target="Saint Martin de Ré" id="55" weight="44">
         <attvalues>
-          <attvalue for="5" value="6241" />
+          <attvalue for="5" value="2618" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Méan" id="61" weight="24">
+      <edge source="Bordeaux" target="Rochefort" id="56" weight="146">
+        <attvalues>
+          <attvalue for="5" value="5355" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Méan" id="57" weight="24">
         <attvalues>
           <attvalue for="5" value="648" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Norkoping [Norrköping]" id="62" weight="2">
+      <edge source="Bordeaux" target="Norkoping [Norrköping]" id="58" weight="2">
         <attvalues>
           <attvalue for="5" value="170" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Treguier" id="63" weight="26">
+      <edge source="Bordeaux" target="Treguier" id="59" weight="26">
         <attvalues>
           <attvalue for="5" value="763" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Wismar" id="64" weight="1">
+      <edge source="Bordeaux" target="Wismar" id="60" weight="1">
         <attvalues>
           <attvalue for="5" value="175" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Lubeck" id="65" weight="17">
+      <edge source="Bordeaux" target="Lubeck" id="61" weight="15">
         <attvalues>
-          <attvalue for="5" value="3190" />
+          <attvalue for="5" value="2802" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Caen" id="66" weight="16">
+      <edge source="Bordeaux" target="Caen" id="62" weight="15">
         <attvalues>
-          <attvalue for="5" value="862" />
+          <attvalue for="5" value="808" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ile de Ré" id="67" weight="96">
+      <edge source="Bordeaux" target="Ile de Ré" id="63" weight="96">
         <attvalues>
           <attvalue for="5" value="1561" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Aber Benoit [Saint Pabu]" id="68" weight="3">
+      <edge source="Bordeaux" target="Saint Valéry sur Somme" id="64" weight="13">
+        <attvalues>
+          <attvalue for="5" value="600" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Aber Benoit [Saint Pabu]" id="65" weight="3">
         <attvalues>
           <attvalue for="5" value="48" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Aligre de Marans" id="69" weight="446">
-        <attvalues>
-          <attvalue for="5" value="10548" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Madère" id="70" weight="1">
+      <edge source="Bordeaux" target="Madère" id="66" weight="1">
         <attvalues>
           <attvalue for="5" value="613" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Newry" id="71" weight="1">
+      <edge source="Bordeaux" target="Boulogne sur Mer" id="67" weight="16">
+        <attvalues>
+          <attvalue for="5" value="1159" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Newry" id="68" weight="1">
         <attvalues>
           <attvalue for="5" value="51" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Stralsund" id="72" weight="3">
+      <edge source="Bordeaux" target="Stralsund" id="69" weight="3">
         <attvalues>
           <attvalue for="5" value="437" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Erquy" id="73" weight="1">
+      <edge source="Bordeaux" target="Erquy" id="70" weight="1">
         <attvalues>
           <attvalue for="5" value="45" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Flotte en Ré" id="74" weight="45">
-        <attvalues>
-          <attvalue for="5" value="1278" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Calmar" id="75" weight="2">
+      <edge source="Bordeaux" target="Calmar" id="71" weight="2">
         <attvalues>
           <attvalue for="5" value="205" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Charente" id="76" weight="9">
+      <edge source="Bordeaux" target="Granville" id="72" weight="35">
+        <attvalues>
+          <attvalue for="5" value="2646" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Charente" id="73" weight="9">
         <attvalues>
           <attvalue for="5" value="378" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Mastrand" id="77" weight="1">
+      <edge source="Bordeaux" target="Mastrand" id="74" weight="1">
         <attvalues>
           <attvalue for="5" value="92" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Dantzick" id="78" weight="20">
+      <edge source="Bordeaux" target="Dantzick" id="75" weight="20">
         <attvalues>
           <attvalue for="5" value="3166" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Quimperlé" id="79" weight="41">
+      <edge source="Bordeaux" target="Quimperlé" id="76" weight="39">
         <attvalues>
-          <attvalue for="5" value="1326" />
+          <attvalue for="5" value="1236" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Stockholm" id="80" weight="8">
+      <edge source="Bordeaux" target="Stockholm" id="77" weight="8">
         <attvalues>
           <attvalue for="5" value="1631" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Middelbourg" id="81" weight="3">
+      <edge source="Bordeaux" target="Middelbourg" id="78" weight="3">
         <attvalues>
           <attvalue for="5" value="594" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Pontusval" id="82" weight="13">
+      <edge source="Bordeaux" target="Sables d' Olonne" id="79" weight="106">
+        <attvalues>
+          <attvalue for="5" value="5152" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Pontusval" id="80" weight="13">
         <attvalues>
           <attvalue for="5" value="482" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Westervic en Suede" id="83" weight="1">
+      <edge source="Bordeaux" target="Westervic en Suede" id="81" weight="1">
         <attvalues>
           <attvalue for="5" value="60" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Marc [Haiti]" id="84" weight="14">
+      <edge source="Bordeaux" target="Saint Marc [Haiti]" id="82" weight="14">
         <attvalues>
           <attvalue for="5" value="2670" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Liverpool" id="85" weight="22">
+      <edge source="Bordeaux" target="Liverpool" id="83" weight="22">
         <attvalues>
           <attvalue for="5" value="3850" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Hennebont" id="86" weight="62">
+      <edge source="Bordeaux" target="Hennebont" id="84" weight="60">
         <attvalues>
-          <attvalue for="5" value="1613" />
+          <attvalue for="5" value="1549" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Viveros" id="87" weight="4">
+      <edge source="Bordeaux" target="Nantes" id="85" weight="182">
+        <attvalues>
+          <attvalue for="5" value="7903" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Viveros" id="86" weight="4">
         <attvalues>
           <attvalue for="5" value="276" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Pontrieux" id="88" weight="15">
+      <edge source="Bordeaux" target="Pontrieux" id="87" weight="15">
         <attvalues>
           <attvalue for="5" value="740" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Leith" id="89" weight="3">
+      <edge source="Bordeaux" target="Leith" id="88" weight="3">
         <attvalues>
           <attvalue for="5" value="275" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Douarnenez" id="90" weight="19">
+      <edge source="Bordeaux" target="Douarnenez" id="89" weight="18">
         <attvalues>
-          <attvalue for="5" value="420" />
+          <attvalue for="5" value="401" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Aligre de Marans" id="90" weight="104">
+        <attvalues>
+          <attvalue for="5" value="2670" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Saint Michel en l' Herm" id="91" weight="9">
@@ -2637,84 +2661,84 @@
           <attvalue for="5" value="144" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Quimper" id="92" weight="117">
+      <edge source="Bordeaux" target="Quimper" id="92" weight="113">
         <attvalues>
-          <attvalue for="5" value="3571" />
+          <attvalue for="5" value="3441" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Noirmoutier" id="93" weight="161">
-        <attvalues>
-          <attvalue for="5" value="4378" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Malmoe" id="94" weight="1">
+      <edge source="Bordeaux" target="Malmoe" id="93" weight="1">
         <attvalues>
           <attvalue for="5" value="120" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Dinan" id="95" weight="29">
+      <edge source="Bordeaux" target="Dinan" id="94" weight="28">
         <attvalues>
-          <attvalue for="5" value="1617" />
+          <attvalue for="5" value="1563" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Riga" id="96" weight="7">
+      <edge source="Bordeaux" target="Riga" id="95" weight="7">
         <attvalues>
           <attvalue for="5" value="1196" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Teste" id="97" weight="10">
+      <edge source="Bordeaux" target="La Teste" id="96" weight="23">
         <attvalues>
-          <attvalue for="5" value="416" />
+          <attvalue for="5" value="866" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Aber Ildut" id="98" weight="16">
+      <edge source="Bordeaux" target="Vannes" id="97" weight="68">
         <attvalues>
-          <attvalue for="5" value="660" />
+          <attvalue for="5" value="2342" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Vannes" id="99" weight="69">
+      <edge source="Bordeaux" target="Port au Prince" id="98" weight="24">
         <attvalues>
-          <attvalue for="5" value="2382" />
+          <attvalue for="5" value="7197" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Port au Prince" id="100" weight="25">
-        <attvalues>
-          <attvalue for="5" value="7547" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="La Guadeloupe" id="101" weight="26">
+      <edge source="Bordeaux" target="La Guadeloupe" id="99" weight="26">
         <attvalues>
           <attvalue for="5" value="7976" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Groningue" id="102" weight="3">
+      <edge source="Bordeaux" target="Groningue" id="100" weight="3">
         <attvalues>
           <attvalue for="5" value="336" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ross" id="103" weight="2">
+      <edge source="Bordeaux" target="Ross" id="101" weight="2">
         <attvalues>
           <attvalue for="5" value="93" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Philadelphie" id="104" weight="21">
+      <edge source="Bordeaux" target="Philadelphie" id="102" weight="21">
         <attvalues>
           <attvalue for="5" value="4813" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Binic" id="105" weight="2">
+      <edge source="Bordeaux" target="Binic" id="103" weight="2">
         <attvalues>
           <attvalue for="5" value="70" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Newcastle" id="106" weight="65">
+      <edge source="Bordeaux" target="Newcastle" id="104" weight="65">
         <attvalues>
           <attvalue for="5" value="15566" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ile de France" id="107" weight="21">
+      <edge source="Bordeaux" target="Ile de France" id="105" weight="23">
         <attvalues>
-          <attvalue for="5" value="6117" />
+          <attvalue for="5" value="6385" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Beauvoir-sur-Mer" id="106" weight="30">
+        <attvalues>
+          <attvalue for="5" value="873" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="La Flotte en Ré" id="107" weight="9">
+        <attvalues>
+          <attvalue for="5" value="144" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Setubal" id="108" weight="5">
@@ -2742,74 +2766,74 @@
           <attvalue for="5" value="4088" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Beauvoir-sur-Mer" id="113" weight="57">
-        <attvalues>
-          <attvalue for="5" value="1188" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Randers" id="114" weight="1">
+      <edge source="Bordeaux" target="Randers" id="113" weight="1">
         <attvalues>
           <attvalue for="5" value="59" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Huzum [Husum]" id="115" weight="4">
+      <edge source="Bordeaux" target="Huzum [Husum]" id="114" weight="4">
         <attvalues>
           <attvalue for="5" value="392" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Fanoe [Island]" id="116" weight="1">
+      <edge source="Bordeaux" target="Fanoe [Island]" id="115" weight="1">
         <attvalues>
           <attvalue for="5" value="58" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Le Chateau [d' Oléron]" id="117" weight="34">
-        <attvalues>
-          <attvalue for="5" value="542" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Côte d' Afrique [de l' Ouest]" id="118" weight="1">
+      <edge source="Bordeaux" target="Côte d' Afrique [de l' Ouest]" id="116" weight="1">
         <attvalues>
           <attvalue for="5" value="176" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Gothembourg" id="119" weight="7">
+      <edge source="Bordeaux" target="Gothembourg" id="117" weight="7">
         <attvalues>
           <attvalue for="5" value="828" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Audierne" id="120" weight="4">
+      <edge source="Bordeaux" target="Audierne" id="118" weight="4">
         <attvalues>
           <attvalue for="5" value="135" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Doort" id="121" weight="6">
+      <edge source="Bordeaux" target="Doort" id="119" weight="6">
         <attvalues>
           <attvalue for="5" value="938" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Cancale" id="122" weight="21">
+      <edge source="Bordeaux" target="Cancale" id="120" weight="20">
         <attvalues>
-          <attvalue for="5" value="1088" />
+          <attvalue for="5" value="1032" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Ile de Bouin" id="123" weight="184">
+      <edge source="Bordeaux" target="Chaillevette" id="121" weight="21">
         <attvalues>
-          <attvalue for="5" value="4984" />
+          <attvalue for="5" value="903" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Cadix" id="124" weight="5">
+      <edge source="Bordeaux" target="Ile de Bouin" id="122" weight="131">
+        <attvalues>
+          <attvalue for="5" value="3648" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Cadix" id="123" weight="5">
         <attvalues>
           <attvalue for="5" value="564" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Bourgneuf" id="125" weight="20">
+      <edge source="Bordeaux" target="Bourgneuf" id="124" weight="12">
         <attvalues>
-          <attvalue for="5" value="490" />
+          <attvalue for="5" value="314" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Bergen" id="126" weight="8">
+      <edge source="Bordeaux" target="Bergen" id="125" weight="8">
         <attvalues>
           <attvalue for="5" value="593" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Noirmoutier" id="126" weight="57">
+        <attvalues>
+          <attvalue for="5" value="1503" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Greenock" id="127" weight="2">
@@ -2827,9 +2851,9 @@
           <attvalue for="5" value="216" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Quiberon" id="130" weight="64">
+      <edge source="Bordeaux" target="Quiberon" id="130" weight="59">
         <attvalues>
-          <attvalue for="5" value="1048" />
+          <attvalue for="5" value="977" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Genes" id="131" weight="1">
@@ -2837,39 +2861,39 @@
           <attvalue for="5" value="190" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Détroit de Gibraltar" id="132" weight="36">
-        <attvalues>
-          <attvalue for="5" value="4406" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Cap [Français]" id="133" weight="3">
+      <edge source="Bordeaux" target="Cap [Français]" id="132" weight="3">
         <attvalues>
           <attvalue for="5" value="796" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Taillebourg" id="134" weight="13">
+      <edge source="Bordeaux" target="Taillebourg" id="133" weight="13">
         <attvalues>
           <attvalue for="5" value="507" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Concarneau" id="135" weight="15">
+      <edge source="Bordeaux" target="Concarneau" id="134" weight="15">
         <attvalues>
           <attvalue for="5" value="780" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Bilbao" id="136" weight="3">
+      <edge source="Bordeaux" target="Bilbao" id="135" weight="3">
         <attvalues>
           <attvalue for="5" value="120" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Aviles" id="137" weight="1">
+      <edge source="Bordeaux" target="Aviles" id="136" weight="1">
         <attvalues>
           <attvalue for="5" value="42" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Trieste" id="138" weight="2">
+      <edge source="Bordeaux" target="Trieste" id="137" weight="2">
         <attvalues>
           <attvalue for="5" value="260" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Soubise" id="138" weight="6">
+        <attvalues>
+          <attvalue for="5" value="258" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Frédérickstad" id="139" weight="1">
@@ -2947,14 +2971,14 @@
           <attvalue for="5" value="451" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Mozambique" id="154" weight="5">
-        <attvalues>
-          <attvalue for="5" value="1520" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Isigny" id="155" weight="3">
+      <edge source="Bordeaux" target="Isigny" id="154" weight="3">
         <attvalues>
           <attvalue for="5" value="108" />
+        </attvalues>
+      </edge>
+      <edge source="Bordeaux" target="Mozambique" id="155" weight="2">
+        <attvalues>
+          <attvalue for="5" value="914" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Saint Vincent de la Barquera" id="156" weight="6">
@@ -2982,9 +3006,9 @@
           <attvalue for="5" value="936" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Le Ferrol" id="161" weight="13">
+      <edge source="Bordeaux" target="Le Ferrol" id="161" weight="12">
         <attvalues>
-          <attvalue for="5" value="695" />
+          <attvalue for="5" value="651" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Sunderland" id="162" weight="1">
@@ -3017,9 +3041,9 @@
           <attvalue for="5" value="708" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Guernesey" id="168" weight="8">
+      <edge source="Bordeaux" target="Guernesey" id="168" weight="7">
         <attvalues>
-          <attvalue for="5" value="454" />
+          <attvalue for="5" value="362" />
         </attvalues>
       </edge>
       <edge source="Bordeaux" target="Londonderry" id="169" weight="1">
@@ -3027,1067 +3051,1062 @@
           <attvalue for="5" value="110" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="La Perrotine" id="170" weight="10">
-        <attvalues>
-          <attvalue for="5" value="230" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Porthsmouth" id="171" weight="1">
+      <edge source="Bordeaux" target="Porthsmouth" id="170" weight="1">
         <attvalues>
           <attvalue for="5" value="137" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Aberdeen" id="172" weight="1">
+      <edge source="Bordeaux" target="Aberdeen" id="171" weight="1">
         <attvalues>
           <attvalue for="5" value="76" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Geffle" id="173" weight="1">
+      <edge source="Bordeaux" target="Geffle" id="172" weight="1">
         <attvalues>
           <attvalue for="5" value="105" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Drontheim" id="174" weight="1">
+      <edge source="Bordeaux" target="Drontheim" id="173" weight="1">
         <attvalues>
           <attvalue for="5" value="70" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Limerick" id="175" weight="5">
+      <edge source="Bordeaux" target="Limerick" id="174" weight="5">
         <attvalues>
           <attvalue for="5" value="193" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Christiania" id="176" weight="5">
+      <edge source="Bordeaux" target="Christiania" id="175" weight="5">
         <attvalues>
           <attvalue for="5" value="645" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Chaillevette" id="177" weight="2">
-        <attvalues>
-          <attvalue for="5" value="54" />
-        </attvalues>
-      </edge>
-      <edge source="Bordeaux" target="Ribadeos en Espagne [Ribadeo]" id="178" weight="4">
+      <edge source="Bordeaux" target="Ribadeos en Espagne [Ribadeo]" id="176" weight="4">
         <attvalues>
           <attvalue for="5" value="240" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Dramen" id="179" weight="1">
+      <edge source="Bordeaux" target="Dramen" id="177" weight="1">
         <attvalues>
           <attvalue for="5" value="102" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Belfast" id="180" weight="6">
+      <edge source="Bordeaux" target="Belfast" id="178" weight="6">
         <attvalues>
           <attvalue for="5" value="653" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Alicant" id="181" weight="1">
+      <edge source="Bordeaux" target="Alicant" id="179" weight="1">
         <attvalues>
           <attvalue for="5" value="256" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Paimboeuf" id="182" weight="5">
+      <edge source="Bordeaux" target="Paimboeuf" id="180" weight="4">
         <attvalues>
-          <attvalue for="5" value="480" />
+          <attvalue for="5" value="384" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Petersbourg [en Virginie]" id="183" weight="2">
+      <edge source="Bordeaux" target="Petersbourg [en Virginie]" id="181" weight="2">
         <attvalues>
           <attvalue for="5" value="334" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Invernez [Inverness]" id="184" weight="2">
+      <edge source="Bordeaux" target="Invernez [Inverness]" id="182" weight="2">
         <attvalues>
           <attvalue for="5" value="118" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Roscoff" id="185" weight="7">
+      <edge source="Bordeaux" target="Aber Ildut" id="183" weight="2">
         <attvalues>
-          <attvalue for="5" value="224" />
+          <attvalue for="5" value="44" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Arcachon" id="186" weight="3">
+      <edge source="Bordeaux" target="Arcachon" id="184" weight="3">
         <attvalues>
           <attvalue for="5" value="84" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Yarmouth" id="187" weight="1">
+      <edge source="Bordeaux" target="Yarmouth" id="185" weight="1">
         <attvalues>
           <attvalue for="5" value="59" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Embden" id="188" weight="2">
+      <edge source="Bordeaux" target="Embden" id="186" weight="2">
         <attvalues>
           <attvalue for="5" value="324" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Abo" id="189" weight="1">
+      <edge source="Bordeaux" target="Abo" id="187" weight="1">
         <attvalues>
           <attvalue for="5" value="125" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Lynn" id="190" weight="1">
+      <edge source="Bordeaux" target="Lynn" id="188" weight="1">
         <attvalues>
           <attvalue for="5" value="221" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Gigon [Gijon]" id="191" weight="4">
+      <edge source="Bordeaux" target="Gigon [Gijon]" id="189" weight="4">
         <attvalues>
           <attvalue for="5" value="284" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Côte d' Angole" id="192" weight="2">
+      <edge source="Bordeaux" target="Côte d' Angole" id="190" weight="2">
         <attvalues>
           <attvalue for="5" value="440" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Pontevedra" id="193" weight="2">
+      <edge source="Bordeaux" target="Pontevedra" id="191" weight="2">
         <attvalues>
           <attvalue for="5" value="84" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="New York" id="194" weight="11">
+      <edge source="Bordeaux" target="New York" id="192" weight="11">
         <attvalues>
           <attvalue for="5" value="1596" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Rhode Island" id="195" weight="2">
+      <edge source="Bordeaux" target="Rhode Island" id="193" weight="2">
         <attvalues>
           <attvalue for="5" value="292" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Drogheda" id="196" weight="1">
+      <edge source="Bordeaux" target="Drogheda" id="194" weight="1">
         <attvalues>
           <attvalue for="5" value="47" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Georgetown" id="197" weight="2">
+      <edge source="Bordeaux" target="Georgetown" id="195" weight="2">
         <attvalues>
           <attvalue for="5" value="500" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Exeter" id="198" weight="2">
+      <edge source="Bordeaux" target="Exeter" id="196" weight="2">
         <attvalues>
           <attvalue for="5" value="160" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Le Cap de Bonne Esperance" id="199" weight="2">
+      <edge source="Bordeaux" target="Le Cap de Bonne Esperance" id="197" weight="2">
         <attvalues>
           <attvalue for="5" value="576" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Horsen" id="200" weight="1">
+      <edge source="Bordeaux" target="Horsen" id="198" weight="1">
         <attvalues>
           <attvalue for="5" value="50" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Inde" id="201" weight="1">
+      <edge source="Bordeaux" target="Inde" id="199" weight="1">
         <attvalues>
           <attvalue for="5" value="334" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Saint Jean de Luz" id="202" weight="3">
+      <edge source="Bordeaux" target="Saint Jean de Luz" id="200" weight="3">
         <attvalues>
           <attvalue for="5" value="300" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Galway" id="203" weight="1">
+      <edge source="Bordeaux" target="Galway" id="201" weight="1">
         <attvalues>
           <attvalue for="5" value="65" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Sligoe" id="204" weight="1">
+      <edge source="Bordeaux" target="Sligoe" id="202" weight="1">
         <attvalues>
           <attvalue for="5" value="27" />
         </attvalues>
       </edge>
-      <edge source="Bordeaux" target="Boston" id="205" weight="3">
+      <edge source="Bordeaux" target="Boston" id="203" weight="3">
         <attvalues>
           <attvalue for="5" value="555" />
         </attvalues>
       </edge>
-      <edge source="Dunkerque" target="Bordeaux" id="206" weight="280">
+      <edge source="Dunkerque" target="Bordeaux" id="204" weight="192">
         <attvalues>
-          <attvalue for="5" value="20443" />
+          <attvalue for="5" value="13872" />
         </attvalues>
       </edge>
-      <edge source="Dunkerque" target="Libourne" id="207" weight="9">
-        <attvalues>
-          <attvalue for="5" value="970" />
-        </attvalues>
-      </edge>
-      <edge source="Dunkerque" target="Blaye" id="208" weight="7">
-        <attvalues>
-          <attvalue for="5" value="336" />
-        </attvalues>
-      </edge>
-      <edge source="Marennes" target="Bordeaux" id="209" weight="1092">
-        <attvalues>
-          <attvalue for="5" value="41615" />
-        </attvalues>
-      </edge>
-      <edge source="Marennes" target="Libourne" id="210" weight="508">
-        <attvalues>
-          <attvalue for="5" value="19184" />
-        </attvalues>
-      </edge>
-      <edge source="Marennes" target="Castelnaut" id="211" weight="4">
-        <attvalues>
-          <attvalue for="5" value="160" />
-        </attvalues>
-      </edge>
-      <edge source="Marennes" target="La Teste" id="212" weight="7">
-        <attvalues>
-          <attvalue for="5" value="309" />
-        </attvalues>
-      </edge>
-      <edge source="Marennes" target="Blaye" id="213" weight="10">
-        <attvalues>
-          <attvalue for="5" value="320" />
-        </attvalues>
-      </edge>
-      <edge source="Granville" target="Bordeaux" id="214" weight="95">
-        <attvalues>
-          <attvalue for="5" value="5786" />
-        </attvalues>
-      </edge>
-      <edge source="Granville" target="La Teste" id="215" weight="26">
+      <edge source="Dunkerque" target="Libourne" id="205" weight="9">
         <attvalues>
           <attvalue for="5" value="970" />
         </attvalues>
       </edge>
-      <edge source="Brest" target="Blaye" id="216" weight="286">
+      <edge source="Brest" target="Blaye" id="206" weight="206">
         <attvalues>
-          <attvalue for="5" value="13216" />
+          <attvalue for="5" value="10142" />
         </attvalues>
       </edge>
-      <edge source="Brest" target="Bordeaux" id="217" weight="915">
+      <edge source="Brest" target="Bordeaux" id="207" weight="703">
         <attvalues>
-          <attvalue for="5" value="54434" />
+          <attvalue for="5" value="42487" />
         </attvalues>
       </edge>
-      <edge source="Brest" target="Libourne" id="218" weight="147">
+      <edge source="Brest" target="Libourne" id="208" weight="141">
         <attvalues>
-          <attvalue for="5" value="7067" />
+          <attvalue for="5" value="6766" />
         </attvalues>
       </edge>
-      <edge source="Brest" target="Bourg [sur Gironde]" id="219" weight="5">
+      <edge source="Brest" target="Bourg [sur Gironde]" id="209" weight="4">
         <attvalues>
-          <attvalue for="5" value="190" />
+          <attvalue for="5" value="152" />
         </attvalues>
       </edge>
-      <edge source="Brest" target="La Teste" id="220" weight="6">
-        <attvalues>
-          <attvalue for="5" value="270" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Treguier" id="221" weight="9">
+      <edge source="Brest" target="La Teste" id="210" weight="6">
         <attvalues>
           <attvalue for="5" value="270" />
         </attvalues>
       </edge>
-      <edge source="Blaye" target="Rouen" id="222" weight="12">
+      <edge source="Blaye" target="Treguier" id="211" weight="9">
         <attvalues>
-          <attvalue for="5" value="840" />
+          <attvalue for="5" value="270" />
         </attvalues>
       </edge>
-      <edge source="Blaye" target="Morlaix" id="223" weight="98">
-        <attvalues>
-          <attvalue for="5" value="3809" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Le Conquet" id="224" weight="7">
-        <attvalues>
-          <attvalue for="5" value="315" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Saint Malo" id="225" weight="69">
-        <attvalues>
-          <attvalue for="5" value="3286" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Bordeaux" id="226" weight="9">
-        <attvalues>
-          <attvalue for="5" value="540" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Cherbourg" id="227" weight="68">
-        <attvalues>
-          <attvalue for="5" value="3118" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Lannion" id="228" weight="11">
-        <attvalues>
-          <attvalue for="5" value="313" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Granville" id="229" weight="9">
-        <attvalues>
-          <attvalue for="5" value="324" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Lorient" id="230" weight="6">
-        <attvalues>
-          <attvalue for="5" value="220" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="La Hougue" id="231" weight="6">
-        <attvalues>
-          <attvalue for="5" value="330" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Isigny" id="232" weight="5">
-        <attvalues>
-          <attvalue for="5" value="150" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Aber Wrac' h" id="233" weight="8">
-        <attvalues>
-          <attvalue for="5" value="223" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Aber Benoit [Saint Pabu]" id="234" weight="3">
-        <attvalues>
-          <attvalue for="5" value="48" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Brest" id="235" weight="93">
-        <attvalues>
-          <attvalue for="5" value="4173" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Quimper" id="236" weight="31">
-        <attvalues>
-          <attvalue for="5" value="1098" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Landerneau" id="237" weight="30">
-        <attvalues>
-          <attvalue for="5" value="1248" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Pontusval" id="238" weight="11">
-        <attvalues>
-          <attvalue for="5" value="538" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Ile d' Ars" id="239" weight="2">
-        <attvalues>
-          <attvalue for="5" value="72" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Saint Brieux" id="240" weight="1">
-        <attvalues>
-          <attvalue for="5" value="24" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Pont l' Abbé" id="241" weight="6">
-        <attvalues>
-          <attvalue for="5" value="108" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Redon" id="242" weight="14">
-        <attvalues>
-          <attvalue for="5" value="624" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Vannes" id="243" weight="27">
-        <attvalues>
-          <attvalue for="5" value="453" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Quimperlé" id="244" weight="11">
-        <attvalues>
-          <attvalue for="5" value="465" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Dunkerque" id="245" weight="9">
-        <attvalues>
-          <attvalue for="5" value="432" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Portsall" id="246" weight="4">
-        <attvalues>
-          <attvalue for="5" value="112" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Aber Ildut" id="247" weight="2">
-        <attvalues>
-          <attvalue for="5" value="58" />
-        </attvalues>
-      </edge>
-      <edge source="Blaye" target="Saint Pol" id="248" weight="2">
-        <attvalues>
-          <attvalue for="5" value="40" />
-        </attvalues>
-      </edge>
-      <edge source="Le Pouliguen" target="Bordeaux" id="249" weight="18">
-        <attvalues>
-          <attvalue for="5" value="444" />
-        </attvalues>
-      </edge>
-      <edge source="Rouen" target="Bordeaux" id="250" weight="271">
-        <attvalues>
-          <attvalue for="5" value="26403" />
-        </attvalues>
-      </edge>
-      <edge source="Rouen" target="Libourne" id="251" weight="9">
-        <attvalues>
-          <attvalue for="5" value="540" />
-        </attvalues>
-      </edge>
-      <edge source="Le Havre" target="Bordeaux" id="252" weight="93">
-        <attvalues>
-          <attvalue for="5" value="12159" />
-        </attvalues>
-      </edge>
-      <edge source="Le Havre" target="Libourne" id="253" weight="5">
-        <attvalues>
-          <attvalue for="5" value="375" />
-        </attvalues>
-      </edge>
-      <edge source="Sables d' Olonne" target="Bordeaux" id="254" weight="889">
-        <attvalues>
-          <attvalue for="5" value="38152" />
-        </attvalues>
-      </edge>
-      <edge source="Sables d' Olonne" target="Libourne" id="255" weight="21">
-        <attvalues>
-          <attvalue for="5" value="431" />
-        </attvalues>
-      </edge>
-      <edge source="Sables d' Olonne" target="Blaye" id="256" weight="2">
-        <attvalues>
-          <attvalue for="5" value="48" />
-        </attvalues>
-      </edge>
-      <edge source="Sables d' Olonne" target="La Teste" id="257" weight="15">
-        <attvalues>
-          <attvalue for="5" value="372" />
-        </attvalues>
-      </edge>
-      <edge source="Cherbourg" target="Bordeaux" id="258" weight="177">
-        <attvalues>
-          <attvalue for="5" value="11313" />
-        </attvalues>
-      </edge>
-      <edge source="Cherbourg" target="Blaye" id="259" weight="37">
-        <attvalues>
-          <attvalue for="5" value="1946" />
-        </attvalues>
-      </edge>
-      <edge source="Cherbourg" target="La Teste" id="260" weight="3">
-        <attvalues>
-          <attvalue for="5" value="102" />
-        </attvalues>
-      </edge>
-      <edge source="Cherbourg" target="Libourne" id="261" weight="7">
-        <attvalues>
-          <attvalue for="5" value="336" />
-        </attvalues>
-      </edge>
-      <edge source="Calais" target="Bordeaux" id="262" weight="45">
-        <attvalues>
-          <attvalue for="5" value="3718" />
-        </attvalues>
-      </edge>
-      <edge source="Dieppe" target="Bordeaux" id="263" weight="42">
-        <attvalues>
-          <attvalue for="5" value="3830" />
-        </attvalues>
-      </edge>
-      <edge source="Aligre de Marans" target="Blaye" id="264" weight="56">
-        <attvalues>
-          <attvalue for="5" value="1235" />
-        </attvalues>
-      </edge>
-      <edge source="Aligre de Marans" target="Libourne" id="265" weight="87">
-        <attvalues>
-          <attvalue for="5" value="3526" />
-        </attvalues>
-      </edge>
-      <edge source="Aligre de Marans" target="Bordeaux" id="266" weight="818">
-        <attvalues>
-          <attvalue for="5" value="21388" />
-        </attvalues>
-      </edge>
-      <edge source="Aligre de Marans" target="Arcachon" id="267" weight="5">
-        <attvalues>
-          <attvalue for="5" value="80" />
-        </attvalues>
-      </edge>
-      <edge source="Aligre de Marans" target="La Teste" id="268" weight="30">
-        <attvalues>
-          <attvalue for="5" value="601" />
-        </attvalues>
-      </edge>
-      <edge source="Libourne" target="Saint Malo" id="269" weight="32">
-        <attvalues>
-          <attvalue for="5" value="1387" />
-        </attvalues>
-      </edge>
-      <edge source="Libourne" target="Le Havre" id="270" weight="14">
-        <attvalues>
-          <attvalue for="5" value="784" />
-        </attvalues>
-      </edge>
-      <edge source="Libourne" target="Bordeaux" id="271" weight="6">
-        <attvalues>
-          <attvalue for="5" value="264" />
-        </attvalues>
-      </edge>
-      <edge source="Libourne" target="Chaillevette" id="272" weight="6">
-        <attvalues>
-          <attvalue for="5" value="120" />
-        </attvalues>
-      </edge>
-      <edge source="Nantes" target="Bordeaux" id="273" weight="535">
-        <attvalues>
-          <attvalue for="5" value="29103" />
-        </attvalues>
-      </edge>
-      <edge source="Nantes" target="Libourne" id="274" weight="45">
-        <attvalues>
-          <attvalue for="5" value="2281" />
-        </attvalues>
-      </edge>
-      <edge source="Nantes" target="La Teste" id="275" weight="9">
-        <attvalues>
-          <attvalue for="5" value="153" />
-        </attvalues>
-      </edge>
-      <edge source="Nantes" target="Blaye" id="276" weight="2">
-        <attvalues>
-          <attvalue for="5" value="38" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Gilles sur Vie" target="Bordeaux" id="277" weight="532">
-        <attvalues>
-          <attvalue for="5" value="22655" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Gilles sur Vie" target="Libourne" id="278" weight="25">
-        <attvalues>
-          <attvalue for="5" value="1195" />
-        </attvalues>
-      </edge>
-      <edge source="Beauvoir-sur-Mer" target="Bordeaux" id="279" weight="394">
-        <attvalues>
-          <attvalue for="5" value="12211" />
-        </attvalues>
-      </edge>
-      <edge source="Beauvoir-sur-Mer" target="La Teste" id="280" weight="8">
-        <attvalues>
-          <attvalue for="5" value="256" />
-        </attvalues>
-      </edge>
-      <edge source="Landerneau" target="Bordeaux" id="281" weight="296">
-        <attvalues>
-          <attvalue for="5" value="14528" />
-        </attvalues>
-      </edge>
-      <edge source="Landerneau" target="Blaye" id="282" weight="55">
-        <attvalues>
-          <attvalue for="5" value="2416" />
-        </attvalues>
-      </edge>
-      <edge source="Landerneau" target="Libourne" id="283" weight="40">
-        <attvalues>
-          <attvalue for="5" value="1802" />
-        </attvalues>
-      </edge>
-      <edge source="Ile de Bouin" target="Bordeaux" id="284" weight="115">
-        <attvalues>
-          <attvalue for="5" value="3509" />
-        </attvalues>
-      </edge>
-      <edge source="Lorient" target="Bordeaux" id="285" weight="269">
-        <attvalues>
-          <attvalue for="5" value="15843" />
-        </attvalues>
-      </edge>
-      <edge source="Lorient" target="Caverne" id="286" weight="5">
-        <attvalues>
-          <attvalue for="5" value="290" />
-        </attvalues>
-      </edge>
-      <edge source="Lorient" target="Libourne" id="287" weight="43">
-        <attvalues>
-          <attvalue for="5" value="1598" />
-        </attvalues>
-      </edge>
-      <edge source="Lorient" target="Blaye" id="288" weight="30">
-        <attvalues>
-          <attvalue for="5" value="1287" />
-        </attvalues>
-      </edge>
-      <edge source="Roche Bernard" target="Bordeaux" id="289" weight="16">
-        <attvalues>
-          <attvalue for="5" value="778" />
-        </attvalues>
-      </edge>
-      <edge source="Roche Bernard" target="La Teste" id="290" weight="4">
-        <attvalues>
-          <attvalue for="5" value="56" />
-        </attvalues>
-      </edge>
-      <edge source="Roche Bernard" target="Arcachon" id="291" weight="4">
-        <attvalues>
-          <attvalue for="5" value="96" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Valéry sur Somme" target="Bordeaux" id="292" weight="98">
-        <attvalues>
-          <attvalue for="5" value="6237" />
-        </attvalues>
-      </edge>
-      <edge source="Penpoul" target="Bordeaux" id="293" weight="20">
-        <attvalues>
-          <attvalue for="5" value="1132" />
-        </attvalues>
-      </edge>
-      <edge source="Penpoul" target="Blaye" id="294" weight="5">
-        <attvalues>
-          <attvalue for="5" value="195" />
-        </attvalues>
-      </edge>
-      <edge source="Penpoul" target="Libourne" id="295" weight="7">
-        <attvalues>
-          <attvalue for="5" value="224" />
-        </attvalues>
-      </edge>
-      <edge source="Ars en Ré" target="Bordeaux" id="296" weight="10">
-        <attvalues>
-          <attvalue for="5" value="940" />
-        </attvalues>
-      </edge>
-      <edge source="La Hougue" target="Bordeaux" id="297" weight="7">
-        <attvalues>
-          <attvalue for="5" value="413" />
-        </attvalues>
-      </edge>
-      <edge source="La Hougue" target="Libourne" id="298" weight="16">
-        <attvalues>
-          <attvalue for="5" value="416" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Malo" target="Bordeaux" id="299" weight="619">
-        <attvalues>
-          <attvalue for="5" value="37655" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Malo" target="La Teste" id="300" weight="17">
-        <attvalues>
-          <attvalue for="5" value="619" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Malo" target="Blaye" id="301" weight="29">
-        <attvalues>
-          <attvalue for="5" value="1443" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Malo" target="Libourne" id="302" weight="19">
-        <attvalues>
-          <attvalue for="5" value="1045" />
-        </attvalues>
-      </edge>
-      <edge source="Honfleur" target="Bordeaux" id="303" weight="40">
-        <attvalues>
-          <attvalue for="5" value="3060" />
-        </attvalues>
-      </edge>
-      <edge source="Honfleur" target="Libourne" id="304" weight="2">
-        <attvalues>
-          <attvalue for="5" value="200" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Martin de Ré" target="Bordeaux" id="305" weight="25">
-        <attvalues>
-          <attvalue for="5" value="1144" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Martin de Ré" target="La Teste" id="306" weight="3">
-        <attvalues>
-          <attvalue for="5" value="45" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Martin de Ré" target="Libourne" id="307" weight="6">
-        <attvalues>
-          <attvalue for="5" value="300" />
-        </attvalues>
-      </edge>
-      <edge source="Port Bail" target="Bordeaux" id="308" weight="21">
-        <attvalues>
-          <attvalue for="5" value="1040" />
-        </attvalues>
-      </edge>
-      <edge source="Port Bail" target="La Teste" id="309" weight="13">
-        <attvalues>
-          <attvalue for="5" value="405" />
-        </attvalues>
-      </edge>
-      <edge source="Port Bail" target="Libourne" id="310" weight="8">
-        <attvalues>
-          <attvalue for="5" value="280" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="La Flotte en Ré" id="311" weight="5">
-        <attvalues>
-          <attvalue for="5" value="80" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Bayonne" id="312" weight="7">
-        <attvalues>
-          <attvalue for="5" value="217" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Redon" id="313" weight="43">
-        <attvalues>
-          <attvalue for="5" value="1111" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Granville" id="314" weight="29">
-        <attvalues>
-          <attvalue for="5" value="1071" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Lannion" id="315" weight="12">
-        <attvalues>
-          <attvalue for="5" value="216" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Saint Malo" id="316" weight="9">
-        <attvalues>
-          <attvalue for="5" value="411" />
-        </attvalues>
-      </edge>
-      <edge source="La Teste" target="Rouen" id="317" weight="8">
-        <attvalues>
-          <attvalue for="5" value="320" />
-        </attvalues>
-      </edge>
-      <edge source="La Rochelle" target="Bordeaux" id="318" weight="305">
-        <attvalues>
-          <attvalue for="5" value="12405" />
-        </attvalues>
-      </edge>
-      <edge source="La Rochelle" target="Souling" id="319" weight="2">
-        <attvalues>
-          <attvalue for="5" value="4" />
-        </attvalues>
-      </edge>
-      <edge source="Boulogne sur Mer" target="Bordeaux" id="320" weight="44">
-        <attvalues>
-          <attvalue for="5" value="2814" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Pierre et Miquelon" target="Bordeaux" id="321" weight="24">
-        <attvalues>
-          <attvalue for="5" value="2581" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Pierre et Miquelon" target="Rivière de Bordeaux" id="322" weight="2">
-        <attvalues>
-          <attvalue for="5" value="140" />
-        </attvalues>
-      </edge>
-      <edge source="Le Conquet" target="Libourne" id="323" weight="18">
-        <attvalues>
-          <attvalue for="5" value="711" />
-        </attvalues>
-      </edge>
-      <edge source="Le Conquet" target="Bordeaux" id="324" weight="39">
-        <attvalues>
-          <attvalue for="5" value="1540" />
-        </attvalues>
-      </edge>
-      <edge source="La Flotte en Ré" target="La Teste" id="325" weight="11">
-        <attvalues>
-          <attvalue for="5" value="200" />
-        </attvalues>
-      </edge>
-      <edge source="La Flotte en Ré" target="Bordeaux" id="326" weight="26">
-        <attvalues>
-          <attvalue for="5" value="750" />
-        </attvalues>
-      </edge>
-      <edge source="Cayenne" target="Bordeaux" id="327" weight="1">
-        <attvalues>
-          <attvalue for="5" value="0" />
-        </attvalues>
-      </edge>
-      <edge source="Isigny" target="Bordeaux" id="328" weight="16">
-        <attvalues>
-          <attvalue for="5" value="855" />
-        </attvalues>
-      </edge>
-      <edge source="Isigny" target="Blaye" id="329" weight="12">
-        <attvalues>
-          <attvalue for="5" value="520" />
-        </attvalues>
-      </edge>
-      <edge source="Argenton" target="Bordeaux" id="330" weight="28">
-        <attvalues>
-          <attvalue for="5" value="1282" />
-        </attvalues>
-      </edge>
-      <edge source="Rochefort" target="Bordeaux" id="331" weight="95">
-        <attvalues>
-          <attvalue for="5" value="6124" />
-        </attvalues>
-      </edge>
-      <edge source="Rochefort" target="La Teste" id="332" weight="26">
-        <attvalues>
-          <attvalue for="5" value="781" />
-        </attvalues>
-      </edge>
-      <edge source="Rochefort" target="Arcachon" id="333" weight="5">
-        <attvalues>
-          <attvalue for="5" value="125" />
-        </attvalues>
-      </edge>
-      <edge source="Quillebeuf" target="Bordeaux" id="334" weight="13">
-        <attvalues>
-          <attvalue for="5" value="1574" />
-        </attvalues>
-      </edge>
-      <edge source="Bourgneuf" target="Bordeaux" id="335" weight="128">
-        <attvalues>
-          <attvalue for="5" value="3613" />
-        </attvalues>
-      </edge>
-      <edge source="Harfleur" target="Bordeaux" id="336" weight="8">
-        <attvalues>
-          <attvalue for="5" value="320" />
-        </attvalues>
-      </edge>
-      <edge source="Roscoff" target="Bordeaux" id="337" weight="23">
-        <attvalues>
-          <attvalue for="5" value="1004" />
-        </attvalues>
-      </edge>
-      <edge source="Roscoff" target="Blaye" id="338" weight="6">
-        <attvalues>
-          <attvalue for="5" value="300" />
-        </attvalues>
-      </edge>
-      <edge source="Noirmoutier" target="Bordeaux" id="339" weight="218">
-        <attvalues>
-          <attvalue for="5" value="5822" />
-        </attvalues>
-      </edge>
-      <edge source="Noirmoutier" target="La Teste" id="340" weight="12">
-        <attvalues>
-          <attvalue for="5" value="216" />
-        </attvalues>
-      </edge>
-      <edge source="Noirmoutier" target="Libourne" id="341" weight="13">
-        <attvalues>
-          <attvalue for="5" value="355" />
-        </attvalues>
-      </edge>
-      <edge source="Chaillevette" target="Bordeaux" id="342" weight="2">
-        <attvalues>
-          <attvalue for="5" value="160" />
-        </attvalues>
-      </edge>
-      <edge source="Talmont [Talmont Saint Hilaire]" target="Bordeaux" id="343" weight="80">
-        <attvalues>
-          <attvalue for="5" value="960" />
-        </attvalues>
-      </edge>
-      <edge source="Talmont [Talmont Saint Hilaire]" target="Libourne" id="344" weight="102">
-        <attvalues>
-          <attvalue for="5" value="1035" />
-        </attvalues>
-      </edge>
-      <edge source="Barfleur" target="Bordeaux" id="345" weight="3">
-        <attvalues>
-          <attvalue for="5" value="477" />
-        </attvalues>
-      </edge>
-      <edge source="Aber Ildut" target="Bordeaux" id="346" weight="43">
-        <attvalues>
-          <attvalue for="5" value="1897" />
-        </attvalues>
-      </edge>
-      <edge source="Aber Ildut" target="Blaye" id="347" weight="6">
-        <attvalues>
-          <attvalue for="5" value="180" />
-        </attvalues>
-      </edge>
-      <edge source="Fécamp" target="Bordeaux" id="348" weight="6">
+      <edge source="Blaye" target="Rouen" id="212" weight="6">
         <attvalues>
           <attvalue for="5" value="360" />
         </attvalues>
       </edge>
-      <edge source="Charente" target="Bordeaux" id="349" weight="242">
+      <edge source="Blaye" target="Morlaix" id="213" weight="101">
         <attvalues>
-          <attvalue for="5" value="8793" />
+          <attvalue for="5" value="3920" />
         </attvalues>
       </edge>
-      <edge source="Charente" target="La Teste" id="350" weight="6">
+      <edge source="Blaye" target="Saint Malo" id="214" weight="45">
+        <attvalues>
+          <attvalue for="5" value="2359" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="Bordeaux" id="215" weight="120">
+        <attvalues>
+          <attvalue for="5" value="5634" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="Chaillevette" id="216" weight="14">
+        <attvalues>
+          <attvalue for="5" value="672" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="Cherbourg" id="217" weight="17">
+        <attvalues>
+          <attvalue for="5" value="651" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="Lannion" id="218" weight="11">
+        <attvalues>
+          <attvalue for="5" value="313" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="Lorient" id="219" weight="5">
+        <attvalues>
+          <attvalue for="5" value="182" />
+        </attvalues>
+      </edge>
+      <edge source="Blaye" target="La Hougue" id="220" weight="6">
         <attvalues>
           <attvalue for="5" value="330" />
         </attvalues>
       </edge>
-      <edge source="Moricq" target="Bordeaux" id="351" weight="22">
+      <edge source="Blaye" target="Isigny" id="221" weight="5">
         <attvalues>
-          <attvalue for="5" value="865" />
+          <attvalue for="5" value="150" />
         </attvalues>
       </edge>
-      <edge source="Moricq" target="Libourne" id="352" weight="6">
+      <edge source="Blaye" target="Aber Wrac' h" id="222" weight="8">
         <attvalues>
-          <attvalue for="5" value="480" />
+          <attvalue for="5" value="223" />
         </attvalues>
       </edge>
-      <edge source="Le Tréport" target="Bordeaux" id="353" weight="1">
+      <edge source="Blaye" target="Aber Benoit [Saint Pabu]" id="223" weight="3">
         <attvalues>
-          <attvalue for="5" value="51" />
+          <attvalue for="5" value="48" />
         </attvalues>
       </edge>
-      <edge source="Etaples" target="Bordeaux" id="354" weight="14">
+      <edge source="Blaye" target="Quimper" id="224" weight="30">
         <attvalues>
-          <attvalue for="5" value="700" />
+          <attvalue for="5" value="1068" />
         </attvalues>
       </edge>
-      <edge source="La Tranche sur Mer" target="Bordeaux" id="355" weight="117">
+      <edge source="Blaye" target="Pontusval" id="225" weight="11">
         <attvalues>
-          <attvalue for="5" value="2368" />
+          <attvalue for="5" value="538" />
         </attvalues>
       </edge>
-      <edge source="Philadelphie" target="Bordeaux" id="356" weight="18">
+      <edge source="Blaye" target="Ile d' Ars" id="226" weight="2">
         <attvalues>
-          <attvalue for="5" value="5257" />
+          <attvalue for="5" value="72" />
         </attvalues>
       </edge>
-      <edge source="Virginie" target="Bordeaux" id="357" weight="12">
+      <edge source="Blaye" target="Saint Brieux" id="227" weight="1">
         <attvalues>
-          <attvalue for="5" value="2362" />
+          <attvalue for="5" value="24" />
         </attvalues>
       </edge>
-      <edge source="James River" target="Bordeaux" id="358" weight="5">
+      <edge source="Blaye" target="Pont l' Abbé" id="228" weight="6">
         <attvalues>
-          <attvalue for="5" value="535" />
+          <attvalue for="5" value="108" />
         </attvalues>
       </edge>
-      <edge source="Le Crotoy" target="Bordeaux" id="359" weight="7">
+      <edge source="Blaye" target="Brest" id="229" weight="16">
         <attvalues>
-          <attvalue for="5" value="420" />
+          <attvalue for="5" value="755" />
         </attvalues>
       </edge>
-      <edge source="Baltimore" target="Bordeaux" id="360" weight="8">
+      <edge source="Blaye" target="Redon" id="230" weight="13">
         <attvalues>
-          <attvalue for="5" value="1926" />
+          <attvalue for="5" value="584" />
         </attvalues>
       </edge>
-      <edge source="Le Chateau [d' Oléron]" target="Bordeaux" id="361" weight="88">
+      <edge source="Blaye" target="Vannes" id="231" weight="27">
         <attvalues>
-          <attvalue for="5" value="1281" />
+          <attvalue for="5" value="453" />
         </attvalues>
       </edge>
-      <edge source="Ribérou [Saujon]" target="Libourne" id="362" weight="17">
+      <edge source="Blaye" target="Quimperlé" id="232" weight="11">
         <attvalues>
-          <attvalue for="5" value="290" />
+          <attvalue for="5" value="465" />
         </attvalues>
       </edge>
-      <edge source="Ribérou [Saujon]" target="Bordeaux" id="363" weight="50">
-        <attvalues>
-          <attvalue for="5" value="1552" />
-        </attvalues>
-      </edge>
-      <edge source="La Perrotine" target="Bordeaux" id="364" weight="50">
-        <attvalues>
-          <attvalue for="5" value="827" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Denis [d' Oléron]" target="Bordeaux" id="365" weight="14">
-        <attvalues>
-          <attvalue for="5" value="210" />
-        </attvalues>
-      </edge>
-      <edge source="Georgetown" target="Bordeaux" id="366" weight="4">
-        <attvalues>
-          <attvalue for="5" value="740" />
-        </attvalues>
-      </edge>
-      <edge source="Le Croisic" target="Bordeaux" id="367" weight="5">
-        <attvalues>
-          <attvalue for="5" value="190" />
-        </attvalues>
-      </edge>
-      <edge source="Bourg [sur Gironde]" target="Lorient" id="368" weight="5">
-        <attvalues>
-          <attvalue for="5" value="190" />
-        </attvalues>
-      </edge>
-      <edge source="Bourg [sur Gironde]" target="Morlaix" id="369" weight="4">
-        <attvalues>
-          <attvalue for="5" value="136" />
-        </attvalues>
-      </edge>
-      <edge source="Bourg [sur Gironde]" target="Lannion" id="370" weight="5">
-        <attvalues>
-          <attvalue for="5" value="190" />
-        </attvalues>
-      </edge>
-      <edge source="Edington" target="Bordeaux" id="371" weight="2">
-        <attvalues>
-          <attvalue for="5" value="246" />
-        </attvalues>
-      </edge>
-      <edge source="Norfolk" target="Bordeaux" id="372" weight="12">
-        <attvalues>
-          <attvalue for="5" value="3606" />
-        </attvalues>
-      </edge>
-      <edge source="Charleston" target="Bordeaux" id="373" weight="4">
-        <attvalues>
-          <attvalue for="5" value="948" />
-        </attvalues>
-      </edge>
-      <edge source="Portsall" target="Bordeaux" id="374" weight="25">
-        <attvalues>
-          <attvalue for="5" value="1105" />
-        </attvalues>
-      </edge>
-      <edge source="Portsall" target="Blaye" id="375" weight="4">
-        <attvalues>
-          <attvalue for="5" value="112" />
-        </attvalues>
-      </edge>
-      <edge source="Saint Valery en Caux" target="Bordeaux" id="376" weight="6">
-        <attvalues>
-          <attvalue for="5" value="306" />
-        </attvalues>
-      </edge>
-      <edge source="Rhode Island" target="Bordeaux" id="377" weight="2">
-        <attvalues>
-          <attvalue for="5" value="320" />
-        </attvalues>
-      </edge>
-      <edge source="New York" target="Bordeaux" id="378" weight="3">
+      <edge source="Blaye" target="La Teste" id="233" weight="6">
         <attvalues>
           <attvalue for="5" value="270" />
         </attvalues>
       </edge>
-      <edge source="Saint Jean de Luz" target="Bordeaux" id="379" weight="2">
+      <edge source="Blaye" target="Landerneau" id="234" weight="8">
         <attvalues>
-          <attvalue for="5" value="460" />
+          <attvalue for="5" value="280" />
         </attvalues>
       </edge>
-      <edge source="Mortagne" target="Blaye" id="380" weight="1">
+      <edge source="Blaye" target="Aber Ildut" id="235" weight="2">
         <attvalues>
-          <attvalue for="5" value="18" />
+          <attvalue for="5" value="58" />
         </attvalues>
       </edge>
-      <edge source="Mortagne" target="Bordeaux" id="381" weight="2">
+      <edge source="Blaye" target="Saint Pol" id="236" weight="2">
+        <attvalues>
+          <attvalue for="5" value="40" />
+        </attvalues>
+      </edge>
+      <edge source="Nantes" target="Bordeaux" id="237" weight="770">
+        <attvalues>
+          <attvalue for="5" value="37287" />
+        </attvalues>
+      </edge>
+      <edge source="Nantes" target="Libourne" id="238" weight="42">
+        <attvalues>
+          <attvalue for="5" value="2131" />
+        </attvalues>
+      </edge>
+      <edge source="Nantes" target="Blaye" id="239" weight="25">
+        <attvalues>
+          <attvalue for="5" value="903" />
+        </attvalues>
+      </edge>
+      <edge source="Nantes" target="La Teste" id="240" weight="9">
+        <attvalues>
+          <attvalue for="5" value="153" />
+        </attvalues>
+      </edge>
+      <edge source="Sables d' Olonne" target="Bordeaux" id="241" weight="327">
+        <attvalues>
+          <attvalue for="5" value="14538" />
+        </attvalues>
+      </edge>
+      <edge source="Sables d' Olonne" target="Libourne" id="242" weight="21">
+        <attvalues>
+          <attvalue for="5" value="431" />
+        </attvalues>
+      </edge>
+      <edge source="Sables d' Olonne" target="Blaye" id="243" weight="2">
+        <attvalues>
+          <attvalue for="5" value="48" />
+        </attvalues>
+      </edge>
+      <edge source="Sables d' Olonne" target="La Teste" id="244" weight="8">
+        <attvalues>
+          <attvalue for="5" value="120" />
+        </attvalues>
+      </edge>
+      <edge source="Cherbourg" target="Bordeaux" id="245" weight="138">
+        <attvalues>
+          <attvalue for="5" value="9262" />
+        </attvalues>
+      </edge>
+      <edge source="Cherbourg" target="Blaye" id="246" weight="9">
+        <attvalues>
+          <attvalue for="5" value="540" />
+        </attvalues>
+      </edge>
+      <edge source="Cherbourg" target="La Teste" id="247" weight="2">
+        <attvalues>
+          <attvalue for="5" value="68" />
+        </attvalues>
+      </edge>
+      <edge source="Cherbourg" target="Libourne" id="248" weight="7">
+        <attvalues>
+          <attvalue for="5" value="336" />
+        </attvalues>
+      </edge>
+      <edge source="Calais" target="Bordeaux" id="249" weight="27">
+        <attvalues>
+          <attvalue for="5" value="2598" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Valéry sur Somme" target="Bordeaux" id="250" weight="77">
+        <attvalues>
+          <attvalue for="5" value="4500" />
+        </attvalues>
+      </edge>
+      <edge source="Le Havre" target="Bordeaux" id="251" weight="120">
+        <attvalues>
+          <attvalue for="5" value="13290" />
+        </attvalues>
+      </edge>
+      <edge source="Le Havre" target="Blaye" id="252" weight="8">
+        <attvalues>
+          <attvalue for="5" value="240" />
+        </attvalues>
+      </edge>
+      <edge source="Le Havre" target="Libourne" id="253" weight="6">
+        <attvalues>
+          <attvalue for="5" value="450" />
+        </attvalues>
+      </edge>
+      <edge source="Dieppe" target="Bordeaux" id="254" weight="24">
+        <attvalues>
+          <attvalue for="5" value="2555" />
+        </attvalues>
+      </edge>
+      <edge source="Dieppe" target="Blaye" id="255" weight="6">
+        <attvalues>
+          <attvalue for="5" value="330" />
+        </attvalues>
+      </edge>
+      <edge source="Aligre de Marans" target="Blaye" id="256" weight="53">
+        <attvalues>
+          <attvalue for="5" value="1170" />
+        </attvalues>
+      </edge>
+      <edge source="Aligre de Marans" target="Libourne" id="257" weight="85">
+        <attvalues>
+          <attvalue for="5" value="3468" />
+        </attvalues>
+      </edge>
+      <edge source="Aligre de Marans" target="Bordeaux" id="258" weight="278">
+        <attvalues>
+          <attvalue for="5" value="7249" />
+        </attvalues>
+      </edge>
+      <edge source="Aligre de Marans" target="La Teste" id="259" weight="25">
+        <attvalues>
+          <attvalue for="5" value="471" />
+        </attvalues>
+      </edge>
+      <edge source="Aligre de Marans" target="Arcachon" id="260" weight="5">
+        <attvalues>
+          <attvalue for="5" value="80" />
+        </attvalues>
+      </edge>
+      <edge source="Libourne" target="Saint Malo" id="261" weight="25">
+        <attvalues>
+          <attvalue for="5" value="1107" />
+        </attvalues>
+      </edge>
+      <edge source="Libourne" target="Le Havre" id="262" weight="14">
+        <attvalues>
+          <attvalue for="5" value="784" />
+        </attvalues>
+      </edge>
+      <edge source="Libourne" target="Bordeaux" id="263" weight="6">
+        <attvalues>
+          <attvalue for="5" value="264" />
+        </attvalues>
+      </edge>
+      <edge source="Libourne" target="Chaillevette" id="264" weight="9">
+        <attvalues>
+          <attvalue for="5" value="207" />
+        </attvalues>
+      </edge>
+      <edge source="Marennes" target="Bordeaux" id="265" weight="803">
+        <attvalues>
+          <attvalue for="5" value="43396" />
+        </attvalues>
+      </edge>
+      <edge source="Marennes" target="Libourne" id="266" weight="496">
+        <attvalues>
+          <attvalue for="5" value="18726" />
+        </attvalues>
+      </edge>
+      <edge source="Marennes" target="Blaye" id="267" weight="99">
+        <attvalues>
+          <attvalue for="5" value="5604" />
+        </attvalues>
+      </edge>
+      <edge source="Marennes" target="Castelnaut" id="268" weight="4">
         <attvalues>
           <attvalue for="5" value="160" />
         </attvalues>
       </edge>
-      <edge source="Alexandrie" target="Bordeaux" id="382" weight="2">
+      <edge source="Marennes" target="La Teste" id="269" weight="7">
+        <attvalues>
+          <attvalue for="5" value="309" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Gilles sur Vie" target="Bordeaux" id="270" weight="187">
+        <attvalues>
+          <attvalue for="5" value="7184" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Gilles sur Vie" target="Libourne" id="271" weight="24">
+        <attvalues>
+          <attvalue for="5" value="1170" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Gilles sur Vie" target="Blaye" id="272" weight="5">
+        <attvalues>
+          <attvalue for="5" value="175" />
+        </attvalues>
+      </edge>
+      <edge source="Rouen" target="Bordeaux" id="273" weight="282">
+        <attvalues>
+          <attvalue for="5" value="26396" />
+        </attvalues>
+      </edge>
+      <edge source="Rouen" target="Libourne" id="274" weight="9">
+        <attvalues>
+          <attvalue for="5" value="540" />
+        </attvalues>
+      </edge>
+      <edge source="Landerneau" target="Bordeaux" id="275" weight="224">
+        <attvalues>
+          <attvalue for="5" value="10857" />
+        </attvalues>
+      </edge>
+      <edge source="Landerneau" target="Blaye" id="276" weight="53">
+        <attvalues>
+          <attvalue for="5" value="1955" />
+        </attvalues>
+      </edge>
+      <edge source="Landerneau" target="Libourne" id="277" weight="36">
+        <attvalues>
+          <attvalue for="5" value="1624" />
+        </attvalues>
+      </edge>
+      <edge source="Lorient" target="Bordeaux" id="278" weight="137">
+        <attvalues>
+          <attvalue for="5" value="7638" />
+        </attvalues>
+      </edge>
+      <edge source="Lorient" target="Caverne" id="279" weight="5">
+        <attvalues>
+          <attvalue for="5" value="290" />
+        </attvalues>
+      </edge>
+      <edge source="Lorient" target="Libourne" id="280" weight="38">
+        <attvalues>
+          <attvalue for="5" value="1370" />
+        </attvalues>
+      </edge>
+      <edge source="Lorient" target="Blaye" id="281" weight="14">
+        <attvalues>
+          <attvalue for="5" value="448" />
+        </attvalues>
+      </edge>
+      <edge source="Roche Bernard" target="Bordeaux" id="282" weight="9">
+        <attvalues>
+          <attvalue for="5" value="470" />
+        </attvalues>
+      </edge>
+      <edge source="Roche Bernard" target="La Teste" id="283" weight="4">
+        <attvalues>
+          <attvalue for="5" value="56" />
+        </attvalues>
+      </edge>
+      <edge source="Roche Bernard" target="Arcachon" id="284" weight="4">
+        <attvalues>
+          <attvalue for="5" value="96" />
+        </attvalues>
+      </edge>
+      <edge source="Penpoul" target="Bordeaux" id="285" weight="14">
+        <attvalues>
+          <attvalue for="5" value="772" />
+        </attvalues>
+      </edge>
+      <edge source="Penpoul" target="Blaye" id="286" weight="5">
+        <attvalues>
+          <attvalue for="5" value="195" />
+        </attvalues>
+      </edge>
+      <edge source="Penpoul" target="Libourne" id="287" weight="6">
+        <attvalues>
+          <attvalue for="5" value="192" />
+        </attvalues>
+      </edge>
+      <edge source="La Hougue" target="Bordeaux" id="288" weight="8">
+        <attvalues>
+          <attvalue for="5" value="472" />
+        </attvalues>
+      </edge>
+      <edge source="La Hougue" target="Libourne" id="289" weight="15">
+        <attvalues>
+          <attvalue for="5" value="390" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Malo" target="Bordeaux" id="290" weight="388">
+        <attvalues>
+          <attvalue for="5" value="24075" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Malo" target="La Teste" id="291" weight="10">
+        <attvalues>
+          <attvalue for="5" value="304" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Malo" target="Libourne" id="292" weight="17">
+        <attvalues>
+          <attvalue for="5" value="905" />
+        </attvalues>
+      </edge>
+      <edge source="Honfleur" target="Bordeaux" id="293" weight="37">
+        <attvalues>
+          <attvalue for="5" value="2878" />
+        </attvalues>
+      </edge>
+      <edge source="Honfleur" target="Libourne" id="294" weight="2">
+        <attvalues>
+          <attvalue for="5" value="200" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Martin de Ré" target="Bordeaux" id="295" weight="169">
+        <attvalues>
+          <attvalue for="5" value="6249" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Martin de Ré" target="La Teste" id="296" weight="3">
+        <attvalues>
+          <attvalue for="5" value="45" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Martin de Ré" target="Libourne" id="297" weight="6">
+        <attvalues>
+          <attvalue for="5" value="300" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Martin de Ré" target="Blaye" id="298" weight="9">
+        <attvalues>
+          <attvalue for="5" value="405" />
+        </attvalues>
+      </edge>
+      <edge source="Ars en Ré" target="Bordeaux" id="299" weight="24">
+        <attvalues>
+          <attvalue for="5" value="1870" />
+        </attvalues>
+      </edge>
+      <edge source="Port Bail" target="Bordeaux" id="300" weight="21">
+        <attvalues>
+          <attvalue for="5" value="1040" />
+        </attvalues>
+      </edge>
+      <edge source="Port Bail" target="La Teste" id="301" weight="13">
+        <attvalues>
+          <attvalue for="5" value="405" />
+        </attvalues>
+      </edge>
+      <edge source="Port Bail" target="Libourne" id="302" weight="8">
+        <attvalues>
+          <attvalue for="5" value="280" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="La Flotte en Ré" id="303" weight="5">
+        <attvalues>
+          <attvalue for="5" value="80" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Redon" id="304" weight="42">
+        <attvalues>
+          <attvalue for="5" value="1038" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Bayonne" id="305" weight="5">
+        <attvalues>
+          <attvalue for="5" value="205" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Granville" id="306" weight="8">
+        <attvalues>
+          <attvalue for="5" value="313" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Bordeaux" id="307" weight="6">
+        <attvalues>
+          <attvalue for="5" value="240" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Lorient" id="308" weight="11">
+        <attvalues>
+          <attvalue for="5" value="440" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Lannion" id="309" weight="12">
+        <attvalues>
+          <attvalue for="5" value="216" />
+        </attvalues>
+      </edge>
+      <edge source="La Teste" target="Saint Malo" id="310" weight="2">
+        <attvalues>
+          <attvalue for="5" value="96" />
+        </attvalues>
+      </edge>
+      <edge source="Granville" target="Bordeaux" id="311" weight="75">
+        <attvalues>
+          <attvalue for="5" value="4707" />
+        </attvalues>
+      </edge>
+      <edge source="Granville" target="La Teste" id="312" weight="26">
+        <attvalues>
+          <attvalue for="5" value="970" />
+        </attvalues>
+      </edge>
+      <edge source="Charente" target="Bordeaux" id="313" weight="86">
+        <attvalues>
+          <attvalue for="5" value="2797" />
+        </attvalues>
+      </edge>
+      <edge source="Charente" target="Blaye" id="314" weight="5">
+        <attvalues>
+          <attvalue for="5" value="450" />
+        </attvalues>
+      </edge>
+      <edge source="Charente" target="La Teste" id="315" weight="6">
+        <attvalues>
+          <attvalue for="5" value="330" />
+        </attvalues>
+      </edge>
+      <edge source="Rochefort" target="Bordeaux" id="316" weight="193">
+        <attvalues>
+          <attvalue for="5" value="10287" />
+        </attvalues>
+      </edge>
+      <edge source="Rochefort" target="La Teste" id="317" weight="31">
+        <attvalues>
+          <attvalue for="5" value="906" />
+        </attvalues>
+      </edge>
+      <edge source="Rochefort" target="Arcachon" id="318" weight="5">
+        <attvalues>
+          <attvalue for="5" value="125" />
+        </attvalues>
+      </edge>
+      <edge source="La Rochelle" target="Bordeaux" id="319" weight="112">
+        <attvalues>
+          <attvalue for="5" value="8047" />
+        </attvalues>
+      </edge>
+      <edge source="La Rochelle" target="Souling" id="320" weight="2">
+        <attvalues>
+          <attvalue for="5" value="4" />
+        </attvalues>
+      </edge>
+      <edge source="Le Conquet" target="Libourne" id="321" weight="17">
+        <attvalues>
+          <attvalue for="5" value="666" />
+        </attvalues>
+      </edge>
+      <edge source="Le Conquet" target="Bordeaux" id="322" weight="38">
+        <attvalues>
+          <attvalue for="5" value="1484" />
+        </attvalues>
+      </edge>
+      <edge source="La Flotte en Ré" target="La Teste" id="323" weight="11">
+        <attvalues>
+          <attvalue for="5" value="200" />
+        </attvalues>
+      </edge>
+      <edge source="La Flotte en Ré" target="Bordeaux" id="324" weight="9">
+        <attvalues>
+          <attvalue for="5" value="134" />
+        </attvalues>
+      </edge>
+      <edge source="Cayenne" target="Bordeaux" id="325" weight="1">
+        <attvalues>
+          <attvalue for="5" value="0" />
+        </attvalues>
+      </edge>
+      <edge source="Isigny" target="Bordeaux" id="326" weight="15">
+        <attvalues>
+          <attvalue for="5" value="810" />
+        </attvalues>
+      </edge>
+      <edge source="Isigny" target="Blaye" id="327" weight="4">
+        <attvalues>
+          <attvalue for="5" value="240" />
+        </attvalues>
+      </edge>
+      <edge source="Argenton" target="Bordeaux" id="328" weight="28">
+        <attvalues>
+          <attvalue for="5" value="1282" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Pierre et Miquelon" target="Bordeaux" id="329" weight="7">
+        <attvalues>
+          <attvalue for="5" value="631" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Pierre et Miquelon" target="Rivière de Bordeaux" id="330" weight="1">
+        <attvalues>
+          <attvalue for="5" value="70" />
+        </attvalues>
+      </edge>
+      <edge source="Boulogne sur Mer" target="Bordeaux" id="331" weight="23">
+        <attvalues>
+          <attvalue for="5" value="1404" />
+        </attvalues>
+      </edge>
+      <edge source="Paimpol" target="Bordeaux" id="332" weight="10">
+        <attvalues>
+          <attvalue for="5" value="350" />
+        </attvalues>
+      </edge>
+      <edge source="Bourgneuf" target="Bordeaux" id="333" weight="39">
+        <attvalues>
+          <attvalue for="5" value="1009" />
+        </attvalues>
+      </edge>
+      <edge source="Harfleur" target="Bordeaux" id="334" weight="8">
+        <attvalues>
+          <attvalue for="5" value="320" />
+        </attvalues>
+      </edge>
+      <edge source="Roscoff" target="Bordeaux" id="335" weight="11">
+        <attvalues>
+          <attvalue for="5" value="585" />
+        </attvalues>
+      </edge>
+      <edge source="Talmont [Talmont Saint Hilaire]" target="Bordeaux" id="336" weight="83">
+        <attvalues>
+          <attvalue for="5" value="1945" />
+        </attvalues>
+      </edge>
+      <edge source="Talmont [Talmont Saint Hilaire]" target="Libourne" id="337" weight="102">
+        <attvalues>
+          <attvalue for="5" value="1035" />
+        </attvalues>
+      </edge>
+      <edge source="Royan" target="Bordeaux" id="338" weight="14">
+        <attvalues>
+          <attvalue for="5" value="404" />
+        </attvalues>
+      </edge>
+      <edge source="Barfleur" target="Bordeaux" id="339" weight="3">
+        <attvalues>
+          <attvalue for="5" value="477" />
+        </attvalues>
+      </edge>
+      <edge source="Fécamp" target="Bordeaux" id="340" weight="6">
+        <attvalues>
+          <attvalue for="5" value="360" />
+        </attvalues>
+      </edge>
+      <edge source="Le Croisic" target="Bordeaux" id="341" weight="7">
+        <attvalues>
+          <attvalue for="5" value="392" />
+        </attvalues>
+      </edge>
+      <edge source="Beauvoir-sur-Mer" target="Bordeaux" id="342" weight="94">
+        <attvalues>
+          <attvalue for="5" value="3128" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Denis [d' Oléron]" target="Bordeaux" id="343" weight="6">
+        <attvalues>
+          <attvalue for="5" value="216" />
+        </attvalues>
+      </edge>
+      <edge source="Le Tréport" target="Bordeaux" id="344" weight="1">
+        <attvalues>
+          <attvalue for="5" value="51" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Michel en l' Herm" target="Bordeaux" id="345" weight="43">
+        <attvalues>
+          <attvalue for="5" value="677" />
+        </attvalues>
+      </edge>
+      <edge source="Soubise" target="Bordeaux" id="346" weight="20">
+        <attvalues>
+          <attvalue for="5" value="744" />
+        </attvalues>
+      </edge>
+      <edge source="Noirmoutier" target="Bordeaux" id="347" weight="64">
+        <attvalues>
+          <attvalue for="5" value="2199" />
+        </attvalues>
+      </edge>
+      <edge source="Noirmoutier" target="Libourne" id="348" weight="13">
+        <attvalues>
+          <attvalue for="5" value="355" />
+        </attvalues>
+      </edge>
+      <edge source="Etaples" target="Bordeaux" id="349" weight="14">
+        <attvalues>
+          <attvalue for="5" value="700" />
+        </attvalues>
+      </edge>
+      <edge source="La Tranche sur Mer" target="Bordeaux" id="350" weight="43">
+        <attvalues>
+          <attvalue for="5" value="845" />
+        </attvalues>
+      </edge>
+      <edge source="Philadelphie" target="Bordeaux" id="351" weight="18">
+        <attvalues>
+          <attvalue for="5" value="5257" />
+        </attvalues>
+      </edge>
+      <edge source="Virginie" target="Bordeaux" id="352" weight="12">
+        <attvalues>
+          <attvalue for="5" value="2362" />
+        </attvalues>
+      </edge>
+      <edge source="James River" target="Bordeaux" id="353" weight="5">
+        <attvalues>
+          <attvalue for="5" value="535" />
+        </attvalues>
+      </edge>
+      <edge source="Baltimore" target="Bordeaux" id="354" weight="8">
+        <attvalues>
+          <attvalue for="5" value="1926" />
+        </attvalues>
+      </edge>
+      <edge source="Aber Ildut" target="Blaye" id="355" weight="3">
+        <attvalues>
+          <attvalue for="5" value="105" />
+        </attvalues>
+      </edge>
+      <edge source="La Perrotine" target="Bordeaux" id="356" weight="31">
+        <attvalues>
+          <attvalue for="5" value="425" />
+        </attvalues>
+      </edge>
+      <edge source="Le Chateau [d' Oléron]" target="Bordeaux" id="357" weight="33">
+        <attvalues>
+          <attvalue for="5" value="376" />
+        </attvalues>
+      </edge>
+      <edge source="Ribérou [Saujon]" target="Libourne" id="358" weight="17">
+        <attvalues>
+          <attvalue for="5" value="290" />
+        </attvalues>
+      </edge>
+      <edge source="Ribérou [Saujon]" target="Bordeaux" id="359" weight="9">
+        <attvalues>
+          <attvalue for="5" value="252" />
+        </attvalues>
+      </edge>
+      <edge source="Ile de Bouin" target="Bordeaux" id="360" weight="28">
+        <attvalues>
+          <attvalue for="5" value="1006" />
+        </attvalues>
+      </edge>
+      <edge source="Georgetown" target="Bordeaux" id="361" weight="4">
+        <attvalues>
+          <attvalue for="5" value="740" />
+        </attvalues>
+      </edge>
+      <edge source="Moricq" target="Bordeaux" id="362" weight="32">
+        <attvalues>
+          <attvalue for="5" value="840" />
+        </attvalues>
+      </edge>
+      <edge source="Moricq" target="Libourne" id="363" weight="5">
+        <attvalues>
+          <attvalue for="5" value="400" />
+        </attvalues>
+      </edge>
+      <edge source="Bourg [sur Gironde]" target="Blaye" id="364" weight="4">
+        <attvalues>
+          <attvalue for="5" value="152" />
+        </attvalues>
+      </edge>
+      <edge source="Bourg [sur Gironde]" target="Morlaix" id="365" weight="4">
+        <attvalues>
+          <attvalue for="5" value="136" />
+        </attvalues>
+      </edge>
+      <edge source="Bourg [sur Gironde]" target="Lannion" id="366" weight="5">
+        <attvalues>
+          <attvalue for="5" value="190" />
+        </attvalues>
+      </edge>
+      <edge source="Collioure" target="Bordeaux" id="367" weight="16">
+        <attvalues>
+          <attvalue for="5" value="1895" />
+        </attvalues>
+      </edge>
+      <edge source="Edington" target="Bordeaux" id="368" weight="2">
+        <attvalues>
+          <attvalue for="5" value="246" />
+        </attvalues>
+      </edge>
+      <edge source="Norfolk" target="Bordeaux" id="369" weight="12">
+        <attvalues>
+          <attvalue for="5" value="3606" />
+        </attvalues>
+      </edge>
+      <edge source="Charleston" target="Bordeaux" id="370" weight="4">
+        <attvalues>
+          <attvalue for="5" value="948" />
+        </attvalues>
+      </edge>
+      <edge source="Portsall" target="Bordeaux" id="371" weight="13">
+        <attvalues>
+          <attvalue for="5" value="629" />
+        </attvalues>
+      </edge>
+      <edge source="Portsall" target="Blaye" id="372" weight="4">
+        <attvalues>
+          <attvalue for="5" value="116" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Valery en Caux" target="Bordeaux" id="373" weight="6">
+        <attvalues>
+          <attvalue for="5" value="306" />
+        </attvalues>
+      </edge>
+      <edge source="Le Pouliguen" target="Bordeaux" id="374" weight="8">
+        <attvalues>
+          <attvalue for="5" value="144" />
+        </attvalues>
+      </edge>
+      <edge source="Rhode Island" target="Bordeaux" id="375" weight="2">
+        <attvalues>
+          <attvalue for="5" value="320" />
+        </attvalues>
+      </edge>
+      <edge source="New York" target="Bordeaux" id="376" weight="3">
+        <attvalues>
+          <attvalue for="5" value="270" />
+        </attvalues>
+      </edge>
+      <edge source="Saint Jean de Luz" target="Bordeaux" id="377" weight="2">
+        <attvalues>
+          <attvalue for="5" value="460" />
+        </attvalues>
+      </edge>
+      <edge source="Mortagne" target="Blaye" id="378" weight="1">
+        <attvalues>
+          <attvalue for="5" value="18" />
+        </attvalues>
+      </edge>
+      <edge source="Mortagne" target="Bordeaux" id="379" weight="2">
+        <attvalues>
+          <attvalue for="5" value="160" />
+        </attvalues>
+      </edge>
+      <edge source="Socoa [Ciboure]" target="Bordeaux" id="380" weight="3">
+        <attvalues>
+          <attvalue for="5" value="450" />
+        </attvalues>
+      </edge>
+      <edge source="Alexandrie" target="Bordeaux" id="381" weight="2">
         <attvalues>
           <attvalue for="5" value="578" />
         </attvalues>

@@ -1058,9 +1058,11 @@ button.is-active {
 
 .centered-contents {
   min-width: $screen-md-min;
+  max-width: $screen-md-min;
   @include tablet {
     margin-top: $header_height;
     min-width: unset;
+    max-width: unset;
     width: 100%;
     padding: 0 $medium-gutter 0 $medium_gutter;
   }
@@ -1433,6 +1435,12 @@ button.is-active {
       color: white;
       border: 1px solid white;
     }
+  }
+}
+
+.PlainPage {
+  a {
+    color: inherit;
   }
 }
 

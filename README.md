@@ -24,7 +24,7 @@ yarn start
 ```bash
 yarn data:load # fetches data from toflit18 and navigo sources
 yarn data:build # builds derivated datasets from complete data given by data:load script
-yarn data:load # orchestrates data fetching and building, then destroys the temp data folder
+yarn data:update # orchestrates data fetching and building, then destroys the temp data folder
 ```
 
 ## Updating the thumbnails

@@ -1,4 +1,68 @@
 destination_radar,homeport_destination_radar,tonnage,departure_fr,destination_fr,ship_id,ship_name,departure_action,destination_action,departure_out_date,destination_in_date,source_doc_id
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=04=22,1789>04>22,00341868
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=04=27,1789>04>27,00341869
+Local,Local,20,La Rochelle,Châlon,0007783N,Saint Etienne,Out,In,1789=04=09,1789>04>09,00341881
+Local,Local,20,La Rochelle,Châlon,,Saint Pierre,Out,In,1789=05=13,1789>05>13,00341872
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=01=20,1789>01>20,00341879
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=05=28,1789>05>28,00341882
+Local,Local,20,La Rochelle,Châlon,,Francoise,Out,In,1789=06=03,1789>06>03,00341884
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=06=05,1789>06>05,00341885
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=06=17,1789>06>17,00341889
+Local,Local,20,La Rochelle,Châlon,,Marie Marguérite,Out,In,1789=06=27,1789>06>27,00341891
+Local,Local,20,La Rochelle,Châlon,,Saint Pierre,Out,In,1789=07=03,1789>07>03,00341893
+Local,Local,20,La Rochelle,Châlon,,Benigne,Out,In,1789=07=10,1789>07>10,00341895
+Local,Local,20,La Rochelle,Châlon,,Francoise,Out,In,1789=07=11,1789>07>11,00341896
+Local,Local,20,La Rochelle,Châlon,,Elisabeth,Out,In,1789=07=15,1789>07>15,00341897
+Local,Local,20,La Rochelle,Châlon,,Saint Pierre,Out,In,1789=07=21,1789>07>21,00341899
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=07=25,1789>07>25,00341900
+Local,Local,20,La Rochelle,Châlon,,Printemps,Out,In,1789=07=29,1789>07>29,00341902
+Local,Local,20,La Rochelle,Châlon,,Saint Leon,Out,In,1789=08=12,1789>08>12,00341906
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=08=19,1789>08>19,00341908
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Saint Pierre,Out,In,1789=11=17,1789>11>17,00336526
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Benninge,Out,In,1789=05=05,1789>05>05,00336520
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Printemps,Out,In,1789=06=23,1789>06>23,00336521
+Local,Local,20,La Rochelle,Châlon,,Marie Marguérite,Out,In,1789=08=28,1789>08>28,00341911
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Heureux commerce,Out,In,1789=07=09,1789>07>09,00336522
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=09=04,1789>09>04,00341912
+Local,Local,20,La Rochelle,Châlon,,Marie,Out,In,1789=09=16,1789>09>16,00341914
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=09=24,1789>09>24,00341915
+Local,Local,20,La Rochelle,Châlon,,Marie Marguérite,Out,In,1789=10=08,1789>10>08,00341918
+Local,Local,20,La Rochelle,Châlon,,Saint Joseph,Out,In,1789=10=10,1789>10>10,00341919
+Local,Local,20,Rochefort,Châlon,,Monsieur,Out,In,1789=05=06,1789>05>06,00340308
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=10=12,1789>10>12,00341920
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=10=15,1789>10>15,00341921
+Local,Local,20,La Rochelle,Châlon,,Monsieur,Out,In,1789=12=03,1789>12>03,00341927
+Local,Local,20,Rochefort,Châlon,,Monsieur,Out,In,1789=03=31,1789>03>31,00341928
+Local,Local,20,La Rochelle,Châlon,,Bénigne,Out,In,1789=09=11,1789>09>11,00341913
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=10=03,1789>10>03,00341917
+Local,Local,20,La Rochelle,Châlon,0007783N,Saint Etienne,Out,In,1789=05=04,1789>05>04,00341870
+Local,Local,20,La Rochelle,Châlon,,Printems,Out,In,1789=02=05,1789>02>05,00341864
+Local,Local,20,La Rochelle,Châlon,,Elisabeth,Out,In,1789=03=27,1789>03>27,00341865
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=04=09,1789>04>09,00341866
+Local,Local,20,La Rochelle,Châlon,,Saint Pierre,Out,In,1789=04=18,1789>04>18,00341867
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=05=07,1789>05>07,00341871
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=05=15,1789>05>15,00341873
+Local,Local,20,La Rochelle,Châlon,,Francoise,Out,In,1789=05=19,1789>05>19,00341874
+Local,Local,20,La Flotte-en-Ré,Châlon,,Marie Marguerite,In-Out,In,1789=04=30,1789>04>30,00332682
+Local,Local,20,La Flotte-en-Ré,Châlon,,Saint Pierre,In-Out,In,1789=10=04,1789>10>04,00332684
+Local,Local,20,La Rochelle,Châlon,,Elisabeth,Out,In,1789=05=23,1789>05>23,00341875
+Local,Local,20,La Rochelle,Châlon,,Benigne,Out,In,1789=01=20,1789>01>20,00341878
+Local,Local,20,La Rochelle,Châlon,,Benigne,Out,In,1789=04=06,1789>04>06,00341880
+Local,Local,20,La Rochelle,Châlon,,Printemps,Out,In,1789=06=03,1789>06>03,00341883
+Local,Local,20,La Rochelle,Châlon,,Benigne,Out,In,1789=06=13,1789>06>13,00341887
+Local,Local,20,La Rochelle,Châlon,,Elisabeth,Out,In,1789=06=23,1789>06>23,00341890
+Local,Local,20,La Rochelle,Châlon,,Monsieur,Out,In,1789=07=07,1789>07>07,00341894
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=07=29,1789>07>29,00341901
+Local,Local,20,La Rochelle,Châlon,,Bénigne,Out,In,1789=07=30,1789>07>30,00341903
+Local,Local,20,La Rochelle,Châlon,,Marie Marguérite,Out,In,1789=08=06,1789>08>06,00341905
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Françoise,Out,In,1789=08=07,1789>08>07,00336523
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Printemps,Out,In,1789=08=29,1789>08>29,00336524
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=08=19,1789>08>19,00341909
+Local,Local,20,Ars-en-Ré,Châlon,,Deux Amis,Out,In,1789=05=27,1789>05>27,00340306
+Local,Local,20,Ars-en-Ré,Châlon,,Printemps,Out,In,1789=09=14,1789>09>14,00340307
+Local,Local,20,La Rochelle,Châlon,,Bénigne,Out,In,1789=10=27,1789>10>27,00341922
+Local,Local,20,La Rochelle,Châlon,,Printemps,Out,In,1789=11=14,1789>11>14,00341925
+Local,Local,20,La Rochelle,Châlon,,Deux Freres,Out,In,1789=11=26,1789>11>26,00341926
 France,France,75,La Rochelle,Calais,0000671N,Coquille,Out,In,1789=01=21,1789>01>21,00341931
 France,France,64,La Rochelle,Calais,0000758N,Aimable Marie,Out,In,1789=05=11,1789>05>11,00341940
 Local,Local,24,La Rochelle,île de Ré,0000882N,Espérance,Out,In,1789=07=01,1789>07>01,00341422
@@ -31,7 +95,7 @@ France,Local,29,Champagné-les-Marais,Saint-Esprit,0009427N,Basque,In-Out,In,,17
 France,Local,29,La Barre-de-Monts,Bordeaux,0009427N,Basque,In-Out,In,,1789>10>16,00342050
 Local,Local,10,Ribérou,île d'Oléron,0009618N,Societé,Out,In,1789=12=05,1789>12>05,00334915
 Local,Local,15,Le Château-d'Oléron,Saint-Martin-de-Ré,0009669N,Saint Jacques,Out,In,1789=09=01,1789>09>01,00340410
-Local,Local,20,La Rochelle,Ker Châlon,0009942N,Rochêr,Out,In,1789=07=01,1789>07>01,00341892
+Local,Local,20,La Rochelle,Châlon,0009942N,Rochêr,Out,In,1789=07=01,1789>07>01,00341892
 Local,France,80,Seudre,La Rochelle,0010538N,Pilotte,Out,In,1789<12<14,1789>12>14,00341162
 Local,Local,8,La Rochelle,Saint-Martin-de-Ré,0010984N,Aimable Francoise,Out,In,1789=11=25,1789>11>25,00340433
 Local,Local,26,Marans,Rochefort,0012589N,Folie,Out,In,1789=06=16,1789>06>16,00334871
@@ -234,7 +298,7 @@ Local,Local,50,La Rochelle,Bourcefranc ,0009418N,Don de Dieu,Out,In,1789=10=02,
 France,Local,29,Saint-Gilles-sur-Vie,Nantes,0009427N,Basque,Out,In,1789=04=11,1789>04>11,00333840
 France,Local,29,Saint-Gilles-sur-Vie,Nantes,0009427N,Basque,Out,In,1789=09=03,1789>09>03,00333842
 France,France,10,Marennes,Côtes de Bretagne,0009541N,Marie,Out,In,1789=09=18,1789>09>18,00338797
-Local,Local,10,La Perrotine,Ker Châlon,0009618N,Societé,Out,In,1789=08=06,1789>08>06,00333518
+Local,Local,10,La Perrotine,Châlon,0009618N,Societé,Out,In,1789=08=06,1789>08>06,00333518
 Local,Local,10,île d'Oléron,île d'Oléron,0009618N,Société,Out,In,1789<11<11,1789>11>11,00339737
 Local,Local,9,île d'Oléron,La Rochelle,0009687N,Francoise,Out,In,1789<10<09,1789>10>09,00333742
 Local,Local,9,île d'Oléron,La Rochelle,0009687N,Francoise,Out,In,1789<10<15,1789>10>15,00333743
@@ -298,10 +362,10 @@ Local,Local,36,Tonnay-Charente,Tonnay-Charente,,Saint André,Out,In,1789<11<13,1
 Local,Local,36,La Flotte-en-Ré,Tonnay-Charente,,Saint André,In-Out,In,1789=11=13,1789>11>13,00332678
 Local,Local,4,Tonnay-Charente,Tonnay-Charente,,Princesse,Out,In,1789<12<16,1789>12>16,00332680
 Local,Local,4,La Flotte-en-Ré,Tonnay-Charente,,Princesse,In-Out,In,1789=12=16,1789>12>16,00332680
-Local,Local,20,Ribérou,Ker Châlon,,Saint François,Out,In,1789<08<23,1789>08>23,00332681
-Local,Local,20,Ker Châlon,Ker Châlon,,Marie Marguerite,Out,In,1789<04<30,1789>04>30,00332682
-Local,Local,20,Ker Châlon,Ker Châlon,,Saint Pierre,Out,In,1789<09<07,1789>09>07,00332683
-Local,Local,20,Ker Châlon,Ker Châlon,,Saint Pierre,Out,In,1789<10<04,1789>10>04,00332684
+Local,Local,20,Ribérou,Châlon,,Saint François,Out,In,1789<08<23,1789>08>23,00332681
+Local,Local,20,Châlon,Châlon,,Marie Marguerite,Out,In,1789<04<30,1789>04>30,00332682
+Local,Local,20,Châlon,Châlon,,Saint Pierre,Out,In,1789<09<07,1789>09>07,00332683
+Local,Local,20,Châlon,Châlon,,Saint Pierre,Out,In,1789<10<04,1789>10>04,00332684
 France,France,27,Seudre,Côtes de Bretagne,,Marguerite,Out,In,1789<11<25,1789>11>25,00332686
 France,France,25,La Rochelle,Auray,,Saint Sebastien,Out,In,1789<07<02,1789>07>02,00332689
 Local,Local,25,Marans,Marans,,Marie Claire,Out,In,1789<01<15,1789>01>15,00332691
@@ -351,9 +415,9 @@ Local,Local,30,Marennes,Tonnay-Charente,,Saint Pierre,Out,In,1789=12=17,1789>12>
 Local,Local,75,Mortagne,Tonnay-Charente,,Saint Charles,Out,In,1789=12=05,1789>12>05,00333513
 Local,Local,12,Saint-Martin-de-Ré,Tonnay-Charente,,Elizabeth,Out,In,1789=12=11,1789>12>11,00333515
 Local,Local,27,Ribérou,Tonnay-Charente,,Saint Jean,Out,In,1789=09=05,1789>09>05,00333514
-Local,Local,,La Perrotine,Ker Châlon,,Deux Sœurs,Out,In,1789=08=06,1789>08>06,00333519
 France,France,48,Saint-Martin-de-Ré,Calais,,Sainte Helene,Out,In,1789=03=04,1789>03>04,00333520
 France,France,70,Ars-en-Ré,Calais,,Heureuse Marie,Out,In,1789=03=02,1789>03>02,00333521
+Local,Local,,La Perrotine,Châlon,,Deux Sœurs,Out,In,1789=08=06,1789>08>06,00333519
 France,France,60,La Perrotine,Boulogne-sur-Mer,,Unnamed,Out,In,1789=09=04,1789>09>04,00333524
 France,Ports francs et petites îles,66,Marennes,Boulogne-sur-Mer,,Aimable Julie,Out,In,1789=03=19,1789>03>19,00333527
 France,Ports francs et petites îles,85,Tonnay-Charente,Nantes,,Espoir du Gain,Out,In,1789=03=28,1789>03>28,00333551
@@ -391,7 +455,7 @@ France,France,16,Marans,Pornic,,Marie Catherine,Out,In,1789=08=10,1789>08>10,003
 Local,Local,22,Saint-Gilles-sur-Vie,Marennes,,Epervier,Out,In,1789=07=29,1789>07>29,00333889
 France,Ports francs et petites îles,12,Noirmoutier,Courreaux de Groix,,Suzanne Cécile,Out,In,1789=04=22,1789>04>22,00333898
 Local,Local,22,Saint-Gilles-sur-Vie,Saint-Denis d'Oléron,,Epervier,Out,In,1789=10=25,1789>10>25,00333899
-Local,Local,18,Marennes,Ker Châlon,,Felicité,Out,In,1789=06=17,1789>06>17,00333900
+Local,Local,18,Marennes,Châlon,,Felicité,Out,In,1789=06=17,1789>06>17,00333900
 Local,Local,60,Rochefort,Tonnay-Charente,,Conducteur,Out,In,1789=06=26,1789>06>26,00333904
 Local,Local,32,Rochefort,Chaillevette,,Grace de Dieu,Out,In,1789=02=16,1789>02>16,00333905
 Local,Ports francs et petites îles,24,Noirmoutier,île d'Oléron,,Sainte Helene,Out,In,1789=07=02,1789>07>02,00333914
@@ -476,7 +540,7 @@ Local,Local,32,Saint-Martin-de-Ré,Tonnay-Charente,,Grace de Dieu,Out,In,1789=10
 Local,Local,30,Saint-Martin-de-Ré,Tonnay-Charente,,Providence,Out,In,1789=10=24,1789>10>24,00336514
 Local,Local,32,Saint-Martin-de-Ré,Tonnay-Charente,,Providence,Out,In,1789=11=28,1789>11>28,00336515
 Local,Local,32,Saint-Martin-de-Ré,Tonnay-Charente,,Grace de Dieu,Out,In,1789=11=30,1789>11>30,00336516
-Local,Local,18,La Perrotine,Ker Châlon,,Marie Françoise,Out,In,1789=08=04,1789>08>04,00336519
+Local,Local,18,La Perrotine,Châlon,,Marie Françoise,Out,In,1789=08=04,1789>08>04,00336519
 France,France,17,Ribérou,Carnac,,Sainte Anne,Out,In,1789=07=07,1789>07>07,00336527
 France,France,6,Saint-Martin-de-Ré,Carnac,,Marie Thérèse,Out,In,1789=08=11,1789>08>11,00336528
 France,France,30,La Perrotine,Brest,,Marguerite,Out,In,1789=07=07,1789>07>07,00336622
@@ -944,9 +1008,9 @@ France,Local,20,Saint-Martin-de-Ré,Hennebont,,Hirondelle,Out,In,1789=10=03,1789
 Europe,Local,26,Saint-Martin-de-Ré,illisible,,Hirondelle,Out,In,1789=05=13,1789>05>13,00339451
 France,France,33,Rochefort,Auray,,Saint Jacques,Out,In,1789=06=27,1789>06>27,00339458
 France,France,12,Rochefort,Auray,,Sainte Anne,Out,In,1789=03=10,1789>03>10,00339457
-Local,Local,20,Ker Châlon,Ker Châlon,,Francoise,Out,In,1789<06<16,1789>06>16,00339461
+Local,Local,20,Châlon,Châlon,,Francoise,Out,In,1789<06<16,1789>06>16,00339461
 Local,France,5,La Flotte-en-Ré,mer des Pertuis,,Sainte Anne,In-Out,In,1789=04=30,1789>04>30,00339464
-Local,Local,20,Ker Châlon,La Rochelle,,Françoise,Out,In,1789<01<22,1789>01>22,00339466
+Local,Local,20,Châlon,La Rochelle,,Françoise,Out,In,1789<01<22,1789>01>22,00339466
 France,France,15,La Flotte-en-Ré,Redon,,Saint Louis,In-Out,In,1789=07=07,1789>07>07,00339468
 France,Ports francs et petites îles,64,Noirmoutier,Rouen,,Ambition,Out,In,1789=02=17,1789>02>17,00339471
 France,Europe,61,Seudre,Bordeaux,,Don de Dieu,Out,In,1789<11<10,1789>11>10,00341993
@@ -1852,7 +1916,7 @@ Local,Local,15,La Perrotine,île de Ré,0007677N,Espion,Out,In,1789=06=26,1789>0
 Local,Local,20,Saint-Martin-de-Ré,île d'Oléron,0007677N,Espion,Out,In,1789=10=01,1789>10>01,00337101
 Local,France,27,Marans,île d'Oléron,0007762N,Marie Justine,Out,In,1789=05=12,1789>05>12,00332613
 France,France,73,Marennes,Caen ,0007773N,Sainte Anne,Out,In,1789=04=23,1789>04>23,00338759
-Local,Local,20,La Rochelle,Ker Châlon,0007783N,Saint Etienne,Out,In,1789=09=25,1789>09>25,00341916
+Local,Local,20,La Rochelle,Châlon,0007783N,Saint Etienne,Out,In,1789=09=25,1789>09>25,00341916
 France,France,4,Les Sables-d'Olonne,Côtes de Bretagne,0007891N,Saint Jacque,Out,In,1789=07=26,1789>07>26,00338386
 Europe,France,22,Ribérou,pas identifié,0008438N,Marie Joseph,Out,In,1789=02=06,1789>02>07,00340037
 France,France,10,Ribérou,Côtes de Bretagne,0008439N,Marie Joseph,Out,In,1789=08=06,1789>08>06,00336356
@@ -1941,7 +2005,7 @@ France,France,9,Marans,Côtes de Bretagne,,Sainte Anne,Out,In,1789=12=29,1789>12
 Local,Local,32,La Flotte-en-Ré,Saint-Savinien,,Saint Pierre,In-Out,In,1789=04=21,1789>04>21,00332645
 Local,Local,4,La Flotte-en-Ré,Saint-Michel-en-l'Herm,,Esperance,In-Out,In,1789=11=20,1789>11>20,00332646
 France,France,15,Rochefort,Morlaix,,Esperance,Out,In,1789<06<22,1789>06>22,00332654
-Local,Local,20,La Flotte-en-Ré,Ker Châlon,,Saint Pierre,In-Out,In,1789=09=07,1789>09>07,00332683
+Local,Local,20,La Flotte-en-Ré,Châlon,,Saint Pierre,In-Out,In,1789=09=07,1789>09>07,00332683
 France,France,12,La Flotte-en-Ré,Côtes de Bretagne,,Saint Pierre,In-Out,In,1789=03=28,1789>03>28,00332685
 France,France,16,La Tranche-sur-Mer,Bordeaux,,Etoile de la Mer,Out,In,1789=10=26,1789>10>26,00332703
 France,France,80,Saint-Martin-de-Ré,Boulogne-sur-Mer,,Père de famille,Out,In,1789=01=31,1789>01>31,00332708
@@ -2098,7 +2162,7 @@ France,France,10,Ribérou,Côtes de Bretagne,,Sainte Genevieve,Out,In,1789=10=20
 France,France,10,Ribérou,Côtes de Bretagne,,Sainte Anne,Out,In,1789=11=07,1789>11>07,00336460
 France,France,10,Ribérou,Côtes de Bretagne,,Sainte Suzanne,Out,In,1789=11=09,1789>11>09,00336461
 France,France,10,Ribérou,Côtes de Bretagne,,Providence,Out,In,1789=11=27,1789>11>27,00336463
-Local,France,18,Saint-Denis d'Oléron,Ker Châlon,,Coureur,Out,In,1789=10=15,1789>10>15,00336518
+Local,France,18,Saint-Denis d'Oléron,Châlon,,Coureur,Out,In,1789=10=15,1789>10>15,00336518
 France,France,10,Marans,Côtes de Bretagne,,Saint Michel,Out,In,1789=07=21,1789>07>21,00336531
 France,France,4,Marans,Côtes de Bretagne,,Marie Thérèse,Out,In,1789=07=30,1789>07>30,00336542
 France,France,30,Marans,Côtes de Bretagne,,Saint Michel,Out,In,1789=09=01,1789>09>01,00336578
@@ -2283,7 +2347,7 @@ Europe,Europe,42,Marennes,Bilbao,,Notre Dame de Secours,Out,In,1789=07=09,1789>0
 France,France,56,Marennes,Caen ,,Sainte Barbe,Out,In,1789=05=14,1789>05>14,00338790
 Europe,Europe,223,Noirmoutier,Mer Baltique,,Dame Elizabet,Out,In,1789=07=27,1789>07>27,00339159
 Europe,Europe,176,Marennes,Amsterdam,,Dame Helenne Maria,Out,In,1789=06=20,1789>06>20,00339172
-Local,Local,20,Ars-en-Ré,Ker Châlon,,Monsieur,Out,In,1789=08=22,1789>08>22,00338727
+Local,Local,20,Ars-en-Ré,Châlon,,Monsieur,Out,In,1789=08=22,1789>08>22,00338727
 France,France,69,Marennes,Caen ,,Seraphin,Out,In,1789=03=13,1789>03>13,00338734
 France,France,57,Marennes,Caen ,,Sainte Anne,Out,In,1789=04=04,1789>04>04,00338742
 France,France,54,Marennes,Caen ,,Elizabeth,Out,In,1789=04=11,1789>04>11,00338744
@@ -2336,7 +2400,7 @@ France,Local,70,île de Bouin,Gravelines,,Bien Venu,Out,In,1789=10=04,1789>10>04
 Europe,Local,85,Soubise,Grands Bancs de Terre-Neuve,,Pierre Francois,Out,In,1789<04<17,1789>04>17,00339360
 France,Local,2,Les Sables-d'Olonne,Côtes de Bretagne,,Hyrondelle,Out,In,1789=09=05,1789>09>05,00339392
 France,Local,2,Les Sables-d'Olonne,Côtes de Bretagne,,Marie Roze,Out,In,1789=09=09,1789>09>09,00339393
-Local,Local,20,La Flotte-en-Ré,Ker Châlon,,Francoise,In-Out,In,1789=06=16,1789>06>16,00339461
+Local,Local,20,La Flotte-en-Ré,Châlon,,Francoise,In-Out,In,1789=06=16,1789>06>16,00339461
 France,Reste du monde,150,La Flotte-en-Ré,Bordeaux,,Branche Dollivier,In-Out,In,1789=06=26,1789>06>26,00339469
 France,France,50,Saint-Denis d'Oléron,Bordeaux,,Saint Pierre,Out,In,1789=09=16,1789>09>16,00339486
 France,Ports francs et petites îles,42,Marans,Nantes,,Aimable Société,Out,In,1789=04=28,1789>04>28,00339630
@@ -2348,8 +2412,8 @@ Local,France,80,Saint-Martin-de-Ré,Marennes,,Petit Aime,Out,In,1789=04=21,1789>
 Local,France,19,Saint-Martin-de-Ré,Marennes,,Saint Joseph,Out,In,1789=02=20,1789>02>20,00339751
 Local,Europe,20,Le Château-d'Oléron,Marans,,Sainte Anne,Out,In,1789=07=22,1789>07>22,00339791
 Local,Local,40,Marennes,île de Ré,,Madelaine,Out,In,1789=07=16,1789>07>16,00339766
-Local,Europe,2,Le Château-d'Oléron,Ker Châlon,,Dophine,Out,In,1789=07=24,1789>07>24,00339779
-Local,Local,20,Ars-en-Ré,Ker Châlon,,François,Out,In,1789=09=10,1789>09>10,00339778
+Local,Europe,2,Le Château-d'Oléron,Châlon,,Dophine,Out,In,1789=07=24,1789>07>24,00339779
+Local,Local,20,Ars-en-Ré,Châlon,,François,Out,In,1789=09=10,1789>09>10,00339778
 France,France,28,Marennes,Vannes,,Saint Nicolas,Out,In,1789=03=11,1789>03>11,00339802
 Local,Local,20,Saint-Martin-de-Ré,Les Sables-d'Olonne,,Marie Anne,Out,In,1789=03=11,1789>03>11,00339815
 Local,Local,16,Saint-Martin-de-Ré,Les Sables-d'Olonne,,Deux Amis,Out,In,1789=07=29,1789>07>29,00339817
@@ -2421,7 +2485,7 @@ Afrique,Local,92,La Rochelle,Côte d'Or,,Méridien,Out,In,1789=06=27,1789>06>27,
 Afrique,Local,517,La Rochelle,Côte d'Or,,Duc de Normandie,Out,In,1789=06=30,1789>06>30,00341639
 Afrique,Local,125,La Rochelle,Côte d'Or,,Sartine,Out,In,1789=09=02,1789>09>02,00341640
 Afrique,Local,402,La Rochelle,Côte d'Or,,Deux Amis,Out,In,1789=11=20,1789>11>20,00341642
-Local,Local,25,La Rochelle,Ker Châlon,,Marianne,Out,In,1789=07=21,1789>07>21,00341898
+Local,Local,25,La Rochelle,Châlon,,Marianne,Out,In,1789=07=21,1789>07>21,00341898
 Europe,Europe,80,La Rochelle,Bruges,,Jeune Ponke,Out,In,1789=02=23,1789>02>23,00341948
 Europe,France,40,La Rochelle,Bruges,,Saint Louis,Out,In,1789=09=24,1789>09>24,00341947
 Local,Ports francs et petites îles,65,La Rochelle,Brouage ,,Montreuil,Out,In,1789=08=08,1789>08>08,00341955
@@ -2495,8 +2559,8 @@ Local,Local,18,La Rochelle,île d'Oléron,0007079N,Davizard,Out,In,1789=04=10,17
 France,Local,18,Saint-Denis d'Oléron,Côtes de Bretagne,0007079N,Davizard,Out,In,1789=04=20,1789>04>20,00339962
 France,Local,18,Saint-Denis d'Oléron,Côtes de Bretagne,0007079N,Davizard,Out,In,1789=07=08,1789>07>08,00339969
 Local,Local,18,Ribérou,île d'Oléron,0007079N,Davizard,Out,In,1789=06=19,1789>06>19,00333098
+Local,Local,45,Saint-Martin-de-Ré,Châlon,0007079N,Davisard,Out,In,1789=09=12,1789>09>12,00336525
 France,Local,18,Saint-Denis d'Oléron,Bordeaux,0007079N,Davizard,Out,In,1789=11=18,1789>11>18,00339487
-Local,Local,45,Saint-Martin-de-Ré,Ker Châlon,0007079N,Davisard,Out,In,1789=09=12,1789>09>12,00336525
 Local,Local,33,Royan,Tonnay-Charente,0007099N,Grâce de Dieu,Out,In,1789=05=24,1789>05>24!,00296039
 France,France,10,Les Sables-d'Olonne,Côtes de Bretagne,0007275N,Saint Pierre,Out,In,1789=09=30,1789>09>30,00338409
 France,France,4,Marans,Côtes de Bretagne,0007275N,Saint Pierre,Out,In,1789=08=29,1789>08>29,00336576
@@ -2518,7 +2582,7 @@ Local,Local,6,Ribérou,île d'Oléron,0007674N,Marie,Out,In,1789=01=20,1789>01>2
 Local,Local,6,Ribérou,île d'Oléron,0007675N,Marie,Out,In,1789=10=20,1789>10>20,00333108
 Local,Local,15,La Rochelle,île d'Oléron,0007677N,Espion,Out,In,1789=10=20,1789>10>20,00340866
 France,France,67,Marennes,Honfleur,0007773N,Sainte Anne,Out,In,1789=06=26,1789>06>26,00337971
-Local,Local,20,La Rochelle,Ker Châlon,0007783N,Saint Etienne,Out,In,1789=08=24,1789>08>24,00341910
+Local,Local,20,La Rochelle,Châlon,0007783N,Saint Etienne,Out,In,1789=08=24,1789>08>24,00341910
 France,France,10,Ribérou,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=09=24,1789>09>24,00336432
 France,France,10,Ribérou,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=09=29,1789>09>29,00336436
 France,France,10,Les Sables-d'Olonne,Côtes de Bretagne,0007891N,Saint Jacque,Out,In,1789=10=05,1789>10>05,00338410
@@ -2614,7 +2678,7 @@ France,France,8,La Flotte-en-Ré,Quiberon,,Sainte Anne,In-Out,In,1789=09=07,1789
 Local,Local,9,La Flotte-en-Ré,île d'Oléron,,Trois Amis,In-Out,In,1789=03=07,1789>03>07,00332651
 France,France,27,La Flotte-en-Ré,Morlaix,,Saint Vincent,In-Out,In,1789=05=07,1789>05>07,00332655
 Local,France,48,La Flotte-en-Ré,Marennes,,Sainte Helenne,In-Out,In,1789=07=04,1789>07>04,00332664
-Local,Local,20,La Flotte-en-Ré,Ker Châlon,,Saint François,In-Out,In,1789=08=23,1789>08>23,00332681
+Local,Local,20,La Flotte-en-Ré,Châlon,,Saint François,In-Out,In,1789=08=23,1789>08>23,00332681
 France,France,30,La Flotte-en-Ré,Côtes de Bretagne,,Saint Michel,In-Out,In,1789=07=06,1789>07>06,00332687
 France,France,27,La Flotte-en-Ré,Côtes de Bretagne,,Renommée,In-Out,In,1789=02=11,1789>02>11,00332688
 France,France,25,La Flotte-en-Ré,Auray,,Saint Sebastien,In-Out,In,1789=07=02,1789>07>02,00332689
@@ -2966,7 +3030,7 @@ Europe,Europe,173,Marennes,Lübeck,,Ange Madelaine,Out,In,1789=07=31,1789>07>31,
 Local,Local,12,Marennes,île d'Yeu,,Sainte Anne,Out,In,1789=05=26,1789>05>26,00340039
 France,France,27,La Flotte-en-Ré,Quiberon,,Marie Ange,In-Out,In,1789=09=07,1789>09>07,00340048
 Local,Local,15,Saint-Martin-de-Ré,Marennes,,Deux Amis,Out,In,1789=07=11,1789>07>11,00340054
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Printemps,Out,In,1789=05=14,1789>05>14,00340069
+Local,Local,20,Saint-Martin-de-Ré,Châlon,,Printemps,Out,In,1789=05=14,1789>05>14,00340069
 Europe,Europe,100,Saint-Martin-de-Ré,Amsterdam,,Jeune Muler,Out,In,1789=02=28,1789>02>28,00340082
 Local,Local,16,Saint-Martin-de-Ré,Les Sables-d'Olonne,,Deux Amis,Out,In,1789=07=11,1789>07>11,00340084
 Local,France,62,Rochefort,Saint-Savinien,,Saint Pierre,Out,In,1789=06=12,1789>06>12,00340097
@@ -2983,10 +3047,10 @@ Local,Local,15,Ars-en-Ré,île d'Oléron,,Cathrinne,Out,In,1789=10=01,1789>10>01
 Local,Local,18,Rochefort,île d'Oléron,,Saint Jacques,Out,In,1789=11=30,1789>11>30,00340145
 Local,Local,6,La Rochelle,île d'Oléron,,Deux Sœurs,Out,In,1789=04=01,1789>04>01,00340801
 Local,Europe,30,La Rochelle,île d'Oléron,,Saint Pierre,Out,In,1789=04=20,1789>04>20,00340806
+Local,Local,20,Rochefort,Châlon,,Monsieur,Out,In,1789=07=29,1789>07>29,00340309
 Local,Local,15,Ars-en-Ré,Marennes,,Paix désirée,Out,In,1789=01=14,1789>01>14,00340201
 France,France,18,Noirmoutier,Méan,,Saint Guillaume,Out,In,1789=12=09,1789>12>09,00340199
-Local,Local,20,Rochefort,Ker Châlon,,Monsieur,Out,In,1789=07=29,1789>07>29,00340309
-Local,Local,20,Ars-en-Ré,Ker Châlon,,Printemps,Out,In,1789=04=20,1789>04>20,00340305
+Local,Local,20,Ars-en-Ré,Châlon,,Printemps,Out,In,1789=04=20,1789>04>20,00340305
 Local,Local,36,Ars-en-Ré,Port-d'Envaux,,Trois sœurs,Out,In,1789=05=26,1789>05>26,00340324
 Local,Local,32,Rochefort,Port-d'Envaux,,Marie Elizabeth,Out,In,1789=11=13,1789>11>13,00340337
 Europe,Europe,80,La Rochelle,Ostende,,Dame Roclofena,Out,In,1789=04=09,1789>04>09,00340753
@@ -3043,15 +3107,15 @@ Afrique,Local,440,La Rochelle,Côte d'Or,,Ville de Balle,Out,In,1789=01=23,1789>
 Afrique,Local,809,La Rochelle,Côte d'Or,,Ciguogne,Out,In,1789=06=23,1789>06>23,00341635
 Afrique,Local,529,La Rochelle,Côte d'Or,,Nouvelle Betzy,Out,In,1789=06=27,1789>06>27,00341636
 Afrique,Local,827,La Rochelle,Côte d'Or,,Victoire,Out,In,1789=09=29,1789>09>29,00341641
-Local,Local,20,La Rochelle,Ker Châlon,,Francoise,Out,In,1789=01=28,1789>01>28,00341863
-Local,Local,4,La Rochelle,Ker Châlon,,Ressource,Out,In,1789=05=28,1789>05>28,00341876
-Local,Local,8,Le Château-d'Oléron,Ker Châlon,,Elizabet,Out,In,1789=04=27,1789>04>27,00341877
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Pierre,Out,In,1789=06=09,1789>06>09,00341886
-Local,Local,4,La Rochelle,Ker Châlon,,Ressource,Out,In,1789=06=15,1789>06>15,00341888
-Local,Local,20,La Rochelle,Ker Châlon,,Juif,Out,In,1789=07=31,1789>07>31,00341904
-Local,Local,20,La Rochelle,Ker Châlon,,Francois,Out,In,1789=08=14,1789>08>14,00341907
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=11=04,1789>11>04,00341923
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=11=10,1789>11>10,00341924
+Local,Local,20,La Rochelle,Châlon,,Francoise,Out,In,1789=01=28,1789>01>28,00341863
+Local,Local,4,La Rochelle,Châlon,,Ressource,Out,In,1789=05=28,1789>05>28,00341876
+Local,Local,8,Le Château-d'Oléron,Châlon,,Elizabet,Out,In,1789=04=27,1789>04>27,00341877
+Local,Local,20,La Rochelle,Châlon,,Saint Pierre,Out,In,1789=06=09,1789>06>09,00341886
+Local,Local,4,La Rochelle,Châlon,,Ressource,Out,In,1789=06=15,1789>06>15,00341888
+Local,Local,20,La Rochelle,Châlon,,Juif,Out,In,1789=07=31,1789>07>31,00341904
+Local,Local,20,La Rochelle,Châlon,,Francois,Out,In,1789=08=14,1789>08>14,00341907
+Local,Local,20,La Rochelle,Châlon,,Heureux Commerce,Out,In,1789=11=04,1789>11>04,00341923
+Local,Local,20,La Rochelle,Châlon,,Deux Amis,Out,In,1789=11=10,1789>11>10,00341924
 Local,Local,32,La Rochelle,Brouage ,,Elisabeth,Out,In,1789=03=21,1789>03>21,00341953
 Europe,Europe,120,La Rochelle,Brême,,Frédéric Auguste,Out,In,1789=05=23,1789>05>23,00341966
 France,Local,28,Le Château-d'Oléron,Bordeaux,,Quatre Sœurs,Out,In,1789=06=28,1789>06>28,00342007
@@ -5045,9 +5109,7 @@ France,France,14,La Rochelle,Le Croisic,,Saint Esprit,Out,In,1789=11=09,1789>11>
 Local,Local,3,Rochefort,île d'Oléron,0007464N,Suzanne,Out,In,1789=03=28,1789>03>28,00340128
 Local,Local,3,La Rochelle,île d'Oléron,0007464N,Assurance,Out,In,1789=05=05,1789>05>05,00340812
 France,France,4,La Flotte-en-Ré,Locmariaquer,0007548N,Marie Françoise,In-Out,In,1789=01=27,1789>01>27,00339887
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=04=22,1789>04>22,00341868
 Local,Local,15,La Rochelle,île d'Oléron,0007677N,Espion,Out,In,1789=09=12,1789>09>12,00340861
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=04=27,1789>04>27,00341869
 Local,Local,6,Ribérou,île d'Oléron,0007674N,Marie,Out,In,1789=01=28,1789>01>28,00333128
 Local,Local,6,Ribérou,île d'Oléron,0007674N,Marie,Out,In,1789=02=04,1789>02>04,00333258
 Local,Local,6,Ribérou,île d'Oléron,0007674N,Marie,Out,In,1789=02=16,1789>02>16,00333256
@@ -5063,21 +5125,16 @@ Local,Local,15,Saint-Martin-de-Ré,Marennes,0007677N,Espion,Out,In,1789=06=12,17
 Local,Local,15,Saint-Martin-de-Ré,Marennes,0007677N,Espion,Out,In,1789=07=04,1789>07>04,00337107
 France,France,34,Marennes,Libourne,0007762N,Marie Justine,Out,In,1789=08=04,1789>08>04,00337746
 France,France,34,Marennes,Libourne,0007762N,Marie Justine,Out,In,1789=10=05,1789>10>05,00337759
-Local,Local,20,La Rochelle,Ker Châlon,0007783N,Saint Etienne,Out,In,1789=04=09,1789>04>09,00341881
 France,France,4,Marans,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=07=23,1789>07>23,00336534
 France,France,4,Marans,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=08=29,1789>08>29,00336575
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Pierre,Out,In,1789=05=13,1789>05>13,00341872
 France,France,70,Ars-en-Ré,Granville,0008296N,Comte de Saint Florentin,Out,In,1789=03=03,1789>03>03,00338144
 France,France,16,Marans,Côtes de Bretagne,0008438N,Marie Joseph,Out,In,1789=08=03,1789>08>03,00336547
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=01=20,1789>01>20,00341879
 France,France,16,La Rochelle,Le Croisic,0008440N,Marie Joseph,Out,In,1789=08=04,1789>08>04,00341555
 France,France,16,Marans,Côtes de Bretagne,0008440N,Marie Joseph,Out,In,1789=08=18,1789>08>18,00336562
 France,France,18,Marans,Locmariaquer,0008446N,Sainte Anne,Out,In,1789=07=13,1789>07>13,00336306
 France,France,18,Marans,Côtes de Bretagne,0008446N,Sainte Anne,Out,In,1789=12=22,1789>12>22,00336616
 France,Local,49,Marennes,Libourne,0008617N,Marie Victoire,Out,In,1789=03=21,1789>03>21,00337689
 France,Local,48,Marennes,Libourne,0008617N,Marie Victoire,Out,In,1789=06=29,1789>06>29,00337733
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=05=28,1789>05>28,00341882
-Local,Local,20,La Rochelle,Ker Châlon,,Francoise,Out,In,1789=06=03,1789>06>03,00341884
 Europe,Europe,156,Marennes,Lübeck,0009393N,Catharina,Out,In,1789=07=21,1789>07>21,00340050
 Local,Local,2,La Flotte-en-Ré,île d'Yeu,0009429N,Coureur,In-Out,In,1789=03=13,1789>03>13,00339922
 Local,Local,18,Marans,île d'Oléron,0009432N,Don de Dieu,Out,In,1789=04=07,1789>04>07,00334891
@@ -5092,14 +5149,9 @@ Local,Local,10,Marans,île d'Oléron,0009618N,Société,Out,In,1789=04=21,1789>0
 France,Local,15,Ribérou,Bordeaux,0009671N,Marianne,Out,In,1789=06=15,1789>06>16,00339635
 Local,Local,15,Marans,La Tremblade,0009671N,Marie Anne,Out,In,1789=11=27,1789>11>27,00334940
 Local,Local,9,La Rochelle,île d'Oléron,0009687N,Francoise,Out,In,1789=05=29,1789>05>29,00340826
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=06=05,1789>06>05,00341885
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=06=17,1789>06>17,00341889
 Europe,Europe,181,Marennes,Lübeck,0012324N,Ville [de Lubeck],Out,In,1789=04=11,1789>04>11,00340052
-Local,Local,20,La Rochelle,Ker Châlon,,Marie Marguérite,Out,In,1789=06=27,1789>06>27,00341891
 France,France,7,La Flotte-en-Ré,Arzon,0012865N,Sainte Anne,Out,In,1789=05=26,1789>05>26,00340015
 Local,France,96,Rochefort,Saint-Savinien,0013000N,Saint Nicolas,Out,In,1789=06=15,1789>06>15,00340099
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Pierre,Out,In,1789=07=03,1789>07>03,00341893
-Local,Local,20,La Rochelle,Ker Châlon,,Benigne,Out,In,1789=07=10,1789>07>10,00341895
 France,France,4,Marans,Côtes de Bretagne,0020999N,Marie Françoise,Out,In,1789=09=07,1789>09>07,00336583
 France,France,16,Marans,Côtes de Bretagne,0021050N,Sainte Anne,Out,In,1789=10=31,1789>10>31,00332637
 France,France,4,Marans,Côtes de Bretagne,0021197N,Marie Jean François,Out,In,1789=08=25,1789>08>25,00336570
@@ -5126,7 +5178,6 @@ France,France,27,La Flotte-en-Ré,Quiberon,,Marie Louise,In-Out,In,1789=05=27,17
 Local,Local,19,Ribérou,île d'Oléron,,Marie Anne,Out,In,1789=07=18,1789>07>18,00333607
 Local,Local,23,Marans,île d'Oléron,,Marie Magdeleine,Out,In,1789=02=12,1789>02>12,00333701
 Local,Local,18,Marans,île d'Oléron,,D' Advisard,Out,In,1789=04=01,1789>04>01,00333704
-Local,Local,20,La Rochelle,Ker Châlon,,Francoise,Out,In,1789=07=11,1789>07>11,00341896
 France,France,18,La Rochelle,Le Croisic,,Marie Francoise,Out,In,1789=07=20,1789>07>20,00341540
 France,France,15,La Rochelle,Le Croisic,,Sainte Anne,Out,In,1789=07=23,1789>07>23,00341543
 France,France,15,La Rochelle,Le Croisic,,Sainte Anne,Out,In,1789=07=23,1789>07>23,00341544
@@ -5140,13 +5191,8 @@ Local,Local,8,Marans,île d'Oléron,,Société,Out,In,1789=06=23,1789>06>23,0033
 Local,Local,21,Marans,île d'Oléron,,Saint Nicolas,Out,In,1789=11=09,1789>11>09,00334909
 Local,Local,21,Marans,île d'Oléron,,Saint Pierre,Out,In,1789=12=02,1789>12>02,00334912
 Local,Local,30,Marans,île d'Oléron,,Saint Pierre,Out,In,1789=12=17,1789>12>17,00334913
-Local,Local,20,La Rochelle,Ker Châlon,,Elisabeth,Out,In,1789=07=15,1789>07>15,00341897
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Pierre,Out,In,1789=07=21,1789>07>21,00341899
 France,France,18,Noirmoutier,Méan,,Petit Guillaume,Out,In,1789=10=28,1789>10>28,00336217
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=07=25,1789>07>25,00341900
-Local,Local,20,La Rochelle,Ker Châlon,,Printemps,Out,In,1789=07=29,1789>07>29,00341902
 France,France,27,Marennes,Vannes,,Renommée,Out,In,1789=07=15,1789>07>15,00336074
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Leon,Out,In,1789=08=12,1789>08>12,00341906
 Local,Local,18,Marans,Saint-Savinien,,Madeleine,Out,In,1789=08=07,1789>08>07,00336082
 France,France,18,Mortagne,Quiberon,,Saint Louis,Out,In,1789=06=08,1789>06>08,00336122
 France,France,8,Mortagne,Quiberon,,Sainte Anne,Out,In,1789=07=04,1789>07>04,00336123
@@ -5156,7 +5202,6 @@ France,France,15,Ribérou,Quiberon,,Victoire,Out,In,1789=09=21,1789>09>21,003361
 Local,France,20,Marans,île d'Oléron,,Espérance,Out,In,1789=07=09,1789>07>09,00336144
 Local,Local,27,Marans,île d'Oléron,,Sainte Anne,Out,In,1789=08=27,1789>08>27,00336148
 Local,Local,36,Saint-Martin-de-Ré,île d'Oléron,,Saint François,Out,In,1789=08=26,1789>08>26,00336169
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=08=19,1789>08>19,00341908
 Local,France,30,Saint-Martin-de-Ré,île d'Oléron,,Augustin,Out,In,1789=10=25,1789>10>25,00336175
 Local,Local,14,La Rochelle,île d'Oléron,,Marthe,Out,In,1789=02=04,1789>02>04,00340790
 Local,Ports francs et petites îles,66,La Rochelle,île d'Oléron,,Aimable Julie,Out,In,1789=02=12,1789>02>12,00340791
@@ -5167,15 +5212,9 @@ France,France,15,Marans,La Teste,,Bienfaisant,Out,In,1789=07=10,1789>07>10,00336
 Local,Local,20,La Rochelle,île d'Oléron,,Deux Sœurs,Out,In,1789=03=31,1789>03>31,00340800
 Local,Local,20,La Rochelle,île d'Oléron,,Saint Pierre,Out,In,1789=05=20,1789>05>20,00340820
 France,France,10,Ribérou,Côtes de Bretagne,,Marianne,Out,In,1789=09=17,1789>09>17,00336424
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Saint Pierre,Out,In,1789=11=17,1789>11>17,00336526
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Benninge,Out,In,1789=05=05,1789>05>05,00336520
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Printemps,Out,In,1789=06=23,1789>06>23,00336521
-Local,Local,20,La Rochelle,Ker Châlon,,Marie Marguérite,Out,In,1789=08=28,1789>08>28,00341911
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Heureux commerce,Out,In,1789=07=09,1789>07>09,00336522
 France,France,27,Marans,Côtes de Bretagne,,Saint Vincent,Out,In,1789=09=01,1789>09>01,00336577
 France,France,8,Marans,Côtes de Bretagne,,Marie Joseph,Out,In,1789=10=20,1789>10>20,00336607
 France,France,18,Marans,Côtes de Bretagne,,Saint Pierre,Out,In,1789=11=05,1789>11>05,00336610
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=09=04,1789>09>04,00341912
 France,France,27,Marans,Côtes de Bretagne,,Saint Vincent,Out,In,1789=11=09,1789>11>09,00336612
 Local,Local,14,La Rochelle,île d'Oléron,,Marthe,Out,In,1789=05=29,1789>05>29,00340824
 France,France,4,Saint-Martin-de-Ré,Belle-Île-en-Mer,,Sainte Anne,Out,In,1789=08=22,1789>08>22,00336642
@@ -5189,22 +5228,18 @@ Local,Local,40,Saint-Martin-de-Ré,Marennes,,Madelaine,Out,In,1789=07=20,1789>07
 Local,Local,16,Saint-Martin-de-Ré,Marennes,,Marie Madelaine,Out,In,1789=04=15,1789>04>15,00337111
 Europe,Europe,45,Saint-Martin-de-Ré,Stavanger,,Heron bleu,Out,In,1789=06=03,1789>06>03,00337264
 Europe,Europe,117,Ars-en-Ré,Stavanger,,Cathrinne,Out,In,1789=08=29,1789>08>29,00337268
-Local,Local,20,La Rochelle,Ker Châlon,,Marie,Out,In,1789=09=16,1789>09>16,00341914
 France,France,120,Ars-en-Ré,Saint-Malo,,Constance,Out,In,1789=01=22,1789>01>22,00337316
 France,France,56,Ars-en-Ré,Saint-Malo,,Viarme,Out,In,1789=02=17,1789>02>17,00337319
 France,France,80,Ars-en-Ré,Saint-Malo,,Nancy,Out,In,1789=09=23,1789>09>23,00337324
 France,France,42,Ars-en-Ré,Saint-Malo,,Heureuse Marie,Out,In,1789=09=24,1789>09>24,00337325
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=09=24,1789>09>24,00341915
 France,France,94,Ars-en-Ré,Saint-Malo,,Deux Frères,Out,In,1789=09=26,1789>09>26,00337326
 France,France,163,Ars-en-Ré,Saint-Malo,,Jumeaux,Out,In,1789=11=15,1789>11>15,00337331
 France,France,52,Ars-en-Ré,Saint-Malo,,Saint Luc,Out,In,1789=12=01,1789>12>01,00337333
 Europe,Europe,200,Ars-en-Ré,Mer Baltique,,Quatre sœurs,Out,In,1789=08=06,1789>08>06,00337664
-Local,Local,20,La Rochelle,Ker Châlon,,Marie Marguérite,Out,In,1789=10=08,1789>10>08,00341918
 Reste du monde,Reste du monde,80,Ars-en-Ré,Newburyport,,Deux Amis,Out,In,1789=05=28,1789>05>28,00337425
 France,Local,27,Marennes,Libourne,,Saint Paul,Out,In,1789=01=29,1789>01>29,00337675
 France,France,39,Marennes,Libourne,,Aimable Suzanne,Out,In,1789=01=12,1789>01>12,00337671
 France,Local,39,Marennes,Libourne,,Geneviève,Out,In,1789=03=11,1789>03>11,00337682
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Joseph,Out,In,1789=10=10,1789>10>10,00341919
 France,Local,38,Marennes,Libourne,,Saint Francois,Out,In,1789=03=13,1789>03>13,00337685
 France,Local,41,Marennes,Libourne,,Chasseur,Out,In,1789=03=30,1789>03>30,00337691
 France,Local,29,Marennes,Libourne,,Saint Antoine,Out,In,1789=04=08,1789>04>08,00337693
@@ -5291,7 +5326,6 @@ Europe,Europe,194,Marennes,Lübeck,,Argô,Out,In,1789=03=24,1789>03>24,00340033
 Europe,Europe,195,Marennes,Lübeck,,Dame Emilie,Out,In,1789=06=22,1789>06>22,00340035
 Local,Local,26,Rochefort,Saint-Savinien,,Marie Madelaine,Out,In,1789=07=11,1789>07>11,00340103
 Local,Local,24,Rochefort,Saint-Savinien,,Félicité,Out,In,1789=07=18,1789>07>18,00340104
-Local,Local,20,Rochefort,Ker Châlon,,Monsieur,Out,In,1789=05=06,1789>05>06,00340308
 Local,Local,25,Rochefort,Brouage ,,Deux amis,Out,In,1789=10=19,1789>10>19,00340313
 Local,Local,28,Ars-en-Ré,Port-d'Envaux,,Saint Pierre,Out,In,1789=05=27,1789>05>27,00340325
 Local,Local,26,Ars-en-Ré,Port-d'Envaux,,Marie Magdeleine,Out,In,1789=07=12,1789>07>12,00340326
@@ -5299,10 +5333,6 @@ Local,Local,28,Ars-en-Ré,Port-d'Envaux,,Marie Magdeleine,Out,In,1789=09=22,1789
 Local,Local,36,Rochefort,Port-d'Envaux,,Trois sœurs,Out,In,1789=07=07,1789>07>07,00340329
 Local,Local,3,La Rochelle,île d'Oléron,,Deux Amis,Out,In,1789=01=28,1789>01>28,00340789
 Local,Local,12,Saint-Michel-en-l'Herm,île de Ré,,Balon,Out,In,1789=02=12,1789>02>12,00341457
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=10=12,1789>10>12,00341920
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=10=15,1789>10>15,00341921
-Local,Local,20,La Rochelle,Ker Châlon,,Monsieur,Out,In,1789=12=03,1789>12>03,00341927
-Local,Local,20,Rochefort,Ker Châlon,,Monsieur,Out,In,1789=03=31,1789>03>31,00341928
 Europe,Europe,220,La Rochelle,Amsterdam,,Bonne Harmonie,Out,In,1789=05=11,1789>05>11,00342067
 France,France,16,La Rochelle,Vannes,0021001N,Marie Jean,Out,In,1789=01=26,1789>01>26,00340350
 Europe,France,75,Marennes,Amsterdam,0000671N,Coquille,Out,In,1789=05=28,1789>05>28,00340017
@@ -5312,8 +5342,6 @@ France,France,16,Saint-Martin-de-Ré,Locmariaquer,0007891N,Saint Jacques,Out,In,
 France,France,14,La Rochelle,Le Croisic,,Marie Francoise,Out,In,1789=09=12,1789>09>12,00341587
 France,France,4,Marans,Côtes de Bretagne,0001236N,Marie Jeanne Françoise,Out,In,1789=07=22,1789>07>22,00336533
 France,France,4,Marans,Côtes de Bretagne,0001236N,Marie Jean François,Out,In,1789=08=25,1789>08>25,00336569
-Local,Local,20,La Rochelle,Ker Châlon,,Bénigne,Out,In,1789=09=11,1789>09>11,00341913
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=10=03,1789>10>03,00341917
 France,France,4,La Rochelle,Le Croisic,,Saint Louis,Out,In,1789=09=12,1789>09>12,00341589
 France,France,16,La Rochelle,Le Croisic,,Saint Joseph,Out,In,1789=09=16,1789>09>16,00341591
 France,France,10,La Rochelle,Le Croisic,,Marie Joseph,Out,In,1789=09=19,1789>09>19,00341594
@@ -5369,21 +5397,14 @@ Local,Local,6,Ribérou,île d'Oléron,0007675N,Marie,Out,In,1789=12=19,1789>12>1
 Local,Local,15,Saint-Martin-de-Ré,île d'Oléron,0007677N,Espion,Out,In,1789=09=02,1789>09>02,00336171
 Local,Local,15,La Rochelle,île d'Oléron,0007677N,Espion,Out,In,1789=04=17,1789>04>17,00340805
 Local,Local,15,La Rochelle,île de Ré,0007677N,Espion,Out,In,1789=08=31,1789>08>31,00341429
-Local,Local,20,La Rochelle,Ker Châlon,0007783N,Saint Etienne,Out,In,1789=05=04,1789>05>04,00341870
 France,France,16,Saint-Martin-de-Ré,Côtes de Bretagne,0007891N,Saint Jacque,Out,In,1789=03=05,1789>03>05,00339780
 France,France,4,Marans,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=08=12,1789>08>12,00336555
 France,France,16,Marans,Côtes de Bretagne,0007891N,Saint Jacques,Out,In,1789=08=28,1789>08>28,00336574
 France,France,16,La Rochelle,Le Croisic,0007891N,Saint Jacques,Out,In,1789=09=26,1789>09>26,00341602
-Local,Local,20,La Rochelle,Ker Châlon,,Printems,Out,In,1789=02=05,1789>02>05,00341864
-Local,Local,20,La Rochelle,Ker Châlon,,Elisabeth,Out,In,1789=03=27,1789>03>27,00341865
 France,France,16,Marans,Côtes de Bretagne,0008438N,Marie Joseph,Out,In,1789=09=03,1789>09>03,00336580
 France,France,16,Marans,Côtes de Bretagne,0008438N,Marie Joseph,Out,In,1789=09=29,1789>09>29,00336605
 France,France,15,Marans,Côtes de Bretagne,0008439N,Marie Joseph,Out,In,1789=08=27,1789>08>27,00336573
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=04=09,1789>04>09,00341866
-Local,Local,20,La Rochelle,Ker Châlon,,Saint Pierre,Out,In,1789=04=18,1789>04>18,00341867
 France,Local,47,Marennes,Libourne,0008617N,Marie Victoire,Out,In,1789=05=09,1789>05>09,00337707
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Amis,Out,In,1789=05=07,1789>05>07,00341871
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=05=15,1789>05>15,00341873
 France,Local,23,Marennes,Libourne,0009432N,Don de Dieu,Out,In,1789=05=14,1789>05>14,00337713
 France,France,12,Marans,Côtes de Bretagne,0009535N,Marie Helaine,Out,In,1789=09=14,1789>09>14,00336589
 France,France,4,Marans,Côtes de Bretagne,0009536N,Saint Sauveur,Out,In,1789=09=22,1789>09>22,00336595
@@ -5393,7 +5414,6 @@ France,France,4,Marans,Côtes de Bretagne,0009547N,Sainte Anne,Out,In,1789=07=28
 Local,Local,10,Ribérou,île d'Oléron,0009618N,Société,Out,In,1789=08=12,1789>08>12,00333147
 Local,Local,10,Rochefort,île d'Oléron,0009618N,Société,Out,In,1789=11=14,1789>11>14,00339560
 France,Local,15,Ribérou,Bordeaux,0009671N,Marianne,Out,In,1789=08=17,1789>08>17,00339638
-Local,Local,20,La Rochelle,Ker Châlon,,Francoise,Out,In,1789=05=19,1789>05>19,00341874
 France,France,11,La Rochelle,Le Croisic,0012865N,Sainte Anne,Out,In,1789=08=18,1789>08>18,00341567
 France,France,12,La Rochelle,Le Croisic,0020999N,Marie Francoise,Out,In,1789=07=22,1789>07>22,00341542
 France,France,20,La Rochelle,Le Croisic,0020999N,Marie Francoise,Out,In,1789=08=03,1789>08>03,00341554
@@ -5411,8 +5431,6 @@ France,France,10,La Rochelle,Le Croisic,0021196N,Marie Jeanne,Out,In,1789=09=25,
 France,France,12,La Rochelle,Le Croisic,0021256N,Sainte Marie,Out,In,1789=08=26,1789>08>26,00341574
 France,France,108,Marennes,Honfleur,0021485N,Duchesse de la Chatre,Out,In,1789=05=28,1789>05>28,00337912
 France,France,107,Marennes,Honfleur,0021485N,La Duchesse de la Charte,Out,In,1789=07=21,1789>07>21,00338020
-Local,Local,20,La Flotte-en-Ré,Ker Châlon,,Marie Marguerite,In-Out,In,1789=04=30,1789>04>30,00332682
-Local,Local,20,La Flotte-en-Ré,Ker Châlon,,Saint Pierre,In-Out,In,1789=10=04,1789>10>04,00332684
 France,France,27,La Flotte-en-Ré,Côtes de Bretagne,,Marguerite,In-Out,In,1789=11=25,1789>11>25,00332686
 Local,Local,27,Marans,île d'Oléron,,Saint Jacques,Out,In,1789=03=19,1789>03>19,00332714
 Local,Local,15,Marans,Loix,,Saint Pierre,Out,In,1789=03=04,1789>03>04,00332828
@@ -5446,17 +5464,10 @@ Local,Local,15,Marans,île d'Oléron,,Société,Out,In,1789=11=25,1789>11>25,003
 France,France,15,Marans,La Teste,,Saint Louis,Out,In,1789=05=09,1789>05>09,00334946
 France,France,15,Marans,La Teste,,Desir de la paix,Out,In,1789=05=13,1789>05>13,00334947
 France,France,16,Marans,La Teste,,Aimable Julie,Out,In,1789=05=14,1789>05>14,00334948
-Local,Local,20,La Rochelle,Ker Châlon,,Elisabeth,Out,In,1789=05=23,1789>05>23,00341875
-Local,Local,20,La Rochelle,Ker Châlon,,Benigne,Out,In,1789=01=20,1789>01>20,00341878
-Local,Local,20,La Rochelle,Ker Châlon,,Benigne,Out,In,1789=04=06,1789>04>06,00341880
-Local,Local,20,La Rochelle,Ker Châlon,,Printemps,Out,In,1789=06=03,1789>06>03,00341883
-Local,Local,20,La Rochelle,Ker Châlon,,Benigne,Out,In,1789=06=13,1789>06>13,00341887
-Local,Local,20,La Rochelle,Ker Châlon,,Elisabeth,Out,In,1789=06=23,1789>06>23,00341890
 Local,Local,33,Rochefort,Saint-Savinien,,Grace de Dieu,Out,In,1789=04=01,1789>04>01,00336084
 Local,Local,32,Les Sables-d'Olonne,Saint-Savinien,,Entreprise,Out,In,1789=08=29,1789>08>29,00336088
 Local,France,2,Saint-Martin-de-Ré,Les Sables-d'Olonne,,Saint Etienne,Out,In,1789=10=03,1789>10>03,00336101
 Local,Local,75,Saint-Martin-de-Ré,Les Sables-d'Olonne,,Amitié,Out,In,1789=11=20,1789>11>20,00336102
-Local,Local,20,La Rochelle,Ker Châlon,,Monsieur,Out,In,1789=07=07,1789>07>07,00341894
 France,France,18,Marennes,Quiberon,,Cerf,Out,In,1789=09=15,1789>09>15,00336121
 France,France,30,Mortagne,Quiberon,,Saint Julien,Out,In,1789=10=15,1789>10>15,00336126
 France,France,20,Ribérou,Quiberon,,Victoire,Out,In,1789=08=24,1789>08>24,00336127
@@ -5466,12 +5477,10 @@ France,France,16,Saint-Martin-de-Ré,Quiberon,,Notre Dame,Out,In,1789=05=06,1789
 France,France,20,Saint-Martin-de-Ré,Quiberon,,Notre Dame de Consolation,Out,In,1789=05=23,1789>05>23,00336132
 France,France,27,Saint-Martin-de-Ré,Quiberon,,Marie Louis,Out,In,1789=07=20,1789>07>20,00336133
 France,France,16,Saint-Martin-de-Ré,Quiberon,,Emanuel,Out,In,1789=10=01,1789>10>01,00336134
-Local,Local,20,La Rochelle,Ker Châlon,,Heureux Commerce,Out,In,1789=07=29,1789>07>29,00341901
 France,France,22,Saint-Martin-de-Ré,Quiberon,,Notre Dame,Out,In,1789=10=20,1789>10>20,00336135
 France,France,33,Saint-Martin-de-Ré,Quiberon,,Sainte Anne,Out,In,1789=11=18,1789>11>18,00336136
 Local,Local,15,Marans,île d'Oléron,,Marie Brigite,Out,In,1789=07=22,1789>07>22,00336146
 Local,Local,27,Marans,île d'Oléron,,Sainte Anne,Out,In,1789=09=16,1789>09>16,00336151
-Local,Local,20,La Rochelle,Ker Châlon,,Bénigne,Out,In,1789=07=30,1789>07>30,00341903
 Local,Local,19,Saint-Martin-de-Ré,île d'Oléron,,Marie Anne,Out,In,1789=01=29,1789>01>29,00336157
 France,France,27,Ribérou,Morlaix,,Saint Vincent,Out,In,1789=03=21,1789>03>21,00336182
 Local,France,30,Saint-Martin-de-Ré,Marennes,,Augustin,Out,In,1789=09=09,1789>09>09,00336233
@@ -5480,14 +5489,11 @@ France,France,15,Ribérou,Côtes de Bretagne,,Victoire,Out,In,1789=03=14,1789>03
 France,France,10,Ribérou,Côtes de Bretagne,,Marianne,Out,In,1789=08=12,1789>08>12,00336366
 France,France,10,Ribérou,Côtes de Bretagne,,Saint Jacques,Out,In,1789=08=17,1789>08>17,00336371
 France,France,10,Ribérou,Côtes de Bretagne,,Marianne,Out,In,1789=09=01,1789>09>01,00336404
-Local,Local,20,La Rochelle,Ker Châlon,,Marie Marguérite,Out,In,1789=08=06,1789>08>06,00341905
 France,France,10,Ribérou,Côtes de Bretagne,,Saint Pierre,Out,In,1789=09=10,1789>09>10,00336410
 France,France,10,Ribérou,Côtes de Bretagne,,Saint Vincent,Out,In,1789=09=23,1789>09>23,00336429
 France,France,10,Ribérou,Côtes de Bretagne,,Providence,Out,In,1789=11=02,1789>11>02,00336458
 France,France,10,Ribérou,Côtes de Bretagne,,Emulation,Out,In,1789=12=09,1789>12>09,00336464
 Europe,Europe,90,Noirmoutier,Mer Baltique,,Elizabet,Out,In,1789=07=24,1789>07>24,00339155
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Françoise,Out,In,1789=08=07,1789>08>07,00336523
-Local,Local,20,Saint-Martin-de-Ré,Ker Châlon,,Printemps,Out,In,1789=08=29,1789>08>29,00336524
 France,France,27,Marans,Côtes de Bretagne,,Saint Vincent,Out,In,1789=08=14,1789>08>14,00336557
 France,France,12,Marans,Côtes de Bretagne,,Sainte Anne,Out,In,1789=08=24,1789>08>24,00336566
 Local,Local,32,La Rochelle,île d'Oléron,,Thérese,Out,In,1789=11=23,1789>11>23,00340872
@@ -5504,7 +5510,6 @@ Grande-Bretagne,Grande-Bretagne,90,Ars-en-Ré,Teignmouth,,Esperance,Out,In,1789=
 Europe,Europe,100,La Flotte-en-Ré,Stavanger,,Emanuel,In-Out,In,1789=07=11,1789>07>11,00337258
 Europe,Europe,45,Saint-Martin-de-Ré,Stavanger,,Héron bleu,Out,In,1789=09=04,1789>09>04,00337259
 Europe,Europe,70,Saint-Martin-de-Ré,Stavanger,,Deux Frères,Out,In,1789=09=10,1789>09>10,00337260
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=08=19,1789>08>19,00341909
 Europe,Europe,200,Saint-Martin-de-Ré,Stavanger,,Sophie Secille,Out,In,1789=01=01,1789>01>01,00337261
 Europe,Europe,80,Saint-Martin-de-Ré,Stavanger,,Sara Hellene,Out,In,1789=05=01,1789>05>01,00337262
 Europe,Europe,70,Saint-Martin-de-Ré,Stavanger,,Deux frères,Out,In,1789=05=03,1789>05>03,00337263
@@ -5634,15 +5639,10 @@ Local,Local,17,Rochefort,île d'Oléron,,Sainte Anne,Out,In,1789=04=23,1789>04>2
 Local,Local,54,Rochefort,île d'Oléron,,Saint Pierre,Out,In,1789=06=15,1789>06>15,00340134
 Local,Local,9,La Rochelle,île d'Oléron,,Confiance en Dieu,Out,In,1789=03=30,1789>03>30,00340799
 Local,Ports francs et petites îles,58,Rochefort,île d'Oléron,,Saint Louis,Out,In,1789=10=02,1789>10>02,00340140
-Local,Local,20,Ars-en-Ré,Ker Châlon,,Deux Amis,Out,In,1789=05=27,1789>05>27,00340306
-Local,Local,20,Ars-en-Ré,Ker Châlon,,Printemps,Out,In,1789=09=14,1789>09>14,00340307
 Local,Local,55,Rochefort,Brouage ,,Bien Aimée,Out,In,1789=10=10,1789>10>10,00340312
 Local,Local,6,Rochefort,Port-d'Envaux,,Princesse,Out,In,1789=01=31,1789>01>31,00340328
 Local,Local,16,Rochefort,Port-d'Envaux,,Marie Margueritte,Out,In,1789=09=24,1789>09>24,00340334
 Local,Local,38,Rochefort,Port-d'Envaux,,Saint Pierre,Out,In,1789=09=26,1789>09>26,00340335
-Local,Local,20,La Rochelle,Ker Châlon,,Bénigne,Out,In,1789=10=27,1789>10>27,00341922
-Local,Local,20,La Rochelle,Ker Châlon,,Printemps,Out,In,1789=11=14,1789>11>14,00341925
-Local,Local,20,La Rochelle,Ker Châlon,,Deux Freres,Out,In,1789=11=26,1789>11>26,00341926
 Europe,Europe,90,La Rochelle,Brême,,Jeune Jean Hendrick,Out,In,1789=04=23,1789>04>23,00341970
 Local,Local,27,La Rochelle,Brouage ,,Saint Jean,Out,In,1789=11=28,1789>11>28,00341959
 Europe,Local,5,Saint-Michel-en-l'Herm,pas mentionné,,Fils Unique,Out,In,1789=10=22,1789>10>22,00342165

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2021-09-08">
+  <meta lastmodifieddate="2021-09-09">
     <creator>NetworkX 2.6.2</creator>
   </meta>
   <graph defaultedgetype="directed" mode="static" name="">
@@ -362,8 +362,8 @@
           <attvalue for="0" value="Marennes" />
           <attvalue for="1" value="interne à la région" />
           <attvalue for="2" value="21" />
-          <attvalue for="3" value="0.7491605897961764" />
-          <attvalue for="4" value="0.21855977765719015" />
+          <attvalue for="3" value="0.5341377832911117" />
+          <attvalue for="4" value="0.9986170943537457" />
         </attvalues>
       </node>
       <node id="Molène" label="Molène">

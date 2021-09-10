@@ -53,6 +53,11 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
   let palette;
   const project = geoPath().projection(projection);
 
+  if (!layer.data) {
+    console.info(layer);
+    return null;
+  }
+
   if (layer.data.features && layer.color && layer.color.field) {
     // colors palette building
     const colorValues = uniq(layer.data.features.map(datum => datum.properties[layer.color.field]));

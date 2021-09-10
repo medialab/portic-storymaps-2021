@@ -206,14 +206,14 @@ const FlowsLayer = ({
   const markerData = useMemo(() => {
     if (layer.data) {
 
-      console.log("data : ", layer.data)
+      // console.log("data : ", layer.data)
       // size building
       const strokeWidthScale = scaleLinear().domain([
         0,
         max(
           layer.data.map((flow) => {
             // return +flow[tonnages_cumulés];
-            console.log("flow[layer.size.field] : ", flow[layer.size.field])
+            // console.log("flow[layer.size.field] : ", flow[layer.size.field])
             return +flow[layer.size.field];
           })
         )
@@ -245,12 +245,12 @@ const FlowsLayer = ({
           color: layer.color !== undefined ? palette[datum[layer.color.field]] : 'grey',
         }))
       }
-      console.log("grouped : ", grouped)
+      // console.log("grouped : ", grouped)
       return grouped;
     }
   }, [projection, width, layer, height])/* eslint react-hooks/exhaustive-deps : 0 */
 
-  console.log("markerData (FlowsLayer) : ", markerData)
+  // console.log("markerData (FlowsLayer) : ", markerData)
 
   return (
     <g className="FlowsLayer" >

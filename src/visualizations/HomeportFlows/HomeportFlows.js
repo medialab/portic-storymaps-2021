@@ -15,7 +15,7 @@ const HomeportFlows = ({
           {
             type: 'choropleth',
             // data: datasets['world_test.geojson'],
-            data: currentProjectionTemplate === 'World' ? datasets['cartoweb_world_1789_23mars2021_mixte_20-wgs84_simplified.geojson'] : datasets['cartoweb_france_1789_geojson.geojson'],
+            data: currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
             reverseColors: atlasMode ? undefined : true,
             // color:{
             //   field: 'shortname',

@@ -237,7 +237,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             layers={[
               {
                 type: 'choropleth',
-                data: datasets['cartoweb_france_1789_geojson.geojson'],
+                data: datasets['map_france_1789.geojson'],
                 reverseColors: props.atlasMode ? undefined : true,
                 color: {
                   field: 'shortname',
@@ -262,7 +262,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             layers={[
               {
                 type: 'choropleth',
-                data: datasets['cartoweb_france_1789_geojson.geojson'],
+                data: datasets['map_france_1789.geojson'],
                 reverseColors: props.atlasMode ? undefined : true,
                 // color:{
                 //   field: 'shortname',

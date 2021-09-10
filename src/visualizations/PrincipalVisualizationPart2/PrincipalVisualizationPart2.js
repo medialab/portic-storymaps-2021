@@ -1,5 +1,6 @@
 import {useMemo} from 'react';
 import CircularAlluvialComponent from "../../components/CircularAlluvialComponent/CircularAlluvialComponent";
+import RadarWrapper from './RadarWrapper';
 
 import colorsPalettes from '../../colorPalettes';
 
@@ -77,7 +78,7 @@ const PrincipalVisualizationPart2 = ({
     >
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={highlight === 'toflit18' ? width * .8 : width * .3}
+          width={highlight === 'toflit18' ? width * .7 : width * .3}
           height={highlight === 'toflit18' ? height : height * .3}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
@@ -168,7 +169,12 @@ const PrincipalVisualizationPart2 = ({
         width: highlight === 'navigo' ? width * .7 : width * .3
       }}
     >
-       <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} />
+      <RadarWrapper 
+        data={datasets['radar_plot_destinations_details_origine.csv']}
+        minified={highlight !== 'navigo'}
+        globalWidth={width}
+      />
+       {/* <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} /> */}
      </div>
     </div>
   )

@@ -26,3 +26,27 @@
     transition: .5s ease all;
   }
 }
+
+.RadarWrapper {
+  .slider-container {
+    > div {
+      margin: 0!important;
+      width: 100%!important;
+    }
+  }
+  .controls-container {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: .9rem;
+    fieldset {
+      border: none;
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,36 +1,36 @@
 port,nb_pointcalls_out,mean_tonnage,cumulated_tonnage,latitude,longitude,customs_office
-Noirmoutier,290,43.58275862068965,12639,47,-2.25,Les Sables-d'Olonne
-l'Aiguillon,3,4.0,12,46.333333,-1.3,Les Sables-d'Olonne
-île de Ré,1,15.0,15,46.2,-1.416667,Saint-Martin-de-Ré
-Marennes,1496,60.401737967914436,90361,45.816667,-1.116667,Marennes
-mer des Pertuis,1,8.0,8,46.044980, -1.204802,La Rochelle
-Martrou,1,36.0,36,45.91367,-0.959895,Marennes
-Brouage ,4,50.75,203,45.866667,-1.066667,Marennes
-Tonnay-Charente,620,45.093548387096774,27958,45.95,-0.9,Tonnay-Charente
-Seudre,28,66.07142857142857,1850,45.8,-1.15,Marennes
-Le Chapus,1,6.0,6,45.850601,-1.15325,Marennes
-Mortagne,17,35.0,595,45.483333,-0.783333,Marennes
-Saint-Denis d'Oléron,68,20.36764705882353,1385,46.033333,-1.383333,Marennes
-Soubise,7,26.714285714285715,187,45.933333,-1,Marennes
-Marans,640,20.7703125,13293,46.312468,-0.995682,Marans
 Le Château-d'Oléron,55,11.472727272727273,631,45.9,-1.2,Marennes
-île d'Yeu,1,2.0,2,46.716667,-2.333333,Les Sables-d'Olonne
-Moricq,97,24.896907216494846,2415,46.396209,-1.374028,Les Sables-d'Olonne
-île d'Oléron,11,6.363636363636363,70,45.933333,-1.3,Marennes
-Ars-en-Ré,307,66.30944625407166,20357,46.216667,-1.516667,Saint-Martin-de-Ré
-Champagné-les-Marais,1,27.0,27,46.366667,-1.133333,Les Sables-d'Olonne
-La Tremblade,1,8.0,8,45.766667,-1.133333,Marennes
-Royan,14,31.285714285714285,438,45.633333,-1.033333,Marennes
-île de Bouin,105,38.523809523809526,4045,46.975134,-1.998682,ile de Bouin : hors DFLR
-La Perrotine,77,18.935064935064936,1458,45.964614,-1.243436,Marennes
+Marans,640,20.7703125,13293,46.312468,-0.995682,Marans
 Ribérou,437,15.077803203661327,6589,45.6755,-0.935826,Marennes
-La Rochelle,1067,45.80599812558575,48875,46.166667,-1.15,La Rochelle
-Rochefort,371,68.911051212938,25566,45.943666,-0.97043,Rochefort
-Saint-Martin-de-Ré,478,33.99163179916318,16248,46.2,-1.366667,Saint-Martin-de-Ré
-Saint-Gilles-sur-Vie,78,36.41025641025641,2840,46.697882,-1.945124,Les Sables-d'Olonne
-La Flotte-en-Ré,8,11.625,93,46.188459,-1.328716,Saint-Martin-de-Ré
-La Tranche-sur-Mer,24,13.083333333333334,314,46.333333,-1.433333,Les Sables-d'Olonne
-Esnandes,2,17.5,35,46.25,-1.083333,La Rochelle
-Saint-Michel-en-l'Herm,69,8.26086956521739,570,46.35,-1.25,Les Sables-d'Olonne
+île de Bouin,105,38.523809523809526,4045,46.975134,-1.998682,ile de Bouin : hors DFLR
+Martrou,1,36.0,36,45.91367,-0.959895,Marennes
+l'Aiguillon,3,4.0,12,46.333333,-1.3,Les Sables-d'Olonne
+île d'Yeu,1,2.0,2,46.716667,-2.333333,Les Sables-d'Olonne
+île d'Oléron,11,6.363636363636363,70,45.933333,-1.3,Marennes
+Marennes,1496,60.401737967914436,90361,45.816667,-1.116667,Marennes
+Brouage ,4,50.75,203,45.866667,-1.066667,Marennes
+Mortagne,17,35.0,595,45.483333,-0.783333,Marennes
+Soubise,7,26.714285714285715,187,45.933333,-1,Marennes
+Moricq,97,24.896907216494846,2415,46.396209,-1.374028,Les Sables-d'Olonne
 Les Sables-d'Olonne,194,40.61340206185567,7879,46.5,-1.783333,Les Sables-d'Olonne
+La Flotte-en-Ré,8,11.625,93,46.188459,-1.328716,Saint-Martin-de-Ré
+Seudre,28,66.07142857142857,1850,45.8,-1.15,Marennes
+Saint-Gilles-sur-Vie,78,36.41025641025641,2840,46.697882,-1.945124,Les Sables-d'Olonne
+Royan,14,31.285714285714285,438,45.633333,-1.033333,Marennes
+Noirmoutier,290,43.58275862068965,12639,47,-2.25,Les Sables-d'Olonne
+La Tranche-sur-Mer,24,13.083333333333334,314,46.333333,-1.433333,Les Sables-d'Olonne
+La Perrotine,77,18.935064935064936,1458,45.964614,-1.243436,Marennes
+Saint-Martin-de-Ré,478,33.99163179916318,16248,46.2,-1.366667,Saint-Martin-de-Ré
+La Tremblade,1,8.0,8,45.766667,-1.133333,Marennes
+Rochefort,371,68.911051212938,25566,45.943666,-0.97043,Rochefort
 Châlon,5,20.0,100,45.724946,-0.963790,Les Sables-d'Olonne
+Tonnay-Charente,620,45.093548387096774,27958,45.95,-0.9,Tonnay-Charente
+mer des Pertuis,1,8.0,8,46.044980, -1.204802,La Rochelle
+Le Chapus,1,6.0,6,45.850601,-1.15325,Marennes
+île de Ré,1,15.0,15,46.2,-1.416667,Saint-Martin-de-Ré
+Champagné-les-Marais,1,27.0,27,46.366667,-1.133333,Les Sables-d'Olonne
+Ars-en-Ré,307,66.30944625407166,20357,46.216667,-1.516667,Saint-Martin-de-Ré
+Saint-Denis d'Oléron,68,20.36764705882353,1385,46.033333,-1.383333,Marennes
+Saint-Michel-en-l'Herm,69,8.26086956521739,570,46.35,-1.25,Les Sables-d'Olonne
+La Rochelle,1067,45.80599812558575,48875,46.166667,-1.15,La Rochelle
+Esnandes,2,17.5,35,46.25,-1.083333,La Rochelle

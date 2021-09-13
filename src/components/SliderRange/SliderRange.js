@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider, { SliderTooltip } from 'rc-slider';
+import Slider/*, { SliderTooltip }*/ from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
 const { createSliderWithTooltip } = Slider;

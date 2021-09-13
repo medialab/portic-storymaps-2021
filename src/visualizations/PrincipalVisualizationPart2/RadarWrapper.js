@@ -1,3 +1,4 @@
+/* eslint react-hooks/exhaustive-deps : 0 */
 import { useEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import _ from 'lodash';
@@ -199,10 +200,10 @@ const RadarWrapper = ({
       ({ ferme_bureau }) => (ferme_bureau === checkedValue)
     ).length
   }
-  const ratio1 = Math.round(dataFilteredTonnageFerme.length / dataFilteredTonnage.length * 100, 2);
-  const ratio3 = Math.round(dataFilteredTonnageFerme.length / allFermeTravelsCount * 100, 2);
+  // const ratio1 = Math.round(dataFilteredTonnageFerme.length / dataFilteredTonnage.length * 100, 2);
+  // const ratio3 = Math.round(dataFilteredTonnageFerme.length / allFermeTravelsCount * 100, 2);
 
-  console.log(ratio3)
+  // console.log(ratio3)
 
 
   if (!data) {

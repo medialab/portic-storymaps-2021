@@ -18,7 +18,7 @@ const RadarWrapper = ({
 }) => {
   const [data, setData] = useState(undefined);
   const [selectedBureau, setSelectedBureau] = useState('Tous les bureaux');
-  const [aggregationMethod, setAggregationMethod] = useState(1);
+  const [aggregationMethod, setAggregationMethod] = useState(2);
   const [dataFilteredTonnage, setDataFilteredTonnage] = useState([]);
   const [dataFilteredTonnageFerme, setDataFilteredTonnageFerme] = useState([]);
   const [fermeCaptions, setFermeCaptions] = useState([]);
@@ -119,9 +119,9 @@ const RadarWrapper = ({
    * UPDATE FROM PROPS
    */
   useEffect(() => {
-    let newAgMethod = 2;
+    let newAgMethod = 1;
     if (navigoAgregation !== 'tonnage') {
-      newAgMethod = 1;
+      newAgMethod = 2;
     }
     setAggregationMethod(newAgMethod);
   }, [navigoAgregation])
@@ -293,7 +293,7 @@ const RadarWrapper = ({
 
         </div>
         <div>
-          <p><b>Bureau de ferme de départ</b></p>
+          <p><b>Bureau de ferme de départ ({filtered(valueSlider, selectedBureau).length} départs affichés)</b></p>
           <select value={selectedBureau} onChange={(e) => [setSelectedBureau(e.target.value)]}>
             {fermeCaptions.map(item => (
               <option value={item}>{item}</option>

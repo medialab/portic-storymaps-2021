@@ -120,11 +120,11 @@ const RadarWrapper = ({
    */
   useEffect(() => {
     let newAgMethod = 2;
-    if (aggregationMethod !== 'tonnage') {
+    if (navigoAgregation !== 'tonnage') {
       newAgMethod = 1;
     }
     setAggregationMethod(newAgMethod);
-  }, [aggregationMethod])
+  }, [navigoAgregation])
 
   useEffect(() => {
     let newBureau;

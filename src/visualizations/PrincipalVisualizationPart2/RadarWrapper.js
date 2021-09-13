@@ -190,16 +190,16 @@ const RadarWrapper = ({
     setRadarData([...displayData])
   }, [travelData, tonnageData, checkedTypeButton]);
 
-  let allFermeTravelsCount
-  if (checkedValue === "Toutes fermes") {
-    allFermeTravelsCount = data.length
-  }
-  else {
-    allFermeTravelsCount = _.filter(
-      data,
-      ({ ferme_bureau }) => (ferme_bureau === checkedValue)
-    ).length
-  }
+  // let allFermeTravelsCount
+  // if (checkedValue === "Toutes fermes") {
+  //   allFermeTravelsCount = data.length
+  // }
+  // else {
+  //   allFermeTravelsCount = _.filter(
+  //     data,
+  //     ({ ferme_bureau }) => (ferme_bureau === checkedValue)
+  //   ).length
+  // }
   // const ratio1 = Math.round(dataFilteredTonnageFerme.length / dataFilteredTonnage.length * 100, 2);
   // const ratio3 = Math.round(dataFilteredTonnageFerme.length / allFermeTravelsCount * 100, 2);
 

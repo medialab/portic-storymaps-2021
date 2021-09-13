@@ -15,6 +15,10 @@ const PrincipalVisualizationPart2 = ({
   highlight = 'toflit18',
   lang = 'fr',
   filter = 'aucun',
+  bureau="tous",
+  navigoAgregation="tonnage",
+  minTonnage,
+  maxTonnage,
   ...props
 }) => {
   const height = atlasMode ? 1200 : containerHeight;
@@ -173,6 +177,10 @@ const PrincipalVisualizationPart2 = ({
         data={datasets['radar_plot_destinations_details_origine.csv']}
         minified={highlight !== 'navigo'}
         globalWidth={width}
+        bureau={bureau}
+        navigoAgregation={navigoAgregation}
+        minTonnage={minTonnage}
+        maxTonnage={maxTonnage}
       />
        {/* <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} /> */}
      </div>

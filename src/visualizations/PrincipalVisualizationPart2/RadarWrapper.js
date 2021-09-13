@@ -1,7 +1,7 @@
 /* eslint react-hooks/exhaustive-deps : 0 */
 import { useEffect, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
-import _ from 'lodash';
+import _, {maxBy, uniqBy, sumBy, values, filter, isEmpty} from 'lodash';
 
 import SliderRange from '../../components/SliderRange';
 import RadioButton from '../../components/RadioButton';
@@ -10,11 +10,15 @@ import RadarPlot from '../../components/RadarPlot';
 const RadarWrapper = ({
   data: inputData,
   globalWidth = 500,
-  minified
+  minified,
+  bureau="tous",
+  navigoAgregation="tonnage",
+  minTonnage,
+  maxTonnage,
 }) => {
   const [data, setData] = useState(undefined);
-  const [checkedValue, setIsChecked] = useState('La Rochelle');
-  const [checkedTypeButton, setIsCheckedTypeButton] = useState(2);
+  const [selectedBureau, setSelectedBureau] = useState('Tous les bureaux');
+  const [aggregationMethod, setAggregationMethod] = useState(1);
   const [dataFilteredTonnage, setDataFilteredTonnage] = useState([]);
   const [dataFilteredTonnageFerme, setDataFilteredTonnageFerme] = useState([]);
   const [fermeCaptions, setFermeCaptions] = useState([]);
@@ -22,14 +26,14 @@ const RadarWrapper = ({
   const [tonnageData, setTonnageData] = useState([]);
   const [travelData, setTravelData] = useState([])
   const [radarData, setRadarData] = useState([]);
-  const [upperSlider, setUpperSlider] = useState();
   const [valueSlider, setValueSlider] = useState();
+  const [upperSlider, setUpperSlider] = useState();
   const lowerSlider = 0;
   const colorAll = 'blue';
   const colorFerme = 'red';
 
   const prepareDestCaptions = datas => {
-    return _.uniqBy(datas, 'destination_radar').map(obj => {
+    return uniqBy(datas, 'destination_radar').map(obj => {
       var rObj = {};
       rObj[obj.destination_radar] = obj.destination_radar;
       return rObj;
@@ -37,7 +41,7 @@ const RadarWrapper = ({
   };
 
   const prepareFermeCaptions = datas => {
-    return _.uniqBy(datas, 'ferme_bureau').map(obj => {
+    return uniqBy(datas, 'ferme_bureau').map(obj => {
       return obj.ferme_bureau;
     });
   };
@@ -58,14 +62,14 @@ const RadarWrapper = ({
       .groupBy("destination_radar")
       .map((dest, id) => {
         var rObj = {};
-        rObj[id] = _.sumBy(dest, "tonnage");
+        rObj[id] = sumBy(dest, "tonnage");
         return rObj;
       })
       .value();
   };
 
   const rescale = datas => {
-    const maxValue = _.maxBy(_.values(datas), function (o) {
+    const maxValue = maxBy(values(datas), function (o) {
       return o;
     });
     var x = scaleLinear()
@@ -86,12 +90,12 @@ const RadarWrapper = ({
   };
 
   const filtered = (range, ferme) => {
-    if (ferme === 'Toutes fermes') {
-      return _.filter(data, item => {
+    if (ferme === 'Tous les bureaux') {
+      return filter(data, item => {
         return (item.tonnage >= range[0]) & (item.tonnage <= range[1]);
       });
     } else {
-      return _.filter(data, item => {
+      return filter(data, item => {
         return (
           (item.tonnage >= range[0]) &
           (item.tonnage <= range[1]) &
@@ -111,6 +115,45 @@ const RadarWrapper = ({
     data: travelData
   }];
 
+  /**
+   * UPDATE FROM PROPS
+   */
+  useEffect(() => {
+    let newAgMethod = 2;
+    if (aggregationMethod !== 'tonnage') {
+      newAgMethod = 1;
+    }
+    setAggregationMethod(newAgMethod);
+  }, [aggregationMethod])
+
+  useEffect(() => {
+    let newBureau;
+    if (bureau === 'tous') {
+      newBureau = 'Tous les bureaux';
+    } else newBureau = bureau;
+    setSelectedBureau(newBureau);
+  }, [bureau])
+
+  useEffect(() => {
+    if (maxTonnage) {
+      if (valueSlider && valueSlider.length) {
+        setValueSlider([valueSlider[0], +maxTonnage]);
+      } else {
+        setValueSlider([0, +maxTonnage]);
+      }
+    }
+  }, [maxTonnage])
+  useEffect(() => {
+    if (minTonnage) {
+      if (valueSlider && valueSlider.length) {
+        setValueSlider([+minTonnage, valueSlider[1]]);
+      } else {
+        const max = maxBy(data, 'tonnage').tonnage;
+        setValueSlider([+minTonnage, max]);
+      }
+    }
+  }, [maxTonnage])
+
   useEffect(() => {
     if (inputData) {
       const newData = inputData.map(d => {
@@ -127,21 +170,28 @@ const RadarWrapper = ({
       })
         .filter(d => d)
 
-      setFermeCaptions([...prepareFermeCaptions(newData), 'Toutes fermes']);
+      setFermeCaptions([...prepareFermeCaptions(newData), 'Tous les bureaux']);
       setDestCaptions(Object.assign({}, ...prepareDestCaptions(newData)))
-      let max = _.maxBy(newData, 'tonnage').tonnage;
+      let max = maxBy(newData, 'tonnage').tonnage;
       setUpperSlider(max);
-      setValueSlider([lowerSlider, max]);
+      if (maxTonnage) {
+        max = +maxTonnage;
+      }
+      let min = lowerSlider;
+      if (minTonnage) {
+        min = +minTonnage;
+      }
+      setValueSlider([min, max]);
       setData(newData);
     }
   }, [inputData])
 
   useEffect(() => {
-    setDataFilteredTonnage(filtered(valueSlider, 'Toutes fermes') || []);
+    setDataFilteredTonnage(filtered(valueSlider, 'Tous les bureaux') || []);
     setDataFilteredTonnageFerme(
-      filtered(valueSlider, checkedValue) || []
+      filtered(valueSlider, selectedBureau) || []
     );
-  }, [checkedValue, valueSlider]);
+  }, [selectedBureau, valueSlider]);
 
   useEffect(() => {
     setTonnageData([
@@ -181,23 +231,23 @@ const RadarWrapper = ({
         meta: { color: colorAll }
       }
     ]);  */
-  }, [dataFilteredTonnage, dataFilteredTonnageFerme, checkedTypeButton]);
+  }, [dataFilteredTonnage, dataFilteredTonnageFerme, aggregationMethod]);
 
   useEffect(() => {
-    const displayData = _.filter(radioAggType, d => {
-      return d.id === checkedTypeButton;
+    const displayData = filter(radioAggType, d => {
+      return d.id === aggregationMethod;
     })[0].data
     setRadarData([...displayData])
-  }, [travelData, tonnageData, checkedTypeButton]);
+  }, [travelData, tonnageData, aggregationMethod]);
 
   // let allFermeTravelsCount
-  // if (checkedValue === "Toutes fermes") {
+  // if (selectedBureau === "Toutes fermes") {
   //   allFermeTravelsCount = data.length
   // }
   // else {
-  //   allFermeTravelsCount = _.filter(
+  //   allFermeTravelsCount = filter(
   //     data,
-  //     ({ ferme_bureau }) => (ferme_bureau === checkedValue)
+  //     ({ ferme_bureau }) => (ferme_bureau === selectedBureau)
   //   ).length
   // }
   // const ratio1 = Math.round(dataFilteredTonnageFerme.length / dataFilteredTonnage.length * 100, 2);
@@ -215,8 +265,8 @@ const RadarWrapper = ({
 
       {/* <p>Légende : en <span style={{color:"blue"}}>bleu</span> les valeurs pour l'ensemble des bureaux de ferme, en <span style={{color:"red"}}>rouge</span> les valeurs pour le bureau de ferme sélectionné</p> */}
       {radarData.length > 0 &&
-        !_.isEmpty(radarData[0].data) &&
-        !_.isEmpty(destCaptions) &&
+        !isEmpty(radarData[0].data) &&
+        !isEmpty(destCaptions) &&
 
         <RadarPlot
           captions={destCaptions}
@@ -229,7 +279,7 @@ const RadarWrapper = ({
       <div className="controls-container">
         <div>
           {
-            checkedTypeButton && checkedTypeButton === 1 &&
+            aggregationMethod && aggregationMethod === 1 &&
             <div className="slider-container">
               <p>Filtrer les voyages par intervalles de tonnage</p>
               <SliderRange
@@ -244,7 +294,7 @@ const RadarWrapper = ({
         </div>
         <div>
           <p><b>Bureau de ferme de départ</b></p>
-          <select value={checkedValue} onChange={(e) => [setIsChecked(e.target.value)]}>
+          <select value={selectedBureau} onChange={(e) => [setSelectedBureau(e.target.value)]}>
             {fermeCaptions.map(item => (
               <option value={item}>{item}</option>
             ))}
@@ -263,8 +313,8 @@ const RadarWrapper = ({
                     id={el.id}
                     name="radioGroup"
                     label={el.label}
-                    checked={checkedTypeButton === el.id}
-                    onChange={() => [setIsCheckedTypeButton(el.id)]}
+                    checked={aggregationMethod === el.id}
+                    onChange={() => [setAggregationMethod(el.id)]}
                   />
                 </li>
               )}

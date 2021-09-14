@@ -559,10 +559,8 @@ svg text {
         .geopart {
           stroke: grey;
         }
-        
       }
     }
-    
   }
 }
 
@@ -1148,100 +1146,124 @@ button.is-active {
       flex-flow: column nowrap;
     }
   }
+}
 
-  .VisualizationFocus {
-    .lightbox-background {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 4;
-      cursor: pointer;
-    }
-    .lightbox-contents {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: calc(100vw - #{$medium-gutter});
-      height: 100vh;
-      z-index: 4;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: stretch;
-      margin: $medium-gutter;
+.VisualizationFocus {
+  display: none;
+  &.is-visible {
+    display: block;
+  }
+  .lightbox-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+    cursor: pointer;
+  }
+  .lightbox-contents {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: calc(100vw - #{$medium-gutter});
+    height: 100vh;
+    z-index: 4;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: stretch;
+    margin: $medium-gutter;
+    box-sizing: border-box;
+    overflow: auto;
+    pointer-events: none;
+    .visualization-details {
+      color: white;
+      flex: 1;
       box-sizing: border-box;
-      overflow: auto;
-      pointer-events: none;
-      .visualization-details {
-        color: white;
-        flex: 1;
+      padding: $medium-gutter;
+      padding-top: 0;
+      order: 2;
+      .details-header {
+        pointer-events: all;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: stretch;
+        align-items: flex-start;
+        h2 {
+          margin: 0;
+          flex: 1;
+        }
+        .close-btn {
+          color: white;
+          background: inherit;
+          cursor: pointer;
+          font-weight: 900;
+          font-size: 1.5em;
+        }
+      }
+      .copy-link-container {
+        margin: $medium-gutter 0;
+        z-index: 5;
+        position: absolute;
+        pointer-events: all;
+        button {
+          background: transparent;
+          border: 2px solid white;
+          border-radius: 1rem;
+          color: white;
+          font-size: .8rem;
+          padding: $small-gutter $medium-gutter;
+          &:hover {
+            background: white;
+            color: #333;
+          }
+        }
+      }
+      .details-contents {
+        pointer-events: all;
+      }
+    }
+    .visualization-wrapper {
+      pointer-events: all;
+      background: transparent;
+      flex: 2;
+      max-width: 70vw;
+      position: relative;
+      min-height: 50vh;
+      box-sizing: border-box;
+      // padding: $medium-gutter;
+      // padding-bottom: $medium-gutter * 5;
+      padding: 0;
+      .VisualizationController {
+        // padding: $small-gutter;
+        padding-bottom: $medium-gutter * 5;
+        padding-top: $medium-gutter;
+        padding-right: $medium-gutter;
         box-sizing: border-box;
-        padding: $medium-gutter;
-        padding-top: 0;
-        order: 2;
-        .details-header {
-          pointer-events: all;
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: stretch;
-          align-items: flex-start;
-          h2 {
-            margin: 0;
-            flex: 1;
-          }
-          .close-btn {
-            color: white;
-            background: inherit;
-            cursor: pointer;
-            font-weight: 900;
-            font-size: 1.5em;
-          }
-        }
-        .details-contents {
-          pointer-events: all;
-        }
+        position: relative;
+        width: unset;
+        height: unset;
+        max-width: 100%;
+        // min-height: 50vh;
+        left: 0;
+        top: 0;
+        background: white;
+      }
+    }
+    @include tablet {
+      flex-flow: column nowrap;
+      .visualization-details {
+        order: unset;
       }
       .visualization-wrapper {
-        pointer-events: all;
-        background: transparent;
-        flex: 2;
-        max-width: 70vw;
-        position: relative;
-        min-height: 50vh;
-        box-sizing: border-box;
-        // padding: $medium-gutter;
-        // padding-bottom: $medium-gutter * 5;
-        padding: 0;
-        .VisualizationController {
-          // padding: $small-gutter;
-          padding-bottom: $medium-gutter * 5;
-          padding-top: $medium-gutter;
-          padding-right: $medium-gutter;
-          box-sizing: border-box;
-          position: relative;
-          width: unset;
-          height: unset;
-          max-width: 100%;
-          // min-height: 50vh;
-          left: 0;
-          top: 0;
-          background: white;
-        }
-      }
-      @include tablet {
-        flex-flow: column nowrap;
-        .visualization-details {
-          order: unset;
-        }
-        .visualization-wrapper {
-          max-width: calc(100% - #{$medium-gutter});
-        }
+        max-width: calc(100% - #{$medium-gutter});
       }
     }
   }
 }
+
+
 
 .__react_component_tooltip {
   // .bar-tooltip {

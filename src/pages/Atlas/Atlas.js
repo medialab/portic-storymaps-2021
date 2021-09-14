@@ -5,7 +5,7 @@ import cx from 'classnames';
 
 // charger le json de la liste des visualisations de l'atlas
 import visualizations from '../../visualizationsList';
-import VisualizationFocus from './VisualizationFocus';
+import VisualizationFocus from '../../components/VisualizationFocus/VisualizationFocus';
 
 import {buildPageTitle} from '../../helpers/misc';
 
@@ -67,11 +67,16 @@ function Atlas({
           }
         </ul>
       </div>
-      {
-        shownVisualization ?
-          <VisualizationFocus history={history} visualization={shownVisualization} lang={lang} />
-          : null
-      }
+        <VisualizationFocus 
+          history={history} 
+          visualization={shownVisualization} 
+          lang={lang}
+          onClose={() => {
+            history.push({
+              pathname: `/${lang}/atlas/`
+            })
+          }}
+        />
     </div>
   );
 }

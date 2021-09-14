@@ -16,8 +16,6 @@ const BureauBackground = ({
   radius
 }) => {
   const [x, y] = projection([+datum.longitude, +datum.latitude]);
-  const labelOnRight = ['La Rochelle', 'Tonnay-Charente'].includes(datum.name);
-  const thatWidth = datum.name.length * width * height * .0005;
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {

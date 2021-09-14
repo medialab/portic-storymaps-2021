@@ -296,7 +296,7 @@ const RadarWrapper = ({
           <p><b>Bureau de ferme de départ ({filtered(valueSlider, selectedBureau).length} départs affichés)</b></p>
           <select value={selectedBureau} onChange={(e) => [setSelectedBureau(e.target.value)]}>
             {fermeCaptions.map(item => (
-              <option value={item}>{item}</option>
+              <option key={item} value={item}>{item}</option>
             ))}
           </select>
         </div>

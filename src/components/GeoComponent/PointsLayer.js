@@ -98,6 +98,7 @@ const StackedLabelGroup = ({
   stackedRowHeight,
   onGroupMouseEnter,
   onGroupMouseLeave,
+  labelFontSize,
   projection
 }) => {
   const { tooltip } = layer;
@@ -131,14 +132,14 @@ const StackedLabelGroup = ({
       data-tip={typeof tooltip === 'function' ? tooltip(datum) : undefined}
     >
       <animated.g className="label-container" transform={transformLabel}>
-        <text style={{ fontSize: stackedRowHeight }}>
+        <text style={{ fontSize: labelFontSize }}>
           {
             label
           }
         </text>
       </animated.g>
       <animated.line
-        x1={stackedRowHeight * label.length * .5 + window.innerWidth * 0.01}
+        x1={labelFontSize * label.length * .5 + window.innerWidth * 0.01}
         y1={datum.labelY - stackedRowHeight * .2}
         x2={x2}
         y2={y2}
@@ -249,6 +250,8 @@ const PointsLayer = ({ layer, projection, width, height }) => {
   const stackedLabelsTop = height * .1;
   const stackedLabelsHeight = height * .9;
   const stackedRowHeight = stackedLabelsHeight / visibleMarkers.length;
+  const maxLabelFontSize = window.innerHeight * 0.02;
+  const labelFontSize = stackedRowHeight < maxLabelFontSize ? stackedRowHeight : maxLabelFontSize;
   if (layer.stackLabels) {
     visibleMarkers = visibleMarkers
       .sort((a, b) => {
@@ -287,6 +290,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
                     onGroupMouseEnter,
                     onGroupMouseLeave,
                     stackedRowHeight,
+                    labelFontSize,
                   }}
                 />
               )

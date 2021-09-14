@@ -517,14 +517,15 @@ svg text {
     position: absolute;
     top: 0;
     right: 0;
-    padding: $small-gutter;
+    padding: $medium-gutter;
     // padding-top: 0;
     button {
       background: transparent;
       border: 1px solid $color-text;
       border-radius: 50%;
-      height: 1.5rem;
-      width: 1.5rem;
+      height: 1rem;
+      width: 1rem;
+      font-size: .5rem;
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;

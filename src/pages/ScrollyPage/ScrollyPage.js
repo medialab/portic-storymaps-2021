@@ -44,6 +44,9 @@ const ScrollyPage = ({
   }, [activeVisualization])
 
   const updateCurrentVisualization = () => {
+    if (visualizationIsFullScreen) {
+      return;
+    } 
     // const bodyPos = document.body.getBoundingClientRect();
     const DISPLACE_Y = window.innerHeight * CENTER_FRACTION;
     const y = scrollY + DISPLACE_Y;

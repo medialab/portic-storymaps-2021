@@ -207,7 +207,7 @@ if chosen_year == 1787:
 
     relevant_navigo_flows = []
     # retrieve relevant flows
-    with open('../data/navigo_all_flows_'+str(chosen_year)+'.csv', 'r') as f:
+    with open('../data/navigo_raw_flows_'+str(chosen_year)+'.csv', 'r') as f:
         flows = csv.DictReader(f)
         for flow in flows:
             if flow['departure_ferme_direction'] == 'La Rochelle':
@@ -243,7 +243,7 @@ if chosen_year == 1789:
                 ports_dflr.add(pointcall['toponyme_fr'])
                 i+=1
 
-    with open('../data/navigo_all_flows_1787.csv', 'r') as f: # on va quand même prendre 1787 pour les small multiples : sinon les données ne sont pas représentatives, et on n'a pas les tonnages pour Le Havre
+    with open('../data/navigo_raw_flows_1787.csv', 'r') as f: # on va quand même prendre 1787 pour les small multiples : sinon les données ne sont pas représentatives, et on n'a pas les tonnages pour Le Havre
         flows = csv.DictReader(f)
         for flow in flows:
             if flow['departure_fr'] in ['Bordeaux', 'Nantes', 'Le Havre']:
@@ -532,7 +532,7 @@ PART 3.2
 
 relevant_navigo_flows = []
 # retrieve relevant flows
-with open('../data/navigo_all_flows_1787.csv', 'r') as f:
+with open('../data/navigo_raw_flows_1787.csv', 'r') as f:
     flows = csv.DictReader(f)
     for flow in flows:
         relevant_navigo_flows.append(flow)

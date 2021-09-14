@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "repository": "https://github.com/medialab/portic-storymaps-2021",
-  "homepage": "http://medialab.github.io/portic-storymaps-2021",
+  "homepage": "https://medialab.github.io/portic-storymaps-2021",
   "contributors": [
     "Cécile Asselin",
     "Loïc Charles",
@@ -21,6 +21,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
+    "copy-to-clipboard": "^3.3.1",
     "d3": "^6.7.0",
     "d3-dsv": "^2.0.0",
     "d3-geo": "^2.0.1",

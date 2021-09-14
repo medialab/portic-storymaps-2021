@@ -7,7 +7,7 @@ import './IntroBureaux.scss';
 
 import colorPalettes from "../../colorPalettes";
 
-const Bureau = ({
+const BureauBackground = ({
   projection,
   height,
   datum,
@@ -26,19 +26,6 @@ const Bureau = ({
     })
   }, [])
 
-  // const r2 = useMemo(() => ({
-  //   r: radius * 2
-  // }), [radius]);
-  // const r1 = useMemo(() => ({
-  //   r: radius
-  // }), [radius]);
-  // const {r} = useSpring({
-  //   loop: true,
-  //   from: r1,
-  //   to: [r2, r1],
-  //   config: { duration: 1500 }
-  // });
-
   const {transform} = useSpring({ 
     to: {
       transform: `translate(${x}, ${y})` 
@@ -53,6 +40,41 @@ const Bureau = ({
         cy={0}
         fill={`url(#bureau-${index})`}
       />
+      <radialGradient id={`bureau-${index}`}>
+        <stop offset="20%" stopColor={colorPalettes.customs_office[datum.name]} />
+        <stop offset="100%" stopColor="rgba(51,109,124,0)" />
+      </radialGradient>
+    </animated.g>
+  )
+}
+
+const BureauLabel = ({
+  projection,
+  height,
+  datum,
+  width,
+  index,
+  radius
+}) => {
+  const [x, y] = projection([+datum.longitude, +datum.latitude]);
+  const labelOnRight = ['La Rochelle', 'Tonnay-Charente'].includes(datum.name);
+  const thatWidth = datum.name.length * width * height * .0005;
+
+  const [isInited, setIsInited] = useState(false);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsInited(true)
+    })
+  }, [])
+
+  const {transform} = useSpring({ 
+    to: {
+      transform: `translate(${x}, ${y})` 
+    },
+    immediate: !isInited
+  });
+  return (
+    <animated.g transform={transform}>
       <circle
         r={2}
         cx={0}
@@ -60,8 +82,8 @@ const Bureau = ({
         fill={'white'}
       />
       <foreignObject
-        x={labelOnRight ? radius : -radius - thatWidth}
-        y={0}
+        x={labelOnRight ? radius / 2 : -radius / 2 - thatWidth}
+        y={-height / 70}
         fill="white"
         width={thatWidth}
         height={height / 20}
@@ -73,10 +95,6 @@ const Bureau = ({
           {datum.name}
         </span>
       </foreignObject>
-      <radialGradient id={`bureau-${index}`}>
-        <stop offset="20%" stopColor={colorPalettes.customs_office[datum.name]} />
-        <stop offset="100%" stopColor="rgba(51,109,124,0)" />
-      </radialGradient>
     </animated.g>
   )
 }
@@ -91,7 +109,26 @@ const renderBureaux = ({ data, projection, width, height, atlasMode }) => {
         data
           .filter(d => !isNaN(+d.latitude) && colorPalettes.customs_office[d.name])
           .map((datum, index) => (
-            <Bureau
+            <BureauBackground
+              key={index}
+              {
+              ...{
+                projection,
+                height,
+                datum,
+                width,
+                index,
+                radius
+              }
+              }
+            />
+          ))
+      }
+      {
+        data
+          .filter(d => !isNaN(+d.latitude) && colorPalettes.customs_office[d.name])
+          .map((datum, index) => (
+            <BureauLabel
               key={index}
               {
               ...{

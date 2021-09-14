@@ -200,7 +200,7 @@ const GeoComponent = ({
         debug ?
           <>
             <h2>scale: {scale}, rotation: {rotation}, translationX: {translationX}, translationY: {translationY}, centerX: {centerX}, centerY: {centerY}</h2>
-            <div class="table">
+            <div className="table">
               <ul id="horizontal-list">
                 <li>
                   <ul>

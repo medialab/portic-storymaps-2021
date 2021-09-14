@@ -116,7 +116,7 @@ const PortGroup = ({
               V ${rowHeight / 7}
               `}
         /> */}
-        <path class='vertical-line'
+        <path className='vertical-line'
           d={`M ${cellCenterX} ${textStartY} 
               V ${triangleStartY}
               `}

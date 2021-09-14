@@ -150,7 +150,7 @@ const LongitudinalTradeChart = ({
           {
             leftYAxisValue.map(value => {
               return (
-                <g className="axis-group">
+                <g key={value} className="axis-group">
                   <line
                     x1={margins.left * .8}
                     x2={margins.left}
@@ -185,7 +185,7 @@ const LongitudinalTradeChart = ({
           {
             rightYAxisValues.map(value => {
               return (
-                <g className="axis-group">
+                <g key={value} className="axis-group">
                   <line
                     x1={xBand(yearTicks[0]) + xBand.bandwidth() / 2}
                     x2={xBand(yearTicks[yearTicks.length - 1])}
@@ -217,12 +217,12 @@ const LongitudinalTradeChart = ({
           />
           {
             yearTicks
-              .map(year => {
+              .map((year, i) => {
                 const x = xBand(year) + xBand.bandwidth() / 2;
                 const y = height - margins.bottom;
                 return (
                   <g
-                    key={year}
+                    key={i}
                     className="axis-group"
                     transform={`translate(${x}, ${y})`}
                   >
@@ -342,7 +342,7 @@ const LongitudinalTradeChart = ({
                 return (
                   <>
                     <circle
-                      key={datum.year}
+                      key={index}
                       {
                       ...{
                         cx: x,
@@ -357,7 +357,7 @@ const LongitudinalTradeChart = ({
                       data-html={true}
                     />
                     <circle
-                      key={datum.year}
+                      key={index + 'a'}
                       {
                       ...{
                         cx: x,
@@ -446,7 +446,7 @@ const LongitudinalTradeChart = ({
                             y1={margins.top + 7.5 + row * 20}
                             y2={margins.top + 7.5 + row * 20}
                             stroke="grey"
-                            marker-end="url(#arrowhead)"
+                            markerEnd="url(#arrowhead)"
                           />
                           <text
                             x={xBand(endYear) + 22}
@@ -465,7 +465,7 @@ const LongitudinalTradeChart = ({
                             y1={margins.top + 7.5 + row * 20}
                             y2={margins.top + 7.5 + row * 20}
                             stroke="grey"
-                            marker-end="url(#arrowhead)"
+                            markerEnd="url(#arrowhead)"
                           />
                           <text
                             x={xBand(startYear) - 22}

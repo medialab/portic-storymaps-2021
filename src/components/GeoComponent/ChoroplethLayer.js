@@ -85,52 +85,7 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
             )
           })
         }
-      </g>
-      {/* LEGENDE A METTRE EN PLACE, pour l'instant j'ai trop galéré
-                {
-                layer.color ?
-                    <g className="legend">
-                        <rect
-                            className="color-legend"
-                            width={width / 6}
-                            height={height / 6}
-                            transform={`translate(0, ${height / 5})`}
-                            // ref={legendRef}
-                            style={{
-                                fill: "transparent",
-                                top: height
-                            }}
-                        >
-                            <text class='title'
-                            width={width / 6}
-                            height={height / 6}
-                            x={0}
-                            y={height/5}
-                            style = {{textSizeAdjust}}
-                            transform={`translate(0, ${height / 5})`}
-                            >{'Légende'}</text>
-                            <g className="colors-legend">
-                                {
-                                    Object.entries(palette)
-                                        .map(([modality, color]) => (
-                                            <rect
-                                                style= {{fill: "transparent"}}
-                                                key={modality}
-                                            >
-                                                <rect className="color-box"
-                                                    style={{ fill: color }}
-                                                />
-                                                <text className="color-label">
-                                                    {modality}
-                                                </text>
-                                            </rect>
-                                        ))
-                                }
-                            </g>
-                        </rect>
-                    </g>
-                    : null
-            } */}    
+      </g>  
     </>
   );
 

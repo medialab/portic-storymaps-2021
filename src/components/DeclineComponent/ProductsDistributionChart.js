@@ -208,6 +208,7 @@ const ProductsDistributionChart = ({
                   const isHighlighted = hoveredProduct === product;
                   return (
                     <path
+                      key={index}
                       d={`M ${x1} ${y1} C ${x1 + (x2 - x1) * .5} ${y1} ${x1 + (x2 - x1) * .5} ${y2} ${x2} ${y2}`}
                       className={cx('link', {'is-highlighted': isHighlighted})}
                     />
@@ -238,7 +239,7 @@ const ProductsDistributionChart = ({
 
           return (
             <div
-            key={year}
+            key={yearIndex}
             className="year-column"
           >
             <h4 className="year-label">

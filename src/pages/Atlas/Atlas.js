@@ -68,7 +68,6 @@ function Atlas({
         </ul>
       </div>
         <VisualizationFocus 
-          history={history} 
           visualization={shownVisualization} 
           lang={lang}
           onClose={() => {

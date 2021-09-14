@@ -117,6 +117,7 @@ function App() {
     ContentSync,
     ThatComponent = PlainPage,
     title,
+    lang,
   }) => (
     <>
       <ThatComponent
@@ -124,7 +125,8 @@ function App() {
         ...{
           Content,
           ContentSync,
-          title
+          title,
+          lang
         }
         }
       />
@@ -156,7 +158,7 @@ function App() {
                   const ContentSync = contentsProcessed[lang];
                   return (
                     <Route key={index} path={route} exact>
-                      {renderRoute({ Content, ThatComponent, title, ContentSync })}
+                      {renderRoute({ Content, ThatComponent, title, ContentSync, lang })}
                     </Route>
                   )
                 })

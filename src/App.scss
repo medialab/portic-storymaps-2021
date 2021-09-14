@@ -487,7 +487,7 @@ svg text {
   // max-width: calc(100vw - 2rem);
   background: linear-gradient(to bottom, $color-background-blue 10vh, $color-background 50vh);
   // overflow-x: hidden;
-  section {
+  > section {
     width: 40%;
     box-sizing: border-box;
     padding: 0 $medium-gutter 0 $medium_gutter * 4;
@@ -512,6 +512,24 @@ svg text {
     width: 60%;
     height: calc(100vh - #{$header_height});
     box-sizing: border-box;
+  }
+  .fullscreen-viz-toggle-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $small-gutter;
+    // padding-top: 0;
+    button {
+      background: transparent;
+      border: 1px solid $color-text;
+      border-radius: 50%;
+      height: 1.5rem;
+      width: 1.5rem;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
   }
   @include tablet {
     section {
@@ -1221,6 +1239,7 @@ button.is-active {
         }
       }
       .details-contents {
+        margin-top: $medium-gutter * 5;
         pointer-events: all;
       }
     }

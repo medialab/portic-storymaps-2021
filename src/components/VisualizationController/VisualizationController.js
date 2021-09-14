@@ -29,6 +29,7 @@ const VisualizationController = ({
             </>
             : null // <div>Pas de visualisation à afficher</div>
           }
+  
         </div>
       )}
     </Measure>

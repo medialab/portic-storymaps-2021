@@ -113,7 +113,7 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
     # pointcalls_fieldnames = pointcalls.fieldnames
     for pointcall in pointcalls:
       # par défaut dans le csv on a déjà que des pointcalls de 1789
-      if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out':
+      if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out' and pointcall['pointcall_function'] == 'O':
         relevant_pointcalls.append(pointcall)
         ports_dflr.add(pointcall['toponyme_fr'])
 # print("nombre de pointcalls sortis des ports de la DFLR en 1789  :", len(relevant_pointcalls))

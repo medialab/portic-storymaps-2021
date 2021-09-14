@@ -352,6 +352,8 @@ def compute_exports_colonial_products(flows):
 def compute_region_ports_general (pointcalls):
   ports = {}
   for pointcall in pointcalls:
+    if pointcall['pointcall_function'] != 'O':
+      continue
     port = pointcall['toponyme_fr']
     if port not in ports:
       new_port = {

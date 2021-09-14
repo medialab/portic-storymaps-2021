@@ -59,9 +59,10 @@ function App() {
         if (url) {
           axios.get(url, {
             onDownloadProgress: progressEvent => {
-              const status = progressEvent.loaded / progressEvent.total;
+              let status = progressEvent.loaded / progressEvent.total;
+              status = status > 1 ? 1 : status;
               const globalFraction = datasetIndex / datasetsNames.length;
-              setLoadingFraction(globalFraction + status / routes.length);
+              setLoadingFraction(globalFraction + status / datasetsNames.length);
             }
           })
             .then(({ data: inputData }) => {
@@ -179,9 +180,9 @@ function App() {
             <Redirect to={`/fr/`} />
           </Switch>
           {
-            datasets ?
-              null :
+            loadingFraction < 1 ?
               <Loader percentsLoaded={loadingFraction * 100} />
+              : null
           }
         </main>
         <Footer

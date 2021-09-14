@@ -264,6 +264,8 @@ def compute_french_fleat_part (pointcalls):
   ports = {}
   countries = {}
   for pointcall in pointcalls:
+    if pointcall['pointcall_function'] != 'O':
+      continue
     # if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
     country = "french" if pointcall["homeport_state_1789_fr"] == "France" else "foreign"
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0

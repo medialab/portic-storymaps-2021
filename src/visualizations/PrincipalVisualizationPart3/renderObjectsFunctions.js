@@ -80,7 +80,7 @@ function Step3Object({
   let noOverlapTransform = `translate(${x},${y})` // mettre entre accolades ??
   if (projectionTemplate.includes('Poitou')) {
     if (datum.name === 'Tonnay-Charente') {
-      noOverlapTransform = `translate(${x + width * 0.16},${y})`
+      noOverlapTransform = `translate(${x + width * 0.15},${y})`
     }
     else if ((datum.name === 'Rochefort')) {
       noOverlapTransform = `translate(${x + width * 0.04},${y - height * 0.0})`
@@ -95,7 +95,7 @@ function Step3Object({
       noOverlapTransform = `translate(${x - width * 0.06},${y})`
     }
     else if ((datum.name === `Les Sables-d'Olonne`)) {
-      noOverlapTransform = `translate(${x - width * 0.1},${y - height * 0.1})`
+      noOverlapTransform = `translate(${x + width * 0.1},${y + height * 0.15})`
     }
   }
   

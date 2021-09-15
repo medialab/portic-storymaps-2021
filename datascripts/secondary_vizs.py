@@ -241,23 +241,94 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
       })
   write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
-def compute_foreign_homeports (pointcalls):
-  print('compute_foreign_homeports')
-  countries = {}
+def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
+  print('compute_hierarchy_of_homeports_of_boats_from_region')
+  homeports = {}
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for pointcall in pointcalls:
-    if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    homeport = pointcall["homeport_toponyme_fr"]
+    homeport = homeport if homeport != "" and homeport != "port pas identifié" and homeport != "pas identifié" else "Indéterminé"
+    if homeport in homeports:
+      homeports[homeport]["nb_pointcalls"] += 1
+      homeports[homeport]["tonnage"] += tonnage
+    else:
       country = pointcall["homeport_state_1789_fr"]
-      tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
-      if country in countries :
-        countries[country]["nb_outs"] += 1;
-        countries[country]["tonnage"] += tonnage;
-      else:
-        countries[country] = {
-          "nb_outs" : 1,
-          "tonnage": tonnage
-        }
-  output = [{"country": country, **values} for country,values in countries.items() if country != ""]
-  write_csv("origines_bateaux_etrangers_partant_de_la_region.csv", output)
+      category_1 = "France" if country == "France" else "étranger"
+      category_2 = country if country != "France" else "France (hors région PASA)"
+      if country == "France" and pointcall["homeport_admiralty"] in admiralties:
+        category_2 = "France (région PASA)"
+      if category_2 == '':
+        category_2 = 'Indéterminé'
+      homeports[homeport] = {
+        "nb_pointcalls": 1,
+        "tonnage": 1,
+        "category_1": category_1,
+        "category_2": category_2,
+      }
+  output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
+  write_csv("hierarchie_ports_dattache_des_navires_partant_de_la_region.csv", output)
+
+
+def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
+  print('compute_hierarchy_of_homeports_of_boats_from_region_to_foreign')
+  homeports = {}
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+  for pointcall in pointcalls:
+    if pointcall["state_1789_fr"] == "France":
+      continue;
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    homeport = pointcall["homeport_toponyme_fr"]
+    homeport = homeport if homeport != "" and homeport != "port pas identifié" and homeport != "pas identifié" else "Indéterminé"
+    if homeport in homeports:
+      homeports[homeport]["nb_pointcalls"] += 1
+      homeports[homeport]["tonnage"] += tonnage
+    else:
+      country = pointcall["homeport_state_1789_fr"]
+      category_1 = "France" if country == "France" else "étranger"
+      category_2 = country if country != "France" else "France (hors région PASA)"
+      if country == "France" and pointcall["homeport_admiralty"] in admiralties:
+        category_2 = "France (région PASA)"
+      if category_2 == '':
+        category_2 = 'Indéterminé'
+      homeports[homeport] = {
+        "nb_pointcalls": 1,
+        "tonnage": 1,
+        "category_1": category_1,
+        "category_2": category_2,
+      }
+  output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
+  write_csv("hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv", output)
+
+def compute_hierarchy_of_directions_of_boats_from_region (pointcalls):
+  print('compute_hierarchy_of_directions_of_boats_from_region')
+  directions = {}
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+  for pointcall in pointcalls:
+    if pointcall["state_1789_fr"] == "France":
+      continue;
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    port = pointcall["toponyme_fr"]
+    port = port if port != "" and port != "port pas identifié" and port != "pas identifié" and port != "illisible" else "Indéterminé"
+    if port in directions:
+      directions[port]["nb_pointcalls"] += 1
+      directions[port]["tonnage"] += tonnage
+    else:
+      country = pointcall["state_1789_fr"]
+      category_1 = "France" if country == "France" else "étranger"
+      category_2 = country if country != "France" else "France (hors région PASA)"
+      if country == "France" and pointcall["pointcall_admiralty"] in admiralties:
+        category_2 = "France (région PASA)"
+      if category_2 == '':
+        category_2 = 'Indéterminé'
+      directions[port] = {
+        "nb_pointcalls": 1,
+        "tonnage": 1,
+        "category_1": category_1,
+        "category_2": category_2,
+      }
+  output = [{"port": port, **vals} for port, vals in directions.items()]
+  write_csv("hierarchie_destinations_des_navires_partant_de_la_region.csv", output)
 
 def compute_french_fleat_part (pointcalls):
   print('compute_french_fleat_part')
@@ -521,13 +592,18 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   pointcalls = csv.DictReader(f)
   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   out_from_region = []
+  in_from_region = []
   all_pointcalls_1789 = []
   for pointcall in pointcalls:
     if pointcall["pointcall_admiralty"] in admiralties:
       all_pointcalls_1789.append(pointcall)
-    if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out":
+    if pointcall["pointcall_admiralty"] in admiralties and pointcall["pointcall_action"] == "Out" and pointcall["pointcall_function"] == "O":
       out_from_region.append(pointcall)
-  compute_foreign_homeports(out_from_region)
+    if pointcall["source_subset"] == "Poitou_1789" and pointcall["pointcall_action"] == "In":
+      in_from_region.append(pointcall)
+  compute_hierarchy_of_homeports_of_boats_from_region(out_from_region)
+  compute_hierarchy_of_homeports_of_boats_from_region_to_foreign(in_from_region)
+  compute_hierarchy_of_directions_of_boats_from_region(in_from_region)
   compute_french_fleat_part(out_from_region)
   compute_region_ports_general(all_pointcalls_1789)
 

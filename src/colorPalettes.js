@@ -53,6 +53,32 @@ const colorsPalettes = {
     '100%': '#A07BEE',
     '75% ou plus': '#41BEA3',
     'moins de 75%': '#FEA43B',
+  },
+  portsTreemaps: {
+    'France (région PASA)': '#41BEA3',
+    'Indéterminé': 'lightgrey',
+    'zone maritime': '#dbd7d7',
+    'multi-Etat': 'grey',
+    'France (hors région PASA)': '#FED63B',
+
+    'Hambourg': '#F7E0DE',
+    'Duché d\'Oldenbourg': '#F3D1CE',
+    'Prusse': '#EFC1BD',
+    'Lubeck': '#E7A39C',
+    'Brême': '#EBB2AD',
+    'Mecklenbourg': '#E3938C',
+    'Duché de Mecklenbourg': '#bd6a62',
+    'Autriche': '#bd6a62',
+
+    'Grande-Bretagne': '#A07BEE',
+    'Provinces-Unies': '#2759e3',
+    'Danemark': '#8e7bee',
+
+    'Etats-Unis d\'Amérique': '#EBB2AD',
+    'Pologne': '#804a45',
+    'Russie': '#804a45',
+    'Espagne': '#e35027',
+    'Portugal': '#e35027',
   }
 }
 

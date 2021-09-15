@@ -17,6 +17,7 @@ import { DatasetsContext } from '../helpers/contexts';
 import visualizationsList from '../visualizationsList';
 import IntroBureaux from './IntroBureaux';
 import HomeportFlows from './HomeportFlows/HomeportFlows';
+import TreemapChart from '../components/TreemapChart/TreemapChart';
 
 const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) => {
   const dimensions = {
@@ -365,6 +366,75 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             datasets,
             atlasMode: props.atlasMode,
             dimensions,
+          }
+        }
+        />
+      );
+    case 'partie-1-ports-dattache':
+      return (
+        <TreemapChart
+        {
+          ...{
+            data: datasets['hierarchie_ports_dattache_des_navires_partant_de_la_region.csv'],
+            title: 'Ports d\'attache des navires partant de la région PASA en 1789 (dimensionnés par tonnage cumulé)',
+            width: dimensions.width,
+            height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
+            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA provenaient de navires rattachés au port de ${d.homeport} - ${d.category_2}.`,
+            fieldsHierarchy: ['category_1', 'category_2', 'ports'],
+            color: {
+              field: 'category_2',
+              palette: colorPalettes.portsTreemaps
+            },
+            leaf: {
+              labelField: 'homeport',
+              countField: 'tonnage'
+            }
+          }
+        }
+        />
+      )
+    case 'partie-1-ports-destinations':
+      return (
+        <TreemapChart
+        {
+          ...{
+            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region.csv'],
+            title: 'Destinations des navires partant de la région PASA en 1789 (dimensionnées par tonnages cumulés)',
+            width: dimensions.width,
+            height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
+            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${d.port} - ${d.category_2}.`,
+            fieldsHierarchy: ['category_1', 'category_2', 'ports'],
+            color: {
+              field: 'category_2',
+              palette: colorPalettes.portsTreemaps
+            },
+            leaf: {
+              labelField: 'port',
+              countField: 'tonnage'
+            }
+          }
+        }
+        />
+      );
+    case 'partie-1-ports-dattache-vers-etranger':
+      return (
+        <TreemapChart
+        {
+          ...{
+            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv'],
+            title: 'Ports d’attache des navires en provenance de la région PASA et en direction de l’étranger en 1789 (dimensionnées par tonnages cumulés)',
+            width: dimensions.width,
+            height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
+            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
+            fieldsHierarchy: ['category_1', 'category_2', 'homeport'],
+            color: {
+              field: 'category_2',
+              palette: colorPalettes.portsTreemaps
+            },
+            leaf: {
+              labelField: 'homeport',
+              countField: 'tonnage'
+            }
           }
         }
         />

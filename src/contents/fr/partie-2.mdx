@@ -5,7 +5,7 @@ import Caller from '../../components/Caller'
 
 <Caller id="viz-principale-partie-2" step={1} highlight="toflit18" filter="aucun" />
 
-<a name="t.0f6320ce23adc712cc5040ecf014facdd20d5a5b"></a><a name="t.0"></a>
+<a name="t.a7dc21b9ca5c7b5fecc83bd6240f607ad9c96864"></a><a name="t.0"></a>
 
 Mode d’emploi pour l’intégration de la visualisation principale de la partie 2 avec le texte (cet encadré de “tutoriel” devra être enlevé à terme) :
 
@@ -20,84 +20,42 @@ Mode d’emploi pour l’intégration de la visualisation principale de la parti
 *   pour toflit18, n’affiche que les flux qui concernent la classe de produits “eau-de-vie et vins divers”
 *   “sel” :
 *   pour toflit18, dimensionne les flux par poids (au lieu de valeur en livres tournois pour les autres filtres), et n’affiche que les flux qui concernent la classe de produits “sel”
+*   le morceau bureau=”xxx” représente le bureau des fermes sur lequel appliquer le filtre. Il peut avoir la valeur “tous” ou le nom de l’un des bureaux des fermes
+*   le morceau navigoAgregation=”xxx” représente la méthode d’aggrégation à utiliser, il peut avoir deux valeurs :
+*   “tonnage” : dimensionne le radarplot avec des tonnages cumulés (valeur par défaut)
+*   “voyages” : dimensionne le radarplot avec le nombre de voyages
+*   le morceau minTonnage=”xxx” représente le tonnage minimum à utiliser comme filtre pour la partie navigo
+*   le morceau maxTonnage=”xxx” représente le tonnage minimum à utiliser comme filtre pour la partie navigo
 
 ## Introduction
 
-La région étudiée se caractérise par une densité importante de ports qui entretiennent des relations plus ou moins étendues et plus ou moins intenses avec le reste de la France et du monde. 
+La région étudiée se caractérise par une densité importante de ports qui entretiennent des relations plus ou moins étendues et plus ou moins intenses avec le reste de la France et du monde. L’importance de leurs mouvements maritimes et des tonnages impliqués n’est pas directement corrélée à la valeur des marchandises transportées: alors que les deux bureaux des Fermes qui exportent le plus sont celui de La Rochelle et de Tonnay-Charente, et que les importations sont dominées par les ports du bureau des fermes de La Rochelle, l’activité portuaire de Marennes est en absolu la plus importante de la région.
 
-La carte représente le tonnage expédié en 1787, à partir des congés délivrés aux navires, toute destination confondue. Les 8 ports dépassant les 10000 tonneaux entretiennent tous, sauf Marans, un commerce avec l’étranger; la presque totalité des ports sous ce seuil se cantonnent en revanche à un commerce régional ou national.
+Nos analyses ont certes montré que[ les tonnages enregistrés à Marennes semblent ](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631722841617000&amp;usg=AOvVaw3DlXGDKFelaYyBaaiqXXWW)[surestimés à 20%](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631722841617000&amp;usg=AOvVaw3DlXGDKFelaYyBaaiqXXWW), et cela monte à 50% dans 10% des pires cas. Mais même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://www.google.com/url?q=https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3), La Rochelle n’a plus un rôle structurant pour les ports de cette région: d’autres ports entretiennent des relations avec l’étranger et avec les marchés français, en commercialisant les productions locales. 
 
 <Caller id="partie-2-part-navigation-francaise" />
 
-Nos analyses ont montré que les tonnages enregistrés à Marennes semblent surestimés à 20%, et cela monte à 50% dans 10% des pires cas. Même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3), La Rochelle n’a pas un rôle structurant dans les relations que les ports de cette région ont avec l’étranger. 
+La carte représente le tonnage expédié en 1787, à partir des congés délivrés aux navires, toute destination confondue. Les 8 ports dépassant les 10000 tonneaux entretiennent tous, sauf Marans, une navigation avec l’étranger; la presque totalité des ports sous ce seuil se cantonnent en revanche à un commerce régional ou national.
 
-La carte permet de constater que les navires expédiés depuis l’Aunis se dirigent vers l’ensemble de l’Europe du Nord, ceux depuis la Saintonge essentiellement vers les îles britanniques et la Hollande, et que ceux au départ du Poitou, nettement moins importants en volume, privilégient l’espace Baltique. Cette différenciation est liée à la nature des produits exportés et du commerce de chaque port.
+Cette section propose une étude de trois ports de la région à la fin de l’Ancien Régime afin de montrer la diversification de leurs marchés, qui s’explique largement par la nature des produits commercialisés.
 
-De par ses relations exclusives avec les colonies et surtout son investissement dans la traite négrière, La Rochelle mérite une étude à part. Pour ce qui des relations avec l’étranger (hors colonies), on constate des circuits relativement distincts: Noirmoutier, Ars-en-Ré et Marennes - qui exportent pour l’essentiel du sel, ont comme principales débouchées extérieures la Baltique et les pays scandinaves. Nous développerons ici en détail le cas de Marennes, principal port exportateur français de sel.
+Les ports de la région connectés aux marchés étrangers présentent des spécificités liées à la nature des produits exportés: les navires expédiés depuis l’Aunis se dirigent vers l’ensemble de l’Europe du Nord, ceux depuis la Saintonge essentiellement vers les îles britanniques et la Hollande, et ceux au départ du Poitou, nettement moins importants en volume, privilégient l’espace Baltique. 
 
-Pour le commerce des eaux-de-vie, nous étudierons le cas de Tonnay-Charente. La mention de l’eau-de-vie parmi les cargaisons est rare, il faut donc se tourner d’abord vers la Balance du commerce, pour affiner ensuite les données par l’analyse de la navigation. 
+De par ses relations exclusives avec les colonies et surtout son investissement dans la traite négrière, La Rochelle mérite une étude à part. L’importation de quantités considérables de denrées coloniales, majoritairement ré-exportées vers l’Europe du Nord, met ce port dans une situation unique. Plusieurs autres ports de la région se consacrent prioritairement à l’exportation du sel: Noirmoutier, Ars-en-Ré et surtout Marennes mobilisent de flottes dépassant en 1789 les 10000 tonneaux pour sa commercialisation. Nous développerons ici en détail le cas de Marennes, principal port exportateur de sel. Sa particularité est de miser sur le marché national.
 
-L’importance des tonnages impliqués n’est au demeurant pas directement corrélée à la valeur des marchandises transportées. En effet, les données de la Ferme donnent les valeurs suivantes:
-
-Bureaux de Ferme de la direction de La Rochelle, exportations en 1789
-
-<a name="t.f271f803a2027ad5854321e7817f569fb280399d"></a><a name="t.1"></a>
-
-Bureau de Ferme
-
-Valeur des exportations en livres tournois
-
-Aligre
-
-1 302 594,57
-
-Charente
-
-6 194 522,97
-
-La Rochelle
-
-7 698 983,18
-
-Les Sables d'Olonne
-
-110 527,00
-
-Marennes
-
-1 921 839,39
-
-Rochefort
-
-274 173,22
-
-Saint-Martin-de-Ré
-
-1 209 320,67
-
-(vide)
-
-1 662 254,00
-
-Total général
-
-20 374 214,99
-
-Exports avec ports francs / petites Îles: 
-
-Total avec ports francs / petites Îles : 
+Pour le commerce des eaux-de-vie, nous étudierons le cas de Tonnay-Charente. La mention de l’eau-de-vie parmi les cargaisons indiquées par les congés étant rare, il faudra se tourner d’abord vers les sources de la Balance du commerce, pour affiner ensuite les données par l’analyse de la navigation. 
 
 ## 2.1. La Rochelle et le commerce triangulaire
 
 <Caller id="viz-principale-partie-2" filter={"colonial"} highlight="toflit18" />
 
-Au XVIIIe siècle, les colonies antillaises augmentent très considérablement leur production de sucre, café, indigo et produits tinctoriaux, pour répondre à une demande européenne fortement orientée à la hausse. La croissance de la production passe par un nombre de plus en plus élevé de plantations, qui ont un recours massif à une main-d'œuvre d’esclaves, que les Européens déportent par centaines de milliers depuis l’Afrique dans le cadre de la traite négrière. Ce commerce transatlantique d’êtres humains, achetés sur les côtes d’Afrique par les négriers européens, a commencé au XVe siècle, mais il atteint son apogée au XVIIIe siècle, lorsque 6 millions d’Africains sont déportés aux Amériques. La moitié d’entre eux est vendue aux Antilles. On estime à 1.25 millions \[Silvia: à vérifier\] le nombre d’Africains introduits dans les colonies françaises au XVIIIe siècle. La principale destination est la colonie de Saint-Domingue (aujourd'hui Haïti) qui compte, à la veille de la grande révolte d’esclaves de 1791, un demi-million d’esclaves, dont plus de la moitié sont nés en Afrique.
+Au XVIIIe siècle, les colonies antillaises augmentent très considérablement leur production de sucre, café, indigo et produits tinctoriaux, pour répondre à une demande européenne fortement orientée à la hausse. La croissance de la production passe par un nombre de plus en plus élevé de plantations, qui ont un recours massif à une main-d'œuvre d’esclaves, que les Européens déportent par centaines de milliers depuis l’Afrique dans le cadre de la traite négrière. Ce commerce transatlantique d’êtres humains, achetés sur les côtes d’Afrique par les négriers européens, a commencé au XVe siècle, mais il atteint son apogée au XVIIIe siècle, lorsque 6 millions d’Africains sont déportés aux Amériques. La moitié d’entre eux est vendue aux Antilles. On estime à un million le nombre d’Africains introduits dans les colonies françaises au XVIIIe siècle. La principale destination est la colonie de Saint-Domingue (aujourd'hui Haïti) qui compte, à la veille de la grande révolte d’esclaves de 1791, un demi-million d’esclaves, dont plus de la moitié sont nés en Afrique.
 
 <Caller id="viz-principale-partie-2" filter={"colonial"} highlight="navigo" />
 
 L’activité négrière est aux mains d’armateurs privés qui espèrent réaliser un profit lors de la revente des esclaves. Si Nantes est le principal port négrier français, La Rochelle a joué un rôle significatif, tout particulièrement dans les années 1730-1740 : entre 1713 et 1744, La Rochelle arme 15% des expéditions négrières, sa part tombe à 11% après la perte du Canada, en sorte que si La Rochelle est le deuxième port négrier le plus important en France avant 1763, il passe au 4e rang par la suite.
 
-Malgré un déclin relatif, l’activité négrière rochelaise est résolument orientée à la hausse. Les armateurs rochelais passent de 4,3 armements négriers par an pour la période 1713-1744 à 12,5 armements par an dans la décennie 1783-1793. Pendant cette dernière, la traite est véritablement de l’activité principale, voire presque exclusive, des armateurs rochelais: sur un total de 200 départs depuis le port de La Rochelle de navires rochelais, un peu plus de la moitié des tonnages se dirigent vers l’Afrique (42% du total) ou vers les colonies antillaises ou les Mascareignes, le reste se répartissant entre Terre-Neuve et Saint-Pierre-et-Miquelon (9.2%) La part des armements vers l’étranger est insignifiante (0.2%), et celle hors des ports limitrophes (Aunis, Poitou, Saintonge) ne dépasse pas le 5%. Les trois quarts de la trentaine de navires rochelais dépassant le 50 tx \[le plus grand faisant 827 tonneaux\] sortis du port de La Rochelle en 1789 se consacrent au commerce transatlantique et négrier.
+Malgré un déclin relatif, l’activité négrière rochelaise est résolument orientée à la hausse: les armateurs rochelais passent de 4,3 armements négriers par an pour la période 1713-1744 à 12,5 armements par an dans la décennie 1783-1793. Pendant cette dernière, la traite est véritablement de l’activité principale, voire presque exclusive, des armateurs rochelais: sur un total de 200 départs depuis le port de La Rochelle de navires rochelais, un peu plus de la moitié des tonnages se dirigent vers l’Afrique (42% du total) ou vers les colonies antillaises ou les Mascareignes, le reste se répartissant entre Terre-Neuve et Saint-Pierre-et-Miquelon (9.2%) La part des armements vers l’étranger est insignifiante (0.2%), et celle hors des ports limitrophes (Aunis, Poitou, Saintonge) ne dépasse pas le 5%. Les trois quarts de la trentaine de navires rochelais dépassant le 50 tx \[le plus grand faisant 827 tonneaux\] sortis du port de La Rochelle en 1789 se consacrent au commerce transatlantique et négrier.
 
 <Caller id="partie-2-carte-direction-bateaux-de-la-rochelle" />
 
@@ -111,7 +69,7 @@ Au total, dans les dernières années de l’Ancien Régime, une douzaine de nav
 
 Si les données collectées par la Balance du commerce ne permettent pas de connaître les destinations des réexportations coloniales rochelaises, les destinations des navires qui quittent le port en 1789 nous en donnent une indication approximative. Les Pays-Bas autrichiens (actuelle Belgique), les Provinces-Unies, Brême, Hambourg, les ports de la Baltique reçoivent chacun de navires totalisant entre 500 et 550 tonneaux. Parmi les autres destinations européennes des navires partis de La Rochelle, seule la Grande-Bretagne (1048 tonneaux) n’est vraisemblablement pas destinataire des produits coloniaux, car elle s’approvisionne dans ses propres colonies.. 
 
-<a name="t.e04ea08ffc0a1e5af3987339feba50fdcd3863fc"></a><a name="t.2"></a>
+<a name="t.e04ea08ffc0a1e5af3987339feba50fdcd3863fc"></a><a name="t.1"></a>
 
 Destinations des navires vers l’étranger (Afrique exclue) au départ du port de La Rochelle, 1789
 
@@ -159,7 +117,7 @@ Etats-Unis d'Amérique
 
 104
 
-Dès lors, il n’est pas surprenant que le négoce rochelais porte toute son attention aux questions liées au commerce colonial et négrier. Cela apparaît clairement parmi les sujets discutés par la chambre de commerce de La Rochelle. L’indexation faite à la main, à l’époque, sur la marge des registres de délibération la Chambre (Arch dépt. Charente Maritime, 41 ETP 8) permet de constater que dans la seule année 1789, le commerce d’Afrique est discuté à une trentaine de reprises, et les colonies à une 50aine des reprises, le commerce de l’Inde à 9; à titre de comparaison, le commerce avec l’étranger est abordé 11 fois en tout, et la pêche (avec notamment la question de la concurrence et de l’admission de la pêche états-unienne, très débattue cette année là en France), 17 fois. Parmi les produits indexés au marge des registres de délibérations, les comestibles sont mentionnés 16 fois - ce qui dans la conjoncture céréalière particulière de l’époque n’est guère étonnant-, l’eau-de-vie et le vin 6, les sucres et les raffineries 8, le charbon de terre 3. On mesure clairement, en dépit d’un critère sans doute grossier, que le regard des membres de la Chambre de commerce est clairement rivé sur les colonies et à la traite. 
+Dès lors, il n’est pas surprenant que le négoce rochelais porte toute son attention aux questions liées au commerce colonial et négrier. Cela apparaît clairement parmi les sujets discutés par la chambre de commerce de La Rochelle. L’indexation faite à la main, à l’époque, sur la marge des registres de délibération la Chambre de Commerce de La Rochelle permet de constater que dans la seule année 1789, le commerce d’Afrique est discuté à une trentaine de reprises, et les colonies à une 50aine des reprises, le commerce de l’Inde à 9; à titre de comparaison, le commerce avec l’étranger est abordé 11 fois en tout, et la pêche (avec notamment la question de la concurrence et de l’admission de la pêche états-unienne, très débattue cette année là en France), 17 fois. Parmi les produits indexés au marge des registres de délibérations, les comestibles sont mentionnés 16 fois - ce qui dans la conjoncture céréalière particulière de l’époque n’est guère étonnant-, l’eau-de-vie et le vin 6, les sucres et les raffineries 8, le charbon de terre 3. On mesure clairement, en dépit d’un critère sans doute grossier, que le regard des membres de la Chambre de commerce est clairement rivé sur les colonies et la traite. 
 
 Si la question de la traite est absente des cahiers de doléances de la région \[préciser leur nombre et fournir un % approximatif de leur complétude par rapport à tous ceux rédigés?\], la défense des intérêts coloniaux apparaît, significativement, uniquement dans le cahier de doléances du Tiers-état de la ville de La Rochelle, dont les représentants envoyés à Versailles “demanderont la révocation de l’arrêt rendu au conseil du roi, le 30 août 1784, concernant le commerce étranger dans les colonies, et le rétablissement des dispositions des lettres patentes de 1717 et 1727, auxquelles on est redevable des progrès qu’ont faits la navigation françoise et la culture des isles françoises de l’Amérique”; par ailleurs, ils “demanderont la suppression de l’entrepôt et des droits actuels de consommation sur les sucres, cafés et l’indigo venant des colonies, et qu’il soit substitué, à l’entrée de la totalité de ces denrées dans tous les ports du roïaume, un droit uniforme \[...\] : que le terrage des sucres étant défavorable à la navigation, s’il n’est pas possible de l’interdire entièrement dans nos colonies, comme il l’est dans les colonies anglaises, il soit au moins défendu \[...\] de l’étendre davantage par de nouveaux établissemens, et que, les sucres bruts devant être, ainsi que le coton, considérés comme matière première, il soit mis un droit à la sortie du roïaume des sucres bruts, assez sensible pour que la plus grande quantité de cette matière soit conservée en France et serve à relever et à soutenir les raffineries et à procurer du travail, puisque c’est dans ces vues que le gouvernement d’Angleterre interdit rigoureusement la sortie en nature des sucres bruts importés de ses colonies...”. Enfin “Les députés demanderont la révocation de l’arrêt du 14 avril 1785 , qui a créé une nouvelle compagnie des Indes et de celui pour l’admission des étrangers dans les isles de France et de Bourbon.” 
 
@@ -173,9 +131,9 @@ Il faut observer que la participation rocheloise à la navigation au-delà du ca
 
 total exportations eau-de-vie depuis la France et destinations pour mesurer part direction de la Rochelle (en précisant le bureau des Fermes concernés)
 
-Les congés de navigation ne sont malheureusement pas de beaucoup de secours pour identifier les flux d’eau-de-vie. En effet, le greffier du port de Tonnay-Charente ne prend pas le soin d’annoter les cargaisons (il le fait 12 fois sur un total de 601 départs): nous avons donc un aperçu global de la navigation, sans pouvoir distinguer la nature des produits. \[extrait de l’ouvrage sur Tonnay-Charente, paru en 2012:\] Si on se base sur les seules sorties de l'année 1787, 67 navires de tonnage moyen, proche de 100 tx, quittent alors Tonnay-Charente : 42 se rendent à l'étranger (en Angleterre pour les deux tiers, le reste vers les îles anglo-normandes, Ostende et la Baltique) ; les 25 gros caboteurs restants se rendent à Dunkerque. On identifie ici la flotte européenne de l'eau-de-vie, qui représente 22 % du tonnage sortant en 1787. Un cran en dessous, on identifie un second groupe, composé d’une poussière de petits caboteurs (tonnage moyen 35 tx) et qui représente tout de même 30 % du tonnage sortant. Ces navires sont alignés sur une destination unique : la Rochelle. Ils sont pour partie occupés à l'approvisionnement de la ville et peut-être à un commerce regional ou national: en revanche, La Rochelle a perdu le rôle d’entrepôt pour le commerce international de l’eau-de-vie qu’elle avait dans les années 1730. Les principales maisons de négoce d'eau-de-vie, en particulier Martell, n'ont plus de bureaux à La Rochelle en 1789. Leurs bureaux principaux ont été rapatriés à Tonnay-Charente et/ou déplacés à Paris.. Enfin, des unités plus modestes (25 tx en moyenne) évoluent au sein de la mer des Pertuis (depuis la Seudre sud jusqu'aux Sables d'Olonne) : elles représentent 23 % du tonnage à la sortie du port de Tonnay-Charente. Il faut remarquer que 479 de 743 congés délivrés en 1787 dans ce port concernent les navires avalant et attachés à des ports fluviaux. Venus porter les eaux-de-vie mais aussi les pierres de carrière et les produits manufacturés de l'arrière-pays à Tonnay-Charente, leurs maîtres quittent ce port soit à vide, soit avec une cargaison destinée à Rochefort, La Rochelle ou bien aux ports de la mer des Pertuis, qui leur fournissent du fret de retour pour leur navigation vers l'amont du fleuve Charente. \[Cette structure du commerce de Tonnay Charente - Révélateur du commerce d’eau de vie - pourrait être montrée à l’aide des diagrammes de Louvain ?\]
+Les congés de navigation ne sont malheureusement pas de beaucoup de secours pour identifier les flux d’eau-de-vie. En effet, le greffier du port de Tonnay-Charente ne prend pas le soin d’annoter les cargaisons (il le fait 12 fois sur un total de 601 départs): nous avons donc un aperçu global de la navigation, sans pouvoir distinguer la nature des produits. \[extrait de l’ouvrage sur Tonnay-Charente, paru en 2012:\] Si on se base sur les seules sorties de l'année 1787, 67 navires de tonnage moyen, proche de 100 tx, quittent alors Tonnay-Charente : 42 se rendent à l'étranger (en Angleterre pour les deux tiers, le reste vers les îles anglo-normandes, Ostende et la Baltique) ; les 25 gros caboteurs restants se rendent à Dunkerque. On identifie ici la flotte européenne de l'eau-de-vie, qui représente 22 % du tonnage sortant en 1787. Un cran en dessous, on identifie un second groupe, composé d’une poussière de petits caboteurs (tonnage moyen 35 tx) et qui représente tout de même 30 % du tonnage sortant. Ces navires sont alignés sur une destination unique : La Rochelle. Ils sont pour partie occupés à l'approvisionnement de la ville et peut-être à un commerce regional ou national: en revanche, La Rochelle a perdu le rôle d’entrepôt pour le commerce international de l’eau-de-vie qu’elle avait dans les années 1730. Les principales maisons de négoce d'eau-de-vie, en particulier Martell, n'ont plus de bureaux à La Rochelle en 1789: leurs bureaux principaux ont été rapatriés à Tonnay-Charente et/ou déplacés à Paris. Enfin, des unités plus modestes (25 tx en moyenne) évoluent au sein de la mer des Pertuis (depuis la Seudre sud jusqu'aux Sables d'Olonne) : elles représentent 23 % du tonnage à la sortie du port de Tonnay-Charente. Il faut remarquer que 479 de 743 congés délivrés en 1787 dans ce port concernent les navires avalant et attachés à des ports fluviaux. Venus porter les eaux-de-vie mais aussi les pierres de carrière et les produits manufacturés de l'arrière-pays à Tonnay-Charente, leurs maîtres quittent ce port soit à vide, soit avec une cargaison destinée à Rochefort, La Rochelle ou bien aux ports de la mer des Pertuis, qui leur fournissent du fret de retour pour leur navigation vers l'amont du fleuve Charente. \[Cette structure du commerce de Tonnay Charente - Révélateur du commerce d’eau de vie - pourrait être montrée à l’aide des diagrammes de Louvain ?\]
 
-Les exportations d’eau-de-vie charentaise en 1789 sont très supérieures à la moyenne séculaire. L’explication réside dans les modifications induites par le Traité d'Eden de 1786, qui entraîne une augmentation extrêmement importante des exportations d'eau-de-vie vers l'Angleterre, notamment des eaux-de-vie de qualité produites dans la région de Cognac, au détriment de celles de moindre qualité. Le total des exportations d’eaux-de-vie françaises vers la Grande-Bretagne passe de 10 à 15 millions de livres tournois dans les années 1760-70, à 40 millions en 1787-89.
+Les exportations d’eau-de-vie charentaise en 1789 sont très supérieures à la moyenne séculaire. L’explication réside en partie dans les modifications induites par le Traité d'Eden de 1786, qui entraîne une augmentation extrêmement importante des exportations d'eau-de-vie vers l'Angleterre, notamment des eaux-de-vie de qualité produites dans la région de Cognac, au détriment de celles de moindre qualité. Le total des exportations d’eaux-de-vie françaises vers la Grande-Bretagne passe de 10 à 15 millions de livres tournois dans les années 1760-70, à 40 millions en 1787-89.
 
  -&gt; voir valeur export eau-de-vie de la direction de La Rochelle dans le temps), 
 
@@ -193,11 +151,11 @@ Par ailleurs, d’après Cullen le commerce d’exportation des eaux de vie conn
 
 ...
 
-Denrée pondéreuse de faible valeur, le sel voyage dès que cela est possible par voie maritime. Les côtes de la région étudiée sont, avec celles du sud de la Bretagne, de très grands producteurs de sel. Les marchés sont aussi bien nationaux - avec une demande soutenue notamment dans les ports de la Manche qui arment à la grande pêche - que vers les pays de l’Europe du Nord, qui s’approvisionnent également au Portugal (Setubal). 
+Denrée pondéreuse de faible valeur, le sel voyage dès que cela est possible par voie maritime. Les côtes de la région étudiée sont, avec celles du sud de la Bretagne, de très grands producteurs de sel. Les marchés sont aussi bien nationaux - avec une demande soutenue notamment dans les ports de la Manche qui arment à la grande pêche - que ceuxes pays de l’Europe du Nord, qui s’approvisionnent également au Portugal (Setubal). 
 
-Le bureau des fermes de Marennes est en absolu le principal exportateur de sel en France (quantités), si l’on inclut aussi les quantités expédiées vers les ports francs français. Il vient en troisième position, derrière les bureaux du Croisic et de Saint-Martin-de-Ré, si on se limite aux marchés extérieurs au royaume.
+Le bureau des fermes de Marennes est en absolu le principal exportateur de sel en France (par quantités), si l’on inclut aussi les quantités expédiées vers les ports francs français. Il vient en troisième position, derrière les bureaux du Croisic et de Saint-Martin-de-Ré, si on se limite aux marchés extérieurs au royaume.
 
-Les valeurs en jeu ne sont pas très élevées, comparées à celles des flux commerciaux dont il a été question pour La Rochelle et Tonnay-Charente: le sel exporté depuis Marennes, y compris à destination des ports francs français, se chiffre autour de 360,000 livres tournois en 1789 (dont 141,000 vers l’étranger). En revanche, son commerce alimente un mouvement portuaire extrêmement intense, qui fait de Marennes, en termes de nombre de navires sortis et de leur tonnage, le principal port de la région étudiée. Son commerce maritime est donc une activité importante, tant pour la production locale qu’il soutient, que pour l’activité induite liée à son transport (construction navale, emploi maritime).
+Les valeurs en jeu ne sont pas élevées, comparées à celles des flux commerciaux dont il a été question pour La Rochelle et Tonnay-Charente: le sel exporté depuis Marennes, y compris à destination des ports francs français, se chiffre autour de 360,000 livres tournois en 1789 (dont 141,000 vers l’étranger). En revanche, son commerce alimente un mouvement portuaire extrêmement intense, qui fait de Marennes, en termes de nombre de navires sortis et de leur tonnage, le principal port de la région étudiée. Son commerce maritime est donc une activité importante, tant pour la production locale qu’il soutient, que pour l’activité induite liée à son transport (construction navale, emploi maritime).
 
 Tous les flux sont là : [http://toflit18.medialab.sciences-po.fr/\#/exploration/flows?sourceType=Best%20Guess%20customs%20region%20product%20x%20partner&amp;productClassification=product\_revolutionempire&amp;product=%5B%22Sel%7Eproduct\_revolutionempire%22%5D&amp;page=0&amp;region=%24all%24&amp;kind=total&amp;dateMin=1789&amp;dateMax=1789&amp;columns=%5B%22product%22%2C%22region%22%2C%22year%22%2C%22partner%22%2C%22import%22%2C%22value%22%2C%22unitPrice%22%2C%22source%22%2C%22rawUnit%22%5D&amp;orders=%5B%7B%22key%22%3A%22unitPrice%22%2C%22order%22%3A%22DESC%22%7D%5D](http://toflit18.medialab.sciences-po.fr/%23/exploration/flows?sourceType%3DBest%2520Guess%2520customs%2520region%2520product%2520x%2520partner%26productClassification%3Dproduct_revolutionempire%26product%3D%255B%2522Sel%257Eproduct_revolutionempire%2522%255D%26page%3D0%26region%3D%2524all%2524%26kind%3Dtotal%26dateMin%3D1789%26dateMax%3D1789%26columns%3D%255B%2522product%2522%252C%2522region%2522%252C%2522year%2522%252C%2522partner%2522%252C%2522import%2522%252C%2522value%2522%252C%2522unitPrice%2522%252C%2522source%2522%252C%2522rawUnit%2522%255D%26orders%3D%255B%257B%2522key%2522%253A%2522unitPrice%2522%252C%2522order%2522%253A%2522DESC%2522%257D%255D)
 

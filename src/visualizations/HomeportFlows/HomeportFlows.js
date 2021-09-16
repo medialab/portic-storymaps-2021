@@ -1,5 +1,6 @@
 import { useState } from "react"
 import GeoComponent from "../../components/GeoComponent/GeoComponent"
+import { fixSvgDimension } from "../../helpers/misc";
 
 const HomeportFlows = ({
   datasets,
@@ -39,8 +40,8 @@ const HomeportFlows = ({
           },
         ]}
         projectionTemplate={currentProjectionTemplate}
-        width={dimensions.width}
-        height={atlasMode ? window.innerHeight * .9 : dimensions.height}
+        width={fixSvgDimension(dimensions.width)}
+        height={atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height)}
         withLegend={'bottom left'}
 
       />

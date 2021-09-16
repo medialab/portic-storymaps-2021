@@ -6,6 +6,7 @@ import cx from 'classnames';
 import ReactTooltip from 'react-tooltip';
 
 import colorsPalettes from "../../colorPalettes";
+import { fixSvgDimension } from '../../helpers/misc';
 
 // TODO:
 // - click on products highlight same product on all years ?
@@ -37,7 +38,7 @@ const ProductsDistributionChart = ({
   }, [wholeHeight])
 
   const [hoveredProduct, setHoveredProduct] = useState(undefined);
-  let height = wholeHeight;
+  let height = fixSvgDimension(wholeHeight);
   const yearLabelHeight = height / 20 + 10;
 
   if (titleRef && titleRef.current) {
@@ -192,7 +193,13 @@ const ProductsDistributionChart = ({
           marginRight: margins.right + width * .002,
         }}
       >
-      <svg ref={svgRef} className={cx("links-container", {'has-highlights': hoveredProduct})} style={{top: svgOffset}} width={width} height={height}>
+      <svg 
+        ref={svgRef} 
+        className={cx("links-container", {'has-highlights': hoveredProduct})} 
+        style={{top: svgOffset}} 
+        width={width} 
+        height={height}
+      >
         {
           links.map((yearLinks, i) => {
             const ref1 = yearsRef.current && yearsRef.current.length >= i && yearsRef.current[i] && yearsRef.current[i];

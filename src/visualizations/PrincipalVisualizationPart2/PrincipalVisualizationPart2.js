@@ -3,11 +3,12 @@ import CircularAlluvialComponent from "../../components/CircularAlluvialComponen
 import RadarWrapper from './RadarWrapper';
 
 import colorsPalettes from '../../colorPalettes';
+import {fixSvgDimension} from '../../helpers/misc';
 
 import './PrincipalVisualizationPart2.scss';
 
 const PrincipalVisualizationPart2 = ({
-  width, 
+  width: inputWidth, 
   height: containerHeight, 
   datasets, 
   showOnlyToflit = false, 
@@ -21,7 +22,8 @@ const PrincipalVisualizationPart2 = ({
   maxTonnage,
   ...props
 }) => {
-  const height = atlasMode ? 1200 : containerHeight;
+  const width = fixSvgDimension(inputWidth);
+  const height = atlasMode ? 1200 : fixSvgDimension(containerHeight);
   const {sumToflitBy, alluvialFilters} = useMemo(() => {
     let sumBy = 'value';
     let filters = [];

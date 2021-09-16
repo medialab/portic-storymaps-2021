@@ -3,10 +3,11 @@ import LongitudinalTradeChart from "./LongitudinalTradeChart";
 import ProductsDistributionChart from './ProductsDistributionChart';
 
 import './DeclineComponent.scss';
+import { fixSvgDimension } from '../../helpers/misc';
 
 const DeclineComponent = (props) => {
   const {
-    width, 
+    width: inputWidth, 
     height: containerHeight, 
     lang = 'fr',
     startYear = 1720,
@@ -16,7 +17,8 @@ const DeclineComponent = (props) => {
     datasets = {},
     atlasMode
   } = props;
-  const height = atlasMode ? 1200 : containerHeight;
+  const height = atlasMode ? 1200 : fixSvgDimension(containerHeight);
+  const width = fixSvgDimension(inputWidth);
   const messages = {
     franceOverviewTitle: {
       fr: (start, end) => `Évolution de la valeur des exports du royaume de France de ${start} à ${end}`,
@@ -93,7 +95,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height/totalRows * rowFlex}
+            height={fixSvgDimension(height/totalRows * rowFlex)}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
             title={messages.franceOverviewTitle[lang](startYear, endYear)}
@@ -141,7 +143,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height/totalRows * rowFlex}
+            height={fixSvgDimension(height/totalRows * rowFlex)}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "La Rochelle")}
             absoluteField="Exports"
             shareField="Exports_share"
@@ -211,7 +213,7 @@ const DeclineComponent = (props) => {
         return (
           <LongitudinalTradeChart
             width={width}
-            height={height/totalRows * rowFlex}
+            height={fixSvgDimension(height/totalRows * rowFlex)}
             data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "Bordeaux")}
             absoluteField="Exports"
             shareField="Exports_share"
@@ -270,7 +272,7 @@ const DeclineComponent = (props) => {
             field="Exports"
             key={rowIndex}
             partTreshold={productTradePartThreshold}
-            height={height/totalRows * rowFlex}
+            height={fixSvgDimension(height/totalRows * rowFlex)}
             barWidth={width * 0.02}
             years={[atlasMode ? 1750 : startYear, atlasMode ? 1789 : endYear]}
             margins={margins}

@@ -6,21 +6,25 @@ import colorsPalettes from '../../colorPalettes';
 import partialCircle from 'svg-partial-circle';
 import { max } from 'd3';
 import ReactTooltip from 'react-tooltip';
+import { fixSvgDimension } from '../../helpers/misc';
 
 
 const ExtraversionObject = ({
   navigoValues: [metric1, metric2],
   toflitPct,
   transformGroup,
-  circleRadius,
-  width,
-  height,
+  circleRadius: inputCircleRadius,
+  width: inputWidth,
+  height: inputHeight,
   name,
   legendMode,
   isActive,
   isMinified,
   onClick,
 }) => {
+  const circleRadius = fixSvgDimension(inputCircleRadius);
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -100,7 +104,7 @@ const ExtraversionObject = ({
                 d={`${leftPath}
                   `}
                 stroke={legendMode ? 'darkgrey' : colorsPalettes.generic.accent2}
-                stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                strokeWidth={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
                 data-tip={`${(100 - toflitPct ).toFixed(1)}% de valeur d'exports de produits fabriqués hors de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
@@ -110,7 +114,7 @@ const ExtraversionObject = ({
                 d={`${rightPath}
                   `}
                 stroke={legendMode ? 'grey' : colorsPalettes.ui.colorAccentBackground}
-                stroke-width={width * 0.005} // à ajuster en fonction de la largeur de l'écran
+                strokeWidth={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
                 data-tip={`${(toflitPct).toFixed(1)}% de valeur d'exports de produits fabriqués dans la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}

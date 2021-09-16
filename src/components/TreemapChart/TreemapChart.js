@@ -10,7 +10,7 @@ import {
   treemapBinary,
 } from 'd3-hierarchy';
 
-import { generatePalette } from '../../helpers/misc';
+import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
 const formatNestResults = (input) => {
   if (Array.isArray(input)) {
@@ -75,8 +75,8 @@ const TreemapChart = ({
   const legendRef = useRef(null);
   const headerRef = useRef(null);
   
-  const width = initialWidth - legendWidth - 10;
-  const height = initialHeight - headersHeight;
+  const width = fixSvgDimension(initialWidth - legendWidth - 10);
+  const height = fixSvgDimension(initialHeight - headersHeight);
 
 
   const margins = {

@@ -8,7 +8,7 @@ import Tooltip from 'react-tooltip';
 import { uniq } from 'lodash';
 
 import colorsPalettes from '../../colorPalettes';
-import { generatePalette } from '../../helpers/misc';
+import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
 const { generic } = colorsPalettes;
 
@@ -79,8 +79,8 @@ const VerticalBarChart = ({
   const legendRef = useRef(null);
   const headerRef = useRef(null);
 
-  const width = initialWidth - legendWidth;
-  const height = initialHeight - headersHeight;
+  const width = fixSvgDimension(initialWidth - legendWidth);
+  const height = fixSvgDimension(initialHeight - headersHeight);
 
   useEffect(() => {
     Tooltip.rebuild();
@@ -144,7 +144,7 @@ const VerticalBarChart = ({
   let bandsNb = yValues.length;
   let vizHeight = (fixedRowHeight ? fixedRowHeight * (bandsNb) : height - headersHeight);
 
-  let rowHeight = fixedRowHeight || vizHeight / bandsNb;
+  let rowHeight = fixSvgDimension(fixedRowHeight || vizHeight / bandsNb);
 
   const groups = Object.entries(groupBy(data, d => d[y.field]));
 
@@ -246,7 +246,12 @@ const VerticalBarChart = ({
                     let stackDisplaceX = margins.left;
                     return (
                       <g key={groupIndex} transform={`translate(0, ${margins.top + rowHeight * groupIndex})`}>
-                        <foreignObject x={0} y={layout === 'stack' ? bandHeight / 4 : bandHeight/2 /* + bandHeight * (items.length / 2)*/} width={margins.left} height={rowHeight}>
+                        <foreignObject 
+                          x={0} 
+                          y={layout === 'stack' ? bandHeight / 4 : bandHeight/2 /* + bandHeight * (items.length / 2)*/} 
+                          width={margins.left} 
+                          height={rowHeight}
+                        >
                           <div className="vertical-bar-label">
                           <div>{typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}</div>
                           </div>
@@ -283,10 +288,10 @@ const VerticalBarChart = ({
                                     +item[x.field] > 0 ?
                                       <rect key={itemIndex}
                                         fill={thatColor}
-                                        width={thatWidth}
+                                        width={fixSvgDimension(thatWidth)}
                                         x={thatX}
                                         y={thatY}
-                                        height={bandHeight - 1}
+                                        height={fixSvgDimension(bandHeight - 1)}
                                         data-for="bar-tooltip"
                                         data-tip={typeof tooltip === 'function' ? tooltip(item, itemIndex, groupIndex) : undefined}
                                       />

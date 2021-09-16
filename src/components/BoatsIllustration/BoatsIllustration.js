@@ -3,6 +3,7 @@ import { useSpring, animated } from "react-spring";
 import {v4 as genId} from 'uuid';
 
 import {useInterval} from '../../helpers/hooks';
+import { fixSvgDimension } from "../../helpers/misc";
 
 import './BoatsIllustration.scss';
 
@@ -274,9 +275,11 @@ const MovingBoat = ({
 
 
 const BoatsIllustration = ({
-  width = 1200,
-  height = 100,
+  width: inputWidth = 1200,
+  height: inputHeight = 100,
 }) => {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   const createBoat = (payload = {}) => {
     const {startAt = 0} = payload;
     const id = genId();

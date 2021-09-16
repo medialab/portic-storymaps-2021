@@ -8,7 +8,7 @@ import Tooltip from 'react-tooltip';
 import { uniq } from 'lodash';
 
 import colorsPalettes from '../../colorPalettes';
-import { generatePalette } from '../../helpers/misc';
+import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
 const { generic } = colorsPalettes;
 
@@ -74,8 +74,8 @@ const LineChart = ({
   const legendRef = useRef(null);
   const headerRef = useRef(null);
   
-  const width = initialWidth - legendWidth;
-  const height = initialHeight - headersHeight;
+  const width = fixSvgDimension(initialWidth - legendWidth);
+  const height = fixSvgDimension(initialHeight - headersHeight);
 
   useEffect(() => {
     setTimeout(() => {

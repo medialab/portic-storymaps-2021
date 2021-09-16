@@ -28,6 +28,7 @@ import colorsPalettes from '../../colorPalettes';
 import ExtraversionObject from './ExtraversionObject';
 
 import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
+import { fixSvgDimension } from '../../helpers/misc';
 
 export function Label(datum, projection, { width }) { // à terme on pourrait mettre un objet 
 
@@ -42,13 +43,15 @@ export function Label(datum, projection, { width }) { // à terme on pourrait me
 function Step3Object({
   datum,
   projection,
-  width,
-  height,
+  width: inputWidth,
+  height: inputHeight,
   projectionTemplate,
   isActive,
   isMinified,
   onClick
 }) { // à priori plus besoin de datum et de width qui sont déjà passés au composant CustomObjectLayer
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   const [x, y] = projection([+datum.longitude, +datum.latitude]);
 
   let circleRadius = width * 0.05;
@@ -124,10 +127,12 @@ function Step3Object({
 export function Step3Objects({
   data: { customsOffices = [], ports = [] },
   projection,
-  width,
-  height,
+  width: inputWidth,
+  height: inputHeight,
   projectionTemplate
 }) {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   const [selectedBureau, setSelectedBureau] = useState(undefined);
   const handleClick = (name) => {
     if (name === selectedBureau) {
@@ -265,7 +270,14 @@ export function Step3Objects({
   )
 }
 
-export function SmallMultiples({ data, width, height, projection }) {
+export function SmallMultiples({ 
+  data, 
+  width: inputWidth, 
+  height: inputHeight, 
+  projection 
+}) {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   // could be parametered in props too
   const bureaux = data.filter(({ name }) => name === 'Le Havre' || name === 'Nantes' || name === 'Bordeaux' || name === 'La Rochelle')
     .sort((a, b) => {
@@ -391,7 +403,15 @@ export function SmallMultiples({ data, width, height, projection }) {
 
 }
 
-export function renderTriangles({ data, width, height, projection, projectionTemplate, atlasMode }) {
+export function renderTriangles({ 
+  data, 
+  width: inputWidth, 
+  height: inputHeight, 
+  projection, 
+  projectionTemplate, atlasMode 
+}) {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   // console.log("data : layder.data ", data)
   return (
     <TriangleComponent

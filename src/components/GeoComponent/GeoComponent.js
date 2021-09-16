@@ -36,11 +36,12 @@ import Input from './Input';
 import Legend from './Legend';
 
 import './GeoComponent.scss'
+import { fixSvgDimension } from '../../helpers/misc';
 
 
 const GeoComponent = ({
-  width = 1500,
-  height = 1500,
+  width: inputWidth = 1500,
+  height: inputHeight = 1500,
   title,
   layers = [],
   projectionTemplate: initialProjectionTemplate,
@@ -48,6 +49,8 @@ const GeoComponent = ({
   debug = false, // @TODO : à réparer
   withLegend,
 }) => {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   // viz params variables
   const [scale, setScale] = useState(200)
   const [rotation, setRotation] = useState(0)

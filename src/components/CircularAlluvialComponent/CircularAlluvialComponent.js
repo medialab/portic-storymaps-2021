@@ -12,7 +12,7 @@ import { prepareAlluvialData } from './utils';
 import './CircularAlluvialComponent.scss';
 import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
-import { cartesian2Polar, trimText } from '../../helpers/misc';
+import { cartesian2Polar, fixSvgDimension, trimText } from '../../helpers/misc';
 import ReactTooltip from 'react-tooltip';
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
@@ -21,7 +21,7 @@ const CircularAlluvialComponent = ({
   data: inputData = [],
   sumBy,
   steps,
-  width = 1200,
+  width: inputWidth = 1200,
   height : inputHeight = 800,
   filters = [],
   debug = false,
@@ -33,7 +33,9 @@ const CircularAlluvialComponent = ({
   lang,
 }) => {
   const titleRef = useRef(null);
-  const height = titleRef.current ? inputHeight - titleRef.current.getBoundingClientRect().height : inputHeight;
+  let height = titleRef.current ? inputHeight - titleRef.current.getBoundingClientRect().height : inputHeight;
+  height = fixSvgDimension(height);
+  const width = fixSvgDimension(inputWidth);
   // state is used for managing interactions through svg elements' classes
   const [highlightedFlow, setHighlightedFlow] = useState(undefined);
   const [highlightedFilter, setHighlightedFilter] = useState(undefined);
@@ -150,9 +152,12 @@ const CircularAlluvialComponent = ({
     <>
       <h5 ref={titleRef} className="visualization-title">{title}</h5>
       <svg 
-      data-for="alluvial-tooltip"
-      data-tip={tooltipContent}
-      width={width} height={height} className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}>
+        data-for="alluvial-tooltip"
+        data-tip={tooltipContent}
+        width={width} 
+        height={height} 
+        className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}
+      >
         <g  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
         <g className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
           <line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />

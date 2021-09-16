@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import './IntroBureaux.scss';
 
 import colorPalettes from "../../colorPalettes";
+import { fixSvgDimension } from '../../helpers/misc';
 
 const BureauBackground = ({
   projection,
@@ -56,7 +57,7 @@ const BureauLabel = ({
 }) => {
   const [x, y] = projection([+datum.longitude, +datum.latitude]);
   const labelOnRight = ['La Rochelle', 'Tonnay-Charente'].includes(datum.name);
-  const thatWidth = datum.name.length * width * height * .0005;
+  const thatWidth = fixSvgDimension(datum.name.length * width * height * .0005);
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -186,8 +187,8 @@ const IntroBureaux = ({
         }
       ]}
       projectionTemplate='Poitou'
-      width={dimensions.width}
-      height={atlasMode ? window.innerHeight * .9 : dimensions.height}
+      width={fixSvgDimension(dimensions.width)}
+      height={atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height)}
     />
   )
 }

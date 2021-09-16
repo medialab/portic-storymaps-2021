@@ -317,14 +317,4 @@ export const getToflitFlowsByApi = ({
 
 }
 
-
-
-
-
-export const getPorticPointcallsByApi = ({
-  filename,
-  spec
-}) => {
-
-}
-
+export const fixSvgDimension = num => isNaN(num) ? 0 : Math.abs(+num)

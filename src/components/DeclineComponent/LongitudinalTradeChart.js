@@ -8,6 +8,7 @@ import cx from 'classnames';
 import ReactTooltip from 'react-tooltip';
 
 import colorsPalettes from "../../colorPalettes";
+import { fixSvgDimension } from "../../helpers/misc";
 
 
 const prettifyValue = str => {
@@ -257,7 +258,7 @@ const LongitudinalTradeChart = ({
                     <rect
                       x={xBand(startYear)}
                       width={xBand(endYear) - xBand(startYear)}
-                      height={height - margins.top - margins.bottom}
+                      height={fixSvgDimension(height - margins.top - margins.bottom)}
                       y={margins.top}
                       fill="url(#diagonalHatch)"
                       opacity={.4}
@@ -302,7 +303,7 @@ const LongitudinalTradeChart = ({
                   x={xBand(+d.year)}
                   y={yShareScale(d[shareField])}
                   width={xBand.bandwidth()}
-                  height={yShareScale(0) - yShareScale(d[shareField])}
+                  height={fixSvgDimension(yShareScale(0) - yShareScale(d[shareField]))}
                   fill={herfindhalField && d[herfindhalField] ? herfindhalColorScale(+d[herfindhalField]) : colorsPalettes.generic.dark}
                   // opacity={herfindhalField && d[herfindhalField]
                   //         ? herfindhalOpacityScale(+d[herfindhalField])

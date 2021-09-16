@@ -8,7 +8,7 @@ import Tooltip from 'react-tooltip';
 import { uniq } from 'lodash';
 
 import colorsPalettes from '../../colorPalettes';
-import { generatePalette } from '../../helpers/misc';
+import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
 const { generic } = colorsPalettes;
 
@@ -85,8 +85,8 @@ const HorizontalBarChart = ({
   const legendRef = useRef(null);
   const headerRef = useRef(null);
   
-  const width = initialWidth;
-  const height = initialHeight - headersHeight;
+  const width = fixSvgDimension(initialWidth);
+  const height = fixSvgDimension(initialHeight - headersHeight);
 
   useEffect(() => {
     Tooltip.rebuild();
@@ -279,14 +279,14 @@ const HorizontalBarChart = ({
                 .filter(a => a.axis === 'x')
                 .map((annotation, annotationIndex) => {
                   const {start, end, label, labelPosition = 20} = annotation;
-                  const thatHeight = height - yScale(yAxisValues[yAxisValues.length - 1]) - margins.bottom;
+                  const thatHeight = fixSvgDimension(height - yScale(yAxisValues[yAxisValues.length - 1]) - margins.bottom);
                   const thatY1 = height - margins.bottom;
                   const thatY2 = yScale(yAxisValues[yAxisValues.length - 1]);
                   return (
                     <g className="annotation x-axis-annotation" key={annotationIndex}>
                       <rect
                         x={xScale(start)}
-                        width={xScale(end) - xScale(start)}
+                        width={fixSvgDimension(xScale(end) - xScale(start))}
                         height={thatHeight}
                         y={thatY2}
                         fill="url(#diagonalHatch)"
@@ -354,9 +354,9 @@ const HorizontalBarChart = ({
                     <g className="annotation y-axis-annotation" key={annotationIndex}>
                       <rect
                         x={thatX1}
-                        width={thatX2 - thatX1}
+                        width={fixSvgDimension(thatX2 - thatX1)}
                         y={yScale(start)}
-                        height={Math.abs(yScale(end) - yScale(start))}
+                        height={fixSvgDimension(yScale(end) - yScale(start))}
                         fill="url(#diagonalHatch)"
                         opacity={.4}
                       />
@@ -470,10 +470,10 @@ const HorizontalBarChart = ({
                                 +item[y.field] > 0 ?
                                   <rect key={itemIndex}
                                     fill={thatColor}
-                                    width={bandWidth}
+                                    width={fixSvgDimension(bandWidth)}
                                     x={thatX}
                                     y={thatY}
-                                    height={thatHeight}
+                                    height={fixSvgDimension(thatHeight)}
                                     data-for="bar-tooltip"
                                     data-tip={typeof tooltip === 'function' ? tooltip(item, itemIndex, groupIndex) : undefined}
                                   />

@@ -8,11 +8,19 @@ import { Step3Objects, SmallMultiples, renderTriangles } from './renderObjectsFu
 import './PrincipalVisualizationPart3.scss';
 import colorsPalettes from '../../colorPalettes.js';
 import Step2 from './Step2';
+import { fixSvgDimension } from '../../helpers/misc';
 
 
-const PrincipalVisualizationPart3 = ({ datasets, step, width, height: inputHeight, atlasMode }) => {
+const PrincipalVisualizationPart3 = ({ 
+  datasets, 
+  step, 
+  width: inputWidth, 
+  height: inputHeight, 
+  atlasMode 
+}) => {
+  const width = fixSvgDimension(inputWidth);
   const ANIMATION_DURATION = 100;
-  const height = atlasMode ? window.innerHeight : inputHeight;
+  const height = atlasMode ? window.innerHeight : fixSvgDimension(inputHeight);
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {
     setTimeout(() => {

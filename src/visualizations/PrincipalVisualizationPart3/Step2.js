@@ -2,12 +2,15 @@
 import SigmaComponent from "../../components/SigmaComponent/GraphContainer";
 import BarChart from "../../components/BarChart";
 import colorPalettes from "../../colorPalettes";
+import { fixSvgDimension } from "../../helpers/misc";
 
 const Step2 = ({
-  width,
-  height,
+  width: inputWidth,
+  height: inputHeight,
   datasets,
 }) => {
+  const width = fixSvgDimension(inputWidth);
+  const height = fixSvgDimension(inputHeight);
   return (
     <>
           <div className="graphs-container" style={{ position: 'relative', height: height * .6 }}>

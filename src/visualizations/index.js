@@ -284,7 +284,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                   title: 'nombre de voyages enregistrés en 1789',
                   // custom: '20'
                 },
-                tooltip: d => `${d.rawSize} mouvements de bateaux ont été observés par le port de ${d.label} en 1789`,
+                tooltip: d => `${d.rawSize} départs de navires ont été observés par le port de ${d.label} en 1789`,
                 label: {
                   field: 'port',
                   position: 'left'

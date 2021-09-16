@@ -3,9 +3,9 @@ import Caller from '../../components/Caller'
 
 # Partie 2. Une forte spécialisation portuaire : le cas de la traite négrière, du commerce du sel et de l'eau-de-vie
 
-<Caller id="viz-principale-partie-2" step={1} highlight="toflit18" filter="aucun" />
+<Caller id="viz-principale-partie-2" step={1} highlight="toflit18" filter="aucun" bureaux="tous,La Rochelle,Rochefort,Saint-Martin-de-Ré,Les Sables-d'Olonne,Marennes,Charente,Marans" />
 
-<a name="t.a7dc21b9ca5c7b5fecc83bd6240f607ad9c96864"></a><a name="t.0"></a>
+<a name="t.debac4287c4df172e4a318a0ae0ac8abdbd8b83a"></a><a name="t.0"></a>
 
 Mode d’emploi pour l’intégration de la visualisation principale de la partie 2 avec le texte (cet encadré de “tutoriel” devra être enlevé à terme) :
 
@@ -20,7 +20,7 @@ Mode d’emploi pour l’intégration de la visualisation principale de la parti
 *   pour toflit18, n’affiche que les flux qui concernent la classe de produits “eau-de-vie et vins divers”
 *   “sel” :
 *   pour toflit18, dimensionne les flux par poids (au lieu de valeur en livres tournois pour les autres filtres), et n’affiche que les flux qui concernent la classe de produits “sel”
-*   le morceau bureau=”xxx” représente le bureau des fermes sur lequel appliquer le filtre. Il peut avoir la valeur “tous” ou le nom de l’un des bureaux des fermes
+*   le morceau bureaux=”xxx” représente le bureau des fermes sur lequel appliquer le filtre. Il peut avoir la valeur “tous” ou le nom d’un ou plusieurs bureaux des fermes, séparés par des virgules (exemple : “La Rochelle,Marennes”)
 *   le morceau navigoAgregation=”xxx” représente la méthode d’aggrégation à utiliser, il peut avoir deux valeurs :
 *   “tonnage” : dimensionne le radarplot avec des tonnages cumulés (valeur par défaut)
 *   “voyages” : dimensionne le radarplot avec le nombre de voyages
@@ -31,7 +31,7 @@ Mode d’emploi pour l’intégration de la visualisation principale de la parti
 
 La région étudiée se caractérise par une densité importante de ports qui entretiennent des relations plus ou moins étendues et plus ou moins intenses avec le reste de la France et du monde. L’importance de leurs mouvements maritimes et des tonnages impliqués n’est pas directement corrélée à la valeur des marchandises transportées: alors que les deux bureaux des Fermes qui exportent le plus sont celui de La Rochelle et de Tonnay-Charente, et que les importations sont dominées par les ports du bureau des fermes de La Rochelle, l’activité portuaire de Marennes est en absolu la plus importante de la région.
 
-Nos analyses ont certes montré que[ les tonnages enregistrés à Marennes semblent ](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631722841617000&amp;usg=AOvVaw3DlXGDKFelaYyBaaiqXXWW)[surestimés à 20%](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631722841617000&amp;usg=AOvVaw3DlXGDKFelaYyBaaiqXXWW), et cela monte à 50% dans 10% des pires cas. Mais même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://www.google.com/url?q=https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3), La Rochelle n’a plus un rôle structurant pour les ports de cette région: d’autres ports entretiennent des relations avec l’étranger et avec les marchés français, en commercialisant les productions locales. 
+Nos analyses ont certes montré que[ les tonnages enregistrés à Marennes semblent ](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631808953433000&amp;usg=AOvVaw2QCsN9ITe2d3entdca1jEv)[surestimés à 20%](https://drive.google.com/file/d/1Lr_7vo2oUHvWWWxNPknVtioLepYmIxLn/view&amp;sa=D&amp;source=editors&amp;ust=1631808953434000&amp;usg=AOvVaw107Y6cdbMETFLlRsWfjloi), et cela monte à 50% dans 10% des pires cas. Mais même en prenant en compte cette distorsion, le tonnage nécessaire aux exportations vers l’étranger du port de La Rochelle n’est pas le plus important dans la région. Comme nous le verrons [dans la partie 3](https://www.google.com/url?q=https://medialab.github.io/portic-storymaps-2021/fr/page/partie-3), La Rochelle n’a plus un rôle structurant pour les ports de cette région: d’autres ports entretiennent des relations avec l’étranger et avec les marchés français, en commercialisant les productions locales. 
 
 <Caller id="partie-2-part-navigation-francaise" />
 
@@ -47,11 +47,11 @@ Pour le commerce des eaux-de-vie, nous étudierons le cas de Tonnay-Charente. La
 
 ## 2.1. La Rochelle et le commerce triangulaire
 
-<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="toflit18" />
+<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="toflit18" bureaux="tous,La Rochelle" />
 
 Au XVIIIe siècle, les colonies antillaises augmentent très considérablement leur production de sucre, café, indigo et produits tinctoriaux, pour répondre à une demande européenne fortement orientée à la hausse. La croissance de la production passe par un nombre de plus en plus élevé de plantations, qui ont un recours massif à une main-d'œuvre d’esclaves, que les Européens déportent par centaines de milliers depuis l’Afrique dans le cadre de la traite négrière. Ce commerce transatlantique d’êtres humains, achetés sur les côtes d’Afrique par les négriers européens, a commencé au XVe siècle, mais il atteint son apogée au XVIIIe siècle, lorsque 6 millions d’Africains sont déportés aux Amériques. La moitié d’entre eux est vendue aux Antilles. On estime à un million le nombre d’Africains introduits dans les colonies françaises au XVIIIe siècle. La principale destination est la colonie de Saint-Domingue (aujourd'hui Haïti) qui compte, à la veille de la grande révolte d’esclaves de 1791, un demi-million d’esclaves, dont plus de la moitié sont nés en Afrique.
 
-<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="navigo" />
+<Caller id="viz-principale-partie-2" filter={"colonial"} highlight="navigo" bureaux="tous,La Rochelle" minTonnage="100" />
 
 L’activité négrière est aux mains d’armateurs privés qui espèrent réaliser un profit lors de la revente des esclaves. Si Nantes est le principal port négrier français, La Rochelle a joué un rôle significatif, tout particulièrement dans les années 1730-1740 : entre 1713 et 1744, La Rochelle arme 15% des expéditions négrières, sa part tombe à 11% après la perte du Canada, en sorte que si La Rochelle est le deuxième port négrier le plus important en France avant 1763, il passe au 4e rang par la suite.
 
@@ -127,7 +127,7 @@ Il faut observer que la participation rocheloise à la navigation au-delà du ca
 
 ## 2.2. le commerce de l’eau-de-vie
 
-<Caller id="viz-principale-partie-2" filter={"eau-de-vie"} />
+<Caller id="viz-principale-partie-2" filter={"eau-de-vie"} bureaux="Charente, Saint-Martin-de-Ré, Rochefort" />
 
 total exportations eau-de-vie depuis la France et destinations pour mesurer part direction de la Rochelle (en précisant le bureau des Fermes concernés)
 
@@ -147,7 +147,7 @@ Par ailleurs, d’après Cullen le commerce d’exportation des eaux de vie conn
 
 ## 2.3. Marennes et le commerce du sel
 
-<Caller id="viz-principale-partie-2" filter={"sel"} />
+<Caller id="viz-principale-partie-2" filter={"sel"} bureaux="Saint-Martin-de-Ré, Marennes" />
 
 ...
 

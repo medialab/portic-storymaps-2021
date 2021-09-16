@@ -14,8 +14,50 @@ import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
 import { cartesian2Polar, fixSvgDimension, trimText } from '../../helpers/misc';
 import ReactTooltip from 'react-tooltip';
+import { useSpring, animated } from 'react-spring'
 
-const colorSchemes = [colorScheme1, colorScheme2, colorScheme3]
+const colorSchemes = [colorScheme1, colorScheme2, colorScheme3];
+
+const G =({children, ...inputProps})  => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.g {...props}>
+      {children}
+    </animated.g>
+  )
+}
+const Text =({children, style, ...inputProps})  => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.text style={style} {...props}>
+      {children}
+    </animated.text>
+  )
+}
+const Line = ({style, ...inputProps}) => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.line style={style} {...props} />
+  )
+}
+const Circle = ({style, ...inputProps}) => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.circle style={style} {...props} />
+  )
+}
+const Rect = ({style, ...inputProps}) => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.rect style={style} {...props} />
+  )
+}
+const Path = ({style, ...inputProps}) => {
+  const props = useSpring(inputProps);
+  return (
+    <animated.path style={style} {...props} />
+  )
+}
 
 const CircularAlluvialComponent = ({
   data: inputData = [],
@@ -158,23 +200,23 @@ const CircularAlluvialComponent = ({
         height={height} 
         className={cx("CircularAlluvialComponent", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}
       >
-        <g  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
-        <g className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
-          <line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />
+        <G  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
+        <G className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
+          <Line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />
           {
             debug ?
               <>
-                <circle
+                <Circle
                   cx={smallestDimension / 2}
                   cy={smallestDimension / 2}
                   r={smallestDimension * .5}
                 />
-                <circle
+                <Circle
                   cx={smallestDimension / 2}
                   cy={smallestDimension / 2}
                   r={thirdCircleRadius}
                 />
-                <circle
+                <Circle
                   cx={smallestDimension / 2}
                   cy={smallestDimension / 2}
                   r={secondCircleRadius}
@@ -183,7 +225,7 @@ const CircularAlluvialComponent = ({
               </>
               : null
           }
-          <text
+          <Text
             x={smallestDimension / 2}
             y={smallestDimension / 2 - HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
             style={{
@@ -191,8 +233,8 @@ const CircularAlluvialComponent = ({
             }}
           >
             EXPORTS
-          </text>
-          <text
+          </Text>
+          <Text
             x={smallestDimension / 2}
             y={smallestDimension / 2 + HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
             style={{
@@ -200,9 +242,9 @@ const CircularAlluvialComponent = ({
             }}
           >
             IMPORTS
-          </text>
-        </g>
-        <g 
+          </Text>
+        </G>
+        <G 
         transform={`translate(${width / 2 - smallestDimension / 2}, 0)`}>
           {
             data
@@ -212,11 +254,11 @@ const CircularAlluvialComponent = ({
                 let nodesSizeScale = scaleLinear().domain([0, 1]).range([0, orientation === 'vertical' ? VERTICAL_BAR_SIZE : BAR_SIZE - HORIZONTAL_DISPLACE]);
                 let displaceLabels = 0;
                 return (
-                  <g
+                  <G
                     className={cx("step-container", 'is-oriented-' + orientation)}
                     key={stepIndex}
                   >
-                    <rect
+                    <Rect
                       x={displaceX}
                       y={displaceY}
                       width={orientation === 'vertical' ? BAR_WIDTH : BAR_SIZE}
@@ -230,7 +272,7 @@ const CircularAlluvialComponent = ({
                       step.nodes
                         .map((node, nodeIndex) => {
                           return (
-                            <g
+                            <G
                               className={cx("links-group")}
                               key={nodeIndex}
                             >
@@ -348,7 +390,7 @@ const CircularAlluvialComponent = ({
                                     const value = flow[sumBy];
                                     const tContent = tooltips.flow[lang]({flow_type, customs_office, product, sumBy, value, partner})
                                     return (
-                                      <g
+                                      <G
                                         onClick={handleClick}
                                         className={cx("flow-link", {
                                           'is-filtered-in': filters && filters.find(({ key, value }) => flow[key] === value),
@@ -359,7 +401,7 @@ const CircularAlluvialComponent = ({
                                         data-for="alluvial-tooltip"
                                         data-tip={tContent}
                                       >
-                                        {/* <path 
+                                        {/* <Path 
                                     d={`
                                     M ${x1} ${y1} 
                                     Q ${controlPoint1AX} ${controlPoint1AY}, ${x2} ${y2} 
@@ -370,7 +412,7 @@ const CircularAlluvialComponent = ({
                                     title={'Valeur : ' + flow.valueAbs}
                                     style={{fill: colorScales[step.field][node.id]}}
                                   /> */}
-                                        <path
+                                        <Path
                                           d={`
                                     M ${x1} ${y1} 
                                     C ${controlPoint1AX},${controlPoint1AY} ${controlPoint1BX},${controlPoint1BY} ${x2} ${y2} 
@@ -384,56 +426,56 @@ const CircularAlluvialComponent = ({
                                           debug ?
                                             <>
                                               {/* control line for control point 1 for large arc */}
-                                              <line
+                                              <Line
                                                 stroke={'red'}
                                                 x1={x1}
                                                 y1={y1}
                                                 x2={controlPoint1AX}
                                                 y2={controlPoint1AY}
                                               />
-                                              <circle
+                                              <Circle
                                                 cx={controlPoint1AX}
                                                 cy={controlPoint1AY}
                                                 r={2}
                                                 fill="red"
                                               />
                                               {/* control line for control point 2 for large arc */}
-                                              <line
+                                              <Line
                                                 stroke={'blue'}
                                                 x1={x2}
                                                 y1={y2}
                                                 x2={controlPoint1BX}
                                                 y2={controlPoint1BY}
                                               />
-                                              <circle
+                                              <Circle
                                                 cx={controlPoint1BX}
                                                 cy={controlPoint1BY}
                                                 r={2}
                                                 fill="blue"
                                               />
                                               {/* control line for control point 1 for small arc */}
-                                              <line
+                                              <Line
                                                 stroke={'green'}
                                                 x1={x3}
                                                 y1={y3}
                                                 x2={controlPoint2AX}
                                                 y2={controlPoint2AY}
                                               />
-                                              <circle
+                                              <Circle
                                                 cx={controlPoint2AX}
                                                 cy={controlPoint2AY}
                                                 r={2}
                                                 fill="green"
                                               />
                                               {/* control line for control point 2 for small arc */}
-                                              <line
+                                              <Line
                                                 stroke={'lightblue'}
                                                 x1={x4}
                                                 y1={y4}
                                                 x2={controlPoint2BX}
                                                 y2={controlPoint2BY}
                                               />
-                                              <circle
+                                              <Circle
                                                 cx={controlPoint2BX}
                                                 cy={controlPoint2BY}
                                                 r={2}
@@ -442,11 +484,11 @@ const CircularAlluvialComponent = ({
                                             </>
                                             : null
                                         }
-                                      </g>
+                                      </G>
                                     )
                                   })
                               }
-                            </g>
+                            </G>
                           )
                         })
                     }
@@ -521,7 +563,7 @@ const CircularAlluvialComponent = ({
                         const labelFontSize = (highlightedFilter || highlightedNode) ? labelHighlightPart > 0 ? textScale(labelHighlightPart) : textScale(node.valuePart) : textScale(1)
                         const tContent = tooltips.node[lang](node, stepIndex);
                         return (
-                          <g
+                          <G
                             className={cx("step-node-container", {
                               'has-highlights': nodeHasHighlights,
                               'is-filtered-in': isFilteredIn,
@@ -532,14 +574,14 @@ const CircularAlluvialComponent = ({
                             data-for="alluvial-tooltip"
                             data-tip={tContent}
                           >
-                            <rect
+                            <Rect
                               x={x}
                               y={y}
                               width={nodeWidth}
                               height={actualHeight}
                               className="node-level-node"
                             />
-                            <g
+                            <G
                               transform={`
                             translate(${labelX}, ${labelY})
                             rotate(${textRotate})
@@ -553,18 +595,18 @@ const CircularAlluvialComponent = ({
                                 })
                               }
                             >
-                              <text
+                              <Text
                                 style={{
                                   fontSize: labelFontSize,
                                   
                                 }}
                               >
                                 {isFilteredIn || isHighlighted ? labelMain + ' ' + (labelSecondary ? labelSecondary : '') : `${labelSecondary ? labelMain + '...' : labelMain}`}
-                              </text>
-                            </g>
+                              </Text>
+                            </G>
                             {
                                 displaceHorizontalLabels && initialLabelX !== labelX ?
-                                <line
+                                <Line
                                   x1={x + nodeHeight / 2}
                                   y1={stepIndex === 0 || stepIndex === 2 ? y + BAR_WIDTH : y}
                                   x2={labelX}
@@ -596,7 +638,7 @@ const CircularAlluvialComponent = ({
                                   flowY = displaceY;
                                 }
                                 return (
-                                  <rect
+                                  <Rect
                                     key={flowIndex}
                                     x={flowX}
                                     y={flowY}
@@ -617,17 +659,17 @@ const CircularAlluvialComponent = ({
                                 )
                               })
                             }
-                          </g>
+                          </G>
                         )
                       })
                     }
 
-                  </g>
+                  </G>
                 )
               })
           }
-        </g>
-        </g>
+        </G>
+        </G>
       </svg>
       <ReactTooltip id="alluvial-tooltip" />
     </>

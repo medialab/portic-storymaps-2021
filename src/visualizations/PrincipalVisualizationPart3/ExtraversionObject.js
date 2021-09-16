@@ -178,7 +178,7 @@ const ExtraversionObject = ({
               y1={-circleRadius * 1.5}
               x2={-circleRadius * .5}
               y2={-circleRadius * 1}
-              marker-end="url(#triangle-end)"
+              markerEnd="url(#triangle-end)"
             />
             <foreignObject
               width={circleRadius * 2}
@@ -198,7 +198,7 @@ const ExtraversionObject = ({
               y1={-circleRadius * 1.5}
               x2={circleRadius * .5}
               y2={-circleRadius * 1}
-              marker-end="url(#triangle-end)"
+              markerEnd="url(#triangle-end)"
             />
             <foreignObject
               width={circleRadius * 2}
@@ -218,7 +218,7 @@ const ExtraversionObject = ({
               y1={circleRadius * .2}
               x2={-circleRadius * .3}
               y2={circleRadius * .1}
-              marker-end="url(#triangle-end)"
+              markerEnd="url(#triangle-end)"
             />
             <foreignObject
               width={circleRadius * 2}
@@ -238,7 +238,7 @@ const ExtraversionObject = ({
               y1={circleRadius * .2}
               x2={circleRadius * .3}
               y2={circleRadius * .1}
-              marker-end="url(#triangle-end)"
+              markerEnd="url(#triangle-end)"
             />
 
           </g>

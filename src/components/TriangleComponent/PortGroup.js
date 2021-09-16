@@ -159,7 +159,7 @@ const PortGroup = ({
             y1={triangleStartY - 3}
             y2={triangleStartY - 3}
             marker-start="url(#triangle-left)" 
-            marker-end="url(#triangle-right)"
+            markerEnd="url(#triangle-right)"
           />
           {/* vertical line */}
           <line
@@ -168,7 +168,7 @@ const PortGroup = ({
             y1={triangleStartY}
             y2={triangleStartY + triangleHeight}
             marker-start="url(#triangle-left)" 
-            marker-end="url(#triangle-right)"
+            markerEnd="url(#triangle-right)"
           />
           {/* pointing arrows */}
           <path
@@ -176,14 +176,14 @@ const PortGroup = ({
             M ${-(legendTextWidth* .2) - triangleWidth / 3} ${triangleStartY * .65}
             Q ${cellCenterX - 10} ${triangleStartY * .65} ${cellCenterX - 2} ${triangleStartY - 5}
             `}
-            marker-end="url(#triangle-right)"
+            markerEnd="url(#triangle-right)"
           />
           <path
             d={`
             M ${-triangleHeight / 3 + 3} ${triangleStartY + triangleHeight * .6 + 7}
             L ${cellCenterX - triangleWidth/2 - 3} ${triangleStartY + triangleHeight * .6 + 7}
             `}
-            marker-end="url(#triangle-right)"
+            markerEnd="url(#triangle-right)"
           />
           <foreignObject 
             y={triangleStartY / 2}

@@ -316,7 +316,7 @@ const HorizontalBarChart = ({
                         y1={thatY2 + labelPosition - 5}
                         y2={thatY2 + labelPosition - 5}
                         stroke="grey" 
-                        marker-end="url(#arrowhead)" 
+                        markerEnd="url(#arrowhead)" 
                       />
                       <text
                         x={xScale(end) + 22}
@@ -384,7 +384,7 @@ const HorizontalBarChart = ({
                         y1={yScale(start) - 15}
                         y2={yScale(start) - 5}
                         stroke="grey" 
-                        marker-end="url(#arrowhead)" 
+                        markerEnd="url(#arrowhead)" 
                       />
                      <text
                         x={thatX1 + labelPosition}

@@ -151,7 +151,7 @@ const FlowGroup = ({
       <animated.path
         d={d}
         strokeWidth={strokeWidth}
-        marker-end="url(#triangle)"
+        markerEnd="url(#triangle)"
         fill="none"
         stroke={color}
       />
@@ -185,9 +185,9 @@ const FlowGroup = ({
       d={arrowPath} 
       stroke="black" 
       strokeWidth={strokeWidth} 
-      marker-end="url(#triangle)" 
+      markerEnd="url(#triangle)" 
     /> */}
-      {/* <line x1={xDep} y1={yDep} x2={xDest} y2={yDest} stroke="black" stroke-width={size} marker-end="url(#triangle)" /> */}
+      {/* <line x1={xDep} y1={yDep} x2={xDest} y2={yDest} stroke="black" stroke-width={size} markerEnd="url(#triangle)" /> */}
     </g>
   )
 }

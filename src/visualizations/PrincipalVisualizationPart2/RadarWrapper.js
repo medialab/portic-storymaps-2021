@@ -1,7 +1,8 @@
 /* eslint react-hooks/exhaustive-deps : 0 */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { scaleLinear } from 'd3-scale';
 import _, {maxBy, uniqBy, sumBy, values, filter, isEmpty} from 'lodash';
+import cx from 'classnames';
 
 import SliderRange from '../../components/SliderRange';
 import RadioButton from '../../components/RadioButton';
@@ -11,6 +12,7 @@ const RadarWrapper = ({
   data: inputData,
   globalWidth = 500,
   minified,
+  title,
   bureau="tous",
   navigoAgregation="tonnage",
   minTonnage,
@@ -18,6 +20,8 @@ const RadarWrapper = ({
 }) => {
   const [data, setData] = useState(undefined);
   const [selectedBureau, setSelectedBureau] = useState('Tous les bureaux');
+
+  const [legendIsDeployed, setLegendIsDeployed] = useState(false);
   const [aggregationMethod, setAggregationMethod] = useState(2);
   const [dataFilteredTonnage, setDataFilteredTonnage] = useState([]);
   const [dataFilteredTonnageFerme, setDataFilteredTonnageFerme] = useState([]);
@@ -31,6 +35,11 @@ const RadarWrapper = ({
   const lowerSlider = 0;
   const colorAll = 'blue';
   const colorFerme = 'red';
+  const legendTitleRef = useRef(null);
+  const legendRef = useRef(null);
+
+  const legendTitleHeight = legendTitleRef.current && legendTitleRef.current.offsetHeight;
+  const legendHeight = legendRef.current && legendRef.current.offsetHeight;
 
   const prepareDestCaptions = datas => {
     return uniqBy(datas, 'destination_radar').map(obj => {
@@ -260,9 +269,9 @@ const RadarWrapper = ({
     return null;
   }
   return (
-    <div className="RadarWrapper">
+    <div className={cx("RadarWrapper", {'is-minified': minified})}>
 
-
+      <h5 className="visualization-title">{title}</h5>   
       {/* <p>Légende : en <span style={{color:"blue"}}>bleu</span> les valeurs pour l'ensemble des bureaux de ferme, en <span style={{color:"red"}}>rouge</span> les valeurs pour le bureau de ferme sélectionné</p> */}
       {radarData.length > 0 &&
         !isEmpty(radarData[0].data) &&
@@ -271,12 +280,21 @@ const RadarWrapper = ({
         <RadarPlot
           captions={destCaptions}
           data={radarData}
-          size={minified ? globalWidth * .3 : globalWidth * .7}
+          size={minified ? globalWidth * .4 : globalWidth * .7}
         />
       }
 
 
-      <div className="controls-container">
+      <div 
+        className={cx("controls-container", {'is-minified': minified})}
+        ref={legendRef}
+        style={{
+          top: minified ? `calc(100% - ${legendIsDeployed ? legendHeight : legendTitleHeight + 5}px)` : undefined
+        }}
+      >
+        <h3 onClick={() => setLegendIsDeployed(!legendIsDeployed)} className="legend-title" ref={legendTitleRef}>
+          Légende
+        </h3>
         <div>
           {
             aggregationMethod && aggregationMethod === 1 &&

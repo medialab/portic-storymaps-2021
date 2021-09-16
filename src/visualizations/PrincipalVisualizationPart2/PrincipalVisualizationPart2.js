@@ -69,28 +69,34 @@ const PrincipalVisualizationPart2 = ({
       alluvialFilters: filters
     }
   }, [filter]);
-  const titles = {
+  const toflit18titles = {
     fr: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`,
     en: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
+  };
+  const navigoTitles = {
+    fr: `Directions des navires en 1789`,
+    en: `Direction des navires en 1789`
   };
   return (
     <div className="PrincipalVisualizationPart2">
      <div 
       className="circular-alluvial-container"
       style={{
-        width: highlight === 'toflit18' ? width * .7 : width * .3,
-        height: highlight === 'toflit18' ? height : height * .3,
+        width: highlight === 'toflit18' ? width * .65 : width * .45,
+        height: highlight === 'toflit18' ? height : height * .45,
       }}
     >
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={highlight === 'toflit18' ? width * .7 : width * .3}
-          height={highlight === 'toflit18' ? height : height * .3}
+          width={highlight === 'toflit18' ? width * .65 : width * .45}
+          height={highlight === 'toflit18' ? height : height * .45}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
           colorsPalettes={colorsPalettes}
           lang={lang}
-          title={titles[lang]}
+          title={toflit18titles[lang]}
+          displaceHorizontalLabels={highlight === 'toflit18'}
+          centerHorizontalLabels={highlight === 'toflit18'}
           tooltips={{
             node: {
               fr: ({id, ...node}, step) => {
@@ -172,7 +178,7 @@ const PrincipalVisualizationPart2 = ({
      <div 
       className="radar-container"
       style={{
-        width: highlight === 'navigo' ? width * .7 : width * .3
+        width: highlight === 'navigo' ? width * .7 : width * .4
       }}
     >
       <RadarWrapper 
@@ -183,6 +189,7 @@ const PrincipalVisualizationPart2 = ({
         navigoAgregation={navigoAgregation}
         minTonnage={minTonnage}
         maxTonnage={maxTonnage}
+        title={navigoTitles[lang]}
       />
        {/* <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} /> */}
      </div>

@@ -15,6 +15,7 @@
   }
 
   .radar-container {
+
     padding-left: 1rem;
     position: absolute;
     bottom: 0;
@@ -28,6 +29,14 @@
 }
 
 .RadarWrapper {
+  .visualization-title {
+    text-align: center;
+  }
+  &.is-minified {
+    .visualization-title {
+      text-align: right;
+    }
+  }
   .slider-container {
     > div {
       margin: 0!important;
@@ -37,6 +46,28 @@
   .controls-container {
     font-family: "IBM Plex Sans", sans-serif;
     font-size: .9rem;
+    position: absolute;
+    
+    background: #ebebeb;
+    left: -35%;
+    top: 40%;
+    width: 30%;
+    padding: 1rem;
+    box-sizing: border-box;
+    .legend-title {
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+    &.is-minified {
+      left: unset;
+      transition: all .5s ease;
+      width: 100%;
+      .legend-title {
+        text-align: right;
+      }
+    }
+    
     fieldset {
       border: none;
       ul {

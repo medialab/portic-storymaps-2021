@@ -11,7 +11,13 @@ const SliderRange = ({ title, min, max, value, onChange }) => {
     return (
         <div style={style}>
             <p>{title}</p>
-           <Range allowCross={false} min={min} max={max} value={value} onChange={onChange} />
+           <Range 
+            allowCross={false} 
+            min={min} 
+            max={max} 
+            value={value} 
+            onChange={onChange} 
+          />
         </div>
     )
     }

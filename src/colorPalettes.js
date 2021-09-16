@@ -51,6 +51,7 @@ const colorsPalettes = {
     "Sables d'Olonne": '#668EDB',
     'Marennes': '#A7E6F9',
     'Charente': '#A7E6F9',
+    'Alligre': '#349883',
     "Tous les bureaux": "grey"
   },
   tonnageClasses: {

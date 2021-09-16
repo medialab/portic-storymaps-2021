@@ -74,21 +74,21 @@ const PrincipalVisualizationPart2 = ({
     en: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
   };
   const navigoTitles = {
-    fr: `Directions des navires en 1789`,
-    en: `Direction des navires en 1789`
+    fr: `Parts de différents groupes de directions pour les navires partis de la région PASA en 1789`,
+    en: `Parts de différents groupes de direction pour les navires partis de la région PASA en 1789`
   };
   return (
     <div className="PrincipalVisualizationPart2">
      <div 
       className="circular-alluvial-container"
       style={{
-        width: highlight === 'toflit18' ? width * .65 : width * .45,
-        height: highlight === 'toflit18' ? height : height * .45,
+        width: highlight === 'toflit18' ? width * .6 : width * .5,
+        height: highlight === 'toflit18' ? height : height * .5,
       }}
     >
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={highlight === 'toflit18' ? width * .65 : width * .45}
+          width={highlight === 'toflit18' ? width * .6 : width * .45}
           height={highlight === 'toflit18' ? height : height * .45}
           sumBy={sumToflitBy}
           filters={alluvialFilters}

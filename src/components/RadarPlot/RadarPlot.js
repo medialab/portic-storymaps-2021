@@ -1,6 +1,7 @@
 import { scaleLinear } from 'd3-scale';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useSpring, animated } from 'react-spring'
+import Tooltip from 'react-tooltip';
 
 import AxisObject from './AxisObject';
 import VisObject from './VisObject';
@@ -10,6 +11,10 @@ const RadarPlot= ({
   size : wholeSize = 100,
   axis,
 }) => {
+
+  useEffect(() => {
+    Tooltip.rebuild();
+  })
   const axisIndexMap = useMemo(() =>
     axis.reduce((res, a, aIndex) => ({
       ...res,
@@ -25,11 +30,13 @@ const RadarPlot= ({
   const axisRankScale = scaleLinear().domain([0, axis.length]).range([Math.PI / 2, Math.PI * 2.5])
   const radiusScale = scaleLinear().domain([0, 1]).range([0, size / 2])
   return (
+    <>
     <svg className="RadarPlot" width={wholeSize} height={wholeSize}>
       <animated.circle
         cx={visCenter}
         cy={visCenter}
         r={visSize}
+        strokeWidth={.5}
         stroke="grey"
         fill="none"
       />
@@ -56,8 +63,9 @@ const RadarPlot= ({
         {
           data.map((datum, datumIndex) => (
             <VisObject
-              key={datumIndex}
+              key={datum.meta.name}
               color={datum.meta.color}
+              name={datum.meta.name}
               data={datum.data}
               axisIndexMap={axisIndexMap}
               axisRankScale={axisRankScale}
@@ -68,6 +76,8 @@ const RadarPlot= ({
         }
       </g>
     </svg>
+    <Tooltip id="radar-tooltip" />
+    </>
   )
 }
 

@@ -57,7 +57,8 @@
     align-items: center;
 
     .controls-contents {
-      width: 50%;
+      width: 60%;
+      min-width: 8rem;
     }
 
     .aggregation-controls-container {
@@ -71,6 +72,9 @@
       .slider-container {
         position: relative;
         top: -1rem;
+        .rc-slider-rail {
+          background: lightgrey;
+        }
         .rc-slider-handle
          {
           border-color: #333;

@@ -1536,4 +1536,21 @@ button.is-active {
       stroke: grey;
     }
   }
+
+  .VisObject {
+    transition: opacity .5s ease;
+    opacity: 1;
+  }
+
+  .objects-container {
+    &:hover {
+      .VisObject {
+        opacity: .5;
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+    
+  }
 }

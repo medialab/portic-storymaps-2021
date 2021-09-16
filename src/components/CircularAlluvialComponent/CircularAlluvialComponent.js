@@ -95,7 +95,7 @@ const CircularAlluvialComponent = ({
   const BAR_WIDTH = smallestDimension / 50;
   // margin for double bars
   const HORIZONTAL_MARGIN = smallestDimension * .2;
-  const textScale = scaleLinear().range([smallestDimension / 120, smallestDimension / 70]).domain([0, 1])
+  const textScale = scaleLinear().range([smallestDimension / 120, smallestDimension / 50]).domain([0, 1])
   // these radiuses are used to align bars extremities on the three implicit circles they form
   // (circle 1 : inner intersection of the 4 bars)
   // (circle 2 : outer intersection of the external point of 4 bars)

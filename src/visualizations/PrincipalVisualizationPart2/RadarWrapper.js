@@ -141,10 +141,13 @@ const RadarWrapper = ({
 
   /** update from bureaux prop */
   useEffect(() => {
-    const cleanBureaux = bureaux.split(',')
+    if (bureaux) {
+      const cleanBureaux = (bureaux).split(',')
       .map(b => b.trim())
       .map(b => b === 'tous' ? 'Tous les bureaux' : b)
     setSelectedBureaux(new Set(cleanBureaux));
+    }
+    
   }, [bureaux])
 
   /** update from maxTonnage prop */
@@ -213,7 +216,7 @@ const RadarWrapper = ({
                 key={'tonnage'}
                 id={'tonnage'}
                 value={'tonnage'}
-              >tonnage{aggregationMethod === 'tonnage' ? ` (de ${tonnageFilterValues[0]} à ${tonnageFilterValues[1]} tonneaux)` : ''}</option>
+              >tonnage{aggregationMethod === 'tonnage' ? ` (navires de ${tonnageFilterValues[0]} à ${tonnageFilterValues[1]} tonneaux)` : ''}</option>
               <option
                 key={'voyages'}
                 id={'voyages'}

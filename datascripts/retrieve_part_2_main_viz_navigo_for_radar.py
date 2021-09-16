@@ -13,6 +13,22 @@ from collections import defaultdict
 
 OUTPUT = "../public/data/part_2_navigo_viz_data.csv"
 
+def clean_bureau_name(name):
+  if (name in ["Les Sables d'Olonne", "Sables d'Olonne"]):
+      return "Les Sables-d'Olonne"
+  elif (name in ['Aligre', 'Alligre']):
+      return 'Marans'  # j'ai un doute là dessus mais c'est bien le toponyme_fr
+  elif name == 'Saint-Martin île de Ré':
+      return 'Saint-Martin-de-Ré'
+  elif name == 'Charente':
+      return 'Tonnay-Charente'
+  elif name == "Oléron":
+    return "Marennes"
+  # elif name == '':
+  #     return 'undefined customs office'
+  else:
+      return name
+
 relevant_flows = []
 # retrieve relevant flows
 with open('../data/navigo_raw_flows_1789.csv', 'r', encoding='utf-8') as f:
@@ -94,6 +110,7 @@ def format_for_viz(f):
     return {
         "destination_radar": f['destination_radar'],
         "homeport_destination_radar": f["homeport_destination_radar"],
+        "ferme_bureau": clean_bureau_name(f["departure_ferme_bureau"]),
         "tonnage": f["tonnage"],
         "departure_fr": f["departure_fr"],
         "destination_fr": f['destination_fr'],

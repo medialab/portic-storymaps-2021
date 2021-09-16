@@ -16,7 +16,7 @@ const PrincipalVisualizationPart2 = ({
   highlight = 'toflit18',
   lang = 'fr',
   filter = 'aucun',
-  bureau="tous",
+  bureaux="tous",
   navigoAgregation="tonnage",
   minTonnage,
   maxTonnage,
@@ -182,10 +182,10 @@ const PrincipalVisualizationPart2 = ({
       }}
     >
       <RadarWrapper 
-        data={datasets['radar_plot_destinations_details_origine.csv']}
+        data={datasets['part_2_navigo_viz_data.csv']}
         minified={highlight !== 'navigo'}
         globalWidth={width}
-        bureau={bureau}
+        bureaux={bureaux}
         navigoAgregation={navigoAgregation}
         minTonnage={minTonnage}
         maxTonnage={maxTonnage}

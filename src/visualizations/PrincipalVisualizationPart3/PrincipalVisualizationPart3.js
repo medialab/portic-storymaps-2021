@@ -19,7 +19,7 @@ const PrincipalVisualizationPart3 = ({
   atlasMode 
 }) => {
   const width = fixSvgDimension(inputWidth);
-  const ANIMATION_DURATION = 100;
+  const ANIMATION_DURATION = 1;
   const height = atlasMode ? window.innerHeight : fixSvgDimension(inputHeight);
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {

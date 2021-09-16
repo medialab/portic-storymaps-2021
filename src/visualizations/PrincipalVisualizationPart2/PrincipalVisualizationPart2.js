@@ -190,6 +190,17 @@ const PrincipalVisualizationPart2 = ({
         minTonnage={minTonnage}
         maxTonnage={maxTonnage}
         title={navigoTitles[lang]}
+        axis={[
+          'Local',
+          'Afrique',
+          'Colonies',
+          'Grande-Bretagne',
+          'Europe',
+          'Ports francs et petites îles',
+          'France',
+          'Reste du monde',
+        ]}
+        colorPalette={colorsPalettes.customs_office}
       />
        {/* <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} /> */}
      </div>

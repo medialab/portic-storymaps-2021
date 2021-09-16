@@ -13,10 +13,12 @@ const RadarWrapper = ({
   globalWidth = 500,
   minified,
   title,
-  bureau="tous",
+  bureaux="tous",
   navigoAgregation="tonnage",
   minTonnage,
   maxTonnage,
+  axis = [],
+  colorPalette
 }) => {
   const [data, setData] = useState(undefined);
   const [selectedBureau, setSelectedBureau] = useState('Tous les bureaux');
@@ -33,8 +35,6 @@ const RadarWrapper = ({
   const [valueSlider, setValueSlider] = useState();
   const [upperSlider, setUpperSlider] = useState();
   const lowerSlider = 0;
-  const colorAll = 'blue';
-  const colorFerme = 'red';
   const legendTitleRef = useRef(null);
   const legendRef = useRef(null);
 
@@ -116,11 +116,11 @@ const RadarWrapper = ({
 
   const radioAggType = [{
     id: 1,
-    label: 'Aggrégation par tonnage',
+    label: 'Agrégation par tonnage',
     data: tonnageData
   }, {
     id: 2,
-    label: 'Aggrégation par nb de trajets',
+    label: 'Agrégation par nb de trajets',
     data: travelData
   }];
 
@@ -137,11 +137,11 @@ const RadarWrapper = ({
 
   useEffect(() => {
     let newBureau;
-    if (bureau === 'tous') {
+    if (bureaux === 'tous') {
       newBureau = 'Tous les bureaux';
-    } else newBureau = bureau;
+    } else newBureau = bureaux;
     setSelectedBureau(newBureau);
-  }, [bureau])
+  }, [bureaux])
 
   useEffect(() => {
     if (maxTonnage) {
@@ -208,11 +208,11 @@ const RadarWrapper = ({
         data: rescale
           (Object.assign({}, ...prepareTonnageData(dataFilteredTonnageFerme))
           ),
-        meta: { color: colorFerme }
+        meta: { color: colorPalette[selectedBureau] }
       },
       {
         data: rescale(Object.assign({}, ...prepareTonnageData(dataFilteredTonnage))),
-        meta: { color: colorAll }
+        meta: { color: colorPalette['Tous les bureaux'] }
       }
     ]);
     setTravelData([
@@ -220,11 +220,11 @@ const RadarWrapper = ({
         data: rescale
           (Object.assign({}, ...prepareTravelData(dataFilteredTonnageFerme))
           ),
-        meta: { color: colorFerme }
+        meta: { color: colorPalette[selectedBureau] }
       },
       {
         data: rescale(Object.assign({}, ...prepareTravelData(dataFilteredTonnage))),
-        meta: { color: colorAll }
+        meta: { color: colorPalette['Tous les bureaux'] }
       }
     ]);
 
@@ -275,12 +275,11 @@ const RadarWrapper = ({
       {/* <p>Légende : en <span style={{color:"blue"}}>bleu</span> les valeurs pour l'ensemble des bureaux de ferme, en <span style={{color:"red"}}>rouge</span> les valeurs pour le bureau de ferme sélectionné</p> */}
       {radarData.length > 0 &&
         !isEmpty(radarData[0].data) &&
-        !isEmpty(destCaptions) &&
 
         <RadarPlot
-          captions={destCaptions}
-          data={radarData}
+          data={radarData.reverse()}
           size={minified ? globalWidth * .4 : globalWidth * .7}
+          axis={axis}
         />
       }
 

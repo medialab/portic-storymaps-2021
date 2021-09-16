@@ -49,6 +49,11 @@ export function cartesian2Polar(x, y){
   return { distance:distance, radians:radians }
 }
 
+export const polarToCartesian = (r, theta) => [
+  r * Math.cos(theta),
+  r * Math.sin(theta)
+]
+
 
 export function usePrevious(value) {
   const ref = useRef();

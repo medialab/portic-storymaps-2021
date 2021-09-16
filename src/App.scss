@@ -1521,3 +1521,18 @@ button.is-active {
     overflow: auto;
   }
 }
+
+.RadarPlot {
+  .AxisObject {
+    font-size: .7rem;
+    .label {
+      font-family: $font-family-1;
+    }
+    line {
+      stroke: grey;
+    }
+    circle {
+      stroke: grey;
+    }
+  }
+}

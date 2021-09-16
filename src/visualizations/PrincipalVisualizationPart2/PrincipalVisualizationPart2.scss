@@ -1,5 +1,3 @@
-
-
 .PrincipalVisualizationPart2 {
   width: 100%;
   height: 100%;
@@ -11,7 +9,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: .5s ease all;
+    transition: 0.5s ease all;
 
     .visualization-title {
       width: 80%;
@@ -23,102 +21,132 @@
     position: absolute;
     top: 0;
     right: 0;
-    transition: .5s ease all;
-  }
-}
-
-.RadarWrapper {
-  padding: 1rem;
-  padding-top: 0;
-  padding-bottom: 2.1rem;
-  box-sizing: border-box;
-
-  &:not(.is-minified) {
-    .visualization-title {
-      padding-left: 4rem;
-    }
+    transition: 0.5s ease all;
   }
 
-  .slider-container {
-    > div {
-      margin: 0!important;
-      width: 100%!important;
-    }
-  }
-  .controls-container {
-    font-family: "IBM Plex Sans", sans-serif;
-    font-size: .9rem;
-        
+  .RadarWrapper {
     padding: 1rem;
+    padding-top: 0;
+    padding-bottom: 2.1rem;
     box-sizing: border-box;
 
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-
-    .controls-contents {
-      width: 60%;
-      min-width: 8rem;
+    &:not(.is-minified) {
+      .visualization-title {
+        padding-left: 4rem;
+      }
     }
 
-    .aggregation-controls-container {
-      display: inline-block;
-      select {
+    .slider-container {
+      > div {
+        margin: 0 !important;
+        width: 100% !important;
+      }
+    }
+    .controls-container {
+      font-family: "IBM Plex Sans", sans-serif;
+      font-size: 0.9rem;
+
+      padding: 1rem;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+
+      .controls-contents {
+        width: 60%;
+        min-width: 8rem;
+      }
+
+      .aggregation-controls-container {
         display: inline-block;
-        border: none;
-        background: inherit;
-        font-family: "IBM Plex Sans", sans-serif;
-      }
-      .slider-container {
-        position: relative;
-        top: -1rem;
-        .rc-slider-rail {
-          background: lightgrey;
-        }
-        .rc-slider-handle
-         {
-          border-color: #333;
-        }
-        .rc-slider-track{
-          background-color: grey;
-        }
-      }
-    }
-
-    .bureaux-list {
-      padding: 0;
-      list-style: none;
-      .bureau-item {
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        cursor: pointer;
-        opacity: 0.5;
-        transition: opacity .5s ease;
-        .color-marker {
+        select {
           display: inline-block;
-          width: 1rem;
-          height: 1rem;
-          margin-right: .5rem;
-          box-sizing: border-box;
+          border: none;
+          background: inherit;
+          font-family: "IBM Plex Sans", sans-serif;
         }
-        .bureau-label {
-          // flex: 1;
-        }
-        &.is-active {
-          opacity: 1;
-          .color-marker {
-            border: 1px solid grey;
+        .slider-container {
+          position: relative;
+          top: -1rem;
+          .rc-slider-rail {
+            background: lightgrey;
+          }
+          .rc-slider-handle {
+            border-color: #333;
+          }
+          .rc-slider-track {
+            background-color: grey;
           }
         }
       }
+
+      .bureaux-list {
+        padding: 0;
+        list-style: none;
+        .bureau-item {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          cursor: pointer;
+          opacity: 0.5;
+          transition: opacity 0.5s ease;
+          .color-marker {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+            box-sizing: border-box;
+          }
+          .bureau-label {
+            // flex: 1;
+          }
+          &.is-active {
+            opacity: 1;
+            .color-marker {
+              border: 1px solid grey;
+            }
+          }
+        }
+      }
+      &:not(.is-minified) {
+        position: absolute;
+        bottom: 0%;
+        transition: all 0.5s ease;
+        width: 50%;
+        left: -30%;
+      }
     }
-    &:not(.is-minified) {
-      position: absolute;
-      bottom: 0%;
-      transition: all .5s ease;
-      width: 50%;
-      left: -30%;
+  }
+  /**
+   * Atlas mode
+   */
+  &.is-atlas-mode {
+    height: 200vh;
+    flex-flow: column nowrap;
+    align-items: center;
+    .circular-alluvial-container {
+      position: relative;
+      left: unset;
+      top: unset;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+    }
+    .radar-container {
+      position: relative;
+      .RadarWrapper {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        .controls-container {
+          position: relative;
+          bottom: unset;
+          width: unset;
+          left: unset;
+          padding: 0;
+        }
+      }
     }
   }
 }

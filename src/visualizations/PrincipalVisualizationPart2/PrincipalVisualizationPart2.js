@@ -1,4 +1,5 @@
 import {useMemo} from 'react';
+import cx from 'classnames';
 import CircularAlluvialComponent from "../../components/CircularAlluvialComponent/CircularAlluvialComponent";
 import RadarWrapper from './RadarWrapper';
 
@@ -78,18 +79,20 @@ const PrincipalVisualizationPart2 = ({
     en: `Parts de différents groupes de direction pour les navires partis de la région PASA en 1789`
   };
   return (
-    <div className="PrincipalVisualizationPart2">
+    <div 
+      className={cx("PrincipalVisualizationPart2", {'is-atlas-mode': atlasMode})}
+    >
      <div 
       className="circular-alluvial-container"
       style={{
-        width: highlight === 'toflit18' ? width * .6 : width * .5,
-        height: highlight === 'toflit18' ? height : height * .5,
+        width: atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? width * .6 : width * .5,
+        height: atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? height : height * .5,
       }}
     >
         <CircularAlluvialComponent
           data={datasets['part_2_toflit_viz_data.csv']}
-          width={highlight === 'toflit18' ? width * .6 : width * .45}
-          height={highlight === 'toflit18' ? height : height * .45}
+          width={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? width * .6 : width * .45}
+          height={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? height : height * .45}
           sumBy={sumToflitBy}
           filters={alluvialFilters}
           colorsPalettes={colorsPalettes}
@@ -178,13 +181,13 @@ const PrincipalVisualizationPart2 = ({
      <div 
       className="radar-container"
       style={{
-        width: highlight === 'navigo' ? width * .7 : width * .4
+        width: atlasMode ? window.innerWidth * .5 : highlight === 'navigo' ? width * .7 : width * .4
       }}
     >
       <RadarWrapper 
         data={datasets['part_2_navigo_viz_data.csv']}
-        minified={highlight !== 'navigo'}
-        globalWidth={width}
+        minified={!atlasMode && highlight !== 'navigo'}
+        globalWidth={atlasMode ? window.innerWidth * .5 : width}
         bureaux={bureaux}
         navigoAgregation={navigoAgregation}
         minTonnage={minTonnage}

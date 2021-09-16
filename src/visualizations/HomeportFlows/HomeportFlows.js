@@ -1,4 +1,3 @@
-import { useState } from "react"
 import GeoComponent from "../../components/GeoComponent/GeoComponent"
 import { fixSvgDimension } from "../../helpers/misc";
 

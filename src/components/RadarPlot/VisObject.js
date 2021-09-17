@@ -42,9 +42,6 @@ const VisObject = ({
   .map(([key, index]) => {
     const val = data[key] || 0;
     const r = radiusScale(val);
-    if (val === undefined) {
-      console.log(key, data)
-    }
     const theta = axisRankScale(+index);
     const [xRaw, yRaw] = polarToCartesian(r, theta);
     const x = fixSvgDimension(xRaw + center[0]);
@@ -66,7 +63,7 @@ const VisObject = ({
       data-place="left"
       data-tip={`
       <p>
-      ${name === 'Tous les bureaux' ? 'Répartition pour tous les ports de la région PASA' : 'Répartition pour les ports rattachés au bureau des fermes de ' + name} :
+      ${name === 'Tous les bureaux' ? 'Parts des destinations des voyages de 1789 initiés depuis tous les ports de la région' : 'Part des destinations pour les voyages de 1789 initiés depuis des ports rattachés au bureau des fermes de <strong>' + name + '</strong>'} :
       </p>
       <ol>
         ${
@@ -79,7 +76,7 @@ const VisObject = ({
           })
           .map(([key, portion]) => `
             <li>
-              ${key} : ${(portion * 100).toFixed(2)}%
+              <strong>${key}</strong> : <strong>${(portion * 100).toFixed(2)}%</strong>
             </li>
           `).join('\n')
         }

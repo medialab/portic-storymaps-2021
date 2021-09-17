@@ -30,6 +30,11 @@
     padding-bottom: 2.1rem;
     box-sizing: border-box;
 
+    .RadarPlot{
+      position: relative;
+      right: 1rem;
+    }
+
     &:not(.is-minified) {
       .visualization-title {
         padding-left: 6rem;
@@ -56,6 +61,7 @@
       .controls-contents {
         width: 60%;
         min-width: 8rem;
+        margin-right: 2rem;
       }
 
       .aggregation-controls-container {

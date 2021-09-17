@@ -4,9 +4,9 @@
     "static/js/0.4ca1df82.chunk.js.map": "/portic-storymaps-2021/static/js/0.4ca1df82.chunk.js.map",
     "static/js/1.499fdbef.chunk.js": "/portic-storymaps-2021/static/js/1.499fdbef.chunk.js",
     "static/js/1.499fdbef.chunk.js.map": "/portic-storymaps-2021/static/js/1.499fdbef.chunk.js.map",
-    "main.css": "/portic-storymaps-2021/static/css/main.f727c92c.chunk.css",
-    "main.js": "/portic-storymaps-2021/static/js/main.0be8cc63.chunk.js",
-    "main.js.map": "/portic-storymaps-2021/static/js/main.0be8cc63.chunk.js.map",
+    "main.css": "/portic-storymaps-2021/static/css/main.ec7f2436.chunk.css",
+    "main.js": "/portic-storymaps-2021/static/js/main.041005ad.chunk.js",
+    "main.js.map": "/portic-storymaps-2021/static/js/main.041005ad.chunk.js.map",
     "runtime-main.js": "/portic-storymaps-2021/static/js/runtime-main.07af35cd.js",
     "runtime-main.js.map": "/portic-storymaps-2021/static/js/runtime-main.07af35cd.js.map",
     "static/css/4.d59c41ec.chunk.css": "/portic-storymaps-2021/static/css/4.d59c41ec.chunk.css",
@@ -28,14 +28,14 @@
     "static/js/11.8f76b83a.chunk.js.map": "/portic-storymaps-2021/static/js/11.8f76b83a.chunk.js.map",
     "index.html": "/portic-storymaps-2021/index.html",
     "static/css/4.d59c41ec.chunk.css.map": "/portic-storymaps-2021/static/css/4.d59c41ec.chunk.css.map",
-    "static/css/main.f727c92c.chunk.css.map": "/portic-storymaps-2021/static/css/main.f727c92c.chunk.css.map",
+    "static/css/main.ec7f2436.chunk.css.map": "/portic-storymaps-2021/static/css/main.ec7f2436.chunk.css.map",
     "static/js/4.de277de8.chunk.js.LICENSE.txt": "/portic-storymaps-2021/static/js/4.de277de8.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.07af35cd.js",
     "static/css/4.d59c41ec.chunk.css",
     "static/js/4.de277de8.chunk.js",
-    "static/css/main.f727c92c.chunk.css",
-    "static/js/main.0be8cc63.chunk.js"
+    "static/css/main.ec7f2436.chunk.css",
+    "static/js/main.041005ad.chunk.js"
   ]
 }

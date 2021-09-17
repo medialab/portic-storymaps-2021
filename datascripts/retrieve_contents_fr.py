@@ -41,14 +41,11 @@ def prepare_contents(str):
       line = ''
     elif line.startswith('Published by <a href="//docs.google.com/"'):
       line = ''
-    if ('uniformisation des variations orthographiques' in line):
-      print(line)
-    line = re.sub(r"\(https://www\.google\.com/url\?q=(.*)&amp;sa=([^)]*)\)", r"(\1)", line)
-    line = re.sub(r"\(https://www\.google\.com/url\?q=(.*)\)", r"(\1)", line)
-    # line = re.sub(r"\[(.*)\]\((.*)\)", r'<a target="blank" rel="noopener" href="\2">\1</a>', line)
-    if ('uniformisation des variations orthographiques' in line):
-      print('***')
-      print(line)
+    # if ('uniformisation des variations orthographiques' in line):
+    #   print(line)
+    line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)&amp;sa=([^)]*)\)", r"(\1)", line)
+    line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)\)", r"(\1)", line)
+
     current_part.append(line)
   if center_mode == True:
     current_part.append('</div></div>')
@@ -73,6 +70,7 @@ with requests.Session() as s:
     elif i < 4:
       md_path = TARGET_BASE + 'partie-' + str(i) + '.mdx'
     elif i == 5:
+      print(part)
       md_path = TARGET_BASE + 'a-propos.mdx'
     else:
       md_path = TARGET_BASE + 'references.mdx'

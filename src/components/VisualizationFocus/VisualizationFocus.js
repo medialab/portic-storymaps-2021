@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { homepage } from '../../../package.json';
 import copy from 'copy-to-clipboard';
 import VisualizationController from '../VisualizationController/VisualizationController.js';
+import Md from 'react-markdown';
 
 
 const VisualizationFocus = ({ visualization, lang, onClose }) => {
@@ -61,9 +62,9 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
                   howDone && howDone.length ?
                     <section className="details-contents-section">
                       <h3>{messages.howDone[lang]}</h3>
-                      <p>
+                      <Md>
                         {howDone}
-                      </p>
+                      </Md>
                     </section>
                     : null
                 }
@@ -71,9 +72,9 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
                   howRead && howRead.length ?
                     <section className="details-contents-section">
                       <h3>{messages.howRead[lang]}</h3>
-                      <p>
+                      <Md>
                         {howRead}
-                      </p>
+                      </Md>
                     </section>
                     : null
                 }

@@ -18,44 +18,44 @@ import { useSpring, animated } from 'react-spring'
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3];
 
-const G =({children, ...inputProps})  => {
+const G =({children, className, onClick, ...inputProps})  => {
   const props = useSpring(inputProps);
   return (
-    <animated.g {...props}>
+    <animated.g className={className} onClick={onClick} {...props}>
       {children}
     </animated.g>
   )
 }
-const Text =({children, style, ...inputProps})  => {
+const Text =({children, onClick, className, style, ...inputProps})  => {
   const props = useSpring(inputProps);
   return (
-    <animated.text style={style} {...props}>
+    <animated.text className={className} onClick={onClick} style={style} {...props}>
       {children}
     </animated.text>
   )
 }
-const Line = ({style, ...inputProps}) => {
+const Line = ({style, className, onClick, ...inputProps}) => {
   const props = useSpring(inputProps);
   return (
-    <animated.line style={style} {...props} />
+    <animated.line className={className} onClick={onClick} style={style} {...props} />
   )
 }
-const Circle = ({style, ...inputProps}) => {
+const Circle = ({style, className, onClick, ...inputProps}) => {
   const props = useSpring(inputProps);
   return (
-    <animated.circle style={style} {...props} />
+    <animated.circle className={className} onClick={onClick} style={style} {...props} />
   )
 }
-const Rect = ({style, ...inputProps}) => {
+const Rect = ({style, className, onClick, ...inputProps}) => {
   const props = useSpring(inputProps);
   return (
-    <animated.rect style={style} {...props} />
+    <animated.rect className={className} onClick={onClick} style={style} {...props} />
   )
 }
-const Path = ({style, ...inputProps}) => {
+const Path = ({style, className, onClick, ...inputProps}) => {
   const props = useSpring(inputProps);
   return (
-    <animated.path style={style} {...props} />
+    <animated.path className={className} onClick={onClick} style={style} {...props} />
   )
 }
 

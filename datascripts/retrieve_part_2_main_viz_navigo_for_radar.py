@@ -11,9 +11,12 @@ import csv
 import sys
 from collections import defaultdict
 
+
 OUTPUT = "../public/data/part_2_navigo_viz_data.csv"
 
-def clean_bureau_name(name):
+def clean_bureau_name(name, departure):
+  if departure == "Tonnay-Charente":
+      return 'Tonnay-Charente'
   if (name in ["Les Sables d'Olonne", "Sables d'Olonne"]):
       return "Les Sables-d'Olonne"
   elif (name in ['Aligre', 'Alligre']):
@@ -35,7 +38,7 @@ with open('../data/navigo_raw_flows_1789.csv', 'r', encoding='utf-8') as f:
     navigo_flows = csv.DictReader(f)
     flows_fieldnames = navigo_flows.fieldnames
     for flow in navigo_flows:
-      if flow['departure_ferme_direction'] == 'La Rochelle':
+      if flow['departure_ferme_direction'] == 'La Rochelle' and flow['departure_function'] == 'O':
         relevant_flows.append(flow)
 
 
@@ -100,7 +103,6 @@ for f in relevant_flows :
     #Create and assign a new column named homeport_destination_radar
     f['homeport_destination_radar'] = homeport_destination_radar
 
-
 def format_for_viz(f):
     '''
     Filter to retain only used attributes for radar plot : a line per departure, with the destination and homeport of the mentionned ship
@@ -110,7 +112,7 @@ def format_for_viz(f):
     return {
         "destination_radar": f['destination_radar'],
         "homeport_destination_radar": f["homeport_destination_radar"],
-        "ferme_bureau": clean_bureau_name(f["departure_ferme_bureau"]),
+        "ferme_bureau": clean_bureau_name(f["departure_ferme_bureau"], f['departure_fr']),
         "tonnage": f["tonnage"],
         "departure_fr": f["departure_fr"],
         "destination_fr": f['destination_fr'],
@@ -124,7 +126,6 @@ def format_for_viz(f):
    }
 
 initial_flows_viz = [format_for_viz(f) for f in relevant_flows]
-
 # write dataset
 with open(OUTPUT, "w", newline='') as csvfile:
   fieldnames = initial_flows_viz[0].keys()

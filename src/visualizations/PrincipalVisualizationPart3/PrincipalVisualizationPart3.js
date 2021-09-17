@@ -2,7 +2,7 @@
 import cx from 'classnames';
 import { useState, useEffect } from 'react';
 
-import GeoComponent from '../../components/GeoComponent/GeoComponent';
+import GeographicMapChart from '../../components/GeographicMapChart/GeographicMapChart';
 import { Step3Objects, SmallMultiples, renderTriangles } from './renderObjectsFunctions'; // pas sur que ça reste à terme
 
 import './PrincipalVisualizationPart3.scss';
@@ -39,7 +39,7 @@ const PrincipalVisualizationPart3 = ({
   return (
     <div className={cx("PrincipalVisualizationPart3", { 'is-atlas-mode': atlasMode })} style={{ height: atlasMode ? undefined : height }}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
-        <GeoComponent
+        <GeographicMapChart
           title={'Navigation au départ des ports de la région PASA en 1789'}
           layers={[
             {
@@ -90,7 +90,7 @@ const PrincipalVisualizationPart3 = ({
         />
       </div>
       <div className={cx('step', { 'is-visible': step === 3 })} height={height}>
-        <GeoComponent
+        <GeographicMapChart
           layers={[
             {
               type: 'choropleth',

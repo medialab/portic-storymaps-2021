@@ -1,4 +1,4 @@
-import GeoComponent from "../../components/GeoComponent/GeoComponent"
+import GeographicMapChart from "../../components/GeographicMapChart/GeographicMapChart"
 import { fixSvgDimension } from "../../helpers/misc";
 
 const HomeportFlows = ({
@@ -10,7 +10,7 @@ const HomeportFlows = ({
   const totalHeight = atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height);
   return (
     <div className="HomeportFlows">
-      <GeoComponent
+      <GeographicMapChart
         title={'Voyages des bateaux rattachés au port de La Rochelle en 1787'}
         layers={[
           {
@@ -43,7 +43,7 @@ const HomeportFlows = ({
         width={fixSvgDimension(dimensions.width) }
         height={totalHeight / 2}
       />
-      <GeoComponent
+      <GeographicMapChart
         title={'Voyages des bateaux rattachés au port de La Rochelle en 1787'}
         layers={[
           {

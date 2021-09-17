@@ -1,4 +1,4 @@
-import Decline from '../components/DeclineComponent';
+import Decline from '../components/DeclineChart';
 
 const PrincipalVisualizationPart1 = ({width, height, step, ...props}) => {
   if (props.atlasMode) {

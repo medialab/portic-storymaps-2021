@@ -27,7 +27,7 @@ import colorsPalettes from '../../colorPalettes';
 
 import ExtraversionObject from './ExtraversionObject';
 
-import TriangleComponent from '../../components/TriangleComponent/TriangleComponent';
+import TriangleChart from '../../components/TriangleChart/TriangleChart';
 import { fixSvgDimension } from '../../helpers/misc';
 
 export function Label(datum, projection, { width }) { // à terme on pourrait mettre un objet 
@@ -414,7 +414,7 @@ export function renderTriangles({
   const height = fixSvgDimension(inputHeight);
   // console.log("data : layder.data ", data)
   return (
-    <TriangleComponent
+    <TriangleChart
       data={data}
       totalWidth={width} // @TODO : il faudrait réduire cette width 
       rowHeight={height * 0.3}

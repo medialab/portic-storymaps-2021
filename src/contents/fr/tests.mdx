@@ -1,10 +1,9 @@
-import SvgComponent from '../../components/SvgComponent';
-import VegaComponent from '../../components/VegaComponent';
-import SigmaComponent from '../../components/SigmaComponent';
-import GeoComponent from '../../components/GeoComponent';
-import TriangleComponent from '../../components/TriangleComponent';
+import SvgChart from '../../components/SvgChart';
+import VegaChart from '../../components/VegaChart';
+import NetworkGraphChart from '../../components/NetworkGraphChart';
+import GeographicMapChart from '../../components/GeographicMapChart';
+import TriangleChart from '../../components/TriangleChart';
 import BoatsIllustration from '../../components/BoatsIllustration';
-import BezierComponent from '../../components/BezierComponent';
 
 import DataProvider from '../../components/DataProvider';
 import LineChart from '../../components/LineChart';
@@ -29,7 +28,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
       <DataProvider data={'part_3_step3_viz_customs_offices_data.csv'}>
         {
           visData => (
-            <GeoComponent 
+            <GeographicMapChart 
               layers={[
                 {
                   type: 'choropleth',
@@ -63,7 +62,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
       <DataProvider data={'aggregated_flows.json'}>
         {
           visData => (
-            <GeoComponent 
+            <GeographicMapChart 
               layers={[
                 {
                   type: 'choropleth',
@@ -101,7 +100,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
       <DataProvider data={'ports_locations_data.csv'}>
         {
           visData => (
-            <GeoComponent 
+            <GeographicMapChart 
               layers={[
                 {
                   type: 'choropleth',
@@ -145,7 +144,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
       <DataProvider data={'part_3_step1_viz_data.csv'}>
         {
           visData => (
-            <GeoComponent 
+            <GeographicMapChart 
               layers={[
                 {
                   type: 'choropleth',
@@ -185,7 +184,7 @@ Ci-dessous un proto/boilerplate pour rendre du svg + données avec la galaxie d3
 ### Fond de carte - config "Poitou"
 Cartographie des destination des bateaux aillant un port d'attache dans la région, par tonnage cumulé (couleur = amirauté) :
 
-<GeoComponent 
+<GeographicMapChart 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
   dataFilename="navigo-out-of-ships-from-region.csv"
   markerColor="pointcall_admiralty"
@@ -198,7 +197,7 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
 />
 
 ## Fond de carte sans template pour la config
-<GeoComponent 
+<GeographicMapChart 
   backgroundFilename="cartoweb_france_1789_geojson.geojson" 
   dataFilename="navigo-out-of-ships-from-region.csv"
   markerColor="pointcall_admiralty"
@@ -207,16 +206,6 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
   showLabels
 />
 
-## Test courbes de bézier
-<BezierComponent
-  dataFilename="part_3_step3_viz_customs_offices_data.csv"
-  cx={300}
-  cy={250}
-  r={210}
-  inPercentage={10}
-  start={Math.PI / 2}
-  end={Math.PI * 3 / 2}
-  />
 
 <!-- # Tests composant LineChart
 
@@ -658,7 +647,7 @@ Cartographie des destination des bateaux aillant un port d'attache dans la régi
 
 
 ## Test triangle 
-<TriangleComponent 
+<TriangleChart 
   dataFilename="part_3_step1_viz_data.csv" 
   rowHeight={300}
   totalWidth = {1600}
@@ -694,13 +683,13 @@ On intègre une image  SVG depuis le local (elle sera donc packée par webpack) 
 
 On intègre ici directement une image à partir de son URL en ligne (depuis le dossier `public`)
 ##### ! cassé pour le moment
-// <SvgComponent path ="/svg/ports-region-1789.svg" />
+// <SvgChart path ="/svg/ports-region-1789.svg" />
 
 ## Visualisation vega
 
 Les visualisations vega ont besoin d'un fichier csv stocké dans le dossier `public/data` et d'une spec vega.
 
-<VegaComponent 
+<VegaChart 
   data="sorties_navires_vers_colonies.csv" 
   spec={{
     "mark": "rect",
@@ -734,7 +723,7 @@ Paramètres :
 * `labelDensity` : densité des labels (float dans [0, 1])
 
 
-<SigmaComponent 
+<NetworkGraphChart 
   data="toflit_aggregate_1789_only_out.gexf" 
   nodeColor={`admiralty`}
   nodeSize={`inside_degree`}

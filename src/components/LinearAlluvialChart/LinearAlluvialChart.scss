@@ -1,0 +1,144 @@
+
+
+
+.LinearAlluvialChart {
+
+
+  .background-marks {
+    line,
+    circle {
+      stroke: grey;
+      stroke-dasharray: 2, 3;
+    }
+    circle {
+      fill: grey;
+      fill-opacity: .05;
+    }
+    text {
+      fill: grey;
+      text-anchor: middle;
+    }
+  }
+
+  .step-bar-background {
+    fill: transparent;
+  }
+
+  .node-level-label {
+    font-size: .5rem;
+  }
+
+  .node-level-node {
+    fill: lightgrey;
+    // fill: orange;
+    // stroke: white;
+  }
+  .label-line {
+    stroke: grey;
+    stroke-dasharray: 4, 1;
+  }
+
+  .node-level-label {
+    &.is-highlighted {
+      font-weight: 900;
+    }
+  }
+
+  .flow-level-node {
+    stroke: none;
+    stroke-width: 0;
+    stroke: black;
+    &.is-highlighted {
+      // fill: red;
+    }
+  }
+
+  .flow-link {
+    polygon,
+    path {
+      // fill: lightgrey;
+      stroke: none;
+      opacity: .5;
+    }
+    &.is-highlighted {
+      polygon,
+      path {
+        opacity: .8;
+        // fill: red;
+      }
+    }
+  }
+
+  &.has-filters,
+  &.has-highlight {
+    .node-level-node,
+    .flow-link:not(:hover),
+    .flow-level-node,
+    .label-line
+     {
+      opacity: .1;
+    }
+    .node-level-label,
+    .label-line {
+      opacity: .4;
+    }
+
+    .step-node-container {
+      &.has-highlights {
+        .node-level-label,
+        .label-line {
+          opacity: 1;
+        }
+        .flow-level-node {
+          opacity: .5;
+        }
+      }
+
+      &.is-highlighted {
+        .flow-level-node {
+          opacity: 1;
+        }
+        .label-line {
+          opacity: 1;
+        }
+      }
+      &.is-filtered-in {
+        .label-line {
+          opacity: 1;
+        }
+      }
+      
+    }
+    .flow-link,
+    .flow-level-node,
+    .node-level-label,
+    .label-line {
+      &.is-filtered-in {
+        opacity: .7;
+      }
+      &.is-highlighted,
+      &.is-secondary-highlighted {
+        opacity: 1;
+      }
+    }
+    .flow-level-node {
+      &.is-highlighted {
+        // stroke: white;
+        // stroke-width: .2;
+      }
+    }
+    .flow-level-node {
+      &.is-filtered-in {
+        opacity: .7;
+      }
+      &.is-highlighted {
+        opacity: 1;
+      }
+    }
+    .node-level-label.is-filtered-in,
+    .label-line.is-filtered-in
+     {
+      opacity: 1;
+    }
+  }
+}

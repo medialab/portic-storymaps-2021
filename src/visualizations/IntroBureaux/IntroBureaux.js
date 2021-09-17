@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import GeoComponent from "../../components/GeoComponent/GeoComponent";
+import GeographicMapChart from "../../components/GeographicMapChart/GeographicMapChart";
 import { useSpring, animated } from 'react-spring'
 
 import { useEffect, useState } from 'react';
@@ -152,7 +152,7 @@ const IntroBureaux = ({
   dimensions
 }) => {
   return (
-    <GeoComponent
+    <GeographicMapChart
       title={'Carte des bureaux des fermes de la région PASA'}
       layers={[
         {

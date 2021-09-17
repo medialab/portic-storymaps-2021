@@ -1,6 +1,6 @@
 import {useMemo} from 'react';
 import cx from 'classnames';
-import CircularAlluvialComponent from "../../components/CircularAlluvialComponent/CircularAlluvialComponent";
+import CircularAlluvialChart from "../../components/CircularAlluvialChart/CircularAlluvialChart";
 import RadarWrapper from './RadarWrapper';
 
 import colorsPalettes from '../../colorPalettes';
@@ -89,7 +89,7 @@ const PrincipalVisualizationPart2 = ({
         height: atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? height : height * .5,
       }}
     >
-        <CircularAlluvialComponent
+        <CircularAlluvialChart
           data={datasets['part_2_toflit_viz_data.csv']}
           width={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? width * .6 : width * .45}
           height={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? height : height * .45}

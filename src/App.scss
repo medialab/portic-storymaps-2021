@@ -566,14 +566,14 @@ svg text {
     }
   }
   
-  .GeoComponentWrapper {
+  .GeographicMapChartWrapper {
     .visualization-title {
       background: $color-background;
     }
     .Legend {
       background: $color-background;
     }
-    .GeoComponent {
+    .GeographicMapChart {
       .ChoroplethLayer.reverse-colors {
         .geopart {
           stroke: grey;
@@ -625,7 +625,7 @@ button.is-active {
   color: white;
 }
 
-.SigmaComponent {
+.NetworkGraphChart {
   // border: 1px solid lightgrey;
 }
 
@@ -956,7 +956,7 @@ button.is-active {
       }
     }
 
-    .GeoComponentWrapper {
+    .GeographicMapChartWrapper {
       .Legend {
         background: $color-accent-background;
         .size-legend-container {

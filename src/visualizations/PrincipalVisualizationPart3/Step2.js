@@ -1,5 +1,5 @@
 
-import SigmaComponent from "../../components/SigmaComponent/GraphContainer";
+import NetworkGraphChart from "../../components/NetworkGraphChart/GraphContainer";
 import BarChart from "../../components/BarChart";
 import colorPalettes from "../../colorPalettes";
 import { fixSvgDimension } from "../../helpers/misc";
@@ -15,7 +15,7 @@ const Step2 = ({
     <>
           <div className="graphs-container" style={{ position: 'relative', height: height * .6 }}>
             <div className="graph-container" style={{ width: width * .6, height: height * .6, position: 'absolute' }}>
-              <SigmaComponent
+              <NetworkGraphChart
                 data={datasets['flows_1787_around_La Rochelle.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}
@@ -32,7 +32,7 @@ const Step2 = ({
               />
             </div>
             <div className="graph-container" style={{ width: width * .4, height: height * .3, position: 'absolute', right: 0, top: 0 }}>
-              <SigmaComponent
+              <NetworkGraphChart
                 data={datasets['flows_1787_around_Bordeaux.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}
@@ -49,7 +49,7 @@ const Step2 = ({
               />
             </div>
             <div className="graph-container" style={{ width: width * .4, height: height * .3, position: 'absolute', right: 0, bottom: 0 }}>
-              <SigmaComponent
+              <NetworkGraphChart
                 data={datasets['flows_1787_around_Nantes.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}

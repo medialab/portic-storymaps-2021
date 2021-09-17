@@ -8,7 +8,7 @@ import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
 import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
 import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
 import BarChart from '../components/BarChart';
-import GeoComponent from '../components/GeoComponent/GeoComponent';
+import GeographicMapChart from '../components/GeographicMapChart/GeographicMapChart';
 import colorPalettes from '../colorPalettes'
 
 
@@ -233,7 +233,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
     case 'intro-provinces':
       return (
         <>
-          <GeoComponent
+          <GeographicMapChart
             title={'Carte des provinces étudiées : Poitou, Aunis, Saintonge, Angoumois (PASA)'}
             layers={[
               {
@@ -258,7 +258,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
     case 'intro-ports':
       return (
         <>
-          <GeoComponent
+          <GeographicMapChart
             title={'Carte des ports de la région PASA'}
             layers={[
               {
@@ -315,7 +315,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
     case 'partie-2-part-navigation-francaise':
       return (
         <>
-          <GeoComponent
+          <GeographicMapChart
             title={'Part de la navigation française dans la région'}
             layers={[
               {

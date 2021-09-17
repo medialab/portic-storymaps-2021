@@ -45,6 +45,8 @@ def prepare_contents(str):
     #   print(line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)&amp;sa=([^)]*)\)", r"(\1)", line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)\)", r"(\1)", line)
+    # convert all links to target blank
+    line = re.sub(r"\[([^]]+)\]\(([^)]+)\)", r'<a href="\2" target="blank" rel="noopener noreferrer">\1</a>', line)
 
     current_part.append(line)
   if center_mode == True:

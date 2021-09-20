@@ -1,13 +1,12 @@
 port,nb_pointcalls,tonnage,country_group,category_1,category_2
-pas mentionné,56,946,Autre,étranger,Indéterminé
+Indéterminé,76,1897,Autre,étranger,Indéterminé
 Copenhague ,1,1,Europe du Nord,étranger,Danemark
 Hambourg,7,747,Europe centrale,étranger,Hambourg
 Stettin,3,272,Europe centrale,étranger,Prusse
 Saint-Sébastien,3,80,Europe du Sud,étranger,Espagne
 Brême,6,516,Europe centrale,étranger,Brême
-Indéterminé,20,919,Autre,étranger,Indéterminé
-Côte d'Or,10,3584,Autre,étranger,multi-Etat
-Mer Baltique,27,4313,Autre,étranger,zone maritime
+Côte d'Or,10,3584,Afrique,étranger,multi-Etat
+Mer Baltique,27,4313,Europe de l'Est,étranger,zone maritime
 Königsberg / Kaliningrad,13,2410,Europe centrale,étranger,Prusse
 Rotterdam,7,743,Europe du Nord,étranger,Provinces-Unies
 Amsterdam,21,3511,Europe du Nord,étranger,Provinces-Unies
@@ -68,7 +67,7 @@ Southampton,1,1,Europe du Nord,étranger,Grande-Bretagne
 Santander,2,53,Europe du Sud,étranger,Espagne
 Lisbonne,1,1,Europe du Sud,étranger,Portugal
 Appledore,1,1,Europe du Nord,étranger,Grande-Bretagne
-Côte d'Angole,2,585,Europe du Sud,étranger,Portugal
+Côte d'Angole,2,585,Afrique,étranger,Portugal
 "Espagne, undeterminé",1,1,Europe du Sud,étranger,Espagne
 Penzance,1,1,Europe du Nord,étranger,Grande-Bretagne
 île de Man,1,1,Europe du Nord,étranger,Grande-Bretagne

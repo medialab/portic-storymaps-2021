@@ -16,6 +16,7 @@ jobs:
           persist-credentials: false
 
       - name: Install and Build 🔧
+        continue-on-error: true
         run: |
           pip install -r requirements.txt
           yarn

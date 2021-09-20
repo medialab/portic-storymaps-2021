@@ -68,6 +68,7 @@ for f in relevant_flows :
         partner_viz = 'Reste du monde (USA)'
         
     f['partner_viz'] = partner_viz
+    f['customs_office'] = f['customs_office'] if f['customs_office'] != 'Aligre' else 'Marans'
 
 def format_for_viz(f):
     flow_type = 'export' if f['export_import'] == 'Exports' else 'import'

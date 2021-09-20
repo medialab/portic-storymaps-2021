@@ -430,7 +430,7 @@ def compute_exports_colonial_products(flows):
     product_viz = ''
     product_viz_alt = ''
     product = f['product_revolutionempire']
-    customs_office = f['customs_office'];
+    customs_office = f['customs_office'] if f['customs_office'] != 'Aligre' else 'Marans';
     if (customs_office not in customs_offices):
       customs_offices[customs_office] = {
         "autres produits": 0,

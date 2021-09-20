@@ -242,7 +242,11 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
   write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
 
-def compute_hierarchy_country_group (country):
+def compute_hierarchy_country_group (country, port):
+  if port == 'Côte d\'Angole' or port == 'Côte d\'Or':
+    return 'Afrique'
+  if port == 'Mer Baltique':
+    return 'Europe de l\'Est'
   switcher = {
     "France": "France",
     "France (région PASA)": "France",
@@ -297,7 +301,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
         "nb_pointcalls": 1,
         "tonnage": 1,
         "category_1": category_1,
-        "country_group": compute_hierarchy_country_group(country),
+        "country_group": compute_hierarchy_country_group(country, homeport),
         "category_2": category_2,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
@@ -328,15 +332,15 @@ def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
       homeports[homeport] = {
         "nb_pointcalls": 1,
         "tonnage": 1,
-        "country_group": compute_hierarchy_country_group(country),
+        "country_group": compute_hierarchy_country_group(country, homeport),
         "category_1": category_1,
         "category_2": category_2,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
   write_csv("hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv", output)
 
-def compute_hierarchy_of_directions_of_boats_from_region (pointcalls):
-  print('compute_hierarchy_of_directions_of_boats_from_region')
+def compute_hierarchy_of_destinations_of_boats_from_region (pointcalls):
+  print('compute_hierarchy_of_destinations_of_boats_from_region')
   directions = {}
   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for pointcall in pointcalls:
@@ -344,7 +348,7 @@ def compute_hierarchy_of_directions_of_boats_from_region (pointcalls):
       continue;
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     port = pointcall["toponyme_fr"]
-    port = port if port != "" and port != "port pas identifié" and port != "pas identifié" and port != "illisible" else "Indéterminé"
+    port = port if port != "" and port != "port pas identifié" and port != "pas identifié" and port != "illisible" and port != "pas mentionné" else "Indéterminé"
     if port in directions:
       directions[port]["nb_pointcalls"] += 1
       directions[port]["tonnage"] += tonnage
@@ -359,7 +363,7 @@ def compute_hierarchy_of_directions_of_boats_from_region (pointcalls):
       directions[port] = {
         "nb_pointcalls": 1,
         "tonnage": 1,
-        "country_group": compute_hierarchy_country_group(country),
+        "country_group": compute_hierarchy_country_group(country, port),
         "category_1": category_1,
         "category_2": category_2,
       }
@@ -677,7 +681,7 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
       in_from_region.append(pointcall)
   compute_hierarchy_of_homeports_of_boats_from_region(out_from_region)
   compute_hierarchy_of_homeports_of_boats_from_region_to_foreign(in_from_region)
-  compute_hierarchy_of_directions_of_boats_from_region(in_from_region)
+  compute_hierarchy_of_destinations_of_boats_from_region(in_from_region)
   compute_french_fleat_part(out_from_region)
   compute_out_with_salt(out_from_region)
   compute_region_ports_general(all_pointcalls_1789)

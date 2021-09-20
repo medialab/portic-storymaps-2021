@@ -61,9 +61,9 @@ const colorsPalettes = {
   },
   portsTreemaps: {
     'France (région PASA)': '#41BEA3',
-    'Indéterminé': 'lightgrey',
-    'zone maritime': '#dbd7d7',
-    'multi-Etat': 'grey',
+    'Indéterminé': 'rgb(240,240,240)',
+    'zone maritime': '#98a9d9',
+    'multi-Etat': '#a42e0d',
     'France (hors région PASA)': '#FED63B',
 
     'Hambourg': '#F7E0DE',

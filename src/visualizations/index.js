@@ -129,7 +129,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Départs de navires transportant du sel en 1789, agrégés par tonnage cumulé"
+          title="Ports de départ des navires transportant du sel en 1789, agrégés par tonnage cumulé"
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
@@ -466,19 +466,24 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         />
       )
     case 'partie-1-ports-destinations':
+      const thatPalette = {
+        ...colorPalettes.portsTreemaps
+      }
+      delete thatPalette['France (région PASA)']
+      delete thatPalette['France (hors région PASA)']
       return (
         <TreemapChart
         {
           ...{
             data: datasets['hierarchie_destinations_des_navires_partant_de_la_region.csv'],
-            title: 'Destinations des navires partant de la région PASA en 1789 (dimensionnées par tonnages cumulés)',
+            title: 'Destinations des navires partant depuis la région PASA vers l\'étranger en 1789',
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${d.port} - ${d.category_2}.`,
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
               field: 'category_2',
-              palette: colorPalettes.portsTreemaps
+              palette: thatPalette
             },
             leaf: {
               labelField: 'port',

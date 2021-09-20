@@ -10,6 +10,7 @@ import { fixSvgDimension } from '../../helpers/misc';
 
 const BureauBackground = ({
   projection,
+  atlasMode,
   height,
   datum,
   width,
@@ -40,8 +41,8 @@ const BureauBackground = ({
         fill={`url(#bureau-${index})`}
       />
       <radialGradient id={`bureau-${index}`}>
-        <stop offset="20%" stopColor={colorPalettes.customs_office[datum.name]} />
-        <stop offset="100%" stopColor="rgba(51,109,124,0)" />
+        <stop offset={atlasMode ? '0%' : "20%"} stopColor={colorPalettes.customs_office[datum.name]} />
+        <stop offset="100%" stopColor={atlasMode ? "rgba(255,255,255,0)" : "rgba(51,109,124,0)"} />
       </radialGradient>
     </animated.g>
   )
@@ -113,6 +114,7 @@ const renderBureaux = ({ data, projection, width, height, atlasMode }) => {
               {
               ...{
                 projection,
+                atlasMode,
                 height,
                 datum,
                 width,

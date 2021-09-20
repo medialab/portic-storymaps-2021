@@ -381,7 +381,14 @@ def compute_exports_colonial_products(flows):
   output = []
   origins = set()
   pasa_provinces = ['Aunis', 'Poitou', 'Saintonge', 'Angoumois']
-  customs_offices = {}
+  # Starting with sables d'Olonne as they are not in the data
+  customs_offices = {
+    "Les Sables d'Olonne": {
+        "autres produits": 0,
+        "produits coloniaux": 0,
+        "produits de la région PASA" : 0
+    }
+  }
 
   for f in [f for f in flows if f["customs_region"] == "La Rochelle"] :
     product_viz = ''
@@ -583,7 +590,6 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
             flows_regional_all_years.append(flow)
         if flow["best_guess_national_partner"] == "1":
           flows_national_all_years.append(flow)
-
     compute_top_shared_toflit18_products(flows_1789_by_region)
     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
     compute_exports_colonial_products(flows_1789_by_region)

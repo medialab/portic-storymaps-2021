@@ -318,7 +318,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
               index: datum.index,
               onGroupMouseEnter,
               onGroupMouseLeave,
-              displayLabels: !layer.stackLabels
+              displayLabel: !layer.stackLabels
             }}
           />
         )

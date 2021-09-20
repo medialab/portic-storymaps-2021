@@ -42,9 +42,9 @@
 
   .FlowsLayer {
     .flow-group {
-      opacity: 1;
+      opacity: .8;
       transition: .5s ease all;
-      .label {
+      .label:not(.is-always-visible) {
         opacity: 0;
         transition: .5s ease all;
       }

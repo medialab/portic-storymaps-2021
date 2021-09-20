@@ -1554,3 +1554,12 @@ button.is-active {
     
   }
 }
+
+.HomeportFlows {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  .geopart {
+    stroke-width: 0.5!important;
+  }
+}

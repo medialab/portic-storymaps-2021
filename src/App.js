@@ -33,7 +33,7 @@ import { DatasetsContext } from './helpers/contexts';
 import './App.scss';
 
 import visualizationsList from './visualizationsList';
-import {homepage} from '../package.json';
+import { homepage } from '../package.json';
 import routes from './summary';
 
 const LANGUAGES = ['fr', 'en'];
@@ -144,37 +144,37 @@ function App() {
             {// looping through the page
               LANGUAGES.map(lang => {
                 return routes
-                .map(({
-                  titles,
-                  routes: inputRoute,
-                  contents,
-                  Component: ThatComponent,
-                  contentsProcessed
-                }, index) => {
-                  const route = `/${lang}/page/${inputRoute[lang]}`
-                  const title = titles[lang];
-                  // @todo remove Content as it is not used anymore ? (importing md content with React.lazy did not play nice with scrollytelling-related features)
-                  const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`));
-                  const ContentSync = contentsProcessed[lang];
-                  return (
-                    <Route key={index} path={route} exact>
-                      {renderRoute({ Content, ThatComponent, title, ContentSync, lang })}
-                    </Route>
-                  )
-                })
+                  .map(({
+                    titles,
+                    routes: inputRoute,
+                    contents,
+                    Component: ThatComponent,
+                    contentsProcessed
+                  }, index) => {
+                    const route = `/${lang}/page/${inputRoute[lang]}`
+                    const title = titles[lang];
+                    // @todo remove Content as it is not used anymore ? (importing md content with React.lazy did not play nice with scrollytelling-related features)
+                    const Content = React.lazy(() => import(`!babel-loader!mdx-loader!./contents/${contents[lang]}`));
+                    const ContentSync = contentsProcessed[lang];
+                    return (
+                      <Route key={index} path={route} exact>
+                        {renderRoute({ Content, ThatComponent, title, ContentSync, lang })}
+                      </Route>
+                    )
+                  })
               })
             }
             {
               LANGUAGES.map(lang => {
                 return visualizationsList
-                .map(({
-                  id
-                }, index) => {
-                  const route = `/${lang}/visualization/${id}`;
-                  return (
-                    <Route key={index} path={route} exact component={() => <StandaloneVisualization {...{id, lang}} />} />
-                  )
-                })
+                  .map(({
+                    id
+                  }, index) => {
+                    const route = `/${lang}/visualization/${id}`;
+                    return (
+                      <Route key={index} path={route} exact component={() => <StandaloneVisualization {...{ id, lang }} />} />
+                    )
+                  })
               })
             }
             <Route path="/:lang/atlas/:visualizationId?" component={Atlas} />
@@ -198,20 +198,33 @@ function App() {
         {// looping through the pages to add a blank link to all of them
           LANGUAGES.map(lang => {
             return routes
-            // @todo this is dirty and should be removed at some point (test page is not exported in prod, so no need for react-snap)
-            .filter(({routes}) => routes[lang] && !routes[lang].includes('test'))
-            .map(({
-              titles,
-              routes: inputRoute,
-              contents,
-              Component: ThatComponent,
-              contentsProcessed
-            }, index) => {
-              const route = `/${lang}/page/${inputRoute[lang]}`;
-              return (
-                <Link to={route} exact />
-              )
-            })
+              // @todo this is dirty and should be removed at some point (test page is not exported in prod, so no need for react-snap)
+              .filter(({ routes }) => routes[lang] && !routes[lang].includes('test'))
+              .map(({
+                titles,
+                routes: inputRoute,
+                contents,
+                Component: ThatComponent,
+                contentsProcessed
+              }, index) => {
+                const route = `/${lang}/page/${inputRoute[lang]}`;
+                return (
+                  <Link to={route} exact />
+                )
+              })
+          })
+        }
+        {// looping through all the atlas visualizations links
+          LANGUAGES.map(lang => {
+            return visualizationsList
+              .map(({
+                id
+              }, index) => {
+                const route = `/${lang}/atlas/${id}`;
+                return (
+                  <Link to={route} exact />
+                )
+              })
           })
         }
       </React.Fragment>

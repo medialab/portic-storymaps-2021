@@ -411,6 +411,38 @@ def compute_french_fleat_part (pointcalls):
     port["tonnage"] = round(port["tonnage"] / 1000, 1)
   write_csv("part_navigation_fr.csv", ports)
 
+def compute_out_with_salt (pointcalls):
+  print('compute_out_with_salt')
+  ports = {}
+  countries = {}
+  for pointcall in pointcalls:
+    if pointcall['pointcall_function'] != 'O':
+      continue
+    commodity_fields = ['commodity_standardized_fr', 'commodity_standardized2_fr', 'commodity_standardized3_fr', 'commodity_standardized4_fr']
+    has_salt = False
+    for field in commodity_fields:
+      if pointcall[field] == 'Sel':
+        has_salt = True
+    if has_salt is False:
+      continue
+    # if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    port = pointcall['toponyme_fr']
+    if port not in ports:
+      new_port = {
+        "port": port,
+        "latitude": pointcall["latitude"],
+        "longitude": pointcall["longitude"],
+        "tonnage": tonnage,
+        "nb_pointcalls": 1
+      }
+      ports[port] = new_port
+    else:
+      ports[port]["tonnage"] += tonnage
+      ports[port]["nb_pointcalls"] += 1
+  ports = [port for port_name, port in ports.items()]    
+  write_csv("out_with_salt_by_port.csv", ports)
+
 def compute_exports_colonial_products(flows):
   print('compute_exports_colonial_products')
 
@@ -647,6 +679,7 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   compute_hierarchy_of_homeports_of_boats_from_region_to_foreign(in_from_region)
   compute_hierarchy_of_directions_of_boats_from_region(in_from_region)
   compute_french_fleat_part(out_from_region)
+  compute_out_with_salt(out_from_region)
   compute_region_ports_general(all_pointcalls_1789)
 
 # Deprecated version using pointcalls (deprecated because now flows are fine)
@@ -660,6 +693,32 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
 #     elif pointcall['pointcall_action'] in ['In', 'in']:
 #       pointcalls_1787_in.append(pointcall)
 #   compute_flows_from_boats_of_la_rochelle_1787(pointcalls_1787_of_boats_from_larochelle_out, pointcalls_1787_in)
+
+
+with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
+  flows = csv.DictReader(f)
+  flows_from_marennes = []
+  for flow in flows:
+    if flow['departure'] == 'Marennes':
+      flows_from_marennes.append(flow)
+  print('relevant flows for la Marennes', len(flows_from_marennes))
+  countries = {}
+  for flow in flows_from_marennes:
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    country = flow['destination_state_1789_fr'] if flow['destination_state_1789_fr'] != '' else 'Indéterminé'
+    # country = flow['destination_fr'] if country == 'France' else country
+    if country not in countries:
+      countries[country] = {
+        "country": country,
+        "nb_pointcalls": 1,
+        "tonnage": tonnage
+      }
+    else:
+      countries[country]["nb_pointcalls"] += 1
+      countries[country]["tonnage"] += tonnage
+  countries = [payload for _name, payload in countries.items()]
+  write_csv("sorties-de-marennes.csv", countries)
+
 
 with open('../data/navigo_raw_flows_1787.csv', 'r') as f:
   flows = csv.DictReader(f)

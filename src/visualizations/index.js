@@ -123,6 +123,78 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           tooltip={d => `En ${d.year}, la direction des fermes de la Rochelle a ${d.type === 'import' ? 'importé' : 'exporté'} ${(+d.portion * 100).toFixed(2)}% des ${d.type === 'import' ? 'imports' : 'exports'} français totaux`}
         />
       )
+    case 'sorties-de-sel':
+      return (
+        <BarChart
+          data={
+            relevantDatasets[Object.keys(relevantDatasets)[0]]
+          }
+          title="Départs de navires transportant du sel en 1789, agrégés par tonnage cumulé"
+          width={dimensions.width}
+          height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
+          orientation={'vertical'}
+          y={{
+            field: 'port',
+            title: 'Port',
+            sort: {
+              field: 'tonnage',
+              autoSort: true,
+              ascending: false,
+              type: 'number'
+            }
+          }}
+          x={{
+            field: 'tonnage',
+            title: 'Tonnage cumulé',
+            // tickSpan: 100,
+            tickFormat: (d, i) => `${d} tonneaux`
+          }}
+          // color={{
+          //   field: 'entity',
+          //   title: 'Part des exports pour :'
+          // }}
+          margins={{
+            right: 60
+          }}
+          tooltip={d => `En 1789, ${d.tonnage} tonneaux (et ${d.nb_pointcalls} navires) sont partis de la région PASA avec du sel comme cargaison.`}
+        />
+      )
+    case 'sorties-de-marennes':
+      return (
+        <BarChart
+          data={
+            relevantDatasets[Object.keys(relevantDatasets)[0]]
+          }
+          title="Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé"
+          width={dimensions.width}
+          height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
+          orientation={'vertical'}
+          y={{
+            field: 'country',
+            title: 'Pays',
+            sort: {
+              field: 'tonnage',
+              autoSort: true,
+              ascending: false,
+              type: 'number'
+            }
+          }}
+          x={{
+            field: 'tonnage',
+            title: 'Tonnage cumulé',
+            // tickSpan: 100,
+            tickFormat: (d, i) => `${d} tonneaux`
+          }}
+          // color={{
+          //   field: 'entity',
+          //   title: 'Part des exports pour :'
+          // }}
+          margins={{
+            right: 60
+          }}
+          tooltip={d => `En 1789, ${d.tonnage} tonneaux (et ${d.nb_pointcalls} navires) sont partis du port de Marennes en direction d'un port de ${d.country}.`}
+        />
+      )
     case 'partie-1-pays-port-d-attache':
       return (
         <BarChart

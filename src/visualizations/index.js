@@ -281,7 +281,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 },
                 size: {
                   field: 'nb_pointcalls',
-                  title: 'nombre de voyages enregistrés en 1789',
+                  title: 'nombre de congés enregistrés en 1789',
                   // custom: '20'
                 },
                 tooltip: d => `${d.rawSize} départs de navires ont été observés par le port de ${d.label} en 1789`,
@@ -380,7 +380,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA provenaient de navires rattachés au port de ${d.homeport} - ${d.category_2}.`,
-            fieldsHierarchy: ['category_1', 'category_2', 'ports'],
+            fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
               field: 'category_2',
               palette: colorPalettes.portsTreemaps
@@ -403,7 +403,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${d.port} - ${d.category_2}.`,
-            fieldsHierarchy: ['category_1', 'category_2', 'ports'],
+            fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
               field: 'category_2',
               palette: colorPalettes.portsTreemaps
@@ -426,7 +426,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
-            fieldsHierarchy: ['category_1', 'category_2', 'homeport'],
+            fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'homeport'],
             color: {
               field: 'category_2',
               palette: colorPalettes.portsTreemaps

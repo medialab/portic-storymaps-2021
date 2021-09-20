@@ -241,6 +241,39 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
       })
   write_csv("global_evolution_la_rochelle_imports_exports.csv", part_by_year)
 
+
+def compute_hierarchy_country_group (country):
+  switcher = {
+    "France": "France",
+    "France (région PASA)": "France",
+    "Indéterminé": "Autre",
+    "": "Autre",
+    "zone maritime": "Autre",
+    "multi-Etat": "Autre",
+    "France (hors région PASA)": "France",
+    "Hambourg": "Europe centrale",
+    "Duché d'Oldenbourg": "Europe centrale",
+    "Prusse": "Europe centrale",
+    "Lubeck": "Europe centrale",
+    "Brême": "Europe centrale",
+    "Mecklenbourg": "Europe centrale",
+    "Duché de Mecklenbourg": "Europe centrale",
+    "Autriche": "Europe centrale",
+    "Grande-Bretagne": "Europe du Nord",
+    "Provinces-Unies": "Europe du Nord",
+    "Danemark": "Europe du Nord",
+    "Etats-Unis d'Amérique": "Amérique",
+    "Pologne": "Europe de l'Est",
+    "Russie": "Europe de l'Est",
+    "Espagne": "Europe du Sud",
+    "Portugal": "Europe du Sud",
+  }
+  if country in switcher:
+    return switcher[country]
+  else:
+    print('oups', country)
+
+
 def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
   print('compute_hierarchy_of_homeports_of_boats_from_region')
   homeports = {}
@@ -264,6 +297,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
         "nb_pointcalls": 1,
         "tonnage": 1,
         "category_1": category_1,
+        "country_group": compute_hierarchy_country_group(country),
         "category_2": category_2,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
@@ -294,6 +328,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
       homeports[homeport] = {
         "nb_pointcalls": 1,
         "tonnage": 1,
+        "country_group": compute_hierarchy_country_group(country),
         "category_1": category_1,
         "category_2": category_2,
       }
@@ -324,6 +359,7 @@ def compute_hierarchy_of_directions_of_boats_from_region (pointcalls):
       directions[port] = {
         "nb_pointcalls": 1,
         "tonnage": 1,
+        "country_group": compute_hierarchy_country_group(country),
         "category_1": category_1,
         "category_2": category_2,
       }

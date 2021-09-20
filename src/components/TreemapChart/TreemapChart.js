@@ -149,7 +149,8 @@ const TreemapChart = ({
                 const rectWidth = x1 - x0;
                 const rectHeight = y1 - y0;
                 const labelText = `${datum.data[labelField]} (${datum.data[countField]})`;
-                const labelWidth = window.innerWidth * 0.003 * labelText.length;
+                const fontSize = rectWidth / labelText.length * 1.5
+                // const labelWidth = window.innerWidth * 0.003 * labelText.length;
                 return (
                   <g 
                     key={`${x0}-${y0}`} 
@@ -166,10 +167,13 @@ const TreemapChart = ({
                       fill={colorPalette[datum.data[color.field]]}
                     />
                     {
-                      labelWidth < rectWidth && rectHeight > 10 ?
+                      rectHeight > fontSize ?
                         <text
                           x={rectWidth/2}
                           y={rectHeight / 2 + 5}
+                          style={{
+                            fontSize
+                          }}
                           textAnchor="middle"
                         >
                           {labelText}
@@ -194,15 +198,15 @@ const TreemapChart = ({
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)
-                      .map(([genre, color], genreIndex) => (
+                      .map(([modality, color]) => (
                         <li
-                          key={genre}
+                          key={modality}
                         >
                           <span className="color-box"
                             style={{ background: color }}
                           />
                           <span className="color-label">
-                            {genre}
+                            {modality}
                           </span>
                         </li>
                       ))

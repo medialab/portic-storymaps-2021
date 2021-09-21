@@ -8,6 +8,7 @@ import PrincipalVisualizationPart1 from './PrincipalVisualizationPart1';
 import PrincipalVisualizationPart2 from './PrincipalVisualizationPart2';
 import PrincipalVisualizationPart3 from './PrincipalVisualizationPart3';
 import BarChart from '../components/BarChart';
+import LineChart from '../components/LineChart';
 import GeographicMapChart from '../components/GeographicMapChart/GeographicMapChart';
 import colorPalettes from '../colorPalettes'
 
@@ -493,6 +494,107 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         }
         />
       );
+    case 'exports-eau-de-vie-la-rochelle-longitudinal':
+      return (
+      <LineChart
+          data={
+            relevantDatasets[Object.keys(relevantDatasets)[0]]
+              // .sort((a, b) => {
+              //   if (+a.order > +b.order) {
+              //     return 1;
+              //   }
+              //   return -1;
+              // })
+              // .slice(0, 20)
+          }
+          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)"
+          width={dimensions.width}
+          height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+          orientation={'horizontal'}
+          // layout={'groups'}
+          y={{
+            field: 'value',
+            title: 'valeur',
+            tickFormat: d => d + ' lt'
+          }}
+          x={{
+            field: 'year',
+            title: 'Année'
+          }}
+          margins={{
+            left: 140
+          }}
+          tooltip={d => `En ${d.year}, la direction des fermes de La Rochelle a exporté ${d.value} livres tournois d'eau-de-vie et liqueurs.`}
+        />
+      );
+    case 'exports-eau-de-vie-comparaison-directions-des-fermes':
+      return (
+        <BarChart
+            data={
+              relevantDatasets[Object.keys(relevantDatasets)[0]]
+                // .sort((a, b) => {
+                //   if (+a.order > +b.order) {
+                //     return 1;
+                //   }
+                //   return -1;
+                // })
+                // .slice(0, 20)
+            }
+            title="Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte)"
+            width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+            orientation={'vertical'}
+            layout={'groups'}
+            y={{
+              field: 'year',
+              title: 'année',
+              // tickFormat: d => d + ' lt'
+            }}
+            x={{
+              field: 'value',
+              title: 'valeur',
+              tickSpan: 1000000
+            }}
+            color={{
+              field: 'customs_region',
+              title: 'direction des fermes'
+            }}
+            margins={{
+              left: 140
+            }}
+            tooltip={d => `En ${d.year}, la direction des fermes de ${d.customs_region} a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs.`}
+          />
+        );
+    case 'origines-exports-eau-de-vie-1789-la-rochelle':
+      return (
+        <BarChart
+            data={
+              relevantDatasets[Object.keys(relevantDatasets)[0]]
+            }
+            title="Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)"
+            width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+            orientation={'vertical'}
+            layout={'groups'}
+            y={{
+              field: 'origin',
+              title: 'origine',
+              // tickFormat: d => d + ' lt'
+            }}
+            x={{
+              field: 'value',
+              title: 'valeur',
+            }}
+            color={{
+              field: 'type',
+              title: "type d'eau de vie",
+            }}
+            margins={{
+              left: 140
+            }}
+            tooltip={d => `La direction des fermes de La Rochelle a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs de type "${d.type}", originaires de ${d.origin}.`}
+          />
+        );
     case 'partie-1-ports-dattache-vers-etranger':
       return (
         <TreemapChart

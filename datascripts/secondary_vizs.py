@@ -2,6 +2,7 @@ from collections import defaultdict
 import csv
 from typing import Counter, DefaultDict
 from operator import itemgetter
+from poitousprint import get_online_csv
 
 
 def write_csv(filename, data):
@@ -501,6 +502,79 @@ def compute_exports_colonial_products(flows):
   output = sorted(output, key=lambda v : -v["value"])
   write_csv("comparaison_exports_coloniaux.csv", output)
 
+def compute_eau_de_vie_datasets(flows):
+  print('compute_eau_de_vie_datasets')
+  eau_de_vie_types = get_online_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3rLZXqFtiqO4q8Pbp5uGH8fon-hYrd-LnJGtsYMe6UWWCwubvanKZY4FW1jI6eJ5OJ_GA8xUxYQf/pub?output=csv")
+  eau_de_vie_types_map = {}
+  for item in eau_de_vie_types:
+    eau_de_vie_types_map[item['product_simplification']] = item['type_edv']
+  la_rochelle_exports_by_year = {}
+  export_slices = {
+    "1750": {
+      "La Rochelle": 0,
+      "Bordeaux": 0,
+      "Nantes": 0,
+      "Bayonne": 0
+    },
+    "1770": {
+      "La Rochelle": 0,
+      "Bordeaux": 0,
+      "Nantes": 0,
+      "Bayonne": 0
+    },
+    "1789": {
+      "La Rochelle": 0,
+      "Bordeaux": 0,
+      "Nantes": 0,
+      "Bayonne": 0
+    }
+  }
+  origins = {}
+  for flow in flows:
+    value = float(flow['value']) if flow['value'] != '' else 0
+    year = flow['year']
+    customs_region = flow['customs_region']
+    origin = flow['origin'] if flow['origin'] != '' else 'inconnu'
+    if flow['export_import'] == 'Exports':
+      if year in export_slices:
+        if customs_region in export_slices[year]:
+          export_slices[year][customs_region] += value
+      if customs_region == 'La Rochelle':
+        if year not in la_rochelle_exports_by_year:
+          la_rochelle_exports_by_year[year] = value
+        else:
+          la_rochelle_exports_by_year[year] += value
+        if year == '1789':
+          if origin not in origins:
+            origins[origin] = {
+              "total": 0,
+              "EDV simple": 0,
+              "EDV double": 0
+            }
+          origins[origin]['total'] += value
+          origins[origin][eau_de_vie_types_map[flow['product_simplification']]] += value
+
+  origins_list = []
+  for origin, types in origins.items():
+    for that_type, value in types.items():
+      origins_list.append({
+        "origin": origin,
+        "type": that_type,
+        "value": value
+      })
+  export_slices_array = []
+  for year, values in export_slices.items():
+    for region, local_value in values.items():
+      export_slices_array.append({
+        "year": year,
+        "customs_region": region,
+        "value": local_value
+      })
+  la_rochelle_exports_by_year = [{"year": year, "value": value} for year, value in la_rochelle_exports_by_year.items()]
+  write_csv("exports_eau_de_vie_la_rochelle_longitudinal.csv", la_rochelle_exports_by_year)
+  write_csv("exports_eau_de_vie_comparaison_directions_des_fermes.csv", export_slices_array)
+  write_csv("origines_exports_eau_de_vie_1789_la_rochelle.csv", origins_list)
+
 def compute_region_ports_general (pointcalls):
   ports = {}
   for pointcall in pointcalls:
@@ -653,18 +727,23 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
     flows_1789_national = []
     flows_national_all_years = []
     flows_regional_all_years = []
+    flows_eau_de_vie = []
     for flow in toflit18_flows:
+      # getting international exports of salt from La Rochelle
+      if flow['customs_region'] in ['La Rochelle', 'Bordeaux', 'Bayonne', 'Nantes', 'Sète', 'Cette' 'Cete'] and (flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin") and flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+        flows_eau_de_vie.append(flow)
       # filtering out ports francs
-        if flow["year"] == "1789":
-          if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-            flows_1789_by_region.append(flow)
+      if flow["year"] == "1789":
         if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
-            flows_regional_all_years.append(flow)
-        if flow["best_guess_national_partner"] == "1":
-          flows_national_all_years.append(flow)
+          flows_1789_by_region.append(flow)
+      if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+          flows_regional_all_years.append(flow)
+      if flow["best_guess_national_partner"] == "1":
+        flows_national_all_years.append(flow)
     compute_top_shared_toflit18_products(flows_1789_by_region)
     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)
     compute_exports_colonial_products(flows_1789_by_region)
+    compute_eau_de_vie_datasets(flows_eau_de_vie)
 
 with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
   pointcalls = csv.DictReader(f)

@@ -187,7 +187,7 @@ const VerticalBarChart = ({
               {
                 xAxisValues.map((value, valueIndex) => (
                   <g
-                    key={value}
+                    key={valueIndex}
                     transform={`translate(${margins.left + xScale(value)}, 0)`}
                   >
                     <text x={0} y={margins.top - 5}>
@@ -320,9 +320,9 @@ const VerticalBarChart = ({
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)
-                      .map(([modality, color]) => (
+                      .map(([modality, color], modalityIndex) => (
                         <li
-                          key={modality}
+                          key={modalityIndex}
                         >
                           <span className="color-box"
                             style={{ background: color }}

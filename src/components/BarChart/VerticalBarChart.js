@@ -248,7 +248,7 @@ const VerticalBarChart = ({
                       <g key={groupIndex} transform={`translate(0, ${margins.top + rowHeight * groupIndex})`}>
                         <foreignObject 
                           x={0} 
-                          y={layout === 'stack' ? bandHeight / 4 : bandHeight/2 /* + bandHeight * (items.length / 2)*/} 
+                          y={layout === 'stack' ? bandHeight / 4 : (bandHeight * items.length) / 2 /* + bandHeight * (items.length / 2)*/} 
                           width={margins.left} 
                           height={rowHeight}
                         >

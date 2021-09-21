@@ -15,12 +15,14 @@ jobs:
           ref: prod
           persist-credentials: false
 
-      - name: Install and Build 🔧
-        continue-on-error: true
+      - name: Install dependencies and prepare data ⚙
         run: |
           pip install -r requirements.txt
           yarn
           yarn run data:update
+      - name: Build 🔧
+        continue-on-error: true
+        run: |
           yarn run build
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1

@@ -89,14 +89,14 @@ const DeclineChart = (props) => {
   const renderRow = (row, rowFlex, rowIndex) => {
     switch(row) {
       case 'France':
-        if (!datasets['decline_longitudinal_data.csv']) {
+        if (!datasets['decline_longitudinal_data/decline_longitudinal_data.csv']) {
           return null;
         }
         return (
           <LongitudinalTradeChart
             width={width}
             height={fixSvgDimension(height/totalRows * rowFlex)}
-            data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
+            data={datasets['decline_longitudinal_data/decline_longitudinal_data.csv'].filter((d) => d.region === "France")}
             absoluteField="Exports"
             title={messages.franceOverviewTitle[lang](startYear, endYear)}
             axisLeftTitle={''}
@@ -137,14 +137,14 @@ const DeclineChart = (props) => {
           />
         )
       case 'La Rochelle':
-        if (!datasets['decline_longitudinal_data.csv']) {
+        if (!datasets['decline_longitudinal_data/decline_longitudinal_data.csv']) {
           return null;
         }
         return (
           <LongitudinalTradeChart
             width={width}
             height={fixSvgDimension(height/totalRows * rowFlex)}
-            data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "La Rochelle")}
+            data={datasets['decline_longitudinal_data/decline_longitudinal_data.csv'].filter((d) => d.region === "La Rochelle")}
             absoluteField="Exports"
             shareField="Exports_share"
             herfindhalField="product_revolutionempire_exports_herfindahl"
@@ -207,14 +207,14 @@ const DeclineChart = (props) => {
           />
         )
       case 'Bordeaux':
-        if (!datasets['decline_longitudinal_data.csv']) {
+        if (!datasets['decline_longitudinal_data/decline_longitudinal_data.csv']) {
           return null;
         }
         return (
           <LongitudinalTradeChart
             width={width}
             height={fixSvgDimension(height/totalRows * rowFlex)}
-            data={datasets['decline_longitudinal_data.csv'].filter((d) => d.region === "Bordeaux")}
+            data={datasets['decline_longitudinal_data/decline_longitudinal_data.csv'].filter((d) => d.region === "Bordeaux")}
             absoluteField="Exports"
             shareField="Exports_share"
             herfindhalField="product_revolutionempire_exports_herfindahl"
@@ -262,13 +262,13 @@ const DeclineChart = (props) => {
           />
         )
       case 'comparison':
-        if (!datasets[`decline_LR_products.csv`] || !datasets['decline_longitudinal_data.csv']) {
+        if (!datasets[`decline_LR_products/decline_LR_products.csv`] || !datasets['decline_longitudinal_data/decline_longitudinal_data.csv']) {
           return null;
         }
         return (
           <ProductsDistributionChart
-            data={datasets[`decline_LR_products.csv`]}
-            tradeData={datasets['decline_longitudinal_data.csv']}
+            data={datasets[`decline_LR_products/decline_LR_products.csv`]}
+            tradeData={datasets['decline_longitudinal_data/decline_longitudinal_data.csv']}
             field="Exports"
             key={rowIndex}
             partTreshold={productTradePartThreshold}

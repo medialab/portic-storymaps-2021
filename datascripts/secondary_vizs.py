@@ -559,7 +559,7 @@ def compute_eau_de_vie_datasets(flows):
     for that_type, value in types.items():
       origins_list.append({
         "origin": origin,
-        "type": that_type,
+        "type": 'eau-de-vie simple' if that_type == 'EDV simple' else 'eau-de-vie double',
         "value": value
       })
   export_slices_array = []

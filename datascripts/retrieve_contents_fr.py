@@ -20,6 +20,8 @@ def prepare_contents(str):
   # split parts
   for line in lines:
     # line = line.replace('https://www.google.com/url?q=', '')
+    if line.strip() == '---':
+      line = ''
     if line.startswith('# '):
       if center_mode == True:
         current_part.append('</div></div>')

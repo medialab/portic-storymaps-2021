@@ -483,7 +483,8 @@ svg text {
 **/
 .ScrollyPage {
   position: relative;
-  width: calc(100vw);
+  width: 100vw;
+  min-width: 100vw;
   // max-width: calc(100vw - 2rem);
   background: linear-gradient(to bottom, $color-background-blue 10vh, $color-background 50vh);
   // overflow-x: hidden;

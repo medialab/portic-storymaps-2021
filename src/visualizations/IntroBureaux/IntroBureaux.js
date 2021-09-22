@@ -159,7 +159,7 @@ const IntroBureaux = ({
       layers={[
         {
           type: 'choropleth',
-          data: datasets['map_france_1789.geojson'],
+          data: datasets['map_backgrounds/map_france_1789.geojson'],
           reverseColors: atlasMode ? false : true,
           // color:{
           //   field: 'shortname',
@@ -184,7 +184,7 @@ const IntroBureaux = ({
         // }
         {
           type: 'custom',
-          data: datasets['part_3_step3_viz_customs_offices_data.csv'],
+          data: datasets['part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv'],
           renderObjects: props => renderBureaux({...props, atlasMode})
         }
       ]}

@@ -10,9 +10,14 @@ curl -o data/navigo_raw_flows_1789.csv "data.portic.fr/api/rawflows/?date=1789&f
 import csv
 import sys
 from collections import defaultdict
+import os
 
+def ensure_dir(path):
+  if not os.path.exists(path):
+      os.makedirs(path)
 
-OUTPUT = "../public/data/part_2_navigo_viz_data.csv"
+OUTPUT = "../public/data/part_2_navigo_viz_data/part_2_navigo_viz_data.csv"
+ensure_dir("../public/data/part_2_navigo_viz_data/")
 
 def clean_bureau_name(name, departure):
   if departure == "Tonnay-Charente":

@@ -16,13 +16,13 @@ const HomeportFlows = ({
           layers={[
             {
               type: 'choropleth',
-              data: datasets['map_france_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
+              data: datasets['map_backgrounds/map_france_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
             },
 
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
@@ -37,7 +37,7 @@ const HomeportFlows = ({
             },
             {
               type: 'points',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787.csv']
+              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv']
                 .map(d => ({ ...d, longitude: d.longitude_dep, latitude: d.latitude_dep })),
               size: {
                 field: 'tonnages_cumulés',
@@ -68,7 +68,7 @@ const HomeportFlows = ({
             {
               type: 'choropleth',
               // data: datasets['world_test.geojson'],
-              data: datasets['map_france_1789.geojson'], // currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
+              data: datasets['map_backgrounds/map_france_1789.geojson'], // currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
               // color:{
               //   field: 'shortname',
@@ -77,7 +77,7 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
@@ -101,7 +101,7 @@ const HomeportFlows = ({
             {
               type: 'choropleth',
               // data: datasets['world_test.geojson'],
-              data: datasets['map_world_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
+              data: datasets['map_backgrounds/map_world_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
               // color:{
               //   field: 'shortname',
@@ -110,7 +110,7 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'

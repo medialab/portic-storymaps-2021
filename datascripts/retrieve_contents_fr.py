@@ -74,7 +74,7 @@ with requests.Session() as s:
     elif i < 4:
       md_path = TARGET_BASE + 'partie-' + str(i) + '.mdx'
     elif i == 5:
-      print(part)
+      # print(part)
       md_path = TARGET_BASE + 'a-propos.mdx'
     else:
       md_path = TARGET_BASE + 'references.mdx'

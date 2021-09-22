@@ -44,11 +44,11 @@ const PrincipalVisualizationPart3 = ({
           layers={[
             {
               type: 'choropleth',
-              data: datasets['map_france_1789.geojson']
+              data: datasets['map_backgrounds/map_france_1789.geojson']
             },
             {
               type: 'custom',
-              data: datasets['part_3_step1_viz_data.csv'],
+              data: datasets['part_3_step1_viz_data/part_3_step1_viz_data.csv'],
               renderObjects: () => (
                 <>
                   <rect
@@ -69,7 +69,7 @@ const PrincipalVisualizationPart3 = ({
             },
             {
               type: 'custom',
-              data: datasets['part_3_step1_viz_data.csv'],
+              data: datasets['part_3_step1_viz_data/part_3_step1_viz_data.csv'],
               renderObjects: props => renderTriangles({...props, atlasMode})
             }
           ]}
@@ -94,7 +94,7 @@ const PrincipalVisualizationPart3 = ({
           layers={[
             {
               type: 'choropleth',
-              data: datasets['map_france_1789.geojson'],
+              data: datasets['map_backgrounds/map_france_1789.geojson'],
               color: {
                 field: 'shortname'
               }
@@ -102,19 +102,19 @@ const PrincipalVisualizationPart3 = ({
             {
               type: 'custom',
               data: {
-                customsOffices: datasets['part_3_step3_viz_customs_offices_data.csv']
+                customsOffices: datasets['part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv']
               .filter(d => 
                 d.customs_region === 'La Rochelle' 
                 && d.name !== 'undefined customs office'
                 && !d.name.includes('Bouin')
                 ),
-                ports: datasets['part_3_step3_viz_ports_data.csv']
+                ports: datasets['part_3_step3_viz_ports_data/part_3_step3_viz_ports_data.csv']
               },
               renderObjects: Step3Objects // besoin de montrer les labels des bureaux et ports => modifier la fonction
             },
             {
               type: 'custom',
-              data: datasets['part_3_step3_viz_customs_offices_data.csv'],
+              data: datasets['part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv'],
               renderObjects: SmallMultiples
             }
           ]}

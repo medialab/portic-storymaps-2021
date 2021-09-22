@@ -92,3 +92,25 @@ Les données de cette visualisation sont tirées de la base Toflit18, et plus sp
 Le fond de carte de la visualisation a été constitué en agrégeant de multiples sources et en les mettant en cohérence avec des méthodes de géomatique.
 
 Les données visualisées sont tirées des flux enregistrés dans Navigo pour 1787 et concernant uniquement les navires dont le port d'attache est La Rochelle.
+
+
+# Ports de départ des navires transportant du sel en 1789, agrégés par tonnage cumulé
+
+Les données de cette visualisations ont tirées de la base de données Navigo. Plus précisément, il s'agit des indications de départs de port (*pointcalls* de sortie de port) mentionnant du sel en cargaison principale ou secondaire. La quantification est réalisée en fonction du tonnage cumulé des navires. Note : les navires pouvant transporter plusieurs marchandises différentes, le tonnage des navires ne doit pas être confondu avec la quantité de sel transportée, qui reste inconnue.
+
+# Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé
+
+Les données de cette visualisations ont tirées de la base de données Navigo. Plus précisément, il s'agit des indications de départs (*pointcalls* de sortie de port) du port de Marennes en 1789. La quantification est réalisée en fonction du tonnage cumulé des navires.
+
+# Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)
+
+Les données de cette visualisation sont tirées de la base de données toflit18, et plus précisément des mentions d'exports vers l'étranger (ports francs non pris en compte) de produits tombant dans la catégorie "eaux-de-vie et liqueurs" de la classification "révolution & empire" de toflit18, pour la direction de La Rochelle. Les flux tirés de son groupe de sources "Best Guess customs region prod x partner" qui permettent de raisonner au niveau des directions des fermes (et non de l'ensemble de la France). La quantification est réalisée en fonction de la valeur des exports en livres tournois.
+
+# Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte)
+
+
+Les données de cette visualisation sont tirées de la base de données toflit18, et plus précisément des mentions d'exports vers l'étranger (ports francs non pris en compte) de produits tombant dans la catégorie "eaux-de-vie et liqueurs" de la classification "révolution & empire" de toflit18, pour la direction de La Rochelle. Les flux tirés de son groupe de sources "Best Guess customs region prod x partner" qui permettent de raisonner au niveau des directions des fermes (et non de l'ensemble de la France). La quantification est réalisée en fonction de la valeur des exports en livres tournois.
+
+# Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)
+
+Les données de cette visualisation sont tirées de la base de données toflit18, et plus précisément des mentions d'exports vers l'étranger (ports francs non pris en compte) de produits tombant dans la catégorie "eaux-de-vie et liqueurs" de la classification "révolution & empire" de toflit18, pour la direction de La Rochelle. Les flux tirés de son groupe de sources "Best Guess customs region prod x partner" qui permettent de raisonner au niveau des directions des fermes (et non de l'ensemble de la France). La quantification est réalisée en fonction de la valeur des exports en livres tournois.

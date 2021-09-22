@@ -1,7 +1,11 @@
 from collections import defaultdict
 import csv
 from typing import Counter, DefaultDict
+import os
 
+def ensure_dir(path):
+  if not os.path.exists(path):
+      os.makedirs(path)
 
 def output_row(region, year, region_trade, region_products, total_trade):
     sum_imports = sum(value.get(
@@ -68,8 +72,8 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
             if flow['customs_region'] == "Bordeaux":
                 Bordeaux_products[year][flow['product_revolutionempire']
                                         ][flow['export_import']] += float(flow['value'])
-
-    with open("../public/data/decline_longitudinal_data.csv", "w") as of:
+    ensure_dir("../public/data/decline_longitudinal_data")
+    with open("../public/data/decline_longitudinal_data/decline_longitudinal_data.csv", "w") as of:
         output_csv = csv.DictWriter(
             of, ['region', 'year', 'Exports', 'Imports', 'Exports_share', 'Imports_share', 'product_revolutionempire_imports_herfindahl', 'product_revolutionempire_exports_herfindahl', 'product_revolutionempire_total_herfindahl'])
         output_csv.writeheader()
@@ -87,14 +91,16 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
                 'Imports_share': 100,
                 'Exports_share': 100
             })
-    with open("../public/data/decline_LR_products.csv", "w") as of:
+    ensure_dir("../public/data/decline_LR_products")
+    with open("../public/data/decline_LR_products/decline_LR_products.csv", "w") as of:
         output_csv = csv.DictWriter(
             of, ['product', 'year', 'Exports', 'Imports'])
         output_csv.writeheader()
         output_csv.writerows({'product': product, 'year': year, 'Exports': value.get("Exports"), 'Imports': value.get("Imports")} for year, products in LaRochelle_products.items(
         ) if year in ['1750', '1789'] for product, value in products.items())
 
-    with open("../public/data/decline_LR_partners.csv", "w") as of:
+    ensure_dir("../public/data/decline_LR_partners")
+    with open("../public/data/decline_LR_partners/decline_LR_partners.csv", "w") as of:
         output_csv = csv.DictWriter(
             of, ['partner', 'year', 'Exports', 'Imports'])
         output_csv.writeheader()

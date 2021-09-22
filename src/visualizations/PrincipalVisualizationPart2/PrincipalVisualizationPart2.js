@@ -90,7 +90,7 @@ const PrincipalVisualizationPart2 = ({
       }}
     >
         <CircularAlluvialChart
-          data={datasets['part_2_toflit_viz_data.csv']}
+          data={datasets['part_2_toflit_viz_data/part_2_toflit_viz_data.csv']}
           width={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? width * .6 : width * .45}
           height={atlasMode ? window.innerWidth * .5 : highlight === 'toflit18' ? height : height * .45}
           sumBy={sumToflitBy}
@@ -185,7 +185,7 @@ const PrincipalVisualizationPart2 = ({
       }}
     >
       <RadarWrapper 
-        data={datasets['part_2_navigo_viz_data.csv']}
+        data={datasets['part_2_navigo_viz_data/part_2_navigo_viz_data.csv']}
         minified={!atlasMode && highlight !== 'navigo'}
         globalWidth={atlasMode ? window.innerWidth * .5 : width}
         bureaux={bureaux}

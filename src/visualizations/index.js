@@ -202,7 +202,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Pays d'attache des navires étrangers partant de la région en 1789"
+          title="Pays du port d'attache des navires étrangers partant de la région en 1789"
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
@@ -210,17 +210,17 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             field: 'country',
             title: 'Pays du port d\'attache',
             sort: {
-              field: 'nb_outs',
+              field: 'tonnage',
               autoSort: true,
               ascending: false,
               type: 'number'
             }
           }}
           x={{
-            field: 'nb_outs',
-            title: 'Nombre de départs',
+            field: 'tonnage',
+            title: 'Tonnage cumulé',
             // tickSpan: 100,
-            tickFormat: (d, i) => `${d} départs`
+            tickFormat: (d, i) => `${d} tx`
           }}
           // color={{
           //   field: 'entity',
@@ -229,7 +229,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           margins={{
             right: 60
           }}
-          tooltip={d => `En 1789, ${d.nb_outs} bateaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
+          tooltip={d => `En 1789, ${d.nb_pointcalls} navires soit ${d.tonnage} tonnaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
         />
       )
     // case 'partie-1-produits-importants-pour-la-rochelle':
@@ -345,7 +345,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               },
               {
                 type: 'points',
-                data: datasets['ports_locations_data_intro.csv'],
+                data: datasets['ports_locations_data_intro/ports_locations_data_intro.csv'],
                 color: {
                   field: 'province',
                   title: 'Province du port',
@@ -402,7 +402,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               },
               {
                 type: 'points',
-                data: datasets['part_navigation_fr.csv'],
+                data: datasets['part_navigation_fr/part_navigation_fr.csv'],
                 color: {
                   field: 'tonnage_part_of_french',
                   title: 'Part de la navigation française (par tonnage cumulé)',
@@ -448,7 +448,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         <TreemapChart
         {
           ...{
-            data: datasets['hierarchie_ports_dattache_des_navires_partant_de_la_region.csv'],
+            data: datasets['hierarchie_ports_dattache_des_navires_partant_de_la_region/hierarchie_ports_dattache_des_navires_partant_de_la_region.csv'],
             title: 'Ports d\'attache des navires partant de la région PASA en 1789 (dimensionnés par tonnage cumulé)',
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
@@ -476,7 +476,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         <TreemapChart
         {
           ...{
-            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region.csv'],
+            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region/hierarchie_destinations_des_navires_partant_de_la_region.csv'],
             title: 'Destinations des navires partant depuis la région PASA vers l\'étranger en 1789',
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
@@ -600,7 +600,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         <TreemapChart
         {
           ...{
-            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv'],
+            data: datasets['hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger/hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv'],
             title: 'Ports d’attache des navires en provenance de la région PASA et en direction de l’étranger en 1789 (dimensionnées par tonnages cumulés)',
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,

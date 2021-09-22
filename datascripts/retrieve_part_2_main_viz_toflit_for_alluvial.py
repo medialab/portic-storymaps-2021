@@ -1,7 +1,13 @@
 import csv
 from collections import defaultdict
+import os
 
-OUTPUT = "../public/data/part_2_toflit_viz_data.csv"
+def ensure_dir(path):
+  if not os.path.exists(path):
+      os.makedirs(path)
+
+OUTPUT = "../public/data/part_2_toflit_viz_data/part_2_toflit_viz_data.csv"
+ensure_dir("../public/data/part_2_toflit_viz_data/")
 
 relevant_flows = []
 # retrieve relevant flows

@@ -56,7 +56,11 @@ import networkx as nx
 import csv
 from operator import itemgetter
 from random import random
+import os
 
+def ensure_dir(path):
+  if not os.path.exists(path):
+      os.makedirs(path)
 
 
 # PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
@@ -103,8 +107,10 @@ def correct_localities_alignment(port):
 # OUTPUT1 : aims to feed step 1 of the main viz of part3
 
 
-OUTPUT0 = "../public/data/ports_locations_data.csv"
-OUTPUT1 = "../public/data/part_3_step1_viz_data.csv"
+OUTPUT0 = "../public/data/ports_locations_data/ports_locations_data.csv"
+OUTPUT1 = "../public/data/part_3_step1_viz_data/part_3_step1_viz_data.csv"
+ensure_dir("../public/data/ports_locations_data/")
+ensure_dir("../public/data/part_3_step1_viz_data/")
 
 """
 VIZ 3.1 PREPARATION
@@ -195,8 +201,10 @@ with open(OUTPUT1, "w", newline='') as csvfile:
         })
 
 # 3. write csv file to feed step 3 of the viz
-OUTPUT3_PORTS = "../public/data/part_3_step3_viz_ports_data.csv"
-OUTPUT3_OFFICES = "../public/data/part_3_step3_viz_customs_offices_data.csv"
+OUTPUT3_PORTS = "../public/data/part_3_step3_viz_ports_data/part_3_step3_viz_ports_data.csv"
+OUTPUT3_OFFICES = "../public/data/part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv"
+ensure_dir("../public/data/part_3_step3_viz_ports_data/")
+ensure_dir("../public/data/part_3_step3_viz_customs_offices_data/")
 
 def build_relevant_navigo_flows():
   i = 0
@@ -278,7 +286,6 @@ for f in relevant_navigo_flows :
             ports[port]['cumulated_tonnage_in_region'] += tonnage
             bureaux_map[bureau]['cumulated_tonnage_in_region'] += tonnage
         else:
-            # print("f['destination_ferme_direction'] : ", f['destination_ferme_direction'])
             ports[port]['cumulated_tonnage_out_region'] += tonnage
             bureaux_map[bureau]['cumulated_tonnage_out_region'] += tonnage
     elif f['departure_province'] is not None: # dans ce cas là notre flow ne part pas de La Rochelle, besoin de distinguer cas bordeaux, nantes, le havre
@@ -470,8 +477,9 @@ def build_graph(name, flows, admiralties):
       for id in graph.nodes():
         graph.nodes[id]["degree"] = graph.degree(id)
 
-
-    nx.write_gexf(graph, '../public/data/%s.gexf' % name)  
+    print('name : ', name)
+    ensure_dir('../public/data/' + name + '/')
+    nx.write_gexf(graph, '../public/data/' + name + '/' + name + '.gexf')  
     return graph
 
 def build_centrality_metrics(flows):
@@ -513,8 +521,8 @@ def build_centrality_metrics(flows):
           "score": betweenness_centrality[port]
       })
       # betweenness_centralities += [{"group": port, "port": p, "betweenness_centrality": value} for (p, value) in betweenness_centrality.items()if graph.nodes[p]['internal'] == True]
-  
-  with open('../public/data/part_3_centralite_comparaison.csv', 'w', newline='') as csvfile:
+  ensure_dir('../public/data/part_3_centralite_comparaison/')
+  with open('../public/data/part_3_centralite_comparaison/part_3_centralite_comparaison.csv', 'w', newline='') as csvfile:
     fieldnames = metrics[0].keys()
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 

@@ -168,7 +168,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }
           title="Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé"
           width={dimensions.width}
-          height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
+          height={props.atlasMode ? window.innerHeight * .8 : dimensions.height / 2}
           orientation={'vertical'}
           y={{
             field: 'country',
@@ -509,7 +509,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }
           title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)"
           width={dimensions.width}
-          height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+          height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
           orientation={'horizontal'}
           // layout={'groups'}
           y={{
@@ -542,7 +542,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             }
             title="Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte)"
             width={dimensions.width}
-            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
             orientation={'vertical'}
             layout={'groups'}
             y={{
@@ -573,7 +573,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             }
             title="Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)"
             width={dimensions.width}
-            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
+            height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
             orientation={'vertical'}
             layout={'groups'}
             y={{

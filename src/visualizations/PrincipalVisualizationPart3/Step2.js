@@ -16,7 +16,7 @@ const Step2 = ({
           <div className="graphs-container" style={{ position: 'relative', height: height * .6 }}>
             <div className="graph-container" style={{ width: width * .6, height: height * .6, position: 'absolute' }}>
               <NetworkGraphChart
-                data={datasets['flows_1787_around_La Rochelle.gexf']}
+                data={datasets['flows_1787_around_La Rochelle/flows_1787_around_La Rochelle.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}
                 nodeColor={{
@@ -33,7 +33,7 @@ const Step2 = ({
             </div>
             <div className="graph-container" style={{ width: width * .4, height: height * .3, position: 'absolute', right: 0, top: 0 }}>
               <NetworkGraphChart
-                data={datasets['flows_1787_around_Bordeaux.gexf']}
+                data={datasets['flows_1787_around_Bordeaux/flows_1787_around_Bordeaux.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}
                 nodeColor={{
@@ -50,7 +50,7 @@ const Step2 = ({
             </div>
             <div className="graph-container" style={{ width: width * .4, height: height * .3, position: 'absolute', right: 0, bottom: 0 }}>
               <NetworkGraphChart
-                data={datasets['flows_1787_around_Nantes.gexf']}
+                data={datasets['flows_1787_around_Nantes/flows_1787_around_Nantes.gexf']}
                 nodeSize={`degree`}
                 labelDensity={1}
                 nodeColor={{
@@ -103,7 +103,7 @@ const Step2 = ({
             height: height * .3
           }}>
             <BarChart
-              data={datasets['part_3_centralite_comparaison.csv']}
+              data={datasets['part_3_centralite_comparaison/part_3_centralite_comparaison.csv']}
               title="Centralité comparée de La Rochelle par rapport à PASA et, pour ses régions côtières voisines, du port principal par rapport au réseau des voyages de son amirauté (1787)"
               width={width * .7}
               height={height * .3}

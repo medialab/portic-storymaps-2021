@@ -302,6 +302,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
       homeports[homeport]["tonnage"] += tonnage
     else:
       country = pointcall["homeport_state_1789_fr"]
+      country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
       category_1 = "France" if country == "France" else "étranger"
       category_2 = country if country != "France" else "France (hors région PASA)"
       if country == "France" and pointcall["homeport_admiralty"] in admiralties:
@@ -334,6 +335,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
       homeports[homeport]["tonnage"] += tonnage
     else:
       country = pointcall["homeport_state_1789_fr"]
+      country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
       category_1 = "France" if country == "France" else "étranger"
       category_2 = country if country != "France" else "France (hors région PASA)"
       if country == "France" and pointcall["homeport_admiralty"] in admiralties:
@@ -365,6 +367,7 @@ def compute_hierarchy_of_destinations_of_boats_from_region (pointcalls):
       directions[port]["tonnage"] += tonnage
     else:
       country = pointcall["state_1789_fr"]
+      country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
       category_1 = "France" if country == "France" else "étranger"
       category_2 = country if country != "France" else "France (hors région PASA)"
       if country == "France" and pointcall["pointcall_admiralty"] in admiralties:

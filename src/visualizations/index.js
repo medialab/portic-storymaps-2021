@@ -477,7 +477,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
         {
           ...{
             data: datasets['hierarchie_destinations_des_navires_partant_de_la_region/hierarchie_destinations_des_navires_partant_de_la_region.csv'],
-            title: 'Destinations des navires partant depuis la région PASA vers l\'étranger en 1789',
+            title: 'Destinations des navires partant depuis la région PASA vers l\'étranger en 1789 (dimensionnées par tonnage cumulé)',
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${d.port} - ${d.category_2}.`,

@@ -72,7 +72,6 @@ const colorsPalettes = {
     'Lubeck': '#E7A39C',
     'Brême': '#EBB2AD',
     'Mecklenbourg': '#E3938C',
-    'Duché de Mecklenbourg': '#bd6a62',
     'Autriche': '#bd6a62',
 
     'Grande-Bretagne': '#A07BEE',

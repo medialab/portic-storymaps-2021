@@ -590,12 +590,26 @@ def compute_eau_de_vie_datasets(flows):
           origins[origin]['total'] += value
           origins[origin][eau_de_vie_types_map[flow['product_simplification']]] += value
 
-  origins_list = []
+  origins_map = {}
   for origin, types in origins.items():
+    for that_type, value in types.items():
+      resolved_type = 'eau-de-vie simple' if that_type == 'EDV simple' else 'eau-de-vie double'
+      if origin not in origins_map:
+        origins_map[origin] = {}
+      if resolved_type not in origins_map[origin]:
+        origins_map[origin][resolved_type] = 0
+      origins_map[origin][resolved_type] += float(value)
+      # origins_list.append({
+      #   "origin": origin,
+      #   "type": ,
+      #   "value": value
+      # })
+  origins_list = []
+  for origin, types in origins_map.items():
     for that_type, value in types.items():
       origins_list.append({
         "origin": origin,
-        "type": 'eau-de-vie simple' if that_type == 'EDV simple' else 'eau-de-vie double',
+        "type": that_type,
         "value": value
       })
   export_slices_array = []

@@ -10,7 +10,10 @@ const VisualizationController = ({
   activeVisualization,
   atlasMode
 }) => {
-  const [dimensions, setDimensions] = useState({});
+  const [dimensions, setDimensions] = useState({
+    width: 1000,
+    height: 1000
+  });
   const visProps = activeVisualization && omit(activeVisualization, ['id', 'ref', 'visualizationId']);
   return (
     <Measure 

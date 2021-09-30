@@ -550,22 +550,26 @@ def compute_eau_de_vie_datasets(flows):
       "La Rochelle": 0,
       "Bordeaux": 0,
       "Nantes": 0,
-      "Bayonne": 0
+      "Bayonne": 0,
+      "Montpellier": 0
     },
     "1770": {
       "La Rochelle": 0,
       "Bordeaux": 0,
       "Nantes": 0,
-      "Bayonne": 0
+      "Bayonne": 0,
+      "Montpellier": 0
     },
     "1789": {
       "La Rochelle": 0,
       "Bordeaux": 0,
       "Nantes": 0,
-      "Bayonne": 0
+      "Bayonne": 0,
+      "Montpellier": 0
     }
   }
   origins = {}
+  customs_regions = set()
   for flow in flows:
     value = float(flow['value']) if flow['value'] != '' else 0
     year = flow['year']
@@ -589,7 +593,6 @@ def compute_eau_de_vie_datasets(flows):
             }
           origins[origin]['total'] += value
           origins[origin][eau_de_vie_types_map[flow['product_simplification']]] += value
-
   origins_map = {}
   for origin, types in origins.items():
     for that_type, value in types.items():
@@ -664,7 +667,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
     flows_eau_de_vie = []
     for flow in toflit18_flows:
       # getting international exports of salt from La Rochelle
-      if flow['customs_region'] in ['La Rochelle', 'Bordeaux', 'Bayonne', 'Nantes', 'Sète', 'Cette' 'Cete'] and (flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin") and flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
+      if flow['customs_region'] in ['La Rochelle', 'Bordeaux', 'Bayonne', 'Nantes', 'Montpellier'] and (flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin") and flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
         flows_eau_de_vie.append(flow)
       # filtering out ports francs
       if flow["year"] == "1789":

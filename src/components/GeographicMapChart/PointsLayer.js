@@ -211,7 +211,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
 
       const sizeExtent = extent(grouped.map(g => g.size));
       // basing the scale on area rather than radius
-      const radiusRange = [3, width / 30];
+      const radiusRange = [3, width * height / 20000];
       const areaRange = radiusRange.map(r => Math.PI * r * r);
       const sizeScale = scaleLinear().domain(sizeExtent).range(areaRange) // adapt size to width, @TODO : enable to parameter scale (with domain & range)
       const labelSizeScale = scaleLinear().domain(sizeExtent).range([8, width / 30]) // adapt size to width, @TODO : enable to parameter scale (with domain & range)

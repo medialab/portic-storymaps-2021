@@ -461,6 +461,41 @@ def compute_out_with_salt (pointcalls):
   ports = [port for _port_name, port in ports.items()]    
   write_csv("out_with_salt_by_port/out_with_salt_by_port.csv", ports)
 
+def compute_out_with_salt_from_marennes (flows):
+  print('compute_out_with_salt_from_marennes')
+  ports = {}
+  countries = {}
+  for flow in flows:
+    if flow['departure_function'] != 'O' or flow['departure_fr'] != 'Marennes':
+      continue
+    commodity_fields = ['commodity_standardized_fr', 'commodity_standardized2_fr', 'commodity_standardized3_fr', 'commodity_standardized4_fr']
+    has_salt = False
+    for field in commodity_fields:
+      if flow[field] == 'Sel':
+        has_salt = True
+    if has_salt is False:
+      continue
+    tonnage = int(flow["tonnage"]) if flow["tonnage"] != "" else 0
+    port = flow['destination_fr']
+    country = flow['destination_state_1789_fr'] if flow['destination_state_1789_fr'] != '' else 'Autre'
+    latitude = flow['destination_latitude']
+    longitude = flow['destination_longitude']
+    if port not in ports:
+      new_port = {
+        "port": port,
+        "country": country,
+        "latitude": latitude,
+        "longitude": longitude,
+        "tonnage": tonnage,
+        "nb_flows": 1
+      }
+      ports[port] = new_port
+    else:
+      ports[port]["tonnage"] += tonnage
+      ports[port]["nb_flows"] += 1
+  ports = [port for _port_name, port in ports.items()]    
+  write_csv("sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv", ports)
+
 def compute_foreign_homeport_state (pointcalls):
   print('compute_foreign_homeport_state')
   countries = {}
@@ -732,6 +767,7 @@ with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
       countries[country]["nb_pointcalls"] += 1
       countries[country]["tonnage"] += tonnage
   countries = [payload for _name, payload in countries.items()]
+  compute_out_with_salt_from_marennes(flows_from_marennes)
   write_csv("sorties-de-marennes/sorties-de-marennes.csv", countries)
 
 

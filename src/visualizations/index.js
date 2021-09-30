@@ -329,6 +329,79 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           />
         </>
       )
+    case 'sorties-de-marennes-avec-sel-destinations':
+      return (
+        <div>
+          <GeographicMapChart
+            title={'Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé'}
+            layers={[
+              {
+                type: 'choropleth',
+                data: datasets['map_backgrounds/map_france_1789.geojson']
+              },
+              {
+                type: 'points',
+                data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country === 'France'),
+                color: {
+                  field: 'country',
+                  title: 'Pays',
+                  palette: colorPalettes.franceAlone
+                },
+                size: {
+                  field: 'tonnage',
+                  title: 'tonnage cumulé',
+                  // custom: '20'
+                },
+                tooltip: d => `En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
+                label: {
+                  field: 'port',
+                  position: 'left'
+                },
+                stackLabels: true
+              }
+            ]}
+            projectionTemplate='France'
+            width={dimensions.width}
+            height={props.atlasMode ? window.innerHeight * .4 : dimensions.height / 2}
+          />
+          <GeographicMapChart
+            layers={[
+              {
+                type: 'choropleth',
+                data: datasets['map_backgrounds/map_world_1789.geojson']
+              },
+              {
+                type: 'points',
+                data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country !== 'France'),
+                color: {
+                  field: 'country',
+                  title: 'Pays',
+                  // labelsColor: props.atlasMode ? undefined : 'white'
+                },
+                size: {
+                  field: 'tonnage',
+                  title: 'tonnage cumulé',
+                  // custom: '20'
+                },
+                tooltip: d =>`En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
+                label: {
+                  field: 'port',
+                },
+                stackLabels: true
+              }
+            ]}
+            projectionTemplate='World'
+            projectionConfig={{
+              scale: (props.atlasMode ? window.innerHeight : dimensions.height) * .8,
+              centerY:  45,
+              centerX: -30
+            }}
+            width={dimensions.width}
+            withLegend={'bottom right'}
+            height={props.atlasMode ? window.innerHeight * .4 : dimensions.height / 2}
+          />
+        </div>
+      )
     case 'intro-ports':
       return (
         <>
@@ -508,7 +581,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               // })
               // .slice(0, 20)
           }
-          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)"
+          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte - pas de données pour Montpellier en 1770)"
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
           orientation={'horizontal'}

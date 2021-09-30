@@ -59,6 +59,9 @@ const colorsPalettes = {
     '75% ou plus': '#41BEA3',
     'moins de 75%': '#FEA43B',
   },
+  franceAlone: {
+    'France': '#41BEA3',
+  },
   portsTreemaps: {
     'France (région PASA)': '#41BEA3',
     'Indéterminé': 'rgb(240,240,240)',

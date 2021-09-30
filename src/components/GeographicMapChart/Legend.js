@@ -58,8 +58,8 @@ const Legend = ({
                   <h6 className="legend-title">{layer.color.title || layer.color.field}</h6>
                   <ul className="modalities-list">
                     {
-                      colorModalities.map(([modality, color]) => (
-                        <li key={modality}>
+                      colorModalities.map(([modality, color], modalityIndex) => (
+                        <li key={modalityIndex}>
                           <span style={{background: color}} className="color-marker" />
                           <span className="label">{modality}</span>
                         </li>

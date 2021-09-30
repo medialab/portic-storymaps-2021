@@ -181,11 +181,7 @@ function App() {
             <Route path="/:lang" exact component={Home} />
             <Redirect to={`/fr/`} />
           </Switch>
-          {
-            loadingFraction < 1 ?
-              <Loader percentsLoaded={loadingFraction * 100} />
-              : null
-          }
+            <Loader percentsLoaded={loadingFraction * 100} />
         </main>
         <Footer
           lang={'fr'}

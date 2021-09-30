@@ -659,6 +659,10 @@ button.is-active {
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  &.is-complete {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .loader {

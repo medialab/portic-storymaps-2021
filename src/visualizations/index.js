@@ -12,7 +12,7 @@ import LineChart from '../components/LineChart';
 import GeographicMapChart from '../components/GeographicMapChart/GeographicMapChart';
 import colorPalettes from '../colorPalettes'
 
-
+import {formatNumber} from '../helpers/misc'
 import { DatasetsContext } from '../helpers/contexts';
 
 import visualizationsList from '../visualizationsList';
@@ -185,7 +185,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             field: 'tonnage',
             title: 'Tonnage cumulé',
             // tickSpan: 100,
-            tickFormat: (d, i) => `${d} tonneaux`
+            tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}
           // color={{
           //   field: 'entity',
@@ -221,7 +221,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             field: 'tonnage',
             title: 'Tonnage cumulé',
             // tickSpan: 100,
-            tickFormat: (d, i) => `${d} tx`
+            tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}
           // color={{
           //   field: 'entity',
@@ -516,11 +516,11 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           y={{
             field: 'value',
             title: 'valeur',
-            tickFormat: d => d + ' lt'
+            tickFormat: d => formatNumber(d) + ' lt'
           }}
           x={{
             field: 'year',
-            title: 'Année'
+            title: 'Année',
           }}
           margins={{
             left: 140
@@ -554,14 +554,16 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             x={{
               field: 'value',
               title: 'valeur',
-              tickSpan: 1000000
+              tickSpan: 1000000,
+              tickFormat: d => formatNumber(d) + ' lt'
             }}
             color={{
               field: 'customs_region',
               title: 'direction des fermes'
             }}
             margins={{
-              left: 140
+              left: 140,
+              right: 50
             }}
             tooltip={d => `En ${d.year}, la direction des fermes de ${d.customs_region} a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs.`}
           />
@@ -585,13 +587,15 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             x={{
               field: 'value',
               title: 'valeur',
+              tickFormat: d => formatNumber(d / 100) + ' lt'
             }}
             color={{
               field: 'type',
               title: "type d'eau de vie",
             }}
             margins={{
-              left: 140
+              left: 140,
+              right: 50
             }}
             tooltip={d => `La direction des fermes de La Rochelle a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs de type "${d.type}", originaires de ${d.origin}.`}
           />

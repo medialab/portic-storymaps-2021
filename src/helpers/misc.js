@@ -323,3 +323,28 @@ export const getToflitFlowsByApi = ({
 }
 
 export const fixSvgDimension = num => isNaN(num) ? 0 : Math.abs(+num)
+
+export const formatNumber = (n, style = 'fr') => {
+  return ('' + n)
+  .split('')
+  .reverse()
+  .reduce(({count, result}, digit, index) => {
+    const endOfLine = count === 3 || (count === 0 && index === ('' + n).length - 1);
+    if (endOfLine) {
+      return {
+        count: 1,
+        result: [...result, style === 'fr' ? ' ' : ',',  digit]
+      }
+    } else return {
+      count: count + 1,
+      result: [...result, digit]
+    }
+
+  }, {
+    count: 0,
+    result: []
+  })
+  .result
+  .reverse()
+  .join('')
+}

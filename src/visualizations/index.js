@@ -19,6 +19,7 @@ import visualizationsList from '../visualizationsList';
 import IntroBureaux from './IntroBureaux';
 import HomeportFlows from './HomeportFlows/HomeportFlows';
 import TreemapChart from '../components/TreemapChart/TreemapChart';
+import { omit } from 'lodash';
 
 const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) => {
   const dimensions = {
@@ -349,7 +350,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 color: {
                   field: 'province',
                   title: 'Province du port',
-                  palette: colorPalettes.provinces,
+                  palette: omit(colorPalettes.provinces, ['Angoumois']),
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
                 size: {

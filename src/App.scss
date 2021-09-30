@@ -526,11 +526,16 @@ svg text {
       border-radius: 50%;
       height: 1rem;
       width: 1rem;
-      font-size: .5rem;
+      font-size: .8rem;
       display: flex;
       flex-flow: row nowrap;
       justify-content: center;
       align-items: center;
+      font-weight: 800;
+      span {
+        position: relative;
+        top: -.05rem;
+      }
     }
   }
   @include tablet {

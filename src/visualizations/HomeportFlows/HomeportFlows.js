@@ -12,7 +12,7 @@ const HomeportFlows = ({
     <div className="HomeportFlows">
       <div className="column">
         <GeographicMapChart
-          title={'Voyages des bateaux rattachés au port de La Rochelle en 1787'}
+          title={'Voyages des navires rattachés au port de La Rochelle en 1787'}
           layers={[
             {
               type: 'choropleth',
@@ -63,7 +63,6 @@ const HomeportFlows = ({
       </div>
       <div className="column">
         <GeographicMapChart
-          title={'Voyages des bateaux rattachés au port de La Rochelle en 1787'}
           layers={[
             {
               type: 'choropleth',
@@ -96,7 +95,6 @@ const HomeportFlows = ({
           height={totalHeight / 2}
         />
         <GeographicMapChart
-          title={'Voyages des bateaux rattachés au port de La Rochelle en 1787'}
           layers={[
             {
               type: 'choropleth',

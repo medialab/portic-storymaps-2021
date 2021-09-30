@@ -694,9 +694,16 @@ with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
       flows_from_marennes.append(flow)
   print('relevant flows for la Marennes', len(flows_from_marennes))
   countries = {}
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for flow in flows_from_marennes:
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     country = flow['destination_state_1789_fr'] if flow['destination_state_1789_fr'] != '' else 'Indéterminé'
+    if country == 'France':
+      admiralty = flow['destination_admiralty']
+      if admiralty in admiralties:
+        country = 'France (région PASA)'
+      else:
+        country = 'France (hors région PASA)'
     # country = flow['destination_fr'] if country == 'France' else country
     if country not in countries:
       countries[country] = {

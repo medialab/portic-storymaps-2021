@@ -149,7 +149,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             field: 'tonnage',
             title: 'Tonnage cumulé',
             // tickSpan: 100,
-            tickFormat: (d, i) => `${d} tonneaux`
+            tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}
           // color={{
           //   field: 'entity',

@@ -32,7 +32,7 @@ function Atlas({
   const history = useHistory();
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (
-    <div className="Atlas secondary-page">
+    <div className={cx("Atlas secondary-page", {'has-focus': shownVisualization})}>
       <Helmet>
         <title>{buildPageTitle('Atlas', lang)}</title>
       </Helmet>

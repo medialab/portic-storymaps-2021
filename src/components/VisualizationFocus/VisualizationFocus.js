@@ -45,43 +45,45 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
       <div onClick={onClose} className="lightbox-background" />
       {
         visualization ?
-          <div className="lightbox-contents">
+          <div className="lightbox-contents-container">
+            <div className="lightbox-contents">
 
-            <div className="visualization-details">
-              <div className="details-header">
-                <h2>{visualization[`titre_${lang}`]}</h2>
-                <button className="close-btn" onClick={onClose}>
-                  ✕
-                </button>
+              <div className="visualization-details">
+                <div className="details-header">
+                  <h2>{visualization[`titre_${lang}`]}</h2>
+                  <button className="close-btn" onClick={onClose}>
+                    ✕
+                  </button>
+                </div>
+                <div className="copy-link-container">
+                  <button onClick={handleCopyClick}>{copyClicked ? messages.linkCopied[lang] : messages.copyLink[lang]}</button>
+                </div>
+                <div className="details-contents">
+                  {
+                    howDone && howDone.length ?
+                      <section className="details-contents-section">
+                        <h3>{messages.howDone[lang]}</h3>
+                        <Md>
+                          {howDone.replace(/<br\/>/g, '\n\n')}
+                        </Md>
+                      </section>
+                      : null
+                  }
+                  {
+                    howRead && howRead.length ?
+                      <section className="details-contents-section">
+                        <h3>{messages.howRead[lang]}</h3>
+                        <Md>
+                          {howRead.replace(/<br\/>/g, '\n\n')}
+                        </Md>
+                      </section>
+                      : null
+                  }
+                </div>
               </div>
-              <div className="copy-link-container">
-                <button onClick={handleCopyClick}>{copyClicked ? messages.linkCopied[lang] : messages.copyLink[lang]}</button>
+              <div className="visualization-wrapper">
+                <VisualizationController lang={lang} atlasMode activeVisualization={visualization} />
               </div>
-              <div className="details-contents">
-                {
-                  howDone && howDone.length ?
-                    <section className="details-contents-section">
-                      <h3>{messages.howDone[lang]}</h3>
-                      <Md>
-                        {howDone.replace(/<br\/>/g, '\n\n')}
-                      </Md>
-                    </section>
-                    : null
-                }
-                {
-                  howRead && howRead.length ?
-                    <section className="details-contents-section">
-                      <h3>{messages.howRead[lang]}</h3>
-                      <Md>
-                        {howRead.replace(/<br\/>/g, '\n\n')}
-                      </Md>
-                    </section>
-                    : null
-                }
-              </div>
-            </div>
-            <div className="visualization-wrapper">
-              <VisualizationController lang={lang} atlasMode activeVisualization={visualization} />
             </div>
           </div>
           : null

@@ -19,7 +19,6 @@ const PrincipalVisualizationPart3 = ({
   atlasMode 
 }) => {
   const width = fixSvgDimension(inputWidth);
-  const ANIMATION_DURATION = 1;
   const height = atlasMode ? window.innerHeight : fixSvgDimension(inputHeight);
   const [currentMapTemplate, setCurrentMapTemplate] = useState('France');
   useEffect(() => {
@@ -34,7 +33,7 @@ const PrincipalVisualizationPart3 = ({
         default:
           break;
       }
-    }, ANIMATION_DURATION)
+    })
   }, [step])
   return (
     <div className={cx("PrincipalVisualizationPart3", { 'is-atlas-mode': atlasMode })} style={{ height: atlasMode ? undefined : height }}>

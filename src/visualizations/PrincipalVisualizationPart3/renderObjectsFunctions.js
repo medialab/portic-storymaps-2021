@@ -97,9 +97,9 @@ function Step3Object({
     else if ((datum.name === 'Saint-Martin-de-Ré')) {
       noOverlapTransform = `translate(${x - width * 0.06},${y})`
     }
-    else if ((datum.name === `Les Sables-d'Olonne`)) {
-      noOverlapTransform = `translate(${x + width * 0.1},${y + height * 0.15})`
-    }
+    // else if ((datum.name === `Les Sables-d'Olonne`)) {
+    //   noOverlapTransform = `translate(${x + width * 0.1},${y + height * 0.15})`
+    // }
   }
   
 

@@ -61,7 +61,7 @@ const Step2 = ({
                   }
                 }}
                 title={'...comparé à celui de l\'amirauté de Nantes'}
-                ratio={1}
+                ratio={0.7}
                 spatialize
               />
             </div>
@@ -128,7 +128,7 @@ const Step2 = ({
                 }
               }}
               margins={{
-                bottom: 20
+                bottom: 40
               }}
               tooltip={d => d.metrics_type === 'PageRank' ? 'Le PageRank est une mesure de centralité qui consiste à donner à chaque port un score proportionnel à la somme des pageranks des ports avec lesquels il a des voyages en commun.' : 'La centralité intermédiaire est une mesure de centralité égale au nombre de fois où un port donné est sur le chemin le plus court entre deux autres ports du réseau des voyages.'}
             />

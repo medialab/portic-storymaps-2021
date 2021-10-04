@@ -53,7 +53,7 @@ function App() {
     // loading all datasets from the atlas
     // @todo do this on a page-to-page basis if datasets happens to be too big/numerous
     const datasetsNames = uniq(visualizationsList.filter(d => d.datasets).reduce((res, d) => [...res, ...d.datasets.split(',').map(d => d.trim())], []));
-    console.groupCollapsed('loading data');
+    // console.groupCollapsed('loading data');
     datasetsNames.reduce((cur, datasetName, datasetIndex) => {
       return cur.then((res) => new Promise((resolve, reject) => {
         const url = datasetName ? `${process.env.PUBLIC_URL}/data/${datasetName}` : undefined;
@@ -64,7 +64,7 @@ function App() {
               let status = progressEvent.loaded / progressEvent.total;
               status = status > 1 ? 1 : status;
               const globalFraction = datasetIndex / datasetsNames.length;
-              console.info(parseInt(globalFraction * 100) + '%')
+              // console.info(parseInt(globalFraction * 100) + '%')
               setLoadingFraction(globalFraction + status / datasetsNames.length);
             }
           })
@@ -89,7 +89,7 @@ function App() {
       }))
     }, Promise.resolve({}))
       .then(newDatasets => {
-        console.groupEnd('loading data');
+        // console.groupEnd('loading data');
         setLoadingFraction(1);
         setDatasets(newDatasets)
       })

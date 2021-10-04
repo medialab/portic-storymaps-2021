@@ -4,13 +4,21 @@ import { generatePalette } from '../../helpers/misc';
 
 const Legend = ({
   layers,
-  position
+  position,
+  layerFilter
 }) => {
   return (
     <div className={`Legend ${typeof position === 'string' ? position : ''}`}>
       <h5 className="legend-main-title">Légende</h5>
       {
-        layers.map((layer, id) => {
+        layers
+        .filter(l => {
+          if (typeof layerFilter === 'function') {
+            return layerFilter(l);
+          }
+          return true;
+        })
+        .map((layer, id) => {
           let hasSize;
           let hasColors;
           let colorModalities;

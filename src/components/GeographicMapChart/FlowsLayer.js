@@ -267,6 +267,7 @@ const FlowsLayer = ({
 
             return (
               <FlowGroup
+                key={index}
                 {
                 ...{
                   arrowSize,

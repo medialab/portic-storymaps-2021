@@ -1,43 +1,13 @@
-// #menu-outer {
-// 	height: 84px;
-// 	/* background: url(images/bar-bg.jpg) repeat-x; */
-// }
 
-// .table {
-// 	display: table;   /* Allow the centering to work */
-// 	margin: 0 auto;
-// }
-
-// ul#horizontal-list {
-// min-width: 696px;
-// list-style: none;
-// padding-top: 20px;
-// }
-// ul#horizontal-list li {
-// 	display: inline;
-// }
 
 .GeographicMapChart {
-	// style: { border: 'transparent' }
-
 	.PointsLayer {
 		.point-group {
-      // opacity: 1;
-      // transition: .5s all ease;
 			circle {
 				fill : grey;
         opacity: .9;
 			}
 		}
-    // following is commented because using react-spring
-    // &:hover {
-    //   .point-group {
-    //     opacity: .1;
-    //     &:hover {
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
 	}
 
   .FlowsLayer {
@@ -85,6 +55,7 @@
 }
 
 .GeographicMapChartWrapper {
+  position: relative;
   .visualization-title {
     position: absolute;
     left: 1rem;

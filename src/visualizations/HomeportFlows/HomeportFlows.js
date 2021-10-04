@@ -6,7 +6,6 @@ const HomeportFlows = ({
   atlasMode,
   dimensions,
 }) => {
-  // const [currentProjectionTemplate, setCurrentProjectionTemplate] = useState('World');
   const totalHeight = atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height);
   return (
     <div className="HomeportFlows">
@@ -46,18 +45,16 @@ const HomeportFlows = ({
               color: {
                 field: 'category',
                 title: 'Port de départ',
-                // palette: colorPalettes.provinces,
-                // labelsColor: props.atlasMode ? undefined : 'white'
               },
-              // tooltip: d => `${d.rawSize} départs de navires ont été observés par le port de ${d.label} en 1789`,
               label: {
                 field: 'port_dep',
-                // position: 'left'
               }
             },
           ]}
           projectionTemplate={'coast from Nantes to Bordeaux'}
           width={fixSvgDimension(dimensions.width / 2)}
+          withLegend={'bottom left'}
+          legendLayerFilter={l => l.type === 'flows'}
           height={totalHeight}
         />
       </div>
@@ -66,13 +63,8 @@ const HomeportFlows = ({
           layers={[
             {
               type: 'choropleth',
-              // data: datasets['world_test.geojson'],
               data: datasets['map_backgrounds/map_france_1789.geojson'], // currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
-              // color:{
-              //   field: 'shortname',
-              //   palette: colorPalettes.provinces
-              // }
             },
             {
               type: 'flows',
@@ -98,13 +90,8 @@ const HomeportFlows = ({
           layers={[
             {
               type: 'choropleth',
-              // data: datasets['world_test.geojson'],
               data: datasets['map_backgrounds/map_world_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
-              // color:{
-              //   field: 'shortname',
-              //   palette: colorPalettes.provinces
-              // }
             },
             {
               type: 'flows',
@@ -125,20 +112,8 @@ const HomeportFlows = ({
           projectionTemplate={'World'}
           width={fixSvgDimension(dimensions.width / 2)}
           height={totalHeight / 2}
-          withLegend={'bottom left'}
         />
       </div>
-      {/* <div
-        style={{
-          position: 'absolute',
-          right: '1rem',
-          bottom: '1rem'
-        }}
-      >
-        <button onClick={() => setCurrentProjectionTemplate(currentProjectionTemplate === 'World' ? 'France' : 'World')}>
-          Monde/France
-        </button>
-      </div> */}
     </div>
   )
 }

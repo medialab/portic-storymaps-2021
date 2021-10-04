@@ -49,53 +49,16 @@ const FlowGroup = ({
       setIsInited(true)
     })
   }, []);
-  let path = `M ${inputXDep} ${inputYDep} L ${inputXDest} ${inputYDest}`;
-  // let cp1X = 0, cp1Y = 0, cp2X = 0, cp2Y = 0;
-  // left to right
-  // if (inputXDest > inputXDep) {
-  //   cp1Y = inputYDep;
-  //   cp2Y = inputYDest;
-  //   cp1X = inputXDep - Math.log(inputXDest - inputXDep) // inputXDest + (inputXDest - inputXDep) / 2;
-  //   cp2X = inputXDep - Math.log(inputXDest - inputXDep) // inputXDest + (inputXDest - inputXDep) / 2;
-  //   // @todo clean that someday
-  //   if (inputYDest > height / 2 && projectionTemplate === "World") {
-  //     cp1X -= width * .3;
-  //     cp2X -= width * .3;
-  //   }
-  //   // top to bottom
-  //   if (inputYDest > inputYDep) {
-  //     if (projectionTemplate === 'France') {
-  //       cp1X -= width;
-  //       cp2X -= width;
-  //     }
-  //     path = `M ${inputXDep} ${inputYDep} C ${cp1X}, ${cp1Y} ${cp2X}, ${cp2Y} ${inputXDest}, ${inputYDest}`;
-  //     // bottom to top
-  //   } else {
-  //     // cp2X = inputXDest;
-  //     cp1X = inputXDep - (inputXDest - inputXDep) * 2.5;
-  //     cp2X = inputXDep - (inputXDest - inputXDep) * 2.5;
-  //     cp1Y = inputYDep;
-  //     cp2Y = inputYDest;
-  //     path = `M ${inputXDep} ${inputYDep} C ${cp1X}, ${cp1Y} ${cp2X}, ${cp2Y} ${inputXDest}, ${inputYDest}`;
-  //   }
-  //   // right to left
-  // } else {
-  //   // top to bottom
-  //   if (inputYDest > inputYDep) {
-  //     cp1X = inputXDest + (width / 4 + inputXDest > inputXDep ? 0 : width / 4);
-  //     cp1Y = inputYDep;
+  let actualXDep = inputXDep;
+  let actualYDep = inputYDep;
+  let actualXDest = inputXDest;
+  let actualYDest = inputYDest;
 
-  //     cp2X = inputXDest + (width / 4 + inputXDest > inputXDep ? 0 : width / 4);
-  //     cp2Y = inputYDep;
+  // if (actualXDest < 0 || actualXDest > width) {
 
-  //     path = `M ${inputXDep} ${inputYDep} C ${cp1X}, ${cp1Y} ${cp2X}, ${cp2Y} ${inputXDest}, ${inputYDest}`;
-  //     // bottom to top
-  //   } else {
-
-
-  //     // path = `M ${inputXDep} ${inputYDep} C ${cp1X}, ${cp1Y} ${cp2X}, ${cp2Y} ${inputXDest}, ${inputYDest}`;
-  //   }
   // }
+  let path = `M ${actualXDep} ${actualYDep} L ${actualXDest} ${actualYDest}`;
+
   const { d, labelDepTransform, labelDestTransform, strokeWidth } = useSpring({
     to: {
       xDep: inputXDep,
@@ -104,9 +67,9 @@ const FlowGroup = ({
       yDest: inputYDest,
       d: path,
       strokeWidth: fixSvgDimension(inputStrokeWidth),
-      labelDepTransform: `translate(${inputXDep}, ${inputYDep})`,
-      labelDestTransform: `translate(${inputXDest}, ${inputYDest})`,
-      arrowPath: `M ${inputXDep} ${inputYDep} L ${inputXDest} ${inputYDest}`
+      labelDepTransform: `translate(${actualXDep}, ${actualYDep})`,
+      labelDestTransform: `translate(${actualXDest}, ${actualYDest})`,
+      arrowPath: `M ${actualXDep} ${actualYDep} L ${actualXDest} ${actualYDest}`
     },
     immediate: !isInited
   });
@@ -162,8 +125,8 @@ const FlowGroup = ({
           <>
             <animated.g className={cx("label", {'is-always-visible': layer.label.alwaysVisible})} transform={labelDepTransform}>
               <text
-                textAnchor={inputXDest < inputXDep ? 'start' : 'end'}
-                x={inputXDest < inputXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
+                textAnchor={actualXDest < actualXDep ? 'start' : 'end'}
+                x={actualXDest < actualXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
                 y={fontSize * .3}
                 fontSize={fontSize}
               >
@@ -172,8 +135,8 @@ const FlowGroup = ({
             </animated.g>
             <animated.g className={cx("label", {'is-always-visible': layer.label.alwaysVisible})} transform={labelDestTransform}>
               <text
-                textAnchor={inputXDest > inputXDep ? 'start' : 'end'}
-                x={inputXDest > inputXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
+                textAnchor={actualXDest > actualXDep ? 'start' : 'end'}
+                x={actualXDest > actualXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
                 y={fontSize * .3}
                 fontSize={fontSize}
               >

@@ -7,6 +7,17 @@ const HomeportFlows = ({
   dimensions,
 }) => {
   const totalHeight = atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height);
+  const hotFixedData = datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv']
+  .map(datum => {
+    if (datum.port_dest.includes(`Côte d'Or`)) {
+      return {
+        ...datum,
+        latitude_dest: 11.7482151,
+        longitude_dest: -0.6107851
+      }
+    }
+    return datum;
+  })
   return (
     <div className="HomeportFlows">
       <div className="column">
@@ -68,7 +79,7 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: hotFixedData,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
@@ -95,7 +106,7 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: hotFixedData,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'

@@ -63,7 +63,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
                     <section className="details-contents-section">
                       <h3>{messages.howDone[lang]}</h3>
                       <Md>
-                        {howDone}
+                        {howDone.replace(/<br\/>/g, '\n\n')}
                       </Md>
                     </section>
                     : null
@@ -73,7 +73,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
                     <section className="details-contents-section">
                       <h3>{messages.howRead[lang]}</h3>
                       <Md>
-                        {howRead}
+                        {howRead.replace(/<br\/>/g, '\n\n')}
                       </Md>
                     </section>
                     : null

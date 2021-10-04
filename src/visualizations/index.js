@@ -342,11 +342,11 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               {
                 type: 'points',
                 data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country === 'France'),
-                color: {
-                  field: 'country',
-                  title: 'Pays',
-                  palette: colorPalettes.franceAlone
-                },
+                // color: {
+                //   field: 'country',
+                //   title: 'Pays',
+                //   palette: colorPalettes.franceAlone
+                // },
                 size: {
                   field: 'tonnage',
                   title: 'tonnage cumulé',
@@ -373,11 +373,11 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               {
                 type: 'points',
                 data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country !== 'France'),
-                color: {
-                  field: 'country',
-                  title: 'Pays',
-                  // labelsColor: props.atlasMode ? undefined : 'white'
-                },
+                // color: {
+                //   field: 'country',
+                //   title: 'Pays',
+                //   // labelsColor: props.atlasMode ? undefined : 'white'
+                // },
                 size: {
                   field: 'tonnage',
                   title: 'tonnage cumulé',

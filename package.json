@@ -1,7 +1,7 @@
 {
   "name": "portic-storymaps-2021",
   "version": "0.1.0",
-  "private": true,
+  "license": "GPL-3.0",
   "repository": "https://github.com/medialab/portic-storymaps-2021",
   "homepage": "https://medialab.github.io/portic-storymaps-2021",
   "contributors": [

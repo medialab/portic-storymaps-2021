@@ -741,10 +741,15 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
 with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
   flows = csv.DictReader(f)
   flows_from_marennes = []
+  flows_from_la_rochelle_to_pasa = []
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for flow in flows:
     if flow['departure'] == 'Marennes':
       flows_from_marennes.append(flow)
-  print('relevant flows for la Marennes', len(flows_from_marennes))
+    elif flow['departure'] == 'La Rochelle' and flow['departure_function'] == 'O' and flow['destination_admiralty'] in admiralties:
+      flows_from_la_rochelle_to_pasa.append(flow)
+  print('relevant flows for Marennes', len(flows_from_marennes))
+  print('relevant flows for La Rochelle', len(flows_from_la_rochelle_to_pasa))
   countries = {}
   admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for flow in flows_from_marennes:
@@ -769,6 +774,25 @@ with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
   countries = [payload for _name, payload in countries.items()]
   compute_out_with_salt_from_marennes(flows_from_marennes)
   write_csv("sorties-de-marennes/sorties-de-marennes.csv", countries)
+  # computing destinations from la rochelle
+  ports = {}
+  for flow in flows_from_la_rochelle_to_pasa:
+    tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
+    port = flow['destination_fr']
+    if port not in ports:
+      ports[port] = {
+        "port": port,
+        "nb_flows": 1,
+        "tonnage": tonnage
+      }
+    else:
+      ports[port]["nb_flows"] += 1
+      ports[port]["tonnage"] += tonnage
+  ports = [payload for _name, payload in ports.items()]
+  write_csv("ports-from-larochelle-to-pasa/ports-from-larochelle-to-pasa.csv", ports)
+
+
+
 
 
 with open('../data/navigo_raw_flows_1787.csv', 'r') as f:

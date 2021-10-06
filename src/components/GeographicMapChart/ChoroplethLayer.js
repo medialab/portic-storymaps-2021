@@ -25,15 +25,24 @@ const GeoPart = ({ d: initialD, projection, project, palette, layer, width, heig
   });
 
   // @todo do this cleanly (removing out of bound objects to improve performance)
-  // const boundsAbs = geoPath().bounds(initialD);
-  // const boundsRel = [projection(boundsAbs[0]), projection(boundsAbs[1])];
-  // let outOfBounds = boundsRel[0][0] > width;
+  const boundsAbs = geoPath().bounds(initialD);
+  const [[x1, y1], [x2, y2]] = [projection(boundsAbs[0]), projection(boundsAbs[1])];
+  const [xMin, xMax] = [x1, x2].sort((a, b) => {
+    if (a > b) return 1;
+    return -1;
+  });
+  const [yMin, yMax] = [y1, y2].sort((a, b) => {
+    if (a > b) return 1;
+    return -1;
+  });
+  const outOfBounds = (isNaN(xMin) || isNaN(xMax) || isNaN(yMin) || isNaN(yMax)) ? false : xMin > width || yMin > height || xMax < 0 || yMax < 0;
 
   useEffect(() => {
     ReactTooltip.rebuild();
   });
-  return (
+  return outOfBounds ? null : (
     <animated.path
+      title={initialD.properties.shortname}
       d={animationProps.d}
       className="geopart"
       data-tip={layer.tooltip ? layer.tooltip(initialD) : undefined}
@@ -76,7 +85,9 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
     <>
       <g className={cx("ChoroplethLayer", { 'reverse-colors': reverseColors })}>
         {
-          layer.data.features.map((d, i) => {
+          layer.data.features
+          .filter(d => d.geometry)
+          .map((d, i) => {
             return (
               <GeoPart 
                 key={d.properties.id || d.properties.name || i} 

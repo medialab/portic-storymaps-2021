@@ -162,7 +162,7 @@ const FlowsLayer = ({
   projection,
   width,
   height,
-  projectionTemplate
+  projectionTemplate,
 }) => {
 
   /**
@@ -227,7 +227,14 @@ const FlowsLayer = ({
             const [xDep, yDep] = projection([+longitude_dep, +latitude_dep]);
             const [xDest, yDest] = projection([+longitude_dest, +latitude_dest]);
             // console.log("[xDep, yDep] / [xDest, yDest] : ", [xDep, yDep], " / ", [xDest, yDest]);
-
+            if (layer.hideOverflowingFlows) {
+              if (xDep < 0 || xDep > width || xDest < 0 || xDest > width
+                || yDep < 0 || yDep > height || yDest < 0 || yDest > height
+              ) {
+                console.log('out of bounds')
+                return null;
+              }
+            }
             return (
               <FlowGroup
                 key={index}

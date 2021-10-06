@@ -29,7 +29,6 @@ const HomeportFlows = ({
               data: datasets['map_backgrounds/map_france_1789.geojson'],// currentProjectionTemplate === 'World' ? datasets['map_world_1789.geojson'] : datasets['map_france_1789.geojson'],
               reverseColors: atlasMode ? undefined : true,
             },
-
             {
               type: 'flows',
               data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
@@ -43,7 +42,8 @@ const HomeportFlows = ({
               color: {
                 field: 'category',
                 title: 'Port de départ'
-              }
+              },
+              hideOverflowingFlows: true
             },
             {
               type: 'points',
@@ -59,7 +59,7 @@ const HomeportFlows = ({
               },
               label: {
                 field: 'port_dep',
-              }
+              },
             },
           ]}
           projectionTemplate={'coast from Nantes to Bordeaux'}
@@ -80,6 +80,7 @@ const HomeportFlows = ({
             {
               type: 'flows',
               data: hotFixedData,
+              hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
@@ -107,6 +108,7 @@ const HomeportFlows = ({
             {
               type: 'flows',
               data: hotFixedData,
+              hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'

@@ -73,6 +73,7 @@ const CircularAlluvialChart = ({
   displaceHorizontalLabels = true,
   tooltips,
   lang,
+  align = 'left'
 }) => {
   const titleRef = useRef(null);
   let height = titleRef.current ? inputHeight - titleRef.current.getBoundingClientRect().height : inputHeight;
@@ -201,7 +202,7 @@ const CircularAlluvialChart = ({
         className={cx("CircularAlluvialChart", { 'has-filters': filters.length, 'has-highlight': highlightedFlow || highlightedFilter })}
       >
         <G  transform={`translate(${width * .05}, ${height * .05})scale(.9)`}>
-        <G className="background-marks" transform={`translate(${width / 2 - smallestDimension / 2}, 0)`} >
+        <G className="background-marks" transform={`translate(${align === 'left' ?  0 : width / 2 - smallestDimension / 2}, 0)`} >
           <Line x1={0} x2={smallestDimension} y1={smallestDimension / 2} y2={smallestDimension / 2} />
           {
             debug ?
@@ -245,7 +246,8 @@ const CircularAlluvialChart = ({
           </Text>
         </G>
         <G 
-        transform={`translate(${width / 2 - smallestDimension / 2}, 0)`}>
+          transform={`translate(${align === 'left' ? 0 : width / 2 - smallestDimension / 2}, 0)`}
+        >
           {
             data
               .map((step, stepIndex) => {
@@ -597,7 +599,7 @@ const CircularAlluvialChart = ({
                             >
                               <Text
                                 style={{
-                                  fontSize: labelFontSize,
+                                  fontSize: stepIndex === 0 || [2, 3, 5].find(index => index === stepIndex) ? labelFontSize * .75 : labelFontSize,
                                   
                                 }}
                               >

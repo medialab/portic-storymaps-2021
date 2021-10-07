@@ -58,7 +58,7 @@ const PointGroup = ({
           className="marker"
         />
         {
-          layer.size.displayMetric && labelSize > 6 ?
+          layer.size && layer.size.displayMetric && labelSize > 6 ?
             <text
               x={0}
               y={labelSize / 4}
@@ -177,7 +177,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
             color: layer.color !== undefined ? datum[layer.color.field] : 'default',
             size: (layer.size !== undefined && layer.size.field !== undefined) ? isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field] : 0
           }
-        } else {
+        } else if (layer.size !== undefined) {
           coordsMap[mark].size += (isNaN(+datum[layer.size.field]) ? 0 : +datum[layer.size.field])
         }
       })
@@ -220,7 +220,7 @@ const PointsLayer = ({ layer, projection, width, height }) => {
         color: layer.color !== undefined ? palette[datum.color] : 'grey',
         size: layer.size !== undefined ? layer.size.custom !== undefined ? sizeCoef : sizeScale(datum.size) : width / 100,
         rawSize: datum.size,
-        labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width / 100
+        labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width * height / 30000
       }))
 
       // console.log("grouped (PointsLayer): ", grouped)

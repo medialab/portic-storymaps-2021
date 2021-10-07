@@ -4,7 +4,7 @@ import { scaleLinear } from 'd3-scale';
 import cx from 'classnames';
 import { max } from 'd3-array';
 import { uniq } from 'lodash';
-import { fixSvgDimension, generatePalette } from '../../helpers/misc';
+import { cartesian2Polar, fixSvgDimension, generatePalette, polarToCartesian } from '../../helpers/misc';
 
 import { useSpring, animated } from 'react-spring'
 
@@ -49,14 +49,14 @@ const FlowGroup = ({
       setIsInited(true)
     })
   }, []);
+  const arrowLength = fixSvgDimension(inputStrokeWidth) * 3;
+  
+  const {distance, radians} = cartesian2Polar(inputXDest - inputXDep, inputYDest - inputYDep);
+  const [relativeXDest, relativeYDest] = polarToCartesian(distance - arrowLength, radians);
+  let actualXDest = inputXDep + relativeXDest;
+  let actualYDest = inputYDep + relativeYDest;
   let actualXDep = inputXDep;
   let actualYDep = inputYDep;
-  let actualXDest = inputXDest;
-  let actualYDest = inputYDest;
-
-  // if (actualXDest < 0 || actualXDest > width) {
-
-  // }
   let path = `M ${actualXDep} ${actualYDep} L ${actualXDest} ${actualYDest}`;
 
   const { d, labelDepTransform, labelDestTransform, strokeWidth } = useSpring({
@@ -67,45 +67,50 @@ const FlowGroup = ({
       yDest: inputYDest,
       d: path,
       strokeWidth: fixSvgDimension(inputStrokeWidth),
-      labelDepTransform: `translate(${actualXDep}, ${actualYDep})`,
-      labelDestTransform: `translate(${actualXDest}, ${actualYDest})`,
+      labelDepTransform: `translate(${inputXDep}, ${inputYDep})`,
+      labelDestTransform: `translate(${inputXDest}, ${inputYDest})`,
       arrowPath: `M ${actualXDep} ${actualYDep} L ${actualXDest} ${actualYDest}`
     },
     immediate: !isInited
   });
   const fontSize = window.innerWidth * 0.01;
+
+  const alwaysShowDestinationLabel = layer.label && typeof layer.label.showDestinationLabel === 'function' &&
+  layer.label.showDestinationLabel(datum)
+  const alwaysShowDepartureLabel = layer.label && typeof layer.label.showDepartureLabel === 'function' &&
+  layer.label.showDepartureLabel(datum)
+
+  let depLabelPosition = actualXDest < actualXDep ? 'right' : 'left';
+  let destLabelPosition = actualXDest > actualXDep  ? 'right' : 'left';
+  if (actualXDest < width * .26) {
+    destLabelPosition = 'right';
+  }
+  if (actualXDest > width * .75) {
+    destLabelPosition = 'left';
+  }
+
   return (
     <g className="flow-group">
       <defs>
-        <marker id={`triangle-${footprint}`} viewBox="0 0 10 10"
-          refX="1" refY="5"
-          markerUnits="strokeWidth"
-          markerWidth={arrowSize} markerHeight={arrowSize}
+        <marker 
+          id={`triangle-${footprint}`} 
+          viewBox={`0 0 ${arrowLength} ${arrowLength}`}
+          // refX="1" 
+          // refY="5"
+          refY={arrowLength / 2}
           orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 Z" fill={color} />
+          <path d={`M 0 0 L ${arrowLength} ${arrowLength / 2} L 0 ${arrowLength} Z`} fill={color} />
         </marker>
+        {/* <marker id={`triangle-${footprint}`} viewBox="0 0 10 10"
+          // refX="1" 
+          // refY="5"
+          refX="0"
+          refY="5"
+          markerUnits="strokeWidth"
+          orient="auto">
+          <path d={`M 0 0 L 10 5 L 0 10 Z`} fill={color} />
+        </marker> */}
       </defs>
-      {/* <animated.line
-      x1={xDep}
-      y1={yDep}
-      x2={xDest}
-      y2={yDest}
-      stroke="blue"
-    /> */}
-      {/* <circle
-        r={4}
-        cx={cp1X}
-        cy={cp1Y}
-        r={2}
-        fill="red"
-      />
-      <circle
-        r={4}
-        cx={cp2X}
-        cy={cp2Y}
-        r={5}
-        fill="green"
-      /> */}
       <animated.path
         d={d}
         strokeWidth={strokeWidth * 3}
@@ -123,20 +128,20 @@ const FlowGroup = ({
       {
         layer.label && layer.label.fields ?
           <>
-            <animated.g className={cx("label", {'is-always-visible': layer.label.alwaysVisible})} transform={labelDepTransform}>
+            <animated.g className={cx("label", {'is-always-visible': alwaysShowDepartureLabel})} transform={labelDepTransform}>
               <text
-                textAnchor={actualXDest < actualXDep ? 'start' : 'end'}
-                x={actualXDest < actualXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
+                textAnchor={depLabelPosition === 'right' ? 'start' : 'end'}
+                x={depLabelPosition === 'right' ? 10 + inputStrokeWidth / 2 : -10 - inputStrokeWidth / 2}
                 y={fontSize * .3}
                 fontSize={fontSize}
               >
                 {datum[layer.label.fields[0]]}
               </text>
             </animated.g>
-            <animated.g className={cx("label", {'is-always-visible': layer.label.alwaysVisible})} transform={labelDestTransform}>
+            <animated.g className={cx("label", {'is-always-visible': alwaysShowDestinationLabel})} transform={labelDestTransform}>
               <text
-                textAnchor={actualXDest > actualXDep ? 'start' : 'end'}
-                x={actualXDest > actualXDep ? 10 + inputStrokeWidth * 2 : -10 - inputStrokeWidth}
+                textAnchor={destLabelPosition === 'right' ? 'start' : 'end'}
+                x={destLabelPosition === 'right' ? 10 + inputStrokeWidth / 2 : -10 - inputStrokeWidth / 2}
                 y={fontSize * .3}
                 fontSize={fontSize}
               >
@@ -231,7 +236,6 @@ const FlowsLayer = ({
               if (xDep < 0 || xDep > width || xDest < 0 || xDest > width
                 || yDep < 0 || yDep > height || yDest < 0 || yDest > height
               ) {
-                console.log('out of bounds')
                 return null;
               }
             }

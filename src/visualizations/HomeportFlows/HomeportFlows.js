@@ -12,7 +12,7 @@ const HomeportFlows = ({
     if (datum.port_dest.includes(`Côte d'Or`)) {
       return {
         ...datum,
-        latitude_dest: 11.7482151,
+        latitude_dest: 5,
         longitude_dest: -0.6107851
       }
     }
@@ -38,29 +38,17 @@ const HomeportFlows = ({
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
+                // @todo this is a dirty fix for labels redundance, needs refacto
+                showDestinationLabel: d => {
+                  return +d['tonnages_cumulés'] >= 500 && d['port_dep'] !== 'Nantes' && d['port_dep'] !== 'Bordeaux';
+                },
               },
               color: {
                 field: 'category',
                 title: 'Port de départ'
               },
               hideOverflowingFlows: true
-            },
-            {
-              type: 'points',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv']
-                .map(d => ({ ...d, longitude: d.longitude_dep, latitude: d.latitude_dep })),
-              size: {
-                field: 'tonnages_cumulés',
-                title: 'tonnage cumulé'
-              },
-              color: {
-                field: 'category',
-                title: 'Port de départ',
-              },
-              label: {
-                field: 'port_dep',
-              },
-            },
+            }
           ]}
           projectionTemplate={'coast from Nantes to Bordeaux'}
           width={fixSvgDimension(dimensions.width / 2)}
@@ -79,14 +67,20 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: hotFixedData,
+              data: hotFixedData.filter(d => d.port_dest_category !== 'pasa'),
               hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
               },
               label: {
-                fields: ['port_dep', 'port_dest']
+                fields: ['port_dep', 'port_dest'],
+                showDestinationLabel: d => {
+                  return +d.nb_flows >= 3;
+                },
+                // showDepartureLabel: d => {
+                //   return d.port_dep === 'La Rochelle';
+                // }
               },
               color: {
                 field: 'category',
@@ -107,14 +101,15 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: hotFixedData,
+              data: hotFixedData.filter(d => d.port_dest_category === 'étranger'),
               hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
               },
               label: {
-                fields: ['port_dep', 'port_dest']
+                fields: ['port_dep', 'port_dest'],
+                showDestinationLabel: d => true
               },
               color: {
                 field: 'category',

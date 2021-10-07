@@ -798,6 +798,7 @@ with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
 with open('../data/navigo_raw_flows_1787.csv', 'r') as f:
   flows = csv.DictReader(f)
   flows_of_boats_from_larochelle = []
+  admiralties = ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
   for flow in flows:
     if flow['homeport'] == 'La Rochelle':
       flows_of_boats_from_larochelle.append(flow)
@@ -810,6 +811,7 @@ with open('../data/navigo_raw_flows_1787.csv', 'r') as f:
       unique_flows[footprint] = {
           'port_dep':flow['departure_fr'],
           'port_dest':flow['destination_fr'],
+          'port_dest_category': 'pasa' if (flow['destination_admiralty'] in admiralties) else 'France' if (flow['destination_state_1789_fr'] == 'France' and flow['destination_fr'] not in ['Saint-Marc', 'Saint-Pierre-et-Miquelon', 'Sénégal', 'île de France / île Maurice']) else 'étranger',
           'latitude_dep':flow['departure_latitude'],
           'longitude_dep':flow['departure_longitude'],
           'latitude_dest':flow['destination_latitude'],

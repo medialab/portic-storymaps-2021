@@ -1141,6 +1141,7 @@ button.is-active {
 .Atlas {
   padding: 0 $medium-gutter * 6 0 $medium-gutter * 3.8;
   width: 100%;
+  min-width: 100vw;
   box-sizing: border-box;
   .visualizations-list {
     padding: 0;

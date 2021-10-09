@@ -43,8 +43,10 @@ def prepare_contents(str):
       line = ''
     elif line.startswith('Published by <a href="//docs.google.com/"'):
       line = ''
-    # if ('uniformisation des variations orthographiques' in line):
-    #   print(line)
+    # if not in caller
+    else:
+      line = re.sub(r"\"([^\"]+)\"", r"« \1 »", line)
+      line = re.sub(r"\“([^\”]+)\”", r"« \1 »", line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)&amp;sa=([^)]*)\)", r"(\1)", line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)\)", r"(\1)", line)
     # convert all links to target blank

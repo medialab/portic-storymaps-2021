@@ -31,17 +31,13 @@ const HomeportFlows = ({
             },
             {
               type: 'flows',
-              data: datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv'],
+              data: hotFixedData,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
-                // @todo this is a dirty fix for labels redundance, needs refacto
-                showDestinationLabel: d => {
-                  return +d['tonnages_cumulés'] >= 500 && d['port_dep'] !== 'Nantes' && d['port_dep'] !== 'Bordeaux';
-                },
               },
               color: {
                 field: 'category',
@@ -75,12 +71,6 @@ const HomeportFlows = ({
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
-                showDestinationLabel: d => {
-                  return +d.nb_flows >= 3;
-                },
-                // showDepartureLabel: d => {
-                //   return d.port_dep === 'La Rochelle';
-                // }
               },
               color: {
                 field: 'category',
@@ -102,14 +92,13 @@ const HomeportFlows = ({
             {
               type: 'flows',
               data: hotFixedData.filter(d => d.port_dest_category === 'étranger'),
-              hideOverflowingFlows: true,
+              // hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
                 title: 'Flèches dimensionnées par tonnage cumulé'
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
-                showDestinationLabel: d => true
               },
               color: {
                 field: 'category',

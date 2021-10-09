@@ -11,9 +11,18 @@
 	}
 
   .FlowsLayer {
+    .label {
+      text-shadow: -1px -1px 0 #FFF, 1px -1px 0 #FFF, -1px 1px 0 #FFF, 1px 1px 0 #FFF;
+      opacity: 0;
+      transition: .5s ease all;
+      &.is-visible {
+        opacity: 1;
+      }
+    }
     .flow-group {
       opacity: .8;
       transition: .5s ease all;
+      
       .label:not(.is-always-visible) {
         opacity: 0;
         transition: .5s ease all;
@@ -22,7 +31,7 @@
     &:hover {
       .flow-group {
         opacity: 0.1;
-        &:hover {
+        &.hovered {
           opacity: 1;
           .label {
             opacity: 1;

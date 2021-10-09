@@ -126,10 +126,21 @@
       }
     }
   }
+  &.is-screenshot-mode {
+    .radar-container {
+      top: 15vh;
+      display: flex;
+      justify-content: flex-end;
+      flex-flow: row;
+    }
+    .controls-container {
+      display: none;
+    }
+  }
   /**
    * Atlas mode
    */
-  &.is-atlas-mode {
+  &.is-atlas-mode:not(.is-screenshot-mode) {
     // height: 200vh;
     flex-flow: column nowrap;
     align-items: center;
@@ -157,4 +168,5 @@
       }
     }
   }
+  
 }

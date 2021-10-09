@@ -1318,6 +1318,7 @@ button.is-active {
       background: transparent;
       flex: 2;
       max-width: 70vw;
+      min-width: 70vw;
       position: relative;
       min-height: 50vh;
       box-sizing: border-box;
@@ -1343,12 +1344,15 @@ button.is-active {
       }
     }
     @include tablet {
-      flex-flow: column nowrap;
+      .lightbox-contents {
+        flex-flow: column nowrap;
+      } 
       .visualization-details {
         order: unset;
       }
       .visualization-wrapper {
         max-width: calc(100% - #{$medium-gutter});
+        min-width: unset;
       }
     }
   }
@@ -1580,7 +1584,11 @@ button.is-active {
   left: 0;
   top: 0;
   width: 100vw;
+  min-width: 100vw;
   z-index: 1000;
+  .visualization-title {
+    display: none;
+  }
   .VisualizationController {
     background: white;
     position: fixed;
@@ -1588,6 +1596,7 @@ button.is-active {
     left: 0;
     top: 0;
     width: 100vw;
+    min-width: 100vw;
     z-index: 1000;
     overflow: auto;
   }

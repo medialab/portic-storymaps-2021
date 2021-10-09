@@ -192,7 +192,7 @@ const FlowsLayer = ({
             destLabelPosition = 'left';
           }
 
-          const fontSize = window.innerWidth * 0.01;
+          const fontSize = width * 0.02;
 
           const depLabelTextAnchor = depLabelPosition === 'right' ? 'start' : 'end';
           const depLabelX = depLabelPosition === 'right' ? 10 : -10

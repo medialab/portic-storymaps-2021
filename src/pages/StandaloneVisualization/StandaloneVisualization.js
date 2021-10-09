@@ -8,7 +8,7 @@ const StandaloneVisualization = ({
   const visualization = visualizationsList.find(({id: thatId}) => thatId === id)
   return (
     <div className="StandaloneVisualization">
-      <VisualizationController lang={lang} atlasMode activeVisualization={visualization} />
+      <VisualizationController lang={lang} atlasMode screenshotMode activeVisualization={visualization} />
     </div>
   )
 }

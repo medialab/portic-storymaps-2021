@@ -8,7 +8,8 @@ import VisualizationContainer from '../../visualizations/index.js';
 const VisualizationController = ({
   lang,
   activeVisualization,
-  atlasMode
+  atlasMode,
+  screenshotMode
 }) => {
   const [dimensions, setDimensions] = useState({
     width: 1000,
@@ -28,7 +29,7 @@ const VisualizationController = ({
           {
             activeVisualization ?
             <>
-              <VisualizationContainer lang={lang} atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
+              <VisualizationContainer lang={lang} screenshotMode={screenshotMode} atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
             </>
             : null // <div>Pas de visualisation à afficher</div>
           }

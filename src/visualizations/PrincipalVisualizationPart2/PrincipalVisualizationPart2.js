@@ -14,6 +14,7 @@ const PrincipalVisualizationPart2 = ({
   datasets, 
   showOnlyToflit = false, 
   atlasMode, 
+  screenshotMode,
   highlight = 'toflit18',
   lang = 'fr',
   filter = 'aucun',
@@ -80,7 +81,7 @@ const PrincipalVisualizationPart2 = ({
   };
   return (
     <div 
-      className={cx("PrincipalVisualizationPart2", {'is-atlas-mode': atlasMode})}
+      className={cx("PrincipalVisualizationPart2", {'is-atlas-mode': atlasMode, 'is-screenshot-mode': screenshotMode})}
     >
      <div 
       className="circular-alluvial-container"

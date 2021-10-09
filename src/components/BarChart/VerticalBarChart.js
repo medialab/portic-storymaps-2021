@@ -249,7 +249,7 @@ const VerticalBarChart = ({
                           x={0} 
                           y={layout === 'stack' ? bandHeight / 4 : (bandHeight * items.length) / 2 /* + bandHeight * (items.length / 2)*/} 
                           width={margins.left} 
-                          height={rowHeight}
+                          height={rowHeight * 2}
                         >
                           <div className="vertical-bar-label">
                           <div>{typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}</div>

@@ -332,38 +332,40 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
     case 'sorties-de-marennes-avec-sel-destinations':
       return (
         <div>
-          <GeographicMapChart
-            title={'Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé'}
-            layers={[
-              {
-                type: 'choropleth',
-                data: datasets['map_backgrounds/map_france_1789.geojson']
-              },
-              {
-                type: 'points',
-                data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country === 'France'),
-                // color: {
-                //   field: 'country',
-                //   title: 'Pays',
-                //   palette: colorPalettes.franceAlone
-                // },
-                size: {
-                  field: 'tonnage',
-                  title: 'tonnage cumulé',
-                  // custom: '20'
+          <div style={{borderBottom: '2px solid #333'}}>
+            <GeographicMapChart
+              title={'Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé'}
+              layers={[
+                {
+                  type: 'choropleth',
+                  data: datasets['map_backgrounds/map_france_1789.geojson']
                 },
-                tooltip: d => `En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
-                label: {
-                  field: 'port',
-                  position: 'left'
-                },
-                stackLabels: true
-              }
-            ]}
-            projectionTemplate='France'
-            width={dimensions.width}
-            height={props.atlasMode ? window.innerHeight * .4 : dimensions.height / 2}
-          />
+                {
+                  type: 'points',
+                  data: datasets['sorties-de-marennes-avec-sel-destinations/sorties-de-marennes-avec-sel-destinations.csv'].filter(d => d.country === 'France'),
+                  // color: {
+                  //   field: 'country',
+                  //   title: 'Pays',
+                  //   palette: colorPalettes.franceAlone
+                  // },
+                  size: {
+                    field: 'tonnage',
+                    title: 'tonnage cumulé',
+                    // custom: '20'
+                  },
+                  tooltip: d => `En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
+                  label: {
+                    field: 'port',
+                    position: 'left'
+                  },
+                  stackLabels: true
+                }
+              ]}
+              projectionTemplate='France'
+              width={dimensions.width}
+              height={props.atlasMode ? window.innerHeight * .4 : dimensions.height / 2}
+            />
+          </div>
           <GeographicMapChart
             layers={[
               {

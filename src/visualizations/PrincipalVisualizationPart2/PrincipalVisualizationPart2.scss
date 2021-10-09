@@ -127,8 +127,13 @@
     }
   }
   &.is-screenshot-mode {
+
+    .circular-alluvial-container {
+      top: 10vh;
+    }
+
     .radar-container {
-      top: 15vh;
+      top: 25vh;
       display: flex;
       justify-content: flex-end;
       flex-flow: row;

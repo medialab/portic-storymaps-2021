@@ -1180,13 +1180,13 @@ button.is-active {
       transition: 0.5s ease all;
       opacity: 1;
       .thumbnail-container {
-        min-height: 15rem;
+        min-height: 12rem;
         padding: 0;
         margin: 0;
         background: white;
         img {
           max-width: 100%;
-          padding: $small-gutter;
+          padding: 0;
           box-sizing: border-box;
           opacity: .5;
           transition: .5s ease all;
@@ -1205,7 +1205,7 @@ button.is-active {
         margin-top: $small-gutter;
         padding-top: $small-gutter;
         border-top: 1px solid $color-text;
-        text-align: center;
+        // text-align: center;
         font-weight: 400;
       }
       &.is-active {

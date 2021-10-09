@@ -45,8 +45,10 @@ def prepare_contents(str):
       line = ''
     # if not in caller
     else:
-      line = re.sub(r"\"([^\"]+)\"", r"« \1 »", line)
-      line = re.sub(r"\“([^\”]+)\”", r"« \1 »", line)
+      line = re.sub(u"\"([^\"]+)\"", u"«\u00A0\\1\u00A0»", line)
+      line = re.sub(u"\“([^\”]+)\”", u"«\u00A0\\1\u00A0»", line)
+    # todo : this is a dirty fix
+    line = re.sub(r"http://toflit18.medialab.sciences-po.fr/\\#/", r"http://toflit18.medialab.sciences-po.fr/#/", line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)&amp;sa=([^)]*)\)", r"(\1)", line)
     line = re.sub(r"\(https://www\.google\.com/url\?q=([^)]*)\)", r"(\1)", line)
     # convert all links to target blank

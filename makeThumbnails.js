@@ -28,6 +28,7 @@ const Screenshot = async () => {
       const vis = visualizationsList[j];
       const url = `http://localhost:3000/${lang}/visualization/${vis.id}`;
       const path = `${PATH_BASE}/${vis.id}.png`;
+      console.log(+j + 1, '/', visualizationsList.length);
       console.log('snapshoting ', url);
       console.log('saving it to', path);
       await page.goto(url, {
@@ -41,13 +42,13 @@ const Screenshot = async () => {
         path,
         fullPage: true
       });
-      await page.waitForTimeout(1500);
-      // doing it twice
-      await page.screenshot({ 
-        path,
-        fullPage: true
-      });
-      await page.waitForTimeout(1000);
+      // await page.waitForTimeout(1500);
+      // // doing it twice
+      // await page.screenshot({ 
+      //   path,
+      //   fullPage: true
+      // });
+      // await page.waitForTimeout(1000);
     }
     
   }

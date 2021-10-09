@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 import cx from 'classnames';
@@ -28,7 +28,8 @@ function Atlas({
    */
    useEffect(() => {
     window.scrollTo(0, 0);
-  }, [])
+  }, []);
+  const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
   const shownVisualization = visualizationId && visualizationsMap[visualizationId];
   return (
@@ -42,9 +43,13 @@ function Atlas({
           {
             visualizations.map((visualization, visualizationIndex) => {
               const handleClick = () => {
-                history.push({
-                  pathname: `/${lang}/atlas/${visualization.id}`
-                })
+                setIsLoading(true);
+                setTimeout(() => {
+                  history.push({
+                    pathname: `/${lang}/atlas/${visualization.id}`
+                  });
+                  setIsLoading(false);
+                }, 100)
               }
               return (
                 <li
@@ -76,6 +81,11 @@ function Atlas({
             })
           }}
         />
+        <div className={cx("loader-indication-wrapper", {'is-loading': isLoading})}>
+          <div className="loader-indication-container">
+            Chargement de la visualisation
+          </div>
+        </div>
     </div>
   );
 }

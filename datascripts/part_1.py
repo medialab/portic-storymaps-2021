@@ -2,7 +2,7 @@ from collections import defaultdict
 import csv
 from typing import Counter, DefaultDict
 import os
-from lib import ensure_dir, logger
+from lib import ensure_dir, logger, write_readme
 
 
 logger.info('start | part 1 main viz datasets')
@@ -72,7 +72,36 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
           if flow['customs_region'] == "Bordeaux":
               Bordeaux_products[year][flow['product_revolutionempire']
                                       ][flow['export_import']] += float(flow['value'])
+  
+  logger.info('start | part 1 main viz : longitudinal data')
+  info = """
+# What is the data ? 
+
+toflit18 flows
+
+# What does a line correspond to ?
+
+One "direction des fermes" in particular during one year in particular, for which we compute exports and imports cumulated values (in absolute and relative to France). 
+
+# Filters: 
+
+- for direction-level data: source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
+- products are taken from the "revolution & empire" toflit18 classification
+
+# Aggregation/computation info:
+
+- values aggregated by cumulated value in livre tournois
+- direction-level data is normalized against France level to compute shares for each product
+- Herfindahl metrics are computed with the "revolution & empire" toflit18 classification. See https://en.wikipedia.org/wiki/Herfindahl%E2%80%93Hirschman_Index for more info about this indicator
+
+# Notes/warnings:
+
+- we do not have data for all years
+  """
+
   ensure_dir("../public/data/decline_longitudinal_data")
+  write_readme("decline_longitudinal_data/README.md", info)
   with open("../public/data/decline_longitudinal_data/decline_longitudinal_data.csv", "w") as of:
       output_csv = csv.DictWriter(
           of, ['region', 'year', 'Exports', 'Imports', 'Exports_share', 'Imports_share', 'product_revolutionempire_imports_herfindahl', 'product_revolutionempire_exports_herfindahl', 'product_revolutionempire_total_herfindahl'])
@@ -91,20 +120,68 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
               'Imports_share': 100,
               'Exports_share': 100
           })
+      logger.debug('done | part 1 main viz : longitudinal data')
+      
+
+  logger.info('start | part 1 main viz : LR products')
+  info = """
+# What is the data ? 
+
+toflit18 flows
+
+# What does a line correspond to ?
+
+One product exported by La Rochelle, with its absolute and relative value in livres tournois.
+
+# Filters: 
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
+- products names and classes are taken from the "revolution & empire" toflit18 classification.
+
+# Aggregation/computation info:
+
+- values aggregated by cumulated value in livre tournois
+- direction-level data is normalized against France level to compute shares
+  """
   ensure_dir("../public/data/decline_LR_products")
+  write_readme("decline_LR_products/README.md", info)
   with open("../public/data/decline_LR_products/decline_LR_products.csv", "w") as of:
       output_csv = csv.DictWriter(
           of, ['product', 'year', 'Exports', 'Imports'])
       output_csv.writeheader()
       output_csv.writerows({'product': product, 'year': year, 'Exports': value.get("Exports"), 'Imports': value.get("Imports")} for year, products in LaRochelle_products.items(
       ) if year in ['1750', '1789'] for product, value in products.items())
+      logger.debug('done | part 1 main viz : LR products')
 
+  logger.info('start | part 1 main viz : LR partners')
+  info = """
+# What is the data ? 
+
+toflit18 flows
+
+# What does a line correspond to ?
+
+One partner of exports by La Rochelle, with its absolute and relative value in livres tournois.
+
+# Filters: 
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
+- partners names and classes are taken from the "partner_simplification" toflit18 classification.
+
+# Aggregation/computation info:
+
+- values aggregated by cumulated value in livre tournois
+- direction-level data is normalized against France level to compute shares
+  """
   ensure_dir("../public/data/decline_LR_partners")
+  write_readme("decline_LR_partners/README.md", info)
   with open("../public/data/decline_LR_partners/decline_LR_partners.csv", "w") as of:
       output_csv = csv.DictWriter(
           of, ['partner', 'year', 'Exports', 'Imports'])
       output_csv.writeheader()
       output_csv.writerows({'partner': partner, 'year': year, 'Imports': value.get('Imports'), 'Exports': value.get('Exports')} for year, partners in LaRochelle_partners.items(
       ) if year in ['1750', '1789'] for partner, value in partners.items())
-
+      logger.debug('done | part 1 main viz : LR partners')
 logger.debug('done | part 1 main viz datasets')

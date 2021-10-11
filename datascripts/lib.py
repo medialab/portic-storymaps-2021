@@ -39,3 +39,14 @@ def write_csv(filename, data):
         of, data[0].keys())
     output_csv.writeheader()
     output_csv.writerows(data)
+
+def write_readme(filename, data):
+  logger.debug('write readme | ' + filename)
+  parts = filename.split('/')
+  if len(parts) > 1:
+    folder = parts[0]
+    folder_path = "../public/data/" + folder
+    ensure_dir(folder_path)
+  final_path = "../public/data/" + filename;
+  with open(final_path, "w") as of:
+    of.write(data)

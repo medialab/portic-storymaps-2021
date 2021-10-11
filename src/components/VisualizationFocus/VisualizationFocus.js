@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { homepage } from '../../../package.json';
 import copy from 'copy-to-clipboard';
 import VisualizationController from '../VisualizationController/VisualizationController.js';
@@ -8,6 +8,13 @@ import Md from 'react-markdown';
 const VisualizationFocus = ({ visualization, lang, onClose }) => {
 
   const [copyClicked, setCopyClicked] = useState(false);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [visualization])
   let howDone, howRead;
   if (visualization) {
     howDone = visualization[`comment_cest_fait_${lang}`];
@@ -16,7 +23,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
 
   const messages = {
     howDone: {
-      fr: 'Comment les données et la visualisations ont-elles été produites ?',
+      fr: 'Comment les données et la visualisation ont-elles été produites ?',
       en: 'How were the data and visualization produced ?',
     },
     howRead: {
@@ -40,8 +47,15 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
     copy(url);
     setTimeout(() => setCopyClicked(false), 5000);
   }
+  const handleKeyUp = (e) => {
+    // on press escape
+    if (e.keyCode === 27 && visualization) {
+      onClose();
+    }
+  }
   return (
     <div className={`VisualizationFocus ${visualization ? 'is-visible' : 'is-hidden'}`}>
+      <input type="text" onKeyUp={handleKeyUp} ref={inputRef} />
       <div onClick={onClose} className="lightbox-background" />
       {
         visualization ?

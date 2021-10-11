@@ -75,6 +75,9 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
   
   logger.info('start | part 1 main viz : longitudinal data')
   info = """
+`decline_longitudinal_data.csv` documentation
+===
+
 # What is the data ? 
 
 toflit18 flows
@@ -83,19 +86,19 @@ toflit18 flows
 
 One "direction des fermes" in particular during one year in particular, for which we compute exports and imports cumulated values (in absolute and relative to France). 
 
-# Filters: 
+# Filters
 
 - for direction-level data: source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
 - for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
 - products are taken from the "revolution & empire" toflit18 classification
 
-# Aggregation/computation info:
+# Aggregation/computation info
 
 - values aggregated by cumulated value in livre tournois
 - direction-level data is normalized against France level to compute shares for each product
 - Herfindahl metrics are computed with the "revolution & empire" toflit18 classification. See https://en.wikipedia.org/wiki/Herfindahl%E2%80%93Hirschman_Index for more info about this indicator
 
-# Notes/warnings:
+# Notes/warnings
 
 - we do not have data for all years
   """
@@ -125,6 +128,9 @@ One "direction des fermes" in particular during one year in particular, for whic
 
   logger.info('start | part 1 main viz : LR products')
   info = """
+`decline_LR_products.csv` documentation
+===
+
 # What is the data ? 
 
 toflit18 flows
@@ -133,16 +139,20 @@ toflit18 flows
 
 One product exported by La Rochelle, with its absolute and relative value in livres tournois.
 
-# Filters: 
+# Filters
 
 - source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
 - for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
 - products names and classes are taken from the "revolution & empire" toflit18 classification.
 
-# Aggregation/computation info:
+# Aggregation/computation info
 
 - values aggregated by cumulated value in livre tournois
 - direction-level data is normalized against France level to compute shares
+
+# Notes/warning
+
+/
   """
   ensure_dir("../public/data/decline_LR_products")
   write_readme("decline_LR_products/README.md", info)
@@ -156,24 +166,29 @@ One product exported by La Rochelle, with its absolute and relative value in liv
 
   logger.info('start | part 1 main viz : LR partners')
   info = """
+`decline_LR_partners.csv` documentation
+===
+
 # What is the data ? 
 
 toflit18 flows
 
 # What does a line correspond to ?
 
-One partner of exports by La Rochelle, with its absolute and relative value in livres tournois.
+One partner of imports and exports with La Rochelle's direction des fermes, with its absolute value in livres tournois.
 
-# Filters: 
+# Filters
 
 - source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
-- for france-level data : source "Best guess national partner" (best_guess_national_partner=1)
 - partners names and classes are taken from the "partner_simplification" toflit18 classification.
 
-# Aggregation/computation info:
+# Aggregation/computation info
 
 - values aggregated by cumulated value in livre tournois
-- direction-level data is normalized against France level to compute shares
+
+# Notes/warning
+
+/
   """
   ensure_dir("../public/data/decline_LR_partners")
   write_readme("decline_LR_partners/README.md", info)

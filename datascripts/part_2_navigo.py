@@ -8,10 +8,8 @@ curl -o data/navigo_raw_flows_1789.csv "data.portic.fr/api/rawflows/?date=1789&f
 '''
 
 import csv
-import os
-from lib import ensure_dir, logger
+from lib import ensure_dir, logger, write_readme
 
-ensure_dir("../public/data/part_2_navigo_viz_data/")
 
 def clean_bureau_name(name, departure):
   if departure == "Tonnay-Charente":
@@ -81,8 +79,8 @@ for f in relevant_flows :
     elif (f['homeport_toponyme_fr']  in ('Dunkerque', 'Bayonne', 'Marseille', 'Lorient', 'Noirmoutier', 'Ile de Bouin')):    
         homeport_destination_radar = 'Ports francs et petites îles'
     elif f['homeport_province'] in  ('Aunis', 'Saintonge', 'Poitou'):
-        #Dirty because we are missing homeport_ferme_direction attributes
-        #Petite surestimation car beauvoir-sur-mer est un port de Poitou qui n'est pas dans la ferme de La Rochelle
+        # @todo Dirty because we are missing homeport_ferme_direction attributes
+        # Petite surestimation car beauvoir-sur-mer est un port de Poitou qui n'est pas dans la ferme de La Rochelle
         homeport_destination_radar = 'Local'
     elif f['homeport_state_1789_fr'] == 'Grande-Bretagne':
         homeport_destination_radar = 'Grande-Bretagne'
@@ -91,11 +89,11 @@ for f in relevant_flows :
     elif f['homeport_state_1789_fr'] not in ('Grande-Bretagne','Etats-Unis d\'Amérique', 'France' ):
         homeport_destination_radar = 'Europe'
 
-    #Check all is assigned
+    # Check all is assigned
     if (homeport_destination_radar=='Unknown'):
         logger.warning('unknown homeport destination radar : ' + f['homeport_substate_1789_fr'])
         logger.warning('unknown homeport destination radar : ' + f['homeport_substate_1789_fr'].encode("utf8"))
-    #Create and assign a new column named homeport_destination_radar
+    # Create and assign a new column named homeport_destination_radar
     f['homeport_destination_radar'] = homeport_destination_radar
 
 def format_for_viz(f):
@@ -122,7 +120,35 @@ def format_for_viz(f):
 
 initial_flows_viz = [format_for_viz(f) for f in relevant_flows]
 
-# write dataset
+# write and document dataset
+info = """
+`part_2_navigo_viz_data.csv` documentation
+===
+
+# What is the data ? 
+
+Navigo flows for 1789
+
+# What does a line correspond to ?
+
+One travel for a boat that sailed from La Rochelle in 1789, with extra information aimed at serving the corresponding visualization.
+
+# Filters
+
+- pointcall_function : 'O'
+- year : 1789
+- departure_ferme_direction : 'La Rochelle'
+
+# Aggregation/computation info
+
+- destinations classes are made on the go in the data script (see `datascripts/part_2_navigo.py`)
+
+# Notes/warning
+
+- the "bureau des fermes" associated to the travel departure is modified/cleaned on the go in the datascript (see `datascripts/part_2_navigo.py`), this could be resolved upstream at some point.
+  """
+ensure_dir("../public/data/part_2_navigo_viz_data/")
+write_readme('part2_navigo_viz_data/README.md', info)
 destination_filepath = "../public/data/part_2_navigo_viz_data/part_2_navigo_viz_data.csv"
 with open(destination_filepath, "w", newline='') as csvfile:
   logger.info('start | part 2 main viz navigo data')

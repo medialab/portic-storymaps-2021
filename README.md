@@ -19,6 +19,8 @@ yarn start
 
 # Useful scripts
 
+The project is provided with diverse scripts aiming at updating data and contents.
+
 ## Data-related scripts
 
 ```bash
@@ -29,7 +31,7 @@ yarn data:update # orchestrates data fetching and building, then destroys the te
 
 ## Updating the thumbnails
 
-Thumbnails making for the `atlas` view is automated. To update thumbnails, in two different terminal tab, run :
+Thumbnails making for the `atlas` view is automated. To update thumbnails, **in two different terminal tabs**, run :
 
 ```bash
 yarn start
@@ -51,7 +53,11 @@ yarn run thumbnails:make
 
 - it is suggested to reference related issue in commit messages (example of commit message : `improve radar viz #8`) in order to keep track of commits related to an improvement or problem in particular.
 
-## Presentation of the organization of the repository
+
+## Technical architecture of this repo in relation to data sources
+
+![Schema of the project architecture](https://github.com/medialab/portic-storymaps-2021/raw/main/architecture_schema.png)
+## Detailed presentation of the organization of the repository
 
 ```
 - .github # contains automated deployment workflow

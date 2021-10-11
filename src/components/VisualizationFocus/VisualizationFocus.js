@@ -14,7 +14,6 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
 
   useEffect(() => {
     if (inputRef && inputRef.current) {
-      console.log('focusing')
       inputRef.current.focus();
     }
   }, [visualization])

@@ -1,0 +1,398 @@
+@import '../../variables.scss';
+
+.Home {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-width: 100vw;
+  .header {
+    background: $color-background-blue;
+    min-height: calc(100vh - #{$header_height} - 1rem);
+    max-width: 100vw;
+    min-width: 100vw;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .titles-container {
+      max-width: 40%;
+
+      h1 {
+        font-size: 2rem;
+        margin-top: 0;
+        span {
+          font-size: 0.8em;
+        }
+        sup {
+          font-size: 0.6em;
+        }
+      }
+      h2 {
+        font-weight: 400;
+        font-style: italic;
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+      .go-to-start {
+        width: 100%;
+        text-align: center;
+        margin-top: $medium-gutter;
+        font-size: 3rem;
+        font-weight: 900;
+        background: transparent;
+        border: none;
+        height: 3rem;
+        position: relative;
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          transition: 0.5s ease all;
+        }
+        &:hover {
+          span {
+            top: $small-gutter;
+          }
+        }
+      }
+
+      @include tablet {
+        max-width: 60%;
+        padding-left: $medium-gutter * 4;
+      }
+      @include phone {
+        max-width: 100%;
+        padding-left: $medium-gutter;
+      }
+    }
+
+    .boats-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 20vh;
+    }
+  }
+  .intro-container {
+    background: $color-accent-background;
+    color: white;
+    box-sizing: border-box;
+    padding-bottom: 15vh;
+    padding-left: 0;
+    max-width: 100vw;
+    min-width: 100vw;
+    @include tablet {
+      padding-left: $medium-gutter;
+    }
+    .Contents {
+      position: relative;
+      section {
+        padding: $medium-gutter;
+        padding-left: 0;
+      }
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul,
+      ol,
+      pre,
+      blockquote {
+        max-width: 40vw;
+        margin-left: $medium-gutter * 4;
+      }
+      .Caller {
+        margin-left: $medium-gutter * 4;
+        background: $color-background-blue;
+        opacity: 0.5;
+        &.is-active {
+          opacity: 1;
+        }
+        &.is-devmode {
+          max-width: 40vw;
+        }
+      }
+
+      a {
+        color: inherit;
+      }
+      p,
+      ul,
+      ol,
+      blockquote {
+        font-size: 1.1rem;
+        @include tablet {
+          font-size: 1rem;
+        }
+      }
+      .centered-part {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        margin-top: $medium-gutter * 5;
+        max-width: 100vw;
+        .centered-part-contents {
+          max-width: 40vw;
+        }
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote,
+        .Caller {
+          margin-right: 0;
+          margin-left: 0;
+          box-sizing: border-box;
+        }
+        @include tablet {
+          .centered-part-contents {
+            max-width: 100vw;
+          }
+        }
+        @include phone {
+          margin-top: 0;
+        }
+      }
+
+      @include tablet {
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote,
+        .Caller {
+          // max-width: 60vw;
+          margin-left: 0;
+        }
+      }
+      @include phone {
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ul,
+        ol,
+        pre,
+        blockquote {
+          // max-width: unset;
+          margin-left: 0;
+          max-width: unset;
+        }
+        .Caller {
+          margin-left: 0;
+        }
+      }
+    }
+    aside {
+      position: absolute;
+      right: 0;
+      top: $medium-gutter * 3;
+      width: 50vw;
+      height: calc(100vh - #{$header_height * 1.5});
+      pointer-events: none;
+      &.is-fixed {
+        top: $header_height * 1.5;
+        position: fixed;
+        @include tablet {
+          // width: 35vw;
+          height: 100vh;
+          top: 0;
+        }
+      }
+      @include phone {
+        width: 100vw; // calc(100vw - #{$medium-gutter * 4});
+        position: relative;
+        // left: $medium-gutter * 2;
+        // top: $medium-gutter * 3;
+        right: unset;
+        bottom: unset;
+        // display: none;
+        position: fixed;
+        top: 0;
+        transition: 0.5s ease all;
+        left: 100vw;
+        &.is-focused {
+          left: 0;
+        }
+      }
+    }
+
+    .VisualizationController {
+      position: relative;
+      // right: $medium-gutter;
+      left: unset;
+      top: unset;
+      // bottom: $medium-gutter;
+      width: 50vw;
+      // border: 1px solid red;
+      pointer-events: all;
+      padding: $medium-gutter;
+      box-sizing: border-box;
+      &.is-empty {
+        display: none;
+      }
+      @include tablet {
+        // width: 35vw;
+        height: 100%;
+        width: 100%;
+      }
+      @include phone {
+        width: calc(100vw - #{$medium-gutter * 4});
+        position: relative;
+        left: $medium-gutter * 2;
+        top: $medium-gutter * 3;
+        right: unset;
+        bottom: unset;
+        // display: none;
+      }
+    }
+
+    .GeographicMapChartWrapper {
+      .Legend {
+        background: $color-accent-background;
+        .size-legend-container {
+          .size-icon-container {
+            span {
+              border-color: white;
+            }
+          }
+        }
+      }
+      .stacked-labels-container {
+        line {
+          stroke: white;
+        }
+        text {
+          fill: white;
+        }
+      }
+      .visualization-title {
+        background: $color-accent-background;
+      }
+    }
+
+    @include phone {
+      section {
+        transition: 0.5s ease all;
+        position: relative;
+        left: -100vw;
+        &.is-focused {
+          left: 0;
+        }
+      }
+    }
+  }
+  .HomeSummary {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    margin-top: $medium-gutter * 5;
+    width: calc(100% - 1rem);
+    box-sizing: border-box;
+    .contents {
+      border-top: 1px solid white;
+      max-width: calc(100% - #{$medium-gutter * 8});
+      box-sizing: border-box;
+      @include tablet {
+        max-width: 80vw;
+      }
+      @include phone {
+        max-width: 100%;
+      }
+    }
+    a {
+      color: white;
+      text-decoration: none;
+      padding: $medium-gutter * 2;
+      border: 1px solid white;
+      display: block;
+    }
+    .intro {
+      padding-top: $medium-gutter;
+      padding-bottom: $medium-gutter;
+      text-align: center;
+      font-style: italic;
+    }
+    .chapters-links-container {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: stretch;
+      margin-top: 0;
+      li {
+        flex: 1;
+        display: flex;
+        justify-content: stretch;
+        &:not(:last-of-type) {
+          margin-right: $small-gutter;
+        }
+        a {
+          width: 100%;
+        }
+      }
+      @include phone {
+        flex-direction: column;
+        li {
+          width: 100%;
+          margin-bottom: $small-gutter;
+          &:not(:last-of-type) {
+            margin-right: 0;
+          }
+          a {
+            flex: 1;
+          }
+        }
+      }
+    }
+    .atlas-link-container,
+    .chapters-links-container li {
+      .pretitle {
+        margin: 0;
+        font-weight: 400;
+        font-style: italic;
+        padding-bottom: 0;
+      }
+      .title {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 600;
+      }
+      transition: background 0.2s ease;
+      &:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+    }
+    .atlas-link-container {
+      text-align: center;
+    }
+  }
+  .vis-focus-container {
+    button {
+      color: white;
+      border: 1px solid white;
+    }
+  }
+}

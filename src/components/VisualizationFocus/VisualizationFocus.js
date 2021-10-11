@@ -4,6 +4,8 @@ import copy from 'copy-to-clipboard';
 import VisualizationController from '../VisualizationController/VisualizationController.js';
 import Md from 'react-markdown';
 
+import './VisualizationFocus.scss';
+
 
 const VisualizationFocus = ({ visualization, lang, onClose }) => {
 
@@ -55,7 +57,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
   }
   return (
     <div className={`VisualizationFocus ${visualization ? 'is-visible' : 'is-hidden'}`}>
-      <input type="text" onKeyUp={handleKeyUp} ref={inputRef} />
+      <input style={{display: 'none'}} type="text" onKeyUp={handleKeyUp} ref={inputRef} />
       <div onClick={onClose} className="lightbox-background" />
       {
         visualization ?

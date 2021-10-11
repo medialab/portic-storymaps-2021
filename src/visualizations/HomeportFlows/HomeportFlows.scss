@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+.HomeportFlows {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  .column:first-of-type .GeographicMapChart {
+    border-right: 3px solid $color-text;
+  }
+  .column:last-of-type .GeographicMapChartWrapper:last-of-type .GeographicMapChart {
+    border-top: 3px solid $color-text;
+  }
+  .geopart {
+    stroke-width: 0.5!important;
+  }
+}

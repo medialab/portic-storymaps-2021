@@ -12,6 +12,8 @@ import { buildPageTitle } from '../../helpers/misc';
 
 import visualizations from '../../visualizationsList';
 
+import './ScrollyPage.scss';
+
 const visualizationsMap = visualizations.reduce((res, visualization) => ({
   ...res,
   [visualization.id]: visualization

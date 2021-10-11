@@ -3,6 +3,8 @@ import {Helmet} from "react-helmet";
 
 import {buildPageTitle} from '../../helpers/misc';
 
+import './PlainPage';
+
 const PlainPage = ({
   Content,
   contentsURL,

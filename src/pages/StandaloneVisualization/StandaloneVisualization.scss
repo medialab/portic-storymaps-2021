@@ -1,0 +1,25 @@
+
+
+.StandaloneVisualization {
+  position: fixed;
+  background: white;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  min-width: 100vw;
+  z-index: 1000;
+  .visualization-title {
+    display: none;
+  }
+  .VisualizationController {
+    background: white;
+    position: fixed;
+    background: white;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    min-width: 100vw;
+    z-index: 1000;
+    overflow: auto;
+  }
+}

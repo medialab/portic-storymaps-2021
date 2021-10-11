@@ -10,6 +10,8 @@ import { uniq } from 'lodash';
 import colorsPalettes from '../../colorPalettes';
 import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
+import './LineChart.scss';
+
 const { generic } = colorsPalettes;
 
 /**

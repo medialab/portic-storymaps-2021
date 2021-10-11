@@ -1,6 +1,8 @@
 import GeographicMapChart from "../../components/GeographicMapChart/GeographicMapChart"
 import { fixSvgDimension } from "../../helpers/misc";
 
+import './HomeportFlows.scss';
+
 const HomeportFlows = ({
   datasets,
   atlasMode,

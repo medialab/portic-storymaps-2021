@@ -1,6 +1,7 @@
 import HorizontalBarChart from './HorizontalBarChart';
 import VerticalBarChart from './VerticalBarChart';
 
+import './BarChart.scss';
 
 /**
  * BarChart component - returns a <figure> containing a svg linechart

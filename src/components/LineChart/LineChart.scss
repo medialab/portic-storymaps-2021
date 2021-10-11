@@ -1,0 +1,16 @@
+
+
+
+ .LineChart {
+  .data-dot-container {
+    .data-dot-big {
+      opacity: 0;
+      transition: 0.5s ease all;
+    }
+    &:hover {
+      .data-dot-big {
+        opacity: 1;
+      }
+    }
+  }
+}

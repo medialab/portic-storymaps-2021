@@ -21,6 +21,8 @@ import summary from '../../summary';
 import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
+import './Home.scss';
+
 const CENTER_FRACTION = 0.5;
 // const CENTER_FRACTION = .6;
 

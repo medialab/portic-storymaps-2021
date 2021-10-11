@@ -6,6 +6,8 @@ import Tooltip from 'react-tooltip';
 import AxisObject from './AxisObject';
 import VisObject from './VisObject';
 
+import './RadarPlot.scss';
+
 const RadarPlot= ({
   data,
   size : wholeSize = 100,

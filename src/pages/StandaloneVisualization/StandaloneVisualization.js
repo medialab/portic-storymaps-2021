@@ -1,5 +1,7 @@
 import VisualizationController from '../../components/VisualizationController/VisualizationController.js';
 
+import './StandaloneVisualization';
+
 import visualizationsList from '../../visualizationsList.json';
 const StandaloneVisualization = ({
   id,

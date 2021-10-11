@@ -1,0 +1,126 @@
+@import '../../variables.scss';
+
+.VisualizationFocus {
+  display: none;
+  &.is-visible {
+    display: block;
+  }
+  .lightbox-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 4;
+    cursor: pointer;
+  }
+  .lightbox-contents-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: calc(100vw - #{$medium-gutter});
+    height: 100vh;
+    z-index: 4;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .lightbox-contents {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: stretch;
+      padding: $medium-gutter;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+    .visualization-details {
+      color: white;
+      flex: 1;
+      box-sizing: border-box;
+      padding: $medium-gutter;
+      padding-top: 0;
+      order: 2;
+      .details-header {
+        pointer-events: all;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: stretch;
+        align-items: flex-start;
+        h2 {
+          margin: 0;
+          flex: 1;
+        }
+        .close-btn {
+          color: white;
+          background: inherit;
+          cursor: pointer;
+          font-weight: 900;
+          font-size: 1.5em;
+        }
+      }
+      .copy-link-container {
+        margin: $medium-gutter 0;
+        z-index: 5;
+        position: absolute;
+        pointer-events: all;
+        button {
+          background: transparent;
+          border: 2px solid white;
+          border-radius: 1rem;
+          color: white;
+          font-size: 0.8rem;
+          padding: $small-gutter $medium-gutter;
+          &:hover {
+            background: white;
+            color: #333;
+          }
+        }
+      }
+      .details-contents {
+        margin-top: $medium-gutter * 5;
+        pointer-events: all;
+      }
+    }
+    .visualization-wrapper {
+      pointer-events: all;
+      background: transparent;
+      flex: 2;
+      max-width: 70vw;
+      min-width: 70vw;
+      position: relative;
+      min-height: 50vh;
+      box-sizing: border-box;
+      // padding: $medium-gutter;
+      // padding-bottom: $medium-gutter * 5;
+      padding: 0;
+      .VisualizationController {
+        // padding: $small-gutter;
+        padding-bottom: $medium-gutter * 5;
+        padding-top: $medium-gutter;
+        padding-right: $medium-gutter;
+        box-sizing: border-box;
+        position: relative;
+        width: unset;
+        // height: unset;
+        max-width: 100%;
+        // min-height: 50vh;
+        left: 0;
+        top: 0;
+        background: white;
+        align-items: flex-start;
+        height: auto;
+      }
+    }
+    @include tablet {
+      .lightbox-contents {
+        flex-flow: column nowrap;
+      }
+      .visualization-details {
+        order: unset;
+      }
+      .visualization-wrapper {
+        max-width: calc(100% - #{$medium-gutter});
+        min-width: unset;
+      }
+    }
+  }
+}

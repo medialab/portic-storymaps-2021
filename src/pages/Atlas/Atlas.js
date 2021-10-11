@@ -9,6 +9,8 @@ import VisualizationFocus from '../../components/VisualizationFocus/Visualizatio
 
 import {buildPageTitle} from '../../helpers/misc';
 
+import './Atlas.scss';
+
 
 const visualizationsMap = visualizations.reduce((res, visualization) => ({
   ...res,

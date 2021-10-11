@@ -1,0 +1,19 @@
+@import '../../variables.scss';
+
+/**
+ * Bar chart reusable component
+ */
+ .BarChart {
+  .vertical-bar-label {
+    font-family: $font-family-1;
+    text-align: right;
+    font-size: 0.7rem;
+    padding: $small-gutter;
+    box-sizing: border-box;
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: visible;
+  }
+}

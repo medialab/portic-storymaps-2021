@@ -1,72 +1,6 @@
 @use "sass:math";
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;1,100;1,300;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap");
-// @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,500;1,400;1,500&display=swap');
-
-$font-family-1: "IBM Plex Sans", sans-serif;
-$font-family-2: "Lora", serif;
-
-$fontsize_part_title: 2rem;
-$fontsize_title2: 1.3rem;
-$fontsize_nav: 1rem;
-
-$color-text: #403d3d;
-$color-accent: #34495e;
-$color-accent-background: #336d7c;
-$color-background-blue: #d3e5e5;
-$color-background: #ebebeb;
-
-$small-gutter: 0.5rem;
-$medium-gutter: $small-gutter * 2;
-$external_gutter: 15vw;
-
-$header_height: 3rem;
-
-$footer_height: 18rem;
-$drawer-width: 300px;
-
-/*
- * Responsive design mixins
- */
-// Small tablets and large smartphones (landscape view)
-$screen-sm-min: 576px;
-
-// Small tablets (portrait view)
-// $screen-md-min: 768px;
-// $screen-md-min: 900px;
-$screen-md-min: 950px;
-
-// Tablets and small desktops
-$screen-lg-min: 992px;
-
-// Large tablets and desktops
-$screen-xl-min: 1200px;
-// Small devices
-@mixin phone {
-  @media (max-width: #{$screen-sm-min}) {
-    @content;
-  }
-}
-
-// Medium devices
-@mixin tablet {
-  @media (max-width: #{$screen-md-min}) {
-    @content;
-  }
-}
-
-// Large devices
-@mixin large-screen {
-  @media (max-width: #{$screen-lg-min}) {
-    @content;
-  }
-}
-
-// Extra large devices
-@mixin xl-screen {
-  @media (max-width: #{$screen-xl-min}) {
-    @content;
-  }
-}
+@import "./variables.scss";
 
 html {
   overflow-x: hidden;
@@ -80,7 +14,40 @@ body {
   font-family: $font-family-2;
   color: $color-text;
   overflow-x: hidden;
-  // background: $color-background;
+}
+
+#root {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#wrapper {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  // height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: stretch;
+  padding: 0;
+  // padding-bottom: $footer_height * 1;
+  min-height: 100vh;
+  /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
+}
+
+#wrapper > main {
+  display: flex;
+  // padding: 1rem;
+  padding-top: $header_height;
+  justify-content: stretch;
+  align-content: stretch;
+  @include tablet {
+    padding-top: 0;
+  }
 }
 
 header {
@@ -88,9 +55,11 @@ header {
   width: 100%;
   z-index: 2;
   font-family: $font-family-1;
-  /* background-color: rgb(58, 118, 135); */
-  /* color: whitesmoke; */
 }
+
+/** 
+ * Tag-level default stylings
+ */
 
 h1,
 h2,
@@ -101,8 +70,22 @@ svg text {
   font-family: $font-family-1;
 }
 
+button {
+  border: none;
+  background: rgba(220, 220, 220, 1);
+  padding: 0.5rem;
+  font-family: "Karla", sans-serif;
+  outline: none;
+  cursor: pointer;
+}
+
+button.is-active {
+  background: rgba(50, 50, 50, 1);
+  color: white;
+}
+
 /**
- * SCROLLBARS
+ * Scrollbar customization
  */
 
 /* width */
@@ -121,10 +104,307 @@ svg text {
 }
 
 /* Handle on hover */
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $color-accent;
 }
+
+
+/**
+ * ==========
+ * REUSABLE COMPONENTS
+ * ==========
+ */
+
+
+/**
+ * Tooltip styling
+ */
+.__react_component_tooltip {
+  background: white !important;
+  color: $color-text !important;
+  font-family: $font-family-1;
+  max-width: 300px;
+  padding: $medium-gutter !important;
+  &:after {
+    display: none !important;
+  }
+}
+
+/**
+ * Caller component to display scrolly-telling change anchors on screen (for debug mode or display mode)
+ */
+ .Caller {
+  background: $color-background-blue;
+  font-family: $font-family-1;
+  padding: $small-gutter;
+  font-size: 0.7rem;
+  cursor: pointer;
+  &.is-active {
+    background: $color-accent-background;
+    color: white;
+  }
+  &.is-clearfix {
+    display: none;
+  }
+  &.is-hidden {
+    max-width: 2rem;
+    padding: 0.3rem;
+    margin: 0;
+  }
+}
+
+/**
+ * controller wrapping visualizations in several contexts and displaying a margin
+ */
+.VisualizationController {
+  width: calc(100% - 2rem);
+  height: calc(100% - 2rem);
+  left: 1rem;
+  top: 1rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+
+/**
+ * ==========
+ * SHARED LAYOUTS
+ * ==========
+ */
+
+/**
+ * Shared layouts for loader placement in 2-columns layouts
+ */
+ .ScrollyPage + .Loader,
+ .Home + .Loader {
+   width: 50vw;
+   left: 50vw;
+ }
+ 
+ .Home + .Loader {
+   position: absolute;
+   top: 100vh;
+   height: 100vh;
+   .loader-container .loading-bar {
+     background: white;
+   }
+ }
+ 
+ /**
+  * Secondary page layout (used in Atlas, PlainPage, ...)
+  */
+ .secondary-page {
+   margin: 0;
+   padding: 0;
+   width: 100vw;
+   min-height: calc(100vh - #{$footer_height});
+   background: $color-background;
+   display: flex;
+   flex-flow: row nowrap;
+   justify-content: center;
+ }
+ 
+ /**
+  * Centered contents layout (used in Atlas, PlainPage, ...)
+  */
+ .centered-contents {
+   min-width: $screen-md-min;
+   max-width: $screen-md-min;
+   @include tablet {
+     margin-top: $header_height;
+     min-width: unset;
+     max-width: unset;
+     width: 100%;
+     padding: 0 $medium-gutter 0 $medium_gutter;
+   }
+ }
+ 
+ /**
+  * Vis focus used in atlas and scrollypage views (two-columns vis + explanations)
+  */
+ .vis-focus-container {
+   position: fixed;
+   right: 0.5rem;
+   top: 0;
+   height: 100vh;
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: center;
+   transition: 0.5s ease all;
+   opacity: 0;
+   pointer-events: none;
+   button {
+     background: transparent;
+     border: none;
+     font-size: 1.5rem;
+     font-weight: 800;
+     pointer-events: none;
+     transition: 0.5s ease all;
+     cursor: pointer;
+     border-radius: 50%;
+     border: 1px solid black;
+     height: 1.5rem;
+     width: 1.5rem;
+     display: flex;
+     flex-flow: row nowrap;
+     align-items: center;
+     justify-content: center;
+     padding-top: 0.6em;
+   }
+ 
+   @include phone {
+     &.is-visible {
+       opacity: 1;
+       button {
+         pointer-events: all;
+       }
+     }
+ 
+     &.is-active {
+       right: calc(100vw - 3rem);
+       button {
+         rotate: -180deg;
+       }
+     }
+   }
+ }
+
+
+ /**
+ * ===========
+ * VISUALIZATIONS SHARED CLASSES
+ * ===========
+ */
+
+/**
+ * Reusable visualization components shared classes
+ */
+ .visualization-title {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  color: inherit;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+/**
+ * Reusable color legend
+ */
+ .ColorLegend {
+  font-family: $font-family-1;
+  background: inherit;
+  padding: $small-gutter;
+  padding-top: 0;
+  box-sizing: border-box;
+  position: relative;
+  h5 {
+    margin: 0;
+    padding: 0;
+  }
+  .color-legend {
+    list-style: none;
+    padding: 0;
+    margin-top: $small-gutter;
+    li {
+      display: flex;
+      flex-flow: row nowrap;
+      margin-bottom: $small-gutter;
+      font-size: 0.7rem;
+      .color-box {
+        display: inline-block;
+        width: 0.7rem;
+        min-width: 0.7rem;
+        height: 0.7rem;
+        min-height: 0.7rem;
+        margin-right: math.div($small-gutter, 2);
+      }
+      .color-label {
+        position: relative;
+      }
+    }
+  }
+}
+
+
+/**
+ * GENERIC VISUALIZATIONS STYLING
+ */
+ .GenericVisualization {
+  margin: 0;
+  padding: 0;
+  .background-rect {
+    fill: rgba(0, 0, 0, 0.05);
+  }
+  text {
+    font-family: $font-family-1;
+    font-size: 14px;
+  }
+  .title {
+    font-weight: 800;
+    font-size: 20px;
+  }
+  .ticks {
+    .tick-mark {
+      stroke: grey;
+      stroke-width: 0.5;
+    }
+    text {
+      font-size: 10px;
+      text-anchor: middle;
+    }
+    &.left-axis {
+      text {
+        text-anchor: end;
+      }
+      .axis-title {
+        font-weight: 800;
+        font-style: italic;
+        background: $color-text;
+      }
+    }
+    .background-line {
+      stroke: rgba(0, 0, 0, 0.2);
+      stroke-dasharray: 4, 2;
+    }
+  }
+  .headers {
+    font-weight: 800;
+  }
+  path,
+  .chart-line {
+    stroke: $color-accent;
+  }
+
+  .row {
+    &.vis-row {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: stretch;
+      svg {
+        flex: 1;
+      }
+    }
+  }
+}
+ 
+
+
+/**
+ * ==========
+ * GENERAL COMPONENTS
+ * ==========
+ */
+
+.HeaderNav {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
 /**
  * NAV
  */
@@ -404,12 +684,9 @@ svg text {
 }
 
 /**
- * FOOTER 
+ * Footer 
  */
-
 .Footer {
-  /* position: fixed; */
-  // position: absolute;
   bottom: 0;
   left: 0;
   z-index: 3;
@@ -459,1193 +736,5 @@ svg text {
         margin: 0;
       }
     }
-  }
-}
-
-#root {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-#wrapper {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  // height: 100%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-content: stretch;
-  padding: 0;
-  // padding-bottom: $footer_height * 1;
-  min-height: 100vh;
-  /* je voudrais que mon header s'éloigne du reste mais n'y arrive pas pour l'instant */
-}
-
-.HeaderNav {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-}
-
-#wrapper > main {
-  display: flex;
-  // padding: 1rem;
-  padding-top: $header_height;
-  justify-content: stretch;
-  align-content: stretch;
-  @include tablet {
-    padding-top: 0;
-  }
-}
-
-/**
- * SCROLLYTELLING LAYOUT
-**/
-.ScrollyPage {
-  position: relative;
-  width: 100vw;
-  min-width: 100vw;
-  // max-width: calc(100vw - 2rem);
-  background: linear-gradient(to bottom, $color-background-blue 10vh, $color-background 50vh);
-  // overflow-x: hidden;
-  > section {
-    width: 40%;
-    box-sizing: border-box;
-    padding: 0 $medium-gutter 0 $medium_gutter * 4;
-    margin-bottom: $medium-gutter * 15;
-
-    a {
-      color: inherit;
-    }
-
-    p,ul,ol,blockquote {
-      font-size: 1.1rem;
-      @include tablet {
-        font-size: 1rem;
-      }
-    }
-    
-  }
-  aside {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    width: 60%;
-    height: calc(100vh - #{$header_height});
-    box-sizing: border-box;
-  }
-  .fullscreen-viz-toggle-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: $medium-gutter;
-    // padding-top: 0;
-    button {
-      background: transparent;
-      border: 1px solid $color-text;
-      border-radius: 50%;
-      height: 1rem;
-      width: 1rem;
-      font-size: .8rem;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      align-items: center;
-      font-weight: 800;
-      span {
-        position: relative;
-        top: -.05rem;
-      }
-    }
-  }
-  @include tablet {
-    section {
-      width: 50%;
-      padding-left: $medium-gutter;
-      padding-top: $medium-gutter * 2;
-    }
-    aside {
-      width: 50%;
-    }
-  }
-  @include phone {
-    max-width: 100vw;
-    section {
-      width: 100%;
-      position: relative;
-      left: -100vw;
-      transition: .5s ease all;
-      padding-right: 2 * $medium-gutter;
-      &.is-focused {
-        left: 0;
-      }
-    }
-    aside {
-      width: 100%;
-      position: fixed;
-      transition: .5s ease all;
-      left: 100vw;
-      &.is-focused {
-        left: 0;
-      }
-      // display: none;
-    }
-  }
-  
-  .GeographicMapChartWrapper {
-    .visualization-title {
-      background: $color-background;
-    }
-    .Legend {
-      background: $color-background;
-    }
-    .GeographicMapChart {
-      .ChoroplethLayer.reverse-colors {
-        .geopart {
-          stroke: grey;
-        }
-      }
-    }
-  }
-}
-
-.Caller {
-  background: $color-background-blue;
-  font-family: $font-family-1;
-  padding: $small-gutter;
-  font-size: 0.7rem;
-  cursor: pointer;
-  // opacity: 0;
-  &.is-active {
-    background: $color-accent-background;
-    color: white;
-  }
-  &.is-clearfix {
-    display: none;
-  }
-  &.is-hidden {
-    max-width: 2rem;
-    padding: 0.3rem;
-    margin: 0;
-    // opacity: 0;
-    // max-height: 0;
-    // overflow: hidden;
-    // padding: 0;
-  }
-}
-/**
- * MISC
- */
-
-button {
-  border: none;
-  background: rgba(220, 220, 220, 1);
-  padding: 0.5rem;
-  font-family: "Karla", sans-serif;
-  outline: none;
-  cursor: pointer;
-}
-
-button.is-active {
-  background: rgba(50, 50, 50, 1);
-  color: white;
-}
-
-.NetworkGraphChart {
-  // border: 1px solid lightgrey;
-}
-
-.VisualizationController {
-  width: calc(100% - 2rem);
-  height: calc(100% - 2rem);
-  left: 1rem;
-  top: 1rem;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  // overflow: hidden;
-  // background: lightgrey;
-}
-
-/**
- * Loader (@todo refacto)
- */
-
-/**
-* Loader
-*/
-.loader-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: center;
-  &.is-complete {
-    opacity: 0;
-    pointer-events: none;
-  }
-}
-
-.loader {
-  background: lightgrey;
-  height: 10px;
-  width: 50%;
-  position: relative;
-}
-.loader .loading-bar {
-  background: $color-accent;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  transition: width 0.2s ease;
-}
-
-.ScrollyPage + .loader-container,
-.Home + .loader-container
-{
-  width: 50vw;
-  left: 50vw;
-}
-
-.Home + .loader-container {
-  position: absolute;
-  top: 100vh;
-  height: 100vh;
-  .loader .loading-bar {
-    background: white;
-  }
-}
-
-.Home {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  min-width: 100vw;
-  .header {
-    background: $color-background-blue;
-    min-height: calc(100vh - #{$header_height} - 1rem);
-    max-width: 100vw;
-    min-width: 100vw;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    .titles-container {
-      max-width: 40%;
-
-      h1 {
-        font-size: 2rem;
-        margin-top: 0;
-        span {
-          font-size: .8em;
-          
-        }
-        sup {
-            font-size: .6em;
-        }
-      }
-      h2 {
-        font-weight: 400;
-        font-style: italic;
-        font-size: 1.1rem;
-        margin-bottom: 0;
-      }
-      .go-to-start {
-        width: 100%;
-        text-align: center;
-        margin-top: $medium-gutter;
-        font-size: 3rem;
-        font-weight: 900;
-        background: transparent;
-        border: none;
-        height: 3rem;
-        position: relative;
-        span {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          text-align: center;
-          transition: 0.5s ease all;
-        }
-        &:hover {
-          span {
-            top: $small-gutter;
-          }
-        }
-      }
-
-      @include tablet {
-        max-width: 60%;
-        padding-left: $medium-gutter * 4;
-      }
-      @include phone {
-        max-width: 100%;
-        padding-left: $medium-gutter;
-      }
-    }
-
-    .boats-container {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 20vh;
-    }
-  }
-  .intro-container {
-    background: $color-accent-background;
-    color: white;
-    box-sizing: border-box;
-    padding-bottom: 15vh;
-    padding-left: 0;
-    max-width: 100vw;
-    min-width: 100vw;
-    @include tablet {
-      padding-left: $medium-gutter;
-    }
-    .Contents {
-      position: relative;
-      section {
-        padding: $medium-gutter;
-        padding-left: 0;
-      }
-      p,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6,
-      ul,
-      ol,
-      pre,
-      blockquote
-       {
-        max-width: 40vw;
-        margin-left: $medium-gutter * 4;
-      }
-      .Caller {
-        margin-left: $medium-gutter * 4;
-        background: $color-background-blue;
-        opacity: .5;
-        &.is-active {
-          opacity: 1;
-        }
-        &.is-devmode {
-          max-width: 40vw;
-        }
-      }
-
-      a{
-        color: inherit;
-      }
-      p,ul,ol,blockquote {
-        font-size: 1.1rem;
-        @include tablet {
-          font-size: 1rem;
-        }
-      }
-      .centered-part {
-        display: flex;
-        flex-flow: column nowrap;
-        align-items: center;
-        margin-top: $medium-gutter * 5;
-        max-width: 100vw;
-        .centered-part-contents {
-          max-width: 40vw;
-        }
-        p,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        ul,
-        ol,
-        pre,
-        blockquote,
-        .Caller {
-          margin-right: 0;
-          margin-left: 0;
-          box-sizing: border-box;
-        }
-        @include tablet {
-          .centered-part-contents {
-            max-width: 100vw;
-          }
-        }
-        @include phone {
-          margin-top: 0;
-        }
-      }
-
-      @include tablet {
-        p,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        ul,
-        ol,
-        pre,
-        blockquote,
-        .Caller {
-          // max-width: 60vw;
-          margin-left: 0;
-        }
-      }
-      @include phone {
-        p,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        ul,
-        ol,
-        pre,
-        blockquote {
-          // max-width: unset;
-          margin-left: 0;
-          max-width: unset;
-        }
-        .Caller {
-          margin-left: 0;
-        }
-      }
-    }
-    aside {
-      position: absolute;
-      right: 0;
-      top: $medium-gutter * 3;
-      width: 50vw;
-      height: calc(100vh - #{$header_height * 1.5});
-      pointer-events: none;
-      &.is-fixed {
-        top: $header_height * 1.5;
-        position: fixed;
-        @include tablet {
-          // width: 35vw;
-          height: 100vh;
-          top: 0;
-        }
-      }
-      @include phone {
-        width: 100vw; // calc(100vw - #{$medium-gutter * 4});
-        position: relative;
-        // left: $medium-gutter * 2;
-        // top: $medium-gutter * 3;
-        right: unset;
-        bottom: unset;
-        // display: none;
-          position: fixed;
-          top: 0;
-          transition: .5s ease all;
-          left: 100vw;
-          &.is-focused {
-            left: 0;
-          }
-      }
-    }
-    
-    .VisualizationController {
-      position: relative;
-      // right: $medium-gutter;
-      left: unset;
-      top: unset;
-      // bottom: $medium-gutter;
-      width: 50vw;
-      // border: 1px solid red;
-      pointer-events: all;
-      padding: $medium-gutter;
-      box-sizing: border-box;
-      &.is-empty {
-        display: none;
-      }
-      @include tablet {
-        // width: 35vw;
-        height: 100%;
-        width: 100%;
-      }
-      @include phone {
-        width: calc(100vw - #{$medium-gutter * 4});
-        position: relative;
-        left: $medium-gutter * 2;
-        top: $medium-gutter * 3;
-        right: unset;
-        bottom: unset;
-        // display: none;
-      }
-    }
-
-    .GeographicMapChartWrapper {
-      .Legend {
-        background: $color-accent-background;
-        .size-legend-container {
-          .size-icon-container {
-            span {
-              border-color: white;
-            }
-          }
-        }
-      }
-      .stacked-labels-container {
-        line {
-          stroke: white;
-        }
-        text {
-          fill: white;
-        }
-      }
-      .visualization-title {
-        background: $color-accent-background;
-      }
-    }
-
-    @include phone {
-      section {
-        transition: .5s ease all;
-        position: relative;
-        left: -100vw;
-        &.is-focused {
-          left: 0;
-        }
-      }
-    }
-  }
-  .HomeSummary {
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    margin-top: $medium-gutter * 5;
-    width: calc(100% - 1rem);
-    box-sizing: border-box;
-    .contents {
-      border-top: 1px solid white;
-      max-width: calc(100% - #{$medium-gutter * 8});
-      box-sizing: border-box;
-      @include tablet {
-        max-width: 80vw;
-      }
-      @include phone {
-        max-width: 100%;
-      }
-    }
-    a {
-      color: white;
-      text-decoration: none;
-      padding: $medium-gutter * 2;
-      border: 1px solid white;
-      display: block;
-    }
-    .intro {
-      padding-top: $medium-gutter;
-      padding-bottom: $medium-gutter;
-      text-align: center;
-      font-style: italic;
-    }
-    .chapters-links-container {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: stretch;
-      margin-top: 0;
-      li {
-        flex: 1;
-        display: flex;
-        justify-content: stretch;
-        &:not(:last-of-type) {
-          margin-right: $small-gutter;
-        }
-        a {
-          width: 100%;
-        }
-      }
-      @include phone {
-        flex-direction: column;
-        li {
-          width: 100%;
-          margin-bottom: $small-gutter;
-          &:not(:last-of-type) {
-            margin-right: 0;
-          }
-          a {
-            flex: 1;
-          }
-        }
-      }
-    }
-    .atlas-link-container,
-    .chapters-links-container li {
-      .pretitle {
-        margin: 0;
-        font-weight: 400;
-        font-style: italic;
-        padding-bottom: 0;
-      }
-      .title {
-        margin-top: 0;
-        margin-bottom: 0;
-        font-weight: 600;
-      }
-      transition: background 0.2s ease;
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-    }
-    .atlas-link-container {
-      text-align: center;
-    }
-  }
-}
-
-.secondary-page {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  min-height: calc(100vh - #{$footer_height});
-  background: $color-background;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-}
-
-.centered-contents {
-  min-width: $screen-md-min;
-  max-width: $screen-md-min;
-  @include tablet {
-    margin-top: $header_height;
-    min-width: unset;
-    max-width: unset;
-    width: 100%;
-    padding: 0 $medium-gutter 0 $medium_gutter;
-  }
-}
-
-.Atlas {
-  padding: 0 $medium-gutter * 6 0 $medium-gutter * 3.8;
-  width: 100%;
-  min-width: 100vw;
-  box-sizing: border-box;
-  .loader-indication-wrapper {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    opacity: 0;
-    font-family: $font-family-1;
-    // transition: .5s ease all;
-    z-index: 10;
-    &.is-loading {
-      background: rgba(0,0,0,0.8);
-      color: white;
-      opacity: 1;
-    }
-    
-    .loader-indication-container {
-
-    }
-  }
-  .visualizations-list {
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3, 33.333%);
-    grid-gap: $medium-gutter;
-    margin-top: $medium-gutter * 2;
-    margin-bottom: $medium-gutter * 2;
-    cursor: pointer;
-    .visualization-item {
-      transition: 0.5s ease all;
-      opacity: 1;
-      .thumbnail-container {
-        min-height: 12rem;
-        padding: 0;
-        margin: 0;
-        background: white;
-        img {
-          max-width: 100%;
-          padding: 0;
-          box-sizing: border-box;
-          opacity: .5;
-          transition: .5s ease all;
-          // background: $color-accent-background;
-          filter: grayscale(80%)
-        }
-        &:hover {
-          img {
-            opacity: 1;
-            filter: none;
-          }
-        }
-      }
-      .visualization-title {
-        margin: 0;
-        margin-top: $small-gutter;
-        padding-top: $small-gutter;
-        border-top: 1px solid $color-text;
-        // text-align: center;
-        font-weight: 400;
-      }
-      &.is-active {
-      }
-    }
-    &:hover {
-      .visualization-item {
-        opacity: 0.7;
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-    @include tablet {
-      grid-template-columns: repeat(2, auto);
-    }
-    @include phone {
-      display: flex;
-      flex-flow: column nowrap;
-    }
-  }
-  &.has-focus {
-    max-height: 100vh;
-    overflow: hidden;
-  }
-}
-
-.VisualizationFocus {
-  display: none;
-  &.is-visible {
-    display: block;
-  }
-  .lightbox-background {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 4;
-    cursor: pointer;
-  }
-  .lightbox-contents-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: calc(100vw - #{$medium-gutter});
-    height: 100vh;
-    z-index: 4;
-    overflow-x: hidden;
-    overflow-y: auto;
-    .lightbox-contents {
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: stretch;
-      padding: $medium-gutter;
-      box-sizing: border-box;
-      pointer-events: none;
-    }
-    .visualization-details {
-      color: white;
-      flex: 1;
-      box-sizing: border-box;
-      padding: $medium-gutter;
-      padding-top: 0;
-      order: 2;
-      .details-header {
-        pointer-events: all;
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: stretch;
-        align-items: flex-start;
-        h2 {
-          margin: 0;
-          flex: 1;
-        }
-        .close-btn {
-          color: white;
-          background: inherit;
-          cursor: pointer;
-          font-weight: 900;
-          font-size: 1.5em;
-        }
-      }
-      .copy-link-container {
-        margin: $medium-gutter 0;
-        z-index: 5;
-        position: absolute;
-        pointer-events: all;
-        button {
-          background: transparent;
-          border: 2px solid white;
-          border-radius: 1rem;
-          color: white;
-          font-size: .8rem;
-          padding: $small-gutter $medium-gutter;
-          &:hover {
-            background: white;
-            color: #333;
-          }
-        }
-      }
-      .details-contents {
-        margin-top: $medium-gutter * 5;
-        pointer-events: all;
-      }
-    }
-    .visualization-wrapper {
-      pointer-events: all;
-      background: transparent;
-      flex: 2;
-      max-width: 70vw;
-      min-width: 70vw;
-      position: relative;
-      min-height: 50vh;
-      box-sizing: border-box;
-      // padding: $medium-gutter;
-      // padding-bottom: $medium-gutter * 5;
-      padding: 0;
-      .VisualizationController {
-        // padding: $small-gutter;
-        padding-bottom: $medium-gutter * 5;
-        padding-top: $medium-gutter;
-        padding-right: $medium-gutter;
-        box-sizing: border-box;
-        position: relative;
-        width: unset;
-        // height: unset;
-        max-width: 100%;
-        // min-height: 50vh;
-        left: 0;
-        top: 0;
-        background: white;
-        align-items: flex-start;
-        height: auto;
-      }
-    }
-    @include tablet {
-      .lightbox-contents {
-        flex-flow: column nowrap;
-      } 
-      .visualization-details {
-        order: unset;
-      }
-      .visualization-wrapper {
-        max-width: calc(100% - #{$medium-gutter});
-        min-width: unset;
-      }
-    }
-  }
-}
-
-
-
-.__react_component_tooltip {
-  // .bar-tooltip {
-  background: white !important;
-  color: $color-text !important;
-  font-family: $font-family-1;
-  max-width: 300px;
-  padding: $medium-gutter !important;
-  &:after {
-    display: none !important;
-  }
-}
-
-
-/**
- * GENERIC VISUALIZATIONS STYLING
- */
-.GenericVisualization {
-  margin: 0;
-  padding: 0;
-  .background-rect {
-    fill: rgba(0, 0, 0, 0.05);
-  }
-  text {
-    font-family: $font-family-1;
-    font-size: 14px;
-  }
-  .title {
-    font-weight: 800;
-    font-size: 20px;
-  }
-  .ticks {
-    .tick-mark {
-      stroke: grey;
-      stroke-width: .5;
-    }
-    text {
-      font-size: 10px;
-      text-anchor: middle;
-    }
-    &.left-axis {
-      text{
-        text-anchor: end;
-      }
-      .axis-title {
-        font-weight: 800;
-        font-style: italic;
-        background: $color-text;
-      }
-    }
-    .background-line {
-      stroke: rgba(0, 0, 0, 0.2);;
-      stroke-dasharray: 4,2;
-    }
-  }
-  .headers {
-    font-weight: 800;
-  }
-  path,
-  .chart-line {
-    stroke: $color-accent;
-  }
-
-  
-  .row {
-    &.vis-row {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: stretch;
-      svg {
-        flex: 1;
-      }
-    }
-  }
-}
-
-.visualization-title {
-  margin: 0;
-  padding: 0;
-  margin-bottom: .5rem;
-  color: inherit;
-  font-weight: 500;
-  font-size: 1rem;
-  margin-left: 0;
-  margin-top: 0;
-}
-
-.LineChart {
-  .data-dot-container {
-    .data-dot {
-      // stroke: $color-accent;
-    }
-    .data-dot-big {
-      opacity: 0;
-      transition: .5s ease all;
-    }
-    &:hover {
-      .data-dot-big {
-        opacity: 1;
-      }
-    }
-  }
-}
-
-.BarChart {
-  .vertical-bar-label {
-    // text-anchor: end;
-    font-family: $font-family-1;
-    text-align: right;
-    font-size: .7rem;
-    padding: $small-gutter;
-    box-sizing: border-box;
-    text-align: end;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    overflow: visible;
-  }
-}
-.ColorLegend {
-  font-family: $font-family-1;
-  background: inherit;
-  padding: $small-gutter;
-  padding-top: 0;
-  box-sizing: border-box;
-  position: relative;
-  // min-width: 10vw;
-  // max-width: 10vw;
-  h5{
-    margin: 0;
-    padding: 0;
-  }
-  .color-legend {
-    list-style: none;
-    padding: 0;
-    margin-top: $small-gutter;
-    li {
-      display: flex;
-      flex-flow: row nowrap;
-      margin-bottom: $small-gutter;
-      font-size: .7rem;
-      .color-box{
-        display: inline-block;
-        width: .7rem;
-        min-width: .7rem;
-        height: .7rem;
-        min-height: .7rem;
-        margin-right: math.div($small-gutter, 2);
-      } 
-      .color-label {
-        position: relative;
-        // top: .1rem;
-      }
-    }
-  }
-}
-
-.vis-focus-container {
-  position: fixed;
-  right: .5rem;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  transition: .5s ease all;
-  opacity: 0;
-  pointer-events: none;
-  button {
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    font-weight: 800;
-    pointer-events: none;
-    transition: .5s ease all;
-    cursor: pointer;
-    border-radius: 50%;
-    border: 1px solid black;
-    height: 1.5rem;
-    width: 1.5rem;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: center;
-    padding-top: .6em;
-  }
-
-  @include phone {
-    &.is-visible {
-      opacity: 1;
-      button {
-        pointer-events: all;
-      }
-    }
-
-    &.is-active {
-      right: calc(100vw - 3rem);
-      button {
-        rotate: -180deg;
-      }
-    }
-  }
-}
-.Home {
-  .vis-focus-container {
-    button {
-      color: white;
-      border: 1px solid white;
-    }
-  }
-}
-
-.PlainPage {
-  a {
-    color: inherit;
-  }
-}
-
-
-.StandaloneVisualization {
-  position: fixed;
-  background: white;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  min-width: 100vw;
-  z-index: 1000;
-  .visualization-title {
-    display: none;
-  }
-  .VisualizationController {
-    background: white;
-    position: fixed;
-    background: white;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    min-width: 100vw;
-    z-index: 1000;
-    overflow: auto;
-  }
-}
-
-.RadarPlot {
-  .AxisObject {
-    font-size: .7rem;
-    .label {
-      font-family: $font-family-1;
-    }
-    line {
-      stroke: grey;
-      stroke-width: .5;
-    }
-    circle {
-      stroke: grey;
-    }
-  }
-
-  .VisObject {
-    transition: opacity .5s ease;
-    opacity: 1;
-  }
-
-  .objects-container {
-    &:hover {
-      .VisObject {
-        opacity: .5;
-        &:hover {
-          opacity: 1;
-        }
-      }
-    }
-    
-  }
-}
-
-.HomeportFlows {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: stretch;
-  .column:first-of-type .GeographicMapChart {
-    border-right: 3px solid $color-text;
-  }
-  .column:last-of-type .GeographicMapChartWrapper:last-of-type .GeographicMapChart {
-    border-top: 3px solid $color-text;
-  }
-  .geopart {
-    stroke-width: 0.5!important;
   }
 }

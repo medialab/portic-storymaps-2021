@@ -68,11 +68,12 @@ const Step2 = ({
           </div>
           <div style={{
             position: 'absolute',
-            bottom: 0,
+            bottom: '1rem',
             left: 0,
             width: width * .3,
             height: height * .3,
             paddingLeft: 0,
+            // marginBottom: '1rem'
           }}
             className="ColorLegend"
           >
@@ -100,7 +101,8 @@ const Step2 = ({
             bottom: 0,
             right: 0,
             width: width * .7,
-            height: height * .3
+            height: height * .3,
+            // marginBottom: '2rem'
           }}>
             <BarChart
               data={datasets['part_3_centralite_comparaison/part_3_centralite_comparaison.csv']}

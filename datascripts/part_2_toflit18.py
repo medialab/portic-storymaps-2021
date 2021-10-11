@@ -1,7 +1,6 @@
 import csv
 from collections import defaultdict
-import os
-from lib import ensure_dir, logger
+from lib import ensure_dir, logger, write_readme
 
 
 logger.info('start | part 2 main viz toflit18 data')
@@ -25,7 +24,7 @@ colonies_products = {
 }
 for f in relevant_flows :
     product_weight_kg = 0
-    # @todo a lot of products are flushed out when doing thing
+    # @todo a lot of products are flushed out when doing the following
     if f['quantity_unit_metric'] and f['quantity_unit_metric'] == 'kg':
       product_weight_kg = float(f['quantities_metric'] if f['quantities_metric'] else 0)
     f['product_weight_kg'] = product_weight_kg
@@ -40,7 +39,6 @@ for f in relevant_flows :
         colonies_products[flow_type][product] = int(colonies_products[flow_type][product]) + int(value) if product in colonies_products[flow_type] else int(value)
     
     if product in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']:
-        # product_viz = "produit colonial ('Café', 'Sucre', 'Indigo', 'Coton non transformé')"
         product_viz = "produits coloniaux"
     elif (product == 'Sel'):
         product_viz = 'sel'
@@ -102,9 +100,42 @@ for flow in initial_flows_viz:
     """
 flows_viz = list(uniques.values())
 
-# write dataset
+# write and document dataset
+info = """
+`part_2_toflit_viz_data.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from "bdd_base_courante" file
+
+# What does a line correspond to ?
+
+An aggregation of toflit18 flows for 1789, corresponding to :
+
+- 1 bureau des fermes in particular
+- 1 class of partner in particular
+- 1 type of product in particular
+
+# Filters
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- year : 1789
+- customs_region : La Rochelle
+
+# Aggregation/computation info
+
+- values aggregated by cumulated value in livre tournois
+- partner column is made from a custom classification to see directly in the datascript `datascripts/part_2_toflit18.py`
+- product column is made from a custom classification to see directly in the datascript `datascripts/part_2_toflit18.py`
+
+# Notes/warning
+
+- Products weights are quite rarely specified in flows
+  """
 dataset_filepath = "../public/data/part_2_toflit_viz_data/part_2_toflit_viz_data.csv"
 ensure_dir("../public/data/part_2_toflit_viz_data/")
+write_readme("part_2_toflit_viz_data/README.md", info)
 with open(dataset_filepath, "w") as csvfile:
   fieldnames = flows_viz[0].keys()
   writer = csv.DictWriter(csvfile, fieldnames=fieldnames)

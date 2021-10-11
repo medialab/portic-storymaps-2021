@@ -78,9 +78,9 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
 `decline_longitudinal_data.csv` documentation
 ===
 
-# What is the data ? 
+# What is the original data ? 
 
-toflit18 flows
+toflit18 flows from "bdd_base_courante" file
 
 # What does a line correspond to ?
 
@@ -131,9 +131,9 @@ One "direction des fermes" in particular during one year in particular, for whic
 `decline_LR_products.csv` documentation
 ===
 
-# What is the data ? 
+# What is the original data ? 
 
-toflit18 flows
+toflit18 flows from "bdd_base_courante" file
 
 # What does a line correspond to ?
 
@@ -169,9 +169,9 @@ One product exported by La Rochelle, with its absolute and relative value in liv
 `decline_LR_partners.csv` documentation
 ===
 
-# What is the data ? 
+# What is the original data ? 
 
-toflit18 flows
+toflit18 flows from "bdd_base_courante" file
 
 # What does a line correspond to ?
 

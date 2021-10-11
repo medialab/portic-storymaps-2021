@@ -125,7 +125,7 @@ info = """
 `part_2_navigo_viz_data.csv` documentation
 ===
 
-# What is the data ? 
+# What is the original data ? 
 
 Navigo flows for 1789
 
@@ -148,7 +148,7 @@ One travel for a boat that sailed from La Rochelle in 1789, with extra informati
 - the "bureau des fermes" associated to the travel departure is modified/cleaned on the go in the datascript (see `datascripts/part_2_navigo.py`), this could be resolved upstream at some point.
   """
 ensure_dir("../public/data/part_2_navigo_viz_data/")
-write_readme('part2_navigo_viz_data/README.md', info)
+write_readme('part_2_navigo_viz_data/README.md', info)
 destination_filepath = "../public/data/part_2_navigo_viz_data/part_2_navigo_viz_data.csv"
 with open(destination_filepath, "w", newline='') as csvfile:
   logger.info('start | part 2 main viz navigo data')

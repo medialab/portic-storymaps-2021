@@ -1,7 +1,8 @@
 """
+@author : Cécile Asselin
 DOCUMENTATION DE CE SCRIPT 
 
-Ce qu'il fait ? ==> Ecriture de csv de données pour nourrir les visualisations
+Ce qu'il fait ? ==> Ecriture de csv de données pour nourrir les visualisations de la partie 3 du site
 
 (csv 0 de localisation de tous les ports de la DFLR dans leurs bureaux_map, provinces, amirautés, directions ... pour nourrir les cartes de l'intro)
 pour chaque port DFLR en 1789 :
@@ -54,10 +55,8 @@ step 3 :
 
 import networkx as nx
 import csv
-from operator import itemgetter
 from random import random
-import os
-from lib import ensure_dir, logger
+from lib import ensure_dir, logger, write_readme
 
 logger.info('start | part 3 main viz datasets')
 
@@ -101,7 +100,7 @@ def correct_localities_alignment(port):
 # ports_location_data_filepath : aims to feed intro maps (ports located in their bureaux, and provinces, and admiralties)
 ports_location_data_filepath = "../public/data/ports_locations_data/ports_locations_data.csv"
 # ports_tonnages_part3_data_filepath : aims to feed step 1 of the main viz of part3
-ports_tonnages_part3_data_filepath = "../public/data/part_3_step1_viz_data/part_3_step1_viz_data.csv"
+part_3_step1_viz_data_filepath = "../public/data/part_3_step1_viz_data/part_3_step1_viz_data.csv"
 ensure_dir("../public/data/ports_locations_data/")
 ensure_dir("../public/data/part_3_step1_viz_data/")
 
@@ -153,7 +152,35 @@ for p in relevant_pointcalls:
 for port, values in ports.items():
     values['mean_tonnage'] = values['cumulated_tonnage'] / values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
 
-# write datasets
+# write and document datasets
+info = """
+`ports_location_data.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific port from PASA and its related general informations.
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- ferme_direction : 'La Rochelle'
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+/
+
+# Notes/warning
+
+/
+"""
+write_readme("ports_location_data/README.md", info)
 with open(ports_location_data_filepath, "w", newline='') as csvfile:
     fieldnames = ['port', 'latitude', 'longitude',
         'customs_office', 'province', 'admiralty', 'customs_region']
@@ -172,7 +199,35 @@ with open(ports_location_data_filepath, "w", newline='') as csvfile:
         })
 
 # ports_tonnages_part3_data_filepath : aims to feed step 1 of the main viz of part3
-with open(ports_tonnages_part3_data_filepath, "w", newline='') as csvfile:
+info = """
+`part_3_step1_viz_data.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific port from PASA and its related tonnage and travels data for 1789.
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- ferme_direction : 'La Rochelle'
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+/
+
+# Notes/warning
+
+/
+"""
+write_readme("part_3_step1_viz_data/README.md", info)
+with open(part_3_step1_viz_data_filepath, "w", newline='') as csvfile:
     fieldnames = ['port', 'nb_pointcalls_out', 'mean_tonnage',
         'cumulated_tonnage', 'latitude', 'longitude', 'customs_office']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -327,7 +382,37 @@ for f in relevant_toflit_flows:
                 bureaux_map[bureau]['cumulated_exports_value_from_ext'] += value
     bureaux_map[bureau]['nb_toflit_flows_taken_into_account'] += 1 
 
-# write dataset
+# write and document dataset
+info = """
+`part_3_step3_viz_ports_data.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from raw flows' API endpoint
+
+# What does a line correspond to ?
+
+A specific port and its related data for 1787 or 1789 depending on the port.
+
+# Filters
+
+- for all flows : only flows coming out of the studied port (vs flows entering the port which are not taken into account)
+- for La Rochelle Data : 
+  - year : 1789
+  - pointcall_function : 'O'
+- for Bordeaux, Nantes and Le Havre data :
+  - year : 1787
+
+# Aggregation/computation info
+
+- we distinguish tonnages for travels inside PASA, and travels outside PASA
+
+# Notes/warning
+
+- we use different years depending on data availability for PASA region and compared ports
+"""
+write_readme("part_3_step3_viz_ports_data/README.md", info)
 with open(part_3_step3_viz_ports_data_filepath, 'w', newline='') as csvfile1:
     fieldnames1 = ['type_of_object', 'name', 'cumulated_tonnage_in_region', 'cumulated_tonnage_out_region', 'nb_navigo_flows_taken_into_account', 'customs_office', 'customs_region', 'latitude', 'longitude']
     writer1 = csv.DictWriter(csvfile1, fieldnames=fieldnames1)
@@ -348,9 +433,53 @@ with open(part_3_step3_viz_ports_data_filepath, 'w', newline='') as csvfile1:
             direction = 'Bordeaux'
         else:
             direction = 'La Rochelle'
-        writer1.writerow({'type_of_object': 'port', 'name': values['port'], 'cumulated_tonnage_in_region': values['cumulated_tonnage_in_region'], 'cumulated_tonnage_out_region': values['cumulated_tonnage_out_region'], 'nb_navigo_flows_taken_into_account': values['nb_navigo_flows_taken_into_account'], 'customs_office': bureau, 'customs_region': direction, 'latitude': values['latitude'] if 'latitude' in values.keys() else 'ERROR', 'longitude': values['longitude'] if 'longitude' in values.keys() else 'ERROR'})     
+        writer1.writerow({
+          'type_of_object': 'port', 
+          'name': values['port'], 
+          'cumulated_tonnage_in_region': values['cumulated_tonnage_in_region'], 
+          'cumulated_tonnage_out_region': values['cumulated_tonnage_out_region'], 
+          'nb_navigo_flows_taken_into_account': values['nb_navigo_flows_taken_into_account'], 
+          'customs_office': bureau, 
+          'customs_region': direction, 
+          'latitude': values['latitude'] if 'latitude' in values.keys() else 'ERROR', 
+          'longitude': values['longitude'] if 'longitude' in values.keys() else 'ERROR'
+        })     
             
+info = """
+`part_3_step3_viz_customs_offices_data.csv` documentation
+===
 
+# What is the original data ? 
+
+- Toflit18 flows taken from `bdd_base_courante.csv` dataset.
+- Navigation data from Navigo `raw_flows` endpoint
+
+# What does a line correspond to ?
+
+Navigation data for 1789 related to a specific *bureau des fermes* (thanks to bureaux-ports alignments)
+
+# Filters
+
+- for Toflit18 :
+  - year : 1789
+  - type of flow : exports
+  - targeted customs offices : ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré', "Les Sables d'Olonne", "Tonnay-Charente", 'Aligre', 'Charente', 'Le Havre', 'Bordeaux', 'Nantes']
+- for navigo data : 
+  - year : 1789
+  - pointcall_function : 'O'
+  - only data from ports attached to PASA's customs offices/bureaux des fermes
+
+
+# Aggregation/computation info
+
+- we distinguish navigo's tonnages for travels inside PASA, and travels outside PASA grounding on flows' destination
+- we distinguish toflit18's exports of PASA products and exports of not-PASA products, grounding on the flows "origin" field
+
+# Notes/warning
+
+/
+"""
+write_readme("part_3_step3_viz_customs_offices_data/README.md", info)
 with open(part_3_step3_viz_customs_offices_data_filepath, 'w', newline='') as csvfile2:
     fieldnames2 = ['type_of_object', 'name', 'cumulated_tonnage_in_region', 'cumulated_tonnage_out_region', 'nb_navigo_flows_taken_into_account', 'cumulated_exports_value_from_region', 'cumulated_exports_value_from_ext', 'nb_toflit_flows_taken_into_account','customs_office', 'customs_region', 'latitude', 'longitude']
     writer2 = csv.DictWriter(csvfile2, fieldnames=fieldnames2)
@@ -464,8 +593,31 @@ def build_graph(name, flows, admiralties):
     else:
       for id in graph.nodes():
         graph.nodes[id]["degree"] = graph.degree(id)
+    info = """
+`{}.gexf` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from API "raw flows" endpoint
+
+# Filters
+
+- year : 1787
+- we filter to flows that contain a departure OR destination in the following admiralties : {}
+
+# Aggregation/computation info
+
+- nodes `degree` is computed for each node
+- nodes `weight` represents the number of flows
+
+# Notes/warning
+
+/
+""".format(name, ', '.join(list(admiralties)))
     ensure_dir('../public/data/' + name + '/')
-    nx.write_gexf(graph, '../public/data/' + name + '/' + name + '.gexf')  
+    nx.write_gexf(graph, '../public/data/' + name + '/' + name + '.gexf') 
+    write_readme(name + "/" + "README.md", info) 
     return graph
 
 def build_centrality_metrics(flows):
@@ -502,14 +654,40 @@ def build_centrality_metrics(flows):
           "metrics_type": "PageRank",
           "score": page_rank[port],
       })
-      # page_ranks += [{"group": port, "port": p, "page_rank": value} for (p, value) in page_rank.items() if graph.nodes[p]['internal'] == True]
       metrics.append({
           "port": port,
           "metrics_type": "betweenness centrality",
           "score": betweenness_centrality[port]
       })
-      # betweenness_centralities += [{"group": port, "port": p, "betweenness_centrality": value} for (p, value) in betweenness_centrality.items()if graph.nodes[p]['internal'] == True]
+  info = """
+`part_3_centralite_comparaison.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from API "raw flows" endpoint
+
+# What does a line correspond to ?
+
+A given centrality metric for the network of ports attached to a given admiralty or group of admiralty (for La Rochelle we include "La Rochelle", "Marennes" and "Sables d'Olonnes" admiralties).
+
+# Filters
+
+- year : 1787
+- we filter to flows that contain a departure OR destination in the following admiralties : "Bordeaux", "Nantes", "La Rochelle", "Marennes" and "Sables d'Olonnes"
+- each network is computed separately
+
+# Aggregation/computation info
+
+- the metric regards the main port of each network
+
+# Notes/warning
+
+/
+  """
   ensure_dir('../public/data/part_3_centralite_comparaison/')
+  write_readme('part_3_centralite_comparaison/README.md', info)
+  
   with open('../public/data/part_3_centralite_comparaison/part_3_centralite_comparaison.csv', 'w', newline='') as csvfile:
     fieldnames = metrics[0].keys()
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)

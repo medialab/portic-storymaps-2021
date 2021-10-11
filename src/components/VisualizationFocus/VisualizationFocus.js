@@ -14,6 +14,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
 
   useEffect(() => {
     if (inputRef && inputRef.current) {
+      console.log('focusing')
       inputRef.current.focus();
     }
   }, [visualization])
@@ -57,7 +58,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
   }
   return (
     <div className={`VisualizationFocus ${visualization ? 'is-visible' : 'is-hidden'}`}>
-      <input style={{display: 'none'}} type="text" onKeyUp={handleKeyUp} ref={inputRef} />
+      <input style={{ opacity: 0, zIndex: -10, 'pointerEvents': 'none' }} type="text" onKeyUp={handleKeyUp} ref={inputRef} />
       <div onClick={onClose} className="lightbox-background" />
       {
         visualization ?

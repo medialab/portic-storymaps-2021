@@ -1,30 +1,30 @@
 port,nb_flows,tonnage
-Châlon,64,1920
-île de Ré,42,1260
-Les Sables-d'Olonne,30,900
-Rochefort,72,2160
-île d'Oléron,89,2670
-Saint-Martin-de-Ré,25,750
-Tonnay-Charente,204,6120
-Dercie,5,150
-Bourcefranc ,1,30
-Saintes,2,60
-Saint-Michel-en-l'Herm,1,30
-Rivedoux,1,30
-Le Plomb,1,30
-Le Chapus,3,90
-Seudre,16,480
-Luçon,3,90
-Saint-Gilles-sur-Vie,1,30
-La Tremblade,8,240
-l'Aiguillon,1,30
-Brouage ,7,210
-Marans,33,990
-Marennes,38,1140
-Moricq,41,1230
-Soubise,2,60
-Ribérou,14,420
-La Perrotine,4,120
-La Flotte-en-Ré,3,90
-Saint-Denis d'Oléron,2,60
-La Tranche-sur-Mer,4,120
+Châlon,64,1253
+île de Ré,42,2643
+Les Sables-d'Olonne,30,905
+Rochefort,72,2262
+île d'Oléron,89,2605
+Saint-Martin-de-Ré,25,594
+Tonnay-Charente,204,7514
+Dercie,5,160
+Bourcefranc ,1,50
+Saintes,2,57
+Saint-Michel-en-l'Herm,1,5
+Rivedoux,1,6
+Le Plomb,1,20
+Le Chapus,3,17
+Seudre,16,1336
+Luçon,3,104
+Saint-Gilles-sur-Vie,1,55
+La Tremblade,8,142
+l'Aiguillon,1,1
+Brouage ,7,308
+Marans,33,1065
+Marennes,38,1116
+Moricq,41,1159
+Soubise,2,41
+Ribérou,14,151
+La Perrotine,4,86
+La Flotte-en-Ré,3,326
+Saint-Denis d'Oléron,2,16
+La Tranche-sur-Mer,4,83

@@ -19,7 +19,6 @@ def prepare_contents(str):
   center_mode = False
   # split parts
   for line in lines:
-    # line = line.replace('https://www.google.com/url?q=', '')
     if line.strip() == '---':
       line = ''
     if line.startswith('# '):
@@ -78,20 +77,9 @@ with requests.Session() as s:
     elif i < 4:
       md_path = TARGET_BASE + 'partie-' + str(i) + '.mdx'
     elif i == 5:
-      # print(part)
       md_path = TARGET_BASE + 'a-propos.mdx'
     else:
       md_path = TARGET_BASE + 'references.mdx'
     f = open(md_path, "w")
     f.write(part)
     f.close()
-
-# get intro
-# with requests.Session() as s:
-#   download = s.get(GDOC_INTRO_URL)
-#   decoded_content = download.content.decode('utf-8')
-#   intro = prepare_contents(decoded_content)[0]
-#   md_path = TARGET_BASE + 'introduction.mdx'
-#   f = open(md_path, "w")
-#   f.write(intro)
-#   f.close()

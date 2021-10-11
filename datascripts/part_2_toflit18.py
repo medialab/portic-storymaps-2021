@@ -1,14 +1,10 @@
 import csv
 from collections import defaultdict
 import os
+from lib import ensure_dir, logger
 
-def ensure_dir(path):
-  if not os.path.exists(path):
-      os.makedirs(path)
 
-OUTPUT = "../public/data/part_2_toflit_viz_data/part_2_toflit_viz_data.csv"
-ensure_dir("../public/data/part_2_toflit_viz_data/")
-
+logger.info('start | part 2 main viz toflit18 data')
 relevant_flows = []
 # retrieve relevant flows
 with open('../data/toflit18_all_flows.csv', 'r') as f:
@@ -30,7 +26,6 @@ colonies_products = {
 for f in relevant_flows :
     product_weight_kg = 0
     # @todo a lot of products are flushed out when doing thing
-    # print(f['quantities_metric'], f['quantity_unit_metric'])
     if f['quantity_unit_metric'] and f['quantity_unit_metric'] == 'kg':
       product_weight_kg = float(f['quantities_metric'] if f['quantities_metric'] else 0)
     f['product_weight_kg'] = product_weight_kg
@@ -108,10 +103,13 @@ for flow in initial_flows_viz:
 flows_viz = list(uniques.values())
 
 # write dataset
-with open(OUTPUT, "w") as csvfile:
+dataset_filepath = "../public/data/part_2_toflit_viz_data/part_2_toflit_viz_data.csv"
+ensure_dir("../public/data/part_2_toflit_viz_data/")
+with open(dataset_filepath, "w") as csvfile:
   fieldnames = flows_viz[0].keys()
   writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
   writer.writeheader()
   for f in flows_viz:
       writer.writerow(f)
+  logger.debug('done | part 2 main viz toflit18 data')

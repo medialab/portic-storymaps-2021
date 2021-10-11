@@ -33,3 +33,6 @@ yarn-error.log*
 
 # unwanted tests for now
 /src/components/LinearGraphBlock/
+
+
+__pycache__

@@ -1,3 +1,4 @@
 html2markdown
 html-sanitizer
 networkx
+coloredlogs

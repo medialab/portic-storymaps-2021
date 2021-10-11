@@ -8,15 +8,9 @@ curl -o data/navigo_raw_flows_1789.csv "data.portic.fr/api/rawflows/?date=1789&f
 '''
 
 import csv
-import sys
-from collections import defaultdict
 import os
+from lib import ensure_dir, logger
 
-def ensure_dir(path):
-  if not os.path.exists(path):
-      os.makedirs(path)
-
-OUTPUT = "../public/data/part_2_navigo_viz_data/part_2_navigo_viz_data.csv"
 ensure_dir("../public/data/part_2_navigo_viz_data/")
 
 def clean_bureau_name(name, departure):
@@ -46,10 +40,6 @@ with open('../data/navigo_raw_flows_1789.csv', 'r', encoding='utf-8') as f:
       if flow['departure_ferme_direction'] == 'La Rochelle' and flow['departure_function'] == 'O':
         relevant_flows.append(flow)
 
-
-#print(sys.getdefaultencoding())
-#print(sys.stdout.encoding)
-
 for f in relevant_flows :
     destination_radar='Unknown'
     if f['destination_partner_balance_supp_1789']=='Sénégal et Guinée':
@@ -71,8 +61,8 @@ for f in relevant_flows :
     
 
     if (destination_radar=='Unknown'):
-        print(f['destination_partner_balance_supp_1789'])
-        print(f['destination_partner_balance_supp_1789'].encode("utf8"))
+        logger.warning('unknown radar destination : ' + f['destination_partner_balance_supp_1789'])
+        logger.warning('unknown radar destination : ' + f['destination_partner_balance_supp_1789'].encode("utf8"))
     #Create and assign a new column named destination_radar
     f['destination_radar'] = destination_radar
 
@@ -103,8 +93,8 @@ for f in relevant_flows :
 
     #Check all is assigned
     if (homeport_destination_radar=='Unknown'):
-        print(f['homeport_substate_1789_fr'])
-        print(f['homeport_substate_1789_fr'].encode("utf8"))
+        logger.warning('unknown homeport destination radar : ' + f['homeport_substate_1789_fr'])
+        logger.warning('unknown homeport destination radar : ' + f['homeport_substate_1789_fr'].encode("utf8"))
     #Create and assign a new column named homeport_destination_radar
     f['homeport_destination_radar'] = homeport_destination_radar
 
@@ -131,11 +121,15 @@ def format_for_viz(f):
    }
 
 initial_flows_viz = [format_for_viz(f) for f in relevant_flows]
+
 # write dataset
-with open(OUTPUT, "w", newline='') as csvfile:
+destination_filepath = "../public/data/part_2_navigo_viz_data/part_2_navigo_viz_data.csv"
+with open(destination_filepath, "w", newline='') as csvfile:
+  logger.info('start | part 2 main viz navigo data')
   fieldnames = initial_flows_viz[0].keys()
   writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
   writer.writeheader()
   for f in initial_flows_viz:
       writer.writerow(f)
+  logger.debug('done | part 2 main viz navigo data')

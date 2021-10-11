@@ -57,17 +57,15 @@ import csv
 from operator import itemgetter
 from random import random
 import os
+from lib import ensure_dir, logger
 
-def ensure_dir(path):
-  if not os.path.exists(path):
-      os.makedirs(path)
+logger.info('start | part 3 main viz datasets')
 
 
-# PORTS_DFLR = {"Saint-Denis d'Oléron", 'Saint-Gilles-sur-Vie', 'Noirmoutier', 'La Rochelle', 'Beauvoir-sur-Mer', 'Marans', 'Esnandes', 'Saint-Martin-de-Ré', 'La Tremblade', "Les Sables-d'Olonne", 'Tonnay-Charente', 'Rochefort', 'La Tranche-sur-Mer', "Saint-Michel-en-l'Herm", 'Marennes', 'Ribérou', 'Mortagne', 'Moricq', 'Royan', "Le Château-d'Oléron", 'La Perrotine', 'Soubise', 'Ars-en-Ré', 'Champagné-les-Marais', 'La Flotte-en-Ré'}
 ports_dflr = set()
 PORTS_FOR_COMPARISON = {'Bordeaux', 'Nantes', 'Le Havre'}
 # je laisse Oléron dans les bureaux_map car c'est un bureau selon Navigo, mais étrange car n'en est pas un selon Toflit
-BUREAUS = {'Bordeaux', 'Nantes', 'Le Havre', 'La Rochelle', 'Marans', 'Saint-Martin-de-Ré', "Les Sables-d'Olonne",
+UNIQUE_BUREAUX = {'Bordeaux', 'Nantes', 'Le Havre', 'La Rochelle', 'Marans', 'Saint-Martin-de-Ré', "Les Sables-d'Olonne",
     'Tonnay-Charente', 'Rochefort', 'Marennes', 'undefined customs office', 'ile de Bouin : hors DFLR'}
 
 # normalizes names
@@ -98,17 +96,12 @@ def correct_localities_alignment(port):
     elif port == 'île de Bouin':
         return 'ile de Bouin : hors DFLR'
 
-# test
-# for port in ['Beauvoir-sur-Mer','Champagné-les-Marais', 'Tonnay-Charente', "Saint-Denis d’Oléron", "Le Château-d'Oléron", 'Île d’Oléron', "île d'Oléron", 'La Brée', 'île de Bouin']:
-#    print("bureau de ", port, " : ", correct_localities_alignment(clean_names(port)))
+# 1. write csv files
 
-# 1. write csv files :
-# OUTPUT 0 : aims to feed intro maps (ports located in their bureaux, and provinces, and admiralties)
-# OUTPUT1 : aims to feed step 1 of the main viz of part3
-
-
-OUTPUT0 = "../public/data/ports_locations_data/ports_locations_data.csv"
-OUTPUT1 = "../public/data/part_3_step1_viz_data/part_3_step1_viz_data.csv"
+# ports_location_data_filepath : aims to feed intro maps (ports located in their bureaux, and provinces, and admiralties)
+ports_location_data_filepath = "../public/data/ports_locations_data/ports_locations_data.csv"
+# ports_tonnages_part3_data_filepath : aims to feed step 1 of the main viz of part3
+ports_tonnages_part3_data_filepath = "../public/data/part_3_step1_viz_data/part_3_step1_viz_data.csv"
 ensure_dir("../public/data/ports_locations_data/")
 ensure_dir("../public/data/part_3_step1_viz_data/")
 
@@ -125,13 +118,11 @@ with open('../data/navigo_all_pointcalls_1789.csv', 'r') as f:
       if pointcall['ferme_direction'] is not None and pointcall['ferme_direction'] == 'La Rochelle' and pointcall['pointcall_action'] == 'Out' and pointcall['pointcall_function'] == 'O':
         relevant_pointcalls.append(pointcall)
         ports_dflr.add(pointcall['toponyme_fr'])
-# print("nombre de pointcalls sortis des ports de la DFLR en 1789  :", len(relevant_pointcalls))
 
 # aggregate data by port
-
-# init port objects
+# init ports dict for aggregation
 ports = {}
-
+# initialize each port dict
 for p in ports_dflr:
     ports[p] = {
         "port": p,
@@ -140,7 +131,7 @@ for p in ports_dflr:
         "mean_tonnage": 0
     }
 
-# fill port objects with cumulated data, and ports coord
+# fill port objects with cumulated data, and ports coordinates
 for p in relevant_pointcalls:
     port = p['toponyme_fr']
     if p['tonnage'] != '':
@@ -163,8 +154,7 @@ for port, values in ports.items():
     values['mean_tonnage'] = values['cumulated_tonnage'] / values['nb_pointcalls_out'] if values['nb_pointcalls_out'] != 0 else 0
 
 # write datasets
-# OUTPUT 0 : aims to feed intro maps (ports located in their bureaux, and provinces, and admiralties)
-with open(OUTPUT0, "w", newline='') as csvfile:
+with open(ports_location_data_filepath, "w", newline='') as csvfile:
     fieldnames = ['port', 'latitude', 'longitude',
         'customs_office', 'province', 'admiralty', 'customs_region']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -181,8 +171,8 @@ with open(OUTPUT0, "w", newline='') as csvfile:
             'customs_region': port["customs_region"]
         })
 
-# OUTPUT1 : aims to feed step 1 of the main viz of part3
-with open(OUTPUT1, "w", newline='') as csvfile:
+# ports_tonnages_part3_data_filepath : aims to feed step 1 of the main viz of part3
+with open(ports_tonnages_part3_data_filepath, "w", newline='') as csvfile:
     fieldnames = ['port', 'nb_pointcalls_out', 'mean_tonnage',
         'cumulated_tonnage', 'latitude', 'longitude', 'customs_office']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -201,8 +191,8 @@ with open(OUTPUT1, "w", newline='') as csvfile:
         })
 
 # 3. write csv file to feed step 3 of the viz
-OUTPUT3_PORTS = "../public/data/part_3_step3_viz_ports_data/part_3_step3_viz_ports_data.csv"
-OUTPUT3_OFFICES = "../public/data/part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv"
+part_3_step3_viz_ports_data_filepath = "../public/data/part_3_step3_viz_ports_data/part_3_step3_viz_ports_data.csv"
+part_3_step3_viz_customs_offices_data_filepath = "../public/data/part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv"
 ensure_dir("../public/data/part_3_step3_viz_ports_data/")
 ensure_dir("../public/data/part_3_step3_viz_customs_offices_data/")
 
@@ -223,10 +213,8 @@ def build_relevant_navigo_flows():
             if flow['departure_fr'] in ['Bordeaux', 'Nantes', 'Le Havre']:
               results.append(flow)
               j += 1
-
-    # print("ports de la DFLR (noms standardisés) : ", ports_dflr)
-  print("nombre de flows navigo partis de la DFLR en 1789 : ", i)
-  print("nombre de flows navigo partis de Nantes, Bordeaux, Le Havre en 1787 : ", j)
+  # print("nombre de flows navigo partis de la DFLR en 1789 : ", i)
+  # print("nombre de flows navigo partis de Nantes, Bordeaux, Le Havre en 1787 : ", j)
   return results
 
 def build_relevant_toflit_flows():
@@ -236,7 +224,7 @@ def build_relevant_toflit_flows():
     for flow in flows:
         if flow['year'] == '1789' and flow['export_import'] == 'Exports' and flow['customs_office'] in ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré', "Les Sables d'Olonne", "Tonnay-Charente", 'Aligre', 'Charente', 'Le Havre', 'Bordeaux', 'Nantes']:
           results.append(flow)
-  print("nombre d'exports des bureaux de la DFLR + Nantes, Bordeaux, Le Havre en 1789 : ", len(results))
+  # print("nombre d'exports des bureaux de la DFLR + Nantes, Bordeaux, Le Havre en 1789 : ", len(results))
   return results
 
 
@@ -261,7 +249,7 @@ for p in list(ports_dflr)+list(PORTS_FOR_COMPARISON):
         "cumulated_tonnage_out_region": 0
     }
 
-for b in list(BUREAUS):
+for b in list(UNIQUE_BUREAUX):
     bureaux_map[b] = {
         "bureau": b,
         "nb_navigo_flows_taken_into_account": 0,
@@ -296,7 +284,7 @@ for f in relevant_navigo_flows :
             ports[port]['cumulated_tonnage_out_region'] += tonnage
             bureaux_map[bureau]['cumulated_tonnage_out_region'] += tonnage
     else:
-        print("on n'a rien ajouté")
+        logger.warning("on n'a rien ajouté")
     ports[port]['nb_navigo_flows_taken_into_account'] += 1
     bureaux_map[bureau]['nb_navigo_flows_taken_into_account'] += 1
     if 'latitude' not in ports[port].keys():
@@ -340,7 +328,7 @@ for f in relevant_toflit_flows:
     bureaux_map[bureau]['nb_toflit_flows_taken_into_account'] += 1 
 
 # write dataset
-with open(OUTPUT3_PORTS, 'w', newline='') as csvfile1:
+with open(part_3_step3_viz_ports_data_filepath, 'w', newline='') as csvfile1:
     fieldnames1 = ['type_of_object', 'name', 'cumulated_tonnage_in_region', 'cumulated_tonnage_out_region', 'nb_navigo_flows_taken_into_account', 'customs_office', 'customs_region', 'latitude', 'longitude']
     writer1 = csv.DictWriter(csvfile1, fieldnames=fieldnames1)
 
@@ -363,7 +351,7 @@ with open(OUTPUT3_PORTS, 'w', newline='') as csvfile1:
         writer1.writerow({'type_of_object': 'port', 'name': values['port'], 'cumulated_tonnage_in_region': values['cumulated_tonnage_in_region'], 'cumulated_tonnage_out_region': values['cumulated_tonnage_out_region'], 'nb_navigo_flows_taken_into_account': values['nb_navigo_flows_taken_into_account'], 'customs_office': bureau, 'customs_region': direction, 'latitude': values['latitude'] if 'latitude' in values.keys() else 'ERROR', 'longitude': values['longitude'] if 'longitude' in values.keys() else 'ERROR'})     
             
 
-with open(OUTPUT3_OFFICES, 'w', newline='') as csvfile2:
+with open(part_3_step3_viz_customs_offices_data_filepath, 'w', newline='') as csvfile2:
     fieldnames2 = ['type_of_object', 'name', 'cumulated_tonnage_in_region', 'cumulated_tonnage_out_region', 'nb_navigo_flows_taken_into_account', 'cumulated_exports_value_from_region', 'cumulated_exports_value_from_ext', 'nb_toflit_flows_taken_into_account','customs_office', 'customs_region', 'latitude', 'longitude']
     writer2 = csv.DictWriter(csvfile2, fieldnames=fieldnames2)
     writer2.writeheader()
@@ -476,8 +464,6 @@ def build_graph(name, flows, admiralties):
     else:
       for id in graph.nodes():
         graph.nodes[id]["degree"] = graph.degree(id)
-
-    print('name : ', name)
     ensure_dir('../public/data/' + name + '/')
     nx.write_gexf(graph, '../public/data/' + name + '/' + name + '.gexf')  
     return graph
@@ -506,7 +492,9 @@ def build_centrality_metrics(flows):
 
   for p in ports_to_compare:
       port, admiralties = p.values()
+      logger.info('start | part 3 main viz :  build ' + port + ' network')
       graph = build_graph("flows_1787_around_" + port, flows, admiralties)
+      logger.debug('end | part 3 main viz :  build ' + port + ' network')
       page_rank = nx.pagerank(graph)
       betweenness_centrality =  nx.betweenness_centrality(graph)
       metrics.append({
@@ -530,4 +518,9 @@ def build_centrality_metrics(flows):
     for m in metrics:
         writer.writerow(m)
 
+
+logger.info('start | part 3 main viz : centrality metrics')
 build_centrality_metrics(get_all_flows_from_1787())
+logger.debug('done | part 3 main viz : centrality metrics')
+
+logger.debug('done | part 3 main viz datasets')

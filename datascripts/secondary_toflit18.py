@@ -1,6 +1,6 @@
 import csv
 from operator import itemgetter
-from lib import get_online_csv, write_csv, logger
+from lib import get_online_csv, write_csv, logger, write_readme
 
 """
 Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française
@@ -165,6 +165,36 @@ def compute_top_shared_toflit18_products(flows):
         })
 
         i += 1
+    info = """
+`comparison_products_exports_part_la_rochelle.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One product exported by either France or La Rochelle customs direction.
+
+# Filters
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- we exclude ports francs ("product_grouping" != "France")
+
+# Aggregation/computation info
+
+- flows geographic attribution is done according to 3 classes : La Rochelle (customs_direction = "La Rochelle"), National (customs_direection = "National" or "") and "Autre direction"
+- France means metrics per products are derivated from all flows, La Rochelle comes from La Rochelle flows only
+- products classes are from "revolution & empire" classification
+- values aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+One should wonder if using both national and direction-level for France means might cause duplicates (?).
+However it might not matter so much as we are calculating a means of products shares (?).
+  """
+    write_readme("comparison_products_exports_part_la_rochelle/README.md", info)
     write_csv("comparison_products_exports_part_la_rochelle/comparison_products_exports_part_la_rochelle.csv", final_vega_data_1789_without_ports_francs)
     logger.debug('done | compute_top_shared_toflit18_products')
 
@@ -215,6 +245,33 @@ def compute_global_la_rochelle_evolution (flows_national, flows_regional):
           "type": "export",
           "portion": values['la_rochelle_export'] / values['france_total'] if  values['france_total'] > 0 else 0
       })
+  info = """
+`global_evolution_la_rochelle_imports_exports.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One year of import or export for La Rochelle, with attached metrics about share of trade against france total trade.
+
+# Filters
+
+- for La Rochelle numbers : source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- for national numbers : source "best guess national partner" (best_guess_national_partner == 1)
+- we exclude ports francs ("product_grouping" != "France")
+
+# Aggregation/computation info
+
+- values aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+/
+  """
+  write_readme("global_evolution_la_rochelle_imports_exports/README.md", info)
   write_csv("global_evolution_la_rochelle_imports_exports/global_evolution_la_rochelle_imports_exports.csv", part_by_year)
   logger.debug('done | compute_global_la_rochelle_evolution')
 
@@ -270,6 +327,37 @@ def compute_exports_colonial_products(flows):
         "type": product
       })
   output = sorted(output, key=lambda v : -v["value"])
+  info = """
+`comparaison_exports_coloniaux.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One class of product for one customs office (direction des fermes) with its value.
+
+# Filters
+
+- year = 1789
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- we exclude ports francs ("product_grouping" != "France")
+
+# Aggregation/computation info
+
+- products are classed along three categories:
+  - "produit colonial" if product revolution&empire class is in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']
+  - "produit de la région PASA" if "origin_province" is in ['Aunis', 'Poitou', 'Saintonge', 'Angoumois']
+  - "autre produit" for all the rest
+- values are aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+/
+  """
+  write_readme("comparaison_exports_coloniaux/README.md", info)
   write_csv("comparaison_exports_coloniaux/comparaison_exports_coloniaux.csv", output)
   logger.debug('done | compute_exports_colonial_products')
 
@@ -353,8 +441,97 @@ def compute_eau_de_vie_datasets(flows):
         "value": local_value
       })
   la_rochelle_exports_by_year = [{"year": year, "value": value} for year, value in la_rochelle_exports_by_year.items()]
+  info = """
+`exports_eau_de_vie_la_rochelle_longitudinal.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One year of eau-de-vie exports from La Rochelle.
+
+# Filters
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- we exclude ports francs ("product_grouping" != "France")
+- customs_direction = "La Rochelle"
+- type = exports
+- filtering eau-de-vie products : flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin"
+
+# Aggregation/computation info
+
+- values are aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+/
+  """
+  write_readme("exports_eau_de_vie_la_rochelle_longitudinal/README.md", info)
   write_csv("exports_eau_de_vie_la_rochelle_longitudinal/exports_eau_de_vie_la_rochelle_longitudinal.csv", la_rochelle_exports_by_year)
+  info = """
+`exports_eau_de_vie_comparaison_directions_des_fermes.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One year of eau-de-vie exports for one specific customs direction (direction des fermes).
+
+# Filters
+
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- we exclude ports francs ("product_grouping" != "France")
+- customs_direction = "La Rochelle" or "Bordeaux" or "Nantes" or "Bayonne" or "Montpellier"
+- type = exports
+- filtering eau-de-vie products : flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin"
+
+# Aggregation/computation info
+
+- values are aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+/
+  """
+  write_readme("exports_eau_de_vie_comparaison_directions_des_fermes/README.md", info)
   write_csv("exports_eau_de_vie_comparaison_directions_des_fermes/exports_eau_de_vie_comparaison_directions_des_fermes.csv", export_slices_array)
+  info = """
+`origines_exports_eau_de_vie_1789_la_rochelle.csv` documentation
+===
+
+# What is the original data ? 
+
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
+
+# What does a line correspond to ?
+
+One type of eau-de-vie, for one type of origin.
+
+# Filters
+
+- year = 1789
+- source "Best Guess customs region prod x partner" (best_guess_region_prodxpart == 1)
+- we exclude ports francs ("product_grouping" != "France")
+- customs_direction = "La Rochelle" or "Bordeaux" or "Nantes" or "Bayonne" or "Montpellier"
+- type = exports
+- filtering eau-de-vie products : flow["product_revolutionempire"] == "Eaux-de-vie et liqueurs" or flow["product_simplification"] == "vin et eau-de-vie" or flow["product_simplification"] == "vin et eau-de-vie de vin"
+
+# Aggregation/computation info
+
+- eau-de-vie are classified as simple or double against [the following classification](https://docs.google.com/spreadsheets/d/e/2PACX-1vQI3rLZXqFtiqO4q8Pbp5uGH8fon-hYrd-LnJGtsYMe6UWWCwubvanKZY4FW1jI6eJ5OJ_GA8xUxYQf/pub?output=csv)
+- values are aggregated by cumulated value in livre tournois
+
+# Notes/warning
+
+/
+  """
+  write_readme("origines_exports_eau_de_vie_1789_la_rochelle/README.md", info)
   write_csv("origines_exports_eau_de_vie_1789_la_rochelle/origines_exports_eau_de_vie_1789_la_rochelle.csv", origins_list)
   logger.debug('done | compute_eau_de_vie_datasets')
 
@@ -377,7 +554,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
           flows_1789_by_region.append(flow)
       if flow["best_guess_region_prodxpart"] == "1" and flow["partner_grouping"] != "France":
           flows_regional_all_years.append(flow)
-      if flow["best_guess_national_partner"] == "1":
+      if flow["best_guess_national_partner"] == "1" and flow["partner_grouping"] != "France":
         flows_national_all_years.append(flow)
     compute_top_shared_toflit18_products(flows_1789_by_region)
     compute_global_la_rochelle_evolution(flows_national_all_years, flows_regional_all_years)

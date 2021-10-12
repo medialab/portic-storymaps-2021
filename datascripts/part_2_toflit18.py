@@ -107,7 +107,7 @@ info = """
 
 # What is the original data ? 
 
-toflit18 flows from "bdd_base_courante" file
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
 
 # What does a line correspond to ?
 

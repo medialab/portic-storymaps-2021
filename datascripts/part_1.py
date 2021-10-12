@@ -80,7 +80,7 @@ with open('../data/toflit18_all_flows.csv', 'r') as f:
 
 # What is the original data ? 
 
-toflit18 flows from "bdd_base_courante" file
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
 
 # What does a line correspond to ?
 
@@ -133,7 +133,7 @@ One "direction des fermes" in particular during one year in particular, for whic
 
 # What is the original data ? 
 
-toflit18 flows from "bdd_base_courante" file
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
 
 # What does a line correspond to ?
 
@@ -171,7 +171,7 @@ One product exported by La Rochelle, with its absolute and relative value in liv
 
 # What is the original data ? 
 
-toflit18 flows from "bdd_base_courante" file
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
 
 # What does a line correspond to ?
 

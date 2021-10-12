@@ -48,17 +48,11 @@ const HeaderNav = ({
   } else if (location.pathname.includes('/en/')) {
     lang = 'en';
   }
+  
   const liveScrollY = useScrollYPosition();
-
   const scrollY = useDebounce(liveScrollY, 50)
-
   const pageColorScale = scaleLinear().range([colorBackgroundBlue, colorBackground]).domain([0, 1])
   const { fontColor, backgroundColor } = useMemo(() => {
-    // const wrapper = document.getElementById('wrapper');
-    // if (!wrapper) {
-    //   return {fontColor: undefined, backgroundColor: undefined}
-    // }
-    // const scrollHeight = wrapper.offsetHeight;
     const screenHeight = window.innerHeight;
     switch (pageType) {
       case 'page':

@@ -583,7 +583,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
               // })
               // .slice(0, 20)
           }
-          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte - pas de données pour Montpellier en 1770)"
+          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)"
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
           orientation={'horizontal'}
@@ -616,7 +616,7 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
                 // })
                 // .slice(0, 20)
             }
-            title="Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte)"
+            title="Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte - pas de données pour Montpellier en 1770)"
             width={dimensions.width}
             height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
             orientation={'vertical'}

@@ -13,6 +13,8 @@ This project rests on the shoulder of two existing digital history projects : [T
 
 Prerequisites:
 
+* install [Node.js](https://nodejs.org/)
+* install [python](https://www.python.org/)
 * install [yarn](https://yarnpkg.com/)
 * install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
@@ -64,11 +66,11 @@ Warning: thumbnails building can be capricious on some machines. Copy existing s
 
 The project is open to contribution through pull requests.
 
-## Suggested guidelines for commiting the repository
+## Suggested guidelines for commiting to the repository
 
 - the `main` branch is the principal branch for the website version under development. Suggested workflow for contributing to the code is : for project members, to develop new features in a separated branch, then to merge it in `main` branch when it is ready ; for external person, to clone it then to submit a pull request with your modifications.
 
-- it is suggested to use imperative tense verbs and explicit features/bugs mentions in commit messages (see [this guide](https://gist.github.com/luismts/495d982e8c5b1a0ced4a57cf3d93cf60))
+- it is suggested to use imperative tense verbs and explicit features/bugs mentions in commit messages (see [this guide](https://gist.github.com/luismts/495d982e8c5b1a0ced4a57cf3d93cf60) for optimal commit messages)
 
 - it is suggested to reference related issue in commit messages (example of commit message : `improve radar viz #8`) in order to keep track of commits related to an issue in particular.
 

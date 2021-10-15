@@ -32,6 +32,8 @@ const ScrollyPage = ({
   const [focusOnViz, setFocusOnViz] = useState(false);
   // whether to open the active viz in "atlas mode"
   const [visualizationIsFullScreen, setVisualizationIsFullScreen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const [activeVisualization, setActiveVisualization] = useState(undefined);
   const [visualizations, setVisualizations] = useReducer(
     (state, newState) => ({ ...state, ...newState }),
@@ -162,7 +164,13 @@ const ScrollyPage = ({
                 <button
                   data-for="contents-tooltip"
                   data-tip="plus d'informations sur cette visualisation"
-                  onClick={() => setVisualizationIsFullScreen(true)}
+                  onClick={() => {
+                    setIsLoading(true);
+                    setTimeout(() => {
+                      setVisualizationIsFullScreen(true);
+                      setIsLoading(false);
+                    }, 100)
+                  }}
                 >
                   <span>+</span>
                 </button>
@@ -181,12 +189,24 @@ const ScrollyPage = ({
           'is-active': focusOnViz,
           'is-visible': activeVisualization
         })}>
-          <button data-for="contents-tooltip" data-effect="solid" data-tip={lang === 'fr' ? 'voir la visualisation associée' : 'see associated visualization'} onClick={() => setFocusOnViz(!focusOnViz)}>
+          <button 
+            data-for="contents-tooltip" 
+            data-effect="solid" 
+            data-tip={lang === 'fr' ? 'voir la visualisation associée' : 'see associated visualization'} 
+            onClick={() => {
+              setFocusOnViz(!focusOnViz);
+            }}>
             <span>{'˃'}</span>
           </button>
         </div>
         <ReactTooltip id="contents-tooltip" />
+        <div className={cx("loader-indication-wrapper", {'is-loading': isLoading})}>
+          <div className="loader-indication-container">
+            Chargement de la visualisation
+          </div>
+        </div>
       </div>
+      
     </VisualizationControlContext.Provider>
   )
 }

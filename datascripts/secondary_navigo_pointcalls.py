@@ -1,5 +1,5 @@
 import csv
-from lib import write_csv, logger
+from lib import write_csv, logger, write_readme
 
 def compute_hierarchy_country_group (country, port):
   if port == 'Côte d\'Angole' or port == 'Côte d\'Or':

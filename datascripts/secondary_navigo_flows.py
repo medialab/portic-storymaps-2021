@@ -1,5 +1,5 @@
 import csv
-from lib import write_csv, logger
+from lib import write_csv, logger, write_readme
 
 
 def compute_out_with_salt_from_marennes (flows):
@@ -63,6 +63,32 @@ def compute_sorties_from_marennes(flows_from_marennes):
       countries[country]["nb_pointcalls"] += 1
       countries[country]["tonnage"] += tonnage
   countries = [payload for _name, payload in countries.items()]
+  info = """
+`sorties-de-marennes.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from the `raw_flows` API endpoint.
+
+# What does a line correspond to ?
+
+One destination for boats that moved from Marennes port to another location in 1789.
+
+# Filters
+
+- year = 1789
+
+# Aggregation/computation info
+
+- aggregation is done by country, except for France for which we divide France (région PASA) and France (hors PASA) based on the admiralty of destination
+- aggregation is done by number of travels and cumulated tonnage
+
+# Notes/warning
+
+/
+  """
+  write_readme("sorties-de-marennes/README.md", info)
   write_csv("sorties-de-marennes/sorties-de-marennes.csv", countries)
   logger.debug('done | compute_sorties_from_marennes')
 
@@ -84,6 +110,34 @@ def compute_ports_from_larochelle_to_pasa(flows_from_la_rochelle_to_pasa):
       ports[port]["nb_flows"] += 1
       ports[port]["tonnage"] += tonnage
   ports = [payload for _name, payload in ports.items()]
+  info = """
+`ports-from-larochelle-to-pasa.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from the `raw_flows` API endpoint.
+
+# What does a line correspond to ?
+
+One destination for boats that moved from La Rochelle port to another location in 1789 in the PASA region.
+
+# Filters
+
+- year = 1789
+- departure_function = 'O'
+- port departure = "La Rochelle"
+- destination_admiralty in ['La Rochelle', "Sables d'Olonne", "Marennes", "Sables-d’Olonne"]
+
+# Aggregation/computation info
+
+- aggregation is done by number of travels and cumulated tonnage
+
+# Notes/warning
+
+/
+  """
+  write_readme("ports-from-larochelle-to-pasa/README.md", info)
   write_csv("ports-from-larochelle-to-pasa/ports-from-larochelle-to-pasa.csv", ports)
   logger.debug('done | compute_ports_from_larochelle_to_pasa')
 
@@ -115,6 +169,32 @@ def compute_flows_homeport_larochelle(flows_of_boats_from_larochelle):
     'flow_id': flow_id, 
     **vals,
     } for flow_id, vals in unique_flows.items()]
+  info = """
+`voyages-bateaux-homeport-larochelle-1787.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo flows from the `raw_flows` API endpoint.
+
+# What does a line correspond to ?
+
+One travel/flow of a boat for which the homeport is La Rochelle port.
+
+# Filters
+
+- year = 1787
+- homeport = "La Rochelle"
+
+# Aggregation/computation info
+
+- aggregation is done by number of travels and cumulated tonnage
+
+# Notes/warning
+
+/
+  """
+  write_readme("voyages-bateaux-homeport-larochelle-1787/README.md", info)
   write_csv("voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv", unique_flows)
   logger.debug('done | compute_flows_homeport_larochelle')
 
@@ -141,9 +221,7 @@ with open('../data/navigo_raw_flows_1789.csv', 'r') as f:
       flows_from_marennes.append(flow)
     elif flow['departure'] == 'La Rochelle' and flow['departure_function'] == 'O' and flow['destination_admiralty'] in admiralties:
       flows_from_la_rochelle_to_pasa.append(flow)
-  # print('relevant flows for Marennes', len(flows_from_marennes))
-  # print('relevant flows for La Rochelle', len(flows_from_la_rochelle_to_pasa))
-
+  
   compute_sorties_from_marennes(flows_from_marennes)
   compute_out_with_salt_from_marennes(flows_from_marennes)
   compute_ports_from_larochelle_to_pasa(flows_from_la_rochelle_to_pasa)

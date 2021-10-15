@@ -347,7 +347,7 @@ for f in relevant_navigo_flows :
         ports[port]['longitude'] = f['departure_longitude']
         ports[port]['customs_office'] = bureau
         ports[port]['customs_region'] = f['departure_ferme_direction']
-    if 'latitude' not in bureaux_map[bureau].keys():
+    if 'latitude' not in bureaux_map[bureau].keys() and bureau == port:
         bureaux_map[bureau]['latitude'] = f['departure_latitude']
         bureaux_map[bureau]['longitude'] = f['departure_longitude']
         bureaux_map[bureau]['customs_region'] = f['departure_ferme_direction']

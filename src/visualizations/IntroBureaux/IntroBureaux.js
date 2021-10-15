@@ -166,22 +166,6 @@ const IntroBureaux = ({
           //   palette: colorPalettes.provinces
           // }
         },
-        // {
-        //   type: 'points',
-        //   data: datasets['part_3_step3_viz_customs_offices_data.csv'],
-        //   color: {
-        //     field: 'name',
-        //     palette: colorPalettes.customs_office,
-        //     labelsColor: atlasMode ? undefined : 'white'
-        //   },
-        //   size: {
-        //     custom : 3 // 3 fois plus gros que la taille par défaut
-        //   },
-        //   label: {
-        //     field: 'name',
-        //     position: 'left'
-        //   }
-        // }
         {
           type: 'custom',
           data: datasets['part_3_step3_viz_customs_offices_data/part_3_step3_viz_customs_offices_data.csv'],

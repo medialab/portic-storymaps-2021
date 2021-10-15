@@ -98,7 +98,7 @@ function Step3Object({
       noOverlapTransform = `translate(${x - width * 0.06},${y})`
     }
     else if ((datum.name === `Les Sables-d'Olonne`)) {
-      noOverlapTransform = `translate(${x + width * 0.1},${y + height * 0.15})`
+      noOverlapTransform = `translate(${x - width * 0.01},${y - height * 0.03})`
     }
   }
   

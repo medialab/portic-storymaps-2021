@@ -65,6 +65,37 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
         "category_2": category_2,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
+  # write and document datasets
+  info = """
+`hierarchie_ports_dattache_des_navires_partant_de_la_region.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific homeport for PASA departures and related metrics
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- admiralty in ['La Rochelle', "Marennes", "Sables-d’Olonne"]
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+- an additional custom geographic grouping is added for visualization purposes
+- France homeports are divided between "France (région PASA)" and "France (hors région PASA)"
+
+# Notes/warning
+
+/
+"""
+  write_readme("hierarchie_ports_dattache_des_navires_partant_de_la_region/README.md", info)
   write_csv("hierarchie_ports_dattache_des_navires_partant_de_la_region/hierarchie_ports_dattache_des_navires_partant_de_la_region.csv", output)
   logger.debug('done | compute_hierarchy_of_homeports_of_boats_from_region')
 
@@ -99,6 +130,37 @@ def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
         "category_2": category_2,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
+  # write and document datasets
+  info = """
+`hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific destination port for boats coming from the region to foreign destinations.
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- poincall_action: 'In'
+- pointcall_state_1789 != France
+- source_subset == "Poitou_1789"
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+- an additional custom geographic grouping is added for visualization purposes
+
+# Notes/warning
+
+/
+"""
+  write_readme("hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger/README.md", info)
   write_csv("hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger/hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv", output)
   logger.debug('done | compute_hierarchy_of_homeports_of_boats_from_region_to_foreign')
 
@@ -132,6 +194,37 @@ def compute_hierarchy_of_destinations_of_boats_from_region (pointcalls):
         "category_2": category_2,
       }
   output = [{"port": port, **vals} for port, vals in directions.items()]
+  # write and document datasets
+  info = """
+`hierarchie_destinations_des_navires_partant_de_la_region.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific destination port for boats coming from the region to foreign destinations.
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- poincall_action: 'In'
+- source_subset == "Poitou_1789"
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+- an additional custom geographic grouping is added for visualization purposes
+- France homeports are divided between "France (région PASA)" and "France (hors région PASA)"
+
+# Notes/warning
+
+/
+"""
+  write_readme("hierarchie_destinations_des_navires_partant_de_la_region/README.md", info)
   write_csv("hierarchie_destinations_des_navires_partant_de_la_region/hierarchie_destinations_des_navires_partant_de_la_region.csv", output)
   logger.debug('done | compute_hierarchy_of_destinations_of_boats_from_region')
 
@@ -141,7 +234,6 @@ def compute_french_fleat_part (pointcalls):
   for pointcall in pointcalls:
     if pointcall['pointcall_function'] != 'O':
       continue
-    # if pointcall["homeport_province"] not in ["Aunis", "Poitou", "Saintonge", "Angoumois"] and pointcall["homeport_state_1789_fr"] != "France":
     country = "french" if pointcall["homeport_state_1789_fr"] == "France" else "foreign"
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     port = pointcall['toponyme_fr']
@@ -177,6 +269,36 @@ def compute_french_fleat_part (pointcalls):
     port["tonnage_part_of_french"] = tonnage_part_of_french
     del port["tonnage_by_country"]
     port["tonnage"] = round(port["tonnage"] / 1000, 1)
+  # write and document datasets
+  info = """
+`part_navigation_fr.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific port of the PASA region, with data about the share of foreign and french boats (based on homeport)
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- admiralty in ['La Rochelle', "Marennes", "Sables-d’Olonne"]
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+- french/foreign state is decided based on the `homeport_state_1789_fr` field
+
+# Notes/warning
+
+/
+"""
+  write_readme("part_navigation_fr/README.md", info)
   write_csv("part_navigation_fr/part_navigation_fr.csv", ports)
   logger.debug('done | compute_french_fleat_part')
 
@@ -208,7 +330,38 @@ def compute_out_with_salt (pointcalls):
     else:
       ports[port]["tonnage"] += tonnage
       ports[port]["nb_pointcalls"] += 1
-  ports = [port for _port_name, port in ports.items()]    
+  ports = [port for _port_name, port in ports.items()]
+  # write and document datasets
+  info = """
+`out_with_salt_by_port.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific port of the PASA region, with data about the share of salt coming out of it
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- admiralty in ['La Rochelle', "Marennes", "Sables-d’Olonne"]
+- poincall_action: 'Out'
+- 'sel' in one of these fields : ['commodity_standardized_fr', 'commodity_standardized2_fr', 'commodity_standardized3_fr', 'commodity_standardized4_fr']
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+- french/foreign state is decided based on the `homeport_state_1789_fr` field
+
+# Notes/warning
+
+Some boats might not have only salt on board. And they could not be fully filled of salt. So the quantification is highly uncertain, it just gives an order of magnitude.
+"""
+  write_readme("out_with_salt_by_port/README.md", info)
   write_csv("out_with_salt_by_port/out_with_salt_by_port.csv", ports)
   logger.debug('done | compute_out_with_salt')
 
@@ -224,6 +377,7 @@ def compute_foreign_homeport_state (pointcalls):
     if country not in countries:
       new_country = {
         "country": country,
+        # @todo aren't these coordinates irrelevant ?
         "latitude": pointcall["latitude"],
         "longitude": pointcall["longitude"],
         "tonnage": tonnage,
@@ -233,7 +387,37 @@ def compute_foreign_homeport_state (pointcalls):
     else:
       countries[country]["tonnage"] += tonnage
       countries[country]["nb_pointcalls"] += 1
-  countries = [country for _, country in countries.items()]    
+  countries = [country for _, country in countries.items()]
+  # write and document datasets
+  info = """
+`origines_bateaux_etrangers_partant_de_la_region.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific state appartenance for boats getting out of PASA
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- homeport_state_1789_fr != 'France'
+- admiralty in ['La Rochelle', "Marennes", "Sables-d’Olonne"]
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+
+# Notes/warning
+
+/
+"""
+  write_readme("origines_bateaux_etrangers_partant_de_la_region/README.md", info)
   write_csv("origines_bateaux_etrangers_partant_de_la_region/origines_bateaux_etrangers_partant_de_la_region.csv", countries)
   logger.debug('done | compute_foreign_homeport_state')
 
@@ -261,6 +445,35 @@ def compute_region_ports_general (pointcalls):
   output = []
   for port in ports.values():
     output.append(port)
+  # write and document datasets
+  info = """
+`ports_locations_data_intro.csv` documentation
+===
+
+# What is the original data ? 
+
+Navigo pointcalls from pointcalls API endpoint
+
+# What does a line correspond to ?
+
+A specific port of the pasa region
+
+# Filters
+
+- year : 1789
+- pointcall_function : 'O'
+- admiralty in ['La Rochelle', "Marennes", "Sables-d’Olonne"]
+- poincall_action: 'Out'
+
+# Aggregation/computation info
+
+- aggregation is done by number of pointcalls and cumulated tonnage
+
+# Notes/warning
+
+/
+"""
+  write_readme("ports_locations_data_intro/README.md", info)
   write_csv("ports_locations_data_intro/ports_locations_data_intro.csv", output)
   logger.debug('done | compute_region_ports_general');
 

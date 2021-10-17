@@ -291,7 +291,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
             field: 'value',
             title: 'valeur en livres tournoi',
             tickSpan: 1000000,
-            domain: [0, 6000000]
+            domain: [0, 6000000],
+            tickFormat: d => formatNumber(d) + ' lt'
           }}
           color={{
             field: 'type',

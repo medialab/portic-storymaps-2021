@@ -62,7 +62,6 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "postbuild": "react-snap",
-    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "data:load": "./load_data.sh",
     "thumbnails:make": "node makeThumbnails",

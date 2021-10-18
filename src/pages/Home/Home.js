@@ -22,6 +22,7 @@ import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
 import './Home.scss';
+import CitationWidget from '../../components/CitationWidget/CitationWidget';
 
 const CENTER_FRACTION = 0.5;
 // const CENTER_FRACTION = .6;
@@ -178,8 +179,11 @@ function Home({ match: {
         <div className="titles-container">
           <h1 dangerouslySetInnerHTML={{__html: titleHTML}}/>
           <h2>{subtitle}</h2>
+          <CitationWidget
+            lang={lang}
+          />
           <button onClick={onClickOnStart} className="go-to-start">
-          <span>⌄</span>
+            <span>⌄</span>
           </button>
         </div>
         

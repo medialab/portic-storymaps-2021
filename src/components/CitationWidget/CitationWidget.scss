@@ -1,0 +1,95 @@
+@import '../../variables.scss';
+
+
+.CitationWidget {
+  padding-top: $medium-gutter;
+  .collapsible-contents {
+    transition: all .5s ease;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
+  .collapse-toggler {
+    border: 1px solid $color-text;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: $color-text;
+    &.is-active {
+      color: $color-background;
+      background: $color-accent-background;
+      border: none;
+    }
+  }
+
+  blockquote {
+    background: $color-accent-background;
+    margin: 0;
+    padding: $medium-gutter;
+    margin : $small-gutter 0;
+    margin-bottom: 0;
+    color: $color-background;
+    user-select: all;
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: $color-background;
+    }
+  }
+
+  .widget-footer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    .styles-list {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      margin: 0;
+      font-family: $font-family-1;
+      padding-left: $small-gutter;
+      cursor: pointer;
+      .list-item {
+        margin-right: $small-gutter;
+        font-size: .8rem;
+        span {
+          background: $color-background;
+          padding: 0 $small-gutter;
+          border-radius: 0 0 .1rem .1rem;
+          min-height: 1.5rem;
+        }
+        transition: .5s ease all;
+        &:hover {
+          background: lightgrey;
+        }
+        &.is-active {
+          font-weight: 800;
+        }
+      }
+    }
+    .copy-link-container {
+      display: flex;
+      flex-flow: column nowrap;
+      span {
+        background: $color-background;
+        padding: 0 $small-gutter;
+        font-family: $font-family-1;
+        font-size: .8rem;
+        cursor: pointer;
+        transition: .5s ease all;
+        &:hover {
+          background: lightgrey;
+        }
+      }
+    }
+  }
+  
+  &.is-collapsed {
+    .collapsible-contents {
+      max-height: 0;
+    }
+  }
+}

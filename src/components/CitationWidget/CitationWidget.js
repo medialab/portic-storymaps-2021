@@ -26,7 +26,7 @@ const CitationWidget = ({
 }) => {
   const blockquoteRef = useRef(null);
   const [isCollapsed, setIsCollapsed] = useState(true);
-  const [copyClicked, setCopyClicked] = useState(false);
+  // const [copyClicked, setCopyClicked] = useState(false);
   const [currentStyle, setCurrentStyle] = useState(null);
   console.log('lang', lang)
   useEffect(() => {

@@ -60,12 +60,12 @@ function App() {
     // note: it would be preferable to do this on a page-to-page basis if datasets happens to be too big/numerous
     const datasetsNames = uniq(
       visualizationsList
-      .filter(d => d.datasets)
-      .reduce(
-        (res, d) => [
-          ...res, 
-          ...d.datasets.split(',').map(d => d.trim())], 
-        [])
+        .filter(d => d.datasets)
+        .reduce(
+          (res, d) => [
+            ...res,
+            ...d.datasets.split(',').map(d => d.trim())],
+          [])
     );
     // console.groupCollapsed('loading data');
     datasetsNames.reduce((cur, datasetName, datasetIndex) => {
@@ -136,21 +136,23 @@ function App() {
     ThatComponent = PlainPage,
     title,
     lang,
-  }) => (
-    <>
-      <ThatComponent
-        {
-        ...{
-          Content,
-          ContentSync,
-          title,
-          lang
-        }
-        }
-      />
-    </>
+  }) => {
+    return (
+      <>
+        <ThatComponent
+          {
+          ...{
+            Content,
+            ContentSync,
+            title,
+            lang
+          }
+          }
+        />
+      </>
 
-  );
+    )
+  };
 
   const currentLang = 'fr';
   return (
@@ -169,7 +171,7 @@ function App() {
                     routes: inputRoute,
                     contents,
                     Component: ThatComponent,
-                    contentsProcessed
+                    contentsProcessed,
                   }, index) => {
                     const route = `/${lang}/page/${inputRoute[lang]}`
                     const title = titles[lang];
@@ -201,7 +203,7 @@ function App() {
             <Route path="/:lang" exact component={Home} />
             <Redirect to={`/${currentLang}/`} />
           </Switch>
-            <Loader percentsLoaded={loadingFraction * 100} />
+          <Loader percentsLoaded={loadingFraction * 100} />
         </main>
         <Footer
           lang={currentLang}

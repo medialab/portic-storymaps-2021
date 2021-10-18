@@ -1,15 +1,15 @@
-import {Suspense} from 'react';
-import {Helmet} from "react-helmet";
+import { Suspense } from 'react';
+import { Helmet } from "react-helmet";
 
-import {buildPageTitle} from '../../helpers/misc';
+import { buildPageTitle } from '../../helpers/misc';
 
-import './PlainPage';
+import './PlainPage.scss';
 
 const PlainPage = ({
   Content,
-  contentsURL,
+  ContentSync,
   title,
-  lang = 'fr'
+  lang = 'fr',
 }) => {
   return (
     <div className="PlainPage secondary-page">
@@ -17,11 +17,16 @@ const PlainPage = ({
         <title>{buildPageTitle(title, lang)}</title>
       </Helmet>
       <div className="centered-contents">
-        <Suspense fallback={<div>Chargement</div>}>
-          <Content />
-        </Suspense>
+        {
+          ContentSync ?
+            <ContentSync />
+            :
+            <Suspense fallback={<div>Chargement</div>}>
+              <Content />
+            </Suspense>
+        }
       </div>
-  </div>
+    </div>
   )
 }
 

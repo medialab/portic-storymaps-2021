@@ -1,7 +1,13 @@
-
+@import '../../variables.scss';
 
 .PlainPage {
   a {
-    color: inherit;
+    color: $color-accent-background;
+    &:hover {
+      color: $color-accent;
+    }
+    &:visited {
+      color: $color-accent;
+    }
   }
 }

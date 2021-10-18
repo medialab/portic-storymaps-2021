@@ -1,1 +1,3 @@
-import CitationWidget from './CitationWidget'
+import CitationWidget from './CitationWidget';
+
+export default CitationWidget;

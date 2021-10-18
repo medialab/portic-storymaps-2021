@@ -1,7 +1,7 @@
 /* eslint import/no-webpack-loader-syntax: 0 */
 import { useState, useRef, useEffect } from 'react';
 import cx from 'classnames';
-import copy from 'copy-to-clipboard';
+// import copy from 'copy-to-clipboard';
 
 import FrMla from '!babel-loader!mdx-loader!./mla-fr.mdx';
 import FrIso690 from '!babel-loader!mdx-loader!./iso-fr.mdx';
@@ -52,14 +52,14 @@ const CitationWidget = ({
     }
   }
 
-  const handleCopyClick = (e) => {
-    e.stopPropagation();
-    setCopyClicked(true);
-    const contents = blockquoteRef.current.innerHTML;
-    copy(contents, { format: 'text/html' });
-    // copy(blockquoteRef.current.innerText);
-    setTimeout(() => setCopyClicked(false), 5000);
-  }
+  // const handleCopyClick = (e) => {
+  //   e.stopPropagation();
+  //   setCopyClicked(true);
+  //   const contents = blockquoteRef.current.innerHTML;
+  //   copy(contents, { format: 'text/html' });
+  //   // copy(blockquoteRef.current.innerText);
+  //   setTimeout(() => setCopyClicked(false), 5000);
+  // }
 
   return (
     <div className={cx("CitationWidget", { 'is-collapsed': isCollapsed })}>
@@ -90,9 +90,9 @@ const CitationWidget = ({
               </ul>
               : null
           }
-          <div className="copy-link-container">
+          {/* <div className="copy-link-container">
             <span onClick={handleCopyClick}>{copyClicked ? messages.citationCopied[lang] : messages.copyCitation[lang]}</span>
-          </div>
+          </div> */}
         </div>
 
       </div>

@@ -10,13 +10,22 @@
   }
 
   .collapse-toggler {
-    border: 1px solid $color-text;
-    border-radius: 1rem;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+    // border: 1px solid $color-text;
+    // border-radius: 1rem;
+    // font-size: 0.8rem;
+    padding: 0;
+    // padding: 0.5rem 1rem;
     background: transparent;
     color: $color-text;
+    opacity: .5;
+    transition: .5s ease all;
+    &:hover {
+      opacity: 1;
+    }
     &.is-active {
+      opacity : 1;
+      padding: 0.5rem 1rem;
+      border-radius: 1rem;
       color: $color-background;
       background: $color-accent-background;
       border: none;
@@ -66,7 +75,11 @@
           background: lightgrey;
         }
         &.is-active {
-          font-weight: 800;
+          // font-weight: 800;
+          span {
+            background: $color-accent-background;
+            color: $color-background-blue;
+          }
         }
       }
     }

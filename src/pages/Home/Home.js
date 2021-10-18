@@ -14,6 +14,7 @@ import ContentsEn from '!babel-loader!mdx-loader!../../contents/en/introduction.
 
 import { useScrollYPosition } from 'react-use-scroll-position';
 
+import CitationWidget from '../../components/CitationWidget';
 import VisualizationController from '../../components/VisualizationController';
 import { VisualizationControlContext } from '../../helpers/contexts';
 import summary from '../../summary';
@@ -22,7 +23,6 @@ import BoatsContainer from './BoatsContainer';
 import HomeSummary from './HomeSummary';
 
 import './Home.scss';
-import CitationWidget from '../../components/CitationWidget/CitationWidget';
 
 const CENTER_FRACTION = 0.5;
 // const CENTER_FRACTION = .6;

@@ -9,9 +9,8 @@ import { uniq } from 'lodash';
 // import get from 'axios';
 
 import { createNodeReducer, createEdgeReducer } from './reducers';
-import { generatePalette, usePrevious } from '../../helpers/misc';
-
-// import GraphControls from './GraphControls';
+import { generatePalette } from '../../helpers/misc';
+import { usePrevious } from '../../helpers/hooks';
 
 import './GraphContainer.scss';
 

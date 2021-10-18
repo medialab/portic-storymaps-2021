@@ -41,7 +41,7 @@ import './BarChart.scss';
  * 
  * @param {function} tooltip
  * 
- * @returns {react}
+ * @returns {React.ReactElement} - React component
  */
 const BarChart = ({
   orientation = 'horizontal',

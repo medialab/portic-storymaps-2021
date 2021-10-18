@@ -1,14 +1,17 @@
+/**
+ * A series of miscellaneous helper functions
+ */
+
+/* import external library */
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
 import iwanthue from 'iwanthue';
-import {useRef, useEffect} from 'react';
+/* import other assets */
 import metadataFr from '../contents/fr/metadata'
 import metadataEn from '../contents/en/metadata'
-// import Graph from 'graphology-types';
 import palettes from '../colorPalettes';
 
-const {generic} = palettes;
-
+const { generic } = palettes;
 const metadata = {
   fr: metadataFr,
   en: metadataEn
@@ -23,11 +26,24 @@ const DEFAULT_COLOR_SPACE = {
 
 const SINGLE_COLOR_PALETTE = ['#999'];
 
-export function buildPageTitle (title, lang = 'fr') {
+
+/**
+ * Generates a head's title for the current page
+ * @param {string} title
+ * @param {string} lang='fr'
+ * @returns {string}
+ */
+export function buildPageTitle(title, lang = 'fr') {
   const currentMetadata = metadata[lang] || metadataFr;
   return `${title} | ${currentMetadata.title} | PORTIC`;
 }
 
+/**
+ * Trims a text given a certain length limit/maximum
+ * @param {string} str
+ * @param {number} limit=30
+ * @returns {string}
+ */
 export function trimText(str, limit = 30) {
   if (str.length > limit) {
     const words = str.split(' ');
@@ -43,26 +59,36 @@ export function trimText(str, limit = 30) {
   return [str, undefined];
 }
 
-export function cartesian2Polar(x, y){
-  const distance = Math.sqrt(x*x + y*y)
-  const radians = Math.atan2(y,x) //This takes y first
-  return { distance:distance, radians:radians }
+/**
+ * Transform cartesian coordinates to polar coordinates
+ * @param {number} x
+ * @param {number} y
+ * @returns {object} - distance and radians of the polar coordinates
+ */
+export function cartesian2Polar(x, y) {
+  const distance = Math.sqrt(x * x + y * y);
+  const radians = Math.atan2(y, x);
+  return {
+    distance, radians
+  }
 }
-
+/**
+ * Transform polar coordinates to cartesian coordinates
+ * @param {number} r
+ * @param {number} theta
+ * @returns {array} - array of x and y positions
+ */
 export const polarToCartesian = (r, theta) => [
   r * Math.cos(theta),
   r * Math.sin(theta)
 ]
 
-
-export function usePrevious(value) {
-  const ref = useRef();
-  useEffect(() => {
-    ref.current = value;
-  });
-  return ref.current;
-}
-
+/**
+ * Generate a color palette in a deterministic way for the app
+ * @param {string} name
+ * @param {number} count - number of colors to generate
+ * @returns {any}
+ */
 export function generatePalette(name, count) {
   if (count === 1 || !count) return SINGLE_COLOR_PALETTE;
   else if (count === 2) {
@@ -78,7 +104,60 @@ export function generatePalette(name, count) {
   });
 }
 
+/**
+ * Normalizes a dimension so that it is fitable for svg dimensions (not NaN, positive)
+ * @param {number} num
+ * @returns {number}
+ */
+export const fixSvgDimension = num => isNaN(num) ? 0 : Math.abs(+num);
 
+/**
+ * Format a number so that it is more legible
+ * @param {number} n
+ * @param {string} style='fr'
+ * @returns {string}
+ */
+export const formatNumber = (n, style = 'fr') => {
+  return ('' + n)
+    .split('')
+    .reverse()
+    .reduce(({ count, result }, digit, index) => {
+      const endOfLine = count === 3 || (count === 0 && index === ('' + n).length - 1);
+      if (endOfLine) {
+        return {
+          count: 1,
+          result: [...result, style === 'fr' ? ' ' : ',', digit]
+        }
+      } else return {
+        count: count + 1,
+        result: [...result, digit]
+      }
+
+    }, {
+      count: 0,
+      result: []
+    })
+    .result
+    .reverse()
+    .join('')
+}
+
+
+/**
+ * ===============
+ * DEPRECATED
+ * Cécile's code for when we directly queryied data from source APIs
+ * ==============
+ */
+
+
+
+/**
+ * Filters data given certain parameters
+ * @param {array} data
+ * @param {object} params
+ * @returns {array}
+ */
 const _filterData = (data, { startYear, endYear, year, params, ...rest }) => {
   console.group('filters');
   console.time('filters time');
@@ -180,7 +259,11 @@ const _filterData = (data, { startYear, endYear, year, params, ...rest }) => {
   return transformedData;
 }
 
-
+/**
+ * Gets toflit18 flows (from local csv) according to certain  filter parameters
+ * @param {object} params
+ * @returns {promise}
+ */
 export const getToflitFlowsByCsv = ({
   startYear = null,
   endYear = null,
@@ -258,7 +341,6 @@ export const getToflitFlowsByCsv = ({
         const newData = csvParse(csvString);
         // faire des choses avec les résultats (filtres, ...)
         const finalData = _filterData(newData, { startYear: finalStartYear, endYear: finalEndYear, year, params, ...rest });
-        // console.log("finalData : ", finalData);
         resolve(finalData);
       })
       .catch((err) => {
@@ -267,84 +349,4 @@ export const getToflitFlowsByCsv = ({
 
   })
 
-}
-
-export const getToflitFlowsByApi = ({
-  startYear = null,
-  endYear = null,
-  year = null,
-  params = null,
-  ...rest
-}) => {
-
-  return new Promise((resolve, reject) => {
-
-    let finalStartYear = startYear; // on ne modif pas params en JS
-    let finalEndYear = endYear;
-
-    // 1. Test de la validité des paramètres
-    if (startYear !== null && endYear === null) {
-      return reject("You must put an end year");
-    } // pas sure pour les accolades
-    else if (endYear !== null && startYear === null) {
-      return reject("You must put a start year");
-    }
-
-    if ((startYear !== null || endYear !== null) && year !== null) {
-      finalStartYear = null;
-      finalEndYear = null;
-    }
-
-    const URL = `http://data.portic.fr/api/flows/?date=${year}`;
-    console.log({ URL })
-    // équivalent à : const URL = 'http://data.portic.fr/api/flows/?date=' + year;
-    get(URL) // get de axios
-      // mixed content issue => comme l'API ne fournit pas d'accès HTTPS je me sentais un peu bloquée
-      .then(({ data: str }) => {
-        // conversion en js (avec d3-dsv)
-        // const newData = csvParse(csvString);
-        try {
-          const newData = JSON.parse(str);
-          // contraire : JSON.stringify()
-          // faire des choses avec les résultats (filtres, ...)
-          const finalData = _filterData(newData, { startYear: finalStartYear, endYear: finalEndYear, year, params, ...rest })
-          resolve(finalData);
-        } catch (e) {
-          reject(e);
-        }
-
-      })
-      .catch((err) => {
-        reject(err);
-      })
-
-  })
-
-}
-
-export const fixSvgDimension = num => isNaN(num) ? 0 : Math.abs(+num)
-
-export const formatNumber = (n, style = 'fr') => {
-  return ('' + n)
-  .split('')
-  .reverse()
-  .reduce(({count, result}, digit, index) => {
-    const endOfLine = count === 3 || (count === 0 && index === ('' + n).length - 1);
-    if (endOfLine) {
-      return {
-        count: 1,
-        result: [...result, style === 'fr' ? ' ' : ',',  digit]
-      }
-    } else return {
-      count: count + 1,
-      result: [...result, digit]
-    }
-
-  }, {
-    count: 0,
-    result: []
-  })
-  .result
-  .reverse()
-  .join('')
 }

@@ -458,7 +458,6 @@ button.is-active {
   }
 
   .navitem-container a.active {
-    // font-weight: 800;
     background: inherit;
     color: inherit;
     border-bottom: 1px solid $color-text;
@@ -477,10 +476,8 @@ button.is-active {
   position: fixed;
   width: 100%;
   overflow: auto;
-  // background: $color-background;
   background: $color-background;
   transition: 0.1s all ease;
-  /* background: rgba(240,240,240,1); */
 
   display: flex;
   flex-flow: row nowrap;
@@ -718,7 +715,6 @@ button.is-active {
   }
   .column:last-of-type {
     margin-top: 2.2rem;
-    // font-family : $font-family-1;
   }
   p {
     margin-bottom: $small-gutter;

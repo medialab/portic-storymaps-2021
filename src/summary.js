@@ -1,26 +1,11 @@
 /* eslint import/no-webpack-loader-syntax : 0 */
 import ScrollyPage from './pages/ScrollyPage';
 
-// import TestScrollyFr from '!babel-loader!mdx-loader!./contents/fr/test-scrolly.mdx';
-// import testScrollyEn from '!babel-loader!mdx-loader!./contents/en/test-scrolly.mdx';
-
 import Part1Fr from '!babel-loader!mdx-loader!./contents/fr/partie-1.mdx';
 import Part1En from '!babel-loader!mdx-loader!./contents/en/part-1.mdx';
 
-// import Part2IntroFr from '!babel-loader!mdx-loader!./contents/fr/partie-2-intro.mdx';
-// import Part2IntroEn from '!babel-loader!mdx-loader!./contents/en/part-2-intro.mdx';
-
 import Part2IntroFr from '!babel-loader!mdx-loader!./contents/fr/partie-2.mdx';
 import Part2IntroEn from '!babel-loader!mdx-loader!./contents/en/part-2-intro.mdx';
-
-// import Part21Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-1.mdx';
-// import Part21En from '!babel-loader!mdx-loader!./contents/en/part-2-1.mdx';
-
-// import Part22Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-2.mdx';
-// import Part22En from '!babel-loader!mdx-loader!./contents/en/part-2-2.mdx';
-
-// import Part23Fr from '!babel-loader!mdx-loader!./contents/fr/partie-2-3.mdx';
-// import Part23En from '!babel-loader!mdx-loader!./contents/en/part-2-3.mdx';
 
 import Part3Fr from '!babel-loader!mdx-loader!./contents/fr/partie-3.mdx';
 import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';

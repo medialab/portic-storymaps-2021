@@ -1,8 +1,10 @@
 
+/**
+ * Entrypoint of the application
+ */
 /* import external libraries */
 import React, { useState, useEffect } from "react";
 import {
-  // HashRouter as Router,
   BrowserRouter as Router,
   Switch,
   Route,
@@ -38,8 +40,12 @@ import routes from './summary';
 
 const LANGUAGES = ['fr', 'en'];
 
-function App() {
 
+/**
+ * General application container - handles routing logic, data retrieval, and lang toggle
+ * @returns  {React.ReactElement} - React component
+ */
+function App() {
   const history = useHistory();
   const location = useLocation();
 
@@ -51,8 +57,16 @@ function App() {
    */
   useEffect(() => {
     // loading all datasets from the atlas
-    // @todo do this on a page-to-page basis if datasets happens to be too big/numerous
-    const datasetsNames = uniq(visualizationsList.filter(d => d.datasets).reduce((res, d) => [...res, ...d.datasets.split(',').map(d => d.trim())], []));
+    // note: it would be preferable to do this on a page-to-page basis if datasets happens to be too big/numerous
+    const datasetsNames = uniq(
+      visualizationsList
+      .filter(d => d.datasets)
+      .reduce(
+        (res, d) => [
+          ...res, 
+          ...d.datasets.split(',').map(d => d.trim())], 
+        [])
+    );
     // console.groupCollapsed('loading data');
     datasetsNames.reduce((cur, datasetName, datasetIndex) => {
       return cur.then((res) => new Promise((resolve, reject) => {
@@ -100,7 +114,7 @@ function App() {
     const otherLang = ln === 'fr' ? 'en' : 'fr';
 
     const { pathname } = location;
-    // @todo refactor this to be handled based on the routes config JSON ?
+    // @todo this is dirty, refactor this to be handled based on the routes config JSON ?
     if (pathname.includes('atlas')) {
       const visualizationId = pathname.split('/atlas/').pop();
       history.push(`/${ln}/atlas/${visualizationId || ''}`);
@@ -137,6 +151,8 @@ function App() {
     </>
 
   );
+
+  const currentLang = 'fr';
   return (
     <DatasetsContext.Provider value={datasets}>
       <div id="wrapper">
@@ -183,12 +199,12 @@ function App() {
             }
             <Route path="/:lang/atlas/:visualizationId?" component={Atlas} />
             <Route path="/:lang" exact component={Home} />
-            <Redirect to={`/fr/`} />
+            <Redirect to={`/${currentLang}/`} />
           </Switch>
             <Loader percentsLoaded={loadingFraction * 100} />
         </main>
         <Footer
-          lang={'fr'}
+          lang={currentLang}
         />
 
 
@@ -201,11 +217,7 @@ function App() {
               // @todo this is dirty and should be removed at some point (test page is not exported in prod, so no need for react-snap)
               .filter(({ routes }) => routes[lang] && !routes[lang].includes('test'))
               .map(({
-                titles,
                 routes: inputRoute,
-                contents,
-                Component: ThatComponent,
-                contentsProcessed
               }, index) => {
                 const route = `/${lang}/page/${inputRoute[lang]}`;
                 return (
@@ -242,6 +254,10 @@ const BASE_NAME =
     : `/${homepage.split('/').pop()}`;
 
 
+/**
+ * Wrapper of the router and application
+ * @returns  {React.ReactElement} - React component
+ */
 export default function Wrapper() {
   return (
     <Router basename={BASE_NAME}>

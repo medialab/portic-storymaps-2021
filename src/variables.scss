@@ -1,28 +1,31 @@
 
 
-
+/*
+ * Font sets
+ */
 $font-family-1: "IBM Plex Sans", sans-serif;
 $font-family-2: "Lora", serif;
 
 $fontsize_part_title: 2rem;
 $fontsize_title2: 1.3rem;
 $fontsize_nav: 1rem;
-
+/*
+ * Colors
+ */
 $color-text: #403d3d;
 $color-accent: #34495e;
 $color-accent-background: #336d7c;
 $color-background-blue: #d3e5e5;
 $color-background: #ebebeb;
-
+/*
+ * Gutters and dimensions
+ */
 $small-gutter: 0.5rem;
 $medium-gutter: $small-gutter * 2;
 $external_gutter: 15vw;
-
 $header_height: 3rem;
-
 $footer_height: 18rem;
 $drawer-width: 300px;
-
 /*
  * Responsive design mixins
  */
@@ -30,8 +33,6 @@ $drawer-width: 300px;
 $screen-sm-min: 576px;
 
 // Small tablets (portrait view)
-// $screen-md-min: 768px;
-// $screen-md-min: 900px;
 $screen-md-min: 950px;
 
 // Tablets and small desktops
@@ -39,8 +40,6 @@ $screen-lg-min: 992px;
 
 // Large tablets and desktops
 $screen-xl-min: 1200px;
-
-
 
 // Small devices
 @mixin phone {

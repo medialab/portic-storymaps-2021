@@ -85,7 +85,7 @@ function Atlas({
         />
         <div className={cx("loader-indication-wrapper", {'is-loading': isLoading})}>
           <div className="loader-indication-container">
-            Chargement de la visualisation
+            {lang === 'fr' ? 'Chargement de la visualisation' : 'Loading visualization'}
           </div>
         </div>
     </div>

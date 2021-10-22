@@ -29,7 +29,14 @@ const VisualizationController = ({
           {
             activeVisualization ?
             <>
-              <VisualizationContainer lang={lang} screenshotMode={screenshotMode} atlasMode={atlasMode} id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} {...visProps} dimensions={dimensions} />
+              <VisualizationContainer 
+                lang={lang} 
+                screenshotMode={screenshotMode} 
+                atlasMode={atlasMode} 
+                id={atlasMode ? activeVisualization.id : activeVisualization.visualizationId} 
+                {...visProps} 
+                dimensions={dimensions} 
+              />
             </>
             : null // <div>Pas de visualisation à afficher</div>
           }

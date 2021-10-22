@@ -242,7 +242,7 @@ const ProductsDistributionChart = ({
           };
           const dataTillTreshold = finalData[year + ''];
 
-          const labelScale = scaleLinear().domain(extent(data, datum => +datum[field])).range([height / 100, height / 15])
+          const labelScale = scaleLinear().domain(extent(data, datum => +datum[field])).range([height / 100, height / 10])
 
           return (
             <div

@@ -28,7 +28,6 @@ const CitationWidget = ({
   const [isCollapsed, setIsCollapsed] = useState(true);
   // const [copyClicked, setCopyClicked] = useState(false);
   const [currentStyle, setCurrentStyle] = useState(null);
-  console.log('lang', lang)
   useEffect(() => {
     if (lang === 'fr' || lang === 'en') {
       setCurrentStyle(Object.keys(CONTENTS[lang])[0]);
@@ -60,6 +59,10 @@ const CitationWidget = ({
   //   // copy(blockquoteRef.current.innerText);
   //   setTimeout(() => setCopyClicked(false), 5000);
   // }
+
+  if (!['fr', 'en'].includes(lang)) {
+    return null;
+  }
 
   return (
     <div className={cx("CitationWidget", { 'is-collapsed': isCollapsed })}>

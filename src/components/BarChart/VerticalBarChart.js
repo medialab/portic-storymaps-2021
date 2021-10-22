@@ -59,7 +59,7 @@ const { generic } = colorsPalettes;
  * 
  * @param {function} tooltip
  * 
- * @returns {react}
+ * @returns  {React.ReactElement} - React component
  */
 const VerticalBarChart = ({
   data,
@@ -133,6 +133,7 @@ const VerticalBarChart = ({
   }
   if (color && color.palette) {
     colorPalette = color.palette;
+    colorModalities = Object.entries(colorPalette).map(([id]) => id)
   } else if (color) {
     const colorValues = generatePalette(color.field, colorModalities.length);
     colorPalette = colorModalities.reduce((res, modality, index) => ({
@@ -148,6 +149,7 @@ const VerticalBarChart = ({
 
   const groups = useMemo(() => 
     Object.entries(groupBy(data, d => d[y.field]))
+    // sort groups
     .sort((a, b) => {
       if (!autoSort) {
         return 0;
@@ -172,12 +174,17 @@ const VerticalBarChart = ({
       }
       return 1 * multiplier;
     })
+    // sort items
     .map(([yModality, items]) => [
       yModality,
       items
       .sort((a, b) => {
         if (!autoSort) {
-          return 0;
+          // sort in the order of colorpalette
+          if (colorModalities.indexOf(a[color.field]) > colorModalities.indexOf(b[color.field])) {
+            return 1;
+          }
+          return -1;
         }
         const multiplier = sortXAscending ? 1 : -1;
         const aVal = sortXType === 'number' ? +a[sortXField] : a[sortXField];
@@ -244,13 +251,6 @@ const VerticalBarChart = ({
                     <text x={0} y={svgHeight - margins.bottom + 10}>
                       {typeof xTickFormat === 'function' ? xTickFormat(value, valueIndex) : value}
                     </text>
-                    {/* <line
-                      className="tick-mark"
-                      x1={0}
-                      x2={0}
-                      y1={height - margins.bottom}
-                      y2={height - margins.bottom + 5}
-                    /> */}
                   </g>
                 ))
               }

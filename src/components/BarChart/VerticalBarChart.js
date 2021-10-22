@@ -1,7 +1,7 @@
 
 import { scaleLinear } from 'd3-scale';
 import { range, max } from 'd3-array';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo } from 'react';
 import { groupBy } from 'lodash';
 import { axisPropsFromTickScale } from 'react-d3-axis';
 import Tooltip from 'react-tooltip';
@@ -146,7 +146,7 @@ const VerticalBarChart = ({
 
   let rowHeight = fixSvgDimension(fixedRowHeight || vizHeight / bandsNb);
 
-  const groups = Object.entries(groupBy(data, d => d[y.field]));
+  const groups = useMemo(() => Object.entries(groupBy(data, d => d[y.field])), [data, y.field]);
 
   const xDomain = initialXDomain || layout === 'stack' ?
     // stack -> max = max sum for a given x modality

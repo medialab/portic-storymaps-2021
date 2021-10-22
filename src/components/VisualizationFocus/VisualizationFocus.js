@@ -55,6 +55,12 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
       onClose();
     }
   }
+  // handle click on wrapper (and wrapper only - not children)
+  const handleWrapperClick = e => {
+    if (e.target.className === 'visualization-wrapper') {
+      onClose();
+    }
+  }
   return (
     <div className={`VisualizationFocus ${visualization ? 'is-visible' : 'is-hidden'}`}>
       <input style={{ opacity: 0, zIndex: -10, 'pointerEvents': 'none' }} type="text" onKeyUp={handleKeyUp} ref={inputRef} />
@@ -97,7 +103,7 @@ const VisualizationFocus = ({ visualization, lang, onClose }) => {
                   }
                 </div>
               </div>
-              <div className="visualization-wrapper">
+              <div className="visualization-wrapper" onClick={handleWrapperClick}>
                 <VisualizationController lang={lang} atlasMode activeVisualization={visualization} />
               </div>
             </div>

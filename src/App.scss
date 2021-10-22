@@ -515,6 +515,12 @@ button.is-active {
     padding-top: 0;
   }
 
+  @include xl-screen {
+    .navitem-container a {
+        font-size: 1.1vw;
+    }
+  }
+
   @include tablet {
     display: none;
   }

@@ -58,12 +58,12 @@ const PointGroup = ({
           className="marker"
         />
         {
-          layer.size && layer.size.displayMetric && labelSize > 6 ?
+          layer.size && layer.size.displayMetric && labelSize > 9 ?
             <text
               x={0}
-              y={labelSize / 4}
+              y={labelSize * .8 * .33}
               textAnchor="middle"
-              fontSize={labelSize / 2}
+              fontSize={labelSize * .8}
               fill="white"
             >
               {rawSize}

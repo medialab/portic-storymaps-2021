@@ -55,10 +55,10 @@ const PrincipalVisualizationPart3 = ({
                     y={0}
                     width={width}
                     height={height / 8}
-                    fill={'url(#radial-bg)'}
+                    fill={`url(#radial-bg-${atlasMode})`}
                   />
                   <defs>
-                    <linearGradient id="radial-bg" gradientTransform="rotate(90)">
+                    <linearGradient id={`radial-bg-${atlasMode}`} gradientTransform="rotate(90)">
                       <stop offset="10%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} />
                       <stop offset="100%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} stop-opacity={0} />
                     </linearGradient>

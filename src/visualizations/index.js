@@ -120,7 +120,8 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }}
           margins={{
             left: 140,
-            right: 0,
+            right: 20,
+            bottom: 20
           }}
           tooltip={d => `En ${d.year}, la direction des fermes de la Rochelle a ${d.type === 'import' ? 'importé' : 'exporté'} ${(+d.portion * 100).toFixed(2)}% des ${d.type === 'import' ? 'imports' : 'exports'} français totaux`}
         />

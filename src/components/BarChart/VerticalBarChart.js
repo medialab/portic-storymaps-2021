@@ -129,7 +129,7 @@ const VerticalBarChart = ({
   let colorPalette;
   let colorModalities;
   if (color) {
-    colorModalities = uniq(data.map(d => d[color.field]));
+    colorModalities = uniq(data.map(d => d[color.field]))
   }
   if (color && color.palette) {
     colorPalette = color.palette;
@@ -146,7 +146,49 @@ const VerticalBarChart = ({
 
   let rowHeight = fixSvgDimension(fixedRowHeight || vizHeight / bandsNb);
 
-  const groups = useMemo(() => Object.entries(groupBy(data, d => d[y.field])), [data, y.field]);
+  const groups = useMemo(() => 
+    Object.entries(groupBy(data, d => d[y.field]))
+    .sort((a, b) => {
+      if (!autoSort) {
+        return 0;
+      }
+      const multiplier = sortYAscending ? 1 : -1;
+      if (sortYField === y.field) {
+        const aVal = sortYType === 'number' ? +a[0] : a[0];
+        const bVal = sortYType === 'number' ? +b[0] : b[0];
+        if (aVal < bVal) {
+          return -1 * multiplier;
+        }
+        return 1 * multiplier;
+      }
+      const aVal = sortYType === 'number' ?
+        +a[1].reduce((sum, datum) => sum + +datum[sortYField], 0)
+        : a[1][sortYField];
+      const bVal = sortYType === 'number' ?
+        +b[1].reduce((sum, datum) => sum + +datum[sortYField], 0)
+        : b[1][sortYField];
+      if (aVal < bVal) {
+        return -1 * multiplier;
+      }
+      return 1 * multiplier;
+    })
+    .map(([yModality, items]) => [
+      yModality,
+      items
+      .sort((a, b) => {
+        if (!autoSort) {
+          return 0;
+        }
+        const multiplier = sortXAscending ? 1 : -1;
+        const aVal = sortXType === 'number' ? +a[sortXField] : a[sortXField];
+        const bVal = sortXType === 'number' ? +b[sortXField] : b[sortXField];
+        if (aVal > +bVal) {
+          return -1 * multiplier;
+        }
+        return 1 * multiplier;
+      })
+    ])
+  , [data, y.field, autoSort, sortYAscending, sortYField, sortYType, sortXAscending, sortXField, sortXType]);
 
   const xDomain = initialXDomain || layout === 'stack' ?
     // stack -> max = max sum for a given x modality
@@ -216,43 +258,18 @@ const VerticalBarChart = ({
             <g className="bars-container">
               {
                 groups
-                  .sort((a, b) => {
-                    if (!autoSort) {
-                      return 0;
-                    }
-                    const multiplier = sortYAscending ? 1 : -1;
-                    if (sortYField === y.field) {
-                      const aVal = sortYType === 'number' ? +a[0] : a[0];
-                      const bVal = sortYType === 'number' ? +b[0] : b[0];
-                      if (aVal < bVal) {
-                        return -1 * multiplier;
-                      }
-                      return 1 * multiplier;
-                    }
-                    const aVal = sortYType === 'number' ?
-                      +a[1].reduce((sum, datum) => sum + +datum[sortYField], 0)
-                      : a[1][sortYField];
-                    const bVal = sortYType === 'number' ?
-                      +b[1].reduce((sum, datum) => sum + +datum[sortYField], 0)
-                      : b[1][sortYField];
-                    if (aVal < bVal) {
-                      return -1 * multiplier;
-                    }
-                    return 1 * multiplier;
-
-                  })
                   .map(([yModality, items], groupIndex) => {
                     let stackDisplaceX = margins.left;
                     return (
                       <g key={groupIndex} transform={`translate(0, ${margins.top + rowHeight * groupIndex})`}>
-                        <foreignObject 
-                          x={0} 
-                          y={layout === 'stack' ? bandHeight / 4 : (bandHeight * items.length) / 2 /* + bandHeight * (items.length / 2)*/} 
-                          width={margins.left} 
+                        <foreignObject
+                          x={0}
+                          y={layout === 'stack' ? bandHeight / 4 : (bandHeight * items.length) / 2 /* + bandHeight * (items.length / 2)*/}
+                          width={margins.left}
                           height={rowHeight * 2}
                         >
                           <div className="vertical-bar-label">
-                          <div>{typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}</div>
+                            <div>{typeof formatLabel === 'function' ? formatLabel(yModality, groupIndex) : yModality}</div>
                           </div>
                         </foreignObject>
                         {/* <text y={rowHeight / 2 + 5} className="vertical-bar-label" x={margins.left - 5}>
@@ -260,18 +277,6 @@ const VerticalBarChart = ({
                         </text> */}
                         {
                           items
-                            .sort((a, b) => {
-                              if (!autoSort) {
-                                return 0;
-                              }
-                              const multiplier = sortXAscending ? 1 : -1;
-                              const aVal = sortXType === 'number' ? +a[sortXField] : a[sortXField];
-                              const bVal = sortXType === 'number' ? +b[sortXField] : b[sortXField];
-                              if (aVal > +bVal) {
-                                return -1 * multiplier;
-                              }
-                              return 1 * multiplier;
-                            })
                             .map((item, itemIndex) => {
 
                               const thatY = layout === 'stack' ? bandHeight / 2 : itemIndex * ((rowHeight * .5) / items.length) + rowHeight / 4;

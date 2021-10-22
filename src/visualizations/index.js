@@ -83,7 +83,11 @@ const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) =
           }}
           color={{
             field: 'entity',
-            title: 'Part des exports pour :'
+            title: 'Part des exports pour :',
+            palette: {
+              'direction des fermes de La Rochelle': '#00C4AF',
+              'France (moyenne)': '#FEA43B'
+            }
           }}
           margins={{
             left: 140

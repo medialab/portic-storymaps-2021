@@ -1,16 +1,10 @@
 port,nb_pointcalls,tonnage,country_group,category_1,category_2
-Indéterminé,76,1897,Autre,étranger,Indéterminé
-Copenhague ,1,1,Europe du Nord,étranger,Danemark
-Hambourg,7,747,Europe centrale,étranger,Hambourg
-Stettin,3,272,Europe centrale,étranger,Prusse
-Saint-Sébastien,3,80,Europe du Sud,étranger,Espagne
-Brême,6,516,Europe centrale,étranger,Brême
-Côte d'Or,10,3584,Afrique,étranger,multi-Etat
-Mer Baltique,27,4313,Europe de l'Est,étranger,zone maritime
 Königsberg / Kaliningrad,13,2410,Europe centrale,étranger,Prusse
+Indéterminé,76,1898,Autre,étranger,Indéterminé
 Rotterdam,7,743,Europe du Nord,étranger,Provinces-Unies
 Amsterdam,21,3511,Europe du Nord,étranger,Provinces-Unies
 Hull,8,876,Europe du Nord,étranger,Grande-Bretagne
+Mer Baltique,27,4423,Europe de l'Est,étranger,zone maritime
 Zierikzee,2,71,Europe du Nord,étranger,Provinces-Unies
 Teignmouth,3,211,Europe du Nord,étranger,Grande-Bretagne
 Stavanger,12,1058,Europe du Nord,étranger,Danemark
@@ -32,6 +26,8 @@ Berwick,1,1,Europe du Nord,étranger,Grande-Bretagne
 Bergue ,17,1102,Europe du Nord,étranger,Danemark
 Lübeck,9,1424,Europe centrale,étranger,Lubeck
 Guernesey,6,322,Europe du Nord,étranger,Grande-Bretagne
+Côte d'Or,10,3976,Afrique,étranger,multi-Etat
+Brême,6,576,Europe centrale,étranger,Brême
 Riga,2,177,Europe de l'Est,étranger,Russie
 Norvège,4,257,Europe du Nord,étranger,Danemark
 Holmestrand,2,127,Europe du Nord,étranger,Danemark
@@ -46,6 +42,7 @@ Philadelphie,2,201,Amérique,étranger,Etats-Unis d'Amérique
 Bruges,3,121,Europe centrale,étranger,Autriche
 Newton,1,1,Europe du Nord,étranger,Grande-Bretagne
 Lemmer,1,1,Europe du Nord,étranger,Provinces-Unies
+Hambourg,7,777,Europe centrale,étranger,Hambourg
 Alicante,1,1,Europe du Sud,étranger,Espagne
 Côte d'Afrique [de l'Ouest],1,1,Autre,étranger,multi-Etat
 Waterford,3,201,Europe du Nord,étranger,Grande-Bretagne
@@ -74,6 +71,7 @@ Penzance,1,1,Europe du Nord,étranger,Grande-Bretagne
 Yarmouth,2,71,Europe du Nord,étranger,Grande-Bretagne
 Virginie,2,53,Amérique,étranger,Etats-Unis d'Amérique
 "Terre-Neuve, île de",1,1,Europe du Nord,étranger,Grande-Bretagne
+Saint-Sébastien,3,108,Europe du Sud,étranger,Espagne
 Portsmouth,1,1,Europe du Nord,étranger,Grande-Bretagne
 Plymouth,2,161,Europe du Nord,étranger,Grande-Bretagne
 Pillau / Baltiïsk,1,1,Europe centrale,étranger,Prusse
@@ -89,6 +87,8 @@ Boston,7,699,Amérique,étranger,Etats-Unis d'Amérique
 Bideford,2,114,Europe du Nord,étranger,Grande-Bretagne
 Angleterre,1,1,Europe du Nord,étranger,Grande-Bretagne
 Dundee,1,1,Europe du Nord,étranger,Grande-Bretagne
+Stettin,3,251,Europe centrale,étranger,Prusse
 Setúbal ,1,1,Europe du Sud,étranger,Portugal
 Barcelone,1,1,Europe du Sud,étranger,Espagne
 Marblehead,1,1,Amérique,étranger,Etats-Unis d'Amérique
+Copenhague ,1,1,Europe du Nord,étranger,Danemark

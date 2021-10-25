@@ -169,6 +169,17 @@ const CircularAlluvialChart = ({
   // const highlightedNode = highlightedFilter ? steps.find(s => s.field === highlightedFilter.key).find(node => node.id === highlightedFilter.value) : undefined;
   const highlightedNode = highlightedFilter ? data.find(s => s.field === highlightedFilter.key).nodes.find(node => node.id === highlightedFilter.value) : undefined;
   const highlightedNodeTotal = highlightedNode ? highlightedNode.flows.reduce((sum, f) => sum + (+f[sumBy]), 0) : 0;
+
+  // const legendX1 = smallestDimension * .36;
+  // const legendX2 = smallestDimension * .64;
+
+  const legendX1 = smallestDimension * .4;
+  const legendX2 = smallestDimension * .6;
+
+  const legendTopYInternal = smallestDimension / 2 - HORIZONTAL_MARGIN * .5 + BAR_WIDTH;
+  const legendTopYExternal = smallestDimension / 2 - HORIZONTAL_MARGIN + BAR_WIDTH * 2;
+  const legendBottomYInternal = smallestDimension / 2 + HORIZONTAL_MARGIN * .5 + BAR_WIDTH;
+  const legendBottomYExternal = smallestDimension / 2 + HORIZONTAL_MARGIN;
   return (
     <>
       <h5 ref={titleRef} className="visualization-title">{title}</h5>
@@ -206,22 +217,50 @@ const CircularAlluvialChart = ({
           }
           <Text
             x={smallestDimension / 2}
-            y={smallestDimension / 2 - HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
+            y={smallestDimension / 2 - HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
             style={{
+              fontSize: textScale(1),
               fontWeight: (highlightedFilter && highlightedFilter.index <= 2) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 800 : undefined
             }}
           >
             EXPORTS
           </Text>
+          
           <Text
             x={smallestDimension / 2}
-            y={smallestDimension / 2 + HORIZONTAL_MARGIN * .8 + BAR_WIDTH}
+            y={smallestDimension / 2 + HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
             style={{
+              fontSize: textScale(1),
               fontWeight: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 800 : undefined
             }}
           >
             IMPORTS
           </Text>
+          <path
+            d={`M ${legendX1} ${legendTopYInternal} 
+            Q ${legendX1} ${legendTopYExternal}, ${smallestDimension/2} ${legendTopYExternal} 
+            Q ${legendX2} ${legendTopYExternal}, ${legendX2} ${legendTopYInternal}`}
+            stroke={'grey'} strokeWidth={.5}
+            fill="none"
+            markerEnd="url(#arrowhead)"
+          />
+          
+          <path
+            d={`M ${legendX2} ${legendBottomYInternal} 
+            Q ${legendX2} ${legendBottomYExternal}, ${smallestDimension/2} ${legendBottomYExternal} 
+            Q ${legendX1} ${legendBottomYExternal}, ${legendX1} ${legendBottomYInternal}`}
+            stroke={'grey'} strokeWidth={.5}
+            fill="none"
+            markerEnd="url(#arrowhead)"
+          />
+          
+
+          <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="10" 
+            refX="0" refY="5" orient="auto">
+              <polygon stroke="grey" strokeWidth={1} fill="transparent" points="0 0, 10 5, 0 10" />
+            </marker>
+          </defs>
         </G>
         <G 
           transform={`translate(${align === 'left' ? 0 : width / 2 - smallestDimension / 2}, 0)`}

@@ -40,7 +40,7 @@ const TriangleLegend = ({
           </defs>
           <path d={`M ${(legendWidth - legendTriangleWidth) / 2} ${(rowHeight - legendTriangleHeight) / 1.3}  
                 H ${(legendWidth - legendTriangleWidth) / 2 + legendTriangleWidth}
-                `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" markerEnd="url(#triangle-right)" />
+                `} stroke="black" strokeWidth={1} markerStart="url(#triangle-left)" markerEnd="url(#triangle-right)" />
         </g>
 
         <g className="left-arrow">
@@ -62,7 +62,7 @@ const TriangleLegend = ({
           </defs>
           <path d={`M ${(legendWidth - legendTriangleWidth) / 1.6} ${(rowHeight - legendTriangleHeight) / 1.2}  
                 V ${(rowHeight - legendTriangleHeight) / 1.2 + legendTriangleHeight}
-                `} stroke="black" strokeWidth={1} marker-start="url(#triangle-left)" markerEnd="url(#triangle-right)" />
+                `} stroke="black" strokeWidth={1} markerStart="url(#triangle-left)" markerEnd="url(#triangle-right)" />
         </g>
 
       </g>

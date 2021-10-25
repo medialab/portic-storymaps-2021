@@ -175,7 +175,7 @@ const PortGroup = ({
             x2={cellCenterX + triangleWidth/2}
             y1={triangleStartY - 3}
             y2={triangleStartY - 3}
-            marker-start="url(#triangle-left)" 
+            markerStart="url(#triangle-left)" 
             markerEnd="url(#triangle-right)"
           />
           {/* vertical line */}
@@ -184,7 +184,7 @@ const PortGroup = ({
             x2={cellCenterX - triangleWidth/2 - 3}
             y1={triangleStartY}
             y2={triangleStartY + triangleHeight}
-            marker-start="url(#triangle-left)" 
+            markerStart="url(#triangle-left)" 
             markerEnd="url(#triangle-right)"
           />
           {/* pointing arrows */}

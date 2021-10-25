@@ -98,10 +98,10 @@ const TriangleChart = ({
 
       <defs>
         <linearGradient id="TriangleGradient" x2='0%' y2='100%'>
-          <stop offset="10%" stopColor={`rgb(100,100,100)`} stop-opacity={0.6} />
+          <stop offset="10%" stopColor={`rgb(100,100,100)`} stopOpacity={0.6} />
           <stop offset="100%" stopColor={colorsPalettes.generic.dark} />
           {/* <stop offset="20%" stopColor={colorsPalettes.generic.dark} />
-          <stop offset="100%" stopColor={colorsPalettes.generic.dark} stop-opacity={0.3} /> */}
+          <stop offset="100%" stopColor={colorsPalettes.generic.dark} stoOpacity={0.3} /> */}
         </linearGradient>
       </defs>
       {/* <TriangleLegend

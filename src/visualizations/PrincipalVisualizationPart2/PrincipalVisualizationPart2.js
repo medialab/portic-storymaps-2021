@@ -4,7 +4,7 @@ import CircularAlluvialChart from "../../components/CircularAlluvialChart/Circul
 import RadarWrapper from './RadarWrapper';
 
 import colorsPalettes from '../../colorPalettes';
-import {fixSvgDimension} from '../../helpers/misc';
+import {fixSvgDimension, formatNumber} from '../../helpers/misc';
 
 import './PrincipalVisualizationPart2.scss';
 
@@ -121,26 +121,26 @@ const PrincipalVisualizationPart2 = ({
             node: {
               fr: ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'exporté' : 'importé'} ${parseInt(node.valueAbs)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
                 } else if (step === 1 || step === 4) {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${parseInt(node.valueAbs)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
+                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
                 } else {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${parseInt(node.valueAbs)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} vers le partenaire ${id}.`;
+                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} vers le partenaire ${id}.`;
                 }
               },
               en: () => ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `In 1789, the bureau des fermes of ${id} has ${step < 3 ? 'imported' : 'exported'} ${node[sumToflitBy]} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return `In 1789, the bureau des fermes of ${id} has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(node[sumToflitBy], lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
                 } else if (step === 1 || step === 4) {
-                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${parseInt(node.valueAbs)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} of ${id}.`;
+                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(parseInt(node.valueAbs), lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} of ${id}.`;
                 } else {
-                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${parseInt(node.valueAbs)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} to the partner ${id}.`;
+                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(parseInt(node.valueAbs), lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} to the partner ${id}.`;
                 }
               },
             },
             flow: {
-              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => `En 1789, le bureau des fermes de ${customs_office} a ${flow_type === 'import' ? 'importé' : 'exporté'} ${parseInt(value)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} de ${product} ${flow_type === 'import' ? 'depuis' : 'vers'} le partenaire ${partner}`,
-              en: ({flow_type, customs_office, product, sumBy, value, partner}) => `In 1789, the bureau des fermes of ${customs_office} has ${flow_type === 'import' ? 'imported' : 'exported'} ${parseInt(value)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} of ${product} ${flow_type === 'import' ? 'from' : 'to'} the partner ${partner}`,
+              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => `En 1789, le bureau des fermes de ${customs_office} a ${flow_type === 'import' ? 'importé' : 'exporté'} ${formatNumber(parseInt(value), lang)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} de ${product} ${flow_type === 'import' ? 'depuis' : 'vers'} le partenaire ${partner}`,
+              en: ({flow_type, customs_office, product, sumBy, value, partner}) => `In 1789, the bureau des fermes of ${customs_office} has ${flow_type === 'import' ? 'imported' : 'exported'} ${formatNumber(parseInt(value), lang)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} of ${product} ${flow_type === 'import' ? 'from' : 'to'} the partner ${partner}`,
             }
           }}
           steps={[

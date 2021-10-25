@@ -254,7 +254,7 @@ const CircularAlluvialChart = ({
               fontSize: textScale(.5),
               fontStyle: 'italic',
               textAnchor: 'end',
-              opacity: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 1 : .5
+              opacity: (highlightedFilter && highlightedFilter.index <= 2 ) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 1 : .5
             }}
           >
             {steps[0].name}

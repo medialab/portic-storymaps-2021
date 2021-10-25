@@ -11,7 +11,7 @@ import {VisualizationControlContext} from '../../helpers/contexts';
  * @param {object} props - visualization parameters passed as payload to visualization context
  * @returns  {React.ReactElement} - React component
  */
-const Caller = ({id: visualizationId, ...props}) => {
+const Caller = ({id: visualizationId, lang = 'fr', ...props}) => {
   const ref = useRef(null);
   // we differentiate caller id and visualization id as their rel can theoretically be n-1
   const [id] = useState(genId());
@@ -63,9 +63,9 @@ const Caller = ({id: visualizationId, ...props}) => {
         <>
           {
           visualizationId ?
-          <>caller pour la visualisation <code>{visualizationId}</code> </>
+          <span>caller pour la visualisation <code>{visualizationId}</code> </span>
           :
-          <>caller sans id (agit comme un clearfix)</>
+          <span>caller sans id (agit comme un clearfix)</span>
         }{
           Object.keys(props).length ? 
             <span>avec les paramètres {JSON.stringify(props)}</span>

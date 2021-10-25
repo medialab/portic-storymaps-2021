@@ -396,4 +396,66 @@
       border: 1px solid white;
     }
   }
+
+
+  @media print {
+    .header {
+      align-items: start;
+      justify-content: start;
+      background: white;
+      min-height: unset;
+      .titles-container {
+        max-width: 100%;
+      }
+
+      .CitationWidget {
+        .collapsible-contents {
+          max-height: 100vh;
+          blockquote {
+            padding-left: 0;
+          }
+        }
+        .widget-footer {
+          display: none;
+        }
+      }
+    }
+
+    .intro-container {
+      background: white;
+      color: black;
+      .Contents {
+        > section {
+          p,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          ul,
+          ol,
+          pre,
+          blockquote {
+            margin-left: 0;
+            max-width: unset;
+          }
+
+          .centered-part {
+            margin-top: 0;
+          }
+        }
+        > aside {
+          display: none;
+        }
+      }
+      
+    }
+    
+    .go-to-start,
+    .boats-container,
+    .HomeSummary{
+      display: none;
+    }
+  }
 }

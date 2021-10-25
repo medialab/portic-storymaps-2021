@@ -1,4 +1,4 @@
-@import '../../variables.scss';
+@import "../../variables.scss";
 
 .ScrollyPage {
   position: relative;
@@ -54,7 +54,7 @@
     height: calc(100vh - #{$header_height});
     box-sizing: border-box;
   }
-  
+
   .fullscreen-viz-toggle-container {
     position: absolute;
     top: 0;
@@ -126,6 +126,29 @@
           stroke: grey;
         }
       }
+    }
+  }
+
+  @media print {
+    > section {
+      width: 100%;
+      p,
+          h1,
+          h2,
+          h3,
+          h4,
+          h5,
+          h6,
+          ul,
+          ol,
+          pre,
+          blockquote {
+            margin-left: 0;
+            max-width: unset;
+          }
+    }
+    > aside {
+      display: none;
     }
   }
 }

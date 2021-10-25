@@ -55,6 +55,9 @@
           cursor: pointer;
           font-weight: 900;
           font-size: 1.5em;
+          @media print {
+            display: none;
+          }
         }
       }
       .copy-link-container {
@@ -73,6 +76,9 @@
             background: white;
             color: #333;
           }
+        }
+        @media print {
+          display: none;
         }
       }
       .details-contents {
@@ -120,6 +126,34 @@
       .visualization-wrapper {
         max-width: calc(100% - #{$medium-gutter});
         min-width: unset;
+      }
+    }
+  }
+
+  @media print {
+    background: white;
+    color: black;
+    position: relative;
+    .lightbox-background {
+      display: none;
+    }
+    .lightbox-contents-container {
+      position: relative;
+      // background: white;
+      max-height: unset;
+      overflow: visible;
+      height: unset;
+      max-width: 100%;
+      .lightbox-contents {
+        flex-direction: column;
+      }
+      .visualization-wrapper {
+        max-width: 100%;
+        min-width: 100%;
+      }
+      .visualization-details {
+        color: black;
+        order: unset;
       }
     }
   }

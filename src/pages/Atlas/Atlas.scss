@@ -87,4 +87,24 @@
     max-height: 100vh;
     overflow: hidden;
   }
+  @media print {
+    &.has-focus {
+      overflow: visible;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: unset;
+      justify-content: unset;
+      .centered-contents {
+        // order: 2;
+        display: none;
+      }
+    }
+    .centered-contents {
+      min-width: unset;
+      max-width: unset;
+      .visualizations-list {
+        grid-template-columns: repeat(2, 49%);
+      }
+    }
+  }
 }

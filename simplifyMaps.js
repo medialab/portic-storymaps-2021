@@ -1,10 +1,9 @@
 const simplify = require('simplify-geojson')
 const fs = require('fs-extra');
-const { filter } = require('lodash');
 
 // let original = fs.readFileSync('./public/data/cartoweb_france_1789_geojson_original.geojson', 'utf8');
-let output = `./public/data/map_france_1789.geojson`;
-let original = fs.readFileSync('./public/data/map_cartoweb_world_1789_29juillet2021_mixte4326_geojson_UTF8.geojson', 'utf8');
+let output = `./public/data/map_backgrounds/map_france_1789.geojson`;
+let original = fs.readFileSync('./public/data/map_backgrounds/map_cartoweb_world_1789_29juillet2021_mixte4326_geojson_UTF8.geojson', 'utf8');
 
 let originalLength = original.length
 console.log('length before : ', originalLength);
@@ -93,11 +92,12 @@ let simplified = {
     if (feature.properties.shortname === 'Normandie') {
       return simplify(feature, .03);
     // no simplification
-    } else if (['Poitou', 'Aunis', 'Saintonge', 'Bretagne', 'Anjou', 'Saumurois'].includes(feature.properties.shortname)) {
+    } else if (['Poitou', 'Aunis', 'Saintonge', 'Bretagne', 'Anjou', 'Saumurois', 'Angoumois'].includes(feature.properties.shortname)) {
       return feature;
     }
     // simplification maximum
-    return simplify(feature, .01); // works
+    return simplify(feature, .02); // works
+    // return simplify(feature, .005); // works
   })
 }
 

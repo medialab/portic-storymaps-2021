@@ -25,7 +25,7 @@ const CustomObjectLayer = ({
             :
             layer.data
               .map((datum, index) => {
-                return layer.renderObject({ datum, projection, width, height, projectionTemplate })
+                return <g key={index}>{layer.renderObject({ datum, projection, width, height, projectionTemplate })}</g>
               })
           }
         </g>

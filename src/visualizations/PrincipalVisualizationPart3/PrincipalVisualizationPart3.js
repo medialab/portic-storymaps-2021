@@ -52,7 +52,8 @@ const PrincipalVisualizationPart3 = ({
           layers={[
             {
               type: 'choropleth',
-              data: datasets['map_backgrounds/map_france_1789.geojson']
+              data: datasets['map_backgrounds/map_france_1789.geojson'],
+              animated: true
             },
             {
               type: 'custom',
@@ -69,7 +70,7 @@ const PrincipalVisualizationPart3 = ({
                   <defs>
                     <linearGradient id={`radial-bg-${atlasMode}`} gradientTransform="rotate(90)">
                       <stop offset="10%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} />
-                      <stop offset="100%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} stop-opacity={0} />
+                      <stop offset="100%" stopColor={atlasMode ? 'white' : colorsPalettes.ui.colorBackgroundBlue} stopOpacity={0} />
                     </linearGradient>
                   </defs>
                 </>
@@ -105,7 +106,8 @@ const PrincipalVisualizationPart3 = ({
               data: datasets['map_backgrounds/map_france_1789.geojson'],
               color: {
                 field: 'shortname'
-              }
+              },
+              animated: true,
             },
             {
               type: 'custom',

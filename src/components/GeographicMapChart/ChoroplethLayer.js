@@ -24,8 +24,23 @@ const GeoPart = ({
   palette, 
   layer, 
   width, 
-  height
+  height,
+  animated: isAnimated
 }) => {
+
+  // @todo do this cleanly (removing out of bound objects to improve performance)
+  const boundsAbs = geoPath().bounds(initialD);
+  const [[x1, y1], [x2, y2]] = [projection(boundsAbs[0]), projection(boundsAbs[1])];
+  const [xMin, xMax] = [x1, x2].sort((a, b) => {
+    if (a > b) return 1;
+    return -1;
+  });
+  const [yMin, yMax] = [y1, y2].sort((a, b) => {
+    if (a > b) return 1;
+    return -1;
+  });
+  const outOfBounds = (isNaN(xMin) || isNaN(xMax) || isNaN(yMin) || isNaN(yMax)) ? false : xMin > width || yMin > height || xMax < 0 || yMax < 0;
+
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -43,23 +58,28 @@ const GeoPart = ({
     immediate: !isInited
   });
 
-  // @todo do this cleanly (removing out of bound objects to improve performance)
-  const boundsAbs = geoPath().bounds(initialD);
-  const [[x1, y1], [x2, y2]] = [projection(boundsAbs[0]), projection(boundsAbs[1])];
-  const [xMin, xMax] = [x1, x2].sort((a, b) => {
-    if (a > b) return 1;
-    return -1;
-  });
-  const [yMin, yMax] = [y1, y2].sort((a, b) => {
-    if (a > b) return 1;
-    return -1;
-  });
-  const outOfBounds = (isNaN(xMin) || isNaN(xMax) || isNaN(yMin) || isNaN(yMax)) ? false : xMin > width || yMin > height || xMax < 0 || yMax < 0;
-
+  
   useEffect(() => {
     ReactTooltip.rebuild();
   });
-  return outOfBounds ? null : (
+  if (outOfBounds) {
+    return null;
+  }
+  if (!isAnimated) {
+    return (
+      <path
+        title={initialD.properties.shortname}
+        d={currentD}
+        className="geopart"
+        data-tip={layer.tooltip ? layer.tooltip(initialD) : undefined}
+        data-for="geo-tooltip"
+        style={{
+          fill: layer.color !== undefined && palette !== undefined ? palette[initialD.properties[layer.color.field]] : 'transparent'
+        }}
+      />
+    )
+  }
+  return (
     <animated.path
       title={initialD.properties.shortname}
       d={animationProps.d}
@@ -71,12 +91,20 @@ const GeoPart = ({
       }}
     />
   )
+  
 }
 
 
 // @TODO : mettre en place une palette de couleurs quantitative 
 
-const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) => {
+const ChoroplethLayer = ({ 
+  layer, 
+  projection, 
+  width, 
+  height, 
+  reverseColors,
+  animated
+}) => {
 
   let palette;
   const project = geoPath().projection(projection);
@@ -110,7 +138,7 @@ const ChoroplethLayer = ({ layer, projection, width, height, reverseColors }) =>
             return (
               <GeoPart 
                 key={d.properties.id || d.properties.name || i} 
-                {...{projection, project, palette, layer, d, width, height}}
+                {...{projection, project, palette, layer, d, width, height, animated}}
               />
             )
           })

@@ -60,7 +60,7 @@ Then run:
 yarn run thumbnails:make
 ```
 
-Warning: thumbnails building can be capricious on some machines. Copy existing screenshots from `public/thumbnails` before re-running this script.
+Warning: thumbnails building can be capricious on some machines. Backup existing screenshots from `public/thumbnails` before re-running this script.
 
 # Contributing
 

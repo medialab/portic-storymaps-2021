@@ -88,8 +88,8 @@ const PrincipalVisualizationPart2 = ({
     }
   }, [filter]);
   const toflit18titles = {
-    fr: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`,
-    en: `Échanges de la direction des fermes de La Rochelle en 1789 par produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
+    fr: `Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`,
+    en: `Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
   };
   const navigoTitles = {
     fr: `Parts de différents groupes de directions pour les navires partis de la région PASA en 1789`,
@@ -150,7 +150,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'bureau des fermes',
                 en: 'customs office'
               },
-              filters: [{key: 'flow_type', value: 'export'}]
+              filters: [{key: 'flow_type', value: 'export'}],
+              name: lang === 'fr' ? 'bureau' : 'office'
             },
             {
               field: "product",
@@ -158,7 +159,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'type de produit',
                 en: 'product type'
               },
-              filters: [{key: 'flow_type', value: 'export'}]
+              filters: [{key: 'flow_type', value: 'export'}],
+              name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "partner",
@@ -166,7 +168,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'partenaire du commerce extérieur',
                 en: 'external trade partner'
               },
-              filters: [{key: 'flow_type', value: 'export'}]
+              filters: [{key: 'flow_type', value: 'export'}],
+              name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "partner",
@@ -174,7 +177,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'partenaire du commerce extérieur',
                 en: 'external trade partner'
               },
-              filters: [{key: 'flow_type', value: 'import'}]
+              filters: [{key: 'flow_type', value: 'import'}],
+              name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "product",
@@ -182,7 +186,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'type de produit',
                 en: 'product type'
               },
-              filters: [{key: 'flow_type', value: 'import'}]
+              filters: [{key: 'flow_type', value: 'import'}],
+              name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "customs_office",
@@ -190,7 +195,8 @@ const PrincipalVisualizationPart2 = ({
                 fr: 'bureau des fermes',
                 en: 'customs office'
               },
-              filters: [{key: 'flow_type', value: 'import'}]
+              filters: [{key: 'flow_type', value: 'import'}],
+              name: lang === 'fr' ? 'bureau' : 'office'
             },
           ]}
         />

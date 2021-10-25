@@ -177,7 +177,7 @@ const CircularAlluvialChart = ({
   const legendX2 = smallestDimension * .6;
 
   const legendTopYInternal = smallestDimension / 2 - HORIZONTAL_MARGIN * .5 + BAR_WIDTH;
-  const legendTopYExternal = smallestDimension / 2 - HORIZONTAL_MARGIN + BAR_WIDTH * 2;
+  const legendTopYExternal = smallestDimension / 2 - HORIZONTAL_MARGIN + BAR_WIDTH;
   const legendBottomYInternal = smallestDimension / 2 + HORIZONTAL_MARGIN * .5 + BAR_WIDTH;
   const legendBottomYExternal = smallestDimension / 2 + HORIZONTAL_MARGIN;
   return (
@@ -243,22 +243,101 @@ const CircularAlluvialChart = ({
             stroke={'grey'} strokeWidth={.5}
             fill="none"
             markerEnd="url(#arrowhead)"
+            style={{
+              opacity: (highlightedFilter && highlightedFilter.index <= 2 ) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 1 : .5
+            }}
           />
+          <Text
+            x={legendX1 - 5}
+            y={smallestDimension / 2 - HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'end',
+              opacity: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 1 : .5
+            }}
+          >
+            {steps[0].name}
+          </Text>
+          <Text
+            x={smallestDimension / 2}
+            y={legendTopYExternal - 5}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'middle',
+              opacity: (highlightedFilter && highlightedFilter.index <= 2 ) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 1 : .5
+            }}
+          >
+            {steps[1].name}
+          </Text>
+          <Text
+            x={legendX2 + 5}
+            y={smallestDimension / 2 - HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'start',
+              opacity: (highlightedFilter && highlightedFilter.index <= 2 ) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 1 : .5
+            }}
+          >
+            {steps[2].name}
+          </Text>
           
           <path
             d={`M ${legendX2} ${legendBottomYInternal} 
             Q ${legendX2} ${legendBottomYExternal}, ${smallestDimension/2} ${legendBottomYExternal} 
             Q ${legendX1} ${legendBottomYExternal}, ${legendX1} ${legendBottomYInternal}`}
-            stroke={'grey'} strokeWidth={.5}
+            stroke={'grey'} 
+            strokeWidth={.5}
             fill="none"
             markerEnd="url(#arrowhead)"
+            style={{
+              opacity: (highlightedFilter && highlightedFilter.index <= 2 ) || (highlightedFlow && highlightedFlow.stepIndex <= 2) ? 1 : .5
+            }}
           />
+          <Text
+            x={legendX1 - 5}
+            y={smallestDimension / 2 + HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'end',
+              opacity: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 1 : .5
+            }}
+          >
+            {steps[5].name}
+          </Text>
+          <Text
+            x={smallestDimension / 2}
+            y={legendBottomYExternal + 10}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'middle',
+              opacity: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 1 : .5
+            }}
+          >
+            {steps[4].name}
+          </Text>
+          <Text
+            x={legendX2 + 5}
+            y={smallestDimension / 2 + HORIZONTAL_MARGIN * .5 + BAR_WIDTH}
+            style={{
+              fontSize: textScale(.5),
+              fontStyle: 'italic',
+              textAnchor: 'start',
+              opacity: (highlightedFilter && highlightedFilter.index > 2 ) || (highlightedFlow && highlightedFlow.stepIndex > 2) ? 1 : .5
+            }}
+          >
+            {steps[3].name}
+          </Text>
           
 
           <defs>
-            <marker id="arrowhead" markerWidth="10" markerHeight="10" 
+            <marker id="arrowhead" markerWidth="10" markerHeight="10"
             refX="0" refY="5" orient="auto">
-              <polygon stroke="grey" strokeWidth={1} fill="transparent" points="0 0, 10 5, 0 10" />
+              <polygon stroke="grey" strokeWidth={1} fill="grey" points="0 0, 10 5, 0 10" />
             </marker>
           </defs>
         </G>
@@ -344,14 +423,14 @@ const CircularAlluvialChart = ({
                                     if (stepIndex === 3) {
                                       x2 += BAR_WIDTH;
                                       x3 += BAR_WIDTH;
-                                      y2 += BAR_WIDTH;
-                                      y3 += BAR_WIDTH;
+                                      y2 += BAR_WIDTH * 2;
+                                      y3 += BAR_WIDTH * 2;
                                     }
                                     if (stepIndex === 4) {
                                       x1 -= BAR_WIDTH;
                                       x4 -= BAR_WIDTH;
-                                      y1 += BAR_WIDTH;
-                                      y4 += BAR_WIDTH;
+                                      y1 += BAR_WIDTH * 2;
+                                      y4 += BAR_WIDTH * 2;
                                     }
                                     // large arc control point 1
                                     let controlPoint1AX = x1,
@@ -518,7 +597,7 @@ const CircularAlluvialChart = ({
                           y = displaceY;
                         }
                         if (stepIndex === 4) {
-                          y += BAR_WIDTH;
+                          y += BAR_WIDTH * 2;
                         }
                         const handleClick = () => {
                           if (highlightedFilter && highlightedFilter.value === node.id) {
@@ -634,7 +713,7 @@ const CircularAlluvialChart = ({
                                 let flowX = x;
                                 let flowY = displaceY + nodesSizeScale(flow.displacePart);
                                 if (stepIndex === 4) {
-                                  flowY += BAR_WIDTH;
+                                  flowY += BAR_WIDTH * 2;
                                 }
                                 let flowWidth = BAR_WIDTH;
                                 let flowHeight = nodesSizeScale(flow.valuePart);

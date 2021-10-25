@@ -51,6 +51,7 @@
     cursor: pointer;
     &.is-highlighted {
       fill: red;
+      opacity: 1;
     }
   }
 
@@ -61,6 +62,7 @@
       stroke: none;
       opacity: .5;
       cursor: pointer;
+      outline: none;
     }
     &.is-highlighted {
       polygon,
@@ -92,6 +94,9 @@
         }
         .flow-level-node {
           opacity: .5;
+          &.is-highlighted {
+            opacity: 1;
+          }
         }
       }
 
@@ -122,12 +127,12 @@
         opacity: 1;
       }
     }
-    .flow-level-node {
-      &.is-highlighted {
-        // stroke: white;
-        // stroke-width: .2;
-      }
-    }
+    // .flow-level-node {
+    //   &.is-highlighted {
+    //     // stroke: white;
+    //     // stroke-width: .2;
+    //   }
+    // }
     .flow-level-node {
       &.is-filtered-in {
         opacity: .7;

@@ -268,7 +268,7 @@ const RadarWrapper = ({
             }
           </span>
           <p>
-            Ports de départ agrégés par bureau de ferme&nbsp;:
+            Ports de départ agrégés par bureau des Fermes&nbsp;:
           </p>
           <ul className="bureaux-list">
             {

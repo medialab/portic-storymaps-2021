@@ -6,7 +6,7 @@ positionner geographiquement des labels
 
 - renderStep3Object (renderObject)
 création d'un double triangle et d'un cercle autour (deux courbes de bézier), positionné géographiquement
-(objet associé à un bureau de ferme)
+(objet associé à un bureau des Fermes)
 
 - fonction renderStep3SmallMultiples (renderObjects)
 création des objets double triangle et cercles pour les small multiples de la viz 3.3, positionnés en bas à droite du SVG

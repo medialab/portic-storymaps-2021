@@ -14,51 +14,29 @@ import { min } from 'd3-array';
 import { uniq } from 'lodash-es';
 import { cartesian2Polar, fixSvgDimension, trimText } from '../../helpers/misc';
 import ReactTooltip from 'react-tooltip';
-import { useSpring, animated } from 'react-spring'
+
+import {G, Text, Line, Circle, Rect, Path} from './animatedPrimities';
 
 const colorSchemes = [colorScheme1, colorScheme2, colorScheme3];
 
-const G =({children, className, onClick, ...inputProps})  => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.g className={className} onClick={onClick} {...props}>
-      {children}
-    </animated.g>
-  )
-}
-const Text =({children, onClick, className, style, ...inputProps})  => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.text className={className} onClick={onClick} style={style} {...props}>
-      {children}
-    </animated.text>
-  )
-}
-const Line = ({style, className, onClick, ...inputProps}) => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.line className={className} onClick={onClick} style={style} {...props} />
-  )
-}
-const Circle = ({style, className, onClick, ...inputProps}) => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.circle className={className} onClick={onClick} style={style} {...props} />
-  )
-}
-const Rect = ({style, className, onClick, ...inputProps}) => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.rect className={className} onClick={onClick} style={style} {...props} />
-  )
-}
-const Path = ({style, className, onClick, ...inputProps}) => {
-  const props = useSpring(inputProps);
-  return (
-    <animated.path className={className} onClick={onClick} style={style} {...props} />
-  )
-}
-
+/**
+ * Renders a circular alluvial diagram (duh)
+ * @param {array} data
+ * @param {string} sumBy - field in data to use to quantify flows
+ * @param {array} steps - arrow of steps in the form: {field: [string], labels: {fr: [string], en: [string]}, filters: [{key: [string], value: [string]}]}
+ * @param {number} width
+ * @param {number} height
+ * @param {array} filters - objects in the form {key, value} to highlight some flows in the vis
+ * @param {boolean} debug
+ * @param {string} title
+ * @param {object} colorsPalettes
+ * @param {boolean} centerHorizontalLabels
+ * @param {boolean} displaceHorizontalLabels - avoid labels overlap (at the cost of invadint the center of the vis)
+ * @param {object} tooltips - tooltips of nested functions in the form {node: {fr: [fn], en: [fn]}, flow: {fr: [fn], en: [fn]}}
+ * @param {string} lang - enum ['fr', 'en']
+ * @param {string} align - enum ['left', 'center']
+ * @returns {React.ReactElement} - React component
+ */
 const CircularAlluvialChart = ({
   data: inputData = [],
   sumBy,
@@ -403,17 +381,6 @@ const CircularAlluvialChart = ({
                                         data-for="alluvial-tooltip"
                                         data-tip={tContent}
                                       >
-                                        {/* <Path 
-                                    d={`
-                                    M ${x1} ${y1} 
-                                    Q ${controlPoint1AX} ${controlPoint1AY}, ${x2} ${y2} 
-                                    L ${x3} ${y3}
-                                    Q ${controlPoint2AX} ${controlPoint2AY}, ${x4} ${y4} 
-                                    Z
-                                    `.trim().replace(/\n/g, ' ')}
-                                    title={'Valeur : ' + flow.valueAbs}
-                                    style={{fill: colorScales[step.field][node.id]}}
-                                  /> */}
                                         <Path
                                           d={`
                                     M ${x1} ${y1} 
@@ -555,7 +522,6 @@ const CircularAlluvialChart = ({
                             labelX = displaceLabels + minTextWidth;
                           }
                           displaceLabels = labelX;
-                          // console.groupEnd('test');
                         }
                         const labelY = orientation === 'vertical' ? y + actualHeight / 2 : y + displaceText;
                         const [labelMain, labelSecondary] = trimText(node.id, 20);

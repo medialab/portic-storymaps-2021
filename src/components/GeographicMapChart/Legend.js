@@ -2,6 +2,13 @@ import { uniq } from "lodash-es";
 import { generatePalette } from '../../helpers/misc';
 
 
+/**
+ * Centralized map legend
+ * @param {array<object>} layers
+ * @param {string} position - used as css suffix ('bottom', 'bottom left', ...)
+ * @param {function} layerFilter - allows to hide some layers from legend
+ * @returns {React.ReactElement} - React component 
+ */
 const Legend = ({
   layers,
   position,

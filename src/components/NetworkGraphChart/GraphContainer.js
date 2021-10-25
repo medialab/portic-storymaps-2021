@@ -36,6 +36,22 @@ const CELL_WIDTH_SCALE = scaleLinear().domain([0, 1]).range(CELL_WIDTH_RANGE);
 //   camera.animatedUnzoom(renderer);
 // }
 
+/**
+ * Network graph wrapper
+ * @todo this should be enterely refactored using https://github.com/sim51/react-sigma-v2
+ * @param {object} graph
+ * @param {string} nodeColor -  field name
+ * @param {string} nodeSize -  field name
+ * @param {number} labelDensity
+ * @param {string} nodeLabel - fieldName
+ * @param {function} onCameraUpdate
+ * @param {object} cameraPosition
+ * @param {number} updateTimestamp
+ * @param {number} width
+ * @param {number} height
+ * @param {number} ratio - camera ratio/zoom level
+ * @returns {React.ReactElement} - React component 
+ */
 function GraphContainer({
   graph,
   nodeColor: nodeColorVariable,

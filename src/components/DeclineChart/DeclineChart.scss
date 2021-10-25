@@ -1,10 +1,10 @@
 
-
+@import '../../variables.scss';
 
 .DeclineChart {
   position: relative;
   // @todo externalize scss variables
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: $font-family-1;
   max-height:100%;
 
   .row {
@@ -22,8 +22,6 @@
   h3 {
     margin-top: 0;
     margin-bottom: .5rem;
-    // color: grey;
-    // font-weight: 500;
     font-size: 1rem;
   }
   

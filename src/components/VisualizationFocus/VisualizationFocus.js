@@ -7,7 +7,18 @@ import Md from 'react-markdown';
 import './VisualizationFocus.scss';
 
 
-const VisualizationFocus = ({ visualization, lang, onClose }) => {
+/**
+ * Displays an overlay with a visualization and its meta and descriptions in a 2-to-1 columns layout
+ * @param {object} visualization - JSON data about the visualization to display
+ * @param {string} lang
+ * @param {function} onClose
+ * @returns {React.ReactElement} - React component
+ */
+const VisualizationFocus = ({ 
+  visualization, 
+  lang, 
+  onClose 
+}) => {
 
   const [copyClicked, setCopyClicked] = useState(false);
   const inputRef = useRef(null);

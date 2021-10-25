@@ -7,7 +7,12 @@ import cx from 'classnames';
 import SliderRange from '../../components/SliderRange';
 import RadarPlot from '../../components/RadarPlot';
 
-
+/**
+ * Prepares radar data
+ * @author Géraldine Geoffroy
+ * @param {array} datas 
+ * @returns {array}
+ */
 const prepareTravelData = datas => {
   return _(datas)
     .groupBy('destination_radar')
@@ -19,6 +24,12 @@ const prepareTravelData = datas => {
     .value();
 };
 
+/**
+ * Prepares radar data
+ * @author Géraldine Geoffroy
+ * @param {array} datas 
+ * @returns {array}
+ */
 const prepareTonnageData = (datas) => {
   return _(datas)
     .groupBy("destination_radar")
@@ -31,12 +42,19 @@ const prepareTonnageData = (datas) => {
 };
 
 
+/**
+ * Normalizes radar values so that they get comparable
+ * @author Géraldine Geoffroy
+ * @param {array} datas 
+ * @param {object} destCaptions 
+ * @returns {array}
+ */
 const normalizeRadarValues = (datas, destCaptions) => {
   // mapping on max value
   const maxValue = maxBy(values(datas), function (o) {
     return o;
   });
-  // mapping on sum
+  // if mapping on sum rather than max
   // const maxValue = sum(values(datas))
   var x = scaleLinear()
     .domain([0, maxValue])
@@ -55,6 +73,20 @@ const normalizeRadarValues = (datas, destCaptions) => {
   return datas;
 };
 
+/**
+ * Wraps radar vis by controlling interactions and interpreting writers-level instructions
+ * @param {array} data
+ * @param {number} globalWidth
+ * @param {boolean} minified
+ * @param {string} title
+ * @param {string} bureaux
+ * @param {string} navigoAgregation
+ * @param {number} minTonnage
+ * @param {number} maxTonnage
+ * @param {array} axis
+ * @param {object} colorPalette
+ * @returns {React.ReactElement} - React component
+ */
 const RadarWrapper = ({
   data: inputData,
   globalWidth = 500,

@@ -6,6 +6,16 @@ import {prepareAlluvialData} from './utils';
 
 import './CircularAlluvialChart.scss';
 
+/**
+ * Returns a linear alluvial chart component
+ * @param {array<object>} data
+ * @param {string} sumBy
+ * @param {array} steps
+ * @param {number} width
+ * @param {number} height
+ * @param {array<object>} filters
+ * @returns {React.ReactElement} - React component
+ */
 const LinearAlluvialChart = ({
   data : inputData = [],
   sumBy,

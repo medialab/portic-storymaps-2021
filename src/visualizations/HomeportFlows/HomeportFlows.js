@@ -3,6 +3,13 @@ import { fixSvgDimension } from "../../helpers/misc";
 
 import './HomeportFlows.scss';
 
+/**
+ * Displays the homport flows vis (multiple flow maps)
+ * @param {object} datasets
+ * @param {boolean} atlasMode
+ * @param {object} dimensions
+ * @returns {React.ReactElement} - React component
+ */
 const HomeportFlows = ({
   datasets,
   atlasMode,

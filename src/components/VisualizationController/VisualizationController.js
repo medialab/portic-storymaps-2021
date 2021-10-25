@@ -5,9 +5,17 @@ import Measure from 'react-measure'
 
 import VisualizationContainer from '../../visualizations/index.js';
 
+/**
+ * Controller preparing a given visualization for rendering (cleaning props, providing dimensions)
+ * @param {object} activeVisualization - JSON data about the visualization to display
+ * @param {string} lang
+ * @param {boolean} atlasMode
+ * @param {boolean} screenshotMode
+ * @returns {React.ReactElement} - React component
+ */
 const VisualizationController = ({
-  lang,
   activeVisualization,
+  lang,
   atlasMode,
   screenshotMode
 }) => {

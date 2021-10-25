@@ -40,6 +40,18 @@ export function Label(datum, projection, { width }) { // à terme on pourrait me
     </g>);
 }
 
+/**
+ * Render an object in viz 3.3
+ * @param {object} datum
+ * @param {function} projection
+ * @param {number} width
+ * @param {number} height
+ * @param {string} projectionTemplate
+ * @param {boolean} isActive
+ * @param {boolean} isMinified
+ * @param {function} onClick
+ * @returns {React.ReactElement} - React component
+ */
 function Step3Object({
   datum,
   projection,
@@ -124,6 +136,15 @@ function Step3Object({
   )
 }
 
+/**
+ * Renders objects for step 3.3
+ * @param {array} data
+ * @param {function} projection
+ * @param {number} width
+ * @param {number} height
+ * @param {string} projectionTemplate
+ * @returns {React.ReactElement} - React component
+ */
 export function Step3Objects({
   data: { customsOffices = [], ports = [] },
   projection,
@@ -270,11 +291,17 @@ export function Step3Objects({
   )
 }
 
+/**
+ * Renders small multiples for 3.3
+ * @param {array} data
+ * @param {number} width
+ * @param {number} height
+ * @returns {React.ReactElement} - React component
+ */
 export function SmallMultiples({ 
   data, 
   width: inputWidth, 
-  height: inputHeight, 
-  projection 
+  height: inputHeight
 }) {
   const width = fixSvgDimension(inputWidth);
   const height = fixSvgDimension(inputHeight);
@@ -308,17 +335,6 @@ export function SmallMultiples({
 
   return (
     <g className="small-multiples-and-legend-and-title">
-      {/* <foreignObject
-        x={margin * 4}
-        y={multiplesY - circleRadius * 4}
-        width={circleRadius * 7}
-        height={height}
-        className="interaction-cta"
-      >
-        <div>
-          cliquer sur un bureau des fermes pour voir le détail de ses ports
-        </div>
-      </foreignObject> */}
       <rect
         x={xObjectsStart + margin * 2}
         y={multiplesY - circleRadius * 3}
@@ -403,12 +419,23 @@ export function SmallMultiples({
 
 }
 
+/**
+ * Renders a row of triangles
+ * @param {array} data
+ * @param {number} width
+ * @param {number} height
+ * @param {function} projection
+ * @param {string} projectionTemplate
+ * @param {boolean} atlasMode
+ * @returns {React.ReactElement} - React component
+ */
 export function renderTriangles({ 
   data, 
   width: inputWidth, 
   height: inputHeight, 
   projection, 
-  projectionTemplate, atlasMode 
+  projectionTemplate, 
+  atlasMode 
 }) {
   const width = fixSvgDimension(inputWidth);
   const height = fixSvgDimension(inputHeight);

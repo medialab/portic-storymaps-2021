@@ -1,17 +1,15 @@
-
-
-
 .BoatsIllustration {
   .boat {
     line {
       stroke: grey;
     }
-    polygon, path {
+    polygon,
+    path {
       fill: lightgrey;
     }
 
     .sail {
-      opacity: .9;
+      opacity: 0.9;
     }
 
     .hull {

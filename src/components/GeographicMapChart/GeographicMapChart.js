@@ -39,14 +39,27 @@ import './GeographicMapChart.scss'
 import { fixSvgDimension } from '../../helpers/misc';
 
 
+/**
+ * Displays a multi-layers map
+ * @param {number} width
+ * @param {number} height
+ * @param {string} title
+ * @param {array} layers
+ * @param {string} projectionTemplate
+ * @param {object} projectionConfig
+ * @param {boolean} debug
+ * @param {string} withLegend - can directly take legend position
+ * @param {function} legendLayerFilter
+ * @returns {React.ReactElement} - React component 
+ */
 const GeographicMapChart = ({
   width: inputWidth = 1500,
   height: inputHeight = 1500,
   title,
   layers = [],
   projectionTemplate: initialProjectionTemplate,
-  projectionConfig: inputProjectionConfig, // customed config that will overwrite a template (optional argument) 
-  debug = false, // @TODO : à réparer
+  projectionConfig: inputProjectionConfig, // customeconfig that will overwrite a template (optional argument) 
+  debug = false, // @todo : à réparer
   withLegend,
   legendLayerFilter
 }) => {

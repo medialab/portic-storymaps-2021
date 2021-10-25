@@ -4,6 +4,14 @@ import { useSpring, animated } from 'react-spring'
 
 import { fixSvgDimension, polarToCartesian } from '../../helpers/misc';
 
+/**
+ * A plain animated circle
+ * @param {number} cx 
+ * @param {number}  cy 
+ * @param {number} r 
+ * @param {object} props
+ * @returns {React.ReactElement} - React component 
+ */
 const Circle = ({
   cx: inputX,
   cy: inputY,
@@ -29,6 +37,18 @@ const Circle = ({
   )
 }
 
+
+/**
+ * Displays a radarplot object
+ * @param {string} color
+ * @param {object} data - single data object
+ * @param {object} axisIndexMap
+ * @param {function} axisRankScale
+ * @param {array<number>} center - 2D coordinates of center in pixels
+ * @param {string} name
+ * @param {function} radiusScale
+ * @returns {React.ReactElement} - React component 
+ */
 const VisObject = ({
   color,
   data,

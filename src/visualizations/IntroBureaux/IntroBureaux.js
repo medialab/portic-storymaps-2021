@@ -148,6 +148,13 @@ const renderBureaux = ({ data, projection, width, height, atlasMode }) => {
   )
 }
 
+/**
+ * Displays a basic visualization of bureaux des fermes with fancy blurry gradient backgrounds on points
+ * @param {object} datasets
+ * @param {boolean} atlasMode
+ * @param {object} dimensions
+ * @returns {React.ReactElement} - React component
+ */
 const IntroBureaux = ({
   datasets,
   atlasMode,

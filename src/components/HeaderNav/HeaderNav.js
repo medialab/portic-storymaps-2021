@@ -27,6 +27,12 @@ const {
   }
 } = colorPalettes;
 
+/**
+ * Displays header nav handling active link and background color change
+ * @param {array<object>} routes
+ * @param {function} onLangChange
+ * @returns {React.ReactElement} - React component 
+ */
 const HeaderNav = ({
   routes,
   onLangChange,

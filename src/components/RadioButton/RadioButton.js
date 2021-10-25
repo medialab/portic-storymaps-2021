@@ -1,6 +1,23 @@
 import React from "react";
 
-const RadioButton = ({ type, id, name, label, checked, onChange }) => {
+/**
+ * Displays a plain radio button
+ * @param {string} type
+ * @param {string} id
+ * @param {string} name
+ * @param {string} label
+ * @param {boolean} checked
+ * @param {function} onChange
+ * @returns {React.ReactElement} - React component
+ */
+const RadioButton = ({ 
+  type = 'radio',
+  id, 
+  name, 
+  label, 
+  checked, 
+  onChange 
+}) => {
   return (
     <>
       <input

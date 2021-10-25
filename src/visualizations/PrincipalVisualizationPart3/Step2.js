@@ -4,6 +4,13 @@ import BarChart from "../../components/BarChart";
 import colorPalettes from "../../colorPalettes";
 import { fixSvgDimension } from "../../helpers/misc";
 
+/**
+ * Viz 3.2 wrapper
+ * @param {number} width
+ * @param {number} height
+ * @param {object} datasets
+ * @returns {React.ReactElement} - React component
+ */
 const Step2 = ({
   width: inputWidth,
   height: inputHeight,

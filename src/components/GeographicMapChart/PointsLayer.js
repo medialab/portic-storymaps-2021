@@ -10,6 +10,17 @@ import { useEffect, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 
 
+/**
+ * Returns a point and its label
+ * @param {function} projection
+ * @param {object} datum
+ * @param {object} layer
+ * @param {number} opacity
+ * @param {function} onGroupMouseEnter
+ * @param {function} onGroupMouseLeave
+ * @param {boolean} displayLabel
+ * @returns {React.ReactElement} - React component 
+ */
 const PointGroup = ({
   projection,
   datum,
@@ -90,6 +101,19 @@ const PointGroup = ({
   );
 }
 
+/**
+ * Returns label group in a stacked layout
+ * @param {object} layer
+ * @param {object} datum
+ * @param {number} thatIndex
+ * @param {number} opacity
+ * @param {number} stackedRowHeight
+ * @param {function} onGroupMouseEnter
+ * @param {function} onGroupMouseLeave
+ * @param {number} labelFontSize
+ * @param {function} projection
+ * @returns {React.ReactElement} - React component 
+ */
 const StackedLabelGroup = ({
   layer,
   datum,
@@ -183,8 +207,6 @@ const PointsLayer = ({ layer, projection, width, height }) => {
       })
 
       let grouped = Object.entries(coordsMap).map(([_mark, datum]) => datum);
-      // console.log("grouped : ", grouped)
-
 
       let palette;
       if (layer.color !== undefined) {
@@ -222,8 +244,6 @@ const PointsLayer = ({ layer, projection, width, height }) => {
         rawSize: datum.size,
         labelSize: layer.size !== undefined ? labelSizeScale(datum.size) : width * height / 30000
       }))
-
-      // console.log("grouped (PointsLayer): ", grouped)
       return grouped;
     }
   }, [projection, width, layer])/* eslint react-hooks/exhaustive-deps : 0 */

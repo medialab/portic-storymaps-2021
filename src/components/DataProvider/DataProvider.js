@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import { csvParse } from 'd3-dsv';
 import get from 'axios';
 
+/**
+ * Fetches data and provides it to children (used for tests)
+ * @param {string} data
+ * @param {function} children
+ * @returns {React.ReactElement} - React component
+ */
 const DataProvider = ({
   data: dataFilename,
   children

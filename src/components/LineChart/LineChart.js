@@ -56,7 +56,7 @@ const { generic } = colorsPalettes;
  * 
  * @param {function} tooltip
  * 
- * @returns {react}
+ * @returns {React.ReactElement} - React component 
  */
 const LineChart = ({
   data,

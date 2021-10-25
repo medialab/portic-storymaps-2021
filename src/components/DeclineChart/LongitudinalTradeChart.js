@@ -10,7 +10,11 @@ import ReactTooltip from 'react-tooltip';
 import colorsPalettes from "../../colorPalettes";
 import { fixSvgDimension } from "../../helpers/misc";
 
-
+/**
+ * Improve the display of numbers
+ * @param {string|number} str - the number to prettify
+ * @returns {string}
+ */
 const prettifyValue = str => {
   const inted = Math.round(+str) + '';
   let finalStr = '';
@@ -22,7 +26,7 @@ const prettifyValue = str => {
     finalStr = char + finalStr;
     if (count === 3) {
       count = 0;
-      finalStr = ',' + finalStr;
+      finalStr = ' ' + finalStr;
     }
   }
   if (finalStr[0] === ',') {
@@ -32,6 +36,28 @@ const prettifyValue = str => {
   return finalStr;
 }
 
+/**
+ * Displays a double diagram displaying a histogram and a linechart, with optional additional annotations
+ * @param {array} data
+ * @param {string} absoluteField
+ * @param {string} shareField
+ * @param {string} herfindhalField
+ * @param {number} width
+ * @param {number} height
+ * @param {string} axisLeftTitle
+ * @param {string} axisRightTitle
+ * @param {number} startYear
+ * @param {number} endYear
+ * @param {boolean} fillGaps - whether to display a line between two datapoints distant by more than one year
+ * @param {function} barTooltipFn
+ * @param {string} cityName
+ * @param {array<number>} highlightYears
+ * @param {string} title
+ * @param {object} colorScaleMessages
+ * @param {array<object>} annotations - in the form of {startYear: [int], endYear: [int], label: [string], row: [int], labelPosition: [string in ['left', 'right']]}
+ * @param {object} margins - in the form {'left': [number],'right': [number],'top': [number],'bottom': [number]}
+ * @returns {React.ReactElement} - React component
+ */
 const LongitudinalTradeChart = ({
   data: inputData,
   // fields: if null, viz will not show the corresponding data
@@ -380,14 +406,6 @@ const LongitudinalTradeChart = ({
                 }
                 return -1;
               })
-              // .filter((d, index) => {
-              //   const next = data[index + 1];
-              //   if (+d.year === 1787 && !barTooltipFn) {
-              //     console.log('2 next for 1787', d.year, +next.year, next)
-              //   }
-              //   return index < data.length - 1
-              //     && (fillGaps ? true : +next.year === +d.year + 1)
-              // })
               .map((datum, index) => {
                 const next = data[index + 1];
                 if (index === data.length - 1 || fillGaps ? false : +next.year !== +datum.year + 1) {

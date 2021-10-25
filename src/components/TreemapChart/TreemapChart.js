@@ -26,34 +26,20 @@ const formatNestResults = (input) => {
   } else return input;
 }
 
-/**
- * LineChart component - returns a <figure> containing a svg linechart
- * 
- * @param {array} data
- * @param {string} title 
- * @param {width} number 
- * @param {height} number 
- * 
- * @param {object} color
- * @param {string} color.field
- * @param {string} color.title
- * @param {object} color.palette
- * 
- * @param {array} fieldsHierarchy
- * @param {object} leaf
- * @param {string} leaf.labelField
- * @param {number} leaf.countField
 
- * 
- * @param {object} margins
- * @param {number} margins.left
- * @param {number} margins.top
- * @param {number} margins.right
- * @param {number} margins.bottom
- * 
+
+/**
+ * Returns a treemap visualization
+ * @param {array<object>} data - tabular data
+ * @param {array} fieldsHierarchy - array of fieldnames to use to build the nested hierarchy from tabular data
+ * @param {string} title
+ * @param {number} width
+ * @param {number} height
+ * @param {object} leaf - parameters for computing leafs in the form {labelField: [string], countField: [string]}
+ * @param {object} color
  * @param {function} tooltip
- * 
- * @returns {react}
+ * @param {object} margins
+ * @returns {React.ReactElement} - React component
  */
 const TreemapChart = ({
   data,

@@ -24,10 +24,28 @@ Exemple :
 "nb_flows": 22, 
 "tonnages_cumulés": 730}
 
-@TODO : régler le fait que la pointe des flèches ne soit pas à l'arrivée (en l'état c'est la base du triangle qui est sur les coords d'arrivée) => se règle en reculant le triangle :   viewBox="-10 0 10 10" &  <path d="M -10 0 L 0 5 L -10 10 Z" fill="black" /> (à ce moment il fut rétrécir la longueur du path qui fait la barre de la flèche)
-@TODO : mettre un point au départ de mes flows ? (pas adapté quand on a des points de départ et d'arrivée qui se recoupent)
 */
 
+/**
+ * Displays a particular flow
+ * @param {string} id
+ * @param {boolean} hovered
+ * @param {number} xDep
+ * @param {number} yDep
+ * @param {number} xDest
+ * @param {number} yDest
+ * @param {number} strokeWidth
+ * @param {string} color
+ * @param {string} path
+ * @param {number} actualXDep
+ * @param {number} actualYDep
+ * @param {number} actualXDest
+ * @param {number} actualYDest
+ * @param {number} arrowLength
+ * @param {function} onMouseEnter
+ * @param {function} onMouseLeave
+ * @returns {React.ReactElement} - React component 
+ */
 const FlowGroup = ({
   id,
   hovered,
@@ -36,8 +54,6 @@ const FlowGroup = ({
   xDest: inputXDest,
   yDest: inputYDest,
   strokeWidth: inputStrokeWidth,
-  datum,
-  layer,
   color = 'black',
 
   path,
@@ -46,15 +62,17 @@ const FlowGroup = ({
   actualXDest,
   actualYDest,
   arrowLength,
-  depLabelTextAnchor,
-  depLabelX,
-  depLabelY,
-  destLabelTextAnchor,
-  destLabelX,
-  destLabelY,
-  fontSize,
   onMouseEnter,
   onMouseLeave,
+  // datum,
+  // layer,
+  // depLabelTextAnchor,
+  // depLabelX,
+  // depLabelY,
+  // destLabelTextAnchor,
+  // destLabelX,
+  // destLabelY,
+  // fontSize,
 }) => {
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {
@@ -106,6 +124,15 @@ const FlowGroup = ({
   )
 }
 
+/**
+ * Displays a series of flow and their labels
+ * @param {array} layer
+ * @param {function} projection
+ * @param {number} width
+ * @param {number} height
+ * @param {string} projectionTemplate
+ * @returns {React.ReactElement} - React component
+ */
 const FlowsLayer = ({
   layer,
   projection,

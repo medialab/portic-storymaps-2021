@@ -8,6 +8,23 @@ import {fixSvgDimension} from '../../helpers/misc';
 
 import './PrincipalVisualizationPart2.scss';
 
+/**
+ * Composes the principal visualization for part 2
+ * @param {number} width
+ * @param {number} height
+ * @param {object} datasets
+ * @param {boolean} showOnlyToflit
+ * @param {boolean} atlasMode
+ * @param {boolean} screenshotMode
+ * @param {string} highlight - enum ['navigo', 'toflit18']
+ * @param {string} lang
+ * @param {string} filter - custom filters enum ['aucun', 'colonial', 'eau-de-vie', 'sel']
+ * @param {string} bureaux - bureaux to highlight enum ['tous', <bureaux names separated by comas>']
+ * @param {string} navigoAgregation - enum["tonnage", ...]
+ * @param {number} minTonnage
+ * @param {number} maxTonnage
+ * @returns {React.ReactElement} - React component
+ */
 const PrincipalVisualizationPart2 = ({
   width: inputWidth, 
   height: containerHeight, 
@@ -22,7 +39,6 @@ const PrincipalVisualizationPart2 = ({
   navigoAgregation="tonnage",
   minTonnage,
   maxTonnage,
-  ...props
 }) => {
   const width = fixSvgDimension(inputWidth);
   const height = atlasMode ? 1200 : fixSvgDimension(containerHeight);

@@ -3,6 +3,12 @@ import {VegaLite} from 'react-vega';
 import {csvParse} from 'd3-dsv';
 import get from 'axios';
 
+/**
+ * Wrapper for vega visualization
+ * @param {data} string - data url
+ * @param {object} spec
+ * @returns {React.ReactElement} - React component
+ */
 const VegaChart = ({
   data: filename,
   spec

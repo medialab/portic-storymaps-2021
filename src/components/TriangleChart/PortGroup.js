@@ -4,7 +4,24 @@ import { animated, useSpring } from 'react-spring';
 
 import colorsPalettes from '../../colorPalettes';
 
-
+/**
+ * Returns a given port visual elements in triangles comparison visualization (for viz 3.1)
+ * @param {number} numberOfColumns
+ * @param {object} port
+ * @param {function} scaleX
+ * @param {function} scaleY
+ * @param {number} legendWidth
+ * @param {number} columnWidth
+ * @param {umber} totalHeight
+ * @param {number} totalWidth
+ * @param {function} projection
+ * @param {number} index
+ * @param {object} margins
+ * @param {number} rowHeight
+ * @param {number} fontSize
+ * @param {string} projectionTemplate
+ * @returns {React.ReactElement} - React component
+ */
 const PortGroup = ({
   numberOfColumns,
   port,

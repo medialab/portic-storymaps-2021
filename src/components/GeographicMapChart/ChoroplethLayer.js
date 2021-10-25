@@ -6,7 +6,26 @@ import { useSpring, animated } from 'react-spring'
 import { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
-const GeoPart = ({ d: initialD, projection, project, palette, layer, width, height}) => {
+/**
+ * Description
+ * @param {string} d
+ * @param {function} projection
+ * @param {function} project
+ * @param {object} palette
+ * @param {object} layer
+ * @param {number} width
+ * @param {number} height
+ * @returns {React.ReactElement} - React component
+ */
+const GeoPart = ({ 
+  d: initialD, 
+  projection, 
+  project, 
+  palette, 
+  layer, 
+  width, 
+  height
+}) => {
 
   const [isInited, setIsInited] = useState(false);
   useEffect(() => {

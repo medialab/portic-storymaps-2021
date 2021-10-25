@@ -8,6 +8,14 @@ import VisObject from './VisObject';
 
 import './RadarPlot.scss';
 
+/**
+ * Displays a radar plot
+ * @todo this component should be genericized at some point, it was done in haste
+ * @param {array} data
+ * @param {number} size
+ * @param {array<string>} axis - list of columns names to use as axis
+ * @returns {React.ReactElement} - React component
+ */
 const RadarPlot= ({
   data,
   size : wholeSize = 100,

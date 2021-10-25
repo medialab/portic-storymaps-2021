@@ -5,6 +5,20 @@ import ProductsDistributionChart from './ProductsDistributionChart';
 import './DeclineChart.scss';
 import { fixSvgDimension } from '../../helpers/misc';
 
+
+/**
+ * Configurable wrapper for main viz #1
+ * @param {number} width
+ * @param {number} height
+ * @param {string} lang
+ * @param {number} startYear
+ * @param {number} endYear
+ * @param {number} productTradePartThreshold
+ * @param {array<string>} rows - list of visualization rows to display at a certain time
+ * @param {datasets} object
+ * @param {boolean} atlasMode
+ * @returns {React.ReactElement} - React component
+ */
 const DeclineChart = (props) => {
   const {
     width: inputWidth, 

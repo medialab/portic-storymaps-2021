@@ -195,7 +195,7 @@ const VerticalBarChart = ({
         return 1 * multiplier;
       })
     ])
-  , [data, y.field, autoSort, sortYAscending, sortYField, sortYType, sortXAscending, sortXField, sortXType, color.field, colorModalities]);
+  , [data, y, autoSort, sortYAscending, sortYField, sortYType, sortXAscending, sortXField, sortXType, color, colorModalities]);
 
   const xDomain = initialXDomain || layout === 'stack' ?
     // stack -> max = max sum for a given x modality

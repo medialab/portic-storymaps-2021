@@ -9,6 +9,21 @@ import ReactTooltip from 'react-tooltip';
 import { fixSvgDimension } from '../../helpers/misc';
 
 
+/**
+ * Renders custom viz object (triangles + donuts)
+ * @param {array<number>} navigoValues
+ * @param {number} toflitPct - pct of exports of locally produced products
+ * @param {string} transformGroup - css transform
+ * @param {number} circleRadius
+ * @param {number} width
+ * @param {number} height
+ * @param {string} name
+ * @param {boolean} legendMode
+ * @param {boolean} isActive
+ * @param {boolean} isMinified
+ * @param {function} onClick
+ * @returns {React.ReactElement} - React component
+ */
 const ExtraversionObject = ({
   navigoValues: [metric1, metric2],
   toflitPct,

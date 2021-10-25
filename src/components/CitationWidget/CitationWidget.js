@@ -21,6 +21,12 @@ const CONTENTS = {
   }
 }
 
+
+/**
+ * Description
+ * @param {string} lang
+ * @returns {React.ReactElement} - React component
+ */
 const CitationWidget = ({
   lang = 'fr',
 }) => {
@@ -93,6 +99,7 @@ const CitationWidget = ({
               </ul>
               : null
           }
+          {/* disabled: copy on click (gadget) */}
           {/* <div className="copy-link-container">
             <span onClick={handleCopyClick}>{copyClicked ? messages.citationCopied[lang] : messages.copyCitation[lang]}</span>
           </div> */}

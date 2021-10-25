@@ -12,6 +12,24 @@ import { fixSvgDimension } from '../../helpers/misc';
 // - click on products highlight same product on all years ?
 // - click on products make label bigger for small ones ?
 
+
+/**
+ * Displays a comparison of exported products totalizing n% of total shares of exports
+ * @param {array} data
+ * @param {array} tradeData
+ * @param {string} field
+ * @param {number} partTreshold - limit of the total cumulated share of exports from which to display products - in [0,1]
+ * @param {number} height
+ * @param {number} barWidth
+ * @param {string} herfindhalField
+ * @param {array} years - two years to compare
+ * @param {number} width
+ * @param {string} title
+ * @param {object} margins
+ * @param {function} productTooltipFn
+ * @param {boolean} compareFrom
+ * @returns {React.ReactElement} - React component
+ */
 const ProductsDistributionChart = ({
   data: allData,
   tradeData = [],

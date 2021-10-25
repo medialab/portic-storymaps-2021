@@ -21,7 +21,19 @@ import HomeportFlows from './HomeportFlows/HomeportFlows';
 import TreemapChart from '../components/TreemapChart/TreemapChart';
 import { omit } from 'lodash';
 
-const VisualizationContainer = ({ id, dimensions: inputDimensions, ...props }) => {
+/**
+ * This script is the bridge between visualization code, visualizations list, and visualization callers in contents.
+ * It returns a visualization component depending on the provided id
+ * @param {string} id
+ * @param {object} dimensions
+ * @param {object} - additional props
+ * @returns {React.ReactElement} - React component
+ */
+const VisualizationContainer = ({ 
+  id, 
+  dimensions: inputDimensions, 
+  ...props 
+}) => {
   const dimensions = {
     ...inputDimensions,
     // height: inputDimensions.height - inputDimensions.top / 2

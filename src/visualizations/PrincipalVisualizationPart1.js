@@ -1,6 +1,19 @@
 import Decline from '../components/DeclineChart';
 
-const PrincipalVisualizationPart1 = ({width, height, step, ...props}) => {
+/**
+ * Renders main visualization #1
+ * @param {number} width
+ * @param {number} height
+ * @param {string} step - in [1, 2, 3] - defines the step of storytelling
+ * @param {objects} props - additional params to be passed to visualization components
+ * @returns {React.ReactElement} - React component
+ */
+const PrincipalVisualizationPart1 = ({
+  width, 
+  height, 
+  step, 
+  ...props
+}) => {
   if (props.atlasMode) {
     return (
       <Decline 

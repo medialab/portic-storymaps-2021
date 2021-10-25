@@ -11,6 +11,15 @@ import Step2 from './Step2';
 import { fixSvgDimension } from '../../helpers/misc';
 
 
+/**
+ * Renders main viz #3
+ * @param {object} datasets
+ * @param {number} step - scrollytelling step
+ * @param {number} width
+ * @param {number} height
+ * @param {boolean} atlasMode
+ * @returns {React.ReactElement} - React component
+ */
 const PrincipalVisualizationPart3 = ({ 
   datasets, 
   step, 

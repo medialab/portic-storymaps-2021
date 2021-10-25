@@ -29,6 +29,18 @@ import colorsPalettes from '../../colorPalettes';
 import PortGroup from './PortGroup';
 
 
+/**
+ * Returns triangles comparison visualization (for viz 3.1)
+ * @param {array} data
+ * @param {number} totalWidth
+ * @param {number} legendWidth - portion in [0,1]
+ * @param {object} margins
+ * @param {number} rowHeight
+ * @param {function} projection
+ * @param {string} projectionTemplate
+ * @param {boolean} atlasMode
+ * @returns {React.ReactElement} - React component
+ */
 const TriangleChart = ({
   data,
   totalWidth = 1200,

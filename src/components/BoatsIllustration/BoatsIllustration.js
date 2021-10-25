@@ -10,6 +10,12 @@ import './BoatsIllustration.scss';
 const PASS_DURATION = 100000;
 const UPDATE_RATE = 4000;
 
+/**
+ * Returns a boat hull shape
+ * @param {number} width
+ * @param {number} height
+ * @returns  {React.ReactElement} - React component
+ */
 const Hull = ({
   width,
   height,
@@ -25,6 +31,14 @@ const Hull = ({
 
 }
 
+/**
+ * Returns a boat sail shape
+ * @param {number} width
+ * @param {number} height
+ * @param {number} sailSpeed - period in miliseconds
+ * @param {number} distance - factor in [0,1]
+ * @returns  {React.ReactElement} - React component
+ */
 const Sail = ({
   width,
   height,
@@ -62,6 +76,14 @@ const Sail = ({
   )
 }
 
+/**
+ * Returns a boat matt shape
+ * @param {number} width
+ * @param {number} height
+ * @param {number} sailSpeed - period in miliseconds
+ * @param {number} distance - factor in [0,1]
+ * @returns  {React.ReactElement} - React component
+ */
 const Matt = ({
   width,
   height,
@@ -87,6 +109,13 @@ const Matt = ({
   )
 }
 
+/**
+ * Returns a boat shape
+ * @param {number} x
+ * @param {number} height
+ * @param {number} distance - factor in [0,1]
+ * @returns  {React.ReactElement} - React component
+ */
 const Boat = ({
   x,
   height,
@@ -159,6 +188,13 @@ const Boat = ({
   )
 }
 
+/**
+ * Returns a bird shape
+ * @param {number} boatHeight
+ * @param {number} containerHeight
+ * @param {number} distance - factor in [0,1]
+ * @returns  {React.ReactElement} - React component
+ */
 const Bird = ({
   boatHeight,
   containerHeight,
@@ -207,6 +243,16 @@ const Bird = ({
   )
 }
 
+/**
+ * Returns a moving boat + optional birds
+ * @param {number} containerHeight
+ * @param {number} containerWidth
+ * @param {boolean} rightToLeft
+ * @param {number} startAt - starting point in pixels
+ * @param {number} size - factor for defining height relative to container height
+ * @param {number} distance - factor in [0,1]
+ * @returns  {React.ReactElement} - React component
+ */
 const MovingBoat = ({
   containerHeight,
   containerWidth,
@@ -274,6 +320,12 @@ const MovingBoat = ({
 }
 
 
+/**
+ * Returns moving boats
+ * @param {number} width
+ * @param {number} height
+ * @returns  {React.ReactElement} - React component
+ */
 const BoatsIllustration = ({
   width: inputWidth = 1200,
   height: inputHeight = 100,

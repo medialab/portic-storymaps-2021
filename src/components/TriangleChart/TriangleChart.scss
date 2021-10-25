@@ -1,96 +1,91 @@
 .TriangleChart {
+  .TriangleLegend {
+    .textLegend {
+      .legendContent {
+        transform: rotate(-90deg);
+      }
+    }
+  }
 
-    .TriangleLegend{
-        .textLegend{
-            .legendContent{
-            transform : rotate(-90deg);
-            // transform-origin : bottom left;
-            }
-            
+  rect {
+    fill: transparent;
+    stroke: transparent;
+  }
+
+  .triangles {
+    .port-point-and-triangle {
+      transition: 0.5s ease all;
+      opacity: 1;
+      .label,
+      .vertical-line {
+        transition: 0.5s ease all;
+      }
+      .local-legend {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 0.8rem;
+        transition: 0.5s all ease;
+        // text-align: right;
+        opacity: 1;
+        transition: 0.5s ease all;
+        color: darkgrey;
+        pointer-events: none;
+        span {
+          background: #ebebeb;
         }
-    }
-
-    rect {
-        fill : transparent;
-        stroke : transparent;
-    }
-
-    .triangles{
-        .port-point-and-triangle{
-            transition : .5s ease all;
-            opacity : 1;
-            .label,
-            .vertical-line
-            {
-              transition: .5s ease all;
-            }
-            .local-legend {
-              font-family: "IBM Plex Sans", sans-serif;
-              font-size: .8rem;
-              transition: .5s all ease;
-              // text-align: right;
-              opacity: 1;
-              transition: .5s ease all;
-              color: darkgrey;
-              pointer-events: none;
-              span {
-                background: #ebebeb;
-              }
-              line,path {
-                stroke: darkgrey;
-                fill: transparent;
-              }
-            }
-            &:not(:first-of-type) {
-              .local-legend {
-                opacity: 0;
-                
-              }
-            }
-          &.is-minified {
-            .local-legend,
-            .label,
-            .vertical-line
-            {
-              opacity: 0;
-            }
-            &:first-of-type {
-              .local-legend {
-                opacity: 0;
-              }
-            }
-          }       
-        } 
-        &:hover{
-            .port-point-and-triangle{
-                &:first-of-type {
-                  .local-legend {
-                    opacity: 0;
-                  }
-                }
-                opacity : .1;
-                &:hover{
-                    opacity: 1;
-                    .local-legend {
-                      opacity: 1;
-                    }
-                }
-            } 
+        line,
+        path {
+          stroke: darkgrey;
+          fill: transparent;
         }
-    }
-
-    path.vertical-line {
-        stroke : darkgrey;
-    }
-    &.is-atlas-mode {
-      .triangles {
-        .port-point-and-triangle {
+      }
+      &:not(:first-of-type) {
+        .local-legend {
+          opacity: 0;
+        }
+      }
+      &.is-minified {
+        .local-legend,
+        .label,
+        .vertical-line {
+          opacity: 0;
+        }
+        &:first-of-type {
           .local-legend {
-            span {
-              background : white;
-            }
+            opacity: 0;
           }
         }
       }
     }
+    &:hover {
+      .port-point-and-triangle {
+        &:first-of-type {
+          .local-legend {
+            opacity: 0;
+          }
+        }
+        opacity: 0.1;
+        &:hover {
+          opacity: 1;
+          .local-legend {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  path.vertical-line {
+    stroke: darkgrey;
+  }
+  &.is-atlas-mode {
+    .triangles {
+      .port-point-and-triangle {
+        .local-legend {
+          span {
+            background: white;
+          }
+        }
+      }
+    }
+  }
 }

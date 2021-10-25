@@ -194,9 +194,6 @@ const HorizontalBarChart = ({
     const yScale = scaleLinear().domain(yDomain).range([height - margins.bottom, margins.top]).nice();
     const yStackScale = yScale.copy().range([0, height - margins.bottom - margins.top]);
 
-  
-
-  // let { values: xAxisValues } = axisPropsFromTickScale(xScale);
   const xAxisValues = xTickSpan ? range(xDomain[0], xDomain[xDomain.length - 1], xTickSpan) : xValues;
   let { values: yAxisValues } = axisPropsFromTickScale(yScale, 10);
 

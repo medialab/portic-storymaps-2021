@@ -120,7 +120,7 @@
       }
       &:not(.is-minified) {
         position: absolute;
-        bottom: 0%;
+        bottom: 0;
         transition: all 0.5s ease;
         width: 30%;
         left: -40%;
@@ -175,4 +175,16 @@
     }
   }
   
+
+  &.highlight-navigo {
+    .radar-container {
+      height: 100%;
+    }
+    .RadarWrapper {
+      height: 100%;
+      .controls-container {
+        width: 70%;
+      }
+    }
+  }
 }

@@ -236,7 +236,7 @@ const CircularAlluvialChart = ({
           >
             IMPORTS
           </Text>
-          <path
+          <Path
             d={`M ${legendX1} ${legendTopYInternal} 
             Q ${legendX1} ${legendTopYExternal}, ${smallestDimension/2} ${legendTopYExternal} 
             Q ${legendX2} ${legendTopYExternal}, ${legendX2} ${legendTopYInternal}`}
@@ -284,7 +284,7 @@ const CircularAlluvialChart = ({
             {steps[2].name}
           </Text>
           
-          <path
+          <Path
             d={`M ${legendX2} ${legendBottomYInternal} 
             Q ${legendX2} ${legendBottomYExternal}, ${smallestDimension/2} ${legendBottomYExternal} 
             Q ${legendX1} ${legendBottomYExternal}, ${legendX1} ${legendBottomYInternal}`}

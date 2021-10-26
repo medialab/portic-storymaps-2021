@@ -97,7 +97,7 @@ const PrincipalVisualizationPart2 = ({
   };
   return (
     <div 
-      className={cx("PrincipalVisualizationPart2", {'is-atlas-mode': atlasMode, 'is-screenshot-mode': screenshotMode})}
+      className={cx("PrincipalVisualizationPart2", "highlight-" + highlight, {'is-atlas-mode': atlasMode, 'is-screenshot-mode': screenshotMode})}
     >
      <div 
       className="circular-alluvial-container"

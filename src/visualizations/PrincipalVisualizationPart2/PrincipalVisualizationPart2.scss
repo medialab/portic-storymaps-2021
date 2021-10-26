@@ -59,9 +59,13 @@
       align-items: center;
 
       .controls-contents {
-        width: 60%;
+        width: 80%;
         min-width: 8rem;
         margin-right: 2rem;
+      }
+
+      .legend-explanation {
+        margin: 0;
       }
 
       .aggregation-controls-container {

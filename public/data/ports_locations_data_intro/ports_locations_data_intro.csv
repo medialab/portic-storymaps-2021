@@ -1,23 +1,22 @@
 port,latitude,longitude,customs_office,province,admiralty,customs_region,nb_pointcalls
-La Flotte-en-Ré,46.188459,-1.328716,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,204
-Ribérou,45.6755,-0.935826,Marennes,Saintonge,Marennes,La Rochelle,434
-Saint-Martin-de-Ré,46.2,-1.366667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,479
-Marennes,45.816667,-1.116667,Marennes,Saintonge,Marennes,La Rochelle,1481
 La Rochelle,46.166667,-1.15,La Rochelle,Aunis,La Rochelle,La Rochelle,1060
-Ars-en-Ré,46.216667,-1.516667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,308
-Rochefort,45.943666,-0.97043,Rochefort,Aunis,La Rochelle,La Rochelle,360
 Tonnay-Charente,45.95,-0.9,Marennes,Saintonge,Marennes,La Rochelle,614
 Saint-Michel-en-l'Herm,46.35,-1.25,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,67
 Le Château-d'Oléron,45.9,-1.2,Oléron,Saintonge,Marennes,La Rochelle,60
-Les Sables-d'Olonne,46.5,-1.783333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,247
+Ars-en-Ré,46.216667,-1.516667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,308
+Marennes,45.816667,-1.116667,Marennes,Saintonge,Marennes,La Rochelle,1481
+Saint-Martin-de-Ré,46.2,-1.366667,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,479
 Noirmoutier,47,-2.25,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,287
+Ribérou,45.6755,-0.935826,Marennes,Saintonge,Marennes,La Rochelle,434
+Rochefort,45.943666,-0.97043,Rochefort,Aunis,La Rochelle,La Rochelle,360
+Les Sables-d'Olonne,46.5,-1.783333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,247
 Marans,46.312468,-0.995682,Alligre,Aunis,La Rochelle,La Rochelle,630
-Champagné-les-Marais,46.366667,-1.133333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,9
 La Perrotine,45.964614,-1.243436,Marennes,Saintonge,Marennes,La Rochelle,76
 Royan,45.633333,-1.033333,Marennes,Saintonge,Marennes,La Rochelle,17
 Saint-Gilles-sur-Vie,46.697882,-1.945124,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,126
 île de Bouin,46.975134,-1.998682,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,106
 Beauvoir-sur-Mer,46.916667,-2.05,Beauvoir-sur-Mer,Poitou,Sables-d’Olonne,Nantes,124
+La Flotte-en-Ré,46.188459,-1.328716,Saint-Martin île de Ré,Aunis,La Rochelle,La Rochelle,204
 La Tranche-sur-Mer,46.333333,-1.433333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,24
 Moricq,46.396209,-1.374028,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,90
 Mortagne,45.483333,-0.783333,Marennes,Saintonge,Marennes,La Rochelle,17
@@ -25,3 +24,4 @@ Esnandes,46.25,-1.083333,La Rochelle,Aunis,La Rochelle,La Rochelle,2
 Talmont,46.466277,-1.618967,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,1
 Soubise,45.933333,-1,Marennes,Aunis,La Rochelle,La Rochelle,27
 Saint-Denis d'Oléron,46.033333,-1.383333,Oléron,Saintonge,Marennes,La Rochelle,68
+Champagné-les-Marais,46.366667,-1.133333,Sables d'Olonne,Poitou,Sables-d’Olonne,La Rochelle,9

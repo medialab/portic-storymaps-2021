@@ -2,9 +2,9 @@
 `decline_LR_products.csv` documentation
 ===
 
-# What is the data ? 
+# What is the original data ? 
 
-toflit18 flows
+toflit18 flows from [`bdd courante.csv`](https://github.com/medialab/toflit18_data/blob/master/base/bdd%20courante.csv.zip) file
 
 # What does a line correspond to ?
 

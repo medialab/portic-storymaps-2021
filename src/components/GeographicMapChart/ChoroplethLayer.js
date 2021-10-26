@@ -103,7 +103,6 @@ const ChoroplethLayer = ({
   width, 
   height, 
   reverseColors,
-  animated
 }) => {
 
   let palette;
@@ -138,7 +137,16 @@ const ChoroplethLayer = ({
             return (
               <GeoPart 
                 key={d.properties.id || d.properties.name || i} 
-                {...{projection, project, palette, layer, d, width, height, animated}}
+                {...{
+                  projection, 
+                  project, 
+                  palette, 
+                  layer, 
+                  d, 
+                  width, 
+                  height, 
+                  animated: layer.animated
+                }}
               />
             )
           })

@@ -1,13 +1,11 @@
 port,nb_pointcalls,tonnage,country_group,category_1,category_2
-Königsberg / Kaliningrad,13,2410,Europe centrale,étranger,Prusse
-Indéterminé,76,1898,Autre,étranger,Indéterminé
-Rotterdam,7,743,Europe du Nord,étranger,Provinces-Unies
-Amsterdam,21,3511,Europe du Nord,étranger,Provinces-Unies
+Indéterminé,76,1897,Autre,étranger,Indéterminé
 Hull,8,876,Europe du Nord,étranger,Grande-Bretagne
 Mer Baltique,27,4423,Europe de l'Est,étranger,zone maritime
 Zierikzee,2,71,Europe du Nord,étranger,Provinces-Unies
 Teignmouth,3,211,Europe du Nord,étranger,Grande-Bretagne
 Stavanger,12,1058,Europe du Nord,étranger,Danemark
+Rotterdam,7,686,Europe du Nord,étranger,Provinces-Unies
 Poole,2,161,Europe du Nord,étranger,Grande-Bretagne
 Ostende,13,996,Europe centrale,étranger,Autriche
 Newburyport,4,161,Amérique,étranger,Etats-Unis d'Amérique
@@ -24,6 +22,7 @@ Chichester,1,1,Europe du Nord,étranger,Grande-Bretagne
 Londres,45,4901,Europe du Nord,étranger,Grande-Bretagne
 Berwick,1,1,Europe du Nord,étranger,Grande-Bretagne
 Bergue ,17,1102,Europe du Nord,étranger,Danemark
+Amsterdam,21,3607,Europe du Nord,étranger,Provinces-Unies
 Lübeck,9,1424,Europe centrale,étranger,Lubeck
 Guernesey,6,322,Europe du Nord,étranger,Grande-Bretagne
 Côte d'Or,10,3976,Afrique,étranger,multi-Etat
@@ -48,6 +47,7 @@ Côte d'Afrique [de l'Ouest],1,1,Autre,étranger,multi-Etat
 Waterford,3,201,Europe du Nord,étranger,Grande-Bretagne
 Moss,1,1,Europe du Nord,étranger,Danemark
 Molde,2,51,Europe du Nord,étranger,Danemark
+Königsberg / Kaliningrad,13,2345,Europe centrale,étranger,Prusse
 Greenock,1,1,Europe du Nord,étranger,Grande-Bretagne
 Grands Bancs de Terre-Neuve,2,201,Autre,étranger,zone maritime
 Biscaye,1,1,Europe du Sud,étranger,Espagne

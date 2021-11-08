@@ -1,7 +1,4 @@
 homeport,nb_pointcalls,tonnage,country_group,category_1,category_2
-Indéterminé,32,4061,Autre,étranger,Indéterminé
-île de Ré,5,104,France,France,France (région PASA)
-Saint-Savinien,7,323,France,France,France (région PASA)
 Marans,31,210,France,France,France (région PASA)
 Hull,10,1143,Europe du Nord,étranger,Grande-Bretagne
 Königsberg / Kaliningrad,12,2391,Europe centrale,étranger,Prusse
@@ -9,6 +6,7 @@ Zierikzee,2,71,Europe du Nord,étranger,Provinces-Unies
 Teignmouth,3,211,Europe du Nord,étranger,Grande-Bretagne
 Stavanger,10,863,Europe du Nord,étranger,Danemark
 Emden,4,562,Europe centrale,étranger,Prusse
+Indéterminé,32,4093,Autre,étranger,Indéterminé
 Saint-Briac,1,1,France,France,France (hors région PASA)
 Newburyport,4,161,Amérique,étranger,Etats-Unis d'Amérique
 Memel,4,601,Europe centrale,étranger,Prusse
@@ -36,6 +34,8 @@ Brême,5,506,Europe centrale,étranger,Brême
 Châlon,2,21,France,France,France (région PASA)
 Granville,1,1,France,France,France (hors région PASA)
 Norvège,1,1,Europe du Nord,étranger,Danemark
+île de Ré,5,104,France,France,France (région PASA)
+Saint-Savinien,7,276,France,France,France (région PASA)
 Noirmoutier,2,43,France,France,France (région PASA)
 Vannes,3,50,France,France,France (hors région PASA)
 Holmestrand,2,127,Europe du Nord,étranger,Danemark

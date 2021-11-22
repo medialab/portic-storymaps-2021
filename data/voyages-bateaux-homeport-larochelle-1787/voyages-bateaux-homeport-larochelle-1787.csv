@@ -1,9 +1,23 @@
 flow_id,port_dep,port_dest,port_dest_category,latitude_dep,longitude_dep,latitude_dest,longitude_dest,category,nb_flows,tonnages_cumulés
-46.166667:-1.15;43.388103:-1.654143,La Rochelle,Saint-Jean-de-Luz,France,46.166667,-1.15,43.388103,-1.654143,région PASA,2,100.0
+46.166667:-1.15;46.166667:-1.15,La Rochelle,La Rochelle,pasa,46.166667,-1.15,46.166667,-1.15,région PASA,9,250.0
+46.5:-1.783333;46.5:-1.783333,Les Sables-d'Olonne,Les Sables-d'Olonne,pasa,46.5,-1.783333,46.5,-1.783333,région PASA,1,20.0
+46.166667:-1.15;46.396209:-1.374028,La Rochelle,Moricq,pasa,46.166667,-1.15,46.396209,-1.374028,région PASA,40,1228.0
 46.166667:-1.15;45.91367:-0.959895,La Rochelle,Martrou,pasa,46.166667,-1.15,45.91367,-0.959895,région PASA,6,138.0
+46.166667:-1.15;45.943666:-0.97043,La Rochelle,Rochefort,pasa,46.166667,-1.15,45.943666,-0.97043,région PASA,27,576.0
+46.166667:-1.15;45.933333:-1,La Rochelle,Soubise,pasa,46.166667,-1.15,45.933333,-1,région PASA,3,90.0
+45.95:-0.9;46.166667:-1.15,Tonnay-Charente,La Rochelle,pasa,45.95,-0.9,46.166667,-1.15,région PASA,22,730.0
+46.166667:-1.15;45.724946:-0.963790,La Rochelle,Châlon,pasa,46.166667,-1.15,45.724946,-0.963790,région PASA,6,120.0
+46.166667:-1.15;14.661186:-17.426148,La Rochelle,Sénégal,étranger,46.166667,-1.15,14.661186,-17.426148,région PASA,1,795.0
+46.166667:-1.15;-11.467104:13.791503,La Rochelle,Côte d'Angole,étranger,46.166667,-1.15,-11.467104,13.791503,région PASA,4,4150.0
+46.166667:-1.15;46.2:-1.366667,La Rochelle,Saint-Martin-de-Ré,pasa,46.166667,-1.15,46.2,-1.366667,région PASA,10,111.0
+46.166667:-1.15;45.95:-0.9,La Rochelle,Tonnay-Charente,pasa,46.166667,-1.15,45.95,-0.9,région PASA,17,574.0
+46.5:-1.783333;46.312468:-0.995682,Les Sables-d'Olonne,Marans,pasa,46.5,-1.783333,46.312468,-0.995682,région PASA,1,20.0
+45.95:-0.9;45.943666:-0.97043,Tonnay-Charente,Rochefort,pasa,45.95,-0.9,45.943666,-0.97043,région PASA,1,39.0
+45.943666:-0.97043;45.95:-0.9,Rochefort,Tonnay-Charente,pasa,45.943666,-0.97043,45.95,-0.9,région PASA,2,52.0
+45.95:-0.9;:,Tonnay-Charente,pas mentionné,étranger,45.95,-0.9,,,région PASA,1,36.0
+46.166667:-1.15;43.388103:-1.654143,La Rochelle,Saint-Jean-de-Luz,France,46.166667,-1.15,43.388103,-1.654143,région PASA,2,100.0
 46.166667:-1.15;45.766667:-1.133333,La Rochelle,La Tremblade,pasa,46.166667,-1.15,45.766667,-1.133333,région PASA,2,26.0
 46.166667:-1.15;19.1:-72.65,La Rochelle,Saint-Marc,étranger,46.166667,-1.15,19.1,-72.65,région PASA,2,480.0
-46.166667:-1.15;45.724946:-0.963790,La Rochelle,Châlon,pasa,46.166667,-1.15,45.724946,-0.963790,région PASA,6,120.0
 46.2:-1.366667;45.6755:-0.935826,Saint-Martin-de-Ré,Ribérou,pasa,46.2,-1.366667,45.6755,-0.935826,région PASA,1,2.0
 45.9:-1.2;44.833333:-0.566667,Le Château-d'Oléron,Bordeaux,France,45.9,-1.2,44.833333,-0.566667,région PASA,3,30.0
 45.9:-1.2;45.724946:-0.963790,Le Château-d'Oléron,Châlon,pasa,45.9,-1.2,45.724946,-0.963790,région PASA,1,9.0
@@ -12,7 +26,6 @@ flow_id,port_dep,port_dest,port_dest_category,latitude_dep,longitude_dep,latitud
 46.166667:-1.15;46.016667:-1.35,La Rochelle,La Brée,pasa,46.166667,-1.15,46.016667,-1.35,région PASA,5,100.0
 46.166667:-1.15;46.2:-1.416667,La Rochelle,île de Ré,pasa,46.166667,-1.15,46.2,-1.416667,région PASA,1,20.0
 46.166667:-1.15;-20.281263:57.556457,La Rochelle,île de France / île Maurice,étranger,46.166667,-1.15,-20.281263,57.556457,région PASA,2,540.0
-46.166667:-1.15;-11.467104:13.791503,La Rochelle,Côte d'Angole,étranger,46.166667,-1.15,-11.467104,13.791503,région PASA,4,4150.0
 46.166667:-1.15;49.963589:1.147613,La Rochelle,Saint-Valery (indeterminé),France,46.166667,-1.15,49.963589,1.147613,région PASA,1,160.0
 46.312468:-0.995682;44.916667:-0.233333,Marans,Libourne,France,46.312468,-0.995682,44.916667,-0.233333,région PASA,1,96.0
 43.383333:-1.683333;46.833333:-56.333333,Socoa,Saint-Pierre-et-Miquelon,étranger,43.383333,-1.683333,46.833333,-56.333333,France,1,50.0
@@ -23,11 +36,7 @@ flow_id,port_dep,port_dest,port_dest_category,latitude_dep,longitude_dep,latitud
 46.166667:-1.15;46.833333:-56.333333,La Rochelle,Saint-Pierre-et-Miquelon,étranger,46.166667,-1.15,46.833333,-56.333333,région PASA,4,428.0
 46.166667:-1.15;50.183333:1.633333,La Rochelle,Saint-Valery-sur-Somme,France,46.166667,-1.15,50.183333,1.633333,région PASA,3,382.0
 46.166667:-1.15;46.312468:-0.995682,La Rochelle,Marans,pasa,46.166667,-1.15,46.312468,-0.995682,région PASA,7,216.0
-46.166667:-1.15;45.943666:-0.97043,La Rochelle,Rochefort,pasa,46.166667,-1.15,45.943666,-0.97043,région PASA,27,576.0
-46.166667:-1.15;45.933333:-1,La Rochelle,Soubise,pasa,46.166667,-1.15,45.933333,-1,région PASA,3,90.0
 46.166667:-1.15;46.188459:-1.328716,La Rochelle,La Flotte-en-Ré,pasa,46.166667,-1.15,46.188459,-1.328716,région PASA,16,356.0
-46.166667:-1.15;46.396209:-1.374028,La Rochelle,Moricq,pasa,46.166667,-1.15,46.396209,-1.374028,région PASA,40,1228.0
-46.166667:-1.15;46.2:-1.366667,La Rochelle,Saint-Martin-de-Ré,pasa,46.166667,-1.15,46.2,-1.366667,région PASA,10,111.0
 46.166667:-1.15;45.6755:-0.935826,La Rochelle,Ribérou,pasa,46.166667,-1.15,45.6755,-0.935826,région PASA,2,32.0
 46.166667:-1.15;45.964614:-1.243436,La Rochelle,La Perrotine,pasa,46.166667,-1.15,45.964614,-1.243436,région PASA,2,40.0
 46.166667:-1.15;45.816667:-1.116667,La Rochelle,Marennes,pasa,46.166667,-1.15,45.816667,-1.116667,région PASA,3,72.0
@@ -35,7 +44,6 @@ flow_id,port_dep,port_dest,port_dest_category,latitude_dep,longitude_dep,latitud
 46.166667:-1.15;44.833333:-0.566667,La Rochelle,Bordeaux,France,46.166667,-1.15,44.833333,-0.566667,région PASA,2,1580.0
 46.166667:-1.15;46.5:-1.783333,La Rochelle,Les Sables-d'Olonne,pasa,46.166667,-1.15,46.5,-1.783333,région PASA,1,20.0
 46.396209:-1.374028;46.166667:-1.15,Moricq,La Rochelle,pasa,46.396209,-1.374028,46.166667,-1.15,région PASA,38,1214.0
-45.943666:-0.97043;45.95:-0.9,Rochefort,Tonnay-Charente,pasa,45.943666,-0.97043,45.95,-0.9,région PASA,2,52.0
 46.833333:-56.333333;40.718276:-74.004707,Saint-Pierre-et-Miquelon,New York,étranger,46.833333,-56.333333,40.718276,-74.004707,France,1,88.0
 46.312468:-0.995682;46.5:-1.783333,Marans,Les Sables-d'Olonne,pasa,46.312468,-0.995682,46.5,-1.783333,région PASA,1,20.0
 45.9:-1.2;46.166667:-1.15,Le Château-d'Oléron,La Rochelle,pasa,45.9,-1.2,46.166667,-1.15,région PASA,1,3.0
@@ -74,11 +82,3 @@ flow_id,port_dep,port_dest,port_dest_category,latitude_dep,longitude_dep,latitud
 46.312468:-0.995682;45.816667:-1.116667,Marans,Marennes,pasa,46.312468,-0.995682,45.816667,-1.116667,région PASA,1,20.0
 46.2:-1.366667;46.166667:-1.15,Saint-Martin-de-Ré,La Rochelle,pasa,46.2,-1.366667,46.166667,-1.15,région PASA,1,32.0
 47.216667:-1.55;46.166667:-1.15,Nantes,La Rochelle,pasa,47.216667,-1.55,46.166667,-1.15,France,1,328.0
-46.166667:-1.15;46.166667:-1.15,La Rochelle,La Rochelle,pasa,46.166667,-1.15,46.166667,-1.15,région PASA,9,250.0
-46.5:-1.783333;46.5:-1.783333,Les Sables-d'Olonne,Les Sables-d'Olonne,pasa,46.5,-1.783333,46.5,-1.783333,région PASA,1,20.0
-45.95:-0.9;46.166667:-1.15,Tonnay-Charente,La Rochelle,pasa,45.95,-0.9,46.166667,-1.15,région PASA,22,730.0
-46.166667:-1.15;14.661186:-17.426148,La Rochelle,Sénégal,étranger,46.166667,-1.15,14.661186,-17.426148,région PASA,1,795.0
-46.166667:-1.15;45.95:-0.9,La Rochelle,Tonnay-Charente,pasa,46.166667,-1.15,45.95,-0.9,région PASA,17,574.0
-46.5:-1.783333;46.312468:-0.995682,Les Sables-d'Olonne,Marans,pasa,46.5,-1.783333,46.312468,-0.995682,région PASA,1,20.0
-45.95:-0.9;45.943666:-0.97043,Tonnay-Charente,Rochefort,pasa,45.95,-0.9,45.943666,-0.97043,région PASA,1,39.0
-45.95:-0.9;:,Tonnay-Charente,pas mentionné,étranger,45.95,-0.9,,,région PASA,1,36.0

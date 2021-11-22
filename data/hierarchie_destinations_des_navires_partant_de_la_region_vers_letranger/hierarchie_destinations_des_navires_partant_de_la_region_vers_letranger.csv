@@ -1,15 +1,22 @@
 homeport,nb_pointcalls,tonnage,country_group,category_1,category_2
 Marans,31,210,France,France,France (région PASA)
+Indéterminé,32,4095,Autre,étranger,Indéterminé
+Hambourg,7,771,Europe centrale,étranger,Hambourg
+île d'Arz,1,1,France,France,France (hors région PASA)
+Oldenbourg,2,121,Europe centrale,étranger,Duché d'Oldenbourg
+La Flotte-en-Ré,3,45,France,France,France (région PASA)
+Saint-Savinien,7,323,France,France,France (région PASA)
+La Rochelle,14,4534,France,France,France (région PASA)
+Memel,4,851,Europe centrale,étranger,Prusse
+île de Ré,5,104,France,France,France (région PASA)
 Hull,10,1143,Europe du Nord,étranger,Grande-Bretagne
 Königsberg / Kaliningrad,12,2391,Europe centrale,étranger,Prusse
 Zierikzee,2,71,Europe du Nord,étranger,Provinces-Unies
 Teignmouth,3,211,Europe du Nord,étranger,Grande-Bretagne
 Stavanger,10,863,Europe du Nord,étranger,Danemark
 Emden,4,562,Europe centrale,étranger,Prusse
-Indéterminé,32,4093,Autre,étranger,Indéterminé
 Saint-Briac,1,1,France,France,France (hors région PASA)
 Newburyport,4,161,Amérique,étranger,Etats-Unis d'Amérique
-Memel,4,601,Europe centrale,étranger,Prusse
 Gloucester,3,106,Amérique,étranger,Etats-Unis d'Amérique
 Georgetown,2,101,Amérique,étranger,Etats-Unis d'Amérique
 Frederikshald / Halden,6,625,Europe du Nord,étranger,Danemark
@@ -29,13 +36,10 @@ Amsterdam,21,4665,Europe du Nord,étranger,Provinces-Unies
 Lübeck,8,1251,Europe centrale,étranger,Lubeck
 Rotterdam,2,137,Europe du Nord,étranger,Provinces-Unies
 Guernesey,5,319,Europe du Nord,étranger,Grande-Bretagne
-La Rochelle,14,4926,France,France,France (région PASA)
 Brême,5,506,Europe centrale,étranger,Brême
 Châlon,2,21,France,France,France (région PASA)
 Granville,1,1,France,France,France (hors région PASA)
 Norvège,1,1,Europe du Nord,étranger,Danemark
-île de Ré,5,104,France,France,France (région PASA)
-Saint-Savinien,7,276,France,France,France (région PASA)
 Noirmoutier,2,43,France,France,France (région PASA)
 Vannes,3,50,France,France,France (hors région PASA)
 Holmestrand,2,127,Europe du Nord,étranger,Danemark
@@ -58,7 +62,6 @@ Sunderland,3,225,Europe du Nord,étranger,Grande-Bretagne
 Frise,2,61,Europe du Nord,étranger,Provinces-Unies
 Bordeaux,2,157,France,France,France (hors région PASA)
 Le Conquet,3,78,France,France,France (hors région PASA)
-Hambourg,7,801,Europe centrale,étranger,Hambourg
 Quiberon,5,117,France,France,France (hors région PASA)
 Cherbourg,3,99,France,France,France (hors région PASA)
 Portsmouth,2,241,Europe du Nord,étranger,Grande-Bretagne
@@ -66,7 +69,6 @@ Moss,1,1,Europe du Nord,étranger,Danemark
 Molde,2,51,Europe du Nord,étranger,Danemark
 Honfleur,2,109,France,France,France (hors région PASA)
 Ribnitz,2,151,Europe centrale,étranger,Mecklenbourg
-Oldenbourg,2,121,Europe centrale,étranger,Duché d'Oldenbourg
 Saint-Malo,1,1,France,France,France (hors région PASA)
 Soubise,1,1,France,France,France (région PASA)
 Christiania / Oslo,1,1,Europe du Nord,étranger,Danemark
@@ -84,7 +86,6 @@ Nantes,1,1,France,France,France (hors région PASA)
 Salem,1,1,Amérique,étranger,Etats-Unis d'Amérique
 Bristol,4,349,Europe du Nord,étranger,Grande-Bretagne
 Hollande,2,201,Europe du Nord,étranger,Provinces-Unies
-La Flotte-en-Ré,3,9,France,France,France (région PASA)
 Southampton,1,1,Europe du Nord,étranger,Grande-Bretagne
 New York,1,1,Amérique,étranger,Etats-Unis d'Amérique
 Appledore,1,1,Europe du Nord,étranger,Grande-Bretagne
@@ -114,4 +115,3 @@ Locmariaquer,1,1,France,France,France (hors région PASA)
 Norfolk,1,1,Amérique,étranger,Etats-Unis d'Amérique
 Marblehead,1,1,Amérique,étranger,Etats-Unis d'Amérique
 Middelbourg,1,1,Europe du Nord,étranger,Provinces-Unies
-île d'Arz,1,1,France,France,France (hors région PASA)

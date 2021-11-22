@@ -12,7 +12,7 @@ Vins divers,1789,291472.17269419995,264.0
 "Ouvrages de bois, liège et jonc",1789,38017.00002,524071.10326059995
 Divers mélangés,1789,1608.0,6148.0
 Sel,1789,298213.56871873,
-Matières brutes et transformées pour teinture,1789,8000.0,48783.000284120004
+[vide],1789,8000.0,
 "Bière, cidre et vinaigre",1789,24016.249140324006,50812.7222232
 "Armes, munitions, poudre et pierres à fusil",1789,37447.0,870.0
 Fruits secs et noix,1789,391.0,
@@ -70,6 +70,7 @@ Fleurs artificielles et ouvrages de mode,1789,,360.0
 Chanvre,1789,,115230.59772844
 Colles diverses,1789,,1222.5
 Cuivre,1789,,23999.9
+Matières brutes et transformées pour teinture,1789,,48783.000284120004
 Azur et cobalt,1789,,1260.0
 "Alquifoux, mine de plomb et graphite",1789,,3202.50010675
 Poivre et piment,1789,,7709.0
@@ -134,7 +135,7 @@ Bouchons principalement en liège,1750,200.0,
 Verrerie,1750,33108.599998,4673.700009
 Mercerie,1750,1386127.0,26093.0
 "Brai, goudron et résines",1750,3696.5,20682.0
-Étoffes de laine,1750,512715.199,120000.0
+Étoffes de laine,1750,512715.199,
 Cannelle,1750,48.0,3320.0
 Cordonnerie et sellerie,1750,110970.0,
 Toiles diverses,1750,31752.800099,64.0
@@ -189,6 +190,7 @@ Vin de liqueurs,1750,1800.0,
 "Cornes, corail, écailles, ivoire et nacre",1750,23360.0,20841.0
 Drogues médicinales diverses,1750,1080.0,80459.299999
 Combustibles dont charbons et bois,1750,,146133.8
+[vide],1750,,120000.0
 Mercure,1750,,330.0
 Azur et cobalt,1750,,5114.3999
 Sels chimiques,1750,,194.2

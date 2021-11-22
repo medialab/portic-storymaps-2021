@@ -3,6 +3,9 @@ Portic storymaps 2021 : "Commerce multi-échelles autour du port de La Rochelle 
 
 ![Screenshot of the website](https://github.com/medialab/portic-storymaps-2021/raw/main/public/larochelle-rs.png)
 
+
+[![DOI](https://zenodo.org/badge/370712324.svg)](https://zenodo.org/badge/latestdoi/370712324)
+
 This repository hosts the source code of PORTIC research program's first case study (see [PORTIC homepage](https://anr.portic.fr/) for more information). Built by an interdisciplinary team of historians, engineers and designers, it proposes a detailed study of the economic history of the region of La Rochelle (France) circa 1789.
 
 Through a series of three "storymaps" combining text and visualization, this publication tells the story of the decline of La Rochelle region's ports after France's loss of Canada during the seven years war, and the consequences of this event on the region's trade structure at the dawn of french revolution. It also features an atlas allowing to browse and share individually all the visualizations crafted during this research.

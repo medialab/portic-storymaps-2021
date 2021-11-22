@@ -6,6 +6,7 @@ import cx from 'classnames';
 import FrMla from '!babel-loader!mdx-loader!./mla-fr.mdx';
 import FrIso690 from '!babel-loader!mdx-loader!./iso-fr.mdx';
 import FrApa from '!babel-loader!mdx-loader!./apa-fr.mdx';
+import Doi from '!babel-loader!mdx-loader!./doi.mdx';
 
 import './CitationWidget.scss';
 
@@ -14,10 +15,12 @@ const CONTENTS = {
   fr: {
     'MLA': FrMla,
     'ISO 690': FrIso690,
-    'APA': FrApa
+    'APA': FrApa,
+    'DOI': Doi
   },
   en: {
-    'MLA': FrMla
+    'MLA': FrMla,
+    'DOI': Doi
   }
 }
 

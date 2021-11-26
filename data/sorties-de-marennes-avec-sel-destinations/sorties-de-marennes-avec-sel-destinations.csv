@@ -1,12 +1,6 @@
 port,country,latitude,longitude,tonnage,nb_flows
-Bordeaux,France,44.833333,-0.566667,8028,193
-Libourne,France,44.916667,-0.233333,3723,101
-Honfleur,France,49.420164,0.231886,19714,193
-Tonnay-Charente,France,45.95,-0.9,10828,296
-Bilbao,Espagne,43.256706,-2.924252,356,5
-Bayonne,France,43.483333,-1.483333,2243,33
-pas mentionné,Autre,,,50,2
 Königsberg / Kaliningrad,Prusse,54.71,20.5,929,5
+Tonnay-Charente,France,45.95,-0.9,10828,296
 Côtes de Bretagne,France,47.681292,-3.813171,10,1
 Virginie,Etats-Unis d'Amérique,36.83449804,-76.08717906,237,1
 Saint-Brieuc,France,48.516667,-2.783333,147,2
@@ -19,8 +13,12 @@ Lamarque,France,45.1,-0.7,30,1
 Galway,Grande-Bretagne,53.271944,-9.048889,50,1
 Bourg,France,45.05,-0.566667,45,1
 Baltimore,Etats-Unis d'Amérique,39.291345,-76.612873,262,1
+pas mentionné,Autre,,,50,2
+Honfleur,France,49.420164,0.231886,19714,193
 Caen ,France,49.183333,-0.35,4047,64
 Lübeck,Lubeck,53.866667,10.7,174,1
+Libourne,France,44.916667,-0.233333,3723,101
+Bayonne,France,43.483333,-1.483333,2243,33
 Rotterdam,Provinces-Unies,51.916667,4.5,793,6
 Zierikzee,Provinces-Unies,51.65,3.916667,237,1
 Vannes,France,47.657445,-2.760172,19,1
@@ -28,11 +26,13 @@ Soubise,France,45.933333,-1,37,1
 La Teste,France,44.633333,-1.15,36,1
 Harlingen,Provinces-Unies,53.183333,5.416667,605,3
 Dordrecht ,Provinces-Unies,51.8,4.666667,914,5
+Bilbao,Espagne,43.256706,-2.924252,356,5
 Amsterdam,Provinces-Unies,52.35,4.916667,738,4
 Blaye,France,45.133333,-0.666667,59,2
 Calais,France,50.95,1.833333,146,2
 Newcastle,Grande-Bretagne,54.988056,-1.619444,404,1
 Castelnau,France,45.033333,-0.8,38,1
+Bordeaux,France,44.833333,-0.566667,8028,193
 Belle-Île-en-Mer,France,47.316667,-3.183333,30,1
 Dunkerque,France,51.05,2.366667,11916,122
 Saint-Valery-sur-Somme,France,50.183333,1.633333,2376,34

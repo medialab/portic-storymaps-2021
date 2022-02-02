@@ -1,4 +1,10 @@
 port,nb_flows,tonnage
+Châlon,64,1253
+île de Ré,42,2643
+Les Sables-d'Olonne,30,905
+Rochefort,72,2262
+île d'Oléron,89,2605
+Saint-Martin-de-Ré,25,594
 Tonnay-Charente,204,7514
 Dercie,5,160
 Bourcefranc ,1,50
@@ -8,19 +14,13 @@ Rivedoux,1,6
 Le Plomb,1,20
 Le Chapus,3,17
 Seudre,16,1336
-île d'Oléron,89,2605
 Luçon,3,104
-Châlon,64,1253
-île de Ré,42,2643
 Saint-Gilles-sur-Vie,1,55
 La Tremblade,8,142
 l'Aiguillon,1,1
 Brouage ,7,308
 Marans,33,1065
 Marennes,38,1116
-Rochefort,72,2262
-Les Sables-d'Olonne,30,905
-Saint-Martin-de-Ré,25,594
 Moricq,41,1159
 Soubise,2,41
 Ribérou,14,151

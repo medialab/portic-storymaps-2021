@@ -110,11 +110,11 @@ The project is open to contribution through pull requests.
 
 # Deployment
 
-Deployment is automated to happen every day and each time a commit is pushed to the `prod` branch. The published website is then pushed on the `gh-pages` branch, which serves the site at https://medialab.github.io/portic-storymaps-2021/.
+Deployment used to be automated to happen every day and each time a commit is pushed to the `prod` branch. The published website was then pushed on the `gh-pages` branch, which serves the site at https://medialab.github.io/portic-storymaps-2021/. It is now only updated when pushing on the `prod` branch.
 
 Therefore :
 
-- Contents and data are updated every day
+- ~~Contents and data are updated every day~~
 - To deploy a new version of the website code, it has to be pushed to the `prod` branch.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

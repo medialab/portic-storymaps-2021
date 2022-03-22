@@ -157,7 +157,7 @@ const ScrollyPage = ({
           <ContentSync />
         </section>
         <aside className={cx({ 'is-focused': focusOnViz })}>
-          <VisualizationController activeVisualization={activeVisualization} />
+          <VisualizationController lang={lang} activeVisualization={activeVisualization} />
           {
             activeVisualization ?
               <div className="fullscreen-viz-toggle-container">

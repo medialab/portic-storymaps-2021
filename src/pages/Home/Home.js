@@ -204,7 +204,7 @@ function Home({ match: {
               {lang === 'fr' ? <ContentsFr /> : <ContentsEn />}
             </section>
             <aside className={cx({'is-focused': focusOnViz, 'is-fixed': inVis})}>
-              <VisualizationController activeVisualization={activeVisualization} />
+              <VisualizationController lang={lang} activeVisualization={activeVisualization} />
             </aside>
             
           </div>

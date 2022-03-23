@@ -10,6 +10,7 @@ import colorsPalettes from '../../colorPalettes.js';
 import Step2 from './Step2';
 import { fixSvgDimension } from '../../helpers/misc';
 
+import translate from '../../i18n/translate';
 
 /**
  * Renders main viz #3
@@ -25,7 +26,8 @@ const PrincipalVisualizationPart3 = ({
   step, 
   width: inputWidth, 
   height: inputHeight, 
-  atlasMode 
+  atlasMode,
+  lang
 }) => {
   const width = fixSvgDimension(inputWidth);
   const height = atlasMode ? window.innerHeight : fixSvgDimension(inputHeight);
@@ -48,7 +50,7 @@ const PrincipalVisualizationPart3 = ({
     <div className={cx("PrincipalVisualizationPart3", { 'is-atlas-mode': atlasMode })} style={{ height: atlasMode ? undefined : height }}>
       <div className={cx('step', { 'is-visible': step === 1 })}>
         <GeographicMapChart
-          title={'Navigation au départ des ports de la région PASA en 1789'}
+          title={translate('viz-principale-partie-3', 'GeographicMapChart_title', lang)}
           layers={[
             {
               type: 'choropleth',
@@ -79,7 +81,7 @@ const PrincipalVisualizationPart3 = ({
             {
               type: 'custom',
               data: datasets['part_3_step1_viz_data/part_3_step1_viz_data.csv'],
-              renderObjects: props => renderTriangles({...props, atlasMode})
+              renderObjects: props => renderTriangles({...props, atlasMode, lang})
             }
           ]}
           projectionTemplate={atlasMode ? 'rotated Poitou' : currentMapTemplate}
@@ -131,7 +133,7 @@ const PrincipalVisualizationPart3 = ({
           projectionTemplate={atlasMode ? 'Poitou zoomed' : currentMapTemplate}
           height={height}
           width={width}
-          title={'Extraversion du commerce et de la navigation regroupés par bureau de fermes en 1789'}
+          title={translate('viz-principale-partie-3', 'GeographicMapChart_second_title', lang)}
         />
 
       </div>

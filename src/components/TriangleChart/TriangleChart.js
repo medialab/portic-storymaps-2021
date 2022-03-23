@@ -49,7 +49,8 @@ const TriangleChart = ({
   rowHeight = 200,
   projection,
   projectionTemplate,
-  atlasMode
+  atlasMode,
+  lang
 }) => {
 
   const margins = inputMargins ||  {
@@ -133,6 +134,7 @@ const TriangleChart = ({
 
               return (
                 <PortGroup
+                  lang={lang}
                   key={index}
                   {
                   ...{

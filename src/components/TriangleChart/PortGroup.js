@@ -4,6 +4,8 @@ import { animated, useSpring } from 'react-spring';
 
 import colorsPalettes from '../../colorPalettes';
 
+import translate from '../../i18n/translate';
+
 /**
  * Returns a given port visual elements in triangles comparison visualization (for viz 3.1)
  * @param {number} numberOfColumns
@@ -36,7 +38,8 @@ const PortGroup = ({
   margins,
   rowHeight,
   fontSize,
-  projectionTemplate
+  projectionTemplate,
+  lang
 }) => {
 
 
@@ -209,7 +212,7 @@ const PortGroup = ({
             height={rowHeight}
           >
             <span xmlns="http://www.w3.org/1999/xhtml">
-             nombre de navires sortis du port en 1789 : <strong>{port.nb_pointcalls_out}</strong>
+              {translate('viz-principale-partie-3', 'nb_pointcalls_out', lang)}  : <strong>{port.nb_pointcalls_out}</strong>
             </span>
           </foreignObject>
           <foreignObject 
@@ -219,7 +222,7 @@ const PortGroup = ({
             height={rowHeight}
           >
             <span xmlns="http://www.w3.org/1999/xhtml">
-              tonnage moyen des navires : <strong>{(+port.mean_tonnage || 0).toFixed(1)}</strong>
+            {translate('viz-principale-partie-3', 'mean_tonnage', lang)} : <strong>{(+port.mean_tonnage || 0).toFixed(1)}</strong>
             </span>
           </foreignObject>
           

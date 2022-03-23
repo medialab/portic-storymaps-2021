@@ -435,7 +435,8 @@ export function renderTriangles({
   height: inputHeight, 
   projection, 
   projectionTemplate, 
-  atlasMode 
+  atlasMode,
+  lang
 }) {
   const width = fixSvgDimension(inputWidth);
   const height = fixSvgDimension(inputHeight);
@@ -448,6 +449,7 @@ export function renderTriangles({
       projection={projection}
       projectionTemplate={projectionTemplate}
       atlasMode={atlasMode}
+      lang={lang}
     />
   );
 }

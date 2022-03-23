@@ -7,6 +7,8 @@ import cx from 'classnames';
 import SliderRange from '../../components/SliderRange';
 import RadarPlot from '../../components/RadarPlot';
 
+import translate from '../../i18n/translate';
+
 /**
  * Prepares radar data
  * @author Géraldine Geoffroy
@@ -96,6 +98,7 @@ const RadarWrapper = ({
   navigoAgregation = "tonnage",
   minTonnage,
   maxTonnage,
+  lang,
   axis = [],
   colorPalette
 }) => {
@@ -233,6 +236,7 @@ const RadarWrapper = ({
 
       <h5 className="visualization-title">{title}</h5>
       <RadarPlot
+        lang={lang}
         data={radarData.reverse()}
         size={minified ? globalWidth * .4 : globalWidth * .7}
         axis={axis}
@@ -241,19 +245,22 @@ const RadarWrapper = ({
         className={cx("controls-container", { 'is-minified': minified })}
       >
         <div className="controls-contents">
-          <strong>{filteredData.length}</strong> voyages agrégés par <span className="aggregation-controls-container">
+          <strong>{filteredData.length}</strong> {translate('viz-principale-partie-2', 'travel_aggregate', lang)} <span className="aggregation-controls-container">
 
             <select value={aggregationMethod} onChange={e => setAggregationMethod(e.target.value)}>
               <option
                 key={'tonnage'}
                 id={'tonnage'}
                 value={'tonnage'}
-              >tonnage{aggregationMethod === 'tonnage' ? ` (navires de ${tonnageFilterValues[0]} à ${tonnageFilterValues[1]} tonneaux)` : ''}</option>
+              >{
+                (lang === 'fr' && translate('viz-principale-partie-2', 'radar_tonnage', 'fr', { method: aggregationMethod === 'tonnage' ? ` (navires de ${tonnageFilterValues[0]} à ${tonnageFilterValues[1]} tonneaux)` : '' }))
+                || translate('viz-principale-partie-2', 'radar_tonnage', 'en', { method: aggregationMethod === 'tonnage' ? ` (ships of ${tonnageFilterValues[0]} to ${tonnageFilterValues[1]} tonnage)` : '' })
+              }</option>
               <option
                 key={'voyages'}
                 id={'voyages'}
                 value={'voyages'}
-              >nombre de voyages</option>
+              >{translate('viz-principale-partie-2', 'radar_flows', lang)}</option>
             </select>
             {
               aggregationMethod && aggregationMethod === 'tonnage' &&
@@ -268,7 +275,7 @@ const RadarWrapper = ({
             }
           </span>
           <p className="legend-explanation">
-            Ports de départ agrégés par bureau des Fermes&nbsp;:
+            {translate('viz-principale-partie-2', 'radar_legend', lang)}&nbsp;:
           </p>
           <ul className="bureaux-list">
             {

@@ -17,6 +17,7 @@ import './RadarPlot.scss';
  * @returns {React.ReactElement} - React component
  */
 const RadarPlot= ({
+  lang,
   data,
   size : wholeSize = 100,
   axis,
@@ -73,6 +74,7 @@ const RadarPlot= ({
         {
           data.map((datum, datumIndex) => (
             <VisObject
+              lang={lang}
               key={datum.meta.name}
               color={datum.meta.color}
               name={datum.meta.name}

@@ -4,6 +4,8 @@ import { useSpring, animated } from 'react-spring'
 
 import { fixSvgDimension, polarToCartesian } from '../../helpers/misc';
 
+import translate from '../../i18n/translate'
+
 /**
  * A plain animated circle
  * @param {number} cx 
@@ -50,6 +52,7 @@ const Circle = ({
  * @returns {React.ReactElement} - React component 
  */
 const VisObject = ({
+  lang,
   color,
   data,
   axisIndexMap,
@@ -83,7 +86,7 @@ const VisObject = ({
       data-place="left"
       data-tip={`
       <p>
-      ${name === 'Tous les bureaux' ? 'Parts des destinations des voyages de 1789 initiés depuis tous les ports de la région' : 'Part des destinations pour les voyages de 1789 initiés depuis des ports rattachés au bureau des fermes de <strong>' + name + '</strong>'} :
+      ${name === 'Tous les bureaux' ? translate('viz-principale-partie-2', 'radar_tip_region', lang) : translate('viz-principale-partie-2', 'radar_tip_office', lang, { name: name })} :
       </p>
       <ol>
         ${

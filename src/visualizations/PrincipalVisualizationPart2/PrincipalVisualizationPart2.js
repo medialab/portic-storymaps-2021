@@ -8,6 +8,8 @@ import {fixSvgDimension, formatNumber} from '../../helpers/misc';
 
 import './PrincipalVisualizationPart2.scss';
 
+import translate from '../../i18n/translate';
+
 /**
  * Composes the principal visualization for part 2
  * @param {number} width
@@ -87,14 +89,8 @@ const PrincipalVisualizationPart2 = ({
       alluvialFilters: filters
     }
   }, [filter]);
-  const toflit18titles = {
-    fr: `Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`,
-    en: `Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'}`
-  };
-  const navigoTitles = {
-    fr: `Parts de différents groupes de directions pour les navires partis de la région PASA en 1789`,
-    en: `Parts de différents groupes de direction pour les navires partis de la région PASA en 1789`
-  };
+  const toflit18titles = translate('viz-principale-partie-2', 'toflit18titles', lang, {sumToflitBy: sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'})
+  const navigoTitles = translate('viz-principale-partie-2', 'navigoTitles', lang)
   return (
     <div 
       className={cx("PrincipalVisualizationPart2", "highlight-" + highlight, {'is-atlas-mode': atlasMode, 'is-screenshot-mode': screenshotMode})}
@@ -114,87 +110,69 @@ const PrincipalVisualizationPart2 = ({
           filters={alluvialFilters}
           colorsPalettes={colorsPalettes}
           lang={lang}
-          title={toflit18titles[lang]}
+          title={toflit18titles}
           displaceHorizontalLabels={highlight === 'toflit18'}
           centerHorizontalLabels={highlight === 'toflit18'}
           tooltips={{
             node: {
               fr: ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `En 1789, le bureau des fermes de ${id} a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return translate('viz-principale-partie-2', 'node_0_5', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 } else if (step === 1 || step === 4) {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} de ${id}.`;
+                  return translate('viz-principale-partie-2', 'node_1_4', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 } else {
-                  return `En 1789, la direction des fermes de La Rochelle a ${step < 3 ? 'exporté' : 'importé'} ${formatNumber(parseInt(node.valueAbs))} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} vers le partenaire ${id}.`;
+                  return translate('viz-principale-partie-2', 'node_other', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 }
               },
               en: () => ({id, ...node}, step) => {
                 if (step === 0 || step === 5) {
-                  return `In 1789, the bureau des fermes of ${id} has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(node[sumToflitBy], lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'}.`;
+                  return translate('viz-principale-partie-2', 'node_0_5', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 } else if (step === 1 || step === 4) {
-                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(parseInt(node.valueAbs), lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} of ${id}.`;
+                  return translate('viz-principale-partie-2', 'node_1_4', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 } else {
-                  return `In 1789, the direction des fermes de La Rochelle has ${step < 3 ? 'imported' : 'exported'} ${formatNumber(parseInt(node.valueAbs), lang)} ${sumToflitBy === 'value' ? 'livres tournoi' : 'kg'} to the partner ${id}.`;
+                  return translate('viz-principale-partie-2', 'node_other', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
                 }
               },
             },
             flow: {
-              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => `En 1789, le bureau des fermes de ${customs_office} a ${flow_type === 'import' ? 'importé' : 'exporté'} ${formatNumber(parseInt(value), lang)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} de ${product} ${flow_type === 'import' ? 'depuis' : 'vers'} le partenaire ${partner}`,
-              en: ({flow_type, customs_office, product, sumBy, value, partner}) => `In 1789, the bureau des fermes of ${customs_office} has ${flow_type === 'import' ? 'imported' : 'exported'} ${formatNumber(parseInt(value), lang)} ${sumBy === 'value' ? 'livres tournois' : 'kg'} of ${product} ${flow_type === 'import' ? 'from' : 'to'} the partner ${partner}`,
+              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office: customs_office, flow_type: flow_type === 'import' ? 'importé' : 'exporté', value: formatNumber(parseInt(value)), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product: product, flow_direction: flow_type === 'import' ? 'depuis' : 'vers', partner: partner }),
+              en: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office: customs_office, flow_type: flow_type === 'import' ? 'imported' : 'exported', value: formatNumber(parseInt(value), 'en'), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product: product, flow_direction: flow_type === 'import' ? 'from' : 'to', partner: partner }),
             }
           }}
           steps={[
             {
               field: "customs_office",
-              labels: {
-                fr: 'bureau des fermes',
-                en: 'customs office'
-              },
+              labels: translate('viz-principale-partie-2', 'customs_office', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'bureau' : 'office'
             },
             {
               field: "product",
-              labels: {
-                fr: 'type de produit',
-                en: 'product type'
-              },
+              labels: translate('viz-principale-partie-2', 'product', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "partner",
-              labels: {
-                fr: 'partenaire du commerce extérieur',
-                en: 'external trade partner'
-              },
+              labels: translate('viz-principale-partie-2', 'partner', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "partner",
-              labels: {
-                fr: 'partenaire du commerce extérieur',
-                en: 'external trade partner'
-              },
+              labels: translate('viz-principale-partie-2', 'partner', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "product",
-              labels: {
-                fr: 'type de produit',
-                en: 'product type'
-              },
+              labels: translate('viz-principale-partie-2', 'product', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "customs_office",
-              labels: {
-                fr: 'bureau des fermes',
-                en: 'customs office'
-              },
+              labels: translate('viz-principale-partie-2', 'customs_office', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'bureau' : 'office'
             },
@@ -215,7 +193,8 @@ const PrincipalVisualizationPart2 = ({
         navigoAgregation={navigoAgregation}
         minTonnage={minTonnage}
         maxTonnage={maxTonnage}
-        title={navigoTitles[lang]}
+        title={navigoTitles}
+        lang={lang}
         axis={[
           'Local',
           'Afrique',

@@ -1,0 +1,122 @@
+{
+    "viz-principale-partie-1": {
+        "franceOverviewTitle": {
+            "fr": "Évolution de la valeur des exports du royaume de France de ${start} à ${end}",
+            "en": "Evolution of the value of exports from the kingdom of France from ${start} to ${end}"
+        },
+        "tradeEvolutionTitle": {
+            "fr": "Évolution du commerce de la direction des fermes de ${cityName} de ${start} à ${end}",
+            "en": "Evolution of the direction des fermes of ${cityName} trade from ${start} to ${end}"
+        },
+        "top90PctTitle": {
+            "fr": "Comparaison des parts des produits exportés par la direction des fermes de ${cityName} totalisant plus de 90% du commerce en ${start} et en ${end} (ports francs non pris en compte)",
+            "en": "Comparison of shares of the top 90% of exported products by the direction des fermes of ${cityName} in ${start} and in ${end} (ports francs non pris en compte)"
+        },
+        "partInPct": {
+            "fr": "part des exports fr",
+            "en": "share of french exports"
+        },
+        "absoluteValue": {
+            "fr": "valeur absolue des exports",
+            "en": "exports absolute value"
+        },
+        "herfindalLegendTitle": {
+            "fr": "degré de diversité du commerce",
+            "en": "degree of trade diversity"
+        },
+        "herfindal0": {
+            "fr": "commerce peu diversifié",
+            "en": "fewly diversified trade"
+        },
+        "herfindal1": {
+            "fr": "commerce très diversifié",
+            "en": "very diversified trade"
+        },
+        "barTooltip": {
+            "fr": "En <strong>${year}</strong> ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice de Herfindahl-Hirschmann : somme du carré des parts du marché français par classe de produits exportés)</i> : <span>[colorBox] ${herfindal}</span>",
+            "en": "In <strong>${year}</strong> ${pct}% of exported goods from France are exported <strong>${city}</strong>.<br/><br/>Trade concentration <i>(Herfindahl-Hirschmann index : sum of square french market shares sorted by exported products classes)</i> : <span>[colorBox] ${herfindal}</span>"
+        },
+        "productTooltip": {
+            "fr": "En <strong>${year}</strong> les produits de la classe \"${product}\" représentent <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.",
+            "en": "In <strong>${year}</strong> products classed as \"${product}\" represent ${pct}% of goods exported by La Rochelles direction des fermes."
+        },
+        "sevenYearsWar": {
+            "fr": "guerre de sept ans",
+            "en": "seven years war"
+        },
+        "austriaWar": {
+            "fr": "guerre franco-britannique au sein de la guerre de succession d’Autriche",
+            "en": "guerre franco-britannique au sein de la guerre de succession d’Autriche"
+        },
+        "usIndependance": {
+            "fr": "guerre d’indépendance Américaine",
+            "en": "guerre d’indépendance Américaine"
+        },
+        "laRochelleDiaspora": {
+            "fr": "Organisation de convois partant de La Rochelle pour échapper aux Anglais",
+            "en": "Organisation de convois partant de La Rochelle pour échapper aux Anglais"
+        }
+    },
+    "viz-principale-partie-2": {
+        "toflit18titles": {
+            "fr": "Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy}",
+            "en": null
+        },
+        "navigoTitles": {
+            "fr": "Parts de différents groupes de directions pour les navires partis de la région PASA en 1789",
+            "en": null
+        },
+        "node_0_5": {
+            "fr": "En 1789, le bureau des fermes de ${id} a ${step} ${number} ${sumBy}",
+            "en": "In 1789, the bureau des fermes of ${id} has ${step} ${number} ${sumBy}"
+        },
+        "node_1_4": {
+            "fr": "En 1789, la direction des fermes de La Rochelle a ${step} ${number} ${sumBy} de ${id}",
+            "en": "In 1789, the direction des fermes de La Rochelle has ${step} ${number} ${sumBy} of ${id}"
+        },
+        "node_other": {
+            "fr": "En 1789, la direction des fermes de La Rochelle a ${step} ${number} ${sumBy} vers le partenaire ${id}",
+            "en": "In 1789, the direction des fermes de La Rochelle has ${step} ${number} ${sumBy} to the partner ${id}"
+        },
+        "flow": {
+            "fr": "En 1789, le bureau des fermes de ${customs_office} a ${flow_type} ${number} ${sumBy} de ${product} ${flow_direction} le partenaire ${partner}",
+            "en": "In 1789, the bureau des fermes of ${customs_office} has ${flow_type} ${number} ${sumBy} of ${product} ${flow_direction} the partner ${partner}"
+        },
+        "customs_office": {
+            "fr": "bureau des fermes",
+            "en": "customs office"
+        },
+        "product": {
+            "fr": "type de produit",
+            "en": "product type"
+        },
+        "partner": {
+            "fr": "partenaire du commerce extérieur",
+            "en": "external trade partner"
+        },
+        "radar_legend": {
+            "fr": "Ports de départ agrégés par bureau des Fermes",
+            "en": "Aggregate ports of bureau des Fermes"
+        },
+        "travel_aggregate": {
+            "fr": "voyages agrégés par",
+            "en": "flows aggregate by"
+        },
+        "radar_tonnage": {
+            "fr": "tonnage ${method}",
+            "en": "tonnage ${method}"
+        },
+        "radar_flows": {
+            "fr": "nombre de voyages ${tonnage}",
+            "en": "flows number"
+        },
+        "radar_tip_region": {
+            "fr": "Parts des destinations des voyages de 1789 initiés depuis tous les ports de la région",
+            "en": null
+        },
+        "radar_tip_office": {
+            "fr": "Part des destinations pour les voyages de 1789 initiés depuis des ports rattachés au bureau des fermes de <strong>${name}</strong>",
+            "en": null
+        }
+    }
+}

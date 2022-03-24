@@ -9,9 +9,14 @@ import json from './lang.json'
 
 const matchDollarBracket = new RegExp(/\$\{(\w+)\}/g)
 
-export default (vizId, label, lang, args) => {
-    let result = json[vizId][label][lang]
-    if (result === undefined || result === null) {
+export default function translate (vizId, label, lang, args) {
+    if (json[vizId] === undefined || json[vizId][label] === undefined || json[vizId][label][lang] === undefined) {
+        return `pas de traduction disponible (${vizId} | ${label})`;
+    }
+
+    let result = json[vizId][label][lang];
+
+    if (!!result === false) {
         return `pas de traduction disponible (${vizId} | ${label})`;
     }
 
@@ -20,7 +25,7 @@ export default (vizId, label, lang, args) => {
     }
 
     result = result.replace(matchDollarBracket, (match, key) => {
-        return args[key]
+        return args[key] || key
     })
 
     return result;

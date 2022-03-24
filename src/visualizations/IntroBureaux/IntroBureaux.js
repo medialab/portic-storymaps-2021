@@ -8,6 +8,8 @@ import './IntroBureaux.scss';
 import colorPalettes from "../../colorPalettes";
 import { fixSvgDimension } from '../../helpers/misc';
 
+import translate from '../../i18n/translate';
+
 const BureauBackground = ({
   projection,
   atlasMode,
@@ -158,11 +160,12 @@ const renderBureaux = ({ data, projection, width, height, atlasMode }) => {
 const IntroBureaux = ({
   datasets,
   atlasMode,
-  dimensions
+  dimensions,
+  lang
 }) => {
   return (
     <GeographicMapChart
-      title={'Carte des bureaux des fermes de la région PASA'}
+      title={translate('intro-bureaux', 'title', lang)}
       layers={[
         {
           type: 'choropleth',

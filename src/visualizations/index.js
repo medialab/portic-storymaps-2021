@@ -20,6 +20,7 @@ import IntroBureaux from './IntroBureaux';
 import HomeportFlows from './HomeportFlows/HomeportFlows';
 import TreemapChart from '../components/TreemapChart/TreemapChart';
 import { omit } from 'lodash';
+import translate from '../i18n/translate';
 
 /**
  * This script is the bridge between visualization code, visualizations list, and visualization callers in contents.
@@ -78,24 +79,24 @@ const VisualizationContainer = ({
               })
               .slice(0, 20)
           }
-          title="Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française"
+          title={translate('partie-1-produits-importants-pour-la-rochelle', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight / 2 : dimensions.height}
           orientation={'vertical'}
           layout={'groups'}
           y={{
             field: 'product',
-            title: 'produit',
+            title: translate('partie-1-produits-importants-pour-la-rochelle', 'y', props.lang),
           }}
           x={{
             field: 'value_rel_per_direction',
-            title: 'Valeur en pourcentage',
+            title: translate('partie-1-produits-importants-pour-la-rochelle', 'x', props.lang),
             tickSpan: .1,
             tickFormat: (d, i) => parseInt(d * 100) + '%'
           }}
           color={{
             field: 'entity',
-            title: 'Part des exports pour :',
+            title: translate('partie-1-produits-importants-pour-la-rochelle', 'color', props.lang),
             palette: {
               'direction des fermes de La Rochelle': '#00C4AF',
               'France (moyenne)': '#FEA43B'
@@ -104,7 +105,7 @@ const VisualizationContainer = ({
           margins={{
             left: 140
           }}
-          tooltip={d => `Le produit ${d.product} représente ${(d.value_rel_per_direction * 100).toFixed(2)}% des exports pour ${d.entity.includes('France') ? 'la France' : 'la direction des fermes de La Rochelle'}`}
+          tooltip={d => translate('partie-1-produits-importants-pour-la-rochelle', 'tooltip', props.lang, { product: d.product, value: (d.value_rel_per_direction * 100).toFixed(2), entite: d.entity.includes('France') ? 'la France' : 'la direction des fermes de La Rochelle' })}
         />
       )
     case 'partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie':
@@ -113,33 +114,33 @@ const VisualizationContainer = ({
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Évolution globale de la part des échanges de La Rochelle par rapport à l'ensemble de la France"
+          title={translate('partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight / 2 : dimensions.height * .5}
           orientation={'horizontal'}
           layout={'stack'}
           y={{
             field: 'portion',
-            title: 'part du commerce fr.',
+            title: translate('partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie', 'y', props.lang),
             tickFormat: d => parseInt(d * 100) + '%'
           }}
           x={{
             field: 'year',
-            title: 'année',
+            title: translate('partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie', 'x', props.lang),
             fillGaps: true,
             tickSpan: 5,
             // tickFormat: d => d%10 === 0 ? d : undefined
           }}
           color={{
             field: 'type',
-            title: 'Type'
+            title: translate('partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie', 'color', props.lang)
           }}
           margins={{
             left: 140,
             right: 20,
             bottom: 30
           }}
-          tooltip={d => `En ${d.year}, la direction des fermes de la Rochelle a ${d.type === 'import' ? 'importé' : 'exporté'} ${(+d.portion * 100).toFixed(2)}% des ${d.type === 'import' ? 'imports' : 'exports'} français totaux`}
+          tooltip={d =>translate('partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie', 'tooltip', props.lang, { year: d.year, direction: d.type === 'import' ? 'importé' : 'exporté', value: (+d.portion * 100).toFixed(2), type: d.type === 'import' ? 'imports' : 'exports' })}
         />
       )
     case 'sorties-de-sel':
@@ -148,13 +149,13 @@ const VisualizationContainer = ({
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Ports de départ des navires transportant du sel en 1789, agrégés par tonnage cumulé"
+          title={translate('sorties-de-sel', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
           y={{
             field: 'port',
-            title: 'Port',
+            title: translate('sorties-de-sel', 'y', props.lang),
             sort: {
               field: 'tonnage',
               autoSort: true,
@@ -163,7 +164,7 @@ const VisualizationContainer = ({
             }
           }}
           x={{
-            field: 'tonnage',
+            field: translate('sorties-de-sel', 'x', props.lang),
             title: 'Tonnage cumulé',
             // tickSpan: 100,
             tickFormat: (d, i) => `${formatNumber(d)} tx`
@@ -175,7 +176,7 @@ const VisualizationContainer = ({
           margins={{
             right: 60
           }}
-          tooltip={d => `En 1789, ${d.tonnage} tonneaux (et ${d.nb_pointcalls} navires) sont partis de la région PASA avec du sel comme cargaison.`}
+          tooltip={d => translate('sorties-de-sel', 'y', props.lang, { tonnage: d.tonnage, number: d.nb_pointcalls })}
         />
       )
     case 'sorties-de-marennes':
@@ -184,13 +185,13 @@ const VisualizationContainer = ({
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé"
+          title={translate('sorties-de-marennes', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height / 2}
           orientation={'vertical'}
           y={{
             field: 'country',
-            title: 'Pays',
+            title: translate('sorties-de-marennes', 'y', props.lang),
             sort: {
               field: 'tonnage',
               autoSort: true,
@@ -199,7 +200,7 @@ const VisualizationContainer = ({
             }
           }}
           x={{
-            field: 'tonnage',
+            field: translate('sorties-de-marennes', 'x', props.lang),
             title: 'Tonnage cumulé',
             // tickSpan: 100,
             tickFormat: (d, i) => `${formatNumber(d)} tx`
@@ -211,7 +212,7 @@ const VisualizationContainer = ({
           margins={{
             right: 60
           }}
-          tooltip={d => `En 1789, ${d.tonnage} tonneaux (et ${d.nb_pointcalls} navires) sont partis du port de Marennes en direction d'un port de ${d.country}.`}
+          tooltip={d => translate('sorties-de-marennes', 'tooltip', props.lang, { tonnage: d.tonnage, number: d.nb_pointcalls, country: d.country })}
         />
       )
     case 'partie-1-pays-port-d-attache':
@@ -220,13 +221,13 @@ const VisualizationContainer = ({
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Pays du port d'attache des navires étrangers partant de la région en 1789"
+          title={translate('partie-1-pays-port-d-attache', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
           y={{
             field: 'country',
-            title: 'Pays du port d\'attache',
+            title: translate('partie-1-pays-port-d-attache', 'y', props.lang),
             sort: {
               field: 'tonnage',
               autoSort: true,
@@ -236,7 +237,7 @@ const VisualizationContainer = ({
           }}
           x={{
             field: 'tonnage',
-            title: 'Tonnage cumulé',
+            title: translate('partie-1-pays-port-d-attache', 'x', props.lang),
             // tickSpan: 100,
             tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}
@@ -247,7 +248,7 @@ const VisualizationContainer = ({
           margins={{
             right: 60
           }}
-          tooltip={d => `En 1789, ${d.nb_pointcalls} navires soit ${d.tonnage} tonnaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)`}
+          tooltip={d => translate('partie-1-pays-port-d-attache', 'tooltip', props.lang, { tonnage: d.tonnage, number: d.nb_pointcalls })}
         />
       )
     case 'partie-3-comparaison-exports-coloniaux':
@@ -256,39 +257,39 @@ const VisualizationContainer = ({
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
           }
-          title="Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes (1789)"
+          title={translate('partie-3-comparaison-exports-coloniaux', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height * .5}
           orientation={'vertical'}
           layout={'grouped'}
           y={{
             field: 'customs_office',
-            title: 'Bureau des fermes',
+            title: translate('partie-3-comparaison-exports-coloniaux', 'y', props.lang),
             // tickFormat: d => parseInt(d * 100) + '%'
           }}
           x={{
             field: 'value',
-            title: 'valeur en livres tournoi',
+            title: translate('partie-3-comparaison-exports-coloniaux', 'x', props.lang),
             tickSpan: 1000000,
             domain: [0, 6000000],
             tickFormat: d => formatNumber(d) + ' lt'
           }}
           color={{
             field: 'type',
-            title: 'Type de produit'
+            title: translate('partie-3-comparaison-exports-coloniaux', 'color', props.lang)
           }}
           margins={{
             left: 140,
             right: 50,
           }}
-          tooltip={d => `En 1789, le bureau des fermes de ${d.customs_office} a exporté à l'étrange ${d.value} livres tournois de produits de type ${d.type}`}
+          tooltip={d => translate('partie-3-comparaison-exports-coloniaux', 'tooltip', props.lang, { customs_office: d.customs_office, value: d.value, type: d.type })}
         />
       )
     case 'intro-provinces':
       return (
         <>
           <GeographicMapChart
-            title={'Carte des provinces étudiées : Poitou, Aunis, Saintonge, Angoumois (PASA)'}
+            title={translate('intro-provinces', 'title', props.lang)}
             layers={[
               {
                 type: 'choropleth',
@@ -314,7 +315,7 @@ const VisualizationContainer = ({
         <div>
           <div style={{borderBottom: '2px solid #333'}}>
             <GeographicMapChart
-              title={'Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé'}
+              title={translate('sorties-de-marennes-avec-sel-destinations', 'title', props.lang)}
               layers={[
                 {
                   type: 'choropleth',
@@ -330,10 +331,10 @@ const VisualizationContainer = ({
                   // },
                   size: {
                     field: 'tonnage',
-                    title: 'tonnage cumulé',
+                    title: translate('sorties-de-marennes-avec-sel-destinations', 'size', props.lang),
                     // custom: '20'
                   },
-                  tooltip: d => `En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
+                  tooltip: d => translate('sorties-de-marennes-avec-sel-destinations', 'tooltip', props.lang, { raw_size: d.rawSize, label : d.label}),
                   label: {
                     field: 'port',
                     position: 'left'
@@ -362,10 +363,10 @@ const VisualizationContainer = ({
                 // },
                 size: {
                   field: 'tonnage',
-                  title: 'tonnage cumulé',
+                  title: translate('sorties-de-marennes-avec-sel-destinations', 'size', props.lang),
                   // custom: '20'
                 },
-                tooltip: d =>`En 1789, des navires pour un total d'approximativement ${d.rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${d.label}`,
+                tooltip: d => translate('sorties-de-marennes-avec-sel-destinations', 'tooltip', props.lang, { rawSize: d.rawSize, label : d.label}),
                 label: {
                   field: 'port',
                 },
@@ -388,7 +389,7 @@ const VisualizationContainer = ({
       return (
         <>
           <GeographicMapChart
-            title={'Carte des ports de la région PASA'}
+            title={translate('intro-ports', 'title', props.lang)}
             layers={[
               {
                 type: 'choropleth',
@@ -404,16 +405,17 @@ const VisualizationContainer = ({
                 data: datasets['ports_locations_data_intro/ports_locations_data_intro.csv'],
                 color: {
                   field: 'province',
-                  title: 'Province du port',
+                  title: translate('intro-ports', 'color', props.lang),
                   palette: omit(colorPalettes.provinces, ['Angoumois']),
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
                 size: {
                   field: 'nb_pointcalls',
-                  title: 'nombre de congés enregistrés en 1789',
+                  title: translate('intro-ports', 'size', props.lang),
                   // custom: '20'
                 },
                 tooltip: d => `${d.rawSize} départs de navires ont été observés par le port de ${d.label} en 1789`,
+                tooltip: d => translate('intro-ports', 'tooltip', props.lang, { rawSize: d.rawSize, label: d.label }),
                 label: {
                   field: 'port',
                   position: 'left'
@@ -432,6 +434,7 @@ const VisualizationContainer = ({
       // console.log("heyyyyyy bureaux map");
       return (
         <IntroBureaux
+          lang={props.lang}
           {
             ...{
               datasets,
@@ -445,7 +448,7 @@ const VisualizationContainer = ({
       return (
         <>
           <GeographicMapChart
-            title={'Part de la navigation française dans la région'}
+            title={translate('partie-2-part-navigation-francaise', 'title', props.lang)}
             layers={[
               {
                 type: 'choropleth',
@@ -461,13 +464,13 @@ const VisualizationContainer = ({
                 data: datasets['part_navigation_fr/part_navigation_fr.csv'],
                 color: {
                   field: 'tonnage_part_of_french',
-                  title: 'Part de la navigation française (par tonnage cumulé)',
+                  title: translate('partie-2-part-navigation-francaise', 'color', props.lang),
                   palette: colorPalettes.tonnageClasses,
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
                 size: {
                   field: 'tonnage',
-                  title: 'Tonnage sorti des ports (en miliers)',
+                  title: translate('partie-2-part-navigation-francaise', 'size', props.lang),
                   displayMetric: true,
                   // custom: '20'
                 },
@@ -490,6 +493,7 @@ const VisualizationContainer = ({
       // voyages-bateaux-homeport-larochelle-1787.csv
       return (
         <HomeportFlows
+        lang={props.lang}
         {
           ...{
             datasets,
@@ -505,10 +509,10 @@ const VisualizationContainer = ({
         {
           ...{
             data: datasets['hierarchie_ports_dattache_des_navires_partant_de_la_region/hierarchie_ports_dattache_des_navires_partant_de_la_region.csv'],
-            title: 'Ports d\'attache des navires partant de la région PASA en 1789 (dimensionnés par tonnage cumulé)',
+            title: translate('partie-1-ports-dattache', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
-            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA provenaient de navires rattachés au port de ${d.homeport} - ${d.category_2}.`,
+            tooltip: d => translate('partie-1-ports-dattache', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
               field: 'category_2',
@@ -533,10 +537,10 @@ const VisualizationContainer = ({
         {
           ...{
             data: datasets['hierarchie_destinations_des_navires_partant_de_la_region/hierarchie_destinations_des_navires_partant_de_la_region.csv'],
-            title: 'Destinations des navires partant depuis la région PASA vers l\'étranger en 1789 (dimensionnées par tonnage cumulé)',
+            title: translate('partie-1-ports-destinations', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
-            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${d.port} - ${d.category_2}.`,
+            tooltip: d => translate('partie-1-ports-destinations', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
               field: 'category_2',
@@ -563,24 +567,24 @@ const VisualizationContainer = ({
               // })
               // .slice(0, 20)
           }
-          title="Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)"
+          title={translate('exports-eau-de-vie-la-rochelle-longitudinal', 'title', props.lang)}
           width={dimensions.width}
           height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
           orientation={'horizontal'}
           // layout={'groups'}
           y={{
             field: 'value',
-            title: 'valeur',
+            title: translate('exports-eau-de-vie-la-rochelle-longitudinal', 'y', props.lang),
             tickFormat: d => formatNumber(d) + ' lt'
           }}
           x={{
             field: 'year',
-            title: 'Année',
+            title: translate('exports-eau-de-vie-la-rochelle-longitudinal', 'x', props.lang),
           }}
           margins={{
             left: 140
           }}
-          tooltip={d => `En ${d.year}, la direction des fermes de La Rochelle a exporté ${d.value} livres tournois d'eau-de-vie et liqueurs.`}
+          tooltip={d => translate('exports-eau-de-vie-la-rochelle-longitudinal', 'y', props.lang, { year: d.year, value: d.value })}
         />
       );
     case 'exports-eau-de-vie-comparaison-directions-des-fermes':
@@ -596,31 +600,31 @@ const VisualizationContainer = ({
                 // })
                 // .slice(0, 20)
             }
-            title="Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte - pas de données pour Montpellier en 1770)"
+            title={translate('exports-eau-de-vie-comparaison-directions-des-fermes', 'title', props.lang)}
             width={dimensions.width}
             height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
             orientation={'vertical'}
             layout={'groups'}
             y={{
               field: 'year',
-              title: 'année',
+              title: translate('exports-eau-de-vie-comparaison-directions-des-fermes', 'y', props.lang),
               // tickFormat: d => d + ' lt'
             }}
             x={{
               field: 'value',
-              title: 'valeur',
+              title: translate('exports-eau-de-vie-comparaison-directions-des-fermes', 'x', props.lang),
               tickSpan: 1000000,
               tickFormat: d => formatNumber(d) + ' lt'
             }}
             color={{
               field: 'customs_region',
-              title: 'direction des fermes'
+              title: translate('exports-eau-de-vie-comparaison-directions-des-fermes', 'color', props.lang)
             }}
             margins={{
               left: 140,
               right: 50
             }}
-            tooltip={d => `En ${d.year}, la direction des fermes de ${d.customs_region} a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs.`}
+            tooltip={d => translate('exports-eau-de-vie-comparaison-directions-des-fermes', 'tooltip', props.lang, { year: d.year, customsRegion: d.customs_region, value: parseInt(d.value) })}
           />
         );
     case 'origines-exports-eau-de-vie-1789-la-rochelle':
@@ -629,30 +633,30 @@ const VisualizationContainer = ({
             data={
               relevantDatasets[Object.keys(relevantDatasets)[0]]
             }
-            title="Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)"
+            title={translate('origines-exports-eau-de-vie-1789-la-rochelle', 'title', props.lang)}
             width={dimensions.width}
             height={props.atlasMode ? window.innerHeight / 2 : dimensions.height / 2}
             orientation={'vertical'}
             layout={'groups'}
             y={{
               field: 'origin',
-              title: 'origine',
+              title: translate('origines-exports-eau-de-vie-1789-la-rochelle', 'y', props.lang),
               // tickFormat: d => d + ' lt'
             }}
             x={{
               field: 'value',
-              title: 'valeur',
+              title: translate('origines-exports-eau-de-vie-1789-la-rochelle', 'x', props.lang),
               tickFormat: d => formatNumber(d / 100) + ' lt'
             }}
             color={{
               field: 'type',
-              title: "type d'eau de vie",
+              title: translate('origines-exports-eau-de-vie-1789-la-rochelle', 'color', props.lang),
             }}
             margins={{
               left: 140,
               right: 50
             }}
-            tooltip={d => `La direction des fermes de La Rochelle a exporté ${parseInt(d.value)} livres tournois d'eau-de-vie et liqueurs de type "${d.type}", originaires de ${d.origin}.`}
+            tooltip={d => translate('origines-exports-eau-de-vie-1789-la-rochelle', 'tooltip', props.lang, { value: parseInt(d.value), type: d.type, origin: d.origin })}
           />
         );
     case 'partie-1-ports-dattache-vers-etranger':
@@ -661,10 +665,11 @@ const VisualizationContainer = ({
         {
           ...{
             data: datasets['hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger/hierarchie_destinations_des_navires_partant_de_la_region_vers_letranger.csv'],
-            title: 'Ports d’attache des navires en provenance de la région PASA et en direction de l’étranger en 1789 (dimensionnées par tonnages cumulés)',
+            title: translate('partie-1-ports-dattache-vers-etranger', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
+            tooltip: d => translate('partie-1-ports-dattache-vers-etranger', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'homeport'],
             color: {
               field: 'category_2',

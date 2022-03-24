@@ -135,19 +135,340 @@
     "GeographicMapChart_second_title": {
       "fr": "Extraversion du commerce et de la navigation regroupés par bureau de fermes en 1789",
       "en": null
+    },
+    "network_1_title": {
+      "fr": "Réseau des voyages partant ou arrivant dans la région PASA en 1787…",
+      "en": null
+    },
+    "network_2_title": {
+      "fr": "…comparé à celui de l\\'amirauté de Bordeaux",
+      "en": null
+    },
+    "network_3_title": {
+      "fr": "…comparé à celui de l\\'amirauté de Nantes",
+      "en": null
+    },
+    "network_legend_title": {
+      "fr": "Légende des réseaux",
+      "en": null
+    },
+    "network_legend_color_title": {
+      "fr": "Taille des points représentant les ports : nombre de liens avec d'autres ports dans le réseau",
+      "en": null
+    },
+    "network_legend_color_1": {
+      "fr": "Port interne à la région",
+      "en": null
+    },
+    "network_legend_color_2": {
+      "fr": "Port externe à la région",
+      "en": null
+    },
+    "barchart_title": {
+      "fr": "Centralité comparée de La Rochelle par rapport à PASA et, pour ses régions côtières voisines, du port principal par rapport au réseau des voyages de son amirauté (1787)",
+      "en": null
+    },
+    "barchart_y": {
+      "fr": "Port (dans son réseau local)",
+      "en": null
+    },
+    "barchart_x": {
+      "fr": "Score",
+      "en": null
+    },
+    "barchart_color": {
+      "fr": "Type de métrique",
+      "en": null
+    },
+    "barchart_toolip_pagerank": {
+      "fr": "Le PageRank est une mesure de centralité qui consiste à donner à chaque port un score proportionnel à la somme des pageranks des ports avec lesquels il a des voyages en commun.",
+      "en": null
+    },
+    "barchart_toolip_nopagerank": {
+      "fr": "La centralité intermédiaire est une mesure de centralité égale au nombre de fois où un port donné est sur le chemin le plus court entre deux autres ports du réseau des voyages.",
+      "en": null
     }
   },
-  "GeographicMapChart": {
+  "partie-1-produits-importants-pour-la-rochelle": {
+    "title": {
+      "fr": "Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française",
+      "en": null
+    },
+    "color": {
+      "fr": "Part des exports pour :",
+      "en": null
+    },
+    "x": {
+      "fr": "Valeur en pourcentage",
+      "en": null
+    },
+    "y": {
+      "fr": "Produit",
+      "en": "Product"
+    },
+    "tooltip": {
+      "fr": "Le produit ${product} représente ${value}% des exports pour ${entite}",
+      "en": null
+    }
+  },
+  "partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie": {
+    "title": {
+      "fr": "Évolution globale de la part des échanges de La Rochelle par rapport à l'ensemble de la France",
+      "en": null
+    },
+    "color": {
+      "fr": "Type",
+      "en": "Type"
+    },
+    "x": {
+      "fr": "Année",
+      "en": "Year"
+    },
+    "y": {
+      "fr": "Part du commerce fr.",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En ${year}, la direction des fermes de la Rochelle a ${direction} ${value}% des ${type} français totaux"
+    }
+  },
+  "sorties-de-sel": {
+    "title": {
+      "fr": "Ports de départ des navires transportant du sel en 1789, agrégés par tonnage cumulé",
+      "en": null
+    },
+    "y": {
+      "fr": "Port",
+      "en": "port"
+    },
+    "x": {
+      "fr": "Tonnage cumulé",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${tonnage} tonneaux (et ${number} navires) sont partis de la région PASA avec du sel comme cargaison.",
+      "en": null
+    }
+  },
+  "sorties-de-marennes": {
+    "title": {
+      "fr": "Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé",
+      "en": null
+    },
+    "y": {
+      "fr": "Pays",
+      "en": "Country"
+    },
+    "x": {
+      "fr": "Tonnage cumulé",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${tonnage} tonneaux (et ${number} navires) sont partis du port de Marennes en direction d'un port de ${country}.",
+      "en": null
+    }
+  },
+  "partie-1-pays-port-d-attache": {
+    "title": {
+      "fr": "Pays du port d'attache des navires étrangers partant de la région en 1789",
+      "en": null
+    },
+    "y": {
+      "fr": "Pays du port d'attache",
+      "en": null
+    },
+    "x": {
+      "fr": "Tonnage cumulé",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${number} navires soit ${tonnage} tonnaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)",
+      "en": null
+    }
+  },
+  "partie-3-comparaison-exports-coloniaux": {
+    "title": {
+      "fr": "Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes (1789)",
+      "en": null
+    },
+    "color": {
+      "fr": "Type de produit",
+      "en": null
+    },
+    "y": {
+      "fr": "Bureau des fermes",
+      "en": null
+    },
+    "x": {
+      "fr": "Valeur en livres tournoi",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, le bureau des fermes de ${customs_office} a exporté à l'étrange ${value} livres tournois de produits de type ${type}",
+      "en": null
+    }
+  },
+  "intro-provinces": {
+    "title": {
+      "fr": "Carte des provinces étudiées : Poitou, Aunis, Saintonge, Angoumois (PASA)",
+      "en": null
+    }
+  },
+  "sorties-de-marennes-avec-sel-destinations": {
+    "title": {
+      "fr": "Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé",
+      "en": null
+    },
+    "size": {
+      "fr": "Tonnage cumulé",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, des navires pour un total d'approximativement ${rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${label}",
+      "en": null
+    }
+  },
+  "intro-ports": {
+    "title": {
+      "fr": "Carte des ports de la région PASA",
+      "en": null
+    },
+    "color": {
+      "fr": "Province du port",
+      "en": null
+    },
+    "size": {
+      "fr": "Nombre de congés enregistrés en 1789",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "${rawSize} départs de navires ont été observés par le port de ${label} en 1789",
+      "en": null
+    }
+  },
+  "partie-2-part-navigation-francaise": {
     "title": {
       "fr": "Part de la navigation française dans la région",
       "en": null
     },
-    "legend_color": {
+    "color": {
       "fr": "Part de la navigation française (par tonnage cumulé)",
       "en": null
     },
-    "legend_size": {
+    "size": {
       "fr": "Tonnage sorti des ports (en miliers)",
+      "en": null
+    }
+  },
+  "partie-1-ports-dattache": {
+    "title": {
+      "fr": "Ports d'attache des navires partant de la région PASA en 1789 (dimensionnés par tonnage cumulé)",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA provenaient de navires rattachés au port de ${homeport} - ${category}.",
+      "en": null
+    }
+  },
+  "partie-1-ports-destinations": {
+    "title": {
+      "fr": "Destinations des navires partant depuis la région PASA vers l'étranger en 1789 (dimensionnées par tonnage cumulé)",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${homeport} - ${category}.",
+      "en": null
+    }
+  },
+  "exports-eau-de-vie-la-rochelle-longitudinal": {
+    "title": {
+      "fr": "Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)",
+      "en": null
+    },
+    "y": {
+      "fr": "Valeur",
+      "en": null
+    },
+    "x": {
+      "fr": "Année",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En ${year}, la direction des fermes de La Rochelle a exporté ${value} livres tournois d'eau-de-vie et liqueurs.",
+      "en": null
+    }
+  },
+  "exports-eau-de-vie-comparaison-directions-des-fermes": {
+    "title": {
+      "fr": "Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte - pas de données pour Montpellier en 1770)",
+      "en": null
+    },
+    "y": {
+      "fr": "Année",
+      "en": null
+    },
+    "x": {
+      "fr": "Valeur",
+      "en": "Value"
+    },
+    "color": {
+      "fr": "Direction des fermes",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En ${year}, la direction des fermes de ${customsRegion} a exporté ${value} livres tournois d'eau-de-vie et liqueurs.",
+      "en": null
+    }
+  },
+  "origines-exports-eau-de-vie-1789-la-rochelle": {
+    "title": {
+      "fr": "Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)",
+      "en": null
+    },
+    "y": {
+      "fr": "Origine",
+      "en": null
+    },
+    "x": {
+      "fr": "Valeur",
+      "en": null
+    },
+    "color": {
+      "fr": "Type d'eau de vie",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "La direction des fermes de La Rochelle a exporté ${value} livres tournois d'eau-de-vie et liqueurs de type \"${type}\", originaires de ${origin}.",
+      "en": null
+    }
+  },
+  "partie-1-ports-dattache-vers-etranger": {
+    "title": {
+      "fr": "Ports d’attache des navires en provenance de la région PASA et en direction de l’étranger en 1789 (dimensionnées par tonnages cumulés)",
+      "en": null
+    },
+    "tooltip": {
+      "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${homeport} - ${category}.",
+      "en": null
+    }
+  },
+  "partie-2-carte-direction-bateaux-de-la-rochelle": {
+    "title": {
+      "fr": "Voyages des navires rattachés au port de La Rochelle en 1787",
+      "en": null
+    },
+    "size": {
+      "fr": "Flèches dimensionnées par tonnage cumulé",
+      "en": null
+    },
+    "color": {
+      "fr": "Port de départ",
+      "en": null
+    }
+  },
+  "intro-bureaux": {
+    "title": {
+      "fr": "Carte des bureaux des fermes de la région PASA",
       "en": null
     }
   }

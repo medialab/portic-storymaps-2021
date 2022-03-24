@@ -1,6 +1,8 @@
 import GeographicMapChart from "../../components/GeographicMapChart/GeographicMapChart"
 import { fixSvgDimension } from "../../helpers/misc";
 
+import translate from "../../i18n/translate";
+
 import './HomeportFlows.scss';
 
 /**
@@ -14,6 +16,7 @@ const HomeportFlows = ({
   datasets,
   atlasMode,
   dimensions,
+  lang
 }) => {
   const totalHeight = atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height);
   const hotFixedData = datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv']
@@ -31,7 +34,7 @@ const HomeportFlows = ({
     <div className="HomeportFlows">
       <div className="column">
         <GeographicMapChart
-          title={'Voyages des navires rattachés au port de La Rochelle en 1787'}
+          title={translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'title', lang)}
           layers={[
             {
               type: 'choropleth',
@@ -43,14 +46,14 @@ const HomeportFlows = ({
               data: hotFixedData,
               size: {
                 field: 'tonnages_cumulés',
-                title: 'Flèches dimensionnées par tonnage cumulé'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'size', lang)
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
                 field: 'category',
-                title: 'Port de départ'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               },
               hideOverflowingFlows: true
             }
@@ -76,14 +79,14 @@ const HomeportFlows = ({
               hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
-                title: 'Flèches dimensionnées par tonnage cumulé'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'size', lang)
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
                 field: 'category',
-                title: 'Port de départ'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               }
             },
           ]}
@@ -104,14 +107,14 @@ const HomeportFlows = ({
               // hideOverflowingFlows: true,
               size: {
                 field: 'tonnages_cumulés',
-                title: 'Flèches dimensionnées par tonnage cumulé'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'size', lang)
               },
               label: {
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
                 field: 'category',
-                title: 'Port de départ'
+                title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               }
             },
           ]}

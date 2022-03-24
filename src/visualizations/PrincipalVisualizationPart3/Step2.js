@@ -4,6 +4,8 @@ import BarChart from "../../components/BarChart";
 import colorPalettes from "../../colorPalettes";
 import { fixSvgDimension } from "../../helpers/misc";
 
+import translate from "../../i18n/translate";
+
 /**
  * Viz 3.2 wrapper
  * @param {number} width
@@ -15,6 +17,7 @@ const Step2 = ({
   width: inputWidth,
   height: inputHeight,
   datasets,
+  lang
 }) => {
   const width = fixSvgDimension(inputWidth);
   const height = fixSvgDimension(inputHeight);
@@ -35,7 +38,7 @@ const Step2 = ({
                 }}
                 spatialize
                 ratio={1.1}
-                title={'Réseau des voyages partant ou arrivant dans la région PASA en 1787 ...'}
+                title={translate('viz-principale-partie-3', 'network_1_title', lang)}
               />
             </div>
             <div className="graph-container" style={{ width: width * .4, height: height * .3, position: 'absolute', right: 0, top: 0 }}>
@@ -51,7 +54,7 @@ const Step2 = ({
                   }
                 }}
                 spatialize
-                title={'...comparé à celui de l\'amirauté de Bordeaux'}
+                title={translate('viz-principale-partie-3', 'network_2_title', lang)}
                 ratio={1}
               />
             </div>
@@ -67,7 +70,7 @@ const Step2 = ({
                     'externe à la région': colorPalettes.generic.accent2,
                   }
                 }}
-                title={'...comparé à celui de l\'amirauté de Nantes'}
+                title={translate('viz-principale-partie-3', 'network_3_title', lang)}
                 ratio={0.7}
                 spatialize
               />
@@ -84,21 +87,21 @@ const Step2 = ({
           }}
             className="ColorLegend"
           >
-            <h5>Légende des réseaux</h5>
+            <h5>{translate('viz-principale-partie-3', 'network_legend_title', lang)}</h5>
             <ul className="color-legend">
               <li>
-                Taille des points représentant les ports : nombre de liens avec d'autres ports dans le réseau
+                {translate('viz-principale-partie-3', 'network_legend_color_title', lang)}
               </li>
               <li>
                 <span style={{ background: colorPalettes.generic.dark }} className="color-box"></span>
                 <span className="color-label">
-                  Port interne à la région
+                  {translate('viz-principale-partie-3', 'network_legend_color_1', lang)}
                 </span>
               </li>
               <li>
                 <span style={{ background: colorPalettes.generic.accent2 }} className="color-box"></span>
                 <span className="color-label">
-                  Port externe à la région
+                  {translate('viz-principale-partie-3', 'network_legend_color_2', lang)}
                 </span>
               </li>
             </ul>
@@ -113,24 +116,24 @@ const Step2 = ({
           }}>
             <BarChart
               data={datasets['part_3_centralite_comparaison/part_3_centralite_comparaison.csv']}
-              title="Centralité comparée de La Rochelle par rapport à PASA et, pour ses régions côtières voisines, du port principal par rapport au réseau des voyages de son amirauté (1787)"
+              title={translate('viz-principale-partie-3', 'barchart_title', lang)}
               width={width * .7}
               height={height * .3}
               orientation={'vertical'}
               layout={'groups'}
               y={{
                 field: 'port',
-                title: 'Port (dans son réseau local)',
+                title: translate('viz-principale-partie-3', 'barchart_y', lang),
               }}
               x={{
                 field: 'score',
-                title: 'Score',
+                title: translate('viz-principale-partie-3', 'barchart_x', lang),
                 // tickSpan: .1,
                 // tickFormat: (d, i) => parseInt(d * 100) + '%'
               }}
               color={{
                 field: 'metrics_type',
-                title: 'Type de métrique',
+                title: translate('viz-principale-partie-3', 'barchart_color', lang),
                 palette: {
                   'PageRank': colorPalettes.generic.dark,
                   'betweenness centrality': colorPalettes.generic.accent1,
@@ -139,7 +142,7 @@ const Step2 = ({
               margins={{
                 bottom: 40
               }}
-              tooltip={d => d.metrics_type === 'PageRank' ? 'Le PageRank est une mesure de centralité qui consiste à donner à chaque port un score proportionnel à la somme des pageranks des ports avec lesquels il a des voyages en commun.' : 'La centralité intermédiaire est une mesure de centralité égale au nombre de fois où un port donné est sur le chemin le plus court entre deux autres ports du réseau des voyages.'}
+              tooltip={d => d.metrics_type === 'PageRank' ? translate('viz-principale-partie-3', 'barchart_toolip_pagerank', lang) : translate('viz-principale-partie-3', 'barchart_toolip_nopagerank', lang)}
             />
           </div>
         </>

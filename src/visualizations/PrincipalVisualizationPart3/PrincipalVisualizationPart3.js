@@ -91,6 +91,7 @@ const PrincipalVisualizationPart3 = ({
       </div>
       <div className={cx('step', { 'is-visible': step === 2 })} style={{ height }}>
         <Step2
+          lang={lang}
           {
           ...{
             width,

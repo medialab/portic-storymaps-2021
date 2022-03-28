@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { animated, useSpring } from 'react-spring';
 import cx from 'classnames';
 import colorsPalettes from '../../colorPalettes';
@@ -7,6 +7,9 @@ import partialCircle from 'svg-partial-circle';
 import { max } from 'd3';
 import ReactTooltip from 'react-tooltip';
 import { fixSvgDimension } from '../../helpers/misc';
+
+import { SettingsContext } from '../../helpers/contexts';
+import translate from '../../i18n/translate';
 
 
 /**
@@ -99,6 +102,8 @@ const ExtraversionObject = ({
       .join(' ')
   }
 
+  const { lang } = useContext(SettingsContext);
+
   let labelFontSize = parseInt(height * 0.013);
   labelFontSize = labelFontSize > 8 ? labelFontSize : 8;
   return (
@@ -122,7 +127,11 @@ const ExtraversionObject = ({
                 strokeWidth={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
-                data-tip={`${(100 - toflitPct ).toFixed(1)}% de valeur d'exports de produits fabriqués hors de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+                // data-tip={`${(100 - toflitPct ).toFixed(1)}% de valeur d'exports de produits fabriqués hors de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+                data-tip={
+                  (lang === 'fr' && translate('viz-principale-partie-3', 'value_export_out', lang, { number: (100 - toflitPct ).toFixed(1), onclick: typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : '' })) ||
+                  translate('viz-principale-partie-3', 'value_export_out', lang, { number: (100 - toflitPct ).toFixed(1), onclick: typeof onClick === 'function' ? '(click to see the details of the ports)' : '' })
+                }
               />
 
               <path
@@ -132,7 +141,10 @@ const ExtraversionObject = ({
                 strokeWidth={width * 0.005} // à ajuster en fonction de la largeur de l'écran
                 fill="transparent"
                 data-for="geo-tooltip"
-                data-tip={`${(toflitPct).toFixed(1)}% de valeur d'exports de produits fabriqués dans la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+                data-tip={
+                  (lang === 'fr' && translate('viz-principale-partie-3', 'value_export_in', lang, { number: (toflitPct).toFixed(1), onclick: typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : '' })) ||
+                  translate('viz-principale-partie-3', 'value_export_in', lang, { number: (toflitPct).toFixed(1), onclick: typeof onClick === 'function' ? '(click to see the details of the ports)' : '' })
+                }
               />
             </>
             :
@@ -146,7 +158,10 @@ const ExtraversionObject = ({
             Z
                 `}
                 data-for="geo-tooltip"
-                data-tip={`${(metric1 * 100 ).toFixed(1)}% du tonnage cumulé des voyages réalisés vers l'extérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+                data-tip={
+                  (lang === 'fr' && translate('viz-principale-partie-3', 'value_tonnage_out', lang, { number: (metric1 * 100 ).toFixed(1), onclick: typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : '' })) ||
+                  translate('viz-principale-partie-3', 'value_tonnage_out', lang, { number: (metric1 * 100 ).toFixed(1), onclick: typeof onClick === 'function' ? '(click to see the details of the ports)' : '' })
+                }
         />
 
         <path
@@ -158,7 +173,10 @@ const ExtraversionObject = ({
             Z
             `}
             data-for="geo-tooltip"
-            data-tip={`${(metric2 * 100 ).toFixed(1)}% du tonnage cumulé des voyages réalisés vers l'intérieur de la direction ${typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : ''}`}
+            data-tip={
+              (lang === 'fr' && translate('viz-principale-partie-3', 'value_tonnage_in', lang, { number: (metric2 * 100 ).toFixed(1), onclick: typeof onClick === 'function' ? '(cliquer pour voir le détail des ports)' : '' })) ||
+              translate('viz-principale-partie-3', 'value_tonnage_in', lang, { number: (metric2 * 100 ).toFixed(1), onclick: typeof onClick === 'function' ? '(click to see the details of the ports)' : '' })
+            }
         />
         <g
           transform={`translate(${parseInt(0)}, ${toflitPct ? parseInt(circleRadius) + 15 : max([leftTriangleHeight, rightTriangleHeight]) / 2 + 10})`}
@@ -184,7 +202,7 @@ const ExtraversionObject = ({
             >
               <div className="label-wrapper">
                 <span>
-                  Part des exports de produits fabriqués hors de la direction
+                  {translate('viz-principale-partie-3', 'foreignObject_export_out', lang)}
                 </span>
               </div>
             </foreignObject>
@@ -204,7 +222,7 @@ const ExtraversionObject = ({
             >
               <div className="label-wrapper">
                 <span>
-                  Part des exports de produits fabriqués dans la direction
+                {translate('viz-principale-partie-3', 'foreignObject_export_in', lang)}
                 </span>
               </div>
             </foreignObject>
@@ -224,7 +242,7 @@ const ExtraversionObject = ({
             >
               <div className="label-wrapper">
                 <span>
-                  Part des voyages hors direction (tonnage c.)
+                  {translate('viz-principale-partie-3', 'foreignObject_flow_out', lang)}
                 </span>
               </div>
             </foreignObject>
@@ -244,7 +262,7 @@ const ExtraversionObject = ({
             >
               <div className="label-wrapper">
                 <span>
-                  Part des voyages dans la direction (tonnage c.)
+                  {translate('viz-principale-partie-3', 'foreignObject_flow_in', lang)}
                 </span>
               </div>
             </foreignObject>

@@ -647,7 +647,7 @@ const CircularAlluvialChart = ({
                         (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value);
                         const nodeIsHighlighted = (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value);
                         const labelFontSize = (highlightedFilter || highlightedNode) ? labelHighlightPart > 0 ? textScale(labelHighlightPart) : textScale(node.valuePart) : textScale(1)
-                        const tContent = tooltips.node[lang](node, stepIndex);
+                        const tContent = tooltips.node(node, stepIndex);
                         return (
                           <G
                             className={cx("step-node-container", {

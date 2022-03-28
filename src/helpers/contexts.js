@@ -16,3 +16,7 @@ export const VisualizationControlContext = React.createContext({
 export const DatasetsContext = React.createContext({
 
 })
+
+export const SettingsContext = React.createContext({
+
+})

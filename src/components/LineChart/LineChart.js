@@ -1,7 +1,7 @@
 
 import { scaleLinear } from 'd3-scale';
 import { extent, range, max } from 'd3-array';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import { groupBy } from 'lodash';
 import { axisPropsFromTickScale } from 'react-d3-axis';
 import Tooltip from 'react-tooltip';
@@ -11,6 +11,7 @@ import colorsPalettes from '../../colorPalettes';
 import { fixSvgDimension, generatePalette } from '../../helpers/misc';
 
 import './LineChart.scss';
+import { SettingsContext } from '../../helpers/contexts';
 
 const { generic } = colorsPalettes;
 
@@ -137,6 +138,8 @@ const LineChart = ({
     yAxisValues = range(yDomain[0], yDomain[1], yTickSpan);
     yScale.domain(yDomain)
   }
+  const { lang } = useContext(SettingsContext);
+  const legendTitle = lang === 'fr' ? 'Légende' : 'Legend';
   return (
     <>
       <figure style={{width: initialWidth, height: initialHeight}} className="LineChart GenericVisualization">
@@ -421,7 +424,7 @@ const LineChart = ({
                   top: headersHeight + margins.top
                 }}
               >
-                <h5>{color.title || 'Légende'}</h5>
+                <h5>{color.title || legendTitle}</h5>
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)

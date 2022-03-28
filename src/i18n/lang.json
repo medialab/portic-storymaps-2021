@@ -187,6 +187,42 @@
     "barchart_toolip_nopagerank": {
       "fr": "La centralité intermédiaire est une mesure de centralité égale au nombre de fois où un port donné est sur le chemin le plus court entre deux autres ports du réseau des voyages.",
       "en": null
+    },
+    "SmallMultiples_title": {
+      "fr": "Comparaison avec les bureaux de fermes et ports dominants d'autres directions en 1787",
+      "en": null
+    },
+    "value_export_out": {
+      "fr": "${number}% de valeur d'exports de produits fabriqués hors de la direction ${onclick}",
+      "en": null
+    },
+    "value_export_in": {
+      "fr": "${number}% de valeur d'exports de produits fabriqués dans la direction ${onclick}",
+      "en": null
+    },
+    "value_tonnage_out": {
+      "fr": "${number}% du tonnage cumulé des voyages réalisés vers l'extérieur de la direction ${onclick}",
+      "en": null
+    },
+    "value_tonnage_in": {
+      "fr": "${number}% du tonnage cumulé des voyages réalisés vers l'intérieur de la direction ${onclick}",
+      "en": null
+    },
+    "foreignObject_export_out": {
+      "fr": "Part des exports de produits fabriqués hors de la direction",
+      "en": null
+    },
+    "foreignObject_export_in": {
+      "fr": "Part des exports de produits fabriqués dans la direction",
+      "en": null
+    },
+    "foreignObject_flow_out": {
+      "fr": "Part des voyages hors direction (tonnage c.)",
+      "en": null
+    },
+    "foreignObject_flow_in": {
+      "fr": "Part des voyages dans la direction (tonnage c.)",
+      "en": null
     }
   },
   "partie-1-produits-importants-pour-la-rochelle": {

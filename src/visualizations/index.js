@@ -14,6 +14,7 @@ import colorPalettes from '../colorPalettes'
 
 import {formatNumber} from '../helpers/misc'
 import { DatasetsContext } from '../helpers/contexts';
+import { SettingsContext } from '../helpers/contexts';
 
 import visualizationsList from '../visualizationsList';
 import IntroBureaux from './IntroBureaux';
@@ -65,7 +66,11 @@ const VisualizationContainer = ({
     case 'viz-principale-partie-2':
       return <PrincipalVisualizationPart2 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
     case 'viz-principale-partie-3':
-      return <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} {...dimensions} />;
+      return (
+        <SettingsContext.Provider value={{ lang: props.lang }}>
+          <PrincipalVisualizationPart3 {...props} datasets={relevantDatasets || {}} {...dimensions} />
+        </SettingsContext.Provider>
+      );
     case 'partie-1-produits-importants-pour-la-rochelle':
       return (
         <BarChart
@@ -414,7 +419,6 @@ const VisualizationContainer = ({
                   title: translate('intro-ports', 'size', props.lang),
                   // custom: '20'
                 },
-                tooltip: d => `${d.rawSize} départs de navires ont été observés par le port de ${d.label} en 1789`,
                 tooltip: d => translate('intro-ports', 'tooltip', props.lang, { rawSize: d.rawSize, label: d.label }),
                 label: {
                   field: 'port',

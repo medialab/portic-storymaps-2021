@@ -1,5 +1,5 @@
 
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import {nest} from 'd3-collection';
 import Tooltip from 'react-tooltip';
 import { uniq } from 'lodash';
@@ -11,6 +11,7 @@ import {
 } from 'd3-hierarchy';
 
 import { fixSvgDimension, generatePalette } from '../../helpers/misc';
+import { SettingsContext } from '../../helpers/contexts';
 
 const formatNestResults = (input) => {
   if (Array.isArray(input)) {
@@ -121,6 +122,9 @@ const TreemapChart = ({
     }), {})
   }
 
+  const { lang } = useContext(SettingsContext);
+  const legendTitle = lang === 'fr' ? 'Légende' : 'Legend';
+
   return (
     <>
       <figure style={{width: initialWidth, height: initialHeight}} className="TreemapChart GenericVisualization">
@@ -180,7 +184,7 @@ const TreemapChart = ({
                   top: headersHeight + margins.top
                 }}
               >
-                <h5>{color.title || 'Légende'}</h5>
+                <h5>{color.title || legendTitle}</h5>
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)

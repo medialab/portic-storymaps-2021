@@ -1,7 +1,7 @@
 
 import { scaleLinear } from 'd3-scale';
 import { range, max } from 'd3-array';
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef, useState, useEffect, useMemo, useContext } from 'react';
 import { groupBy } from 'lodash';
 import { axisPropsFromTickScale } from 'react-d3-axis';
 import Tooltip from 'react-tooltip';
@@ -9,6 +9,7 @@ import { uniq } from 'lodash';
 
 import colorsPalettes from '../../colorPalettes';
 import { fixSvgDimension, generatePalette } from '../../helpers/misc';
+import { SettingsContext } from '../../helpers/contexts';
 
 const { generic } = colorsPalettes;
 
@@ -223,6 +224,11 @@ const VerticalBarChart = ({
   }
   const svgHeight = vizHeight + margins.top + margins.bottom;
   const finalHeight = initialHeight > (svgHeight + headersHeight) ? initialHeight : svgHeight + headersHeight;
+
+  const { lang } = useContext(SettingsContext);
+  const legendTitle = (() => {
+    return lang === 'fr' ? 'Légende' : 'Legend';
+  })();
   return (
     <>
       <figure style={{ width: initialWidth, height: finalHeight }} className="BarChart is-vertical GenericVisualization">
@@ -320,7 +326,7 @@ const VerticalBarChart = ({
                   top: headersHeight
                 }}
               >
-                <h5>{color.title || 'Légende'}</h5>
+                <h5>{color.title || legendTitle}</h5>
                 <ul className="color-legend">
                   {
                     Object.entries(colorPalette)

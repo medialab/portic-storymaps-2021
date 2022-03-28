@@ -1,4 +1,7 @@
+import { useContext } from 'react';
+
 import { uniq } from "lodash-es";
+import { SettingsContext } from "../../helpers/contexts";
 import { generatePalette } from '../../helpers/misc';
 
 
@@ -14,9 +17,11 @@ const Legend = ({
   position,
   layerFilter
 }) => {
+  const { lang } = useContext(SettingsContext);
+  const legendTitle = lang === 'fr' ? 'Légende' : 'Legend';
   return (
     <div className={`Legend ${typeof position === 'string' ? position : ''}`}>
-      <h5 className="legend-main-title">Légende</h5>
+      <h5 className="legend-main-title">{legendTitle}</h5>
       {
         layers
         .filter(l => {

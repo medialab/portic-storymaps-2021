@@ -89,7 +89,12 @@ const PrincipalVisualizationPart2 = ({
       alluvialFilters: filters
     }
   }, [filter]);
-  const toflit18titles = translate('viz-principale-partie-2', 'toflit18titles', lang, {sumToflitBy: sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'})
+  const toflit18titles = (() => {
+    if (lang === 'fr') {
+      return translate('viz-principale-partie-2', 'toflit18titles', lang, {sumToflitBy: sumToflitBy === 'value' ? 'valeur commerciale' : 'poids de marchandises'})
+    }
+    return translate('viz-principale-partie-2', 'toflit18titles', lang, {sumToflitBy: sumToflitBy === 'value' ? 'commercial value' : 'weight of goods'})
+  })()
   const navigoTitles = translate('viz-principale-partie-2', 'navigoTitles', lang)
   return (
     <div 
@@ -114,29 +119,21 @@ const PrincipalVisualizationPart2 = ({
           displaceHorizontalLabels={highlight === 'toflit18'}
           centerHorizontalLabels={highlight === 'toflit18'}
           tooltips={{
-            node: {
-              fr: ({id, ...node}, step) => {
-                if (step === 0 || step === 5) {
-                  return translate('viz-principale-partie-2', 'node_0_5', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                } else if (step === 1 || step === 4) {
-                  return translate('viz-principale-partie-2', 'node_1_4', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                } else {
-                  return translate('viz-principale-partie-2', 'node_other', 'fr', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                }
-              },
-              en: () => ({id, ...node}, step) => {
-                if (step === 0 || step === 5) {
-                  return translate('viz-principale-partie-2', 'node_0_5', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                } else if (step === 1 || step === 4) {
-                  return translate('viz-principale-partie-2', 'node_1_4', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                } else {
-                  return translate('viz-principale-partie-2', 'node_other', 'en', { id: id, step: step < 3 ? 'exporté' : 'importé', number: formatNumber(parseInt(node.valueAbs), 'en'), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
-                }
-              },
+            node: ({id, ...node}, step) => {
+              const importTranslate = lang === 'fr' ? 'importé' : 'imported';
+              const exportTranslate = lang === 'fr' ? 'exporté' : 'exported';
+
+              if (step === 0 || step === 5) {
+                return translate('viz-principale-partie-2', 'node_0_5', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+              } else if (step === 1 || step === 4) {
+                return translate('viz-principale-partie-2', 'node_1_4', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+              } else {
+                return translate('viz-principale-partie-2', 'node_other', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+              }
             },
             flow: {
-              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office: customs_office, flow_type: flow_type === 'import' ? 'importé' : 'exporté', value: formatNumber(parseInt(value)), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product: product, flow_direction: flow_type === 'import' ? 'depuis' : 'vers', partner: partner }),
-              en: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office: customs_office, flow_type: flow_type === 'import' ? 'imported' : 'exported', value: formatNumber(parseInt(value), 'en'), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product: product, flow_direction: flow_type === 'import' ? 'from' : 'to', partner: partner }),
+              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'importé' : 'exporté', value: formatNumber(parseInt(value)), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'depuis' : 'vers', partner }),
+              en: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'imported' : 'exported', value: formatNumber(parseInt(value), 'en'), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'from' : 'to', partner }),
             }
           }}
           steps={[

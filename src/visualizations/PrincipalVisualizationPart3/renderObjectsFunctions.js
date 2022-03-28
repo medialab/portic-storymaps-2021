@@ -21,14 +21,17 @@ création des triangles pour la viz 3.1, reliés par une courbe pointillée à d
 - il faudrait adapter pour positionner les objets ports en colonne, sur la gauche du SVG, et qu'ils aient par défaut une opacité à 0% sauf au hover de l'objet bureau des fermes correspondant => apparition
 
 */
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useContext } from 'react';
 
 import colorsPalettes from '../../colorPalettes';
 
 import ExtraversionObject from './ExtraversionObject';
 
+import { SettingsContext } from '../../helpers/contexts';
+
 import TriangleChart from '../../components/TriangleChart/TriangleChart';
 import { fixSvgDimension } from '../../helpers/misc';
+import translate from '../../i18n/translate';
 
 export function Label(datum, projection, { width }) { // à terme on pourrait mettre un objet 
 
@@ -333,6 +336,8 @@ export function SmallMultiples({
 
   const xObjectsStart = width * .4 // circleRadius * legendFactor + circleRadius + margin;
 
+  const { lang } = useContext(SettingsContext);
+
   return (
     <g className="small-multiples-and-legend-and-title">
       <rect
@@ -351,7 +356,7 @@ export function SmallMultiples({
       >
         <div style={{ position: 'relative' }}>
           <h5 className="visualization-title" style={{ position: 'absolute', left: 0, bottom: 0 }}>
-            Comparaison avec les bureaux de fermes et ports dominants d'autres directions en 1787
+            {translate('viz-principale-partie-3', 'SmallMultiples_title', lang)}
           </h5>
         </div>
       </foreignObject>

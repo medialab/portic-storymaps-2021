@@ -55,6 +55,10 @@
     "laRochelleDiaspora": {
       "fr": "Organisation de convois partant de La Rochelle pour échapper aux Anglais",
       "en": null
+    },
+    "other_product": {
+      "fr": "${number} autres types de produits",
+      "en": null
     }
   },
   "viz-principale-partie-2": {

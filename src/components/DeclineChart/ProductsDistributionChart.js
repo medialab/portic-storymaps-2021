@@ -1,9 +1,13 @@
-import {useRef, useState, useEffect, useMemo} from 'react';
+import {useRef, useState, useEffect, useMemo, useContext} from 'react';
 import { sortBy, sum } from "lodash";
 import { scaleLinear, scalePow } from 'd3-scale';
 import {extent} from 'd3-array';
 import cx from 'classnames';
 import ReactTooltip from 'react-tooltip';
+
+import { SettingsContext } from '../../helpers/contexts'
+
+import translate from '../../i18n/translate'
 
 import colorsPalettes from "../../colorPalettes";
 import { fixSvgDimension } from '../../helpers/misc';
@@ -48,6 +52,8 @@ const ProductsDistributionChart = ({
   const titleRef = useRef(null);
   const svgRef = useRef(null);
   const yearsRef = useRef(new Array(years.length))
+
+  const { lang } = useContext(SettingsContext);
 
   useEffect(() => {
     setTimeout(() => {
@@ -122,7 +128,7 @@ const ProductsDistributionChart = ({
       // group the long tail of low value (under the part Treshold) products as one aggregated misc
       const aggregatedMiscProducts = {
         [field]: totalValue - sum(dataTillTreshold.map((d) => +d[field])),
-        product: `${thisYearData.length - dataTillTreshold.length} autres types de produits`,
+        product: translate('viz-principale-partie-1', 'other_product', lang, { number: thisYearData.length - dataTillTreshold.length }),
       };
       dataTillTreshold.push(aggregatedMiscProducts);
       return {

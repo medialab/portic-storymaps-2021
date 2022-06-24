@@ -39,6 +39,8 @@
       opacity: 1;
       .thumbnail-container {
         min-height: 12rem;
+        max-height: 12rem;
+        overflow: hidden;
         padding: 0;
         margin: 0;
         background: white;

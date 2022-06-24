@@ -1,14 +1,15 @@
 country,latitude,longitude,tonnage,nb_pointcalls
-Grande-Bretagne,45.95,-0.9,17021,146
-Danemark,46.216667,-1.516667,4362,46
+Grande-Bretagne,46.166667,-1.15,17589,150
 Hambourg,46.166667,-1.15,1715,12
-Brême,46.166667,-1.15,450,4
+Provinces-Unies,46.166667,-1.15,13096,67
+Duché de Mecklenbourg,45.95,-0.9,813,4
 Lubeck,45.95,-0.9,1589,9
-Provinces-Unies,46.166667,-1.15,11671,60
-Duché de Mecklenbourg,45.95,-0.9,323,2
-Prusse,46.216667,-1.516667,4593,22
-Pologne,46.216667,-1.516667,1840,7
-Etats-Unis d'Amérique,46.216667,-1.516667,2173,23
+Brême,46.166667,-1.15,450,4
+Danemark,46.2,-1.366667,4542,47
+Suède,46.166667,-1.15,150,1
+Prusse,47,-2.25,4793,23
+Espagne,45.816667,-1.116667,307,8
+Etats-Unis d'Amérique,46.2,-1.366667,2508,25
+Evêché de Münster,45.816667,-1.116667,217,1
+Pologne,47,-2.25,1840,7
 Duché d'Oldenbourg,46.166667,-1.15,240,2
-Espagne,45.943666,-0.97043,307,8
-Mecklenbourg,46.216667,-1.516667,490,2

@@ -1,54 +1,54 @@
 port,country,latitude,longitude,tonnage,nb_flows
-Bordeaux,France,44.833333,-0.566667,8028,193
+Soubise,France,45.933333,-1,37,1
+Tonnay-Charente,France,45.95,-0.9,10828,296
 Libourne,France,44.916667,-0.233333,3723,101
 Honfleur,France,49.420164,0.231886,19714,193
-Tonnay-Charente,France,45.95,-0.9,10828,296
-Bilbao,Espagne,43.256706,-2.924252,356,5
-Bayonne,France,43.483333,-1.483333,2243,33
-pas mentionné,Autre,,,50,2
-Königsberg / Kaliningrad,Prusse,54.71,20.5,929,5
-Côtes de Bretagne,France,47.681292,-3.813171,10,1
-Virginie,Etats-Unis d'Amérique,36.83449804,-76.08717906,237,1
-Saint-Brieuc,France,48.516667,-2.783333,147,2
-Pillau / Baltiïsk,Prusse,54.652222,19.909167,214,1
-Ostende,Autriche,51.216667,2.916667,234,3
-Nantes,France,47.216667,-1.55,227,3
-Morlaix,France,48.574926,-3.826103,70,2
-Londres,Grande-Bretagne,51.516667,-0.1,179,1
-Lamarque,France,45.1,-0.7,30,1
-Galway,Grande-Bretagne,53.271944,-9.048889,50,1
-Bourg,France,45.05,-0.566667,45,1
-Baltimore,Etats-Unis d'Amérique,39.291345,-76.612873,262,1
+Saint-Valéry-sur-Somme,France,50.183333,1.633333,2376,34
 Caen ,France,49.183333,-0.35,4047,64
-Lübeck,Lubeck,53.866667,10.7,174,1
-Rotterdam,Provinces-Unies,51.916667,4.5,793,6
-Zierikzee,Provinces-Unies,51.65,3.916667,237,1
-Vannes,France,47.657445,-2.760172,19,1
-Soubise,France,45.933333,-1,37,1
-La Teste,France,44.633333,-1.15,36,1
-Harlingen,Provinces-Unies,53.183333,5.416667,605,3
-Dordrecht ,Provinces-Unies,51.8,4.666667,914,5
-Amsterdam,Provinces-Unies,52.35,4.916667,738,4
-Blaye,France,45.133333,-0.666667,59,2
-Calais,France,50.95,1.833333,146,2
-Newcastle,Grande-Bretagne,54.988056,-1.619444,404,1
-Castelnau,France,45.033333,-0.8,38,1
-Belle-Île-en-Mer,France,47.316667,-3.183333,30,1
-Dunkerque,France,51.05,2.366667,11916,122
-Saint-Valery-sur-Somme,France,50.183333,1.633333,2376,34
-Gravelines,France,50.983333,2.116667,3711,47
-Marans,France,46.312468,-0.995682,1650,67
-Le Tréport,France,50.066667,1.366667,371,5
-Saint-Valéry-en-Caux,France,49.866667,0.733333,659,9
-Saint-Malo,France,48.65,-2.016667,290,4
-Rochefort,France,45.943666,-0.97043,190,5
+Bayonne,France,43.483333,-1.483333,2243,33
+Bordeaux,France,44.833333,-0.566667,8028,193
 Le Havre,France,49.5,0.133333,3687,32
 La Rochelle,France,46.166667,-1.15,195,6
-Étaples ,France,50.516667,1.65,819,11
-Dieppe,France,49.933333,1.083333,1361,13
-Brest,France,48.4,-4.483333,36,1
+Amsterdam,Provinces-Unies,52.35,4.916667,738,4
+Saint-Valéry-en-Caux,France,49.866667,0.733333,659,9
+Gravelines,France,50.983333,2.116667,3711,47
 pas identifié,Autre,,,46,1
-Riga,Russie,56.95,24.1,210,1
-Granville,France,48.838204,-1.597853,80,1
+Brest,France,48.4,-4.483333,36,1
+Marans,France,46.312468,-0.995682,1650,67
+Dunkerque,France,51.05,2.366667,11916,122
+Dieppe,France,49.933333,1.083333,1361,13
+Calais,France,50.95,1.833333,146,2
+Vannes,France,47.657445,-2.760172,19,1
+Blaye,France,45.133333,-0.666667,59,2
+Castelnau,France,45.033333,-0.8,38,1
+Bilbao,Espagne,43.256706,-2.924252,356,5
+Königsberg / Kaliningrad,Prusse,54.71,20.5,929,5
+Côtes de Bretagne,France,47.681292,-3.813171,10,1
+Le Tréport,France,50.066667,1.366667,371,5
+Dordrecht ,Provinces-Unies,51.8,4.666667,914,5
+Harlingen,Provinces-Unies,53.183333,5.416667,605,3
+Virginie,Etats-Unis d'Amérique,36.83449804,-76.08717906,237,1
+Pillau / Baltiïsk,Prusse,54.652222,19.909167,214,1
+Galway,Grande-Bretagne,53.271944,-9.048889,50,1
+Rotterdam,Provinces-Unies,51.916667,4.5,793,6
+Riga,Empire russe,56.95,24.1,210,1
+Newcastle,Grande-Bretagne,54.988056,-1.619444,404,1
+Rochefort,France,45.943666,-0.97043,190,5
+Saint-Malo,France,48.65,-2.016667,290,4
+Lübeck,Lubeck,53.866667,10.7,174,1
+Zierikzee,Provinces-Unies,51.65,3.916667,237,1
+Belle-Île-en-Mer,France,47.316667,-3.183333,30,1
+Étaples ,France,50.516667,1.65,819,11
 Fécamp,France,49.75,0.366667,133,1
+Granville,France,48.838204,-1.597853,80,1
 Cherbourg,France,49.640322,-1.615534,54,1
+Lamarque,France,45.1,-0.7,30,1
+Ostende,Autriche,51.216667,2.916667,234,3
+Londres,Grande-Bretagne,51.516667,-0.1,179,1
+pas mentionné,Autre,,,50,2
+Saint-Brieuc,France,48.516667,-2.783333,147,2
+Nantes,France,47.216667,-1.55,227,3
+Morlaix,France,48.574926,-3.826103,70,2
+Bourg,France,45.05,-0.566667,45,1
+Baltimore,Etats-Unis d'Amérique,39.291345,-76.612873,262,1
+La Teste,France,44.633333,-1.15,36,1

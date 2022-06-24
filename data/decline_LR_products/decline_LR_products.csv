@@ -9,15 +9,16 @@ Eaux-de-vie et liqueurs,1789,6002913.3873874415,7498.0
 Graines grasses,1789,59248.56,
 "Cuirs, peaux et pelleterie",1789,1240.0,113806.5
 Vins divers,1789,291472.17269419995,264.0
-"Ouvrages de bois, liège et jonc",1789,38017.00002,524071.10326059995
+"Ouvrages de bois, liège et jonc",1789,34369.00002,524071.10326059995
 Divers mélangés,1789,1608.0,6148.0
 Sel,1789,298213.56871873,
-[vide],1789,8000.0,
+Matières brutes et transformées pour teinture,1789,8000.0,48783.000284120004
 "Bière, cidre et vinaigre",1789,24016.249140324006,50812.7222232
 "Armes, munitions, poudre et pierres à fusil",1789,37447.0,870.0
 Fruits secs et noix,1789,391.0,
 Beurre,1789,5818.0,25193.00009425
 "Farine, gruau, biscuits et pâtes",1789,22470.0,4962.5
+Bois divers hors combustible,1789,3648.0,3454.0
 Bonneterie hors soie,1789,783.0,
 Soieries diverses,1789,324.0,
 "Brai, goudron et résines",1789,32173.0,6795.0001846000005
@@ -70,13 +71,11 @@ Fleurs artificielles et ouvrages de mode,1789,,360.0
 Chanvre,1789,,115230.59772844
 Colles diverses,1789,,1222.5
 Cuivre,1789,,23999.9
-Matières brutes et transformées pour teinture,1789,,48783.000284120004
 Azur et cobalt,1789,,1260.0
 "Alquifoux, mine de plomb et graphite",1789,,3202.50010675
 Poivre et piment,1789,,7709.0
 Étain,1789,,3860.0
 Graisses diverses,1789,,64574.54817180998
-Bois divers hors combustible,1789,,3454.0
 Huiles diverses,1789,,14850.00015548
 Lin,1789,,4006.0
 Sirop et mélasse,1789,,40345.0
@@ -99,7 +98,7 @@ Rocou,1750,43714.8999,167040.0
 Sirop et mélasse,1750,18845.700001,
 Étoffes diverses,1750,38534.50001,
 Eaux-de-vie et liqueurs,1750,858427.6999889999,
-"Ouvrages de bois, liège et jonc",1750,11793.5,206564.69700199997
+"Ouvrages de bois, liège et jonc",1750,11793.5,206504.69700199997
 Graines diverses et mélangées,1750,3192.0,4.5
 Divers incertains,1750,288.0,
 Sel,1750,181706.50489900002,
@@ -135,7 +134,7 @@ Bouchons principalement en liège,1750,200.0,
 Verrerie,1750,33108.599998,4673.700009
 Mercerie,1750,1386127.0,26093.0
 "Brai, goudron et résines",1750,3696.5,20682.0
-Étoffes de laine,1750,485278.0,
+Étoffes de laine,1750,512715.199,120000.0
 Cannelle,1750,48.0,3320.0
 Cordonnerie et sellerie,1750,110970.0,
 Toiles diverses,1750,31752.800099,64.0
@@ -146,7 +145,6 @@ Chapeaux hors paille et écorce,1750,12289.0,
 Cire,1750,1800.0,
 Quincaillerie,1750,227050.0096,8055.9
 Cordage et filets,1750,65036.40002,
-[vide],1750,27437.199,120000.0
 Fils divers,1750,25387.8,3272.09998
 Textiles manufacturés divers et mélangés,1750,3760.0,
 Poils et crin,1750,540.0,1528.5
@@ -169,7 +167,7 @@ Girofle,1750,360.0,12630.0
 Graines de jardin,1750,148.0,
 Huiles diverses,1750,456.10001,19334.0
 Huile d'olive à manger,1750,11496.6,
-Bois divers hors combustible,1750,1681.39999,1610.0
+Bois divers hors combustible,1750,1681.39999,1670.0
 Manne et médicaments,1750,3000.0,
 "Alquifoux, mine de plomb et graphite",1750,90.0,2532.0
 Châles et mouchoirs hors soie,1750,43987.5,7387.5

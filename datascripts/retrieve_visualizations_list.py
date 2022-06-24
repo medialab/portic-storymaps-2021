@@ -7,5 +7,6 @@ TARGET = '../src/visualizationsList.json'
 
 list = get_online_csv(LIST_URL)
 f = open(TARGET, "w")
+list = [l for l in list if l["id"].strip() != '']
 f.write(json.dumps(list))
 f.close()

@@ -149,6 +149,7 @@ const VisualizationContainer = ({
         />
       )
     case 'sorties-de-sel':
+      console.log(relevantDatasets[Object.keys(relevantDatasets)[0]])
       return (
         <BarChart
           data={
@@ -169,8 +170,8 @@ const VisualizationContainer = ({
             }
           }}
           x={{
-            field: translate('sorties-de-sel', 'x', props.lang),
-            title: 'Tonnage cumulé',
+            title: translate('sorties-de-sel', 'x', props.lang),
+            field: 'tonnage',
             // tickSpan: 100,
             tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}
@@ -205,8 +206,8 @@ const VisualizationContainer = ({
             }
           }}
           x={{
-            field: translate('sorties-de-marennes', 'x', props.lang),
-            title: 'Tonnage cumulé',
+            field: 'tonnage',
+            title: translate('sorties-de-marennes', 'x', props.lang),
             // tickSpan: 100,
             tickFormat: (d, i) => `${formatNumber(d)} tx`
           }}

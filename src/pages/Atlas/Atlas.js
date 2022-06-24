@@ -12,7 +12,8 @@ import {buildPageTitle} from '../../helpers/misc';
 import './Atlas.scss';
 
 
-const visualizationsMap = visualizations.reduce((res, visualization) => ({
+const visualizationsMap = visualizations
+.reduce((res, visualization) => ({
   ...res,
   [visualization.id]: visualization
 }), {})
@@ -43,7 +44,8 @@ function Atlas({
         <h1>{lang === 'fr' ? 'Atlas des visualisations' : 'Visualizations atlas'}</h1>
         <ul className="visualizations-list">
           {
-            visualizations.map((visualization, visualizationIndex) => {
+            visualizations
+            .map((visualization, visualizationIndex) => {
               const handleClick = () => {
                 setIsLoading(true);
                 setTimeout(() => {

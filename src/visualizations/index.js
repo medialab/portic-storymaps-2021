@@ -257,10 +257,27 @@ const VisualizationContainer = ({
         />
       )
     case 'partie-3-comparaison-exports-coloniaux':
+      const englishTypesTranslation = {
+        'produits de la région PASA': 'PASA region products',
+        'produits coloniaux': 'colonial products',
+        'autres produits': 'other products'
+      }
       return (
         <BarChart
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
+            .map(obj => {
+              if (props.lang === 'fr') {
+                return obj
+              }
+              else {
+                return {
+                  ...obj,
+                  type: englishTypesTranslation[obj.type]
+                }
+              }
+            })
+
           }
           title={translate('partie-3-comparaison-exports-coloniaux', 'title', props.lang)}
           width={dimensions.width}
@@ -672,7 +689,7 @@ const VisualizationContainer = ({
             title: translate('partie-1-ports-dattache-vers-etranger', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
-            tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
+            // tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
             tooltip: d => translate('partie-1-ports-dattache-vers-etranger', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'homeport'],
             color: {

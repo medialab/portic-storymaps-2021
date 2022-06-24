@@ -1,12 +1,9 @@
 const { exec } = require('child_process');
 const puppeteer = require('puppeteer'); 
-const visualizationsList = require('./src/visualizationsList.json')
+const visualizationsList = require('./src/visualizationsList.json');
 let signal = null;
 
-
-// const langs = ['fr', 'en'];
-// just french for now
-const langs = ['fr'];
+const langs = ['fr', 'en'];
 const Screenshot = async () => { 
 
   console.log('starting screenshotting')

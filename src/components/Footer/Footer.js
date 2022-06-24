@@ -1,6 +1,6 @@
 /* eslint import/no-webpack-loader-syntax : 0 */
 import FooterFr from '!babel-loader!mdx-loader!../../contents/fr/footer.mdx';
-import FooterEn from '!babel-loader!mdx-loader!../../contents/fr/footer.mdx';
+import FooterEn from '!babel-loader!mdx-loader!../../contents/en/footer.mdx';
 
 /**
  * Displays the footer from attached mdx contents

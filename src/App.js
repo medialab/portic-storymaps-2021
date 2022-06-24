@@ -153,8 +153,7 @@ function App() {
 
     )
   };
-
-  const currentLang = 'fr';
+  const currentLang = location.pathname.includes('/en/') ? 'en' : 'fr';
   return (
     <DatasetsContext.Provider value={datasets}>
       <div id="wrapper">

@@ -4,8 +4,10 @@ import cx from 'classnames';
 // import copy from 'copy-to-clipboard';
 
 import FrMla from '!babel-loader!mdx-loader!./mla-fr.mdx';
+import EnMla from '!babel-loader!mdx-loader!./mla-en.mdx';
 import FrIso690 from '!babel-loader!mdx-loader!./iso-fr.mdx';
 import FrApa from '!babel-loader!mdx-loader!./apa-fr.mdx';
+import EnApa from '!babel-loader!mdx-loader!./apa-en.mdx';
 import Doi from '!babel-loader!mdx-loader!./doi.mdx';
 
 import './CitationWidget.scss';
@@ -19,7 +21,8 @@ const CONTENTS = {
     'DOI': Doi
   },
   en: {
-    'MLA': FrMla,
+    'MLA': EnMla,
+    APA: EnApa,
     'DOI': Doi
   }
 }

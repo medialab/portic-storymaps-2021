@@ -163,7 +163,7 @@ const ScrollyPage = ({
               <div className="fullscreen-viz-toggle-container">
                 <button
                   data-for="contents-tooltip"
-                  data-tip="plus d'informations sur cette visualisation"
+                  data-tip={lang === 'fr' ? "plus d'informations sur cette visualisation" : 'More information about this visualization'}
                   onClick={() => {
                     setIsLoading(true);
                     setTimeout(() => {
@@ -202,7 +202,7 @@ const ScrollyPage = ({
         <ReactTooltip id="contents-tooltip" />
         <div className={cx("loader-indication-wrapper", {'is-loading': isLoading})}>
           <div className="loader-indication-container">
-            Chargement de la visualisation
+            {lang === 'fr' ? 'Chargement de la visualisation' : 'Loading visualization'}
           </div>
         </div>
       </div>

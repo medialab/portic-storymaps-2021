@@ -1,6 +1,6 @@
 /* eslint import/no-anonymous-default-export : 0 */
 export default {
-  "title": "Commerce multi-échelles autour du port de La Rochelle au XVIIIème siècle",
-  "titleHTML": "Commerce multi-échelles autour du port de La Rochelle au XVIII<sup>e</sup> siècle",
-  "subtitle": "Une étude de cas du programme de recherche interdisciplinaire PORTIC"
+  "title": "Multiscale trade in eighteenth-century La Rochelle region",
+  "titleHTML": "Multiscale trade in eighteenth-century La Rochelle region",
+  "subtitle": "A case study from the PORTIC interdisciplinary research program"
 }

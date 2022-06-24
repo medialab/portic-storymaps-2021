@@ -157,9 +157,14 @@ function App() {
   return (
     <DatasetsContext.Provider value={datasets}>
       <div id="wrapper">
-        <header>
-          <HeaderNav {...{ onLangChange, routes }} />
-        </header>
+        {
+          !location.pathname.includes('/visualization/') ?
+          <header>
+            <HeaderNav {...{ onLangChange, routes }} />
+          </header>
+          :
+          null
+        }
         <main>
           <Switch>
             {// looping through the page
@@ -204,9 +209,13 @@ function App() {
           </Switch>
           <Loader percentsLoaded={loadingFraction * 100} />
         </main>
-        <Footer
-          lang={currentLang}
-        />
+        {
+          !location.pathname.includes('/visualization/') ?
+          <Footer
+            lang={currentLang}
+          />
+          : null
+        }
 
 
       </div>

@@ -21,7 +21,7 @@ Prerequisites:
 * install [yarn](https://yarnpkg.com/)
 * install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-Then in a shell terminal, copy the following commands:
+Then in a shell terminal, copy the following commands and hit enter:
 
 ```bash
 git clone https://github.com/medialab/portic-storymaps-2021

@@ -34,7 +34,7 @@
     },
     "barTooltip": {
       "fr": "En <strong>${year}</strong> ${pct}% des biens exportés depuis la France le sont à partir de <strong>${city}</strong>.<br/><br/>Concentration du commerce <i>(indice de Herfindahl-Hirschmann : somme du carré des parts du marché français par classe de produits exportés)</i> : <span>[colorBox] ${herfindal}</span>",
-      "en": "In <strong>${year}</strong> ${pct}% of exported goods from France are exported <strong>${city}</strong>.<br/><br/>Trade concentration <i>(Herfindahl-Hirschmann index : sum of square french market shares sorted by exported products classes)</i> : <span>[colorBox] ${herfindal}</span>"
+      "en": "In <strong>${year}</strong> ${pct}% of exported goods from France were exported from <strong>${city}</strong>.<br/><br/>Trade concentration <i>(Herfindahl-Hirschmann index : sum of square French market shares sorted by exported products classes)</i> : <span>[colorBox] ${herfindal}</span>"
     },
     "productTooltip": {
       "fr": "En <strong>${year}</strong> les produits de la classe \"${product}\" représentent <strong>${pct}%</strong> de la valeur des biens exportés par la direction des fermes de La Rochelle.",
@@ -46,29 +46,29 @@
     },
     "austriaWar": {
       "fr": "guerre franco-britannique au sein de la guerre de succession d’Autriche",
-      "en": null
+      "en": "Franco-British conflict within the War of Jenkins's Ear"
     },
     "usIndependance": {
       "fr": "guerre d’indépendance Américaine",
-      "en": null
+      "en": "American War of Independence"
     },
     "laRochelleDiaspora": {
       "fr": "Organisation de convois partant de La Rochelle pour échapper aux Anglais",
-      "en": null
+      "en": "Organization of convoys from La Rochelle to avoid British seizures"
     },
     "other_product": {
       "fr": "${number} autres types de produits",
-      "en": null
+      "en": "${number} of other kinds of products"
     }
   },
   "viz-principale-partie-2": {
     "toflit18titles": {
       "fr": "Échanges de la direction des fermes de La Rochelle en 1789 par bureau, produit et partenaire, dimensionnés selon leur ${sumToflitBy}",
-      "en": null
+      "en": "Trade from the Customs region of La Rochelle in 1789 per bureau, product and partner, sized according to their ${sumToflitBy}"
     },
     "navigoTitles": {
       "fr": "Parts de différents groupes de directions pour les navires partis de la région PASA en 1789",
-      "en": null
+      "en": "Different groups of Customs regions for ships departing from the PASA region"
     },
     "node_0_5": {
       "fr": "En 1789, le bureau des fermes de ${id} a ${step} ${number} ${sumBy}",
@@ -116,131 +116,131 @@
     },
     "radar_tip_region": {
       "fr": "Parts des destinations des voyages de 1789 initiés depuis tous les ports de la région",
-      "en": null
+      "en": "Destinations of ships departing from all ports of the PASA region in 1789"
     },
     "radar_tip_office": {
       "fr": "Part des destinations pour les voyages de 1789 initiés depuis des ports rattachés au bureau des fermes de <strong>${name}</strong>",
-      "en": null
+      "en": "Destinations of ships departed from the ports of the Customs office of <strong>${name}</strong> in 1789"
     }
   },
   "viz-principale-partie-3": {
     "GeographicMapChart_title": {
       "fr": "Navigation au départ des ports de la région PASA en 1789",
-      "en": null
+      "en": "Departures from the PASA region in 1789"
     },
     "nb_pointcalls_out": {
-      "fr": "nombre de navires sortis du port en 1789",
-      "en": null
+      "fr": "Nombre de navires sortis du port en 1789",
+      "en": "Number of departures from the port in 1789"
     },
     "mean_tonnage": {
-      "fr": "tonnage moyen des navires",
-      "en": null
+      "fr": "Tonnage moyen des navires",
+      "en": "Average ships' burden (in French tonneaux)"
     },
     "GeographicMapChart_second_title": {
       "fr": "Extraversion du commerce et de la navigation regroupés par bureau de fermes en 1789",
-      "en": null
+      "en": "Trade and shipping extroversion by Customs office in 1789"
     },
     "network_1_title": {
       "fr": "Réseau des voyages partant ou arrivant dans la région PASA en 1787…",
-      "en": null
+      "en": "Voyage network of ships departing from or bound for the PASA region in 1787..."
     },
     "network_2_title": {
       "fr": "…comparé à celui de l\\'amirauté de Bordeaux",
-      "en": null
+      "en": "…compared to the admiralty office of Bordeaux"
     },
     "network_3_title": {
       "fr": "…comparé à celui de l\\'amirauté de Nantes",
-      "en": null
+      "en": "…compared to the admiralty office of Nantes"
     },
     "network_legend_title": {
       "fr": "Légende des réseaux",
-      "en": null
+      "en": "Network caption"
     },
     "network_legend_color_title": {
       "fr": "Taille des points représentant les ports : nombre de liens avec d'autres ports dans le réseau",
-      "en": null
+      "en": "Size of the dots representing the ports: number of links to other ports in the network"
     },
     "network_legend_color_1": {
       "fr": "Port interne à la région",
-      "en": null
+      "en": "Port within the PASA region"
     },
     "network_legend_color_2": {
       "fr": "Port externe à la région",
-      "en": null
+      "en": "Port outside the PASA region"
     },
     "barchart_title": {
       "fr": "Centralité comparée de La Rochelle par rapport à PASA et, pour ses régions côtières voisines, du port principal par rapport au réseau des voyages de son amirauté (1787)",
-      "en": null
+      "en": "Comparative centrality of La Rochelle with regard to the PASA region, and, for its neighboring regions, centrality of the main port with regard to the total departures from ports in its admiralty office (1787)"
     },
     "barchart_y": {
       "fr": "Port (dans son réseau local)",
-      "en": null
+      "en": "Port (in its local network"
     },
     "barchart_x": {
       "fr": "Score",
-      "en": null
+      "en": "Score"
     },
     "barchart_color": {
       "fr": "Type de métrique",
-      "en": null
+      "en": "Kind of measure"
     },
     "barchart_toolip_pagerank": {
       "fr": "Le PageRank est une mesure de centralité qui consiste à donner à chaque port un score proportionnel à la somme des pageranks des ports avec lesquels il a des voyages en commun.",
-      "en": null
+      "en": "PageRank is a centrality measure providing each port with a score proportional to the sum of pageranks of ports to which it is directly connected."
     },
     "barchart_toolip_nopagerank": {
       "fr": "La centralité intermédiaire est une mesure de centralité égale au nombre de fois où un port donné est sur le chemin le plus court entre deux autres ports du réseau des voyages.",
-      "en": null
+      "en": "The betweenness centrality is a centrality measure equal to the number of instances in which a given port is on the shortest path between two other ports of the voyage network"
     },
     "SmallMultiples_title": {
       "fr": "Comparaison avec les bureaux de fermes et ports dominants d'autres directions en 1787",
-      "en": null
+      "en": "Trade and shipping extroversion by Customs office in 1789"
     },
     "value_export_out": {
       "fr": "${number}% de valeur d'exports de produits fabriqués hors de la direction ${onclick}",
-      "en": null
+      "en": "${number}% of exports (value) of goods produced outside the Customs region ${onclick}"
     },
     "value_export_in": {
       "fr": "${number}% de valeur d'exports de produits fabriqués dans la direction ${onclick}",
-      "en": null
+      "en": "${number}% of exports (value) of goods produced within the Customs region ${onclick"
     },
     "value_tonnage_out": {
       "fr": "${number}% du tonnage cumulé des voyages réalisés vers l'extérieur de la direction ${onclick}",
-      "en": null
+      "en": "${number}% of cumulative ships' tonnage of voyages bound outside the Customs region ${onclick}"
     },
     "value_tonnage_in": {
       "fr": "${number}% du tonnage cumulé des voyages réalisés vers l'intérieur de la direction ${onclick}",
-      "en": null
+      "en": "${number}% of cumulative ships' tonnage of voyages within the Customs region ${onclick}"
     },
     "foreignObject_export_out": {
       "fr": "Part des exports de produits fabriqués hors de la direction",
-      "en": null
+      "en": "Share of exports of goods produced outside the Customs region"
     },
     "foreignObject_export_in": {
       "fr": "Part des exports de produits fabriqués dans la direction",
-      "en": null
+      "en": "Share of exports of goods produced within the Customs region"
     },
     "foreignObject_flow_out": {
       "fr": "Part des voyages hors direction (tonnage c.)",
-      "en": null
+      "en": "Share of voyages outside the Customs region (cumulated tonnage)"
     },
     "foreignObject_flow_in": {
       "fr": "Part des voyages dans la direction (tonnage c.)",
-      "en": null
+      "en": "Share of voyages within the Customs region (cumulated tonnage)"
     }
   },
   "partie-1-produits-importants-pour-la-rochelle": {
     "title": {
       "fr": "Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française",
-      "en": null
+      "en": "Most important exported products (in value) in 1789: La Rochelle compared to the French average"
     },
     "color": {
       "fr": "Part des exports pour :",
-      "en": null
+      "en": "Percentage of exports for:"
     },
     "x": {
       "fr": "Valeur en pourcentage",
-      "en": null
+      "en": "Value (percentage)"
     },
     "y": {
       "fr": "Produit",
@@ -248,13 +248,13 @@
     },
     "tooltip": {
       "fr": "Le produit ${product} représente ${value}% des exports pour ${entite}",
-      "en": null
+      "en": "The product ${product} represents ${value}% of exports for ${entite}"
     }
   },
   "partie-1-evolution-de-la-part-des-echanges-de-la-rochelle-au-xviiie": {
     "title": {
       "fr": "Évolution globale de la part des échanges de La Rochelle par rapport à l'ensemble de la France",
-      "en": null
+      "en": "Global development of La Rochelle’s trade compared with French trade as a total"
     },
     "color": {
       "fr": "Type",
@@ -266,16 +266,17 @@
     },
     "y": {
       "fr": "Part du commerce fr.",
-      "en": null
+      "en": "Percentage of French trade"
     },
     "tooltip": {
-      "fr": "En ${year}, la direction des fermes de la Rochelle a ${direction} ${value}% des ${type} français totaux"
+      "fr": "En ${year}, la direction des fermes de la Rochelle a ${direction} ${value}% des ${type} français totaux",
+      "en": "In ${year}, the Customs region of La Rochelle ${direction} ${value}% of total French ${type}"
     }
   },
   "sorties-de-sel": {
     "title": {
       "fr": "Ports de départ des navires transportant du sel en 1789, agrégés par tonnage cumulé",
-      "en": null
+      "en": "Cumulative tonnage of ships carrying salt in 1789, per port"
     },
     "y": {
       "fr": "Port",
@@ -283,17 +284,17 @@
     },
     "x": {
       "fr": "Tonnage cumulé",
-      "en": null
+      "en": "Cumulative tonnage"
     },
     "tooltip": {
       "fr": "En 1789, ${tonnage} tonneaux (et ${number} navires) sont partis de la région PASA avec du sel comme cargaison.",
-      "en": null
+      "en": "In 1789, ${tonnage} French tonneaux (and ${number} ships) departed from the PASA region with a cargo of salt"
     }
   },
   "sorties-de-marennes": {
     "title": {
       "fr": "Destination des navires partant de Marennnes en 1789, agrégées par pays et par tonnage cumulé",
-      "en": null
+      "en": "Aggregated tonnage of ships departing from Marennes in 1789, by country of destination"
     },
     "y": {
       "fr": "Pays",
@@ -301,151 +302,151 @@
     },
     "x": {
       "fr": "Tonnage cumulé",
-      "en": null
+      "en": "Cumulative tonnage"
     },
     "tooltip": {
       "fr": "En 1789, ${tonnage} tonneaux (et ${number} navires) sont partis du port de Marennes en direction d'un port de ${country}.",
-      "en": null
+      "en": "In 1789, ${tonnage} French tonneaux (and ${number} ships) departed from Marennes bound to a port of ${country}."
     }
   },
   "partie-1-pays-port-d-attache": {
     "title": {
       "fr": "Pays du port d'attache des navires étrangers partant de la région en 1789",
-      "en": null
+      "en": "Country of the homeport of foreign ships departing from the region in 1789"
     },
     "y": {
       "fr": "Pays du port d'attache",
-      "en": null
+      "en": "Country of the homeport"
     },
     "x": {
       "fr": "Tonnage cumulé",
-      "en": null
+      "en": "Cumulative tonnage"
     },
     "tooltip": {
       "fr": "En 1789, ${number} navires soit ${tonnage} tonnaux sont partis de la région de La Rochelle (amirautés de La Rochelle, Sables d'Olonnes ou Marennes)",
-      "en": null
+      "en": "In 1789, ${number} ships of ${tonnage} French tonneaux departed from La Rochelle région (admiralty offices of La Rochelle, Sables d'Olonnes or Marennes)"
     }
   },
   "partie-3-comparaison-exports-coloniaux": {
     "title": {
       "fr": "Comparaison des exports de produits coloniaux, locaux et autres par bureaux des fermes (1789)",
-      "en": null
+      "en": "Comparison of exports of colonial, local and other goods per Customs office (1789)"
     },
     "color": {
       "fr": "Type de produit",
-      "en": null
+      "en": "Kind of product"
     },
     "y": {
       "fr": "Bureau des fermes",
-      "en": null
+      "en": "Customs office"
     },
     "x": {
       "fr": "Valeur en livres tournoi",
-      "en": null
+      "en": "Value (in French livres)"
     },
     "tooltip": {
       "fr": "En 1789, le bureau des fermes de ${customs_office} a exporté à l'étrange ${value} livres tournois de produits de type ${type}",
-      "en": null
+      "en": "In 1789, the Customs office of ${customs_office} exported abroad ${value} livres tournois of products of ${type} type"
     }
   },
   "intro-provinces": {
     "title": {
       "fr": "Carte des provinces étudiées : Poitou, Aunis, Saintonge, Angoumois (PASA)",
-      "en": null
+      "en": "Map of the provinces studied: Poitou, Aunis, Saintonge, and Angoumois (PASA)"
     }
   },
   "sorties-de-marennes-avec-sel-destinations": {
     "title": {
       "fr": "Carte des navires sortis de Marennes avec du sel en 1789, dimensionnés par tonnage cumulé",
-      "en": null
+      "en": "Maps of ships departing from Marennes with salt in 1789, proportional to cumulated tonnage"
     },
     "size": {
       "fr": "Tonnage cumulé",
-      "en": null
+      "en": "Cumulative tonnage"
     },
     "tooltip": {
       "fr": "En 1789, des navires pour un total d'approximativement ${rawSize} tonneaux sont partis de Marennes avec du sel pour se rendre au port de ${label}",
-      "en": null
+      "en": "In 1789, ships of a total of ca. ${rawSize} tonneaux departed from Marennes with salt bound for the port of ${label}"
     }
   },
   "intro-ports": {
     "title": {
       "fr": "Carte des ports de la région PASA",
-      "en": null
+      "en": "Map of PASA region ports"
     },
     "color": {
       "fr": "Province du port",
-      "en": null
+      "en": "Port's provincial affiliation"
     },
     "size": {
       "fr": "Nombre de congés enregistrés en 1789",
-      "en": null
+      "en": "Number of departures in 1789"
     },
     "tooltip": {
       "fr": "${rawSize} départs de navires ont été observés par le port de ${label} en 1789",
-      "en": null
+      "en": "${rawSize} ships' departures were recorded from the port of ${label} in 1789"
     }
   },
   "partie-2-part-navigation-francaise": {
     "title": {
       "fr": "Part de la navigation française dans la région",
-      "en": null
+      "en": "French shipping within the region"
     },
     "color": {
       "fr": "Part de la navigation française (par tonnage cumulé)",
-      "en": null
+      "en": "French shipping (per cumulative tonnage)"
     },
     "size": {
       "fr": "Tonnage sorti des ports (en miliers)",
-      "en": null
+      "en": "Total tonnage of ships on departure (in thousands of French tonneaux)"
     }
   },
   "partie-1-ports-dattache": {
     "title": {
       "fr": "Ports d'attache des navires partant de la région PASA en 1789 (dimensionnés par tonnage cumulé)",
-      "en": null
+      "en": "Homeports of ships departing from the PASA region in 1789 (proportional to cumulative tonnage )"
     },
     "tooltip": {
       "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA provenaient de navires rattachés au port de ${homeport} - ${category}.",
-      "en": null
+      "en": "In 1789, a total of ${tonnage} French tonneaux departing from the PASA region had ${homeport} - ${category} as homeport."
     }
   },
   "partie-1-ports-destinations": {
     "title": {
       "fr": "Destinations des navires partant depuis la région PASA vers l'étranger en 1789 (dimensionnées par tonnage cumulé)",
-      "en": null
+      "en": "Destinations of ships sailing from the PASA region to another country in 1789"
     },
     "tooltip": {
       "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA ont eu pour destination le port de ${homeport} - ${category}.",
-      "en": null
+      "en": "In 1789, a total of ${tonnage} French tonneaux departing from the PASA region had ${homeport} - ${category} as homeport."
     }
   },
   "exports-eau-de-vie-la-rochelle-longitudinal": {
     "title": {
       "fr": "Évolution des exports d'eau-de-vie et liqueurs par la direction de La Rochelle (ports francs non pris en compte)",
-      "en": null
+      "en": "Evolution of brandy and spirits exports from the Customs region of La Rochelle (to freeports excepted)"
     },
     "y": {
       "fr": "Valeur",
-      "en": null
+      "en": "Value"
     },
     "x": {
       "fr": "Année",
-      "en": null
+      "en": "Year"
     },
     "tooltip": {
       "fr": "En ${year}, la direction des fermes de La Rochelle a exporté ${value} livres tournois d'eau-de-vie et liqueurs.",
-      "en": null
+      "en": "In ${year}, La Rochelle Customs region exported ${value} livres tournois of brandy and spirits."
     }
   },
   "exports-eau-de-vie-comparaison-directions-des-fermes": {
     "title": {
       "fr": "Comparaison des exports d'eau-de-vie et liqueurs par différentes directions des fermes (ports francs non pris en compte - pas de données pour Montpellier en 1770)",
-      "en": null
+      "en": "Comparison of brandy exports from different customs regions (free ports not included - no data for Montpellier in 1770)"
     },
     "y": {
       "fr": "Année",
-      "en": null
+      "en": "Year"
     },
     "x": {
       "fr": "Valeur",
@@ -453,63 +454,63 @@
     },
     "color": {
       "fr": "Direction des fermes",
-      "en": null
+      "en": "Customs region"
     },
     "tooltip": {
       "fr": "En ${year}, la direction des fermes de ${customsRegion} a exporté ${value} livres tournois d'eau-de-vie et liqueurs.",
-      "en": null
+      "en": "In ${year}, the Customs region of ${customsRegion} exported ${value} livres tournois of brandy and spirits."
     }
   },
   "origines-exports-eau-de-vie-1789-la-rochelle": {
     "title": {
       "fr": "Origine des exports d'eau-de-vie de la direction des fermes de La Rochelle en 1789 (ports francs non pris en compte)",
-      "en": null
+      "en": "Origin of brandy exports from the La Rochelle customs region in 1789 (free ports not included)"
     },
     "y": {
       "fr": "Origine",
-      "en": null
+      "en": "Origin"
     },
     "x": {
       "fr": "Valeur",
-      "en": null
+      "en": "Value"
     },
     "color": {
       "fr": "Type d'eau de vie",
-      "en": null
+      "en": "Kind of Brandy"
     },
     "tooltip": {
       "fr": "La direction des fermes de La Rochelle a exporté ${value} livres tournois d'eau-de-vie et liqueurs de type \"${type}\", originaires de ${origin}.",
-      "en": null
+      "en": "The Customs region of La Rochelle exported ${value} livres tournois of brandy and spirits of \"${type}\" type, produced in ${origin}."
     }
   },
   "partie-1-ports-dattache-vers-etranger": {
     "title": {
       "fr": "Ports d’attache des navires en provenance de la région PASA et en direction de l’étranger en 1789 (dimensionnées par tonnages cumulés)",
-      "en": null
+      "en": "Homeports of ships departing from the PASA region bound for foreign ports in 1789 (size proportional to cumulative tonnage)"
     },
     "tooltip": {
       "fr": "En 1789, ${tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${homeport} - ${category}.",
-      "en": null
+      "en": "In 1789, a total of ${tonnage} French tonneaux departing from the PASA region had ${homeport} - ${category} as homport."
     }
   },
   "partie-2-carte-direction-bateaux-de-la-rochelle": {
     "title": {
       "fr": "Voyages des navires rattachés au port de La Rochelle en 1787",
-      "en": null
+      "en": "Voyages of ships having La Rochelle as homeport in 1787"
     },
     "size": {
       "fr": "Flèches dimensionnées par tonnage cumulé",
-      "en": null
+      "en": "Arrows proportional to cumulative tonnage"
     },
     "color": {
       "fr": "Port de départ",
-      "en": null
+      "en": "Port of departure"
     }
   },
   "intro-bureaux": {
     "title": {
       "fr": "Carte des bureaux des fermes de la région PASA",
-      "en": null
+      "en": "Map of customs offices in the PASA region"
     }
   }
 }

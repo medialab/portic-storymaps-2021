@@ -3,3 +3,5 @@ html-sanitizer
 networkx
 coloredlogs
 numpy
+Counter
+requests

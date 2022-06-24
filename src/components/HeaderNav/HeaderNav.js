@@ -54,7 +54,7 @@ const HeaderNav = ({
   } else if (location.pathname.includes('/en/')) {
     lang = 'en';
   }
-  
+
   const liveScrollY = useScrollYPosition();
   const scrollY = useDebounce(liveScrollY, 50)
   const pageColorScale = scaleLinear().range([colorBackgroundBlue, colorBackground]).domain([0, 1])
@@ -153,26 +153,18 @@ const HeaderNav = ({
                 )
               })
           }
-
-          {
-            // @todo delete this ternary when english contents are ready
-            process.env.NODE_ENV === 'development' ?
-              <>
-                <li className="navitem-container lang-toggle">
-                  <button
-                    className={lang === 'fr' ? 'is-active' : ''}
-                    onClick={() => onLangChange('fr')}
-                  >fr</button>
-                </li>
-                <li className="navitem-container lang-toggle">
-                  <button
-                    className={lang === 'en' ? 'is-active' : ''}
-                    onClick={() => onLangChange('en')}
-                  >en</button>
-                </li>
-              </>
-              : null
-          }
+          <li className="navitem-container lang-toggle">
+            <button
+              className={lang === 'fr' ? 'is-active' : ''}
+              onClick={() => onLangChange('fr')}
+            >fr</button>
+          </li>
+          <li className="navitem-container lang-toggle">
+            <button
+              className={lang === 'en' ? 'is-active' : ''}
+              onClick={() => onLangChange('en')}
+            >en</button>
+          </li>
         </ul>
       </nav>
       <nav

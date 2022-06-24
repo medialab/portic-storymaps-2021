@@ -11,7 +11,7 @@ import Part3Fr from '!babel-loader!mdx-loader!./contents/fr/partie-3.mdx';
 import Part3En from '!babel-loader!mdx-loader!./contents/en/part-3.mdx';
 
 import AboutFr from '!babel-loader!mdx-loader!./contents/fr/a-propos.mdx';
-import AboutEn from '!babel-loader!mdx-loader!./contents/en/about.mdx';
+import AboutEn from '!babel-loader!mdx-loader!./contents/en/a-propos.mdx';
 
 import ReferencesFr from '!babel-loader!mdx-loader!./contents/fr/references.mdx';
 import ReferencesEn from '!babel-loader!mdx-loader!./contents/en/references.mdx';

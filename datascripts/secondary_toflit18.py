@@ -319,12 +319,18 @@ def compute_exports_colonial_products(flows):
     if f["export_import"] == "Exports":
       customs_offices[customs_office][product_viz_alt] += float(value)
 
+  english_translation = {
+    'produits de la région PASA': 'PASA region products',
+    'produits coloniaux': 'colonial products',
+    'autres produits': 'other products'
+  }
   for customs_office, products in customs_offices.items():
     for product, value in products.items():
       output.append({
         "value": value,
         "customs_office": customs_office,
-        "type": product
+        "type_fr": product,
+        "type_en": english_translation[product]
       })
   output = sorted(output, key=lambda v : -v["value"])
   info = """

@@ -258,27 +258,10 @@ const VisualizationContainer = ({
         />
       )
     case 'partie-3-comparaison-exports-coloniaux':
-      const englishTypesTranslation = {
-        'produits de la région PASA': 'PASA region products',
-        'produits coloniaux': 'colonial products',
-        'autres produits': 'other products'
-      }
       return (
         <BarChart
           data={
             relevantDatasets[Object.keys(relevantDatasets)[0]]
-            .map(obj => {
-              if (props.lang === 'fr') {
-                return obj
-              }
-              else {
-                return {
-                  ...obj,
-                  type: englishTypesTranslation[obj.type]
-                }
-              }
-            })
-
           }
           title={translate('partie-3-comparaison-exports-coloniaux', 'title', props.lang)}
           width={dimensions.width}
@@ -298,7 +281,7 @@ const VisualizationContainer = ({
             tickFormat: d => formatNumber(d) + ' lt'
           }}
           color={{
-            field: 'type',
+            field: 'type_' + props.lang,
             title: translate('partie-3-comparaison-exports-coloniaux', 'color', props.lang)
           }}
           margins={{

@@ -243,6 +243,7 @@ const DeclineChart = (props) => {
             barWidth={width * 0.02}
             years={[atlasMode ? 1750 : startYear, atlasMode ? 1789 : endYear]}
             margins={margins}
+            lang={lang}
             herfindhalField="product_revolutionempire_exports_herfindahl"
             title={messages.top90PctTitle('La Rochelle', atlasMode ? 1750 : startYear, atlasMode ? 1789 : endYear)}
             productTooltipFn={messages.productTooltip}

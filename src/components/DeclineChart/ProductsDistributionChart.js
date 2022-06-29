@@ -1,12 +1,9 @@
-import {useRef, useState, useEffect, useMemo, useContext} from 'react';
+import {useRef, useState, useEffect, useMemo} from 'react';
 import { sortBy, sum } from "lodash";
 import { scaleLinear, scalePow } from 'd3-scale';
 import {extent} from 'd3-array';
 import cx from 'classnames';
 import ReactTooltip from 'react-tooltip';
-
-import { SettingsContext } from '../../helpers/contexts'
-
 import translate from '../../i18n/translate'
 
 import colorsPalettes from "../../colorPalettes";
@@ -43,6 +40,7 @@ const ProductsDistributionChart = ({
   barWidth,
   herfindhalField,
   years,
+  lang,
   width,
   title,
   margins,
@@ -52,8 +50,6 @@ const ProductsDistributionChart = ({
   const titleRef = useRef(null);
   const svgRef = useRef(null);
   const yearsRef = useRef(new Array(years.length))
-
-  const { lang } = useContext(SettingsContext);
 
   useEffect(() => {
     setTimeout(() => {

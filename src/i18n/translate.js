@@ -9,9 +9,15 @@ import json from './lang.json'
 
 const matchDollarBracket = new RegExp(/\$\{(\w+)\}/g)
 
-export default function translate (vizId, label, lang, args) {
+export default function translate (vizId, label, lang = 'fr', args) {
+    if (label === 'other_product') {
+      console.log(vizId, label, json[vizId][label], 'lang : ', lang)
+    }
     if (json[vizId] === undefined || json[vizId][label] === undefined || json[vizId][label][lang] === undefined) {
         return `pas de traduction disponible (${vizId} | ${label})`;
+    }
+    if (label === 'other_product') {
+      console.log('ok')
     }
 
     let result = json[vizId][label][lang];

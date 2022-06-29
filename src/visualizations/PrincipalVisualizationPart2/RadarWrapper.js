@@ -15,9 +15,9 @@ import translate from '../../i18n/translate';
  * @param {array} datas 
  * @returns {array}
  */
-const prepareTravelData = datas => {
+const prepareTravelData = (datas, lang) => {
   return _(datas)
-    .groupBy('destination_radar')
+    .groupBy(lang === 'fr' ? "destination_radar_fr" : "destination_radar_en")
     .map((dest, id) => {
       var rObj = {};
       rObj[id] = dest.length;
@@ -32,9 +32,9 @@ const prepareTravelData = datas => {
  * @param {array} datas 
  * @returns {array}
  */
-const prepareTonnageData = (datas) => {
+const prepareTonnageData = (datas, lang) => {
   return _(datas)
-    .groupBy("destination_radar")
+    .groupBy(lang === 'fr' ? "destination_radar_fr" : "destination_radar_en")
     .map((dest, id) => {
       var rObj = {};
       rObj[id] = sumBy(dest, "tonnage");
@@ -119,6 +119,8 @@ const RadarWrapper = ({
           return {
             ferme_bureau: d.ferme_bureau,
             destination_radar: d.destination_radar.replace(/['"]+/g, ''),
+            destination_radar_fr: d.destination_radar_fr.replace(/['"]+/g, ''),
+            destination_radar_en: d.destination_radar_en.replace(/['"]+/g, ''),
             tonnage: +d.tonnage
           };
         }
@@ -211,11 +213,10 @@ const RadarWrapper = ({
 
   const radarData = useMemo(() => {
     const bureauxObjects = Array.from(selectedBureaux);
-
     return bureauxObjects.map((bureauName) => {
       const relevantData = bureauName === 'Tous les bureaux' ? filteredData :
         filteredData.filter(datum => datum.ferme_bureau === bureauName);
-      const preparedData = aggregationMethod === 'tonnage' ? prepareTonnageData(relevantData) : prepareTravelData(relevantData);
+      const preparedData = aggregationMethod === 'tonnage' ? prepareTonnageData(relevantData, lang) : prepareTravelData(relevantData, lang);
       return {
         data: normalizeRadarValues
           (Object.assign({}, ...preparedData)
@@ -227,6 +228,7 @@ const RadarWrapper = ({
       }
     })
   }, [selectedBureaux, tonnageFilterValues, aggregationMethod]);
+  // console.log('selected bureaux', selectedBureaux, 'radarData', radarData)
 
   if (!data || !radarData) {
     return null;
@@ -300,7 +302,7 @@ const RadarWrapper = ({
                       style={{ background: colorPalette[bureau] }}
                     />
                     <span className="bureau-label">
-                      {bureau === 'Tous les bureaux' ? 'Ensemble des ports' : bureau}
+                      {bureau === 'Tous les bureaux' ? lang === 'fr' ? 'Ensemble des ports' : 'All ports' : bureau}
                     </span>
                   </li>
                 )

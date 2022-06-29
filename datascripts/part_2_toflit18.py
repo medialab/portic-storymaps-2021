@@ -29,6 +29,7 @@ for f in relevant_flows :
       product_weight_kg = float(f['quantities_metric'] if f['quantities_metric'] else 0)
     f['product_weight_kg'] = product_weight_kg
     product_viz = ''
+    product_viz_en = ''
     product = f['product_revolutionempire']
     value = f['value'].split('.')[0] if f['value'].split('.')[0] != '' else 0
     flow_type = f['export_import']
@@ -40,33 +41,49 @@ for f in relevant_flows :
     
     if product in ['Café', 'Sucre', 'Indigo', 'Coton non transformé']:
         product_viz = "produits coloniaux"
+        product_viz_en = "colonial products"
     elif (product == 'Sel'):
         product_viz = 'sel'
+        product_viz_en = "salt"
     elif (product == 'Eaux-de-vie et liqueurs' or product == 'Vins divers'):
         product_viz = 'eau-de-vie et vins divers'
+        product_viz_en = 'brandies and diverse wines'
     else :
         product_viz = 'autres produits'
+        product_viz_en = 'other products'
     f['product_viz'] = product_viz
+    f['product_viz_fr'] = product_viz
+    f['product_viz_en'] = product_viz_en
     
     partner_viz = ''
+    partner_viz_en = ''
     if (f['partner_simplification'] == 'Monde hors colonies'):
         # partner_viz = 'Indéterminé (supposé réexportations vers Europe)'
         partner_viz = 'Indéterminé supposé Europe'
+        partner_viz_en = 'Indetermined supposed Europe'
     elif (f['partner_grouping'] == 'France'):
         partner_viz = 'Ports francs et petites îles'
+        partner_viz_en = 'Free ports and small islands'
     elif (f['partner_grouping'] in ['Flandre et autres états de l\'Empereur', 'Nord', 'Flandres', 'Hollande', 'Espagne', 'Portugal', 'Allemagne']):
         partner_viz = 'Europe'
+        partner_viz_en = 'Europe'
     elif (f['partner_grouping'] == 'Angleterre'):
         partner_viz = 'Grande Bretagne'
+        partner_viz_en = 'Great Britain'
     elif (f['partner_grouping'] == 'Afrique'):
         partner_viz = 'Afrique'
+        partner_viz_en = 'Africa'
     elif (f['partner_grouping'] == 'Amériques' or f['partner_grouping'] == 'Asie'):
         # partner_viz = 'Colonies (Saint-Domingue, Indes, îles fr de l\'Amérique)'
         partner_viz = 'Colonies'
+        partner_viz_en = 'Colonies'
     else:
         partner_viz = 'Reste du monde (USA)'
+        partner_viz_en = 'Rest of the world (USA)'
         
     f['partner_viz'] = partner_viz
+    f['partner_viz_fr'] = partner_viz
+    f['partner_viz_en'] = partner_viz_en
     f['customs_office'] = f['customs_office'] if f['customs_office'] != 'Aligre' else 'Marans'
 
 def format_for_viz(f):
@@ -75,7 +92,11 @@ def format_for_viz(f):
         "flow_type": flow_type,
         "customs_office": f['customs_office'],
         "product": f["product_viz"],
+        "product_fr": f["product_viz_fr"],
+        "product_en": f["product_viz_en"],
         "partner": f["partner_viz"],
+        "partner_fr": f["partner_viz_fr"],
+        "partner_en": f["partner_viz_en"],
         "value": f["value"],
         "product_weight_kg": f['product_weight_kg']
     }
@@ -90,7 +111,11 @@ for flow in initial_flows_viz:
   uniques[identity]["flow_type"] = flow["flow_type"]
   uniques[identity]["customs_office"] = flow["customs_office"]
   uniques[identity]["product"] = flow["product"]
+  uniques[identity]["product_fr"] = flow["product_fr"]
+  uniques[identity]["product_en"] = flow["product_en"]
   uniques[identity]["partner"] = flow["partner"]
+  uniques[identity]["partner_fr"] = flow["partner_fr"]
+  uniques[identity]["partner_en"] = flow["partner_en"]
   """
   else:
     uniques[identity] = {

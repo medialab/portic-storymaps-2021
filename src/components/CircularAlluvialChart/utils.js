@@ -37,6 +37,7 @@ export const prepareAlluvialData = (inputData, spec) => {
       }, 0);
       return {
         id,
+        label: flows[0][step.labelField],
         valueAbs,
         flows
       }

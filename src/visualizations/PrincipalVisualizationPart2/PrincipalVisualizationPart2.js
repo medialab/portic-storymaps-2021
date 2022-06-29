@@ -124,51 +124,72 @@ const PrincipalVisualizationPart2 = ({
               const exportTranslate = lang === 'fr' ? 'exporté' : 'exported';
 
               if (step === 0 || step === 5) {
-                return translate('viz-principale-partie-2', 'node_0_5', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+                return translate('viz-principale-partie-2', 'node_0_5', lang, { 
+                  id: node.label, 
+                  step: step < 3 ? exportTranslate : importTranslate, 
+                  number: formatNumber(parseInt(node.valueAbs)), 
+                  sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' 
+                })
               } else if (step === 1 || step === 4) {
-                return translate('viz-principale-partie-2', 'node_1_4', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+                return translate('viz-principale-partie-2', 'node_1_4', lang, { 
+                  id: node.label, 
+                  step: step < 3 ? exportTranslate : importTranslate, 
+                  number: formatNumber(parseInt(node.valueAbs)), 
+                  sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' 
+                })
               } else {
-                return translate('viz-principale-partie-2', 'node_other', lang, { id, step: step < 3 ? exportTranslate : importTranslate, number: formatNumber(parseInt(node.valueAbs)), sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' })
+                return translate('viz-principale-partie-2', 'node_other', lang, { 
+                  id: node.label, 
+                  step: step < 3 ? exportTranslate : importTranslate, 
+                  number: formatNumber(parseInt(node.valueAbs)), 
+                  sumBy: sumToflitBy === 'value' ? 'livres tournoi' : 'kg' 
+                })
               }
             },
             flow: {
-              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'importé' : 'exporté', value: formatNumber(parseInt(value)), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'depuis' : 'vers', partner }),
-              en: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'imported' : 'exported', value: formatNumber(parseInt(value), 'en'), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'from' : 'to', partner }),
+              fr: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'importé' : 'exporté', number: formatNumber(parseInt(value)), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'depuis' : 'vers', partner }),
+              en: ({flow_type, customs_office, product, sumBy, value, partner}) => translate('viz-principale-partie-2', 'flow', lang, { customs_office, flow_type: flow_type === 'import' ? 'imported' : 'exported', number: formatNumber(parseInt(value), 'en'), sumBy: sumBy === 'value' ? 'livres tournois' : 'kg', product, flow_direction: flow_type === 'import' ? 'from' : 'to', partner }),
             }
           }}
           steps={[
             {
               field: "customs_office",
+              labelField: "customs_office",
               labels: translate('viz-principale-partie-2', 'customs_office', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'bureau' : 'office'
             },
             {
               field: "product",
+              labelField: "product_" + lang,
               labels: translate('viz-principale-partie-2', 'product', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "partner",
+              labelField: "partner_" + lang,
               labels: translate('viz-principale-partie-2', 'partner', lang),
               filters: [{key: 'flow_type', value: 'export'}],
               name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "partner",
+              labelField: "partner_" + lang,
               labels: translate('viz-principale-partie-2', 'partner', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'partenaire' : 'partner'
             },
             {
               field: "product",
+              labelField: "product_" + lang,
               labels: translate('viz-principale-partie-2', 'product', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'produit' : 'product'
             },
             {
               field: "customs_office",
+              labelField: 'customs_office',
               labels: translate('viz-principale-partie-2', 'customs_office', lang),
               filters: [{key: 'flow_type', value: 'import'}],
               name: lang === 'fr' ? 'bureau' : 'office'
@@ -192,7 +213,8 @@ const PrincipalVisualizationPart2 = ({
         maxTonnage={maxTonnage}
         title={navigoTitles}
         lang={lang}
-        axis={[
+        axis={lang === 'fr' ? 
+        [
           'Local',
           'Afrique',
           'Colonies',
@@ -201,7 +223,18 @@ const PrincipalVisualizationPart2 = ({
           'Ports francs et petites îles',
           'France',
           'Reste du monde',
-        ]}
+        ] :
+        [
+          'Local',
+          'Africa',
+          'Colonies',
+          'Great Britain',
+          'Europe',
+          'Free ports and small islands',
+          'France',
+          'Rest of the world',
+        ]
+      }
         colorPalette={colorsPalettes.customs_office}
       />
        {/* <img alt="radar-maquette" src={`${process.env.PUBLIC_URL}/maquettes/part2-radar.jpg`} /> */}

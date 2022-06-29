@@ -100,11 +100,11 @@
     },
     "radar_legend": {
       "fr": "Ports de départ agrégés par bureau des Fermes",
-      "en": "Aggregate ports of bureau des Fermes"
+      "en": "Aggregated departure ports grouped by bureau des Fermes"
     },
     "travel_aggregate": {
       "fr": "voyages agrégés par",
-      "en": "flows aggregate by"
+      "en": "flows aggregated by"
     },
     "radar_tonnage": {
       "fr": "tonnage ${method}",

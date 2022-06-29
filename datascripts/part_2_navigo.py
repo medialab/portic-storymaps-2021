@@ -40,22 +40,31 @@ with open('../data/navigo_raw_flows_1789.csv', 'r', encoding='utf-8') as f:
 
 for f in relevant_flows :
     destination_radar='Unknown'
+    destination_radar_en = 'Unknown'
     if f['destination_partner_balance_supp_1789']=='Sénégal et Guinée':
         destination_radar = 'Afrique'
+        destination_en = 'Africa'
     elif f['destination_partner_balance_supp_1789']=='colonies françaises':
         destination_radar =  'Colonies' 
+        destination_radar_en =  'Colonies' 
     elif f['destination_partner_balance_supp_1789']=='France' and f['destination_ferme_direction'] != 'La Rochelle' and  (f['destination_fr'] not in ('Dunkerque', 'Bayonne', 'Marseille', 'Lorient', 'Noirmoutier', 'Ile de Bouin')):    
         destination_radar = 'France'
+        destination_radar_en = 'France'
     elif (f['destination_fr']  in ('Dunkerque', 'Bayonne', 'Marseille', 'Lorient', 'Noirmoutier', 'Ile de Bouin')):    
         destination_radar = 'Ports francs et petites îles'
+        destination_radar_en = 'Free ports and small islands'
     elif f['destination_ferme_direction'] == 'La Rochelle':
         destination_radar = 'Local'
+        destination_radar_en = 'Local'
     elif f['destination_state_1789_fr'] == 'Grande-Bretagne':
         destination_radar = 'Grande-Bretagne'
+        destination_radar_en = 'Great Britain'
     elif f['destination_state_1789_fr'] == 'Etats-Unis d\'Amérique':
         destination_radar = 'Reste du monde'
+        destination_radar_en = 'Rest of the world'
     elif f['destination_state_1789_fr'] not in ('Grande-Bretagne','Etats-Unis d\'Amérique', 'France' ):
         destination_radar = 'Europe'
+        destination_radar_en = 'Europe'
     
 
     if (destination_radar=='Unknown'):
@@ -63,6 +72,8 @@ for f in relevant_flows :
         logger.warning('unknown radar destination : ' + f['destination_partner_balance_supp_1789'].encode("utf8"))
     #Create and assign a new column named destination_radar
     f['destination_radar'] = destination_radar
+    f['destination_radar_fr'] = destination_radar
+    f['destination_radar_en'] = destination_radar_en
 
 
     #idem for **homeport_destination_radar**
@@ -104,6 +115,8 @@ def format_for_viz(f):
     '''
     return {
         "destination_radar": f['destination_radar'],
+        "destination_radar_fr": f['destination_radar_fr'],
+        "destination_radar_en": f['destination_radar_en'],
         "homeport_destination_radar": f["homeport_destination_radar"],
         "ferme_bureau": clean_bureau_name(f["departure_ferme_bureau"], f['departure_fr']),
         "tonnage": f["tonnage"],

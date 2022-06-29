@@ -9,24 +9,25 @@ import json from './lang.json'
 
 const matchDollarBracket = new RegExp(/\$\{(\w+)\}/g)
 
-export default function translate (vizId, label, lang = 'fr', args) {
-    if (json[vizId] === undefined || json[vizId][label] === undefined || json[vizId][label][lang] === undefined) {
-        return `pas de traduction disponible (${vizId} | ${label})`;
-    }
+export default function translate(vizId, label, lang = 'fr', args) {
 
-    let result = json[vizId][label][lang];
+  if (json[vizId] === undefined || json[vizId][label] === undefined || json[vizId][label][lang] === undefined) {
+    return `pas de traduction disponible (${vizId} | ${label})`;
+  }
 
-    if (!!result === false) {
-        return `pas de traduction disponible (${vizId} | ${label})`;
-    }
+  let result = json[vizId][label][lang];
 
-    if (args === undefined) {
-        return result;
-    }
+  if (!!result === false) {
+    return `pas de traduction disponible (${vizId} | ${label})`;
+  }
 
-    result = result.replace(matchDollarBracket, (match, key) => {
-        return args[key] || key
-    })
-
+  if (args === undefined) {
     return result;
+  }
+
+  result = result.replace(matchDollarBracket, (match, key) => {
+    return args[key] || key
+  })
+
+  return result;
 }

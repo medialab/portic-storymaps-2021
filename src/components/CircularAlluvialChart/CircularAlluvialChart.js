@@ -484,9 +484,17 @@ const CircularAlluvialChart = ({
                                       controlPoint2BX = x4 - (4 / 3) * (1 - Math.cos(45) / Math.sin(45)) * Math.abs(x4 - x3);
                                       controlPoint2AY = y3 + (4 / 3) * (1 - Math.cos(45) / Math.sin(45)) * Math.abs(y3 - y4);
                                     }
-                                    const {flow_type, customs_office, product, partner} = flow;
+                                    const {flow_type, customs_office} = flow;
                                     const value = flow[sumBy];
-                                    const tContent = tooltips.flow[lang]({flow_type, customs_office, product, sumBy, value, partner})
+                                    const tContent = tooltips.flow[lang]({
+                                      flow_type, 
+                                      customs_office, 
+                                      product: flow['product_' + lang], 
+                                      sumBy, 
+                                      partner: flow['partner_' + lang],
+                                      value
+                                    })
+                                    // console.log('tContent : ', tContent);
                                     return (
                                       <G
                                         onClick={handleClick}
@@ -642,7 +650,7 @@ const CircularAlluvialChart = ({
                           displaceLabels = labelX;
                         }
                         const labelY = orientation === 'vertical' ? y + actualHeight / 2 : y + displaceText;
-                        const [labelMain, labelSecondary] = trimText(node.id, 20);
+                        const [labelMain, labelSecondary] = trimText(node.label || node.id, 20);
                         const nodeHasHighlights = (highlightedFlow && node.flows.find(flow => flow._id === highlightedFlow._id)) ||
                         (highlightedFilter && step.id === highlightedFilter.key && node.id === highlightedFilter.value);
                         const nodeIsHighlighted = (highlightedFilter && step.field === highlightedFilter.key && node.id === highlightedFilter.value);

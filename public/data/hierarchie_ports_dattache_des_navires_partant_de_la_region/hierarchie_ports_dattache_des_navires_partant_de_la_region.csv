@@ -1,207 +1,239 @@
 homeport,nb_pointcalls,tonnage,category_1,country_group,category_2
-Locmariaquer,175,2077,France,France,France (hors région PASA)
-Londres,50,5454,étranger,Europe du Nord,Grande-Bretagne
-La Rochelle,304,14550,France,France,France (région PASA)
-Rhuys,56,4357,France,France,France (hors région PASA)
-Port-d'Envaux,598,20931,France,France,France (région PASA)
-Indéterminé,143,9375,étranger,Autre,Indéterminé
-Marseille,1,1,France,France,France (hors région PASA)
-île de Ré,28,685,France,France,France (région PASA)
-île d'Oléron,495,10566,France,France,France (région PASA)
-L'Houmée,21,755,France,France,France (région PASA)
-Yarmouth,6,481,étranger,Europe du Nord,Grande-Bretagne
-Bordeaux,74,3585,France,France,France (hors région PASA)
-Rouen,34,3093,France,France,France (hors région PASA)
-Tonnay-Charente,254,10172,France,France,France (région PASA)
-Le Conquet,128,6057,France,France,France (hors région PASA)
-Chaillevette,6,41,France,France,France (région PASA)
-Quiberon,151,4124,France,France,France (hors région PASA)
-Châlon,181,3614,France,France,France (région PASA)
-Hull,13,1548,étranger,Europe du Nord,Grande-Bretagne
-Taillebourg,86,3300,France,France,France (région PASA)
-Cowes,1,1,étranger,Europe du Nord,Grande-Bretagne
-Marennes,108,3077,France,France,France (région PASA)
-Saint-Malo,206,19888,France,France,France (hors région PASA)
-Saint-Savinien,152,6663,France,France,France (région PASA)
-La Flotte-en-Ré,24,325,France,France,France (région PASA)
-Marans,388,7823,France,France,France (région PASA)
-Saint-Martin-de-Ré,223,4913,France,France,France (région PASA)
-Loix,57,925,France,France,France (région PASA)
-Baden,77,870,France,France,France (hors région PASA)
-Les Sables-d'Olonne,170,7561,France,France,France (région PASA)
-Noirmoutier,224,6751,France,France,France (région PASA)
-Saint-Brieuc,13,879,France,France,France (hors région PASA)
-Ars-en-Ré,159,3073,France,France,France (région PASA)
-Le Légué,1,1,France,France,France (hors région PASA)
-Lorient,64,3455,France,France,France (hors région PASA)
-Saint-Gilles-sur-Vie,59,2340,France,France,France (région PASA)
-Sunderland,5,441,étranger,Europe du Nord,Grande-Bretagne
-Bergue ,17,1188,étranger,Europe du Nord,Danemark
-Meschers,2,26,France,France,France (région PASA)
-Granville,29,3843,France,France,France (hors région PASA)
-Carteret,5,277,France,France,France (hors région PASA)
-Dunkerque,13,1245,France,France,France (hors région PASA)
-Honfleur,9,984,France,France,France (hors région PASA)
-Brouage ,20,616,France,France,France (région PASA)
-Saint-Denis d'Oléron,32,377,France,France,France (région PASA)
-Fécamp,8,608,France,France,France (hors région PASA)
-Morlaix,12,721,France,France,France (hors région PASA)
-Carnac,96,1937,France,France,France (hors région PASA)
-Amsterdam,33,8118,étranger,Europe du Nord,Provinces-Unies
+île d'Oléron,495,10552,France,France,France (région PASA)
+Meschers,2,11,France,France,France (région PASA)
+Port-d'Envaux,598,20929,France,France,France (région PASA)
 Abbeville,6,355,France,France,France (hors région PASA)
-Nantes,87,6722,France,France,France (hors région PASA)
-Arzon,104,1851,France,France,France (hors région PASA)
-Cherbourg,23,2121,France,France,France (hors région PASA)
-Belle-Île-en-Mer,51,1233,France,France,France (hors région PASA)
-La Tremblade,35,720,France,France,France (région PASA)
-Dercie,43,1324,France,France,France (région PASA)
-Rostock,2,174,étranger,Europe centrale,Mecklenbourg
-île d'Arz,26,1362,France,France,France (hors région PASA)
-Méan,106,3076,France,France,France (hors région PASA)
-Liverpool,6,614,étranger,Europe du Nord,Grande-Bretagne
-île de Bouin,43,1058,France,France,France (région PASA)
-Paimpol,23,1173,France,France,France (hors région PASA)
-Boulogne-sur-Mer,8,338,France,France,France (hors région PASA)
-Rochefort,19,2380,France,France,France (région PASA)
-Aber-Ildut,42,2615,France,France,France (hors région PASA)
-Bristol,4,314,étranger,Europe du Nord,Grande-Bretagne
-Plouharnel,25,700,France,France,France (hors région PASA)
-Vannes,32,1206,France,France,France (hors région PASA)
-Douarnenez,5,164,France,France,France (hors région PASA)
-Brest,35,2129,France,France,France (hors région PASA)
-Tréguier,5,229,France,France,France (hors région PASA)
-Le Havre,3,166,France,France,France (hors région PASA)
-Barfleur,1,1,France,France,France (hors région PASA)
-Cavernes,13,449,France,France,France (hors région PASA)
-Île-aux-Moines,43,2565,France,France,France (hors région PASA)
+Saint-Savinien,152,6676,France,France,France (région PASA)
+Chaillevette,6,41,France,France,France (région PASA)
+Le Conquet,128,6065,France,France,France (hors région PASA)
+Carnac,96,1957,France,France,France (hors région PASA)
+Locmariaquer,175,2071,France,France,France (hors région PASA)
+La Tremblade,35,724,France,France,France (région PASA)
+Saint-Denis d'Oléron,32,372,France,France,France (région PASA)
+Ars-en-Ré,159,3043,France,France,France (région PASA)
+Quiberon,151,4116,France,France,France (hors région PASA)
+Brest,35,2155,France,France,France (hors région PASA)
+Saint-Martin-de-Ré,223,4913,France,France,France (région PASA)
+Les Sables-d'Olonne,170,7541,France,France,France (région PASA)
+Arzon,103,1827,France,France,France (hors région PASA)
 Sarzeau,9,496,France,France,France (hors région PASA)
-Teignmouth,3,191,étranger,Europe du Nord,Grande-Bretagne
-Stavanger,9,893,étranger,Europe du Nord,Danemark
-Plymouth,5,430,étranger,Europe du Nord,Grande-Bretagne
-Norvège,1,1,étranger,Europe du Nord,Danemark
-île d'Yeu,59,1292,France,France,France (région PASA)
-Bourgneuf,16,392,France,France,France (hors région PASA)
-Roscoff,1,1,France,France,France (hors région PASA)
-Memel,4,601,étranger,Europe centrale,Prusse
-Bourcefranc ,39,1129,France,France,France (région PASA)
-Flekkefjord ,2,71,étranger,Europe du Nord,Danemark
-Königsberg / Kaliningrad,12,2281,étranger,Europe centrale,Prusse
-Saint-Valery-sur-Somme,23,2457,France,France,France (hors région PASA)
-Saint-Briac,33,3166,France,France,France (hors région PASA)
+Rhuys,56,4340,France,France,France (hors région PASA)
+Fécamp,8,567,France,France,France (hors région PASA)
+île de Ré,28,603,France,France,France (région PASA)
+île d'Arz,26,1366,France,France,France (hors région PASA)
 Newcastle,15,2861,étranger,Europe du Nord,Grande-Bretagne
-Holmestrand,2,127,étranger,Europe du Nord,Danemark
-Frederikshald / Halden,5,375,étranger,Europe du Nord,Danemark
-Saltcoats,1,1,étranger,Europe du Nord,Grande-Bretagne
-Dieppe,29,2721,France,France,France (hors région PASA)
-Dartmouth,4,311,étranger,Europe du Nord,Grande-Bretagne
-Dantzig ,7,1731,étranger,Europe de l'Est,Pologne
-Greenock,2,77,étranger,Europe du Nord,Grande-Bretagne
-Cork,3,21,étranger,Europe du Nord,Grande-Bretagne
-Hambourg,12,1596,étranger,Europe centrale,Hambourg
-Ilfracombe,1,1,étranger,Europe du Nord,Grande-Bretagne
-Lannion,6,237,France,France,France (hors région PASA)
-Leith,3,180,étranger,Europe du Nord,Grande-Bretagne
-Bideford,2,114,étranger,Europe du Nord,Grande-Bretagne
-Topsham,2,151,étranger,Europe du Nord,Grande-Bretagne
-Georgetown,2,251,étranger,Amérique,Etats-Unis d'Amérique
-Pontrieux ,4,282,France,France,France (hors région PASA)
-Rotterdam,5,460,étranger,Europe du Nord,Provinces-Unies
-Lübeck,9,1416,étranger,Europe centrale,Lubeck
-Waterford,1,1,étranger,Europe du Nord,Grande-Bretagne
-Angleterre,1,1,étranger,Europe du Nord,Grande-Bretagne
-Brême,4,391,étranger,Europe centrale,Brême
-Stettin,1,1,étranger,Europe centrale,Prusse
-Le Chapus,8,36,France,France,France (région PASA)
-Norden,1,1,étranger,Europe centrale,Prusse
-Saint-Jean-de-Luz,2,211,France,France,France (hors région PASA)
-Auray,4,300,France,France,France (hors région PASA)
-Ribérou,9,80,France,France,France (région PASA)
-Guernesey,5,319,étranger,Europe du Nord,Grande-Bretagne
-Fouras,1,1,France,France,France (région PASA)
-Harwich,1,1,étranger,Europe du Nord,Grande-Bretagne
-Oldenbourg,2,121,étranger,Europe centrale,Duché d'Oldenbourg
-île-de-Bréhat,10,901,France,France,France (hors région PASA)
-Soubise,57,2018,France,France,France (région PASA)
-La Teste,22,449,France,France,France (hors région PASA)
-Libourne,2,47,France,France,France (hors région PASA)
-Camaret,7,278,France,France,France (hors région PASA)
-Frise,6,657,étranger,Europe du Nord,Provinces-Unies
-Plencia,6,198,étranger,Europe du Sud,Espagne
-Ribnitz,2,341,étranger,Europe centrale,Mecklenbourg
+Marennes,108,3070,France,France,France (région PASA)
+Saint-Malo,206,19850,France,France,France (hors région PASA)
+Saint-Briac,33,3189,France,France,France (hors région PASA)
+Taillebourg,86,3291,France,France,France (région PASA)
+Bordeaux,74,3549,France,France,France (hors région PASA)
+Châlon,181,3614,France,France,France (région PASA)
 Erquy,8,601,France,France,France (hors région PASA)
-Sète,1,1,France,France,France (hors région PASA)
-Saintes,1,1,France,France,France (région PASA)
-Saint-Valéry-en-Caux,4,265,France,France,France (hors région PASA)
-Norfolk,1,1,étranger,Amérique,Etats-Unis d'Amérique
-Philadelphie,1,1,étranger,Amérique,Etats-Unis d'Amérique
-l'Aiguillon,5,5,France,France,France (région PASA)
-Blaye,4,85,France,France,France (hors région PASA)
-Pornic,8,188,France,France,France (hors région PASA)
-Avallon,9,87,France,France,France (région PASA)
-Hollande,2,201,étranger,Europe du Nord,Provinces-Unies
-Boston,6,369,étranger,Amérique,Etats-Unis d'Amérique
+La Rochelle,304,14505,France,France,France (région PASA)
+Dieppe,29,2717,France,France,France (hors région PASA)
+Londres,50,5502,étranger,Europe du Nord,Grande-Bretagne
+Plouharnel,25,716,France,France,France (hors région PASA)
+Marans,389,7814,France,France,France (région PASA)
+Tonnay-Charente,254,10172,France,France,France (région PASA)
+Indéterminé,52,3846,étranger,Autre,Indéterminé
+Rochefort,19,2350,France,France,France (région PASA)
+Belle-Île-en-Mer,51,1209,France,France,France (hors région PASA)
+Nantes,87,6694,France,France,France (hors région PASA)
+Lorient,64,3409,France,France,France (hors région PASA)
+Brouage ,20,616,France,France,France (région PASA)
+Cherbourg,23,2128,France,France,France (hors région PASA)
+Baden,78,872,France,France,France (hors région PASA)
+Granville,29,3773,France,France,France (hors région PASA)
+Dunkerque,13,1233,France,France,France (hors région PASA)
+Soubise,57,2017,France,France,France (région PASA)
+Bourcefranc ,39,1159,France,France,France (région PASA)
+Hambourg,12,1596,étranger,Europe centrale,Hambourg
+Rouen,34,3125,France,France,France (hors région PASA)
+Le Havre,3,166,France,France,France (hors région PASA)
+Morlaix,12,721,France,France,France (hors région PASA)
+Dercie,43,1324,France,France,France (région PASA)
+Vatteville,3,233,France,France,France (hors région PASA)
+Boulogne-sur-Mer,8,410,France,France,France (hors région PASA)
+Carteret,5,277,France,France,France (hors région PASA)
+Groningue,4,322,étranger,Europe du Nord,Provinces-Unies
+La Couarde,6,16,France,France,France (région PASA)
+La Flotte-en-Ré,24,437,France,France,France (région PASA)
+Île-aux-Moines,43,2555,France,France,France (hors région PASA)
+Rostock,2,174,étranger,Europe centrale,Mecklenbourg
+Yarmouth,6,441,étranger,Europe du Nord,Grande-Bretagne
+Ribérou,9,85,France,France,France (région PASA)
+Liverpool,6,607,étranger,Europe du Nord,Grande-Bretagne
+Lübeck,9,1425,étranger,Europe centrale,Lubeck
 Caen ,2,71,France,France,France (hors région PASA)
-La Couarde,6,15,France,France,France (région PASA)
+L'Houmée,21,755,France,France,France (région PASA)
+Noirmoutier,224,6750,France,France,France (région PASA)
+Saint-Valéry-sur-Somme,23,2407,France,France,France (hors région PASA)
+Loix,57,925,France,France,France (région PASA)
+Auray,4,300,France,France,France (hors région PASA)
+Le Croisic,2,51,France,France,France (hors région PASA)
+Roque de Thau,6,204,France,France,France (hors région PASA)
+Marseille,1,1,France,France,France (hors région PASA)
+Brême,4,321,étranger,Europe centrale,Brême
+Saint-Estèphe,9,244,France,France,France (hors région PASA)
+Saint-Gilles-sur-Vie,59,2355,France,France,France (région PASA)
+Esnandes,1,1,France,France,France (région PASA)
+Ploërmel ,1,1,France,France,France (hors région PASA)
+Amsterdam,33,8148,étranger,Europe du Nord,Provinces-Unies
+Guernesey,5,322,étranger,Europe du Nord,Grande-Bretagne
+Douarnenez,5,139,France,France,France (hors région PASA)
+Portrieux ,1,1,France,France,France (hors région PASA)
+Bergue ,17,1163,étranger,Europe du Nord,Danemark
+Hull,13,1538,étranger,Europe du Nord,Grande-Bretagne
+Saint-Brieuc,13,975,France,France,France (hors région PASA)
+Barfleur,1,1,France,France,France (hors région PASA)
+Honfleur,9,984,France,France,France (hors région PASA)
+Avallon,9,83,France,France,France (région PASA)
+île-de-Bréhat,10,923,France,France,France (hors région PASA)
+La Teste,22,459,France,France,France (hors région PASA)
+Le Chapus,8,36,France,France,France (région PASA)
+Paimpol,23,1173,France,France,France (hors région PASA)
+Vannes,32,1210,France,France,France (hors région PASA)
+Tréguier,5,179,France,France,France (hors région PASA)
+Podensac,10,245,France,France,France (hors région PASA)
+Dartmouth,4,471,étranger,Europe du Nord,Grande-Bretagne
+Pornic,8,184,France,France,France (hors région PASA)
+Moëlan,4,96,France,France,France (hors région PASA)
+Harwich,1,1,étranger,Europe du Nord,Grande-Bretagne
+Saintes,1,1,France,France,France (région PASA)
+Mecklenbourg,1,1,étranger,,Suède
+Ribnitz,2,151,étranger,Europe centrale,Mecklenbourg
+Cavernes,13,437,France,France,France (hors région PASA)
+Rotterdam,5,460,étranger,Europe du Nord,Provinces-Unies
+île de Bouin,43,1054,France,France,France (région PASA)
+Angleterre,1,1,étranger,Europe du Nord,Grande-Bretagne
+Dublin,1,1,étranger,Europe du Nord,Grande-Bretagne
+Königsberg / Kaliningrad,12,2258,étranger,Europe centrale,Prusse
+Poole,4,411,étranger,Europe du Nord,Grande-Bretagne
+Méan,106,3065,France,France,France (hors région PASA)
+Port-Maubert,2,30,France,France,France (région PASA)
+Flekkefjord ,2,71,étranger,Europe du Nord,Danemark
+Landerneau,12,639,France,France,France (hors région PASA)
+Port-des-Barques,11,313,France,France,France (région PASA)
+Plymouth,5,426,étranger,Europe du Nord,Grande-Bretagne
+Stavanger,9,846,étranger,Europe du Nord,Danemark
+Bristol,4,349,étranger,Europe du Nord,Grande-Bretagne
+Lannion,6,246,France,France,France (hors région PASA)
+Teignmouth,3,211,étranger,Europe du Nord,Grande-Bretagne
+Saint-Valéry-en-Caux,4,256,France,France,France (hors région PASA)
+Bourgneuf,16,352,France,France,France (hors région PASA)
+île d'Yeu,59,1277,France,France,France (région PASA)
+Ouessant,3,130,France,France,France (hors région PASA)
+Argenton,18,1186,France,France,France (hors région PASA)
+Saint-Jean-de-Luz,2,211,France,France,France (hors région PASA)
+Carmarthen,1,1,étranger,Europe du Nord,Grande-Bretagne
+Appledore,1,1,étranger,Europe du Nord,Grande-Bretagne
+Bideford,2,151,étranger,Europe du Nord,Grande-Bretagne
+Regnéville,1,1,France,France,France (hors région PASA)
+Fouras,1,1,France,France,France (région PASA)
+Plassac,10,488,France,France,France (hors région PASA)
+Aber-Ildut,42,2611,France,France,France (hors région PASA)
+Sunderland,5,498,étranger,Europe du Nord,Grande-Bretagne
+Camaret,7,240,France,France,France (hors région PASA)
+Plencia,6,191,étranger,Europe du Sud,Espagne
+Blaye,4,55,France,France,France (hors région PASA)
+Saint-Vaize,2,41,France,France,France (région PASA)
+Arradon,6,64,France,France,France (hors région PASA)
+l'Aiguillon,5,5,France,France,France (région PASA)
+Cork,3,55,étranger,Europe du Nord,Grande-Bretagne
+Hollande,2,201,étranger,Europe du Nord,Provinces-Unies
+Frederikshald / Halden,5,425,étranger,Europe du Nord,Danemark
+Boston,6,369,étranger,Amérique,Etats-Unis d'Amérique
+Breuillet,8,41,France,France,France (région PASA)
 Saint-Nazaire,1,1,France,France,France (hors région PASA)
+Saint-Lunaire,1,1,France,France,France (hors région PASA)
+Ambon,1,1,France,France,France (hors région PASA)
 Saint-Trojan,2,25,France,France,France (région PASA)
 Southampton,1,1,étranger,Europe du Nord,Grande-Bretagne
 Port-Navalo,1,1,France,France,France (hors région PASA)
+Cabara,2,24,France,France,France (hors région PASA)
 New York,1,1,étranger,Amérique,Etats-Unis d'Amérique
 Pont-l'Abbé,2,13,France,France,France (hors région PASA)
 Billiers,1,1,France,France,France (hors région PASA)
-Appledore,1,1,étranger,Europe du Nord,Grande-Bretagne
 Croix-de-Vie,3,5,France,France,France (région PASA)
+Norden,1,1,étranger,Europe centrale,Prusse
+La Bouille,1,1,France,France,France (hors région PASA)
+Memel,4,851,étranger,Europe centrale,Prusse
+Portsmouth,2,241,étranger,Europe du Nord,Grande-Bretagne
 Zierikzee,2,238,étranger,Europe du Nord,Provinces-Unies
 île de Man,1,1,étranger,Europe du Nord,Grande-Bretagne
-Portsmouth,2,241,étranger,Europe du Nord,Grande-Bretagne
+Topsham,2,121,étranger,Europe du Nord,Grande-Bretagne
 "Portsmouth, VA,",1,1,étranger,Amérique,Etats-Unis d'Amérique
-Argenton,18,1182,France,France,France (hors région PASA)
+Norfolk,1,1,étranger,Amérique,Etats-Unis d'Amérique
 Binic,3,109,France,France,France (hors région PASA)
-Landerneau,12,660,France,France,France (hors région PASA)
 Emden,4,562,étranger,Europe centrale,Prusse
-Groningue,4,268,étranger,Europe du Nord,Provinces-Unies
+Papenbourg,1,1,étranger,,Evêché de Münster
+Georgie,1,1,étranger,Amérique,Etats-Unis d'Amérique
+Philadelphie,1,1,étranger,Amérique,Etats-Unis d'Amérique
 Caroline,1,1,étranger,Amérique,Etats-Unis d'Amérique
+Norvège,1,1,étranger,Europe du Nord,Danemark
 Newburyport,4,161,étranger,Amérique,Etats-Unis d'Amérique
 Moss,1,1,étranger,Europe du Nord,Danemark
+Roscoff,1,1,France,France,France (hors région PASA)
 Marblehead,1,1,étranger,Amérique,Etats-Unis d'Amérique
 Molde,2,51,étranger,Europe du Nord,Danemark
 Salem,1,1,étranger,Amérique,Etats-Unis d'Amérique
+Libourne,2,47,France,France,France (hors région PASA)
 Le Faou,5,262,France,France,France (hors région PASA)
+Pontrieux ,4,262,France,France,France (hors région PASA)
 Quillebeuf,2,97,France,France,France (hors région PASA)
 Quimper,2,117,France,France,France (hors région PASA)
 Middelbourg,2,181,étranger,Europe du Nord,Provinces-Unies
+Pauillac,1,1,France,France,France (hors région PASA)
+Holmestrand,2,127,étranger,Europe du Nord,Danemark
 Saint-Servant,3,222,France,France,France (hors région PASA)
 Harlingen,2,81,étranger,Europe du Nord,Provinces-Unies
-Ouessant,3,127,France,France,France (hors région PASA)
+Greenock,2,241,étranger,Europe du Nord,Grande-Bretagne
+Stavoren,1,1,étranger,Europe du Nord,Provinces-Unies
 Gloucester,3,201,étranger,Amérique,Etats-Unis d'Amérique
+Georgetown,2,101,étranger,Amérique,Etats-Unis d'Amérique
 Galway,1,1,étranger,Europe du Nord,Grande-Bretagne
 Farsund,1,1,étranger,Europe du Nord,Danemark
+Saltcoats,1,1,étranger,Europe du Nord,Grande-Bretagne
 Exeter,1,1,étranger,Europe du Nord,Grande-Bretagne
-Le Croisic,2,76,France,France,France (hors région PASA)
+Cognac,1,1,France,France,France (région PASA)
 Bayonne,7,847,France,France,France (hors région PASA)
 Aber-Wrac'h,1,1,France,France,France (hors région PASA)
 La Hougue,1,1,France,France,France (hors région PASA)
+Le Légué,1,1,France,France,France (hors région PASA)
 Dort,1,1,étranger,Europe du Nord,Provinces-Unies
+Dantzig ,7,1541,étranger,Europe de l'Est,Pologne
 Kristiansand ,3,248,étranger,Europe du Nord,Danemark
 Chichester,1,1,étranger,Europe du Nord,Grande-Bretagne
-Port-des-Barques,8,271,France,France,France (région PASA)
-Carmarthen,1,1,étranger,Europe du Nord,Grande-Bretagne
 Concarneau,1,1,France,France,France (hors région PASA)
 Penerf,1,1,France,France,France (hors région PASA)
 Côtes de Bretagne,1,1,France,France,France (hors région PASA)
+Wiscasset,1,1,étranger,Amérique,Etats-Unis d'Amérique
+Paillet ,1,1,France,France,France (hors région PASA)
 Royan,1,1,France,France,France (région PASA)
+Leith,3,180,étranger,Europe du Nord,Grande-Bretagne
 Espagne atlantique,2,35,étranger,Europe du Sud,Espagne
 Courseulles,1,1,France,France,France (hors région PASA)
 Barnstable,1,1,étranger,Amérique,Etats-Unis d'Amérique
+IJlst,1,1,étranger,Europe du Nord,Provinces-Unies
+Lutjegast,1,1,étranger,Europe du Nord,Provinces-Unies
+Neufahrwasser ,1,1,étranger,Europe centrale,Prusse
+Hoorn,1,1,étranger,Europe du Nord,Provinces-Unies
 Dundee,1,1,étranger,Europe du Nord,Grande-Bretagne
 Oude Pekela,3,181,étranger,Europe du Nord,Provinces-Unies
 Audierne ,1,1,France,France,France (hors région PASA)
 Newton,1,1,étranger,Europe du Nord,Grande-Bretagne
-Regnéville,1,1,France,France,France (hors région PASA)
+Frise,6,697,étranger,Europe du Nord,Provinces-Unies
+Waterford,1,1,étranger,Europe du Nord,Grande-Bretagne
+Sète,1,1,France,France,France (hors région PASA)
+Föhr,1,1,étranger,Europe du Nord,Danemark
+Workum,2,111,étranger,Europe du Nord,Provinces-Unies
 Christiania / Oslo,1,1,étranger,Europe du Nord,Danemark
 Arendal,1,1,étranger,Europe du Nord,Danemark
-île d'Aix,1,1,France,France,France (région PASA)
-Dublin,1,1,étranger,Europe du Nord,Grande-Bretagne
-Kristiansund ,1,1,étranger,Europe du Nord,Danemark
+Wijzend,1,1,étranger,Europe du Nord,Provinces-Unies
+Cowes,1,1,étranger,Europe du Nord,Grande-Bretagne
 Luçon,1,1,France,France,France (région PASA)
-Esnandes,1,1,France,France,France (région PASA)
+Ilfracombe,1,1,étranger,Europe du Nord,Grande-Bretagne
+île d'Aix,1,1,France,France,France (région PASA)
+Kristiansund ,1,1,étranger,Europe du Nord,Danemark
+Oldenbourg,2,121,étranger,Europe centrale,Duché d'Oldenbourg
+Stettin,1,1,étranger,Europe centrale,Prusse

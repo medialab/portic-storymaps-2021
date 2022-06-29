@@ -1,26 +1,26 @@
 port,latitude,longitude,tonnage,tonnage_french,tonnage_foreign,tonnage_part_of_french
-La Rochelle,46.166667,-1.15,47.7,40726,6976,75% ou plus
-Tonnay-Charente,45.95,-0.9,27.5,20572,6907,moins de 75%
-Saint-Michel-en-l'Herm,46.35,-1.25,0.6,516,38,75% ou plus
-Le Château-d'Oléron,45.9,-1.2,0.6,588,43,75% ou plus
-Ars-en-Ré,46.216667,-1.516667,20.4,9165,11192,moins de 75%
-Marennes,45.816667,-1.116667,89.6,80095,9496,75% ou plus
-Saint-Martin-de-Ré,46.2,-1.366667,16.2,10262,5936,moins de 75%
-Noirmoutier,47,-2.25,12.4,7322,5112,moins de 75%
-Ribérou,45.6755,-0.935826,6.5,6444,105,75% ou plus
-Rochefort,45.943666,-0.97043,25.4,16401,8978,moins de 75%
-Les Sables-d'Olonne,46.5,-1.783333,7.8,7784,40,75% ou plus
-Marans,46.312468,-0.995682,13.1,12701,418,75% ou plus
-La Perrotine,45.964614,-1.243436,1.4,1351,16,75% ou plus
+Marennes,45.816667,-1.116667,89.7,81026,8665,75% ou plus
 Royan,45.633333,-1.033333,0.4,438,0,100%
-Saint-Gilles-sur-Vie,46.697882,-1.945124,2.8,2765,75,75% ou plus
-île de Bouin,46.975134,-1.998682,3.6,3488,112,75% ou plus
-Beauvoir-sur-Mer,46.916667,-2.05,4.0,3539,438,75% ou plus
-La Tranche-sur-Mer,46.333333,-1.433333,0.3,276,38,75% ou plus
-Moricq,46.396209,-1.374028,2.3,2264,36,75% ou plus
+Marans,46.312468,-0.995682,13.1,13119,0,100%
+Rochefort,45.943666,-0.97043,25.4,16600,8779,moins de 75%
+La Rochelle,46.166667,-1.15,47.7,41390,6312,75% ou plus
+Moricq,46.396209,-1.374028,2.3,2300,0,100%
+Ribérou,45.6755,-0.935826,6.5,6549,0,100%
+Saint-Denis d'Oléron,46.033333,-1.383333,1.4,1367,0,100%
+Ars-en-Ré,46.216667,-1.516667,20.4,9165,11192,moins de 75%
+Saint-Martin-de-Ré,46.2,-1.366667,16.2,10225,5936,moins de 75%
+Tonnay-Charente,45.95,-0.9,27.5,20712,6767,75% ou plus
+Les Sables-d'Olonne,46.5,-1.783333,7.8,7824,0,100%
 Mortagne,45.483333,-0.783333,0.6,367,228,moins de 75%
+La Perrotine,45.964614,-1.243436,1.4,1370,0,100%
+La Tranche-sur-Mer,46.333333,-1.433333,0.3,314,0,100%
+Saint-Gilles-sur-Vie,46.697882,-1.945124,2.8,2765,75,75% ou plus
+Le Château-d'Oléron,45.9,-1.2,0.6,588,43,75% ou plus
+Saint-Michel-en-l'Herm,46.35,-1.25,0.6,516,38,75% ou plus
+île de Bouin,46.975134,-1.998682,3.6,3488,112,75% ou plus
+Noirmoutier,47,-2.25,12.5,7358,5112,moins de 75%
+Beauvoir-sur-Mer,46.916667,-2.05,4.0,3539,438,75% ou plus
+Champagné-les-Marais,46.366667,-1.133333,0.0,27,0,100%
 Esnandes,46.25,-1.083333,0.0,35,0,100%
-Saint-Denis d'Oléron,46.033333,-1.383333,1.4,1351,16,75% ou plus
 Soubise,45.933333,-1,0.0,31,0,100%
 La Flotte-en-Ré,46.188459,-1.328716,0.1,80,0,100%
-Champagné-les-Marais,46.366667,-1.133333,0.0,27,0,100%

@@ -232,7 +232,7 @@ const VisualizationContainer = ({
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height}
           orientation={'vertical'}
           y={{
-            field: 'country',
+            field: 'country_' + props.lang,
             title: translate('partie-1-pays-port-d-attache', 'y', props.lang),
             sort: {
               field: 'tonnage',

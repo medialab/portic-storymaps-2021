@@ -374,9 +374,12 @@ def compute_foreign_homeport_state (pointcalls):
       continue
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     country = pointcall['homeport_state_1789_fr']
+    country_en = pointcall['homeport_state_1789_en']
     if country not in countries:
       new_country = {
         "country": country,
+        "country_fr": country_en,
+        "country_en": country_en,
         # @todo aren't these coordinates irrelevant ?
         "latitude": pointcall["latitude"],
         "longitude": pointcall["longitude"],

@@ -7,6 +7,27 @@ from lib import ensure_dir, logger, write_readme
 
 logger.info('start | part 1 main viz datasets')
 
+products_names_translations = {
+  "Café": "Coffee",
+  "Cordonnerie et sellerie": "Shoemaking and upholstery",
+  "Cuirs, peaux et pelleterie": "Hides, skins and furs",
+  "Eaux-de-vie et liqueurs": "Brandies and liqueurs",
+  "Farine, gruau, biscuits et pâtes": "Flour, oatmeal, cookies and pasta",
+  "Indigo": "Indigo",
+  "Mercerie": "Haberdashery",
+  "Objets d'art et d'histoire naturelle": "Works of art and natural history",
+  "Ouvrages métalliques": "Metallic works",
+  "Quincaillerie": "Hardware store",
+  "Sel": "Salt",
+  "Sucre": "Sugar",
+  "Toiles de chanvre et de lin": "Hemp and linen fabrics",
+  "Toiles de coton": "Cotton fabrics",
+  "Vins de Bordeaux": "Bordeaux wines",
+  "Vins divers": "Diverse wines",
+  "Étoffes de laine": "Woolen fabrics",
+  "Étoffes de soie": "Silk fabrics",
+}
+
 def output_row(region, year, region_trade, region_products, total_trade):
   sum_imports = sum(value.get(
       'Imports') for value in region_products[year].values() if value.get('Imports'))
@@ -23,7 +44,6 @@ def output_row(region, year, region_trade, region_products, total_trade):
       'product_revolutionempire_exports_herfindahl': sum(pow(value['Exports']/sum_exports, 2) for value in region_products[year].values()) if sum_exports != 0 else None,
       'product_revolutionempire_total_herfindahl': sum(pow((value['Imports']+value['Exports'])/(sum_imports + sum_exports), 2) for value in region_products[year].values()) if sum_imports != 0 or sum_exports != 0 else None
   }
-
 
 with open('../data/toflit18_all_flows.csv', 'r') as f:
   toflit18_flows = csv.DictReader(f)
@@ -158,10 +178,16 @@ One product exported by La Rochelle, with its absolute and relative value in liv
   write_readme("decline_LR_products/README.md", info)
   with open("../public/data/decline_LR_products/decline_LR_products.csv", "w") as of:
       output_csv = csv.DictWriter(
-          of, ['product', 'year', 'Exports', 'Imports'])
+          of, ['product', 'product_fr', 'product_en', 'year', 'Exports', 'Imports'])
       output_csv.writeheader()
-      output_csv.writerows({'product': product, 'year': year, 'Exports': value.get("Exports"), 'Imports': value.get("Imports")} for year, products in LaRochelle_products.items(
-      ) if year in ['1750', '1789'] for product, value in products.items())
+      output_csv.writerows({
+        'product': product, 
+        'product_fr': product, 
+        'product_en': products_names_translations[product] if product in products_names_translations else product,
+        'year': year, 
+        'Exports': value.get("Exports"), 
+        'Imports': value.get("Imports")
+      } for year, products in LaRochelle_products.items() if year in ['1750', '1789'] for product, value in products.items())
       logger.debug('done | part 1 main viz : LR products')
 
   logger.info('start | part 1 main viz : LR partners')

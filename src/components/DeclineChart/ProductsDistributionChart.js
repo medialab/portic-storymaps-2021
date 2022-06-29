@@ -124,7 +124,8 @@ const ProductsDistributionChart = ({
       // group the long tail of low value (under the part Treshold) products as one aggregated misc
       const aggregatedMiscProducts = {
         [field]: totalValue - sum(dataTillTreshold.map((d) => +d[field])),
-        product: translate('viz-principale-partie-1', 'other_product', lang, { number: thisYearData.length - dataTillTreshold.length }),
+        // product: translate('viz-principale-partie-1', 'other_product', lang, { number: thisYearData.length - dataTillTreshold.length }),
+        ['product_' + lang]: translate('viz-principale-partie-1', 'other_product', lang, { number: thisYearData.length - dataTillTreshold.length }),
       };
       dataTillTreshold.push(aggregatedMiscProducts);
       return {
@@ -307,7 +308,7 @@ const ProductsDistributionChart = ({
                     }
                   }}
                   data-tip={productTooltipFn && i !== dataTillTreshold.length - 1 ? 
-                    productTooltipFn(year, d.product, (d[field] / totalValue * 100).toFixed(2))
+                    productTooltipFn(year, d['product_' + lang], (d[field] / totalValue * 100).toFixed(2))
                     : undefined}
                   data-for={'product-tooltip'}
                   data-html={true}
@@ -331,7 +332,7 @@ const ProductsDistributionChart = ({
                       fontSize
                     }}
                   >
-                    {d.product}
+                    {d['product_' + lang]}
                   </span>
                 </div>
               )

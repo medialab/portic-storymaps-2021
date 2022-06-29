@@ -202,7 +202,7 @@
     },
     "value_export_in": {
       "fr": "${number}% de valeur d'exports de produits fabriqués dans la direction ${onclick}",
-      "en": "${number}% of exports (value) of goods produced within the Customs region ${onclick"
+      "en": "${number}% of exports (value) of goods produced within the Customs region ${onclick}"
     },
     "value_tonnage_out": {
       "fr": "${number}% du tonnage cumulé des voyages réalisés vers l'extérieur de la direction ${onclick}",

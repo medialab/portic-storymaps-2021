@@ -158,7 +158,8 @@ def compute_flows_homeport_larochelle(flows_of_boats_from_larochelle):
           'longitude_dep':flow['departure_longitude'],
           'latitude_dest':flow['destination_latitude'],
           'longitude_dest':flow['destination_longitude'],
-          'category': 'région PASA' if flow['departure_admiralty'] in admiralties else 'France',
+          'category_fr': 'région PASA' if flow['departure_admiralty'] in admiralties else 'France',
+          'category_en': 'PASA region' if flow['departure_admiralty'] in admiralties else 'France',
           'nb_flows': 1,
           'tonnages_cumulés': tonnage
       }

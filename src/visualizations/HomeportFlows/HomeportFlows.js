@@ -18,10 +18,6 @@ const HomeportFlows = ({
   dimensions,
   lang
 }) => {
-  const englishCategoriesTranslation = {
-    'région PASA': 'PASA region',
-    France: 'France'
-  }
   const totalHeight = atlasMode ? window.innerHeight * .9 : fixSvgDimension(dimensions.height);
   const hotFixedData = datasets['voyages-bateaux-homeport-larochelle-1787/voyages-bateaux-homeport-larochelle-1787.csv']
   .map(datum => {
@@ -33,15 +29,6 @@ const HomeportFlows = ({
       }
     }
     return datum;
-  })
-  .map(datum => {
-    if (lang === 'fr') {
-      return datum;
-    }
-    return {
-      ...datum,
-      category: englishCategoriesTranslation[datum.category] || datum.category
-    }
   })
   return (
     <div className="HomeportFlows">
@@ -65,7 +52,7 @@ const HomeportFlows = ({
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
-                field: 'category',
+                field: 'category_' + lang,
                 title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               },
               hideOverflowingFlows: true
@@ -98,7 +85,7 @@ const HomeportFlows = ({
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
-                field: 'category',
+                field: 'category_' + lang,
                 title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               }
             },
@@ -126,7 +113,7 @@ const HomeportFlows = ({
                 fields: ['port_dep', 'port_dest'],
               },
               color: {
-                field: 'category',
+                field: 'category_' + lang,
                 title: translate('partie-2-carte-direction-bateaux-de-la-rochelle', 'color', lang)
               }
             },

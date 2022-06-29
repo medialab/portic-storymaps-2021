@@ -1,13 +1,13 @@
 country,nb_pointcalls,tonnage
-France (hors région PASA),942,66297
 France (région PASA),497,15563
-Espagne,6,426
-Indéterminé,4,150
-Prusse,7,1264
-Grande-Bretagne,4,783
-Etats-Unis d'Amérique,2,499
-Autriche,3,234
-Lubeck,8,1423
+France (hors région PASA),942,66297
 Provinces-Unies,21,3512
-zone maritime,1,0
-Russie,1,210
+Indéterminé,4,150
+Espagne,6,426
+Prusse,7,1264
+Lubeck,8,1423
+Etats-Unis d'Amérique,2,499
+Grande-Bretagne,4,783
+Empire russe,1,210
+zone maritime,1,100
+Autriche,3,234

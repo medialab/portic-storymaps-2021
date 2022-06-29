@@ -90,7 +90,7 @@ const VisualizationContainer = ({
           orientation={'vertical'}
           layout={'groups'}
           y={{
-            field: 'product',
+            field: 'product_' + props.lang,
             title: translate('partie-1-produits-importants-pour-la-rochelle', 'y', props.lang),
           }}
           x={{
@@ -100,11 +100,11 @@ const VisualizationContainer = ({
             tickFormat: (d, i) => parseInt(d * 100) + '%'
           }}
           color={{
-            field: 'entity',
+            field: 'entity_' + props.lang,
             title: translate('partie-1-produits-importants-pour-la-rochelle', 'color', props.lang),
             palette: {
-              'direction des fermes de La Rochelle': '#00C4AF',
-              'France (moyenne)': '#FEA43B'
+              [props.lang === 'fr' ? 'direction des fermes de La Rochelle' : 'direction des fermes of La Rochelle']: '#00C4AF',
+              [props.lang === 'fr' ? 'France (moyenne)' : 'France (mean)']: '#FEA43B'
             }
           }}
           margins={{

@@ -26,6 +26,7 @@ products_names_translations = {
   "Vins divers": "Diverse wines",
   "Étoffes de laine": "Woolen fabrics",
   "Étoffes de soie": "Silk fabrics",
+  "Toiles diverses" : "Various clothes"
 }
 
 def output_row(region, year, region_trade, region_products, total_trade):

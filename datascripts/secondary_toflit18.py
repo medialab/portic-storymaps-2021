@@ -2,6 +2,28 @@ import csv
 from operator import itemgetter
 from lib import get_online_csv, write_csv, logger, write_readme
 
+products_names_translations = {
+  "Café": "Coffee",
+  "Cordonnerie et sellerie": "Shoemaking and upholstery",
+  "Cuirs, peaux et pelleterie": "Hides, skins and furs",
+  "Eaux-de-vie et liqueurs": "Brandies and liqueurs",
+  "Farine, gruau, biscuits et pâtes": "Flour, oatmeal, cookies and pasta",
+  "Indigo": "Indigo",
+  "Mercerie": "Haberdashery",
+  "Objets d'art et d'histoire naturelle": "Works of art and natural history",
+  "Ouvrages métalliques": "Metallic works",
+  "Quincaillerie": "Hardware store",
+  "Sel": "Salt",
+  "Sucre": "Sugar",
+  "Toiles de chanvre et de lin": "Hemp and linen fabrics",
+  "Toiles de coton": "Cotton fabrics",
+  "Vins de Bordeaux": "Bordeaux wines",
+  "Vins divers": "Diverse wines",
+  "Étoffes de laine": "Woolen fabrics",
+  "Étoffes de soie": "Silk fabrics",
+  "Toiles diverses" : "Various clothes"
+}
+
 """
 Produits dont les valeurs d'exports sont les plus importantes en 1789 : comparaison de La Rochelle à la moyenne française
 """
@@ -152,14 +174,22 @@ def compute_top_shared_toflit18_products(flows):
 
         final_vega_data_1789_without_ports_francs.append({
             "product": values['product'],
+            "product_fr": values['product'],
+            "product_en": products_names_translations[values['product']] if values["product"] in products_names_translations else values['product'],
             "entity": 'direction des fermes de La Rochelle',
+            "entity_fr": 'direction des fermes de La Rochelle',
+            "entity_en": 'direction des fermes of La Rochelle',
             "value_rel_per_direction": values['exports_rel_la_rochelle'],
             "order": i
         })
 
         final_vega_data_1789_without_ports_francs.append({
             "product": values['product'],
+            "product_fr": values['product'],
+            "product_en": products_names_translations[values['product']] if values["product"] in products_names_translations else values['product'],
             "entity": "France (moyenne)",
+            "entity_fr": "France (moyenne)",
+            "entity_en": "France (mean)",
             "value_rel_per_direction": values['exports_rel_toute_france'],
             "order": i
         })

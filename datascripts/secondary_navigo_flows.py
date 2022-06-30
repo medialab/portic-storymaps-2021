@@ -46,16 +46,20 @@ def compute_sorties_from_marennes(flows_from_marennes):
   for flow in flows_from_marennes:
     tonnage = int(flow["tonnage"]) if flow["tonnage"] != "" else 0
     country = flow['destination_state_1789_fr'] if flow['destination_state_1789_fr'] != '' else 'Indéterminé'
+    country_en = flow['destination_state_1789_en'] if flow['destination_state_1789_en'] != '' else 'Indetermined'
     if country == 'France':
       admiralty = flow['destination_admiralty']
       if admiralty in admiralties:
         country = 'France (région PASA)'
+        country_en = 'France (inside PASA region)'
       else:
         country = 'France (hors région PASA)'
+        country_en = 'France (outside PASA region)'
     # country = flow['destination_fr'] if country == 'France' else country
     if country not in countries:
       countries[country] = {
         "country": country,
+        "country_en": country_en,
         "nb_pointcalls": 1,
         "tonnage": tonnage
       }

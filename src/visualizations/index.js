@@ -196,7 +196,7 @@ const VisualizationContainer = ({
           height={props.atlasMode ? window.innerHeight * .8 : dimensions.height / 2}
           orientation={'vertical'}
           y={{
-            field: 'country',
+            field: props.lang === 'fr' ? 'country' : 'country_en',
             title: translate('sorties-de-marennes', 'y', props.lang),
             sort: {
               field: 'tonnage',

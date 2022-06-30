@@ -679,14 +679,14 @@ const VisualizationContainer = ({
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
             // tooltip: d => `En 1789, ${d.tonnage} tonneaux cumulés sortis de la région PASA étaient rattachés au port de ${d.homeport} - ${d.category_2}.`,
-            tooltip: d => translate('partie-1-ports-dattache-vers-etranger', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
-            fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'homeport'],
+            tooltip: d => translate('partie-1-ports-dattache-vers-etranger', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: props.lang === 'fr' ? d.homeport : d.homeport_en, category: props.lang === 'fr' ? d.category_2 : d.category_2_en }),
+            fieldsHierarchy: props.lang === 'fr' ? ['country_group', 'category_1', 'category_2', 'homeport'] : ['country_group_en', 'category_1_en', 'category_2_en', 'homeport'],
             color: {
-              field: 'category_2',
-              palette: colorPalettes.portsTreemaps
+              field: props.lang === 'fr' ? 'category_2' : 'category_2_en',
+              palette: props.lang === 'fr' ? colorPalettes.portsTreemaps : colorPalettes.portsTreemapsEn
             },
             leaf: {
-              labelField: 'homeport',
+              labelField:props.lang === 'fr' ? 'homeport' : 'homeport_en',
               countField: 'tonnage'
             }
           }

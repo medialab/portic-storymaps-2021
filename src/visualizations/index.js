@@ -553,7 +553,7 @@ const VisualizationContainer = ({
             tooltip: d => translate('partie-1-ports-destinations', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: props.lang === 'fr' ? d.homeport : d.homeport_en, category: props.lang === 'fr' ? d.category_2 : d.category_2_en }),
             fieldsHierarchy: props.lang === 'fr' ? ['country_group', 'category_1', 'category_2', 'ports'] : ['country_group_en', 'category_1_en', 'category_2_en', 'ports'],
             color: {
-              field: 'category_2_en',
+              field: props.lang === 'fr' ? 'category_2' : 'category_2_en',
               palette: thatPalette
             },
             leaf: {

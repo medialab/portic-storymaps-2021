@@ -435,7 +435,7 @@ def compute_foreign_homeport_state (pointcalls):
     if country not in countries:
       new_country = {
         "country": country,
-        "country_fr": country_en,
+        "country_fr": country,
         "country_en": country_en,
         # @todo aren't these coordinates irrelevant ?
         "latitude": pointcall["latitude"],

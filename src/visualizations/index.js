@@ -509,6 +509,7 @@ const VisualizationContainer = ({
         />
       );
     case 'partie-1-ports-dattache':
+      // console.log(datasets['hierarchie_ports_dattache_des_navires_partant_de_la_region/hierarchie_ports_dattache_des_navires_partant_de_la_region.csv'])
       return (
         <TreemapChart
         {
@@ -517,14 +518,18 @@ const VisualizationContainer = ({
             title: translate('partie-1-ports-dattache', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
-            tooltip: d => translate('partie-1-ports-dattache', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
+            tooltip: d => translate('partie-1-ports-dattache', 'tooltip', props.lang, { 
+              tonnage: formatNumber(d.tonnage), 
+              homeport: d[`homeport_${props.lang}`], 
+              category: props.lang === 'fr' ? d.category_2 : d.category_2_en 
+            }),
             fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
             color: {
-              field: 'category_2',
-              palette: colorPalettes.portsTreemaps
+              field: props.lang === 'fr' ? 'category_2' : 'category_2_en',
+              palette: props.lang === 'fr' ? colorPalettes.portsTreemaps :  colorPalettes.portsTreemapsEn
             },
             leaf: {
-              labelField: 'homeport',
+              labelField: 'homeport_' + props.lang,
               countField: 'tonnage'
             }
           }

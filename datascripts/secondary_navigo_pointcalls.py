@@ -44,25 +44,36 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
   for pointcall in pointcalls:
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     homeport = pointcall["homeport_toponyme_fr"]
+    homeport_en = pointcall["homeport_toponyme_en"]
     homeport = homeport if homeport != "" and homeport != "port pas identifié" and homeport != "pas identifié" else "Indéterminé"
     if homeport in homeports:
       homeports[homeport]["nb_pointcalls"] += 1
       homeports[homeport]["tonnage"] += tonnage
     else:
       country = pointcall["homeport_state_1789_fr"]
+      country_en = pointcall["homeport_state_1789_en"]
       country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
       category_1 = "France" if country == "France" else "étranger"
+      category_1_en = "France" if country == "France" else "foreign"
       category_2 = country if country != "France" else "France (hors région PASA)"
+      category_2_en = country_en if country_en != "France" else "France (outside PASA region)"
       if country == "France" and pointcall["homeport_admiralty"] in admiralties:
         category_2 = "France (région PASA)"
+        category_2_en = "France (PASA region)"
       if category_2 == '':
         category_2 = 'Indéterminé'
+        category_2_en = "Indetermined"
       homeports[homeport] = {
         "nb_pointcalls": 1,
         "tonnage": 1,
+        "homeport_fr": homeport,
+        "homeport_en": homeport_en,
         "category_1": category_1,
+        "category_1_en": category_1_en,
         "country_group": compute_hierarchy_country_group(country, homeport),
+        "country_group_en": compute_hierarchy_country_group(country_en, homeport),
         "category_2": category_2,
+        "category_2_en": category_2_en
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
   # write and document datasets

@@ -86,6 +86,31 @@ const colorsPalettes = {
     'Russie': '#804a45',
     'Espagne': '#e35027',
     'Portugal': '#e35027',
+  },
+  portsTreemapsEn: {
+    'France (PASA region)': '#41BEA3',
+    'France (outside PASA region)': '#FED63B',
+    'Indetermined': 'rgb(240,240,240)',
+    'sea zone': '#98a9d9',
+    'multi-state': '#a42e0d',
+
+    'Hamburg': '#F7E0DE',
+    'Duchy of Oldenburg': '#F3D1CE',
+    'Prussia': '#EFC1BD',
+    'Lubeck': '#E7A39C',
+    'Bremen': '#EBB2AD',
+    'Mecklenburg': '#E3938C',
+    'Austria': '#bd6a62',
+
+    'Great Britain': '#A07BEE',
+    'United Provinces': '#2759e3',
+    'Denmark': '#8e7bee',
+
+    'United States': '#EBB2AD',
+    'Poland': '#804a45',
+    'Russia': '#804a45',
+    'Spain': '#e35027',
+    'Portugal': '#e35027',
   }
 }
 

@@ -1,295 +1,295 @@
-product,entity,value_rel_per_direction,order
-Eaux-de-vie et liqueurs,direction des fermes de La Rochelle,0.4501860027193538,0
-Eaux-de-vie et liqueurs,France (moyenne),0.04263289718146038,0
-Café,direction des fermes de La Rochelle,0.19687338665752493,1
-Café,France (moyenne),0.17465884170467802,1
-Sucre,direction des fermes de La Rochelle,0.1649364173581073,2
-Sucre,France (moyenne),0.1673413840630433,2
-Toiles de coton,direction des fermes de La Rochelle,0.027651553686485073,3
-Toiles de coton,France (moyenne),0.03029936802406252,3
-Sel,direction des fermes de La Rochelle,0.02236440304806508,4
-Sel,France (moyenne),0.0015737226018783502,4
-Vins divers,direction des fermes de La Rochelle,0.02185883484589714,5
-Vins divers,France (moyenne),0.07140506629053758,5
-Objets d'art et d'histoire naturelle,direction des fermes de La Rochelle,0.02172690641845075,6
-Objets d'art et d'histoire naturelle,France (moyenne),0.002956441346481872,6
-Indigo,direction des fermes de La Rochelle,0.019669204974920595,7
-Indigo,France (moyenne),0.01849817788050606,7
-Toiles de chanvre et de lin,direction des fermes de La Rochelle,0.01277615262122752,8
-Toiles de chanvre et de lin,France (moyenne),0.05449138162915389,8
-Ouvrages métalliques,direction des fermes de La Rochelle,0.009610256184219521,9
-Ouvrages métalliques,France (moyenne),0.009201344022815175,9
-Toiles diverses,direction des fermes de La Rochelle,0.007053315783419147,10
-Toiles diverses,France (moyenne),0.005939385312587618,10
-Graines grasses,direction des fermes de La Rochelle,0.004443321212882972,11
-Graines grasses,France (moyenne),0.00020676436477395536,11
-Plomb,direction des fermes de La Rochelle,0.004065606482129045,12
-Plomb,France (moyenne),0.00013983019544627559,12
-Denrées coloniales et épiceries diverses,direction des fermes de La Rochelle,0.00326931397074326,13
-Denrées coloniales et épiceries diverses,France (moyenne),0.005787002083686966,13
-Divers incertains,direction des fermes de La Rochelle,0.0028542939332588993,14
-Divers incertains,France (moyenne),0.01329302617496429,14
-"Armes, munitions, poudre et pierres à fusil",direction des fermes de La Rochelle,0.002808322252200368,15
-"Armes, munitions, poudre et pierres à fusil",France (moyenne),0.002498611728114429,15
-"Ouvrages de bois, liège et jonc",direction des fermes de La Rochelle,0.0025774889187929846,16
-"Ouvrages de bois, liège et jonc",France (moyenne),0.003860578977417769,16
-"Brai, goudron et résines",direction des fermes de La Rochelle,0.0024128008070083704,17
-"Brai, goudron et résines",France (moyenne),0.0010378702272830199,17
-Étoffes de laine,direction des fermes de La Rochelle,0.0022933344319247804,18
-Étoffes de laine,France (moyenne),0.051793935616975165,18
-Étoffes de soie,direction des fermes de La Rochelle,0.002019529199388568,19
-Étoffes de soie,France (moyenne),0.04106681760769584,19
-"Bière, cidre et vinaigre",direction des fermes de La Rochelle,0.0018010886553037591,20
-"Bière, cidre et vinaigre",France (moyenne),0.0009874158836363843,20
-"Farine, gruau, biscuits et pâtes",direction des fermes de La Rochelle,0.0016851283415745526,21
-"Farine, gruau, biscuits et pâtes",France (moyenne),0.007591259299937789,21
-Cordage et filets,direction des fermes de La Rochelle,0.0016354819258147682,22
-Cordage et filets,France (moyenne),0.0028196021229173994,22
-Chairs et œufs,direction des fermes de La Rochelle,0.0013046058135305258,23
-Chairs et œufs,France (moyenne),0.008785483555282707,23
-Ouvrages divers et mélangés,direction des fermes de La Rochelle,0.0012984562574998577,24
-Ouvrages divers et mélangés,France (moyenne),0.004473560576324368,24
-"Porcelaine, poterie, faïence et ouvrages de terre",direction des fermes de La Rochelle,0.001228336319833093,25
-"Porcelaine, poterie, faïence et ouvrages de terre",France (moyenne),0.002750752242127784,25
-Quincaillerie,direction des fermes de La Rochelle,0.0011137445928225938,26
-Quincaillerie,France (moyenne),0.005248306669202517,26
-Légumes,direction des fermes de La Rochelle,0.001083521774769432,27
-Légumes,France (moyenne),0.0020618506564791,27
-Châles et mouchoirs hors soie,direction des fermes de La Rochelle,0.000933007641189542,28
-Châles et mouchoirs hors soie,France (moyenne),0.009311436612995886,28
-Étoffes diverses,direction des fermes de La Rochelle,0.0008939354620190773,29
-Étoffes diverses,France (moyenne),0.009188320770217142,29
-Matières brutes et transformées pour teinture,direction des fermes de La Rochelle,0.0005999566859188439,30
-Matières brutes et transformées pour teinture,France (moyenne),0.0021781663818867462,30
-Verrerie,direction des fermes de La Rochelle,0.0005275119160941434,31
-Verrerie,France (moyenne),0.0023094714505979825,31
-Coton non transformé,direction des fermes de La Rochelle,0.0004487676010672952,32
-Coton non transformé,France (moyenne),0.027144659411793042,32
-Beurre,direction des fermes de La Rochelle,0.0004363184998344792,33
-Beurre,France (moyenne),0.0035071589949196603,33
-Blé et autres grains comestibles,direction des fermes de La Rochelle,0.00034032543008746417,34
-Blé et autres grains comestibles,France (moyenne),0.0037795073234879882,34
-Matières premières diverses,direction des fermes de La Rochelle,0.0003209768269665814,35
-Matières premières diverses,France (moyenne),0.0013011646313928176,35
-Rocou,direction des fermes de La Rochelle,0.00027852989143782326,36
-Rocou,France (moyenne),0.00015875175372788352,36
-Bois divers hors combustible,direction des fermes de La Rochelle,0.0002735802487789928,37
-Bois divers hors combustible,France (moyenne),0.00038176315784471427,37
-Subsistances diverses et mélangées,direction des fermes de La Rochelle,0.0002688555898773819,38
-Subsistances diverses et mélangées,France (moyenne),0.0038605311722382496,38
-Riz,direction des fermes de La Rochelle,0.0002683306277772029,39
-Riz,France (moyenne),0.001521472311852702,39
-Habits et lingerie,direction des fermes de La Rochelle,0.00021598440693078379,40
-Habits et lingerie,France (moyenne),0.005317677696948219,40
-"Cornes, corail, écailles, ivoire et nacre",direction des fermes de La Rochelle,0.00020998484007159535,41
-"Cornes, corail, écailles, ivoire et nacre",France (moyenne),0.00017233537087299724,41
-Chapeaux hors paille et écorce,direction des fermes de La Rochelle,0.00020248538149760979,42
-Chapeaux hors paille et écorce,France (moyenne),0.006939899097726848,42
-Mercerie,direction des fermes de La Rochelle,0.00015403887910966316,43
-Mercerie,France (moyenne),0.010000906439857423,43
-Divers mélangés,direction des fermes de La Rochelle,0.00012059129386968762,44
-Divers mélangés,France (moyenne),0.002345689640374378,44
-Fer-blanc,direction des fermes de La Rochelle,0.00012029131552672819,45
-Fer-blanc,France (moyenne),0.00018278009769833676,45
-Papier,direction des fermes de La Rochelle,0.00010469244169283825,46
-Papier,France (moyenne),0.005045931650037711,46
-"Cuirs, peaux et pelleterie",direction des fermes de La Rochelle,9.299328631742079e-05,47
-"Cuirs, peaux et pelleterie",France (moyenne),0.010857083329788849,47
-Produits inconnus,direction des fermes de La Rochelle,9.156838918836354e-05,48
-Produits inconnus,France (moyenne),0.00040283625975539287,48
-Quinquina,direction des fermes de La Rochelle,6.749512716586993e-05,49
-Quinquina,France (moyenne),0.00023471240317199352,49
-Manne et médicaments,direction des fermes de La Rochelle,6.719514882291051e-05,50
-Manne et médicaments,France (moyenne),0.000637977786672102,50
-Bonneterie hors soie,direction des fermes de La Rochelle,5.872076063430684e-05,51
-Bonneterie hors soie,France (moyenne),0.0021352145627837236,51
-Bâtiments de mer et apparaux,direction des fermes de La Rochelle,5.534600427601334e-05,52
-Bâtiments de mer et apparaux,France (moyenne),0.0029911897875718966,52
-Argenterie et orfèvrerie,direction des fermes de La Rochelle,5.324615587529739e-05,53
-Argenterie et orfèvrerie,France (moyenne),0.0020700502261252183,53
-Fruits secs et noix,direction des fermes de La Rochelle,2.9322883024283493e-05,54
-Fruits secs et noix,France (moyenne),0.004657857519063065,54
-Dorure,direction des fermes de La Rochelle,2.6998050866347973e-05,55
-Dorure,France (moyenne),0.003939386937624221,55
-Soieries diverses,direction des fermes de La Rochelle,2.4298245779713175e-05,56
-Soieries diverses,France (moyenne),0.005033233950529084,56
-Fils divers,direction des fermes de La Rochelle,1.9498592292362425e-05,57
-Fils divers,France (moyenne),0.011327455233243773,57
-Métaux divers et mélangés,direction des fermes de La Rochelle,1.9123619363663147e-05,58
-Métaux divers et mélangés,France (moyenne),3.7713697318226046e-05,58
-Pêche et fruits de mer,direction des fermes de La Rochelle,1.5898852176849363e-05,59
-Pêche et fruits de mer,France (moyenne),0.004591130177176996,59
-Salsepareille,direction des fermes de La Rochelle,1.5298895490930518e-05,60
-Salsepareille,France (moyenne),0.0002449257312445688,60
-Céruse et blanc de plomb,direction des fermes de La Rochelle,1.4323965876312396e-05,61
-Céruse et blanc de plomb,France (moyenne),2.1928779868080407e-05,61
-Châles et mouchoirs de soie,direction des fermes de La Rochelle,1.079922034653919e-05,62
-Châles et mouchoirs de soie,France (moyenne),0.0005636299601624613,62
-Vin de liqueurs,direction des fermes de La Rochelle,9.899285317660924e-06,63
-Vin de liqueurs,France (moyenne),5.773531827631325e-05,63
-Cacao et chocolat,direction des fermes de La Rochelle,8.999350288782657e-06,64
-Cacao et chocolat,France (moyenne),0.0021913563483462145,64
-Acier,direction des fermes de La Rochelle,0.0,65
-Acier,France (moyenne),7.864331817785362e-05,65
-Animaux,direction des fermes de La Rochelle,0.0,66
-Animaux,France (moyenne),0.011280346378977811,66
-Chevaux et bêtes de somme,direction des fermes de La Rochelle,0.0,67
-Chevaux et bêtes de somme,France (moyenne),0.0023848233491332357,67
-Cendres diverses,direction des fermes de La Rochelle,0.0,68
-Cendres diverses,France (moyenne),0.00022531992887425445,68
-Chanvre,direction des fermes de La Rochelle,0.0,69
-Chanvre,France (moyenne),0.0006494543658452976,69
-Cuivre,direction des fermes de La Rochelle,0.0,70
-Cuivre,France (moyenne),0.00028732451674662963,70
-Mercure,direction des fermes de La Rochelle,0.0,71
-Mercure,France (moyenne),4.047943236558451e-06,71
-Azur et cobalt,direction des fermes de La Rochelle,0.0,72
-Azur et cobalt,France (moyenne),2.4002457971659495e-05,72
-Fromage,direction des fermes de La Rochelle,0.0,73
-Fromage,France (moyenne),0.002280403905546643,73
-Graines diverses et mélangées,direction des fermes de La Rochelle,0.0,74
-Graines diverses et mélangées,France (moyenne),0.00011364287862091549,74
-Horlogerie,direction des fermes de La Rochelle,0.0,75
-Horlogerie,France (moyenne),0.0006079464304923621,75
-Laines non transformées diverses,direction des fermes de La Rochelle,0.0,76
-Laines non transformées diverses,France (moyenne),0.003675381003479401,76
-Parfumerie et toilette,direction des fermes de La Rochelle,0.0,77
-Parfumerie et toilette,France (moyenne),0.0016175516464872986,77
-"Faucilles, faux et limes",direction des fermes de La Rochelle,0.0,78
-"Faucilles, faux et limes",France (moyenne),1.4458994402698127e-05,78
-Fer,direction des fermes de La Rochelle,0.0,79
-Fer,France (moyenne),0.0001827329600754662,79
-Huiles diverses,direction des fermes de La Rochelle,0.0,80
-Huiles diverses,France (moyenne),0.0004263223853987731,80
-Drogues diverses,direction des fermes de La Rochelle,0.0,81
-Drogues diverses,France (moyenne),0.002335949968252379,81
-Librairie,direction des fermes de La Rochelle,0.0,82
-Librairie,France (moyenne),0.001970617372078162,82
-Bijouterie et pierres fines,direction des fermes de La Rochelle,0.0,83
-Bijouterie et pierres fines,France (moyenne),0.00137797595937288,83
-Drogues médicinales diverses,direction des fermes de La Rochelle,0.0,84
-Drogues médicinales diverses,France (moyenne),0.000736708773422069,84
-Marbre brut et ouvré,direction des fermes de La Rochelle,0.0,85
-Marbre brut et ouvré,France (moyenne),0.00021073626042634788,85
-Rubanerie et passementerie diverse,direction des fermes de La Rochelle,0.0,86
-Rubanerie et passementerie diverse,France (moyenne),0.00010821309860425806,86
-"Mousseline, basin et nankin",direction des fermes de La Rochelle,0.0,87
-"Mousseline, basin et nankin",France (moyenne),0.0070412187095072664,87
-Bonneterie de soie,direction des fermes de La Rochelle,0.0,88
-Bonneterie de soie,France (moyenne),0.0019957720256724436,88
-Dentelles,direction des fermes de La Rochelle,0.0,89
-Dentelles,France (moyenne),0.007738801081424642,89
-Gants,direction des fermes de La Rochelle,0.0,90
-Gants,France (moyenne),0.0003373789327137772,90
-Cordonnerie et sellerie,direction des fermes de La Rochelle,0.0,91
-Cordonnerie et sellerie,France (moyenne),0.0031903748381370617,91
-Plumes brutes,direction des fermes de La Rochelle,0.0,92
-Plumes brutes,France (moyenne),0.00027053154801627083,92
-"Gravelée, potasse et védasse",direction des fermes de La Rochelle,0.0,93
-"Gravelée, potasse et védasse",France (moyenne),0.00017913886393616324,93
-Cire,direction des fermes de La Rochelle,0.0,94
-Cire,France (moyenne),0.0023496821599844862,94
-"Alquifoux, mine de plomb et graphite",direction des fermes de La Rochelle,0.0,95
-"Alquifoux, mine de plomb et graphite",France (moyenne),0.00017491237639344898,95
-Étain,direction des fermes de La Rochelle,0.0,96
-Étain,France (moyenne),0.0004099250732827314,96
-Poils et crin,direction des fermes de La Rochelle,0.0,97
-Poils et crin,France (moyenne),0.00015957080941564737,97
-Textiles manufacturés divers et mélangés,direction des fermes de La Rochelle,0.0,98
-Textiles manufacturés divers et mélangés,France (moyenne),0.0008562979338531593,98
-Rubanerie et passementerie de soie,direction des fermes de La Rochelle,0.0,99
-Rubanerie et passementerie de soie,France (moyenne),0.008360455753053393,99
-Savon,direction des fermes de La Rochelle,0.0,100
-Savon,France (moyenne),0.010064678664337787,100
-Fleurs artificielles et ouvrages de mode,direction des fermes de La Rochelle,0.0,101
-Fleurs artificielles et ouvrages de mode,France (moyenne),0.0014079436812186722,101
-Fruits frais,direction des fermes de La Rochelle,0.0,102
-Fruits frais,France (moyenne),0.00035965915667195825,102
-"Meubles, glaces et miroirs",direction des fermes de La Rochelle,0.0,103
-"Meubles, glaces et miroirs",France (moyenne),0.002211171617256875,103
-Graines de jardin,direction des fermes de La Rochelle,0.0,104
-Graines de jardin,France (moyenne),0.0006649561627326373,104
-Miel,direction des fermes de La Rochelle,0.0,105
-Miel,France (moyenne),0.0014209355970803967,105
-Graisses diverses,direction des fermes de La Rochelle,0.0,106
-Graisses diverses,France (moyenne),0.0006971473058114254,106
-Huile d'olive à manger,direction des fermes de La Rochelle,0.0,107
-Huile d'olive à manger,France (moyenne),0.008876915547107898,107
-"Bougies, chandelles et flambeaux",direction des fermes de La Rochelle,0.0,108
-"Bougies, chandelles et flambeaux",France (moyenne),0.004324979417739481,108
-Alcalis,direction des fermes de La Rochelle,0.0,109
-Alcalis,France (moyenne),1.5328978650697366e-05,109
-Colles diverses,direction des fermes de La Rochelle,0.0,110
-Colles diverses,France (moyenne),2.7002872742537856e-05,110
-Bouchons principalement en liège,direction des fermes de La Rochelle,0.0,111
-Bouchons principalement en liège,France (moyenne),0.00047847719808439334,111
-Thé,direction des fermes de La Rochelle,0.0,112
-Thé,France (moyenne),0.00016434074344230288,112
-Bois des Indes,direction des fermes de La Rochelle,0.0,113
-Bois des Indes,France (moyenne),5.962867242485155e-06,113
-Combustibles dont charbons et bois,direction des fermes de La Rochelle,0.0,114
-Combustibles dont charbons et bois,France (moyenne),0.0012047042463901791,114
-Réglisse,direction des fermes de La Rochelle,0.0,115
-Réglisse,France (moyenne),0.0005238797095261283,115
-Sirop et mélasse,direction des fermes de La Rochelle,0.0,116
-Sirop et mélasse,France (moyenne),0.0001158296548038049,116
-Sels chimiques,direction des fermes de La Rochelle,0.0,117
-Sels chimiques,France (moyenne),5.739499385974055e-05,117
-Alun,direction des fermes de La Rochelle,0.0,118
-Alun,France (moyenne),0.0002230135702172963,118
-Garance,direction des fermes de La Rochelle,0.0,119
-Garance,France (moyenne),0.000993741505305006,119
-Gommes diverses,direction des fermes de La Rochelle,0.0,120
-Gommes diverses,France (moyenne),0.0007633806222746374,120
-Cannelle,direction des fermes de La Rochelle,0.0,121
-Cannelle,France (moyenne),0.0002563433751563383,121
-Girofle,direction des fermes de La Rochelle,0.0,122
-Girofle,France (moyenne),0.00037890570148811013,122
-Muscades,direction des fermes de La Rochelle,0.0,123
-Muscades,France (moyenne),6.837644792126265e-06,123
-Poivre et piment,direction des fermes de La Rochelle,0.0,124
-Poivre et piment,France (moyenne),0.000983104975861145,124
-Huile de poisson,direction des fermes de La Rochelle,0.0,125
-Huile de poisson,France (moyenne),7.885909903067774e-05,125
-Safran,direction des fermes de La Rochelle,0.0,126
-Safran,France (moyenne),0.00037629515111945784,126
-Térébenthine,direction des fermes de La Rochelle,0.0,127
-Térébenthine,France (moyenne),0.0005200142703056389,127
-Salpêtre et soufre,direction des fermes de La Rochelle,0.0,128
-Salpêtre et soufre,France (moyenne),0.00045646879036543187,128
-Tabac,direction des fermes de La Rochelle,0.0,129
-Tabac,France (moyenne),0.008102443893507246,129
-Vins de Bordeaux,direction des fermes de La Rochelle,0.0,130
-Vins de Bordeaux,France (moyenne),0.00011067757448944023,130
-Monnaies et métaux précieux,direction des fermes de La Rochelle,0.0,131
-Monnaies et métaux précieux,France (moyenne),0.0008519087076227917,131
-Chapeaux d'écorce et de paille,direction des fermes de La Rochelle,0.0,132
-Chapeaux d'écorce et de paille,France (moyenne),3.27646133729962e-05,132
-Soie,direction des fermes de La Rochelle,0.0,133
-Soie,France (moyenne),0.0016752373539758606,133
-Lin,direction des fermes de La Rochelle,0.0,134
-Lin,France (moyenne),9.128003693788708e-06,134
-Galle,direction des fermes de La Rochelle,0.0,135
-Galle,France (moyenne),0.0003099351272097485,135
-Verdet,direction des fermes de La Rochelle,0.0,136
-Verdet,France (moyenne),0.0014083222320912128,136
-Cochenille,direction des fermes de La Rochelle,0.0,137
-Cochenille,France (moyenne),0.004390875209224334,137
-"Graines de trèfle, de luzerne et de prairie",direction des fermes de La Rochelle,0.0,138
-"Graines de trèfle, de luzerne et de prairie",France (moyenne),0.00048582412934991206,138
-Plumes ouvrées,direction des fermes de La Rochelle,0.0,139
-Plumes ouvrées,France (moyenne),0.00030440820737018064,139
-"Filoselle, fleuret et bourre de soie",direction des fermes de La Rochelle,0.0,140
-"Filoselle, fleuret et bourre de soie",France (moyenne),2.0095917133536182e-05,140
-Provisions diverses,direction des fermes de La Rochelle,0.0,141
-Provisions diverses,France (moyenne),5.425538128431629e-05,141
-[vide],direction des fermes de La Rochelle,0.0,142
-[vide],France (moyenne),0.00012507401639211125,142
-Séné,direction des fermes de La Rochelle,0.0,143
-Séné,France (moyenne),0.00016371402134969794,143
-Boissons diverses et mélangées,direction des fermes de La Rochelle,0.0,144
-Boissons diverses et mélangées,France (moyenne),0.0004326576850572315,144
-Étoffes de coton,direction des fermes de La Rochelle,0.0,145
-Étoffes de coton,France (moyenne),0.0001627325907414558,145
-Huile d'olive pour fabrique,direction des fermes de La Rochelle,0.0,146
-Huile d'olive pour fabrique,France (moyenne),1.2881998420163158e-06,146
+product,product_fr,product_en,entity,entity_fr,entity_en,value_rel_per_direction,order
+Eaux-de-vie et liqueurs,Eaux-de-vie et liqueurs,Brandies and liqueurs,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.4501860027193538,0
+Eaux-de-vie et liqueurs,Eaux-de-vie et liqueurs,Brandies and liqueurs,France (moyenne),France (moyenne),France (mean),0.04263289718146038,0
+Café,Café,Coffee,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.19687338665752493,1
+Café,Café,Coffee,France (moyenne),France (moyenne),France (mean),0.17465884170467802,1
+Sucre,Sucre,Sugar,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.1649364173581073,2
+Sucre,Sucre,Sugar,France (moyenne),France (moyenne),France (mean),0.1673413840630433,2
+Toiles de coton,Toiles de coton,Cotton fabrics,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.027651553686485073,3
+Toiles de coton,Toiles de coton,Cotton fabrics,France (moyenne),France (moyenne),France (mean),0.03029936802406252,3
+Sel,Sel,Salt,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.02236440304806508,4
+Sel,Sel,Salt,France (moyenne),France (moyenne),France (mean),0.0015737226018783502,4
+Vins divers,Vins divers,Diverse wines,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.02185883484589714,5
+Vins divers,Vins divers,Diverse wines,France (moyenne),France (moyenne),France (mean),0.07140506629053758,5
+Objets d'art et d'histoire naturelle,Objets d'art et d'histoire naturelle,Works of art and natural history,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.02172690641845075,6
+Objets d'art et d'histoire naturelle,Objets d'art et d'histoire naturelle,Works of art and natural history,France (moyenne),France (moyenne),France (mean),0.002956441346481872,6
+Indigo,Indigo,Indigo,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.019669204974920595,7
+Indigo,Indigo,Indigo,France (moyenne),France (moyenne),France (mean),0.01849817788050606,7
+Toiles de chanvre et de lin,Toiles de chanvre et de lin,Hemp and linen fabrics,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.01277615262122752,8
+Toiles de chanvre et de lin,Toiles de chanvre et de lin,Hemp and linen fabrics,France (moyenne),France (moyenne),France (mean),0.05449138162915389,8
+Ouvrages métalliques,Ouvrages métalliques,Metallic works,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.009610256184219521,9
+Ouvrages métalliques,Ouvrages métalliques,Metallic works,France (moyenne),France (moyenne),France (mean),0.009201344022815175,9
+Toiles diverses,Toiles diverses,Various clothes,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.007053315783419147,10
+Toiles diverses,Toiles diverses,Various clothes,France (moyenne),France (moyenne),France (mean),0.005939385312587618,10
+Graines grasses,Graines grasses,Graines grasses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.004443321212882972,11
+Graines grasses,Graines grasses,Graines grasses,France (moyenne),France (moyenne),France (mean),0.00020676436477395536,11
+Plomb,Plomb,Plomb,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.004065606482129045,12
+Plomb,Plomb,Plomb,France (moyenne),France (moyenne),France (mean),0.00013983019544627559,12
+Denrées coloniales et épiceries diverses,Denrées coloniales et épiceries diverses,Denrées coloniales et épiceries diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00326931397074326,13
+Denrées coloniales et épiceries diverses,Denrées coloniales et épiceries diverses,Denrées coloniales et épiceries diverses,France (moyenne),France (moyenne),France (mean),0.005787002083686966,13
+Divers incertains,Divers incertains,Divers incertains,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0028542939332588993,14
+Divers incertains,Divers incertains,Divers incertains,France (moyenne),France (moyenne),France (mean),0.01329302617496429,14
+"Armes, munitions, poudre et pierres à fusil","Armes, munitions, poudre et pierres à fusil","Armes, munitions, poudre et pierres à fusil",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.002808322252200368,15
+"Armes, munitions, poudre et pierres à fusil","Armes, munitions, poudre et pierres à fusil","Armes, munitions, poudre et pierres à fusil",France (moyenne),France (moyenne),France (mean),0.002498611728114429,15
+"Ouvrages de bois, liège et jonc","Ouvrages de bois, liège et jonc","Ouvrages de bois, liège et jonc",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0025774889187929846,16
+"Ouvrages de bois, liège et jonc","Ouvrages de bois, liège et jonc","Ouvrages de bois, liège et jonc",France (moyenne),France (moyenne),France (mean),0.003860578977417769,16
+"Brai, goudron et résines","Brai, goudron et résines","Brai, goudron et résines",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0024128008070083704,17
+"Brai, goudron et résines","Brai, goudron et résines","Brai, goudron et résines",France (moyenne),France (moyenne),France (mean),0.0010378702272830199,17
+Étoffes de laine,Étoffes de laine,Woolen fabrics,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0022933344319247804,18
+Étoffes de laine,Étoffes de laine,Woolen fabrics,France (moyenne),France (moyenne),France (mean),0.051793935616975165,18
+Étoffes de soie,Étoffes de soie,Silk fabrics,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.002019529199388568,19
+Étoffes de soie,Étoffes de soie,Silk fabrics,France (moyenne),France (moyenne),France (mean),0.04106681760769584,19
+"Bière, cidre et vinaigre","Bière, cidre et vinaigre","Bière, cidre et vinaigre",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0018010886553037591,20
+"Bière, cidre et vinaigre","Bière, cidre et vinaigre","Bière, cidre et vinaigre",France (moyenne),France (moyenne),France (mean),0.0009874158836363843,20
+"Farine, gruau, biscuits et pâtes","Farine, gruau, biscuits et pâtes","Flour, oatmeal, cookies and pasta",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0016851283415745526,21
+"Farine, gruau, biscuits et pâtes","Farine, gruau, biscuits et pâtes","Flour, oatmeal, cookies and pasta",France (moyenne),France (moyenne),France (mean),0.007591259299937789,21
+Cordage et filets,Cordage et filets,Cordage et filets,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0016354819258147682,22
+Cordage et filets,Cordage et filets,Cordage et filets,France (moyenne),France (moyenne),France (mean),0.0028196021229173994,22
+Chairs et œufs,Chairs et œufs,Chairs et œufs,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0013046058135305258,23
+Chairs et œufs,Chairs et œufs,Chairs et œufs,France (moyenne),France (moyenne),France (mean),0.008785483555282707,23
+Ouvrages divers et mélangés,Ouvrages divers et mélangés,Ouvrages divers et mélangés,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0012984562574998577,24
+Ouvrages divers et mélangés,Ouvrages divers et mélangés,Ouvrages divers et mélangés,France (moyenne),France (moyenne),France (mean),0.004473560576324368,24
+"Porcelaine, poterie, faïence et ouvrages de terre","Porcelaine, poterie, faïence et ouvrages de terre","Porcelaine, poterie, faïence et ouvrages de terre",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.001228336319833093,25
+"Porcelaine, poterie, faïence et ouvrages de terre","Porcelaine, poterie, faïence et ouvrages de terre","Porcelaine, poterie, faïence et ouvrages de terre",France (moyenne),France (moyenne),France (mean),0.002750752242127784,25
+Quincaillerie,Quincaillerie,Hardware store,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0011137445928225938,26
+Quincaillerie,Quincaillerie,Hardware store,France (moyenne),France (moyenne),France (mean),0.005248306669202517,26
+Légumes,Légumes,Légumes,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.001083521774769432,27
+Légumes,Légumes,Légumes,France (moyenne),France (moyenne),France (mean),0.0020618506564791,27
+Châles et mouchoirs hors soie,Châles et mouchoirs hors soie,Châles et mouchoirs hors soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.000933007641189542,28
+Châles et mouchoirs hors soie,Châles et mouchoirs hors soie,Châles et mouchoirs hors soie,France (moyenne),France (moyenne),France (mean),0.009311436612995886,28
+Étoffes diverses,Étoffes diverses,Étoffes diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0008939354620190773,29
+Étoffes diverses,Étoffes diverses,Étoffes diverses,France (moyenne),France (moyenne),France (mean),0.009188320770217142,29
+Matières brutes et transformées pour teinture,Matières brutes et transformées pour teinture,Matières brutes et transformées pour teinture,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0005999566859188439,30
+Matières brutes et transformées pour teinture,Matières brutes et transformées pour teinture,Matières brutes et transformées pour teinture,France (moyenne),France (moyenne),France (mean),0.0021781663818867462,30
+Verrerie,Verrerie,Verrerie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0005275119160941434,31
+Verrerie,Verrerie,Verrerie,France (moyenne),France (moyenne),France (mean),0.0023094714505979825,31
+Coton non transformé,Coton non transformé,Coton non transformé,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0004487676010672952,32
+Coton non transformé,Coton non transformé,Coton non transformé,France (moyenne),France (moyenne),France (mean),0.027144659411793042,32
+Beurre,Beurre,Beurre,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0004363184998344792,33
+Beurre,Beurre,Beurre,France (moyenne),France (moyenne),France (mean),0.0035071589949196603,33
+Blé et autres grains comestibles,Blé et autres grains comestibles,Blé et autres grains comestibles,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00034032543008746417,34
+Blé et autres grains comestibles,Blé et autres grains comestibles,Blé et autres grains comestibles,France (moyenne),France (moyenne),France (mean),0.0037795073234879882,34
+Matières premières diverses,Matières premières diverses,Matières premières diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0003209768269665814,35
+Matières premières diverses,Matières premières diverses,Matières premières diverses,France (moyenne),France (moyenne),France (mean),0.0013011646313928176,35
+Rocou,Rocou,Rocou,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00027852989143782326,36
+Rocou,Rocou,Rocou,France (moyenne),France (moyenne),France (mean),0.00015875175372788352,36
+Bois divers hors combustible,Bois divers hors combustible,Bois divers hors combustible,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0002735802487789928,37
+Bois divers hors combustible,Bois divers hors combustible,Bois divers hors combustible,France (moyenne),France (moyenne),France (mean),0.00038176315784471427,37
+Subsistances diverses et mélangées,Subsistances diverses et mélangées,Subsistances diverses et mélangées,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0002688555898773819,38
+Subsistances diverses et mélangées,Subsistances diverses et mélangées,Subsistances diverses et mélangées,France (moyenne),France (moyenne),France (mean),0.0038605311722382496,38
+Riz,Riz,Riz,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0002683306277772029,39
+Riz,Riz,Riz,France (moyenne),France (moyenne),France (mean),0.001521472311852702,39
+Habits et lingerie,Habits et lingerie,Habits et lingerie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00021598440693078379,40
+Habits et lingerie,Habits et lingerie,Habits et lingerie,France (moyenne),France (moyenne),France (mean),0.005317677696948219,40
+"Cornes, corail, écailles, ivoire et nacre","Cornes, corail, écailles, ivoire et nacre","Cornes, corail, écailles, ivoire et nacre",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00020998484007159535,41
+"Cornes, corail, écailles, ivoire et nacre","Cornes, corail, écailles, ivoire et nacre","Cornes, corail, écailles, ivoire et nacre",France (moyenne),France (moyenne),France (mean),0.00017233537087299724,41
+Chapeaux hors paille et écorce,Chapeaux hors paille et écorce,Chapeaux hors paille et écorce,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00020248538149760979,42
+Chapeaux hors paille et écorce,Chapeaux hors paille et écorce,Chapeaux hors paille et écorce,France (moyenne),France (moyenne),France (mean),0.006939899097726848,42
+Mercerie,Mercerie,Haberdashery,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00015403887910966316,43
+Mercerie,Mercerie,Haberdashery,France (moyenne),France (moyenne),France (mean),0.010000906439857423,43
+Divers mélangés,Divers mélangés,Divers mélangés,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00012059129386968762,44
+Divers mélangés,Divers mélangés,Divers mélangés,France (moyenne),France (moyenne),France (mean),0.002345689640374378,44
+Fer-blanc,Fer-blanc,Fer-blanc,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00012029131552672819,45
+Fer-blanc,Fer-blanc,Fer-blanc,France (moyenne),France (moyenne),France (mean),0.00018278009769833676,45
+Papier,Papier,Papier,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.00010469244169283825,46
+Papier,Papier,Papier,France (moyenne),France (moyenne),France (mean),0.005045931650037711,46
+"Cuirs, peaux et pelleterie","Cuirs, peaux et pelleterie","Hides, skins and furs",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,9.299328631742079e-05,47
+"Cuirs, peaux et pelleterie","Cuirs, peaux et pelleterie","Hides, skins and furs",France (moyenne),France (moyenne),France (mean),0.010857083329788849,47
+Produits inconnus,Produits inconnus,Produits inconnus,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,9.156838918836354e-05,48
+Produits inconnus,Produits inconnus,Produits inconnus,France (moyenne),France (moyenne),France (mean),0.00040283625975539287,48
+Quinquina,Quinquina,Quinquina,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,6.749512716586993e-05,49
+Quinquina,Quinquina,Quinquina,France (moyenne),France (moyenne),France (mean),0.00023471240317199352,49
+Manne et médicaments,Manne et médicaments,Manne et médicaments,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,6.719514882291051e-05,50
+Manne et médicaments,Manne et médicaments,Manne et médicaments,France (moyenne),France (moyenne),France (mean),0.000637977786672102,50
+Bonneterie hors soie,Bonneterie hors soie,Bonneterie hors soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,5.872076063430684e-05,51
+Bonneterie hors soie,Bonneterie hors soie,Bonneterie hors soie,France (moyenne),France (moyenne),France (mean),0.0021352145627837236,51
+Bâtiments de mer et apparaux,Bâtiments de mer et apparaux,Bâtiments de mer et apparaux,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,5.534600427601334e-05,52
+Bâtiments de mer et apparaux,Bâtiments de mer et apparaux,Bâtiments de mer et apparaux,France (moyenne),France (moyenne),France (mean),0.0029911897875718966,52
+Argenterie et orfèvrerie,Argenterie et orfèvrerie,Argenterie et orfèvrerie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,5.324615587529739e-05,53
+Argenterie et orfèvrerie,Argenterie et orfèvrerie,Argenterie et orfèvrerie,France (moyenne),France (moyenne),France (mean),0.0020700502261252183,53
+Fruits secs et noix,Fruits secs et noix,Fruits secs et noix,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,2.9322883024283493e-05,54
+Fruits secs et noix,Fruits secs et noix,Fruits secs et noix,France (moyenne),France (moyenne),France (mean),0.004657857519063065,54
+Dorure,Dorure,Dorure,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,2.6998050866347973e-05,55
+Dorure,Dorure,Dorure,France (moyenne),France (moyenne),France (mean),0.003939386937624221,55
+Soieries diverses,Soieries diverses,Soieries diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,2.4298245779713175e-05,56
+Soieries diverses,Soieries diverses,Soieries diverses,France (moyenne),France (moyenne),France (mean),0.005033233950529084,56
+Fils divers,Fils divers,Fils divers,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.9498592292362425e-05,57
+Fils divers,Fils divers,Fils divers,France (moyenne),France (moyenne),France (mean),0.011327455233243773,57
+Métaux divers et mélangés,Métaux divers et mélangés,Métaux divers et mélangés,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.9123619363663147e-05,58
+Métaux divers et mélangés,Métaux divers et mélangés,Métaux divers et mélangés,France (moyenne),France (moyenne),France (mean),3.7713697318226046e-05,58
+Pêche et fruits de mer,Pêche et fruits de mer,Pêche et fruits de mer,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.5898852176849363e-05,59
+Pêche et fruits de mer,Pêche et fruits de mer,Pêche et fruits de mer,France (moyenne),France (moyenne),France (mean),0.004591130177176996,59
+Salsepareille,Salsepareille,Salsepareille,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.5298895490930518e-05,60
+Salsepareille,Salsepareille,Salsepareille,France (moyenne),France (moyenne),France (mean),0.0002449257312445688,60
+Céruse et blanc de plomb,Céruse et blanc de plomb,Céruse et blanc de plomb,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.4323965876312396e-05,61
+Céruse et blanc de plomb,Céruse et blanc de plomb,Céruse et blanc de plomb,France (moyenne),France (moyenne),France (mean),2.1928779868080407e-05,61
+Châles et mouchoirs de soie,Châles et mouchoirs de soie,Châles et mouchoirs de soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,1.079922034653919e-05,62
+Châles et mouchoirs de soie,Châles et mouchoirs de soie,Châles et mouchoirs de soie,France (moyenne),France (moyenne),France (mean),0.0005636299601624613,62
+Vin de liqueurs,Vin de liqueurs,Vin de liqueurs,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,9.899285317660924e-06,63
+Vin de liqueurs,Vin de liqueurs,Vin de liqueurs,France (moyenne),France (moyenne),France (mean),5.773531827631325e-05,63
+Cacao et chocolat,Cacao et chocolat,Cacao et chocolat,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,8.999350288782657e-06,64
+Cacao et chocolat,Cacao et chocolat,Cacao et chocolat,France (moyenne),France (moyenne),France (mean),0.0021913563483462145,64
+Acier,Acier,Acier,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,65
+Acier,Acier,Acier,France (moyenne),France (moyenne),France (mean),7.864331817785362e-05,65
+Animaux,Animaux,Animaux,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,66
+Animaux,Animaux,Animaux,France (moyenne),France (moyenne),France (mean),0.011280346378977811,66
+Chevaux et bêtes de somme,Chevaux et bêtes de somme,Chevaux et bêtes de somme,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,67
+Chevaux et bêtes de somme,Chevaux et bêtes de somme,Chevaux et bêtes de somme,France (moyenne),France (moyenne),France (mean),0.0023848233491332357,67
+Cendres diverses,Cendres diverses,Cendres diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,68
+Cendres diverses,Cendres diverses,Cendres diverses,France (moyenne),France (moyenne),France (mean),0.00022531992887425445,68
+Chanvre,Chanvre,Chanvre,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,69
+Chanvre,Chanvre,Chanvre,France (moyenne),France (moyenne),France (mean),0.0006494543658452976,69
+Cuivre,Cuivre,Cuivre,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,70
+Cuivre,Cuivre,Cuivre,France (moyenne),France (moyenne),France (mean),0.00028732451674662963,70
+Mercure,Mercure,Mercure,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,71
+Mercure,Mercure,Mercure,France (moyenne),France (moyenne),France (mean),4.047943236558451e-06,71
+Azur et cobalt,Azur et cobalt,Azur et cobalt,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,72
+Azur et cobalt,Azur et cobalt,Azur et cobalt,France (moyenne),France (moyenne),France (mean),2.4002457971659495e-05,72
+Fromage,Fromage,Fromage,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,73
+Fromage,Fromage,Fromage,France (moyenne),France (moyenne),France (mean),0.002280403905546643,73
+Graines diverses et mélangées,Graines diverses et mélangées,Graines diverses et mélangées,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,74
+Graines diverses et mélangées,Graines diverses et mélangées,Graines diverses et mélangées,France (moyenne),France (moyenne),France (mean),0.00011364287862091549,74
+Horlogerie,Horlogerie,Horlogerie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,75
+Horlogerie,Horlogerie,Horlogerie,France (moyenne),France (moyenne),France (mean),0.0006079464304923621,75
+Laines non transformées diverses,Laines non transformées diverses,Laines non transformées diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,76
+Laines non transformées diverses,Laines non transformées diverses,Laines non transformées diverses,France (moyenne),France (moyenne),France (mean),0.003675381003479401,76
+Parfumerie et toilette,Parfumerie et toilette,Parfumerie et toilette,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,77
+Parfumerie et toilette,Parfumerie et toilette,Parfumerie et toilette,France (moyenne),France (moyenne),France (mean),0.0016175516464872986,77
+"Faucilles, faux et limes","Faucilles, faux et limes","Faucilles, faux et limes",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,78
+"Faucilles, faux et limes","Faucilles, faux et limes","Faucilles, faux et limes",France (moyenne),France (moyenne),France (mean),1.4458994402698127e-05,78
+Fer,Fer,Fer,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,79
+Fer,Fer,Fer,France (moyenne),France (moyenne),France (mean),0.0001827329600754662,79
+Huiles diverses,Huiles diverses,Huiles diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,80
+Huiles diverses,Huiles diverses,Huiles diverses,France (moyenne),France (moyenne),France (mean),0.0004263223853987731,80
+Drogues diverses,Drogues diverses,Drogues diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,81
+Drogues diverses,Drogues diverses,Drogues diverses,France (moyenne),France (moyenne),France (mean),0.002335949968252379,81
+Librairie,Librairie,Librairie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,82
+Librairie,Librairie,Librairie,France (moyenne),France (moyenne),France (mean),0.001970617372078162,82
+Bijouterie et pierres fines,Bijouterie et pierres fines,Bijouterie et pierres fines,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,83
+Bijouterie et pierres fines,Bijouterie et pierres fines,Bijouterie et pierres fines,France (moyenne),France (moyenne),France (mean),0.00137797595937288,83
+Drogues médicinales diverses,Drogues médicinales diverses,Drogues médicinales diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,84
+Drogues médicinales diverses,Drogues médicinales diverses,Drogues médicinales diverses,France (moyenne),France (moyenne),France (mean),0.000736708773422069,84
+Marbre brut et ouvré,Marbre brut et ouvré,Marbre brut et ouvré,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,85
+Marbre brut et ouvré,Marbre brut et ouvré,Marbre brut et ouvré,France (moyenne),France (moyenne),France (mean),0.00021073626042634788,85
+Rubanerie et passementerie diverse,Rubanerie et passementerie diverse,Rubanerie et passementerie diverse,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,86
+Rubanerie et passementerie diverse,Rubanerie et passementerie diverse,Rubanerie et passementerie diverse,France (moyenne),France (moyenne),France (mean),0.00010821309860425806,86
+"Mousseline, basin et nankin","Mousseline, basin et nankin","Mousseline, basin et nankin",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,87
+"Mousseline, basin et nankin","Mousseline, basin et nankin","Mousseline, basin et nankin",France (moyenne),France (moyenne),France (mean),0.0070412187095072664,87
+Bonneterie de soie,Bonneterie de soie,Bonneterie de soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,88
+Bonneterie de soie,Bonneterie de soie,Bonneterie de soie,France (moyenne),France (moyenne),France (mean),0.0019957720256724436,88
+Dentelles,Dentelles,Dentelles,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,89
+Dentelles,Dentelles,Dentelles,France (moyenne),France (moyenne),France (mean),0.007738801081424642,89
+Gants,Gants,Gants,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,90
+Gants,Gants,Gants,France (moyenne),France (moyenne),France (mean),0.0003373789327137772,90
+Cordonnerie et sellerie,Cordonnerie et sellerie,Shoemaking and upholstery,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,91
+Cordonnerie et sellerie,Cordonnerie et sellerie,Shoemaking and upholstery,France (moyenne),France (moyenne),France (mean),0.0031903748381370617,91
+Plumes brutes,Plumes brutes,Plumes brutes,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,92
+Plumes brutes,Plumes brutes,Plumes brutes,France (moyenne),France (moyenne),France (mean),0.00027053154801627083,92
+"Gravelée, potasse et védasse","Gravelée, potasse et védasse","Gravelée, potasse et védasse",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,93
+"Gravelée, potasse et védasse","Gravelée, potasse et védasse","Gravelée, potasse et védasse",France (moyenne),France (moyenne),France (mean),0.00017913886393616324,93
+Cire,Cire,Cire,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,94
+Cire,Cire,Cire,France (moyenne),France (moyenne),France (mean),0.0023496821599844862,94
+"Alquifoux, mine de plomb et graphite","Alquifoux, mine de plomb et graphite","Alquifoux, mine de plomb et graphite",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,95
+"Alquifoux, mine de plomb et graphite","Alquifoux, mine de plomb et graphite","Alquifoux, mine de plomb et graphite",France (moyenne),France (moyenne),France (mean),0.00017491237639344898,95
+Étain,Étain,Étain,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,96
+Étain,Étain,Étain,France (moyenne),France (moyenne),France (mean),0.0004099250732827314,96
+Poils et crin,Poils et crin,Poils et crin,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,97
+Poils et crin,Poils et crin,Poils et crin,France (moyenne),France (moyenne),France (mean),0.00015957080941564737,97
+Textiles manufacturés divers et mélangés,Textiles manufacturés divers et mélangés,Textiles manufacturés divers et mélangés,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,98
+Textiles manufacturés divers et mélangés,Textiles manufacturés divers et mélangés,Textiles manufacturés divers et mélangés,France (moyenne),France (moyenne),France (mean),0.0008562979338531593,98
+Rubanerie et passementerie de soie,Rubanerie et passementerie de soie,Rubanerie et passementerie de soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,99
+Rubanerie et passementerie de soie,Rubanerie et passementerie de soie,Rubanerie et passementerie de soie,France (moyenne),France (moyenne),France (mean),0.008360455753053393,99
+Savon,Savon,Savon,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,100
+Savon,Savon,Savon,France (moyenne),France (moyenne),France (mean),0.010064678664337787,100
+Fleurs artificielles et ouvrages de mode,Fleurs artificielles et ouvrages de mode,Fleurs artificielles et ouvrages de mode,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,101
+Fleurs artificielles et ouvrages de mode,Fleurs artificielles et ouvrages de mode,Fleurs artificielles et ouvrages de mode,France (moyenne),France (moyenne),France (mean),0.0014079436812186722,101
+Fruits frais,Fruits frais,Fruits frais,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,102
+Fruits frais,Fruits frais,Fruits frais,France (moyenne),France (moyenne),France (mean),0.00035965915667195825,102
+"Meubles, glaces et miroirs","Meubles, glaces et miroirs","Meubles, glaces et miroirs",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,103
+"Meubles, glaces et miroirs","Meubles, glaces et miroirs","Meubles, glaces et miroirs",France (moyenne),France (moyenne),France (mean),0.002211171617256875,103
+Graines de jardin,Graines de jardin,Graines de jardin,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,104
+Graines de jardin,Graines de jardin,Graines de jardin,France (moyenne),France (moyenne),France (mean),0.0006649561627326373,104
+Miel,Miel,Miel,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,105
+Miel,Miel,Miel,France (moyenne),France (moyenne),France (mean),0.0014209355970803967,105
+Graisses diverses,Graisses diverses,Graisses diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,106
+Graisses diverses,Graisses diverses,Graisses diverses,France (moyenne),France (moyenne),France (mean),0.0006971473058114254,106
+Huile d'olive à manger,Huile d'olive à manger,Huile d'olive à manger,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,107
+Huile d'olive à manger,Huile d'olive à manger,Huile d'olive à manger,France (moyenne),France (moyenne),France (mean),0.008876915547107898,107
+"Bougies, chandelles et flambeaux","Bougies, chandelles et flambeaux","Bougies, chandelles et flambeaux",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,108
+"Bougies, chandelles et flambeaux","Bougies, chandelles et flambeaux","Bougies, chandelles et flambeaux",France (moyenne),France (moyenne),France (mean),0.004324979417739481,108
+Alcalis,Alcalis,Alcalis,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,109
+Alcalis,Alcalis,Alcalis,France (moyenne),France (moyenne),France (mean),1.5328978650697366e-05,109
+Colles diverses,Colles diverses,Colles diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,110
+Colles diverses,Colles diverses,Colles diverses,France (moyenne),France (moyenne),France (mean),2.7002872742537856e-05,110
+Bouchons principalement en liège,Bouchons principalement en liège,Bouchons principalement en liège,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,111
+Bouchons principalement en liège,Bouchons principalement en liège,Bouchons principalement en liège,France (moyenne),France (moyenne),France (mean),0.00047847719808439334,111
+Thé,Thé,Thé,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,112
+Thé,Thé,Thé,France (moyenne),France (moyenne),France (mean),0.00016434074344230288,112
+Bois des Indes,Bois des Indes,Bois des Indes,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,113
+Bois des Indes,Bois des Indes,Bois des Indes,France (moyenne),France (moyenne),France (mean),5.962867242485155e-06,113
+Combustibles dont charbons et bois,Combustibles dont charbons et bois,Combustibles dont charbons et bois,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,114
+Combustibles dont charbons et bois,Combustibles dont charbons et bois,Combustibles dont charbons et bois,France (moyenne),France (moyenne),France (mean),0.0012047042463901791,114
+Réglisse,Réglisse,Réglisse,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,115
+Réglisse,Réglisse,Réglisse,France (moyenne),France (moyenne),France (mean),0.0005238797095261283,115
+Sirop et mélasse,Sirop et mélasse,Sirop et mélasse,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,116
+Sirop et mélasse,Sirop et mélasse,Sirop et mélasse,France (moyenne),France (moyenne),France (mean),0.0001158296548038049,116
+Sels chimiques,Sels chimiques,Sels chimiques,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,117
+Sels chimiques,Sels chimiques,Sels chimiques,France (moyenne),France (moyenne),France (mean),5.739499385974055e-05,117
+Alun,Alun,Alun,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,118
+Alun,Alun,Alun,France (moyenne),France (moyenne),France (mean),0.0002230135702172963,118
+Garance,Garance,Garance,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,119
+Garance,Garance,Garance,France (moyenne),France (moyenne),France (mean),0.000993741505305006,119
+Gommes diverses,Gommes diverses,Gommes diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,120
+Gommes diverses,Gommes diverses,Gommes diverses,France (moyenne),France (moyenne),France (mean),0.0007633806222746374,120
+Cannelle,Cannelle,Cannelle,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,121
+Cannelle,Cannelle,Cannelle,France (moyenne),France (moyenne),France (mean),0.0002563433751563383,121
+Girofle,Girofle,Girofle,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,122
+Girofle,Girofle,Girofle,France (moyenne),France (moyenne),France (mean),0.00037890570148811013,122
+Muscades,Muscades,Muscades,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,123
+Muscades,Muscades,Muscades,France (moyenne),France (moyenne),France (mean),6.837644792126265e-06,123
+Poivre et piment,Poivre et piment,Poivre et piment,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,124
+Poivre et piment,Poivre et piment,Poivre et piment,France (moyenne),France (moyenne),France (mean),0.000983104975861145,124
+Huile de poisson,Huile de poisson,Huile de poisson,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,125
+Huile de poisson,Huile de poisson,Huile de poisson,France (moyenne),France (moyenne),France (mean),7.885909903067774e-05,125
+Safran,Safran,Safran,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,126
+Safran,Safran,Safran,France (moyenne),France (moyenne),France (mean),0.00037629515111945784,126
+Térébenthine,Térébenthine,Térébenthine,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,127
+Térébenthine,Térébenthine,Térébenthine,France (moyenne),France (moyenne),France (mean),0.0005200142703056389,127
+Salpêtre et soufre,Salpêtre et soufre,Salpêtre et soufre,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,128
+Salpêtre et soufre,Salpêtre et soufre,Salpêtre et soufre,France (moyenne),France (moyenne),France (mean),0.00045646879036543187,128
+Tabac,Tabac,Tabac,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,129
+Tabac,Tabac,Tabac,France (moyenne),France (moyenne),France (mean),0.008102443893507246,129
+Vins de Bordeaux,Vins de Bordeaux,Bordeaux wines,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,130
+Vins de Bordeaux,Vins de Bordeaux,Bordeaux wines,France (moyenne),France (moyenne),France (mean),0.00011067757448944023,130
+Monnaies et métaux précieux,Monnaies et métaux précieux,Monnaies et métaux précieux,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,131
+Monnaies et métaux précieux,Monnaies et métaux précieux,Monnaies et métaux précieux,France (moyenne),France (moyenne),France (mean),0.0008519087076227917,131
+Chapeaux d'écorce et de paille,Chapeaux d'écorce et de paille,Chapeaux d'écorce et de paille,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,132
+Chapeaux d'écorce et de paille,Chapeaux d'écorce et de paille,Chapeaux d'écorce et de paille,France (moyenne),France (moyenne),France (mean),3.27646133729962e-05,132
+Soie,Soie,Soie,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,133
+Soie,Soie,Soie,France (moyenne),France (moyenne),France (mean),0.0016752373539758606,133
+Lin,Lin,Lin,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,134
+Lin,Lin,Lin,France (moyenne),France (moyenne),France (mean),9.128003693788708e-06,134
+Galle,Galle,Galle,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,135
+Galle,Galle,Galle,France (moyenne),France (moyenne),France (mean),0.0003099351272097485,135
+Verdet,Verdet,Verdet,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,136
+Verdet,Verdet,Verdet,France (moyenne),France (moyenne),France (mean),0.0014083222320912128,136
+Cochenille,Cochenille,Cochenille,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,137
+Cochenille,Cochenille,Cochenille,France (moyenne),France (moyenne),France (mean),0.004390875209224334,137
+"Graines de trèfle, de luzerne et de prairie","Graines de trèfle, de luzerne et de prairie","Graines de trèfle, de luzerne et de prairie",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,138
+"Graines de trèfle, de luzerne et de prairie","Graines de trèfle, de luzerne et de prairie","Graines de trèfle, de luzerne et de prairie",France (moyenne),France (moyenne),France (mean),0.00048582412934991206,138
+Plumes ouvrées,Plumes ouvrées,Plumes ouvrées,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,139
+Plumes ouvrées,Plumes ouvrées,Plumes ouvrées,France (moyenne),France (moyenne),France (mean),0.00030440820737018064,139
+"Filoselle, fleuret et bourre de soie","Filoselle, fleuret et bourre de soie","Filoselle, fleuret et bourre de soie",direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,140
+"Filoselle, fleuret et bourre de soie","Filoselle, fleuret et bourre de soie","Filoselle, fleuret et bourre de soie",France (moyenne),France (moyenne),France (mean),2.0095917133536182e-05,140
+Provisions diverses,Provisions diverses,Provisions diverses,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,141
+Provisions diverses,Provisions diverses,Provisions diverses,France (moyenne),France (moyenne),France (mean),5.425538128431629e-05,141
+[vide],[vide],[vide],direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,142
+[vide],[vide],[vide],France (moyenne),France (moyenne),France (mean),0.00012507401639211125,142
+Séné,Séné,Séné,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,143
+Séné,Séné,Séné,France (moyenne),France (moyenne),France (mean),0.00016371402134969794,143
+Boissons diverses et mélangées,Boissons diverses et mélangées,Boissons diverses et mélangées,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,144
+Boissons diverses et mélangées,Boissons diverses et mélangées,Boissons diverses et mélangées,France (moyenne),France (moyenne),France (mean),0.0004326576850572315,144
+Étoffes de coton,Étoffes de coton,Étoffes de coton,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,145
+Étoffes de coton,Étoffes de coton,Étoffes de coton,France (moyenne),France (moyenne),France (mean),0.0001627325907414558,145
+Huile d'olive pour fabrique,Huile d'olive pour fabrique,Huile d'olive pour fabrique,direction des fermes de La Rochelle,direction des fermes de La Rochelle,direction des fermes of La Rochelle,0.0,146
+Huile d'olive pour fabrique,Huile d'olive pour fabrique,Huile d'olive pour fabrique,France (moyenne),France (moyenne),France (mean),1.2881998420163158e-06,146

@@ -1,6 +1,19 @@
 import csv
 from lib import write_csv, logger, write_readme
 
+
+country_group_to_english = {
+    "Autre": "Other",
+    "France": "France",
+    "Europe centrale": "Central Europe",
+    "Europe du Nord": "Northern Europe",
+    "Amérique": "America",
+    "Europe de l'Est": "Eastern Europe",
+    "Europe du Sud": "Southern Europe",
+    "Afrique": "Africa",
+    None: "Other"
+}
+
 def compute_hierarchy_country_group (country, port):
   if port == 'Côte d\'Angole' or port == 'Côte d\'Or':
     return 'Afrique'
@@ -24,12 +37,14 @@ def compute_hierarchy_country_group (country, port):
     "Autriche": "Europe centrale",
     "Grande-Bretagne": "Europe du Nord",
     "Provinces-Unies": "Europe du Nord",
+    "Suède": "Europe du Nord",
     "Danemark": "Europe du Nord",
     "Etats-Unis d'Amérique": "Amérique",
     "Pologne": "Europe de l'Est",
     "Russie": "Europe de l'Est",
     "Espagne": "Europe du Sud",
     "Portugal": "Europe du Sud",
+    "Evêché de Münster": "Europe du Nord"
   }
   if country in switcher:
     return switcher[country]
@@ -46,6 +61,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
     homeport = pointcall["homeport_toponyme_fr"]
     homeport_en = pointcall["homeport_toponyme_en"]
     homeport = homeport if homeport != "" and homeport != "port pas identifié" and homeport != "pas identifié" else "Indéterminé"
+    homeport_en = homeport_en if homeport_en != "" and homeport_en != "port pas identifié" and homeport_en != "pas identifié" else "Indetermined"
     if homeport in homeports:
       homeports[homeport]["nb_pointcalls"] += 1
       homeports[homeport]["tonnage"] += tonnage
@@ -71,7 +87,7 @@ def compute_hierarchy_of_homeports_of_boats_from_region (pointcalls):
         "category_1": category_1,
         "category_1_en": category_1_en,
         "country_group": compute_hierarchy_country_group(country, homeport),
-        "country_group_en": compute_hierarchy_country_group(country_en, homeport),
+        "country_group_en": country_group_to_english[compute_hierarchy_country_group(country, homeport)],
         "category_2": category_2,
         "category_2_en": category_2_en
       }
@@ -120,25 +136,35 @@ def compute_hierarchy_of_homeports_of_boats_from_region_to_foreign (pointcalls):
       continue;
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     homeport = pointcall["homeport_toponyme_fr"]
+    homeport_en = pointcall["homeport_toponyme_en"]
     homeport = homeport if homeport != "" and homeport != "port pas identifié" and homeport != "pas identifié" else "Indéterminé"
     if homeport in homeports:
       homeports[homeport]["nb_pointcalls"] += 1
       homeports[homeport]["tonnage"] += tonnage
     else:
       country = pointcall["homeport_state_1789_fr"]
+      country_en = pointcall["homeport_state_1789_en"]
       country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
       category_1 = "France" if country == "France" else "étranger"
+      category_1_en = "France" if country_en == "France" else "foreign"
       category_2 = country if country != "France" else "France (hors région PASA)"
+      category_2_en = country_en if country_en != "France" else "France (outside PASA region)"
       if country == "France" and pointcall["homeport_admiralty"] in admiralties:
         category_2 = "France (région PASA)"
+        category_2_en = "France (PASA region)"
       if category_2 == '':
         category_2 = 'Indéterminé'
+        category_2_en = "Indetermined"
       homeports[homeport] = {
+        "homeport_en": homeport_en,
         "nb_pointcalls": 1,
         "tonnage": 1,
         "country_group": compute_hierarchy_country_group(country, homeport),
+        "country_group_en": country_group_to_english[compute_hierarchy_country_group(country, homeport)],
         "category_1": category_1,
+        "category_1_en": category_1_en,
         "category_2": category_2,
+        "category_2_en": category_2_en,
       }
   output = [{"homeport": homeport, **vals} for homeport, vals in homeports.items()]
   # write and document datasets
@@ -185,24 +211,39 @@ def compute_hierarchy_of_destinations_of_boats_from_region (pointcalls):
     tonnage = int(pointcall["tonnage"]) if pointcall["tonnage"] != "" else 0
     port = pointcall["toponyme_fr"]
     port = port if port != "" and port != "port pas identifié" and port != "pas identifié" and port != "illisible" and port != "pas mentionné" else "Indéterminé"
+
+    port_en = pointcall["toponyme_en"]
+    port_en = port_en if port_en != "" and port != "port pas identifié" and port != "pas identifié" and port != "illisible" and port != "pas mentionné" else "Indetermined"
+
     if port in directions:
       directions[port]["nb_pointcalls"] += 1
       directions[port]["tonnage"] += tonnage
     else:
       country = pointcall["state_1789_fr"]
       country = country if country != "Duché de Mecklenbourg" else "Mecklenbourg"
+
+      country_en = pointcall["state_1789_en"]
+
       category_1 = "France" if country == "France" else "étranger"
+      category_1_en = "France" if country == "France" else "foreign"
       category_2 = country if country != "France" else "France (hors région PASA)"
+      category_2_en = country_en if country_en != "France" else "France (outside PASA region)"
       if country == "France" and pointcall["pointcall_admiralty"] in admiralties:
         category_2 = "France (région PASA)"
+        category_2_en = "France (PASA region)"
       if category_2 == '':
         category_2 = 'Indéterminé'
+        category_2_en = 'Indetermined'
       directions[port] = {
+        "port_en": port_en,
         "nb_pointcalls": 1,
         "tonnage": 1,
         "country_group": compute_hierarchy_country_group(country, port),
+        "country_group_en": country_group_to_english[compute_hierarchy_country_group(country, port)],
         "category_1": category_1,
+        "category_1_en": category_1_en,
         "category_2": category_2,
+        "category_2_en": category_2_en,
       }
   output = [{"port": port, **vals} for port, vals in directions.items()]
   # write and document datasets

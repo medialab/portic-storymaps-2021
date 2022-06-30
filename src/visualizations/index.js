@@ -538,10 +538,10 @@ const VisualizationContainer = ({
       )
     case 'partie-1-ports-destinations':
       const thatPalette = {
-        ...colorPalettes.portsTreemaps
+        ...(props.lang === 'fr' ? colorPalettes.portsTreemaps : colorPalettes.portsTreemapsEn)
       }
-      delete thatPalette['France (région PASA)']
-      delete thatPalette['France (hors région PASA)']
+      delete thatPalette['France (région PASA)'];
+      delete thatPalette['France (hors région PASA)'];
       return (
         <TreemapChart
         {
@@ -550,14 +550,14 @@ const VisualizationContainer = ({
             title: translate('partie-1-ports-destinations', 'title', props.lang),
             width: dimensions.width,
             height: props.atlasMode ? window.innerHeight * .8 : dimensions.height * .8,
-            tooltip: d => translate('partie-1-ports-destinations', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: d.homeport, category: d.category_2 }),
-            fieldsHierarchy: ['country_group', 'category_1', 'category_2', 'ports'],
+            tooltip: d => translate('partie-1-ports-destinations', 'tooltip', props.lang, { tonnage: d.tonnage, homeport: props.lang === 'fr' ? d.homeport : d.homeport_en, category: props.lang === 'fr' ? d.category_2 : d.category_2_en }),
+            fieldsHierarchy: props.lang === 'fr' ? ['country_group', 'category_1', 'category_2', 'ports'] : ['country_group_en', 'category_1_en', 'category_2_en', 'ports'],
             color: {
-              field: 'category_2',
+              field: 'category_2_en',
               palette: thatPalette
             },
             leaf: {
-              labelField: 'port',
+              labelField: props.lang === 'fr' ? 'port' : 'port_en',
               countField: 'tonnage'
             }
           }

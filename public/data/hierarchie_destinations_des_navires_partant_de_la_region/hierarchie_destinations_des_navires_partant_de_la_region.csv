@@ -1,94 +1,94 @@
-port,nb_pointcalls,tonnage,country_group,category_1,category_2
-Londres,45,4913,Europe du Nord,étranger,Grande-Bretagne
-Indéterminé,75,1865,Autre,étranger,Indéterminé
-Newcastle,6,1219,Europe du Nord,étranger,Grande-Bretagne
-Memel,2,201,Europe centrale,étranger,Prusse
-Hambourg,7,747,Europe centrale,étranger,Hambourg
-Côte d'Angole,2,615,Afrique,étranger,Portugal
-Côte d'Or,10,3584,Afrique,étranger,multi-Etat
-Kristiansund ,1,1,Europe du Nord,étranger,Danemark
-Copenhague ,1,1,Europe du Nord,étranger,Danemark
-Calabar,1,1,Autre,étranger,Indéterminé
-Amsterdam,21,3627,Europe du Nord,étranger,Provinces-Unies
-Rotterdam,7,743,Europe du Nord,étranger,Provinces-Unies
-Königsberg / Kaliningrad,13,2412,Europe centrale,étranger,Prusse
-Mer Baltique,27,4473,Europe de l'Est,étranger,zone maritime
-Brême,6,506,Europe centrale,étranger,Brême
-Saint-Sébastien,3,80,Europe du Sud,étranger,Espagne
-Guernesey,6,322,Europe du Nord,étranger,Grande-Bretagne
-Ostende,13,1012,Europe centrale,étranger,Autriche
-Gloucester,3,206,Amérique,étranger,Etats-Unis d'Amérique
-Philadelphie,2,161,Amérique,étranger,Etats-Unis d'Amérique
-Stavanger,12,1188,Europe du Nord,étranger,Danemark
-Waterford,3,259,Europe du Nord,étranger,Grande-Bretagne
-Molde,2,106,Europe du Nord,étranger,Danemark
-Yarmouth,2,71,Europe du Nord,étranger,Grande-Bretagne
-Bergue ,17,1131,Europe du Nord,étranger,Danemark
-Boston,7,699,Amérique,étranger,Etats-Unis d'Amérique
-Galway,1,1,Europe du Nord,étranger,Grande-Bretagne
-Holmestrand,2,127,Europe du Nord,étranger,Danemark
-Teignmouth,3,201,Europe du Nord,étranger,Grande-Bretagne
-Santander,2,53,Europe du Sud,étranger,Espagne
-Lemmer,1,1,Europe du Nord,étranger,Provinces-Unies
-Newburyport,4,236,Amérique,étranger,Etats-Unis d'Amérique
-Dordrecht ,5,663,Europe du Nord,étranger,Provinces-Unies
-Hull,8,963,Europe du Nord,étranger,Grande-Bretagne
-île de Man,1,1,Europe du Nord,étranger,Grande-Bretagne
-Stettin,3,222,Europe centrale,étranger,Prusse
-Ribnitz,1,1,Europe centrale,étranger,Mecklenbourg
-Bilbao,5,322,Europe du Sud,étranger,Espagne
-Bruges,3,121,Europe centrale,étranger,Autriche
-Lübeck,9,1424,Europe centrale,étranger,Lubeck
-Norvège,4,257,Europe du Nord,étranger,Danemark
-Madère,2,48,Europe du Sud,étranger,Portugal
-Cork,3,281,Europe du Nord,étranger,Grande-Bretagne
-Liverpool,4,301,Europe du Nord,étranger,Grande-Bretagne
-Frederikshald / Halden,4,305,Europe du Nord,étranger,Danemark
-Bristol,3,204,Europe du Nord,étranger,Grande-Bretagne
-Southampton,1,1,Europe du Nord,étranger,Grande-Bretagne
-Lisbonne,1,1,Europe du Sud,étranger,Portugal
-Appledore,1,1,Europe du Nord,étranger,Grande-Bretagne
-Alicante,1,1,Europe du Sud,étranger,Espagne
-Côte d'Afrique [de l'Ouest],1,1,Autre,étranger,multi-Etat
-Grands Bancs de Terre-Neuve,2,86,Autre,étranger,zone maritime
-"Espagne, undeterminé",1,1,Europe du Sud,étranger,Espagne
-Zierikzee,2,238,Europe du Nord,étranger,Provinces-Unies
-Virginie,2,53,Amérique,étranger,Etats-Unis d'Amérique
-"Terre-Neuve, île de",1,1,Europe du Nord,étranger,Grande-Bretagne
-Riga,2,211,,étranger,Empire russe
-Rhode Island,1,1,Amérique,étranger,Etats-Unis d'Amérique
-Pillau / Baltiïsk,1,1,Europe centrale,étranger,Prusse
-Portsmouth,1,1,Europe du Nord,étranger,Grande-Bretagne
-Poole,2,161,Europe du Nord,étranger,Grande-Bretagne
-Plymouth,2,161,Europe du Nord,étranger,Grande-Bretagne
-Penzance,1,1,Europe du Nord,étranger,Grande-Bretagne
-New York,1,1,Amérique,étranger,Etats-Unis d'Amérique
-Moss,1,1,Europe du Nord,étranger,Danemark
-Marblehead,1,1,Amérique,étranger,Etats-Unis d'Amérique
-Harlingen,4,606,Europe du Nord,étranger,Provinces-Unies
-Greenock,1,1,Europe du Nord,étranger,Grande-Bretagne
-Georgetown,2,101,Amérique,étranger,Etats-Unis d'Amérique
-Fredrikstad ,1,1,Europe du Nord,étranger,Danemark
-Flekkefjord ,1,1,Europe du Nord,étranger,Danemark
-Farsund,1,1,Europe du Nord,étranger,Danemark
-Saltcoats,1,1,Europe du Nord,étranger,Grande-Bretagne
-Exeter,1,1,Europe du Nord,étranger,Grande-Bretagne
-Dartmouth,4,491,Europe du Nord,étranger,Grande-Bretagne
-Dantzig ,5,1191,Europe de l'Est,étranger,Pologne
-Kristiansand ,5,483,Europe du Nord,étranger,Danemark
-Chichester,1,1,Europe du Nord,étranger,Grande-Bretagne
-Carmarthen,1,1,Europe du Nord,étranger,Grande-Bretagne
-Berwick,1,1,Europe du Nord,étranger,Grande-Bretagne
-Bideford,2,114,Europe du Nord,étranger,Grande-Bretagne
-Barnstable,1,1,Amérique,étranger,Etats-Unis d'Amérique
-Baltimore,2,244,Amérique,étranger,Etats-Unis d'Amérique
-Angleterre,1,1,Europe du Nord,étranger,Grande-Bretagne
-Dundee,1,1,Europe du Nord,étranger,Grande-Bretagne
-Setúbal ,1,1,Europe du Sud,étranger,Portugal
-Barcelone,1,1,Europe du Sud,étranger,Espagne
-Noordwijk ,1,1,Europe du Nord,étranger,Provinces-Unies
-Ilfracombe,1,1,Europe du Nord,étranger,Grande-Bretagne
-Elbing / Elblag,1,1,Europe centrale,étranger,Prusse
-colonies anglaises [en Amérique],1,1,Europe du Nord,étranger,Grande-Bretagne
-Biscaye,1,1,Europe du Sud,étranger,Espagne
-Newton,1,1,Europe du Nord,étranger,Grande-Bretagne
+port,port_en,nb_pointcalls,tonnage,country_group,country_group_en,category_1,category_1_en,category_2,category_2_en
+Londres,London,45,4913,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Indéterminé,To be identified,75,1865,Autre,Other,étranger,foreign,Indéterminé,Indetermined
+Newcastle,Newcastle,6,1219,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Memel,Memel,2,201,Europe centrale,Central Europe,étranger,foreign,Prusse,Prussia
+Hambourg,Hamburg,7,747,Europe centrale,Central Europe,étranger,foreign,Hambourg,Hamburg
+Côte d'Angole,Angola coast,2,615,Afrique,Africa,étranger,foreign,Portugal,Portugal
+Côte d'Or,Gold Coast,10,3584,Afrique,Africa,étranger,foreign,multi-Etat,Multi-state
+Kristiansund ,Kristiansund ,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Copenhague ,Copenhagen,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Calabar,Calabar,1,1,Autre,Other,étranger,foreign,Indéterminé,Indetermined
+Amsterdam,Amsterdam,21,3627,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Rotterdam,Rotterdam,7,743,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Königsberg / Kaliningrad,Kaliningrad ,13,2412,Europe centrale,Central Europe,étranger,foreign,Prusse,Prussia
+Mer Baltique,Baltic sea,27,4473,Europe de l'Est,Eastern Europe,étranger,foreign,zone maritime,Open sea
+Brême,Bremen,6,506,Europe centrale,Central Europe,étranger,foreign,Brême,Bremen
+Saint-Sébastien,San Sebastián,3,80,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Guernesey,Guernesey,6,322,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Ostende,Ostend,13,1012,Europe centrale,Central Europe,étranger,foreign,Autriche,Austria
+Gloucester,Gloucester,3,206,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Philadelphie,Philadelphia,2,161,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Stavanger,Stavanger,12,1188,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Waterford,Waterford,3,259,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Molde,Molde,2,106,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Yarmouth,Yarmouth,2,71,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Bergue ,Bergen,17,1131,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Boston,Boston,7,699,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Galway,Galway,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Holmestrand,Holmestrand,2,127,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Teignmouth,Teignmouth,3,201,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Santander,Santander,2,53,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Lemmer,Lemmer,1,1,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Newburyport,Newburyport,4,236,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Dordrecht ,Dordrecht ,5,663,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Hull,Hull,8,963,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+île de Man,Isle of Man,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Stettin,Szczecin,3,222,Europe centrale,Central Europe,étranger,foreign,Prusse,Prussia
+Ribnitz,Ribnitz,1,1,Europe centrale,Central Europe,étranger,foreign,Mecklenbourg,Mecklenburg
+Bilbao,Bilbao,5,322,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Bruges,Bruges,3,121,Europe centrale,Central Europe,étranger,foreign,Autriche,Austria
+Lübeck,Lübeck,9,1424,Europe centrale,Central Europe,étranger,foreign,Lubeck,Lubeck
+Norvège,Norway,4,257,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Madère,Madeira,2,48,Europe du Sud,Southern Europe,étranger,foreign,Portugal,Portugal
+Cork,Cork,3,281,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Liverpool,Liverpool,4,301,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Frederikshald / Halden,Frederikshald / Halden,4,305,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Bristol,Bristol,3,204,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Southampton,Southampton,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Lisbonne,Lisbon,1,1,Europe du Sud,Southern Europe,étranger,foreign,Portugal,Portugal
+Appledore,Appledore,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Alicante,Alicante,1,1,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Côte d'Afrique [de l'Ouest],African coast [West],1,1,Autre,Other,étranger,foreign,multi-Etat,Multi-state
+Grands Bancs de Terre-Neuve,Grand Banks of Newfoundland,2,86,Autre,Other,étranger,foreign,zone maritime,Open sea
+"Espagne, undeterminé","Spain, undetermined",1,1,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Zierikzee,Zierikzee,2,238,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Virginie,Virginia,2,53,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+"Terre-Neuve, île de",Newfoundland,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Riga,Riga,2,211,,Other,étranger,foreign,Empire russe,Russian Empire
+Rhode Island,Rhode Island,1,1,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Pillau / Baltiïsk,Baltiysk,1,1,Europe centrale,Central Europe,étranger,foreign,Prusse,Prussia
+Portsmouth,Portsmouth,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Poole,Poole,2,161,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Plymouth,Plymouth,2,161,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Penzance,Penzance,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+New York,New York,1,1,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Moss,Moss,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Marblehead,Marblehead,1,1,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Harlingen,Harlingen,4,606,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Greenock,Greenock,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Georgetown,Georgetown,2,101,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Fredrikstad ,Fredrikstad ,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Flekkefjord ,Flekkefjord ,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Farsund,Farsund,1,1,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Saltcoats,Saltcoats,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Exeter,Exeter,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Dartmouth,Dartmouth,4,491,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Dantzig ,Gdańsk,5,1191,Europe de l'Est,Eastern Europe,étranger,foreign,Pologne,Poland
+Kristiansand ,Kristiansand ,5,483,Europe du Nord,Northern Europe,étranger,foreign,Danemark,Denmark
+Chichester,Chichester,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Carmarthen,Carmarthen,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Berwick,Berwick,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Bideford,Bideford,2,114,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Barnstable,Barnstable,1,1,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Baltimore,Baltimore,2,244,Amérique,America,étranger,foreign,Etats-Unis d'Amérique,United States
+Angleterre,England,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Dundee,Dundee,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Setúbal ,Setúbal,1,1,Europe du Sud,Southern Europe,étranger,foreign,Portugal,Portugal
+Barcelone,Barcelona,1,1,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Noordwijk ,Noordwijk ,1,1,Europe du Nord,Northern Europe,étranger,foreign,Provinces-Unies,United Provinces
+Ilfracombe,Ilfracombe,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Elbing / Elblag,Elblag,1,1,Europe centrale,Central Europe,étranger,foreign,Prusse,Prussia
+colonies anglaises [en Amérique],British [American] colonies,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain
+Biscaye,Biscay,1,1,Europe du Sud,Southern Europe,étranger,foreign,Espagne,Spain
+Newton,Newton,1,1,Europe du Nord,Northern Europe,étranger,foreign,Grande-Bretagne,Great Britain

@@ -91,8 +91,8 @@ const colorsPalettes = {
     'France (PASA region)': '#41BEA3',
     'France (outside PASA region)': '#FED63B',
     'Indetermined': 'rgb(240,240,240)',
-    'sea zone': '#98a9d9',
-    'multi-state': '#a42e0d',
+    'Open sea': '#98a9d9',
+    'Multi-state': '#a42e0d',
 
     'Hamburg': '#F7E0DE',
     'Duchy of Oldenburg': '#F3D1CE',
@@ -108,7 +108,7 @@ const colorsPalettes = {
 
     'United States': '#EBB2AD',
     'Poland': '#804a45',
-    'Russia': '#804a45',
+    'Russian Empire': '#804a45',
     'Spain': '#e35027',
     'Portugal': '#e35027',
   }

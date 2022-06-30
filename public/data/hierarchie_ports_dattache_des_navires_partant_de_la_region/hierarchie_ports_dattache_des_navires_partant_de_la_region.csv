@@ -21,7 +21,7 @@ Rhuys,56,4340,Rhuys,Rhuys,France,France,France,France,France (hors région PASA)
 Fécamp,8,567,Fécamp,Fécamp,France,France,France,France,France (hors région PASA),France (outside PASA region)
 île de Ré,28,603,île de Ré,île de Ré,France,France,France,France,France (région PASA),France (PASA region)
 île d'Arz,26,1366,île d'Arz,île d'Arz,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Newcastle,15,2861,Newcastle,Newcastle,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Newcastle,15,2861,Newcastle,Newcastle,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Marennes,108,3070,Marennes,Marennes,France,France,France,France,France (région PASA),France (PASA region)
 Saint-Malo,206,19850,Saint-Malo,Saint-Malo,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Briac,33,3189,Saint-Briac,Saint-Briac,France,France,France,France,France (hors région PASA),France (outside PASA region)
@@ -31,11 +31,11 @@ Châlon,181,3614,Châlon,Châlon,France,France,France,France,France (région PAS
 Erquy,8,601,Erquy,Erquy,France,France,France,France,France (hors région PASA),France (outside PASA region)
 La Rochelle,304,14505,La Rochelle,La Rochelle,France,France,France,France,France (région PASA),France (PASA region)
 Dieppe,29,2717,Dieppe,Dieppe,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Londres,50,5502,Londres,London,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Londres,50,5502,Londres,London,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Plouharnel,25,716,Plouharnel,Plouharnel,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Marans,389,7814,Marans,Marans,France,France,France,France,France (région PASA),France (PASA region)
 Tonnay-Charente,254,10172,Tonnay-Charente,Tonnay-Charente,France,France,France,France,France (région PASA),France (PASA region)
-Indéterminé,52,3846,Indéterminé,,étranger,foreign,Autre,Autre,Indéterminé,Indetermined
+Indéterminé,52,3846,Indéterminé,Indetermined,étranger,foreign,Autre,Other,Indéterminé,Indetermined
 Rochefort,19,2350,Rochefort,Rochefort,France,France,France,France,France (région PASA),France (PASA region)
 Belle-Île-en-Mer,51,1209,Belle-Île-en-Mer,Belle-Île-en-Mer,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Nantes,87,6694,Nantes,Nantes,France,France,France,France,France (hors région PASA),France (outside PASA region)
@@ -47,7 +47,7 @@ Granville,29,3773,Granville,Granville,France,France,France,France,France (hors r
 Dunkerque,13,1233,Dunkerque,Dunkirk,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Soubise,57,2017,Soubise,Soubise,France,France,France,France,France (région PASA),France (PASA region)
 Bourcefranc ,39,1159,Bourcefranc ,Bourcefranc ,France,France,France,France,France (région PASA),France (PASA region)
-Hambourg,12,1596,Hambourg,Hamburg,étranger,foreign,Europe centrale,,Hambourg,Hamburg
+Hambourg,12,1596,Hambourg,Hamburg,étranger,foreign,Europe centrale,Central Europe,Hambourg,Hamburg
 Rouen,34,3125,Rouen,Rouen,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Le Havre,3,166,Le Havre,Le Havre,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Morlaix,12,721,Morlaix,Morlaix,France,France,France,France,France (hors région PASA),France (outside PASA region)
@@ -55,15 +55,15 @@ Dercie,43,1324,Dercie,Dercie,France,France,France,France,France (région PASA),F
 Vatteville,3,233,Vatteville,Vatteville,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Boulogne-sur-Mer,8,410,Boulogne-sur-Mer,Boulogne-sur-Mer,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Carteret,5,277,Carteret,Carteret,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Groningue,4,322,Groningue,Groningen,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
+Groningue,4,322,Groningue,Groningen,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
 La Couarde,6,16,La Couarde,La Couarde,France,France,France,France,France (région PASA),France (PASA region)
 La Flotte-en-Ré,24,437,La Flotte-en-Ré,La Flotte-en-Ré,France,France,France,France,France (région PASA),France (PASA region)
 Île-aux-Moines,43,2555,Île-aux-Moines,Île-aux-Moines,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Rostock,2,174,Rostock,Rostock,étranger,foreign,Europe centrale,,Mecklenbourg,Mecklenburg
-Yarmouth,6,441,Yarmouth,Yarmouth,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Rostock,2,174,Rostock,Rostock,étranger,foreign,Europe centrale,Central Europe,Mecklenbourg,Mecklenburg
+Yarmouth,6,441,Yarmouth,Yarmouth,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Ribérou,9,85,Ribérou,Ribérou,France,France,France,France,France (région PASA),France (PASA region)
-Liverpool,6,607,Liverpool,Liverpool,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Lübeck,9,1425,Lübeck,Lübeck,étranger,foreign,Europe centrale,Europe centrale,Lubeck,Lubeck
+Liverpool,6,607,Liverpool,Liverpool,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Lübeck,9,1425,Lübeck,Lübeck,étranger,foreign,Europe centrale,Central Europe,Lubeck,Lubeck
 Caen ,2,71,Caen ,Caen ,France,France,France,France,France (hors région PASA),France (outside PASA region)
 L'Houmée,21,755,L'Houmée,L'Houmée,France,France,France,France,France (région PASA),France (PASA region)
 Noirmoutier,224,6750,Noirmoutier,Noirmoutier,France,France,France,France,France (région PASA),France (PASA region)
@@ -73,17 +73,17 @@ Auray,4,300,Auray,Auray,France,France,France,France,France (hors région PASA),F
 Le Croisic,2,51,Le Croisic,Le Croisic,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Roque de Thau,6,204,Roque de Thau,Roque de Thau,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Marseille,1,1,Marseille,Marseille,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Brême,4,321,Brême,Bremen,étranger,foreign,Europe centrale,,Brême,Bremen
+Brême,4,321,Brême,Bremen,étranger,foreign,Europe centrale,Central Europe,Brême,Bremen
 Saint-Estèphe,9,244,Saint-Estèphe,Saint-Estèphe,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Gilles-sur-Vie,59,2355,Saint-Gilles-sur-Vie,Saint-Gilles-sur-Vie,France,France,France,France,France (région PASA),France (PASA region)
 Esnandes,1,1,Esnandes,Esnandes,France,France,France,France,France (région PASA),France (PASA region)
 Ploërmel ,1,1,Ploërmel ,Ploërmel ,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Amsterdam,33,8148,Amsterdam,Amsterdam,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Guernesey,5,322,Guernesey,Guernesey,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Amsterdam,33,8148,Amsterdam,Amsterdam,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Guernesey,5,322,Guernesey,Guernesey,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Douarnenez,5,139,Douarnenez,Douarnenez,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Portrieux ,1,1,Portrieux ,Portrieux ,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Bergue ,17,1163,Bergue ,Bergen,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Hull,13,1538,Hull,Hull,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Bergue ,17,1163,Bergue ,Bergen,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Hull,13,1538,Hull,Hull,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Saint-Brieuc,13,975,Saint-Brieuc,Saint-Brieuc,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Barfleur,1,1,Barfleur,Barfleur,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Honfleur,9,984,Honfleur,Honfleur,France,France,France,France,France (hors région PASA),France (outside PASA region)
@@ -95,145 +95,145 @@ Paimpol,23,1173,Paimpol,Paimpol,France,France,France,France,France (hors région
 Vannes,32,1210,Vannes,Vannes,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Tréguier,5,179,Tréguier,Tréguier,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Podensac,10,245,Podensac,Podensac,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Dartmouth,4,471,Dartmouth,Dartmouth,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Dartmouth,4,471,Dartmouth,Dartmouth,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Pornic,8,184,Pornic,Pornic,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Moëlan,4,96,Moëlan,Moëlan,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Harwich,1,1,Harwich,Harwich,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Harwich,1,1,Harwich,Harwich,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Saintes,1,1,Saintes,Saintes,France,France,France,France,France (région PASA),France (PASA region)
-Mecklenbourg,1,1,Mecklenbourg,Mecklenburg,étranger,foreign,,,Suède,Sweden
-Ribnitz,2,151,Ribnitz,Ribnitz,étranger,foreign,Europe centrale,,Mecklenbourg,Mecklenburg
+Mecklenbourg,1,1,Mecklenbourg,Mecklenburg,étranger,foreign,Europe du Nord,Northern Europe,Suède,Sweden
+Ribnitz,2,151,Ribnitz,Ribnitz,étranger,foreign,Europe centrale,Central Europe,Mecklenbourg,Mecklenburg
 Cavernes,13,437,Cavernes,Cavernes,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Rotterdam,5,460,Rotterdam,Rotterdam,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
+Rotterdam,5,460,Rotterdam,Rotterdam,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
 île de Bouin,43,1054,île de Bouin,île de Bouin,France,France,France,France,France (région PASA),France (PASA region)
-Angleterre,1,1,Angleterre,England,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Dublin,1,1,Dublin,Dublin,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Königsberg / Kaliningrad,12,2258,Königsberg / Kaliningrad,Kaliningrad ,étranger,foreign,Europe centrale,,Prusse,Prussia
-Poole,4,411,Poole,Poole,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Angleterre,1,1,Angleterre,England,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Dublin,1,1,Dublin,Dublin,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Königsberg / Kaliningrad,12,2258,Königsberg / Kaliningrad,Kaliningrad ,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia
+Poole,4,411,Poole,Poole,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Méan,106,3065,Méan,Méan,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Port-Maubert,2,30,Port-Maubert,Port-Maubert,France,France,France,France,France (région PASA),France (PASA region)
-Flekkefjord ,2,71,Flekkefjord ,Flekkefjord ,étranger,foreign,Europe du Nord,,Danemark,Denmark
+Flekkefjord ,2,71,Flekkefjord ,Flekkefjord ,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
 Landerneau,12,639,Landerneau,Landerneau,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Port-des-Barques,11,313,Port-des-Barques,Port-des-Barques,France,France,France,France,France (région PASA),France (PASA region)
-Plymouth,5,426,Plymouth,Plymouth,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Stavanger,9,846,Stavanger,Stavanger,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Bristol,4,349,Bristol,Bristol,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Plymouth,5,426,Plymouth,Plymouth,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Stavanger,9,846,Stavanger,Stavanger,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Bristol,4,349,Bristol,Bristol,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Lannion,6,246,Lannion,Lannion,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Teignmouth,3,211,Teignmouth,Teignmouth,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Teignmouth,3,211,Teignmouth,Teignmouth,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Saint-Valéry-en-Caux,4,256,Saint-Valéry-en-Caux,Saint-Valéry-en-Caux,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Bourgneuf,16,352,Bourgneuf,Bourgneuf,France,France,France,France,France (hors région PASA),France (outside PASA region)
 île d'Yeu,59,1277,île d'Yeu,île d'Yeu,France,France,France,France,France (région PASA),France (PASA region)
 Ouessant,3,130,Ouessant,Ouessant,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Argenton,18,1186,Argenton,Argenton,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Jean-de-Luz,2,211,Saint-Jean-de-Luz,Saint-Jean-de-Luz,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Carmarthen,1,1,Carmarthen,Carmarthen,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Appledore,1,1,Appledore,Appledore,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Bideford,2,151,Bideford,Bideford,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Carmarthen,1,1,Carmarthen,Carmarthen,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Appledore,1,1,Appledore,Appledore,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Bideford,2,151,Bideford,Bideford,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Regnéville,1,1,Regnéville,Regnéville,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Fouras,1,1,Fouras,Fouras,France,France,France,France,France (région PASA),France (PASA region)
 Plassac,10,488,Plassac,Plassac,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Aber-Ildut,42,2611,Aber-Ildut,Aber-Ildut,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Sunderland,5,498,Sunderland,Sunderland,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Sunderland,5,498,Sunderland,Sunderland,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Camaret,7,240,Camaret,Camaret,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Plencia,6,191,Plencia,Plentzia,étranger,foreign,Europe du Sud,,Espagne,Spain
+Plencia,6,191,Plencia,Plentzia,étranger,foreign,Europe du Sud,Southern Europe,Espagne,Spain
 Blaye,4,55,Blaye,Blaye,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Vaize,2,41,Saint-Vaize,Saint-Vaize,France,France,France,France,France (région PASA),France (PASA region)
 Arradon,6,64,Arradon,Île Chevalier,France,France,France,France,France (hors région PASA),France (outside PASA region)
 l'Aiguillon,5,5,l'Aiguillon,l'Aiguillon,France,France,France,France,France (région PASA),France (PASA region)
-Cork,3,55,Cork,Cork,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Hollande,2,201,Hollande,Holland,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Frederikshald / Halden,5,425,Frederikshald / Halden,Frederikshald / Halden,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Boston,6,369,Boston,Boston,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
+Cork,3,55,Cork,Cork,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Hollande,2,201,Hollande,Holland,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Frederikshald / Halden,5,425,Frederikshald / Halden,Frederikshald / Halden,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Boston,6,369,Boston,Boston,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
 Breuillet,8,41,Breuillet,Breuillet,France,France,France,France,France (région PASA),France (PASA region)
 Saint-Nazaire,1,1,Saint-Nazaire,Saint-Nazaire,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Lunaire,1,1,Saint-Lunaire,Saint-Lunaire,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Ambon,1,1,Ambon,Ambon,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Saint-Trojan,2,25,Saint-Trojan,Saint-Trojan,France,France,France,France,France (région PASA),France (PASA region)
-Southampton,1,1,Southampton,Southampton,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Southampton,1,1,Southampton,Southampton,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Port-Navalo,1,1,Port-Navalo,Port-Navalo,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Cabara,2,24,Cabara,Cabara,France,France,France,France,France (hors région PASA),France (outside PASA region)
-New York,1,1,New York,New York,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
+New York,1,1,New York,New York,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
 Pont-l'Abbé,2,13,Pont-l'Abbé,Pont-l'Abbé,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Billiers,1,1,Billiers,Billiers,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Croix-de-Vie,3,5,Croix-de-Vie,Croix-de-Vie,France,France,France,France,France (région PASA),France (PASA region)
-Norden,1,1,Norden,Norden,étranger,foreign,Europe centrale,,Prusse,Prussia
+Norden,1,1,Norden,Norden,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia
 La Bouille,1,1,La Bouille,La Bouille,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Memel,4,851,Memel,Memel,étranger,foreign,Europe centrale,,Prusse,Prussia
-Portsmouth,2,241,Portsmouth,Portsmouth,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Zierikzee,2,238,Zierikzee,Zierikzee,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-île de Man,1,1,île de Man,Isle of Man,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Topsham,2,121,Topsham,Topsham,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-"Portsmouth, VA,",1,1,"Portsmouth, VA,","Portsmouth, VA,",étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Norfolk,1,1,Norfolk,Norfolk,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
+Memel,4,851,Memel,Memel,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia
+Portsmouth,2,241,Portsmouth,Portsmouth,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Zierikzee,2,238,Zierikzee,Zierikzee,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+île de Man,1,1,île de Man,Isle of Man,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Topsham,2,121,Topsham,Topsham,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+"Portsmouth, VA,",1,1,"Portsmouth, VA,","Portsmouth, VA,",étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Norfolk,1,1,Norfolk,Norfolk,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
 Binic,3,109,Binic,Binic,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Emden,4,562,Emden,Emden,étranger,foreign,Europe centrale,,Prusse,Prussia
-Papenbourg,1,1,Papenbourg,Papenburg,étranger,foreign,,,Evêché de Münster,Prince-Bishopric of Münster
-Georgie,1,1,Georgie,Georgia,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Philadelphie,1,1,Philadelphie,Philadelphia,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Caroline,1,1,Caroline,Carolina,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Norvège,1,1,Norvège,Norway,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Newburyport,4,161,Newburyport,Newburyport,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Moss,1,1,Moss,Moss,étranger,foreign,Europe du Nord,,Danemark,Denmark
+Emden,4,562,Emden,Emden,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia
+Papenbourg,1,1,Papenbourg,Papenburg,étranger,foreign,Europe du Nord,Northern Europe,Evêché de Münster,Prince-Bishopric of Münster
+Georgie,1,1,Georgie,Georgia,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Philadelphie,1,1,Philadelphie,Philadelphia,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Caroline,1,1,Caroline,Carolina,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Norvège,1,1,Norvège,Norway,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Newburyport,4,161,Newburyport,Newburyport,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Moss,1,1,Moss,Moss,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
 Roscoff,1,1,Roscoff,Roscoff,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Marblehead,1,1,Marblehead,Marblehead,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Molde,2,51,Molde,Molde,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Salem,1,1,Salem,Salem,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
+Marblehead,1,1,Marblehead,Marblehead,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Molde,2,51,Molde,Molde,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Salem,1,1,Salem,Salem,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
 Libourne,2,47,Libourne,Libourne,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Le Faou,5,262,Le Faou,Le Faou,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Pontrieux ,4,262,Pontrieux ,Pontrieux ,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Quillebeuf,2,97,Quillebeuf,Quillebeuf,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Quimper,2,117,Quimper,Quimper,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Middelbourg,2,181,Middelbourg,Middelburg,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
+Middelbourg,2,181,Middelbourg,Middelburg,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
 Pauillac,1,1,Pauillac,Pauillac,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Holmestrand,2,127,Holmestrand,Holmestrand,étranger,foreign,Europe du Nord,,Danemark,Denmark
+Holmestrand,2,127,Holmestrand,Holmestrand,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
 Saint-Servant,3,222,Saint-Servant,Saint-Servant,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Harlingen,2,81,Harlingen,Harlingen,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Greenock,2,241,Greenock,Greenock,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Stavoren,1,1,Stavoren,Stavoren,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Gloucester,3,201,Gloucester,Gloucester,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Georgetown,2,101,Georgetown,Georgetown,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-Galway,1,1,Galway,Galway,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Farsund,1,1,Farsund,Farsund,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Saltcoats,1,1,Saltcoats,Saltcoats,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Exeter,1,1,Exeter,Exeter,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Harlingen,2,81,Harlingen,Harlingen,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Greenock,2,241,Greenock,Greenock,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Stavoren,1,1,Stavoren,Stavoren,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Gloucester,3,201,Gloucester,Gloucester,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Georgetown,2,101,Georgetown,Georgetown,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+Galway,1,1,Galway,Galway,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Farsund,1,1,Farsund,Farsund,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Saltcoats,1,1,Saltcoats,Saltcoats,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Exeter,1,1,Exeter,Exeter,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Cognac,1,1,Cognac,Cognac,France,France,France,France,France (région PASA),France (PASA region)
 Bayonne,7,847,Bayonne,Bayonne,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Aber-Wrac'h,1,1,Aber-Wrac'h,Aber-Wrac'h,France,France,France,France,France (hors région PASA),France (outside PASA region)
 La Hougue,1,1,La Hougue,La Hougue,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Le Légué,1,1,Le Légué,Le Légué,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Dort,1,1,Dort,Dort,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Dantzig ,7,1541,Dantzig ,Gdańsk,étranger,foreign,Europe de l'Est,,Pologne,Poland
-Kristiansand ,3,248,Kristiansand ,Kristiansand ,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Chichester,1,1,Chichester,Chichester,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Dort,1,1,Dort,Dort,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Dantzig ,7,1541,Dantzig ,Gdańsk,étranger,foreign,Europe de l'Est,Eastern Europe,Pologne,Poland
+Kristiansand ,3,248,Kristiansand ,Kristiansand ,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Chichester,1,1,Chichester,Chichester,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Concarneau,1,1,Concarneau,Concarneau,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Penerf,1,1,Penerf,Penerf,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Côtes de Bretagne,1,1,Côtes de Bretagne,Britanny coast,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Wiscasset,1,1,Wiscasset,Wiscasset,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
+Wiscasset,1,1,Wiscasset,Wiscasset,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
 Paillet ,1,1,Paillet ,Paillet ,France,France,France,France,France (hors région PASA),France (outside PASA region)
 Royan,1,1,Royan,Royan,France,France,France,France,France (région PASA),France (PASA region)
-Leith,3,180,Leith,Leith,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Espagne atlantique,2,35,Espagne atlantique,"Spain, Atlantic coast",étranger,foreign,Europe du Sud,,Espagne,Spain
+Leith,3,180,Leith,Leith,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Espagne atlantique,2,35,Espagne atlantique,"Spain, Atlantic coast",étranger,foreign,Europe du Sud,Southern Europe,Espagne,Spain
 Courseulles,1,1,Courseulles,Courseulles,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Barnstable,1,1,Barnstable,Barnstable,étranger,foreign,Amérique,,Etats-Unis d'Amérique,United States
-IJlst,1,1,IJlst,IJlst,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Lutjegast,1,1,Lutjegast,Lutjegast,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Neufahrwasser ,1,1,Neufahrwasser ,Neufahrwasser ,étranger,foreign,Europe centrale,,Prusse,Prussia
-Hoorn,1,1,Hoorn,Hoorn,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Dundee,1,1,Dundee,Dundee,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Oude Pekela,3,181,Oude Pekela,Oude Pekela,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
+Barnstable,1,1,Barnstable,Barnstable,étranger,foreign,Amérique,America,Etats-Unis d'Amérique,United States
+IJlst,1,1,IJlst,IJlst,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Lutjegast,1,1,Lutjegast,Lutjegast,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Neufahrwasser ,1,1,Neufahrwasser ,Neufahrwasser ,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia
+Hoorn,1,1,Hoorn,Hoorn,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Dundee,1,1,Dundee,Dundee,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Oude Pekela,3,181,Oude Pekela,Oude Pekela,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
 Audierne ,1,1,Audierne ,Audierne ,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Newton,1,1,Newton,Newton,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
-Frise,6,697,Frise,Friesland,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Waterford,1,1,Waterford,Waterford,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Newton,1,1,Newton,Newton,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
+Frise,6,697,Frise,Friesland,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Waterford,1,1,Waterford,Waterford,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Sète,1,1,Sète,Sète,France,France,France,France,France (hors région PASA),France (outside PASA region)
-Föhr,1,1,Föhr,Föhr,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Workum,2,111,Workum,Workum,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Christiania / Oslo,1,1,Christiania / Oslo,Oslo,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Arendal,1,1,Arendal,Arendal,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Wijzend,1,1,Wijzend,Wijzend,étranger,foreign,Europe du Nord,,Provinces-Unies,United Provinces
-Cowes,1,1,Cowes,Cowes,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Föhr,1,1,Föhr,Föhr,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Workum,2,111,Workum,Workum,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Christiania / Oslo,1,1,Christiania / Oslo,Oslo,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Arendal,1,1,Arendal,Arendal,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Wijzend,1,1,Wijzend,Wijzend,étranger,foreign,Europe du Nord,Northern Europe,Provinces-Unies,United Provinces
+Cowes,1,1,Cowes,Cowes,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 Luçon,1,1,Luçon,Luçon,France,France,France,France,France (région PASA),France (PASA region)
-Ilfracombe,1,1,Ilfracombe,Ilfracombe,étranger,foreign,Europe du Nord,,Grande-Bretagne,Great Britain
+Ilfracombe,1,1,Ilfracombe,Ilfracombe,étranger,foreign,Europe du Nord,Northern Europe,Grande-Bretagne,Great Britain
 île d'Aix,1,1,île d'Aix,île d'Aix,France,France,France,France,France (région PASA),France (PASA region)
-Kristiansund ,1,1,Kristiansund ,Kristiansund ,étranger,foreign,Europe du Nord,,Danemark,Denmark
-Oldenbourg,2,121,Oldenbourg,Oldenburg ,étranger,foreign,Europe centrale,,Duché d'Oldenbourg,Duchy of Oldenburg
-Stettin,1,1,Stettin,Szczecin,étranger,foreign,Europe centrale,,Prusse,Prussia
+Kristiansund ,1,1,Kristiansund ,Kristiansund ,étranger,foreign,Europe du Nord,Northern Europe,Danemark,Denmark
+Oldenbourg,2,121,Oldenbourg,Oldenburg ,étranger,foreign,Europe centrale,Central Europe,Duché d'Oldenbourg,Duchy of Oldenburg
+Stettin,1,1,Stettin,Szczecin,étranger,foreign,Europe centrale,Central Europe,Prusse,Prussia

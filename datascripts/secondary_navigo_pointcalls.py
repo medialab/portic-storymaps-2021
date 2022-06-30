@@ -312,13 +312,18 @@ def compute_french_fleat_part (pointcalls):
     port["tonnage_french"] = tonnage_french
     port["tonnage_foreign"] = tonnage_foreign
     tonnage_part_of_french = tonnage_french / port["tonnage"] * 100
+    tonnage_part_of_french_en = tonnage_french / port["tonnage"] * 100
     if tonnage_part_of_french == 100:
       tonnage_part_of_french = "100%"
+      tonnage_part_of_french_en = "100%"
     elif tonnage_part_of_french >= 75:
       tonnage_part_of_french = "75% ou plus"
+      tonnage_part_of_french_en = "75% or more"
     else:
       tonnage_part_of_french = "moins de 75%"
+      tonnage_part_of_french_en = "less than 75%"
     port["tonnage_part_of_french"] = tonnage_part_of_french
+    port["tonnage_part_of_french_en"] = tonnage_part_of_french_en
     del port["tonnage_by_country"]
     port["tonnage"] = round(port["tonnage"] / 1000, 1)
   # write and document datasets

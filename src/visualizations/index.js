@@ -468,9 +468,9 @@ const VisualizationContainer = ({
                 type: 'points',
                 data: datasets['part_navigation_fr/part_navigation_fr.csv'],
                 color: {
-                  field: 'tonnage_part_of_french',
+                  field: props.lang === 'fr' ? 'tonnage_part_of_french' : 'tonnage_part_of_french_en',
                   title: translate('partie-2-part-navigation-francaise', 'color', props.lang),
-                  palette: colorPalettes.tonnageClasses,
+                  palette: props.lang === 'fr' ? colorPalettes.tonnageClasses : colorPalettes.tonnageClassesEn,
                   labelsColor: props.atlasMode ? undefined : 'white'
                 },
                 size: {

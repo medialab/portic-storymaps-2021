@@ -59,6 +59,11 @@ const colorsPalettes = {
     '75% ou plus': '#41BEA3',
     'moins de 75%': '#FEA43B',
   },
+  tonnageClassesEn: {
+    '100%': '#A07BEE',
+    '75% or more': '#41BEA3',
+    'less than 75%': '#FEA43B',
+  },
   franceAlone: {
     'France': '#41BEA3',
   },

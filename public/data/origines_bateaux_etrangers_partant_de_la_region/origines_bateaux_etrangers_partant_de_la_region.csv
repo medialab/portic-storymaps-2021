@@ -1,15 +1,15 @@
 country,country_fr,country_en,latitude,longitude,tonnage,nb_pointcalls
-Grande-Bretagne,Grande-Bretagne,Great Britain,46.166667,-1.15,17589,150
-Hambourg,Hambourg,Hamburg,46.166667,-1.15,1715,12
-Provinces-Unies,Provinces-Unies,United Provinces,46.166667,-1.15,13096,67
-Duché de Mecklenbourg,Duché de Mecklenbourg,Mecklenburg,45.95,-0.9,813,4
-Lubeck,Lubeck,Lubeck,45.95,-0.9,1589,9
-Brême,Brême,Bremen,46.166667,-1.15,450,4
-Danemark,Danemark,Denmark,46.2,-1.366667,4542,47
-Suède,Suède,Sweden,46.166667,-1.15,150,1
-Prusse,Prusse,Prussia,47,-2.25,4793,23
+Grande-Bretagne,Grande-Bretagne,Great Britain,45.95,-0.9,17589,150
 Espagne,Espagne,Spain,45.816667,-1.116667,307,8
+Provinces-Unies,Provinces-Unies,United Provinces,46.2,-1.366667,13096,67
+Danemark,Danemark,Denmark,46.2,-1.366667,4542,47
 Etats-Unis d'Amérique,Etats-Unis d'Amérique,United States,46.2,-1.366667,2508,25
+Prusse,Prusse,Prussia,46.166667,-1.15,4793,23
 Evêché de Münster,Evêché de Münster,Prince-Bishopric of Münster,45.816667,-1.116667,217,1
+Brême,Brême,Bremen,47,-2.25,450,4
+Lubeck,Lubeck,Lubeck,45.816667,-1.116667,1589,9
 Pologne,Pologne,Poland,47,-2.25,1840,7
+Hambourg,Hambourg,Hamburg,47,-2.25,1715,12
+Duché de Mecklenbourg,Duché de Mecklenbourg,Mecklenburg,45.816667,-1.116667,813,4
 Duché d'Oldenbourg,Duché d'Oldenbourg,Duchy of Oldenburg,46.166667,-1.15,240,2
+Suède,Suède,Sweden,46.166667,-1.15,150,1

@@ -18,7 +18,7 @@ Navigation data for 1789 related to a specific *bureau des fermes* (thanks to bu
   - type of flow : exports
   - targeted customs offices : ['La Rochelle', 'Marennes', 'Rochefort', 'Saint-Martin-de-Ré', "Les Sables d'Olonne", "Tonnay-Charente", 'Aligre', 'Charente', 'Le Havre', 'Bordeaux', 'Nantes']
 - for navigo data : 
-  - year : 1787
+  - year : 1789
   - pointcall_function : 'O'
   - only data from ports attached to PASA's customs offices/bureaux des fermes
 
